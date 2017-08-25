@@ -1,0 +1,84 @@
+endpoints:
+  env:
+    - keys-to-sanitize: "password"
+    - keys-to-sanitize: "secret"
+    - keys-to-sanitize: "key"
+    - keys-to-sanitize: "passwort"
+  health:
+    sensitive: false
+  endpoints:
+    shutdown:
+      enabled: false
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQL94Dialect
+info:
+  application:
+    artifactId: @project.artifactId@
+    description: @project.description@
+    groupId: @project.groupId@
+    name: @project.name@
+    version: @project.version@
+management:
+  address: 127.0.0.1
+  context-path: "/manage"
+  security:
+    enabled: false
+spring:
+  application:
+    admin:
+      enabled: false
+    name: @project.name@
+  datasource:
+    driverClassName: org.postgresql.Driver
+    #initialSize: 5
+    max-total: 20
+    maxActive: 20
+    #maxIdle: 5
+    #minIdle: 2
+    platform: POSTGRESQL
+    #removeAbandoned: true
+    tomcat:
+      max-active: 20
+      #max-wait: 100000
+      #test-on-borrow: true
+    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+    #url: ${DATABASE_URL}
+  devtools:
+    livereload:
+      enabled: false
+  jpa:
+    generate-ddl: true
+    hibernate:
+      #ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
+      #ddl-auto: create-drop
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: false
+  template:
+    cache: false
+  thymeleaf:
+    cache: false
+btw17:
+  kandidaten:
+    pageSize: 20
+    #loginUsername: ${BTW17_LOGIN_USERNAME}
+    #loginPassword: ${BTW17_LOGIN_PASSWORD}
+    loginUsername: blubb
+    loginPassword: blablabla
+    webSecurityConfigPublicPaths:
+      - "/"
+      - "/kandidat/all"
+      - "/kandidat/id"
+      - "/imprint"
+      - "/css/*"
+      - "/css/**"
+      - "/favicon/*"
+      - "/favicon/**"
+      - "/js/*"
+      - "/js/**"
+      - "/map-icons/*"
+      - "/map-icons/**"
+      - "/webjars/*"
+      - "/webjars/**"

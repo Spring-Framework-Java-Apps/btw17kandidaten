@@ -1,0 +1,64 @@
+package org.woehlke.btw17.kandidaten.frontend;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
+
+import javax.persistence.EntityNotFoundException;
+
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+
+@Controller
+@RequestMapping("/kandidat")
+public class KandidatController {
+
+    @RequestMapping("/all")
+    public String getAll(
+            @RequestParam(name= "page", defaultValue=""+ FIRST_PAGE_NUMBER) int page,
+            Model model
+    ) {
+        Pageable pageRequest = new PageRequest(
+                page,
+                kandidatenProperties.getPageSize(),
+                Sort.Direction.ASC,
+                "id"
+        );
+        Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageRequest);
+        model.addAttribute("kandidaten", allKandidatenPage);
+        return "kandidat/all";
+    }
+
+    @RequestMapping("/{id}")
+    public String getUserForId(
+            @PathVariable("id") Kandidat kandidat, Model model
+    ) {
+        if(kandidat == null){
+            throw new EntityNotFoundException();
+        } else {
+            model.addAttribute("kandidat",kandidat);
+            return "kandidat/id";
+        }
+    }
+
+    private final KandidatService kandidatService;
+
+    private final KandidatenProperties kandidatenProperties;
+
+    @Autowired
+    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.kandidatService = kandidatService;
+        this.kandidatenProperties = kandidatenProperties;
+    }
+
+}
