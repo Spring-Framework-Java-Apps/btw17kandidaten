@@ -70,7 +70,7 @@ btw17:
     webSecurityConfigPublicPaths:
       - "/"
       - "/kandidat/all"
-      - "/kandidat/id"
+      - "/kandidat/**"
       - "/imprint"
       - "/css/*"
       - "/css/**"
