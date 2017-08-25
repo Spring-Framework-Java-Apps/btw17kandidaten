@@ -3,14 +3,12 @@ package org.woehlke.btw17.kandidaten.frontend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -18,6 +16,8 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
 @RequestMapping("/kandidat")
@@ -25,16 +25,14 @@ public class KandidatController {
 
     @RequestMapping("/all")
     public String getAll(
-            @RequestParam(name= "page", defaultValue=""+ FIRST_PAGE_NUMBER) int page,
+            @PageableDefault(
+                value = FIRST_PAGE_NUMBER,
+                size = PAGE_SIZE,
+                sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             Model model
     ) {
-        Pageable pageRequest = new PageRequest(
-                page,
-                kandidatenProperties.getPageSize(),
-                Sort.Direction.ASC,
-                "id"
-        );
-        Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageRequest);
+        Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "kandidat/all";
     }

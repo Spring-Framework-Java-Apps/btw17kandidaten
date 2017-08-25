@@ -8,5 +8,9 @@ public interface KandidatService {
 
     int FIRST_PAGE_NUMBER = 0;
 
+    int PAGE_SIZE = 20;
+
+    String PAGE_DEFAULT_SORT ="nachname";
+
     Page<Kandidat> getAll(Pageable pageRequest);
 }
