@@ -15,7 +15,7 @@ public class Kandidat implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column(name="kandidat_key")
+    @Column(name = "kandidat_key")
     private String key;
 
     @Column
@@ -24,7 +24,7 @@ public class Kandidat implements Serializable {
     @Column
     private String namenszusatz;
 
-    @Column(name="nachname_ohne")
+    @Column(name = "nachname_ohne")
     private String nachnameOhne;
 
     @Column
@@ -42,43 +42,31 @@ public class Kandidat implements Serializable {
     @Column
     private Integer alter;
 
-    @Column
-    private String wohnort;
+    @ManyToOne
+    private Wohnort wohnort;
 
-    @Column
-    private String geburtsort;
+    @ManyToOne
+    private Geburtsort geburtsort;
 
-    @Column
-    private String beruf;
+    @ManyToOne
+    private Beruf beruf;
 
-    @Column
-    private String berufsgruppe;
+    @ManyToOne
+    private Berufsgruppe berufsgruppe;
 
-    @Column
-    private String bundesland;
+    @ManyToOne
+    private Bundesland bundesland;
 
-    @Column(name="wahlkreis_id")
-    private Integer wahlkreisId;
+    @ManyToOne
+    private Wahlkreis wahlkreis;
 
-    @Column(name="wahlkreis_name")
-    private String wahlkreisName;
+    @ManyToOne
+    private Partei partei;
 
-    @Column
-    private String partei;
-
-    @Column(name="partei_lang")
-    private String parteiLang;
-
-    @Column(name="liste_bundesland_land")
+    @Column(name = "liste_bundesland_land")
     private String listeBundeslandLand;
 
-    @Column(name="liste_partei")
-    private String listePartei;
-
-    @Column(name="liste_partei_lang")
-    private String listeParteiLang;
-
-    @Column(name="liste_platz")
+    @Column(name = "liste_platz")
     private Integer listePlatz;
 
     @Column
@@ -90,16 +78,16 @@ public class Kandidat implements Serializable {
     @Column
     private Double lng;
 
-    @Column(name="id_eigen")
+    @Column(name = "id_eigen")
     private String idEigen;
 
     @Column
     private String foto;
 
-    @Column(name="scatter_x")
+    @Column(name = "scatter_x")
     private Double scatterX;
 
-    @Column(name="scatter_y")
+    @Column(name = "scatter_y")
     private Double scatterY;
 
     @Column
@@ -189,76 +177,60 @@ public class Kandidat implements Serializable {
         this.alter = alter;
     }
 
-    public String getWohnort() {
+    public Wohnort getWohnort() {
         return wohnort;
     }
 
-    public void setWohnort(String wohnort) {
+    public void setWohnort(Wohnort wohnort) {
         this.wohnort = wohnort;
     }
 
-    public String getGeburtsort() {
+    public Geburtsort getGeburtsort() {
         return geburtsort;
     }
 
-    public void setGeburtsort(String geburtsort) {
+    public void setGeburtsort(Geburtsort geburtsort) {
         this.geburtsort = geburtsort;
     }
 
-    public String getBeruf() {
+    public Beruf getBeruf() {
         return beruf;
     }
 
-    public void setBeruf(String beruf) {
+    public void setBeruf(Beruf beruf) {
         this.beruf = beruf;
     }
 
-    public String getBerufsgruppe() {
+    public Berufsgruppe getBerufsgruppe() {
         return berufsgruppe;
     }
 
-    public void setBerufsgruppe(String berufsgruppe) {
+    public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
         this.berufsgruppe = berufsgruppe;
     }
 
-    public String getBundesland() {
+    public Bundesland getBundesland() {
         return bundesland;
     }
 
-    public void setBundesland(String bundesland) {
+    public void setBundesland(Bundesland bundesland) {
         this.bundesland = bundesland;
     }
 
-    public Integer getWahlkreisId() {
-        return wahlkreisId;
+    public Wahlkreis getWahlkreis() {
+        return wahlkreis;
     }
 
-    public void setWahlkreisId(Integer wahlkreisId) {
-        this.wahlkreisId = wahlkreisId;
+    public void setWahlkreis(Wahlkreis wahlkreis) {
+        this.wahlkreis = wahlkreis;
     }
 
-    public String getWahlkreisName() {
-        return wahlkreisName;
-    }
-
-    public void setWahlkreisName(String wahlkreisName) {
-        this.wahlkreisName = wahlkreisName;
-    }
-
-    public String getPartei() {
+    public Partei getPartei() {
         return partei;
     }
 
-    public void setPartei(String partei) {
+    public void setPartei(Partei partei) {
         this.partei = partei;
-    }
-
-    public String getParteiLang() {
-        return parteiLang;
-    }
-
-    public void setParteiLang(String parteiLang) {
-        this.parteiLang = parteiLang;
     }
 
     public String getListeBundeslandLand() {
@@ -267,22 +239,6 @@ public class Kandidat implements Serializable {
 
     public void setListeBundeslandLand(String listeBundeslandLand) {
         this.listeBundeslandLand = listeBundeslandLand;
-    }
-
-    public String getListePartei() {
-        return listePartei;
-    }
-
-    public void setListePartei(String listePartei) {
-        this.listePartei = listePartei;
-    }
-
-    public String getListeParteiLang() {
-        return listeParteiLang;
-    }
-
-    public void setListeParteiLang(String listeParteiLang) {
-        this.listeParteiLang = listeParteiLang;
     }
 
     public Integer getListePlatz() {
@@ -383,17 +339,9 @@ public class Kandidat implements Serializable {
         if (berufsgruppe != null ? !berufsgruppe.equals(kandidat.berufsgruppe) : kandidat.berufsgruppe != null)
             return false;
         if (bundesland != null ? !bundesland.equals(kandidat.bundesland) : kandidat.bundesland != null) return false;
-        if (wahlkreisId != null ? !wahlkreisId.equals(kandidat.wahlkreisId) : kandidat.wahlkreisId != null)
-            return false;
-        if (wahlkreisName != null ? !wahlkreisName.equals(kandidat.wahlkreisName) : kandidat.wahlkreisName != null)
-            return false;
+        if (wahlkreis != null ? !wahlkreis.equals(kandidat.wahlkreis) : kandidat.wahlkreis != null) return false;
         if (partei != null ? !partei.equals(kandidat.partei) : kandidat.partei != null) return false;
-        if (parteiLang != null ? !parteiLang.equals(kandidat.parteiLang) : kandidat.parteiLang != null) return false;
         if (listeBundeslandLand != null ? !listeBundeslandLand.equals(kandidat.listeBundeslandLand) : kandidat.listeBundeslandLand != null)
-            return false;
-        if (listePartei != null ? !listePartei.equals(kandidat.listePartei) : kandidat.listePartei != null)
-            return false;
-        if (listeParteiLang != null ? !listeParteiLang.equals(kandidat.listeParteiLang) : kandidat.listeParteiLang != null)
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
@@ -423,13 +371,9 @@ public class Kandidat implements Serializable {
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
         result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
-        result = 31 * result + (wahlkreisId != null ? wahlkreisId.hashCode() : 0);
-        result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
+        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
-        result = 31 * result + (parteiLang != null ? parteiLang.hashCode() : 0);
         result = 31 * result + (listeBundeslandLand != null ? listeBundeslandLand.hashCode() : 0);
-        result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
-        result = 31 * result + (listeParteiLang != null ? listeParteiLang.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
@@ -455,18 +399,14 @@ public class Kandidat implements Serializable {
                 ", geschlecht='" + geschlecht + '\'' +
                 ", geburtsjahr=" + geburtsjahr +
                 ", alter=" + alter +
-                ", wohnort='" + wohnort + '\'' +
-                ", geburtsort='" + geburtsort + '\'' +
-                ", beruf='" + beruf + '\'' +
-                ", berufsgruppe='" + berufsgruppe + '\'' +
-                ", bundesland='" + bundesland + '\'' +
-                ", wahlkreisId=" + wahlkreisId +
-                ", wahlkreisName='" + wahlkreisName + '\'' +
-                ", partei='" + partei + '\'' +
-                ", parteiLang='" + parteiLang + '\'' +
+                ", wohnort=" + wohnort +
+                ", geburtsort=" + geburtsort +
+                ", beruf=" + beruf +
+                ", berufsgruppe=" + berufsgruppe +
+                ", bundesland=" + bundesland +
+                ", wahlkreis=" + wahlkreis +
+                ", partei=" + partei +
                 ", listeBundeslandLand='" + listeBundeslandLand + '\'' +
-                ", listePartei='" + listePartei + '\'' +
-                ", listeParteiLang='" + listeParteiLang + '\'' +
                 ", listePlatz=" + listePlatz +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +

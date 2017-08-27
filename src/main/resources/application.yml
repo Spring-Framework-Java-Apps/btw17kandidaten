@@ -50,8 +50,8 @@ spring:
     generate-ddl: true
     hibernate:
       #ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
-      #ddl-auto: create-drop
-      ddl-auto: update
+      ddl-auto: create-drop
+      #ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
