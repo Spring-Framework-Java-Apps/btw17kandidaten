@@ -19,6 +19,8 @@ public class KandidatenProperties {
 
     private List<String> webSecurityConfigPublicPaths;
 
+    private String googleMapsApiKey;
+
     public Integer getPageSize() {
         return pageSize;
     }
@@ -49,6 +51,14 @@ public class KandidatenProperties {
 
     public void setWebSecurityConfigPublicPaths(List<String> webSecurityConfigPublicPaths) {
         this.webSecurityConfigPublicPaths = webSecurityConfigPublicPaths;
+    }
+
+    public String getGoogleMapsApiKey() {
+        return googleMapsApiKey;
+    }
+
+    public void setGoogleMapsApiKey(String googleMapsApiKey) {
+        this.googleMapsApiKey = googleMapsApiKey;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {

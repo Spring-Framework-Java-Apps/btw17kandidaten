@@ -44,6 +44,7 @@ public class KandidatController {
         if(kandidat == null){
             throw new EntityNotFoundException();
         } else {
+            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
             model.addAttribute("kandidat",kandidat);
             return "kandidat/id";
         }
