@@ -1,0 +1,9 @@
+drop table beruf;
+drop table berufsgruppe;
+drop table bundesland;
+drop table geburtsort;
+drop table liste_partei;
+drop table partei;
+drop table wahlkreis;
+drop table wohnort;
+drop table kandidat;

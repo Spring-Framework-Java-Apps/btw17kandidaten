@@ -19,15 +19,8 @@ public class Bundesland implements Serializable {
     @Column
     private String bundesland;
 
-    @Column(name="bundesland_lang")
+    @Column(name="bundesland_lang",nullable = true)
     private String bundeslandLang;
-
-
-    @Column
-    private String partei;
-
-    @Column(name="partei_lang")
-    private String parteiLang;
 
     public Long getId() {
         return id;

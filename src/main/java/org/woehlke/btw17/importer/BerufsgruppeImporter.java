@@ -2,11 +2,11 @@ package org.woehlke.btw17.importer;
 
 import java.io.*;
 
-public class WohnortImporter {
+public class BerufsgruppeImporter {
 
-    private final static String dateiName = "etc/3nf/SELECT_wohnort_FROM_kandidat_GROUP_BY_wo.csv";
-    private final static String dateiNameOut = "etc/3nf/insert-data-wohnort.sql";
-    private final static String sqlStart = "INSERT INTO wohnort (id,wohnort) VALUES (";
+    private final static String dateiName = "etc/3nf/SELECT_berufsgruppe_FROM_kandidat_GROUP_.csv";
+    private final static String dateiNameOut = "etc/3nf/insert-data-berufsgruppe.sql";
+    private final static String sqlStart = "INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (";
 
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(dateiNameOut));

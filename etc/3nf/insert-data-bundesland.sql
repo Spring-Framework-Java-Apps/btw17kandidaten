@@ -1,0 +1,16 @@
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (1, 'BB' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (2, 'SN' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (3, 'NW' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (4, 'BY' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (5, 'ST' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (6, 'HB' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (7, 'BE' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (8, 'NI' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (9, 'SH' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (10, 'HE' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (11, 'SL' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (12, 'BW' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (13, 'MV' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (14, 'RP' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (15, 'HH' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (16, 'TH' );

@@ -2,11 +2,11 @@ package org.woehlke.btw17.importer;
 
 import java.io.*;
 
-public class WohnortImporter {
+public class WahlkreisImporter {
 
-    private final static String dateiName = "etc/3nf/SELECT_wohnort_FROM_kandidat_GROUP_BY_wo.csv";
-    private final static String dateiNameOut = "etc/3nf/insert-data-wohnort.sql";
-    private final static String sqlStart = "INSERT INTO wohnort (id,wohnort) VALUES (";
+    private final static String dateiName = "etc/3nf/SELECT_wahlkreis_id_wahlkreis_name_FROM_.csv";
+    private final static String dateiNameOut = "etc/3nf/insert-data-wahlkreis.sql";
+    private final static String sqlStart = "INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (";
 
     public static void main(String[] args) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(dateiNameOut));
