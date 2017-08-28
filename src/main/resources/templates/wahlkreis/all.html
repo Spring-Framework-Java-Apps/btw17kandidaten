@@ -148,14 +148,8 @@
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
-                                <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
+                                <th>wahlkreisId</th>
+                                <th>wahlkreisName</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -172,7 +166,7 @@
                                 </td>
                                 <td>
                                     <a href="" th:href="@{|/wahlkreis/${wahlkreis.id}/|}">
-                                        <span th:if="${wahlkreis.wahlkreisId}" th:text="${kandidat.wahlkreisId}">wahlkreisId</span>
+                                        <span th:if="${wahlkreis.wahlkreisId}" th:text="${wahlkreis.wahlkreisId}">wahlkreisId</span>
                                     </a>
                                 </td>
                                 <td>
