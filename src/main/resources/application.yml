@@ -96,7 +96,9 @@ btw17:
 spring:
   profiles: testing
   datasource:
-    url: ${DATABASE_URL_TEST}
+    #url: ${DATABASE_URL_TEST}
+    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+
 ---
 spring:
   profiles: travis

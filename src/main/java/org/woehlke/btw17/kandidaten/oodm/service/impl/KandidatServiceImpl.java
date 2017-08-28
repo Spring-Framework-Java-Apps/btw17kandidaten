@@ -28,7 +28,13 @@ public class KandidatServiceImpl implements KandidatService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void create(Kandidat out) {
-        kandidatRepository.save(out);
+    public Kandidat create(Kandidat out) {
+        return kandidatRepository.save(out);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void deleteAll() {
+        kandidatRepository.deleteAll();
     }
 }

@@ -53,6 +53,7 @@ public class KandidatenNormalizedTableBuilder {
     @Commit
     @Test
     public void buildNormalizedTData() throws Exception {
+        kandidatService.deleteAll();
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
@@ -100,9 +101,9 @@ public class KandidatenNormalizedTableBuilder {
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
 
-                log.info(out.toString());
+                out = kandidatService.create(out);
 
-                kandidatService.create(out);
+                log.info(out.toString());
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();

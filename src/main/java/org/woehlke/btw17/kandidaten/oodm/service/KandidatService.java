@@ -14,5 +14,8 @@ public interface KandidatService {
 
     Page<Kandidat> getAll(Pageable pageRequest);
 
-    void create(Kandidat out);
+    Kandidat create(Kandidat out);
+
+    void deleteAll();
+
 }

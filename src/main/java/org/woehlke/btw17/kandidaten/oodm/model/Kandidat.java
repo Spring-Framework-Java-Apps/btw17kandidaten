@@ -42,28 +42,36 @@ public class Kandidat implements Serializable {
     @Column
     private Integer alter;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_wohnort", nullable=true, updatable=false)
     private Wohnort wohnort;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_geburtsort", nullable=true, updatable=false)
     private Geburtsort geburtsort;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_beruf", nullable=true, updatable=false)
     private Beruf beruf;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_berufsgruppe", nullable=true, updatable=false)
     private Berufsgruppe berufsgruppe;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_bundesland", nullable=true, updatable=false)
     private Bundesland bundesland;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_wahlkreis", nullable=true, updatable=false)
     private Wahlkreis wahlkreis;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_partei", nullable=true, updatable=false)
     private Partei partei;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="fk_liste_partei", nullable=false, updatable=false)
     private ListePartei listePartei;
 
     @Column(name = "liste_bundesland_land")
