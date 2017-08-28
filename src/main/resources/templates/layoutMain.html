@@ -27,7 +27,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button mediaType="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tw-navbar-collapse" aria-expanded="false">
+                <button mediaType="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tw-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -43,256 +43,71 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="tw-navbar-collapse-tasks">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown" sec:authorize="isAuthenticated()" >
+
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-cog" aria-hidden="true"></i>
-                            <span>Management</span>
+                            <span>Auswahl</span>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="/application/management" th:href="@{/application/management}">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span>Management</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/task/all" th:href="@{/task/all}">
+                                <a href="/beruf/all" th:href="@{/beruf/all}">
                                     <i class="fa fa-check-square" aria-hidden="true"></i>
-                                    <span>Tasks</span>
+                                    <span>Beruf</span>
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
                             <li>
-                                <a href="/application/countedEntities/domain/delete/all" th:href="@{/application/countedEntities/domain/delete/all}">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <span>Delete All Entities</span>
+                                <a href="/berufsgruppe/all" th:href="@{/berufsgruppe/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Berufsgruppe</span>
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
                             <li>
-                                <a href="/application/countedEntities/domain/count" th:href="@{/application/countedEntities/domain/count}">
-                                    <i class="fa fa-database" aria-hidden="true"></i>
-                                    <span>Count Entities</span>
+                                <a href="/geburtsort/all" th:href="@{/geburtsort/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Geburtsort</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/listepartei/all" th:href="@{/listepartei/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>ListePartei</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/partei/all" th:href="@{/partei/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Partei</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/wahlkreis/all" th:href="@{/wahlkreis/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Wahlkreis</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/wohnort/all" th:href="@{/wohnort/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Wohnort</span>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown" sec:authorize="isAuthenticated()" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-plus-square" aria-hidden="true"></i>
-                            <span>Start Tasks</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/task/start/tweets/search" th:href="@{/task/start/tweets/search}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: fetch Tweets from Twitter Search</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/users/follower/fetch" th:href="@{/task/start/users/follower/fetch}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: fetch Follower</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/users/friends/fetch" th:href="@{/task/start/users/friends/fetch}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: fetch Friends</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/users/list/fetch" th:href="@{/task/start/users/list/fetch}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: fetch Users from Defined User List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/user/onlist/renew" th:href="@{/task/start/user/onlist/renew}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: Renew List of Users On Defined User List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/users/mentions/update" th:href="@{/task/start/users/mentions/update}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: update Users from Mentions</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/createTestData" th:href="@{/task/start/createTestData}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: Create Test Data</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/task/start/tweets/update" th:href="@{/task/start/tweets/update}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: update Tweets</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/users/update" th:href="@{/task/start/users/update}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: update Users</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/task/start/tweets/timeline/home" th:href="@{/task/start/tweets/timeline/home}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getHomeTimeline</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/tweets/timeline/user" th:href="@{/task/start/tweets/timeline/user}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getUserTimeline</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/tweets/mentions" th:href="@{/task/start/tweets/mentions}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getMentions</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/tweets/favorites" th:href="@{/task/start/tweets/favorites}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getFavorites</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/tweets/myretweets" th:href="@{/task/start/tweets/myretweets}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getRetweetsOfMe</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/userlists" th:href="@{/task/start/userlists}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: getLists</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/task/start/url/update" th:href="@{/task/start/url/update}">
-                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                                    <span>Start Task: UpdateUrls</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" sec:authorize="isAuthenticated()" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                            <span>List Users</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/user/list/tweets" th:href="@{/user/list/tweets}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>Tweeting Users</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/user/all" th:href="@{/user/all}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>All Users</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/user/list/follower" th:href="@{/user/list/follower}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>Follower</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/list/notyetfollower" th:href="@{/user/list/notyetfollower}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                    <span>Not Yet Follower</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/user/list/friends" th:href="@{/user/list/friends}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>Friends</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/list/notyetfriends" th:href="@{/user/list/notyetfriends}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                    <span>Not Yet Friends</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/user/list/usersWhoAreFollowersButNotFriends" th:href="@{/user/list/usersWhoAreFollowersButNotFriends}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                    <span>Followers but not Friends</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/list/usersWhoAreFriendsButNotFollowers" th:href="@{/user/list/usersWhoAreFriendsButNotFollowers}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                    <span>Friends but not Followers</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/list/usersWhoAreFollowersAndFriends" th:href="@{/user/list/usersWhoAreFollowersAndFriends}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                                    <span>Followers and Friends</span>
-                                </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="/user/list/onlist" th:href="@{/user/list/onlist}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>On User List</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/user/list/notyetonlist" th:href="@{/user/list/notyetonlist}">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span>Not Yet on User List</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li sec:authorize="!isAuthenticated()" >
-                        <a href="/user/list/tweets" th:href="@{/user/list/tweets}">
-                            <i class="fa fa-user-o" aria-hidden="true"></i>
-                            <span>Users</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/hashtag/overview" th:href="@{/hashtag/overview}">
-                            <i class="fa fa-hashtag" aria-hidden="true"></i>
-                            <span>HashTags</span>
-                        </a>
                     </li>
                     <li>
                         <a href="/imprint" th:href="@{/imprint}">
                             <i class="fa fa-university" aria-hidden="true"></i>
-                            <span>Imprint</span>
+                            <span>Impressum</span>
                         </a>
                     </li>
                 </ul>
-                <!--
                 <form class="navbar-form navbar-right">
                     <div class="form-group">
                         <input mediaType="text" class="form-control" placeholder="Search" />
                     </div>
                     <button mediaType="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
-                -->
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -301,10 +116,10 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>
-                        <span th:utext="${page.symbol}">symbol</span>
-                        <span th:utext="${page.title}" class="header-h1">Titel</span>
+                        <span><i class="fa fa-database" aria-hidden="true"></i></span>
+                        <span class="header-h1" th:text="${pageTitle}">btw17</span>
                         <br/>
-                        <small th:utext="${page.subtitle}">Untertitel</small>
+                        <small>btw17 Kandidaten</small>
                     </h1>
                 </div>
             </div>
@@ -312,39 +127,6 @@
     </div>
 </header>
 
-<main class="page-content">
-    <div class="container">
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well">
-                        <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th>ID</th>
-                                <th>Data Fields</th>
-                                <th>Common Fields</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="kandidat : ${kandidaten}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${myPageItem.id}">id</span>
-                                    </span>
-                                </span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
 <section th:fragment="tw-history-back-section">
     <div class="container">
         <div class="row" th:fragment="tw-history-back-row">

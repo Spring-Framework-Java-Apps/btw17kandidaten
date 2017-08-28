@@ -28,6 +28,7 @@ public class BerufController {
     ) {
         Page<Beruf> allBerufPage =  berufService.getAll(pageable);
         model.addAttribute("berufe", allBerufPage);
+        model.addAttribute("pageTitle","Berufe");
         return "beruf/all";
     }
 

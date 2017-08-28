@@ -28,6 +28,7 @@ public class WohnortController {
     ) {
         Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
         model.addAttribute("wohnorte", allWohnortPage);
+        model.addAttribute("pageTitle","Wohnorte");
         return "wohnort/all";
     }
 

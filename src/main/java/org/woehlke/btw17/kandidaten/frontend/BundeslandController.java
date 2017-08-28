@@ -29,6 +29,7 @@ public class BundeslandController {
     ) {
         Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
+        model.addAttribute("pageTitle","Bundesländer");
         return "bundesland/all";
     }
 

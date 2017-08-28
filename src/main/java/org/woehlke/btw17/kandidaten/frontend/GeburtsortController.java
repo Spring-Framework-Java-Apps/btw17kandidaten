@@ -28,6 +28,7 @@ public class GeburtsortController {
     ) {
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
         model.addAttribute("geburtsorte", allGeburtsortPage);
+        model.addAttribute("pageTitle","Geburtsorte");
         return "geburtsort/all";
     }
 

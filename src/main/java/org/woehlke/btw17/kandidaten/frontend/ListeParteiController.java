@@ -28,6 +28,7 @@ public class ListeParteiController {
     ) {
         Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
+        model.addAttribute("pageTitle","ListePartei");
         return "listepartei/all";
     }
 

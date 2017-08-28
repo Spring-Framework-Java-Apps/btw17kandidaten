@@ -35,6 +35,7 @@ public class KandidatController {
     ) {
         Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
+        model.addAttribute("pageTitle","Kandidaten");
         return "kandidat/all";
     }
 

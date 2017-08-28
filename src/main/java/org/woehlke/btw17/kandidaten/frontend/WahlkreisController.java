@@ -29,6 +29,7 @@ public class WahlkreisController {
     ) {
         Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
         model.addAttribute("wahlkreise", allWahlkreisPage);
+        model.addAttribute("pageTitle","Wahlkreise");
         return "wahlkreis/all";
     }
 

@@ -28,6 +28,7 @@ public class BerufsgruppeController {
     ) {
         Page<Berufsgruppe> allBerufsgruppePage =  berufsgruppeService.getAll(pageable);
         model.addAttribute("berufsgruppen", allBerufsgruppePage);
+        model.addAttribute("pageTitle","Berufsgruppen");
         return "berufsgruppe/all";
     }
 
