@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>btw17 Kabdidaten</title>
+    <title>btw17 Kandidaten</title>
     <!-- Bootstrap -->
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
     <link href="webjars/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
@@ -43,10 +43,62 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="tw-navbar-collapse-tasks">
                 <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                            <span>Auswahl</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/beruf/all" th:href="@{/beruf/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Beruf</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/berufsgruppe/all" th:href="@{/berufsgruppe/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Berufsgruppe</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/geburtsort/all" th:href="@{/geburtsort/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Geburtsort</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/listepartei/all" th:href="@{/listepartei/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>ListePartei</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/partei/all" th:href="@{/partei/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Partei</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/wahlkreis/all" th:href="@{/wahlkreis/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Wahlkreis</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/wohnort/all" th:href="@{/wohnort/all}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                    <span>Wohnort</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="/imprint" th:href="@{/imprint}">
                             <i class="fa fa-university" aria-hidden="true"></i>
-                            <span>Imprint</span>
+                            <span>Impressum</span>
                         </a>
                     </li>
                 </ul>
@@ -65,9 +117,9 @@
                 <div class="page-header">
                     <h1>
                         <span><i class="fa fa-database" aria-hidden="true"></i></span>
-                        <span class="header-h1">btw17</span>
+                        <span class="header-h1">Beruf</span>
                         <br/>
-                        <small>Kandidaten</small>
+                        <small>btw17 Kandidaten</small>
                     </h1>
                 </div>
             </div>
@@ -80,8 +132,8 @@
         <div>
             <div class="row">
                 <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
-                    <a href="" th:href="@{|/kandidat/all?page=${kandidaten.previousPageable().pageNumber}|}">
+                <span  class="tw-pager-arrow tw-pager-up" th:if="${berufe.hasPrevious()}">
+                    <a href="" th:href="@{|/beruf/all?page=${berufe.previousPageable().pageNumber}|}">
                         <span>
                         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                         </span>
@@ -96,59 +148,25 @@
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
                                 <th>Beruf</th>
-                                <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="kandidat : ${kandidaten}">
+                            <tr th:each="beruf : ${berufe}">
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
-                                        <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
+                                        <a href="" th:href="@{|/beruf/${beruf.id}/|}">
                                         <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${kandidat.id}">id</span>
+                                        <span th:text="${beruf.id}">id</span>
                                         </a>
                                     </span>
                                 </span>
                                 </td>
                                 <td>
-                                    <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
-                                        <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
-                                        <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
-                                        <!--
-                                        <span th:if="${kandidat.nachnameOhne}" th:text="${kandidat.nachnameOhne}">nachnameOhne</span><br th:if="${kandidat.nachnameOhne}"/>
-                                        -->
-                                        <span th:text="${kandidat.vorname}">vorname</span><br/>
-                                        <span th:text="${kandidat.nachname}">nachname</span><br/>
+                                    <a href="" th:href="@{|/beruf/${beruf.id}/|}">
+                                        <span th:if="${beruf.beruf}" th:text="${beruf.beruf}">beruf.beruf</span>
                                     </a>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.geschlecht}">geschlecht</span>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.wohnort}">wohnort</span>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.beruf}">beruf</span>
-                                </td>
-                                <td>
-                                    <abbr th:attr="title=${kandidat.parteiLang}" th:text="${kandidat.partei}">partei</abbr>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
-                                </td>
-                                <td>
-                                    <abbr th:attr="title=${kandidat.listeParteiLang}" th:text="${kandidat.listePartei}">listePartei</abbr>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.mdb}">mdb</span>
                                 </td>
                             </tr>
                             </tbody>
@@ -158,8 +176,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
-                    <a href="" th:href="@{|/kandidat/all?page=${kandidaten.nextPageable().pageNumber}|}" >
+                <span class="tw-pager-arrow tw-pager-down" th:if="${berufe.hasNext()}">
+                    <a href="" th:href="@{|/beruf/all?page=${berufe.nextPageable().pageNumber}|}" >
                         <span>
                         <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                         </span>
