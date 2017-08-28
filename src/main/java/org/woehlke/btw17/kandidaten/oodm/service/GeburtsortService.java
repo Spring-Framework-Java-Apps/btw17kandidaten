@@ -7,4 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 public interface GeburtsortService {
 
     Page<Geburtsort> getAll(Pageable pageRequest);
+
+    Geburtsort findByGeburtsort(String geburtsort);
 }

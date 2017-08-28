@@ -25,4 +25,9 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     public Page<Berufsgruppe> getAll(Pageable pageRequest) {
         return berufsgruppeRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Berufsgruppe findByBerufsgruppe(String berufsgruppe) {
+        return berufsgruppeRepository.findByBerufsgruppe(berufsgruppe);
+    }
 }

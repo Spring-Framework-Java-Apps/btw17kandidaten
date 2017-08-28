@@ -7,4 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 public interface ListeParteiService {
 
     Page<ListePartei> getAll(Pageable pageRequest);
+
+    ListePartei findByListePartei(String listePartei, String listeParteiLang);
 }

@@ -25,4 +25,9 @@ public class BundeslandServiceImpl implements BundeslandService {
     public Page<Bundesland> getAll(Pageable pageRequest) {
         return bundeslandRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Bundesland findByBundesland(String bundesland) {
+        return bundeslandRepository.findByBundesland(bundesland);
+    }
 }

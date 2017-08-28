@@ -63,6 +63,9 @@ public class Kandidat implements Serializable {
     @ManyToOne
     private Partei partei;
 
+    @ManyToOne
+    private ListePartei listePartei;
+
     @Column(name = "liste_bundesland_land")
     private String listeBundeslandLand;
 
@@ -313,6 +316,14 @@ public class Kandidat implements Serializable {
         this.color = color;
     }
 
+    public ListePartei getListePartei() {
+        return listePartei;
+    }
+
+    public void setListePartei(ListePartei listePartei) {
+        this.listePartei = listePartei;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -341,6 +352,8 @@ public class Kandidat implements Serializable {
         if (bundesland != null ? !bundesland.equals(kandidat.bundesland) : kandidat.bundesland != null) return false;
         if (wahlkreis != null ? !wahlkreis.equals(kandidat.wahlkreis) : kandidat.wahlkreis != null) return false;
         if (partei != null ? !partei.equals(kandidat.partei) : kandidat.partei != null) return false;
+        if (listePartei != null ? !listePartei.equals(kandidat.listePartei) : kandidat.listePartei != null)
+            return false;
         if (listeBundeslandLand != null ? !listeBundeslandLand.equals(kandidat.listeBundeslandLand) : kandidat.listeBundeslandLand != null)
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
@@ -373,6 +386,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
+        result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
         result = 31 * result + (listeBundeslandLand != null ? listeBundeslandLand.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
@@ -406,6 +420,7 @@ public class Kandidat implements Serializable {
                 ", bundesland=" + bundesland +
                 ", wahlkreis=" + wahlkreis +
                 ", partei=" + partei +
+                ", listePartei=" + listePartei +
                 ", listeBundeslandLand='" + listeBundeslandLand + '\'' +
                 ", listePlatz=" + listePlatz +
                 ", mdb='" + mdb + '\'' +

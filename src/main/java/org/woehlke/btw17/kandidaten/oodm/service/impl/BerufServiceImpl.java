@@ -25,4 +25,9 @@ public class BerufServiceImpl implements BerufService {
     public Page<Beruf> getAll(Pageable pageRequest) {
         return berufRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Beruf findByBeruf(String beruf) {
+        return berufRepository.findByBeruf(beruf);
+    }
 }

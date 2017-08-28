@@ -7,4 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 public interface WohnortService {
 
     Page<Wohnort> getAll(Pageable pageRequest);
+
+    Wohnort findByWohnort(String wohnort);
+
 }

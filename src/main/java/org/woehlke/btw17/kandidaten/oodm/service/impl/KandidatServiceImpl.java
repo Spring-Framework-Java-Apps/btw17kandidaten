@@ -25,4 +25,10 @@ public class KandidatServiceImpl implements KandidatService {
     public Page<Kandidat> getAll(Pageable pageRequest) {
         return kandidatRepository.findAll(pageRequest);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void create(Kandidat out) {
+        kandidatRepository.save(out);
+    }
 }

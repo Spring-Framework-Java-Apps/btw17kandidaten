@@ -25,4 +25,9 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     public Page<Geburtsort> getAll(Pageable pageRequest) {
         return geburtsortRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Geburtsort findByGeburtsort(String geburtsort) {
+        return geburtsortRepository.findByGeburtsort(geburtsort);
+    }
 }

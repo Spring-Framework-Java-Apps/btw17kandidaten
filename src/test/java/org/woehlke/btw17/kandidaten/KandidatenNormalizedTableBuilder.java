@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 @RunWith(SpringRunner.class)
@@ -61,6 +61,48 @@ public class KandidatenNormalizedTableBuilder {
         while(goOn){
             for(KandidatFlat in :allKandidatenPage.getContent()){
                 log.info(in.toString());
+                Kandidat out = new Kandidat();
+                out.setAlter(in.getAlter());
+                out.setColor(in.getColor());
+                out.setFoto(in.getFoto());
+                out.setGeburtsjahr(in.getGeburtsjahr());
+                out.setGeschlecht(in.getGeschlecht());
+                out.setIdEigen(in.getIdEigen());
+                out.setKey(in.getKey());
+                out.setLat(in.getLat());
+                out.setLng(in.getLng());
+                out.setMdb(in.getMdb());
+                out.setListePlatz(in.getListePlatz());
+                out.setNachname(in.getNachname());
+                out.setNachnameOhne(in.getNachnameOhne());
+                out.setNamenszusatz(in.getNamenszusatz());
+                out.setScatterX(in.getScatterX());
+                out.setScatterY(in.getScatterY());
+                out.setVorname(in.getTitel());
+                out.setTitel(in.getTitel());
+                out.setListeBundeslandLand(in.getListeBundeslandLand());
+
+                Beruf beruf = berufService.findByBeruf(in.getBeruf());
+                Berufsgruppe berufsgruppe = berufsgruppeService.findByBerufsgruppe(in.getBerufsgruppe());
+                Bundesland bundesland =  bundeslandService.findByBundesland(in.getBundesland());
+                Geburtsort geburtsort = geburtsortService.findByGeburtsort(in.getGeburtsort());
+                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
+                Partei partei = parteiService.findByPartei(in.getPartei(),in.getParteiLang());
+                Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(in.getWahlkreisId());
+                Wohnort wohnort = wohnortService.findByWohnort(in.getWohnort());
+
+                out.setBeruf(beruf);
+                out.setBerufsgruppe(berufsgruppe);
+                out.setBundesland(bundesland);
+                out.setGeburtsort(geburtsort);
+                out.setListePartei(listePartei);
+                out.setPartei(partei);
+                out.setWahlkreis(wahlkreis);
+                out.setWohnort(wohnort);
+
+                log.info(out.toString());
+
+                kandidatService.create(out);
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();

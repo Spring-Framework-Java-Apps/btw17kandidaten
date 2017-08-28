@@ -7,4 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 public interface BundeslandService {
 
     Page<Bundesland> getAll(Pageable pageRequest);
+
+    Bundesland findByBundesland(String bundesland);
 }

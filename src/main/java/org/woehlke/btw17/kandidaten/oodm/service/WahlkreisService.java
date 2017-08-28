@@ -8,4 +8,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 public interface WahlkreisService {
 
     Page<Wahlkreis> getAll(Pageable pageRequest);
+
+    Wahlkreis findByWahlkreisId(Integer wahlkreisId);
+
 }

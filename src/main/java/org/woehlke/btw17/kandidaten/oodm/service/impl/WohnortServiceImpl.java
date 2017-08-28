@@ -25,4 +25,9 @@ public class WohnortServiceImpl implements WohnortService {
     public Page<Wohnort> getAll(Pageable pageRequest) {
         return wohnortRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Wohnort findByWohnort(String wohnort) {
+        return wohnortRepository.findByWohnort(wohnort);
+    }
 }

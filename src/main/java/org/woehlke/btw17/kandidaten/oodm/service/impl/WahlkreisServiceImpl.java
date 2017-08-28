@@ -25,4 +25,9 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     public Page<Wahlkreis> getAll(Pageable pageRequest) {
         return wahlkreisRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Wahlkreis findByWahlkreisId(Integer wahlkreisId) {
+        return wahlkreisRepository.findByWahlkreisId(wahlkreisId);
+    }
 }

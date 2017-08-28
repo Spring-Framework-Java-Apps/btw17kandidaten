@@ -7,4 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 public interface BerufService {
 
     Page<Beruf> getAll(Pageable pageRequest);
+
+    Beruf findByBeruf(String beruf);
 }

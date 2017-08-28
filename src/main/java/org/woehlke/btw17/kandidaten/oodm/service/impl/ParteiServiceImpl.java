@@ -25,4 +25,9 @@ public class ParteiServiceImpl implements ParteiService {
     public Page<Partei> getAll(Pageable pageRequest) {
         return parteiRepository.findAll(pageRequest);
     }
+
+    @Override
+    public Partei findByPartei(String partei, String parteiLang) {
+        return parteiRepository.findByParteiAndParteiLang(partei,parteiLang);
+    }
 }

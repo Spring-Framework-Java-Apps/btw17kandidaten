@@ -7,4 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 public interface BerufsgruppeService {
 
     Page<Berufsgruppe> getAll(Pageable pageRequest);
+
+    Berufsgruppe findByBerufsgruppe(String berufsgruppe);
+
 }

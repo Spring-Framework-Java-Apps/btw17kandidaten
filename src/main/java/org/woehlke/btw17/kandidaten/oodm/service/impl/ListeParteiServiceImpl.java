@@ -25,4 +25,9 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public Page<ListePartei> getAll(Pageable pageRequest) {
         return listeParteiRepository.findAll(pageRequest);
     }
+
+    @Override
+    public ListePartei findByListePartei(String listePartei, String listeParteiLang) {
+        return listeParteiRepository.findByListeParteiAndListeParteiLang(listePartei,listeParteiLang);
+    }
 }
