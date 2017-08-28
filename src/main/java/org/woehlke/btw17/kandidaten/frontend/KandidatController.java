@@ -10,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -32,30 +33,33 @@ public class KandidatController {
             ) Pageable pageable,
             Model model
     ) {
-        Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
+        Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "kandidat/all";
     }
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PathVariable("id") Kandidat kandidat, Model model
+            @PathVariable("id") KandidatFlat kandidatFlat, Model model
     ) {
-        if(kandidat == null){
+        if(kandidatFlat == null){
             throw new EntityNotFoundException();
         } else {
             model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
-            model.addAttribute("kandidat",kandidat);
+            model.addAttribute("kandidat",kandidatFlat);
             return "kandidat/id";
         }
     }
+
+    private final KandidatFlatService kandidatFlatService;
 
     private final KandidatService kandidatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public KandidatController(KandidatFlatService kandidatFlatService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.kandidatFlatService = kandidatFlatService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
     }
