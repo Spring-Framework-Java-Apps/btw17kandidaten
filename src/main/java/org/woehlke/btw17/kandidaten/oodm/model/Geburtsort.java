@@ -20,6 +20,13 @@ public class Geburtsort implements Serializable {
     @Column
     private String geburtsort;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getGeburtsort() {
         return geburtsort;

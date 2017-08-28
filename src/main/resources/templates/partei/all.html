@@ -148,14 +148,8 @@
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
                                 <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
+                                <th>parteiLang</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -187,7 +181,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <span class="tw-pager-arrow tw-pager-down" th:if="${parteien.hasNext()}">
-                    <a href="" th:href="@{|/kandidat/all?page=${parteien.nextPageable().pageNumber}|}" >
+                    <a href="" th:href="@{|/partei/all?page=${parteien.nextPageable().pageNumber}|}" >
                         <span>
                         <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                         </span>
