@@ -20,8 +20,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-
-
     <organization>
         <name>Thomas Woehlke</name>
         <url>https://twitter.com/ThomasWoehlke</url>

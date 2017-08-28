@@ -92,3 +92,24 @@ btw17:
       - "/map-icons/**"
       - "/webjars/*"
       - "/webjars/**"
+---
+spring:
+  profiles: testing
+  datasource:
+    url: ${DATABASE_URL_TEST}
+---
+spring:
+  profiles: travis
+  datasource:
+    driverClassName: org.h2.Driver
+    platform: H2
+    url: jdbc:h2:mem:test
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+       dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+hibernate:
+  dialect: org.hibernate.dialect.H2Dialect

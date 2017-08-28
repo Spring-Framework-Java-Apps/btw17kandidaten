@@ -1,5 +1,7 @@
 package org.woehlke.btw17.importer;
 
+import org.junit.Test;
+
 import java.io.*;
 
 public class KandidatenImporter {
@@ -8,7 +10,8 @@ public class KandidatenImporter {
     private final static String dateiNameOut = "src/site/btw17-kandidaten.sql";
     private final static String sqlStart = "INSERT INTO kandidat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (";
 
-    public static void main(String[] args) throws IOException {
+    @Test
+    public void createSql() throws Exception {
         BufferedWriter bw = new BufferedWriter(new FileWriter(dateiNameOut));
         BufferedReader br = new BufferedReader(new FileReader(dateiName));
         long id = 0;
