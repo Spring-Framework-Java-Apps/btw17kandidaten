@@ -1,14 +1,15 @@
-package org.woehlke.btw17.kandidaten.oodm.repositories;
+package org.woehlke.btw17.kandidaten.oodm.repositories.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.repositories.custom.GeburtsortRepositoryCustom;
 
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 @Repository
-public class KandidatRepositoryCustomImpl implements KandidatRepositoryCustom {
+public class GeburtsortRepositoryCustomImpl implements GeburtsortRepositoryCustom {
 
 
     private final EntityManager entityManager;
@@ -16,8 +17,8 @@ public class KandidatRepositoryCustomImpl implements KandidatRepositoryCustom {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public KandidatRepositoryCustomImpl(EntityManager entityManager, DataSource dataSource) {
+    public GeburtsortRepositoryCustomImpl(EntityManager entityManager, DataSource dataSource) {
         this.entityManager = entityManager;
-        this.jdbcTemplate  = new JdbcTemplate(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }

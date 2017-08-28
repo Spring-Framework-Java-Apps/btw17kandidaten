@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.service;
+package org.woehlke.btw17.kandidaten.oodm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.repositories.KandidatRepository;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
