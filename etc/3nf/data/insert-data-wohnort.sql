@@ -1,3 +1,4 @@
+DELETE FROM wohnort;
 INSERT INTO wohnort (id,wohnort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO wohnort (id,wohnort) VALUES (2, 'Mühldorf a.Inn' );
 INSERT INTO wohnort (id,wohnort) VALUES (3, 'Staufen im Breisgau' );

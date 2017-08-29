@@ -30,4 +30,9 @@ public class ParteiServiceImpl implements ParteiService {
     public Partei findByPartei(String partei, String parteiLang) {
         return parteiRepository.findByParteiAndParteiLang(partei,parteiLang);
     }
+
+    @Override
+    public long count() {
+        return parteiRepository.count();
+    }
 }

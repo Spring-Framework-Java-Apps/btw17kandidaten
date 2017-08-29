@@ -1,3 +1,4 @@
+DELETE FROM wahlkreis;
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (1, 281,'Freiburg' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (2, 47,'Hannover-Land II' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (3, 154,'Leipzig-Land' );

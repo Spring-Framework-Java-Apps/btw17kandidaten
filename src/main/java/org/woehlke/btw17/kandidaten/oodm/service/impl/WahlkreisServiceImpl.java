@@ -30,4 +30,9 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     public Wahlkreis findByWahlkreisId(Integer wahlkreisId) {
         return wahlkreisRepository.findByWahlkreisId(wahlkreisId);
     }
+
+    @Override
+    public long count() {
+        return wahlkreisRepository.count();
+    }
 }

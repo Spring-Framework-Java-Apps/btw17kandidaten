@@ -9,4 +9,6 @@ public interface GeburtsortService {
     Page<Geburtsort> getAll(Pageable pageRequest);
 
     Geburtsort findByGeburtsort(String geburtsort);
+
+    long count();
 }

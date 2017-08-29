@@ -30,4 +30,9 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     public Berufsgruppe findByBerufsgruppe(String berufsgruppe) {
         return berufsgruppeRepository.findByBerufsgruppe(berufsgruppe);
     }
+
+    @Override
+    public long count() {
+        return berufsgruppeRepository.count();
+    }
 }

@@ -5,7 +5,7 @@
 <head  th:include="layoutMain :: tw-head">
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
-<header th:include="layoutMain :: tw-header" th:with="pageTitle=${pageTitle}"></header>
+<header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
     <div class="container">
@@ -28,14 +28,8 @@
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
-                                <th>Partei</th>
+                                <th>BL</th>
                                 <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,7 +37,7 @@
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
-                                        <a href="" th:href="@{|/bundesland/${berufsgruppe.id}/|}">
+                                        <a href="" th:href="@{|/bundesland/${bundesland.id}/|}">
                                         <i class="fa fa-database" aria-hidden="true"></i>
                                         <span th:text="${bundesland.id}">id</span>
                                         </a>

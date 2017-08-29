@@ -5,7 +5,34 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "kandidat2"
+    name = "kandidat_flat",
+    indexes = {
+        @Index(name = "idx_kandidat_flat_kandidat_key",columnList = "kandidat_key"),
+        @Index(name = "idx_kandidat_flat_titel", columnList = "titel"),
+        @Index(name = "idx_kandidat_flat_namenszusatz", columnList = "namenszusatz"),
+        @Index(name = "idx_kandidat_flat_nachname_ohne", columnList = "nachname_ohne"),
+        @Index(name = "idx_kandidat_flat_nachname", columnList = "nachname"),
+        @Index(name = "idx_kandidat_flat_geschlecht", columnList = "geschlecht"),
+        @Index(name = "idx_kandidat_flat_geburtsjahr", columnList = "geburtsjahr"),
+        @Index(name = "idx_kandidat_flat_alter", columnList = "alter"),
+        @Index(name = "idx_kandidat_flat_liste_bundesland_land", columnList = "liste_bundesland_land"),
+        @Index(name = "idx_kandidat_flat_liste_platz", columnList = "liste_platz"),
+        @Index(name = "idx_kandidat_flat_mdb", columnList = "mdb"),
+        @Index(name = "idx_kandidat_flat_id_eigen", columnList = "id_eigen"),
+        @Index(name = "idx_kandidat_flat_foto", columnList = "foto"),
+        @Index(name = "idx_kandidat_flat_wahlkreis_id", columnList = "wahlkreis_id"),
+        @Index(name = "idx_kandidat_flat_wahlkreis_name", columnList = "wahlkreis_name"),
+        @Index(name = "idx_kandidat_flat_partei", columnList = "partei"),
+        @Index(name = "idx_kandidat_flat_partei_lang", columnList = "partei_lang"),
+        @Index(name = "idx_kandidat_flat_liste_partei", columnList = "liste_partei"),
+        @Index(name = "idx_kandidat_flat_liste_partei_lang", columnList = "liste_partei_lang"),
+        @Index(name = "idx_kandidat_flat_bundesland", columnList = "bundesland"),
+        @Index(name = "idx_kandidat_flat_berufsgruppe", columnList = "berufsgruppe"),
+        @Index(name = "idx_kandidat_flat_beruf", columnList = "beruf"),
+        @Index(name = "idx_kandidat_flat_geburtsort", columnList = "geburtsort"),
+        @Index(name = "idx_kandidat_flat_wohnort", columnList = "wohnort"),
+        @Index(name = "idx_kandidat_flat_alter", columnList = "alter")
+    }
 )
 public class KandidatFlat implements Serializable {
 

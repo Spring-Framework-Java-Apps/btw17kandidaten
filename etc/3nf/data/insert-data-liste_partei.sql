@@ -1,3 +1,4 @@
+DELETE FROM liste_partei;
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (1, 'BP','Bayernpartei' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (2, 'NPD','Nationaldemokratische Partei Deutschlands' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (3, 'PDV','Partei der Vernunft' );

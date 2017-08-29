@@ -9,7 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -33,23 +34,35 @@ public class BundeslandController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Bundesland";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
-        model.addAttribute("pageTitle","Bundesländer");
         return "bundesland/all";
     }
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PathVariable("id") Berufsgruppe berufsgruppe, Model model
+            @PathVariable("id") Bundesland bundesland, Model model
     ) {
-        if(berufsgruppe == null){
+        if(bundesland == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = berufsgruppe.getBerufsgruppe();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
-            model.addAttribute("berufsgruppe",berufsgruppe);
-            model.addAttribute("pageTitle",pageTitle);
+            String pageTitle = bundesland.getBundesland() + ", "+bundesland.getBundeslandLang();
+            String pageSubTitle = "Bundesländer der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
+            model.addAttribute("bundesland",bundesland);
             return "bundesland/id";
         }
     }

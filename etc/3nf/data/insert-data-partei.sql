@@ -1,3 +1,4 @@
+DELETE FROM partei;
 INSERT INTO partei (id,partei,partei_lang) VALUES (1, 'Einzelbewerber','Markus Beckmann – Den Menschen verpflichtet, keiner Partei!' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (2, 'Einzelbewerber','Otto Ritter' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (3, 'Einzelbewerber','wir-direkt' );

@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -33,9 +35,16 @@ public class ParteiController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Parteien";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.PARTEI.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Partei> allListeParteiPage =  parteiService.getAll(pageable);
         model.addAttribute("parteien", allListeParteiPage);
-        model.addAttribute("pageTitle","Parteien");
         return "partei/all";
     }
 
@@ -47,9 +56,14 @@ public class ParteiController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = partei.getPartei() + ", " + partei.getParteiLang();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Parteien der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.PARTEI.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
             model.addAttribute("partei",partei);
-            model.addAttribute("pageTitle",pageTitle);
             return "partei/id";
         }
     }

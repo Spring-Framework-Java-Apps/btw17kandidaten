@@ -9,4 +9,6 @@ public interface BundeslandService {
     Page<Bundesland> getAll(Pageable pageRequest);
 
     Bundesland findByBundesland(String bundesland);
+
+    long count();
 }

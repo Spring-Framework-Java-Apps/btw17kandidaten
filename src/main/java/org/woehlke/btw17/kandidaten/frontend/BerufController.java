@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -31,9 +33,15 @@ public class BerufController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Berufe";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
         Page<Beruf> allBerufPage =  berufService.getAll(pageable);
         model.addAttribute("berufe", allBerufPage);
-        model.addAttribute("pageTitle","Berufe");
         return "beruf/all";
     }
 
@@ -45,9 +53,13 @@ public class BerufController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = beruf.getBeruf();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Berufe der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
             model.addAttribute("beruf",beruf);
-            model.addAttribute("pageTitle",pageTitle);
             return "beruf/id";
         }
     }

@@ -10,4 +10,5 @@ public interface WohnortService {
 
     Wohnort findByWohnort(String wohnort);
 
+    long count();
 }

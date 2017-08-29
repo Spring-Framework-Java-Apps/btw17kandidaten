@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -31,6 +33,14 @@ public class GeburtsortController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Geburtsort";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
         model.addAttribute("geburtsorte", allGeburtsortPage);
         model.addAttribute("pageTitle","Geburtsorte");
@@ -45,9 +55,13 @@ public class GeburtsortController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = geburtsort.getGeburtsort();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Geburtsorte der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
             model.addAttribute("geburtsort",geburtsort);
-            model.addAttribute("pageTitle",pageTitle);
             return "geburtsort/id";
         }
     }

@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -33,6 +35,14 @@ public class WahlkreisController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Wahlkreise";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
         model.addAttribute("wahlkreise", allWahlkreisPage);
         model.addAttribute("pageTitle","Wahlkreise");
@@ -47,9 +57,14 @@ public class WahlkreisController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Wahlkreise der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
             model.addAttribute("wahlkreis",wahlkreis);
-            model.addAttribute("pageTitle",pageTitle);
             return "wahlkreis/id";
         }
     }

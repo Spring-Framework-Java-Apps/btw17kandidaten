@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -31,9 +33,16 @@ public class BerufsgruppeController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Berufsgruppe";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Berufsgruppe> allBerufsgruppePage =  berufsgruppeService.getAll(pageable);
         model.addAttribute("berufsgruppen", allBerufsgruppePage);
-        model.addAttribute("pageTitle","Berufsgruppen");
         return "berufsgruppe/all";
     }
 
@@ -45,9 +54,13 @@ public class BerufsgruppeController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = berufsgruppe.getBerufsgruppe();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Berufsgruppen der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
             model.addAttribute("berufsgruppe",berufsgruppe);
-            model.addAttribute("pageTitle",pageTitle);
             return "berufsgruppe/id";
         }
     }

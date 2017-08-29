@@ -30,4 +30,9 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     public Geburtsort findByGeburtsort(String geburtsort) {
         return geburtsortRepository.findByGeburtsort(geburtsort);
     }
+
+    @Override
+    public long count() {
+        return geburtsortRepository.count();
+    }
 }

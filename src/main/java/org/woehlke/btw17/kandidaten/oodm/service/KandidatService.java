@@ -18,4 +18,6 @@ public interface KandidatService {
 
     void deleteAll();
 
+    long count();
+
 }

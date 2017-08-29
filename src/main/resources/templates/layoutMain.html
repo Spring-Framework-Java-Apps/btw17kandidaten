@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>btw17 Kandidaten</title>
+    <title th:text="${pageContent.pageTitle}">btw17 Kandidaten</title>
     <!-- Bootstrap -->
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
     <link href="webjars/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
@@ -122,10 +122,10 @@
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>
-                        <span><i class="fa fa-database" aria-hidden="true"></i></span>
-                        <span class="header-h1" th:text="${pageTitle}">btw17</span>
+                        <span th:utext="${pageContent.pageSymbol}"></span>
+                        <span class="header-h1" th:text="${pageContent.pageTitle}">pageTitle</span>
                         <br/>
-                        <small>btw17 Kandidaten</small>
+                        <small th:text="${pageContent.pageSubTitle}">pageSubTitle</small>
                     </h1>
                 </div>
             </div>
@@ -163,6 +163,7 @@
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-17174370-11', 'auto');
+        ga('set', 'anonymizeIp', true);
         ga('send', 'pageview');
 
     </script>

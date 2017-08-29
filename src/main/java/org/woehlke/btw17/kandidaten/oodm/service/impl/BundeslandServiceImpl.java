@@ -30,4 +30,9 @@ public class BundeslandServiceImpl implements BundeslandService {
     public Bundesland findByBundesland(String bundesland) {
         return bundeslandRepository.findByBundesland(bundesland);
     }
+
+    @Override
+    public long count() {
+        return bundeslandRepository.count();
+    }
 }

@@ -1,0 +1,16 @@
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (1, 'BB', 'Brandenburg');
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (2, 'SN', 'SN' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (3, 'NW', 'Nordrhein-Westfalen' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (4, 'BY', 'Bayern' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (5, 'ST', 'ST' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (6, 'HB', 'Hansestadt Bremen' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (7, 'BE', 'Berlin' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (8, 'NI', 'Niedersachsen' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (9, 'SH', 'Schleswig-Holstein' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (10, 'HE', 'Hessen' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (11, 'SL', 'SL' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (12, 'BW', 'Baden-Württemberg' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (13, 'MV', 'Mecklemburg-Vorpommern' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (14, 'RP', 'Rheinland-Pfalz' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (15, 'HH', 'Hansestadt Hamburg' );
+INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (16, 'TH', 'Thüringen' );

@@ -9,9 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
-import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -33,9 +34,16 @@ public class KandidatFlatController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Kandidaten";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
-        model.addAttribute("pageTitle","Kandidaten");
         return "kandidatflat/all";
     }
 
@@ -46,7 +54,19 @@ public class KandidatFlatController {
         if(kandidatFlat == null){
             throw new EntityNotFoundException();
         } else {
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageTitle = kandidatFlat.getVorname()+" "+kandidatFlat.getNachname();
+            if(kandidatFlat.getListePartei() != null){
+                pageTitle += ", "+kandidatFlat.getListePartei();
+            } else if (kandidatFlat.getPartei() != null){
+                pageTitle += ", "+kandidatFlat.getPartei();
+            }
+            String pageSubTitle = "Kandidaten der btw17";
+            String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
             model.addAttribute("kandidat",kandidatFlat);
             return "kandidatflat/id";
         }

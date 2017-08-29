@@ -37,4 +37,9 @@ public class KandidatServiceImpl implements KandidatService {
     public void deleteAll() {
         kandidatRepository.deleteAll();
     }
+
+    @Override
+    public long count() {
+        return kandidatRepository.count();
+    }
 }

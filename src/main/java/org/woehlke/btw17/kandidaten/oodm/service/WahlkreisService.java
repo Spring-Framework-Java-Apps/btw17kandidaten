@@ -11,4 +11,6 @@ public interface WahlkreisService {
 
     Wahlkreis findByWahlkreisId(Integer wahlkreisId);
 
+    long count();
+
 }

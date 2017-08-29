@@ -9,4 +9,6 @@ public interface BerufService {
     Page<Beruf> getAll(Pageable pageRequest);
 
     Beruf findByBeruf(String beruf);
+
+    long count();
 }

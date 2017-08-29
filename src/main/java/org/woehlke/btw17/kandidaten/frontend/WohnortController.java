@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
@@ -31,9 +33,16 @@ public class WohnortController {
             ) Pageable pageable,
             Model model
     ) {
+        String pageTitle = "Wohnorte";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
         Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
         model.addAttribute("wohnorte", allWohnortPage);
-        model.addAttribute("pageTitle","Wohnorte");
         return "wohnort/all";
     }
 
@@ -45,9 +54,14 @@ public class WohnortController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = wohnort.getWohnort();
-            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            String pageSubTitle = "Wohnorte der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
             model.addAttribute("wohnort",wohnort);
-            model.addAttribute("pageTitle",pageTitle);
             return "wohnort/id";
         }
     }

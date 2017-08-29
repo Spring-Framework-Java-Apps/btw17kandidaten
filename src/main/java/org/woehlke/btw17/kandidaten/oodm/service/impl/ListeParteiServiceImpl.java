@@ -30,4 +30,9 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public ListePartei findByListePartei(String listePartei, String listeParteiLang) {
         return listeParteiRepository.findByListeParteiAndListeParteiLang(listePartei,listeParteiLang);
     }
+
+    @Override
+    public long count() {
+        return listeParteiRepository.count();
+    }
 }

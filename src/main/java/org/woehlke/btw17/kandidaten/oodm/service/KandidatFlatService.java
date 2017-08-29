@@ -7,4 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
 public interface KandidatFlatService {
 
     Page<KandidatFlat> getAll(Pageable pageRequest);
+
+    long count();
 }

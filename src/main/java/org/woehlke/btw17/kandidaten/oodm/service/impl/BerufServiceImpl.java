@@ -30,4 +30,9 @@ public class BerufServiceImpl implements BerufService {
     public Beruf findByBeruf(String beruf) {
         return berufRepository.findByBeruf(beruf);
     }
+
+    @Override
+    public long count() {
+        return berufRepository.count();
+    }
 }

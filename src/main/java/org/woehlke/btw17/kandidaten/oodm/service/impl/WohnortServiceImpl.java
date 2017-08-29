@@ -30,4 +30,9 @@ public class WohnortServiceImpl implements WohnortService {
     public Wohnort findByWohnort(String wohnort) {
         return wohnortRepository.findByWohnort(wohnort);
     }
+
+    @Override
+    public long count() {
+        return wohnortRepository.count();
+    }
 }
