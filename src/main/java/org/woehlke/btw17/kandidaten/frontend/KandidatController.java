@@ -45,8 +45,15 @@ public class KandidatController {
         if(kandidat == null){
             throw new EntityNotFoundException();
         } else {
+            String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
+            if(kandidat.getListePartei() != null){
+                pageTitle += ", "+kandidat.getListePartei().getListePartei();
+            } else if (kandidat.getPartei() != null){
+                pageTitle += ", "+kandidat.getPartei().getPartei();
+            }
             model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
             model.addAttribute("kandidat",kandidat);
+            model.addAttribute("pageTitle",pageTitle);
             return "kandidat/id";
         }
     }

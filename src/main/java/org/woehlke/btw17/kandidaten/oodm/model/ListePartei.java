@@ -5,7 +5,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "liste_partei"
+    name = "liste_partei",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_liste_partei",columnNames = {"liste_partei"})
+    },
+    indexes = {
+        @Index(name = "idx_liste_partei_liste_partei_lang", columnList = "liste_partei_lang")
+    }
 )
 public class ListePartei implements Serializable {
 

@@ -24,17 +24,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well">
-                        <table class="table table-striped">
+                        <table class="table table-striped tw-kandidaten-all">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
                                 <th>ID</th>
+                                <th>Foto</th>
                                 <th>Name</th>
-                                <th>m/w</th>
                                 <th>Wohnort</th>
                                 <th>Beruf</th>
                                 <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
                                 <th>mdb</th>
                             </tr>
                             </thead>
@@ -51,18 +49,19 @@
                                 </span>
                                 </td>
                                 <td>
-                                    <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
-                                    <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
-                                    <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
-                                    <!--
-                                    <span th:if="${kandidat.nachnameOhne}" th:text="${kandidat.nachnameOhne}">nachnameOhne</span><br th:if="${kandidat.nachnameOhne}"/>
-                                    -->
-                                    <span th:text="${kandidat.vorname}">vorname</span><br/>
-                                    <span th:text="${kandidat.nachname}">nachname</span><br/>
-                                    </a>
+                                    <img th:if="${kandidat.fotoUrl}"
+                                         th:src="${kandidat.fotoUrl}"
+                                         class="img-responsive img-circle"/>
                                 </td>
                                 <td>
-                                    <span th:text="${kandidat.geschlecht}">geschlecht</span>
+                                    <a th:href="@{|/kandidat/${kandidat.id}/|}">
+                                        <span class="tw-vector">
+                                            <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
+                                            <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span>
+                                            <span th:text="${kandidat.vorname}">vorname</span>
+                                            <span th:text="${kandidat.nachname}">nachname</span>
+                                        </span>
+                                    </a>
                                 </td>
                                 <td>
                                     <span th:if="${kandidat.wohnort}" th:text="${kandidat.wohnort.wohnort}">wohnort</span>
@@ -72,12 +71,6 @@
                                 </td>
                                 <td>
                                     <abbr th:if="${kandidat.partei}" th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
-                                </td>
-                                <td>
-                                    <abbr th:if="${kandidat.listePartei}" th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                 </td>
                                 <td>
                                     <span th:text="${kandidat.mdb}">mdb</span>

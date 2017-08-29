@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "wohnort"
+    name = "wohnort",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
+    }
 )
 public class Wohnort implements Serializable {
 

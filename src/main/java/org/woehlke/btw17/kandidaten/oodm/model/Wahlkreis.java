@@ -5,7 +5,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "wahlkreis"
+    name = "wahlkreis",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_wahlkreis",columnNames = {"wahlkreis_id"})
+    },
+    indexes = {
+        @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name")
+    }
 )
 public class Wahlkreis implements Serializable {
 

@@ -5,7 +5,23 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-    name = "kandidat"
+    name = "kandidat",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
+    },
+    indexes = {
+        @Index(name = "idx_kandidat_titel", columnList = "titel"),
+        @Index(name = "idx_kandidat_namenszusatz", columnList = "namenszusatz"),
+        @Index(name = "idx_kandidat_nachname_ohne", columnList = "nachname_ohne"),
+        @Index(name = "idx_kandidat_nachname", columnList = "nachname"),
+        @Index(name = "idx_kandidat_geschlecht", columnList = "geschlecht"),
+        @Index(name = "idx_kandidat_geburtsjahr", columnList = "geburtsjahr"),
+        @Index(name = "idx_kandidat_alter", columnList = "alter"),
+        @Index(name = "idx_kandidat_liste_bundesland_land", columnList = "liste_bundesland_land"),
+        @Index(name = "idx_kandidat_liste_platz", columnList = "liste_platz"),
+        @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
+        @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen")
+    }
 )
 public class Kandidat implements Serializable {
 
@@ -95,6 +111,9 @@ public class Kandidat implements Serializable {
     @Column
     private String foto;
 
+    @Column(name = "foto_url")
+    private String fotoUrl;
+
     @Column(name = "scatter_x")
     private Double scatterX;
 
@@ -103,6 +122,21 @@ public class Kandidat implements Serializable {
 
     @Column
     private String color;
+
+    @Column
+    private String webseite;
+
+    @Column
+    private String twitter;
+
+    @Column
+    private String facebook;
+
+    @Column
+    private String youtube;
+
+    @Column(name="logo_url")
+    private String logoUrl;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -332,6 +366,54 @@ public class Kandidat implements Serializable {
         this.listePartei = listePartei;
     }
 
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
+    }
+
+    public String getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(String webseite) {
+        this.webseite = webseite;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -370,9 +452,15 @@ public class Kandidat implements Serializable {
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
         if (idEigen != null ? !idEigen.equals(kandidat.idEigen) : kandidat.idEigen != null) return false;
         if (foto != null ? !foto.equals(kandidat.foto) : kandidat.foto != null) return false;
+        if (fotoUrl != null ? !fotoUrl.equals(kandidat.fotoUrl) : kandidat.fotoUrl != null) return false;
         if (scatterX != null ? !scatterX.equals(kandidat.scatterX) : kandidat.scatterX != null) return false;
         if (scatterY != null ? !scatterY.equals(kandidat.scatterY) : kandidat.scatterY != null) return false;
-        return color != null ? color.equals(kandidat.color) : kandidat.color == null;
+        if (color != null ? !color.equals(kandidat.color) : kandidat.color != null) return false;
+        if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
+        if (twitter != null ? !twitter.equals(kandidat.twitter) : kandidat.twitter != null) return false;
+        if (facebook != null ? !facebook.equals(kandidat.facebook) : kandidat.facebook != null) return false;
+        if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
+        return logoUrl != null ? logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl == null;
     }
 
     @Override
@@ -402,9 +490,15 @@ public class Kandidat implements Serializable {
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
         result = 31 * result + (idEigen != null ? idEigen.hashCode() : 0);
         result = 31 * result + (foto != null ? foto.hashCode() : 0);
+        result = 31 * result + (fotoUrl != null ? fotoUrl.hashCode() : 0);
         result = 31 * result + (scatterX != null ? scatterX.hashCode() : 0);
         result = 31 * result + (scatterY != null ? scatterY.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         return result;
     }
 
@@ -436,9 +530,15 @@ public class Kandidat implements Serializable {
                 ", lng=" + lng +
                 ", idEigen='" + idEigen + '\'' +
                 ", foto='" + foto + '\'' +
+                ", fotoUrl='" + fotoUrl + '\'' +
                 ", scatterX=" + scatterX +
                 ", scatterY=" + scatterY +
                 ", color='" + color + '\'' +
+                ", webseite='" + webseite + '\'' +
+                ", twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
                 '}';
     }
 }

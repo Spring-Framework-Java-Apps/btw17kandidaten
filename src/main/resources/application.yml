@@ -41,8 +41,8 @@ spring:
       max-active: 20
       #max-wait: 100000
       #test-on-borrow: true
-    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
-    url: ${DATABASE_URL}
+    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+    #url: ${DATABASE_URL}
     continue-on-error: true
   devtools:
     livereload:
@@ -69,6 +69,10 @@ btw17:
     loginUsername: blubb
     loginPassword: blablabla
     googleMapsApiKey: ${BTW17_GOOGLE_APS_API_KEY}
+    googleAnalyticsKey: ${BTW17_GOOGLE_ANALYTICS_ID}
+    connTimeToLive: 10
+    maxIdleTime: 120
+    millisToWaitBetweenTwoApiCalls: 1000
     webSecurityConfigPublicPaths:
       - "/"
       - "/kandidat/all"
@@ -95,6 +99,10 @@ btw17:
       - "/map-icons/**"
       - "/webjars/*"
       - "/webjars/**"
+    urlPrefixForKandidatFoto:
+      - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/"
+      - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/users/"
+      - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/media_thumbnail/public/users/"
 ---
 spring:
   profiles: testing

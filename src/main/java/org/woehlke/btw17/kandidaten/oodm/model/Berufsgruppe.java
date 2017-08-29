@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "berufsgruppe"
+    name = "berufsgruppe",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
+    }
 )
 public class Berufsgruppe implements Serializable {
 

@@ -167,6 +167,12 @@
             <version>2.1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <scope>test</scope>
+        </dependency>
+
 	</dependencies>
 
     <build>

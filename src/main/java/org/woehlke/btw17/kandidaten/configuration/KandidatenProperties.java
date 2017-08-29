@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Component
@@ -11,15 +12,35 @@ import java.util.List;
 @ConfigurationProperties(prefix="btw17.kandidaten")
 public class KandidatenProperties {
 
+    @NotNull
     private Integer pageSize;
 
+    @NotNull
     private String loginUsername;
 
+    @NotNull
     private String loginPassword;
 
+    @NotNull
     private List<String> webSecurityConfigPublicPaths;
 
+    @NotNull
+    private List<String> urlPrefixForKandidatFoto;
+
+    @NotNull
     private String googleMapsApiKey;
+
+    @NotNull
+    private String googleAnalyticsKey;
+
+    @NotNull
+    private Long connTimeToLive;
+
+    @NotNull
+    private Long maxIdleTime;
+
+    @NotNull
+    private Integer millisToWaitBetweenTwoApiCalls;
 
     public Integer getPageSize() {
         return pageSize;
@@ -59,6 +80,46 @@ public class KandidatenProperties {
 
     public void setGoogleMapsApiKey(String googleMapsApiKey) {
         this.googleMapsApiKey = googleMapsApiKey;
+    }
+
+    public String getGoogleAnalyticsKey() {
+        return googleAnalyticsKey;
+    }
+
+    public void setGoogleAnalyticsKey(String googleAnalyticsKey) {
+        this.googleAnalyticsKey = googleAnalyticsKey;
+    }
+
+    public Long getConnTimeToLive() {
+        return connTimeToLive;
+    }
+
+    public void setConnTimeToLive(Long connTimeToLive) {
+        this.connTimeToLive = connTimeToLive;
+    }
+
+    public Long getMaxIdleTime() {
+        return maxIdleTime;
+    }
+
+    public void setMaxIdleTime(Long maxIdleTime) {
+        this.maxIdleTime = maxIdleTime;
+    }
+
+    public Integer getMillisToWaitBetweenTwoApiCalls() {
+        return millisToWaitBetweenTwoApiCalls;
+    }
+
+    public void setMillisToWaitBetweenTwoApiCalls(Integer millisToWaitBetweenTwoApiCalls) {
+        this.millisToWaitBetweenTwoApiCalls = millisToWaitBetweenTwoApiCalls;
+    }
+
+    public List<String> getUrlPrefixForKandidatFoto() {
+        return urlPrefixForKandidatFoto;
+    }
+
+    public void setUrlPrefixForKandidatFoto(List<String> urlPrefixForKandidatFoto) {
+        this.urlPrefixForKandidatFoto = urlPrefixForKandidatFoto;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {

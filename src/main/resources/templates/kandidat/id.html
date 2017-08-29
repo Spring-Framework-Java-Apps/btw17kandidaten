@@ -8,27 +8,14 @@
 <header th:include="layoutMain :: tw-header" th:with="pageTitle=${pageTitle}"></header>
 
 <main class="page-content">
-    <div class="container">
+    <div class="container tw-kandidat-profile">
         <div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="well">
                         <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
-                                <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
+                                <td>ID</td>
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
@@ -39,42 +26,83 @@
                                     </span>
                                 </span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
                                 <td>
                                     <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
-                                        <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
-                                        <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
-                                        <!--
-                                        <span th:if="${kandidat.nachnameOhne}" th:text="${kandidat.nachnameOhne}">nachnameOhne</span><br th:if="${kandidat.nachnameOhne}"/>
-                                        -->
-                                        <span th:text="${kandidat.vorname}">vorname</span><br/>
-                                        <span th:text="${kandidat.nachname}">nachname</span><br/>
+                                        <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
+                                        <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span>
+                                        <span th:text="${kandidat.vorname}">vorname</span>
+                                        <span th:text="${kandidat.nachname}">nachname</span>
                                     </a>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Jahrgang</td>
                                 <td>
-                                    <span th:text="${kandidat.geschlecht}">geschlecht</span>
+                                    <span th:text="${kandidat.geburtsjahr}">geburtsjahr</span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Geburtsort</td>
+                                <td>
+                                    <span th:if="${kandidat.geburtsort}" th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Wohnort</td>
                                 <td>
                                     <span th:if="${kandidat.wohnort}" th:text="${kandidat.wohnort.wohnort}">wohnort</span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Beruf</td>
                                 <td>
                                     <span th:if="${kandidat.beruf}" th:text="${kandidat.beruf.beruf}">beruf</span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>Berufsgruppe</td>
+                                <td>
+                                    <span th:if="${kandidat.berufsgruppe}" th:text="${kandidat.berufsgruppe.berufsgruppe}">berufsgruppe</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Partei</td>
                                 <td>
                                     <abbr th:if="${kandidat.partei}" th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
                                 </td>
+                            </tr>
+                            <tr th:if="${kandidat.listeBundeslandLand}">
+                                <td>Liste Bundesland</td>
                                 <td>
                                     <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
                                 </td>
+                            </tr>
+                            <tr th:if="${kandidat.listePartei}">
+                                <td>Liste</td>
                                 <td>
                                     <abbr th:if="${kandidat.listePartei}" th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                 </td>
+                            </tr>
+                            <tr th:if="${kandidat.mdb}">
+                                <td>MdB</td>
                                 <td>
                                     <span th:text="${kandidat.mdb}">mdb</span>
                                 </td>
                             </tr>
-                            </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <img th:if="${kandidat.fotoUrl}"
+                         th:src="${kandidat.fotoUrl}"
+                         class="img-responsive img-thumbnail"/>
+                </div>
+            </div>
+            <div class="row" th:if="${kandidat.lat}">
+                <div class="col-md-12">
                     <div class="well">
                         <div id="map"></div>
                     </div>
@@ -112,6 +140,16 @@
     <script src="map-icons/js/map-icons.min.js" th:attr="src=@{/map-icons/js/map-icons.min.js}"></script>
     <!-- my own JavaScript -->
     <script src="js/my.js" th:attr="src=@{/js/my.js}"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-17174370-11', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </footer>
 </body>
 </html>

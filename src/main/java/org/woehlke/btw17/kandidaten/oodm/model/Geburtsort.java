@@ -6,7 +6,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "geburtsort"
+    name = "geburtsort",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
+    }
 )
 public class Geburtsort implements Serializable {
 

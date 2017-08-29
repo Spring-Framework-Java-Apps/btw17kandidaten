@@ -6,7 +6,13 @@ import java.io.Serializable;
 
 @Entity
 @Table(
-        name = "bundesland"
+    name = "bundesland",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_bundesland",columnNames = {"bundesland"})
+    },
+    indexes = {
+        @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
+    }
 )
 public class Bundesland implements Serializable {
 
@@ -21,6 +27,21 @@ public class Bundesland implements Serializable {
 
     @Column(name="bundesland_lang",nullable = true)
     private String bundeslandLang;
+
+    @Column
+    private String webseite;
+
+    @Column
+    private String twitter;
+
+    @Column
+    private String facebook;
+
+    @Column
+    private String youtube;
+
+    @Column(name="logo_url")
+    private String logoUrl;
 
     public Long getId() {
         return id;
@@ -46,6 +67,46 @@ public class Bundesland implements Serializable {
         this.bundeslandLang = bundeslandLang;
     }
 
+    public String getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(String webseite) {
+        this.webseite = webseite;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,7 +116,13 @@ public class Bundesland implements Serializable {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (bundesland != null ? !bundesland.equals(that.bundesland) : that.bundesland != null) return false;
-        return bundeslandLang != null ? bundeslandLang.equals(that.bundeslandLang) : that.bundeslandLang == null;
+        if (bundeslandLang != null ? !bundeslandLang.equals(that.bundeslandLang) : that.bundeslandLang != null)
+            return false;
+        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
+        if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
+        if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
+        if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
+        return logoUrl != null ? logoUrl.equals(that.logoUrl) : that.logoUrl == null;
     }
 
     @Override
@@ -63,6 +130,11 @@ public class Bundesland implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         return result;
     }
 
@@ -72,6 +144,11 @@ public class Bundesland implements Serializable {
                 "id=" + id +
                 ", bundesland='" + bundesland + '\'' +
                 ", bundeslandLang='" + bundeslandLang + '\'' +
+                ", webseite='" + webseite + '\'' +
+                ", twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
                 '}';
     }
 }

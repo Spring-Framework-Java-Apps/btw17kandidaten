@@ -14,11 +14,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
+import java.net.URL;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
+
+    /*
+
+    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/"
+
+    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/users/"
+
+    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/media_thumbnail/public/users/"
+
+    */
 
     @Autowired
     private BerufService berufService;
@@ -49,6 +61,11 @@ public class KandidatenNormalizedTableBuilder {
 
     @Autowired
     private WohnortService wohnortService;
+
+    @Autowired
+    private UrlService urlService;
+
+
 
     @Commit
     @Test
@@ -100,6 +117,13 @@ public class KandidatenNormalizedTableBuilder {
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
+
+                if(in.getFoto() != null){
+                    URL fotoUrl = urlService.getFotoUrl(in.getFoto());
+                    if(fotoUrl != null){
+                        out.setFotoUrl(fotoUrl.toExternalForm());
+                    }
+                }
 
                 out = kandidatService.create(out);
 
