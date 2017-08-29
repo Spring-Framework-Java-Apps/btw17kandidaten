@@ -41,8 +41,8 @@ spring:
       max-active: 20
       #max-wait: 100000
       #test-on-borrow: true
-    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
-    #url: ${DATABASE_URL}
+    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+    url: ${DATABASE_URL}
   devtools:
     livereload:
       enabled: false

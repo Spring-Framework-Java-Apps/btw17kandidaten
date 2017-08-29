@@ -71,7 +71,7 @@ public class Kandidat implements Serializable {
     private Partei partei;
 
     @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_liste_partei", nullable=false, updatable=false)
+    @JoinColumn(name="fk_liste_partei", nullable=true, updatable=false)
     private ListePartei listePartei;
 
     @Column(name = "liste_bundesland_land")

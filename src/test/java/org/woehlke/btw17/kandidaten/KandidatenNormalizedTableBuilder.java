@@ -15,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
@@ -79,7 +79,7 @@ public class KandidatenNormalizedTableBuilder {
                 out.setNamenszusatz(in.getNamenszusatz());
                 out.setScatterX(in.getScatterX());
                 out.setScatterY(in.getScatterY());
-                out.setVorname(in.getTitel());
+                out.setVorname(in.getVorname());
                 out.setTitel(in.getTitel());
                 out.setListeBundeslandLand(in.getListeBundeslandLand());
 
