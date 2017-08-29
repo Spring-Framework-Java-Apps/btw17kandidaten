@@ -32,7 +32,7 @@
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
-                                        <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
+                                        <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
                                         <i class="fa fa-database" aria-hidden="true"></i>
                                         <span th:text="${kandidat.id}">id</span>
                                         </a>
@@ -40,7 +40,7 @@
                                 </span>
                                 </td>
                                 <td>
-                                    <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
+                                    <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
                                         <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
                                         <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
                                         <!--
@@ -54,19 +54,19 @@
                                     <span th:text="${kandidat.geschlecht}">geschlecht</span>
                                 </td>
                                 <td>
-                                    <span th:text="${kandidat.wohnort.wohnort}">wohnort</span>
+                                    <span th:text="${kandidat.wohnort}">wohnort</span>
                                 </td>
                                 <td>
-                                    <span th:text="${kandidat.beruf.beruf}">beruf</span>
+                                    <span th:text="${kandidat.beruf}">beruf</span>
                                 </td>
                                 <td>
-                                    <abbr th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
+                                    <abbr th:attr="title=${kandidat.parteiLang}" th:text="${kandidat.partei}">partei</abbr>
                                 </td>
                                 <td>
                                     <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
                                 </td>
                                 <td>
-                                    <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
+                                    <abbr th:attr="title=${kandidat.listeParteiLang}" th:text="${kandidat.listePartei}">listePartei</abbr>
                                 </td>
                                 <td>
                                     <span th:text="${kandidat.mdb}">mdb</span>

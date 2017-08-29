@@ -73,6 +73,8 @@ btw17:
       - "/"
       - "/kandidat/all"
       - "/kandidat/**"
+      - "/kandidatflat/all"
+      - "/kandidatflat/**"
       - "/beruf/all"
       - "/berufsgruppe/all"
       - "/bundesland/all"

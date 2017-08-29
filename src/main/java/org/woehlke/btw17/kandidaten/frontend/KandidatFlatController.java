@@ -1,6 +1,5 @@
 package org.woehlke.btw17.kandidaten.frontend;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -20,8 +20,9 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/kandidat")
-public class KandidatController {
+@RequestMapping("/kandidatflat")
+public class KandidatFlatController {
+
 
     @RequestMapping("/all")
     public String getAll(
@@ -32,33 +33,32 @@ public class KandidatController {
             ) Pageable pageable,
             Model model
     ) {
-        Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
+        Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         model.addAttribute("pageTitle","Kandidaten");
-        return "kandidat/all";
+        return "kandidatflat/all";
     }
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PathVariable("id") Kandidat kandidat, Model model
+            @PathVariable("id") KandidatFlat kandidatFlat, Model model
     ) {
-        if(kandidat == null){
+        if(kandidatFlat == null){
             throw new EntityNotFoundException();
         } else {
             model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
-            model.addAttribute("kandidat",kandidat);
-            return "kandidat/id";
+            model.addAttribute("kandidat",kandidatFlat);
+            return "kandidatflat/id";
         }
     }
 
-    private final KandidatService kandidatService;
+    private final KandidatFlatService kandidatFlatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.kandidatService = kandidatService;
+    public KandidatFlatController(KandidatFlatService kandidatFlatService, KandidatenProperties kandidatenProperties) {
+        this.kandidatFlatService = kandidatFlatService;
         this.kandidatenProperties = kandidatenProperties;
     }
-
 }
