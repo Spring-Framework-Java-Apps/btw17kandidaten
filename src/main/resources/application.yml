@@ -43,6 +43,7 @@ spring:
       #test-on-borrow: true
     #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
     url: ${DATABASE_URL}
+    continue-on-error: true
   devtools:
     livereload:
       enabled: false
