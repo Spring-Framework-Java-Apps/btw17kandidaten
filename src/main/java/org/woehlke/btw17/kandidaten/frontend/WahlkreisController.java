@@ -6,9 +6,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
+
+import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
@@ -33,11 +39,32 @@ public class WahlkreisController {
         return "wahlkreis/all";
     }
 
+    @RequestMapping("/{id}")
+    public String getUserForId(
+            @PathVariable("id") Wahlkreis wahlkreis, Model model
+    ) {
+        if(wahlkreis == null){
+            throw new EntityNotFoundException();
+        } else {
+            String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();
+            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            model.addAttribute("wahlkreis",wahlkreis);
+            model.addAttribute("pageTitle",pageTitle);
+            return "wahlkreis/id";
+        }
+    }
+
 
     private final WahlkreisService wahlkreisService;
 
+    private final KandidatService kandidatService;
+
+    private final KandidatenProperties kandidatenProperties;
+
     @Autowired
-    public WahlkreisController(WahlkreisService wahlkreisService) {
+    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
         this.wahlkreisService = wahlkreisService;
+        this.kandidatService = kandidatService;
+        this.kandidatenProperties = kandidatenProperties;
     }
 }

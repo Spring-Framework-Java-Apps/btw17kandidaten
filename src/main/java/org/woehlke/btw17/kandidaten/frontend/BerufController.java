@@ -6,9 +6,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
+
+import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
@@ -32,10 +37,31 @@ public class BerufController {
         return "beruf/all";
     }
 
+    @RequestMapping("/{id}")
+    public String getUserForId(
+            @PathVariable("id") Beruf beruf, Model model
+    ) {
+        if(beruf == null){
+            throw new EntityNotFoundException();
+        } else {
+            String pageTitle = beruf.getBeruf();
+            model.addAttribute("googleMapsApiKey",kandidatenProperties.getGoogleMapsApiKey());
+            model.addAttribute("beruf",beruf);
+            model.addAttribute("pageTitle",pageTitle);
+            return "beruf/id";
+        }
+    }
+
+    private final KandidatService kandidatService;
+
     private final BerufService berufService;
 
+    private final KandidatenProperties kandidatenProperties;
+
     @Autowired
-    public BerufController(BerufService berufService) {
+    public BerufController(KandidatService kandidatService, BerufService berufService, KandidatenProperties kandidatenProperties) {
+        this.kandidatService = kandidatService;
         this.berufService = berufService;
+        this.kandidatenProperties = kandidatenProperties;
     }
 }
