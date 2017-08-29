@@ -54,19 +54,19 @@
                                     <span th:text="${kandidat.geschlecht}">geschlecht</span>
                                 </td>
                                 <td>
-                                    <span th:text="${kandidat.wohnort.wohnort}">wohnort</span>
+                                    <span th:if="${kandidat.wohnort}" th:text="${kandidat.wohnort.wohnort}">wohnort</span>
                                 </td>
                                 <td>
-                                    <span th:text="${kandidat.beruf.beruf}">beruf</span>
+                                    <span th:if="${kandidat.beruf}" th:text="${kandidat.beruf.beruf}">beruf</span>
                                 </td>
                                 <td>
-                                    <abbr th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
+                                    <abbr th:if="${kandidat.partei}" th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
                                 </td>
                                 <td>
                                     <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
                                 </td>
                                 <td>
-                                    <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
+                                    <abbr th:if="${kandidat.listePartei}" th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                 </td>
                                 <td>
                                     <span th:text="${kandidat.mdb}">mdb</span>
