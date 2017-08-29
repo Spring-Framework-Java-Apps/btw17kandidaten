@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
@@ -22,15 +23,8 @@ public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
 
-    /*
-
-    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/"
-
-    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/users/"
-
-    "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/media_thumbnail/public/users/"
-
-    */
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
 
     @Autowired
     private BerufService berufService;
@@ -118,10 +112,12 @@ public class KandidatenNormalizedTableBuilder {
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
 
-                if(in.getFoto() != null){
-                    URL fotoUrl = urlService.getFotoUrl(in.getFoto());
-                    if(fotoUrl != null){
-                        out.setFotoUrl(fotoUrl.toExternalForm());
+                if(kandidatenProperties.getCheckFotoUrl()){
+                    if(in.getFoto() != null){
+                        URL fotoUrl = urlService.getFotoUrl(in.getFoto());
+                        if(fotoUrl != null){
+                            out.setFotoUrl(fotoUrl.toExternalForm());
+                        }
                     }
                 }
 

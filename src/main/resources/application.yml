@@ -30,19 +30,13 @@ spring:
     name: @project.name@
   datasource:
     driverClassName: org.postgresql.Driver
-    #initialSize: 5
     max-total: 20
     maxActive: 20
-    #maxIdle: 5
-    #minIdle: 2
     platform: POSTGRESQL
-    #removeAbandoned: true
     tomcat:
       max-active: 20
-      #max-wait: 100000
-      #test-on-borrow: true
-    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
-    #url: ${DATABASE_URL}
+    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+    url: ${DATABASE_URL}
     continue-on-error: true
   devtools:
     livereload:
@@ -51,8 +45,8 @@ spring:
     generate-ddl: true
     hibernate:
       #ddl-auto: create-drop
-      ddl-auto: update
-      #ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
+      #ddl-auto: update
+      ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
@@ -64,15 +58,16 @@ spring:
 btw17:
   kandidaten:
     pageSize: 20
-    #loginUsername: ${BTW17_LOGIN_USERNAME}
-    #loginPassword: ${BTW17_LOGIN_PASSWORD}
-    loginUsername: blubb
-    loginPassword: blablabla
+    loginUsername: ${BTW17_LOGIN_USERNAME}
+    loginPassword: ${BTW17_LOGIN_PASSWORD}
+    #loginUsername: blubb
+    #loginPassword: blablabla
     googleMapsApiKey: ${BTW17_GOOGLE_APS_API_KEY}
     googleAnalyticsKey: ${BTW17_GOOGLE_ANALYTICS_ID}
     connTimeToLive: 10
     maxIdleTime: 120
     millisToWaitBetweenTwoApiCalls: 1000
+    checkFotoUrl: false
     webSecurityConfigPublicPaths:
       - "/"
       - "/kandidat/all"
@@ -107,9 +102,11 @@ btw17:
 spring:
   profiles: testing
   datasource:
-    #url: ${DATABASE_URL_TEST}
-    url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
-
+    url: ${DATABASE_URL_TEST}
+    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+btw17:
+  kandidaten:
+    checkFotoUrl: false
 ---
 spring:
   profiles: travis
@@ -126,3 +123,6 @@ spring:
     show-sql: true
 hibernate:
   dialect: org.hibernate.dialect.H2Dialect
+btw17:
+  kandidaten:
+    checkFotoUrl: false

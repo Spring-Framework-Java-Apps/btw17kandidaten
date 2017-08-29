@@ -31,6 +31,9 @@
 - **Setup Localhost**
   - export DATABASE_URL=jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
   - export DATABASE_URL_TEST=jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
+  - export BTW17_JPA_HIBERNATE_DDL_AUTO=update
+  - export BTW17_LOGIN_USERNAME=jhfdbvfjdbvjdfh
+  - export BTW17_LOGIN_PASSWORD=hfbjvbfbvgjhfvgh
 - run with: **mvn clean spring-boot:run**
 
 ## Contribute

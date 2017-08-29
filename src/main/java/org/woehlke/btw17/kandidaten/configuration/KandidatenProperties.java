@@ -42,6 +42,9 @@ public class KandidatenProperties {
     @NotNull
     private Integer millisToWaitBetweenTwoApiCalls;
 
+    @NotNull
+    private Boolean checkFotoUrl;
+
     public Integer getPageSize() {
         return pageSize;
     }
@@ -120,6 +123,14 @@ public class KandidatenProperties {
 
     public void setUrlPrefixForKandidatFoto(List<String> urlPrefixForKandidatFoto) {
         this.urlPrefixForKandidatFoto = urlPrefixForKandidatFoto;
+    }
+
+    public Boolean getCheckFotoUrl() {
+        return checkFotoUrl;
+    }
+
+    public void setCheckFotoUrl(Boolean checkFotoUrl) {
+        this.checkFotoUrl = checkFotoUrl;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {
