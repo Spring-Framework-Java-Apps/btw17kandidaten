@@ -6,10 +6,8 @@ import java.io.Serializable;
 @Entity
 @Table(
     name = "kandidat",
-    uniqueConstraints = {
-        @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
-    },
     indexes = {
+        @Index(name = "idx_kandidat_kandidat_key",columnList = "kandidat_key"),
         @Index(name = "idx_kandidat_titel", columnList = "titel"),
         @Index(name = "idx_kandidat_namenszusatz", columnList = "namenszusatz"),
         @Index(name = "idx_kandidat_nachname_ohne", columnList = "nachname_ohne"),
@@ -20,7 +18,8 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_liste_bundesland_land", columnList = "liste_bundesland_land"),
         @Index(name = "idx_kandidat_liste_platz", columnList = "liste_platz"),
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
-        @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen")
+        @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
+        @Index(name = "idx_kandidat_foto", columnList = "foto")
     }
 )
 public class Kandidat implements Serializable {

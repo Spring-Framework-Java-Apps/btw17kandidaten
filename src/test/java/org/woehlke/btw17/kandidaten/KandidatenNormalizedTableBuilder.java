@@ -11,20 +11,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
-import java.net.URL;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
-
-    @Autowired
-    private KandidatenProperties kandidatenProperties;
 
     @Autowired
     private BerufService berufService;
@@ -55,10 +50,6 @@ public class KandidatenNormalizedTableBuilder {
 
     @Autowired
     private WohnortService wohnortService;
-
-    @Autowired
-    private UrlService urlService;
-
 
 
     @Commit
@@ -111,15 +102,6 @@ public class KandidatenNormalizedTableBuilder {
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
-
-                if(kandidatenProperties.getCheckFotoUrl()){
-                    if(in.getFoto() != null){
-                        URL fotoUrl = urlService.getFotoUrl(in.getFoto());
-                        if(fotoUrl != null){
-                            out.setFotoUrl(fotoUrl.toExternalForm());
-                        }
-                    }
-                }
 
                 out = kandidatService.create(out);
 
