@@ -2,7 +2,8 @@
 
 + App the Browse Data for #btw17 with [spring:boot](https://projects.spring.io/spring-boot/) for [heroku](https://heroku.com)
 + More Info: [https://phasenraum2010.github.io/btw17kandidaten/](https://phasenraum2010.github.io/btw17kandidaten/)
-+ Moore Info and Source of Data: [https://interaktiv.morgenpost.de/kandidaten-bundestagswahl-2017/ ](https://interaktiv.morgenpost.de/kandidaten-bundestagswahl-2017/ )
++ Moore Info and Source of Data: [interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017]
+
 
 ## Development 
 
@@ -102,10 +103,13 @@ If you _really really_ like it and want to support the author, I will be glad to
 [jquery]: http://jquery.org
 [google-analytics]: https://analytics.google.com/analytics/web/
 [google-maps-javascript-api]: https://developers.google.com/maps/documentation/javascript/
+[interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017]: https://interaktiv.morgenpost.de/kandidaten-bundestagswahl-2017/
 
 ### Copyright and license
 
-&copy; 2017 Thomas Wöhlke
+&copy; 2017 Thomas Wöhlke for the Software at [Github](https://github.com/phasenraum2010/btw17kandidaten)
+&copy; 2017 [abgeordnetenwatch.de](https://www.abgeordnetenwatch.de/ueber-uns/impressum) for the Data (mentioned by morgenpost.de)
+&copy; 2017 [morgenpost.de][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017] for the Data (CSV-Download)
 
 Licensed under the **Apache License, Version 2.0**
 
