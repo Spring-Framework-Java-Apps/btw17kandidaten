@@ -108,7 +108,9 @@ If you _really really_ like it and want to support the author, I will be glad to
 ### Copyright and license
 
 &copy; 2017 Thomas Wöhlke for the Software at [Github](https://github.com/phasenraum2010/btw17kandidaten)
+
 &copy; 2017 [abgeordnetenwatch.de](https://www.abgeordnetenwatch.de/ueber-uns/impressum) for the Data (mentioned by morgenpost.de)
+
 &copy; 2017 [morgenpost.de][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017] for the Data (CSV-Download)
 
 Licensed under the **Apache License, Version 2.0**
