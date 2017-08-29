@@ -1,3 +1,4 @@
+DELETE FROM beruf;
 INSERT INTO beruf (id,beruf) VALUES (1, 'selbst. Finanzberaterin' );
 INSERT INTO beruf (id,beruf) VALUES (2, 'Assistent der Geschäftsführung' );
 INSERT INTO beruf (id,beruf) VALUES (3, 'Maschinenbauer i. R.' );
@@ -1209,6 +1210,10 @@ INSERT INTO beruf (id,beruf) VALUES (1208, 'MdL / Elektromonteur' );
 INSERT INTO beruf (id,beruf) VALUES (1209, 'Dozentin (M. Ed.)' );
 INSERT INTO beruf (id,beruf) VALUES (1210, 'Projektmanager im Innovationsbereich' );
 INSERT INTO beruf (id,beruf) VALUES (1211, 'MdB / Dipl.-Chemiker' );
+--
+--
+--
+DELETE FROM berufsgruppe;
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (1, 'Selbsständige' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (2, 'Wirtschaftsprüfer / Steuerberater' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (3, 'Dipl.-Kaufleute' );
@@ -1264,6 +1269,10 @@ INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (52, 'IT-Fachleute' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (53, 'Banker, Finanzprofis' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (54, 'wissenschaftliche Mitarbeiter' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (55, 'Betriebswirt (Ausbildung)' );
+--
+--
+--
+DELETE FROM geburtsort;
 INSERT INTO geburtsort (id,geburtsort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (2, 'Mühldorf a.Inn' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (3, 'Speyer' );
@@ -2347,6 +2356,10 @@ INSERT INTO geburtsort (id,geburtsort) VALUES (1080, 'Fürth' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1081, 'Skalica' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1082, 'Westenfeld' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1083, 'Warstein' );
+--
+--
+--
+DELETE FROM liste_partei;
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (1, 'BP','Bayernpartei' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (2, 'NPD','Nationaldemokratische Partei Deutschlands' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (3, 'PDV','Partei der Vernunft' );
@@ -2374,6 +2387,10 @@ INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (24, 'du.','
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (25, 'PIRATEN','Piratenpartei Deutschland' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (26, 'Tierschutzpartei','PARTEI MENSCH UMWELT TIERSCHUTZ' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (27, 'CDU','Christlich Demokratische Union Deutschlands' );
+--
+--
+--
+DELETE FROM partei;
 INSERT INTO partei (id,partei,partei_lang) VALUES (1, 'Einzelbewerber','Markus Beckmann – Den Menschen verpflichtet, keiner Partei!' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (2, 'Einzelbewerber','Otto Ritter' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (3, 'Einzelbewerber','wir-direkt' );
@@ -2508,6 +2525,10 @@ INSERT INTO partei (id,partei,partei_lang) VALUES (131, 'Tierschutzpartei','PART
 INSERT INTO partei (id,partei,partei_lang) VALUES (132, 'Einzelbewerber','Überparteilich! Mit gutem Beispiel voran: www.eidesstattliches-wahlversprechen.de' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (133, 'Einzelbewerber','Babnik' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (134, 'CDU','Christlich Demokratische Union Deutschlands' );
+--
+--
+--
+DELETE FROM wahlkreis;
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (1, 281,'Freiburg' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (2, 47,'Hannover-Land II' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (3, 154,'Leipzig-Land' );
@@ -2807,6 +2828,10 @@ INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (296, 232,'Amberg'
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (297, 161,'Mittelsachsen' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (298, 140,'Bochum I' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (299, 1,'Flensburg – Schleswig' );
+--
+--
+--
+DELETE FROM wohnort;
 INSERT INTO wohnort (id,wohnort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO wohnort (id,wohnort) VALUES (2, 'Mühldorf a.Inn' );
 INSERT INTO wohnort (id,wohnort) VALUES (3, 'Staufen im Breisgau' );
@@ -4026,6 +4051,10 @@ INSERT INTO wohnort (id,wohnort) VALUES (1216, 'Tengen' );
 INSERT INTO wohnort (id,wohnort) VALUES (1217, 'Poseritz' );
 INSERT INTO wohnort (id,wohnort) VALUES (1218, 'Kolbermoor' );
 INSERT INTO wohnort (id,wohnort) VALUES (1219, 'Warstein' );
+--
+--
+--
+DELETE fROM bundesland;
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (1, 'BB' ,'');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (2, 'SN' ,'');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (3, 'NW' ,'');
@@ -4042,7 +4071,10 @@ INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (13, 'MV' ,'');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (14, 'RP' ,'');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (15, 'HH' ,'');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (16, 'TH' ,'');
-
+--
+--
+--
+DELETE FROM kandidat;
 INSERT INTO kandidat (id, alter, color, foto, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, vorname, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (16639, 62, 'grey', null, 1955, 'M', 'karl-heinz-schulze', 'karl-heinz-schulze-2', 52.2709013, 'SL', 5, 11.8553502, null, 'Schulze', 'Schulze', null, null, null, null, 'Karl-Heinz', 675, null, null, 59, 11, 66, 201, 683);
 INSERT INTO kandidat (id, alter, color, foto, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, vorname, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (16640, 61, '#000000', 'karl_holmeier_30.jpg', 1956, 'M', 'karl-holmeier', 'karl-holmeier', 49.2617811, null, null, 12.763785, '1', 'Holmeier', 'Holmeier', null, 0.637658700550189, 0.131366047584358, null, 'Karl', 347, 33, null, 1059, null, 58, 38, 1190);
 INSERT INTO kandidat (id, alter, color, foto, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, vorname, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (16641, 54, '#ff0000', 'karl_lauterbach_70.jpg', 1963, 'M', 'karl-lauterbach', 'karl-lauterbach', 50.822915, 'NW', 58, 6.46702, '1', 'Lauterbach', 'Lauterbach', null, null, null, 'Prof. Dr.', 'Karl', 347, 33, null, 413, 21, 105, 145, 1180);
@@ -6605,6 +6637,7 @@ INSERT INTO kandidat (id, alter, color, foto, geburtsjahr, geschlecht, id_eigen,
 --
 -- FLAT Data
 --
+DELETE FROM kandidat2;
 INSERT INTO kandidat2 (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (1,null,null,null,'Ducke','Ducke','Kai-Uwe','M',1975,42,'Berlin','Crimmitschau','Fachinformatiker','IT-Fachleute','BE',76,'Berlin-Pankow','BüSo','Bürgerrechtsbewegung Solidarität','SL','BüSo','Bürgerrechtsbewegung Solidarität',5,null,50.8173491,12.3906771,'kai-uwe-ducke',null,null,null,'grey');
 INSERT INTO kandidat2 (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (2,null,null,null,'Herrlinger','Herrlinger','Siegmar','M',1952,65,'Kornwestheim','Birkenfeld','IT-Spezialist für Medientechnik','IT-Fachleute','BW',266,'Neckar-Zaber','MLPD','Marxistisch-Leninistische Partei Deutschlands',null,null,null,null,null,49.6512438,7.1631611,'siegmar-herrlinger',null,null,null,'grey');
 INSERT INTO kandidat2 (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (3,null,'Dr.',null,'Schulte-Wissermann','Schulte-Wissermann','Martin','M',1971,46,'Dresden','Mainz','Physiker','naturwissenschaftliche Berufe','SN',160,'Dresden II – Bautzen II','PIRATEN','Piratenpartei Deutschland','SL','PIRATEN','Piratenpartei Deutschland',4,null,49.9928617,8.2472526,'martin-schulte-wissermann',null,null,null,'grey');
