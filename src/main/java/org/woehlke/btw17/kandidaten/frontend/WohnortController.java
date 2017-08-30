@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
@@ -18,6 +19,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
@@ -38,9 +40,9 @@ public class WohnortController {
         String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        String pagerUrl = "/wohnort/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
-
         Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
         model.addAttribute("wohnorte", allWohnortPage);
         return "wohnort/all";
@@ -48,6 +50,11 @@ public class WohnortController {
 
     @RequestMapping("/{id}")
     public String getUserForId(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             @PathVariable("id") Wohnort wohnort, Model model
     ) {
         if(wohnort == null){
@@ -58,10 +65,14 @@ public class WohnortController {
             String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            String pagerUrl = "/wohnort/"+wohnort.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-
             model.addAttribute("wohnort",wohnort);
+
+            Page<Kandidat> kandidatenPage  = kandidatService.findByWohnort(wohnort,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
+
             return "wohnort/id";
         }
     }

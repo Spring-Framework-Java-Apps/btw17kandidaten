@@ -14,12 +14,15 @@ public class PageContent implements Serializable {
 
     private String googleAnalyticsKey;
 
-    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey) {
+    private String pagerUrl;
+
+    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl) {
         this.pageTitle = pageTitle;
         this.pageSubTitle = pageSubTitle;
         this.pageSymbol = pageSymbol;
         this.googleMapsApiKey = googleMapsApiKey;
         this.googleAnalyticsKey = googleAnalyticsKey;
+        this.pagerUrl = pagerUrl;
     }
 
     public String getPageTitle() {
@@ -62,6 +65,14 @@ public class PageContent implements Serializable {
         this.googleAnalyticsKey = googleAnalyticsKey;
     }
 
+    public String getPagerUrl() {
+        return pagerUrl;
+    }
+
+    public void setPagerUrl(String pagerUrl) {
+        this.pagerUrl = pagerUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,7 +85,9 @@ public class PageContent implements Serializable {
         if (pageSymbol != null ? !pageSymbol.equals(that.pageSymbol) : that.pageSymbol != null) return false;
         if (googleMapsApiKey != null ? !googleMapsApiKey.equals(that.googleMapsApiKey) : that.googleMapsApiKey != null)
             return false;
-        return googleAnalyticsKey != null ? googleAnalyticsKey.equals(that.googleAnalyticsKey) : that.googleAnalyticsKey == null;
+        if (googleAnalyticsKey != null ? !googleAnalyticsKey.equals(that.googleAnalyticsKey) : that.googleAnalyticsKey != null)
+            return false;
+        return pagerUrl != null ? pagerUrl.equals(that.pagerUrl) : that.pagerUrl == null;
     }
 
     @Override
@@ -84,6 +97,7 @@ public class PageContent implements Serializable {
         result = 31 * result + (pageSymbol != null ? pageSymbol.hashCode() : 0);
         result = 31 * result + (googleMapsApiKey != null ? googleMapsApiKey.hashCode() : 0);
         result = 31 * result + (googleAnalyticsKey != null ? googleAnalyticsKey.hashCode() : 0);
+        result = 31 * result + (pagerUrl != null ? pagerUrl.hashCode() : 0);
         return result;
     }
 
@@ -95,6 +109,7 @@ public class PageContent implements Serializable {
                 ", pageSymbol='" + pageSymbol + '\'' +
                 ", googleMapsApiKey='" + googleMapsApiKey + '\'' +
                 ", googleAnalyticsKey='" + googleAnalyticsKey + '\'' +
+                ", pagerUrl='" + pagerUrl + '\'' +
                 '}';
     }
 }

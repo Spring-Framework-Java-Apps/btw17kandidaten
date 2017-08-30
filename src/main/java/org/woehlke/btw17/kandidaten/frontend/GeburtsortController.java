@@ -12,12 +12,14 @@ import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
@@ -38,7 +40,8 @@ public class GeburtsortController {
         String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        String pagerUrl = "/geburtsort/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
@@ -49,6 +52,11 @@ public class GeburtsortController {
 
     @RequestMapping("/{id}")
     public String getUserForId(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             @PathVariable("id") Geburtsort geburtsort, Model model
     ) {
         if(geburtsort == null){
@@ -59,9 +67,14 @@ public class GeburtsortController {
             String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            String pagerUrl = "/geburtsort/"+geburtsort.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("geburtsort",geburtsort);
+
+            Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsort(geburtsort,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
+
             return "geburtsort/id";
         }
     }

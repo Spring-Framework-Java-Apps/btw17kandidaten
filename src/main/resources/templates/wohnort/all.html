@@ -6,13 +6,14 @@
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
 <header th:include="layoutMain :: tw-header"></header>
+
 <main class="page-content">
     <div class="container">
         <div>
             <div class="row">
                 <div class="col-md-12">
                 <span  class="tw-pager-arrow tw-pager-up" th:if="${wohnorte.hasPrevious()}">
-                    <a href="" th:href="@{|/wohnort/all?page=${wohnorte.previousPageable().pageNumber}|}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${wohnorte.previousPageable().pageNumber}|}">
                         <span>
                         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                         </span>
@@ -56,7 +57,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <span class="tw-pager-arrow tw-pager-down" th:if="${wohnorte.hasNext()}">
-                    <a href="" th:href="@{|/wohnort/all?page=${wohnorte.nextPageable().pageNumber}|}" >
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${wohnorte.nextPageable().pageNumber}|}" >
                         <span>
                         <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                         </span>

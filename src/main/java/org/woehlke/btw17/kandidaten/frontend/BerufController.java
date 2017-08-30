@@ -12,12 +12,14 @@ import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
@@ -38,7 +40,8 @@ public class BerufController {
         String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        String pagerUrl = "/beruf/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
         Page<Beruf> allBerufPage =  berufService.getAll(pageable);
         model.addAttribute("berufe", allBerufPage);
@@ -47,6 +50,11 @@ public class BerufController {
 
     @RequestMapping("/{id}")
     public String getUserForId(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             @PathVariable("id") Beruf beruf, Model model
     ) {
         if(beruf == null){
@@ -57,9 +65,14 @@ public class BerufController {
             String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            String pagerUrl = "/beruf/"+beruf.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("beruf",beruf);
+
+            Page<Kandidat> kandidatenPage  = kandidatService.findByBeruf(beruf,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
+
             return "beruf/id";
         }
     }

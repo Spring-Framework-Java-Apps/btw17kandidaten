@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
@@ -18,6 +19,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 import javax.persistence.EntityNotFoundException;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
@@ -38,7 +40,8 @@ public class ListeParteiController {
         String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        String pagerUrl = "/listepartei/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
         Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
@@ -48,6 +51,11 @@ public class ListeParteiController {
 
     @RequestMapping("/{id}")
     public String getUserForId(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             @PathVariable("id") ListePartei listePartei, Model model
     ) {
         if(listePartei == null){
@@ -58,10 +66,14 @@ public class ListeParteiController {
             String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            String pagerUrl = "/listepartei/"+listePartei.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-
             model.addAttribute("listePartei",listePartei);
+
+            Page<Kandidat> kandidatenPage  = kandidatService.findByListePartei(listePartei,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
+
             return "listepartei/id";
         }
     }

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.repositories.KandidatRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
@@ -41,5 +41,45 @@ public class KandidatServiceImpl implements KandidatService {
     @Override
     public long count() {
         return kandidatRepository.count();
+    }
+
+    @Override
+    public Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable) {
+        return kandidatRepository.findByBeruf(beruf, pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByBerufsgruppe(Berufsgruppe berufsgruppe, Pageable pageable) {
+        return kandidatRepository.findByBerufsgruppe(berufsgruppe,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByBundesland(Bundesland bundesland, Pageable pageable) {
+        return kandidatRepository.findByBundesland(bundesland, pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByGeburtsort(Geburtsort geburtsort, Pageable pageable) {
+        return kandidatRepository.findByGeburtsort(geburtsort,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable) {
+        return kandidatRepository.findByListePartei(listePartei,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByPartei(Partei partei, Pageable pageable) {
+        return kandidatRepository.findByPartei(partei, pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByWahlkreis(Wahlkreis wahlkreis, Pageable pageable) {
+        return kandidatRepository.findByWahlkreis(wahlkreis, pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable) {
+        return kandidatRepository.findByWohnort(wohnort, pageable);
     }
 }

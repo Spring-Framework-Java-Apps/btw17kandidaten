@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <span  class="tw-pager-arrow tw-pager-up" th:if="${berufe.hasPrevious()}">
-                    <a href="" th:href="@{|/beruf/all?page=${berufe.previousPageable().pageNumber}|}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.previousPageable().pageNumber}|}">
                         <span>
                         <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                         </span>
@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-md-12">
                 <span class="tw-pager-arrow tw-pager-down" th:if="${berufe.hasNext()}">
-                    <a href="" th:href="@{|/beruf/all?page=${berufe.nextPageable().pageNumber}|}" >
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.nextPageable().pageNumber}|}" >
                         <span>
                         <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                         </span>

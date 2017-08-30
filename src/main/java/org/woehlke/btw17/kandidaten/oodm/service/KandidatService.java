@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.*;
 
 public interface KandidatService {
 
@@ -19,5 +19,21 @@ public interface KandidatService {
     void deleteAll();
 
     long count();
+
+    Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable);
+
+    Page<Kandidat> findByBerufsgruppe(Berufsgruppe berufsgruppe, Pageable pageable);
+
+    Page<Kandidat> findByBundesland(Bundesland bundesland, Pageable pageable);
+
+    Page<Kandidat> findByGeburtsort(Geburtsort geburtsort, Pageable pageable);
+
+    Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
+
+    Page<Kandidat> findByPartei(Partei partei, Pageable pageable);
+
+    Page<Kandidat> findByWahlkreis(Wahlkreis wahlkreis, Pageable pageable);
+
+    Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
 
 }
