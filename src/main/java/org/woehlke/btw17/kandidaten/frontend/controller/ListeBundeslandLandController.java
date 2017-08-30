@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
@@ -47,7 +48,7 @@ public class ListeBundeslandLandController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
 
-            String listeBundeslandLand = kandidat.getListeBundeslandLand();
+            Bundesland listeBundeslandLand = kandidat.getListeBundeslandLand();
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLand(listeBundeslandLand,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
@@ -75,7 +76,7 @@ public class ListeBundeslandLandController {
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
-        Page<String> listebundeslandPage  = kandidatService.findByListeBundeslandLandAll(pageable);
+        Page<Bundesland> listebundeslandPage  = kandidatService.findByListeBundeslandLandAll(pageable);
         model.addAttribute("listebundeslandPage",listebundeslandPage);
 
         return "listebundesland/all";

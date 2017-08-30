@@ -40,10 +40,10 @@ public interface KandidatService {
 
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
 
-    Page<String> findByListeBundeslandLandAll(Pageable pageable);
+    Page<Bundesland> findByListeBundeslandLandAll(Pageable pageable);
 
     Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
-    Page<Kandidat> findByListeBundeslandLand(String listeBundeslandLand, Pageable pageable);
+    Page<Kandidat> findByListeBundeslandLand(Bundesland listeBundeslandLand, Pageable pageable);
 
 }

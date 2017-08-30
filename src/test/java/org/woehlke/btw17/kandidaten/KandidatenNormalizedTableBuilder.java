@@ -83,7 +83,6 @@ public class KandidatenNormalizedTableBuilder {
                 out.setScatterY(in.getScatterY());
                 out.setVorname(in.getVorname());
                 out.setTitel(in.getTitel());
-                out.setListeBundeslandLand(in.getListeBundeslandLand());
 
                 Beruf beruf = berufService.findByBeruf(in.getBeruf());
                 Berufsgruppe berufsgruppe = berufsgruppeService.findByBerufsgruppe(in.getBerufsgruppe());
@@ -93,6 +92,7 @@ public class KandidatenNormalizedTableBuilder {
                 Partei partei = parteiService.findByPartei(in.getPartei(),in.getParteiLang());
                 Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(in.getWahlkreisId());
                 Wohnort wohnort = wohnortService.findByWohnort(in.getWohnort());
+                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
 
                 out.setBeruf(beruf);
                 out.setBerufsgruppe(berufsgruppe);
@@ -102,6 +102,7 @@ public class KandidatenNormalizedTableBuilder {
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
+                out.setListeBundeslandLand(listeBundeslandLand);
 
                 out = kandidatService.create(out);
 

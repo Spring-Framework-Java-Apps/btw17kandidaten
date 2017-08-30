@@ -33,7 +33,7 @@ import java.io.Serializable;
     ),
     @NamedQuery(
         name = "Kandidat.findByListeBundeslandLandAll",
-        query = "select DISTINCT o.listeBundeslandLand from Kandidat as o where o.listeBundeslandLand is not null order by o.listeBundeslandLand"
+        query = "select DISTINCT o.listeBundeslandLand from Kandidat as o where o.listeBundeslandLand is not null order by o.listeBundeslandLand.bundeslandLang"
     )
 })
 public class Kandidat implements Serializable {
@@ -71,40 +71,41 @@ public class Kandidat implements Serializable {
     @Column
     private Integer alter;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_wohnort", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_wohnort", nullable = true, updatable = false)
     private Wohnort wohnort;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_geburtsort", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Geburtsort geburtsort;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_beruf", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_beruf", nullable = true, updatable = false)
     private Beruf beruf;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_berufsgruppe", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_bundesland", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     private Bundesland bundesland;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_wahlkreis", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_wahlkreis", nullable = true, updatable = false)
     private Wahlkreis wahlkreis;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_partei", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_partei", nullable = true, updatable = false)
     private Partei partei;
 
-    @ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="fk_liste_partei", nullable=true, updatable=false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_liste_partei", nullable = true, updatable = false)
     private ListePartei listePartei;
 
-    @Column(name = "liste_bundesland_land")
-    private String listeBundeslandLand;
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "liste_bundesland_land", nullable = true, updatable = false)
+    private Bundesland listeBundeslandLand;
 
     @Column(name = "liste_platz")
     private Integer listePlatz;
@@ -148,7 +149,7 @@ public class Kandidat implements Serializable {
     @Column
     private String youtube;
 
-    @Column(name="logo_url")
+    @Column(name = "logo_url")
     private String logoUrl;
 
     public static long getSerialVersionUID() {
@@ -291,13 +292,6 @@ public class Kandidat implements Serializable {
         this.partei = partei;
     }
 
-    public String getListeBundeslandLand() {
-        return listeBundeslandLand;
-    }
-
-    public void setListeBundeslandLand(String listeBundeslandLand) {
-        this.listeBundeslandLand = listeBundeslandLand;
-    }
 
     public Integer getListePlatz() {
         return listePlatz;
@@ -427,6 +421,14 @@ public class Kandidat implements Serializable {
         this.logoUrl = logoUrl;
     }
 
+    public Bundesland getListeBundeslandLand() {
+        return listeBundeslandLand;
+    }
+
+    public void setListeBundeslandLand(Bundesland listeBundeslandLand) {
+        this.listeBundeslandLand = listeBundeslandLand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -536,7 +538,7 @@ public class Kandidat implements Serializable {
                 ", wahlkreis=" + wahlkreis +
                 ", partei=" + partei +
                 ", listePartei=" + listePartei +
-                ", listeBundeslandLand='" + listeBundeslandLand + '\'' +
+                ", listeBundeslandLand=" + listeBundeslandLand +
                 ", listePlatz=" + listePlatz +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
@@ -555,3 +557,5 @@ public class Kandidat implements Serializable {
                 '}';
     }
 }
+
+
