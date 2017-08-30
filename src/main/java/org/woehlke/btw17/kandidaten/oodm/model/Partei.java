@@ -1,6 +1,8 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -32,20 +34,29 @@ public class Partei implements Serializable {
     @Column(name="partei_lang")
     private String parteiLang;
 
+    @URL
     @Column
     private String webseite;
 
+    @URL
     @Column
     private String twitter;
 
+    @URL
     @Column
     private String facebook;
 
+    @URL
     @Column
     private String youtube;
 
+    @URL
     @Column(name="logo_url")
     private String logoUrl;
+
+    @URL
+    @Column
+    private String wikipediaArticle;
 
     public Long getId() {
         return id;
@@ -111,6 +122,14 @@ public class Partei implements Serializable {
         this.logoUrl = logoUrl;
     }
 
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -125,7 +144,8 @@ public class Partei implements Serializable {
         if (twitter != null ? !twitter.equals(partei1.twitter) : partei1.twitter != null) return false;
         if (facebook != null ? !facebook.equals(partei1.facebook) : partei1.facebook != null) return false;
         if (youtube != null ? !youtube.equals(partei1.youtube) : partei1.youtube != null) return false;
-        return logoUrl != null ? logoUrl.equals(partei1.logoUrl) : partei1.logoUrl == null;
+        if (logoUrl != null ? !logoUrl.equals(partei1.logoUrl) : partei1.logoUrl != null) return false;
+        return wikipediaArticle != null ? wikipediaArticle.equals(partei1.wikipediaArticle) : partei1.wikipediaArticle == null;
     }
 
     @Override
@@ -138,6 +158,7 @@ public class Partei implements Serializable {
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         return result;
     }
 
@@ -152,6 +173,7 @@ public class Partei implements Serializable {
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 '}';
     }
 }

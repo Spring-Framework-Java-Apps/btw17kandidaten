@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -28,17 +30,25 @@ public class Bundesland implements Serializable {
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
+    @URL
     @Column
     private String webseite;
 
+    @URL
     @Column
     private String twitter;
 
+    @URL
     @Column
     private String facebook;
 
+    @URL
     @Column
     private String youtube;
+
+    @URL
+    @Column
+    private String wikipediaArticle;
 
     @Column(name="logo_url")
     private String logoUrl;
@@ -117,6 +127,14 @@ public class Bundesland implements Serializable {
         this.logoUrl = logoUrl;
     }
 
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -132,6 +150,8 @@ public class Bundesland implements Serializable {
         if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
         if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
         if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
+        if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
+            return false;
         return logoUrl != null ? logoUrl.equals(that.logoUrl) : that.logoUrl == null;
     }
 
@@ -144,6 +164,7 @@ public class Bundesland implements Serializable {
         result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         return result;
     }
@@ -158,6 +179,7 @@ public class Bundesland implements Serializable {
                 ", twitter='" + twitter + '\'' +
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 '}';
     }

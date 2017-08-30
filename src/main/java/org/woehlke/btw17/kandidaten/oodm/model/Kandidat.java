@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -126,6 +128,7 @@ public class Kandidat implements Serializable {
     @Column
     private String foto;
 
+    @URL
     @Column(name = "foto_url")
     private String fotoUrl;
 
@@ -138,18 +141,27 @@ public class Kandidat implements Serializable {
     @Column
     private String color;
 
+    @URL
     @Column
     private String webseite;
 
+    @URL
     @Column
     private String twitter;
 
+    @URL
     @Column
     private String facebook;
 
+    @URL
     @Column
     private String youtube;
 
+    @URL
+    @Column
+    private String wikipediaArticle;
+
+    @URL
     @Column(name = "logo_url")
     private String logoUrl;
 
@@ -442,6 +454,14 @@ public class Kandidat implements Serializable {
         this.kandidatFlat = kandidatFlat;
     }
 
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -487,6 +507,8 @@ public class Kandidat implements Serializable {
         if (twitter != null ? !twitter.equals(kandidat.twitter) : kandidat.twitter != null) return false;
         if (facebook != null ? !facebook.equals(kandidat.facebook) : kandidat.facebook != null) return false;
         if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
+        if (wikipediaArticle != null ? !wikipediaArticle.equals(kandidat.wikipediaArticle) : kandidat.wikipediaArticle != null)
+            return false;
         if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
@@ -526,6 +548,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
@@ -567,6 +590,7 @@ public class Kandidat implements Serializable {
                 ", twitter='" + twitter + '\'' +
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';

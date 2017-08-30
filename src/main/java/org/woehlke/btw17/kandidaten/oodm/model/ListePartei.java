@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -28,6 +30,30 @@ public class ListePartei implements Serializable {
     @Column(name="liste_partei_lang")
     private String listeParteiLang;
 
+    @URL
+    @Column
+    private String webseite;
+
+    @URL
+    @Column
+    private String twitter;
+
+    @URL
+    @Column
+    private String facebook;
+
+    @URL
+    @Column
+    private String youtube;
+
+    @URL
+    @Column(name="logo_url")
+    private String logoUrl;
+
+    @URL
+    @Column
+    private String wikipediaArticle;
+
     public Long getId() {
         return id;
     }
@@ -52,6 +78,54 @@ public class ListePartei implements Serializable {
         this.listeParteiLang = listeParteiLang;
     }
 
+    public String getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(String webseite) {
+        this.webseite = webseite;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,7 +135,14 @@ public class ListePartei implements Serializable {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (listePartei != null ? !listePartei.equals(that.listePartei) : that.listePartei != null) return false;
-        return listeParteiLang != null ? listeParteiLang.equals(that.listeParteiLang) : that.listeParteiLang == null;
+        if (listeParteiLang != null ? !listeParteiLang.equals(that.listeParteiLang) : that.listeParteiLang != null)
+            return false;
+        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
+        if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
+        if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
+        if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
+        if (logoUrl != null ? !logoUrl.equals(that.logoUrl) : that.logoUrl != null) return false;
+        return wikipediaArticle != null ? wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle == null;
     }
 
     @Override
@@ -69,6 +150,12 @@ public class ListePartei implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
         result = 31 * result + (listeParteiLang != null ? listeParteiLang.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         return result;
     }
 
@@ -78,6 +165,12 @@ public class ListePartei implements Serializable {
                 "id=" + id +
                 ", listePartei='" + listePartei + '\'' +
                 ", listeParteiLang='" + listeParteiLang + '\'' +
+                ", webseite='" + webseite + '\'' +
+                ", twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 '}';
     }
 }
