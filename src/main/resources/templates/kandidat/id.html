@@ -96,15 +96,18 @@
                             <tr th:if="${kandidat.listeBundeslandLand}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Liste Bundesland</td>
                                 <td>
-                                    <a th:href="@{|/kandidat/listebundesland/${kandidat.id}/|}">
-                                        <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
+                                    <a th:href="@{|/listebundesland/${kandidat.id}/|}">
+                                        <span th:text="${kandidat.listeBundeslandLand.bundesland}">bundesland</span>
+                                        <span th:text="${kandidat.listeBundeslandLand.bundeslandLang}">bundeslandLang</span>
+                                        <span>Listenplatz:</span>
+                                        <span th:text="${kandidat.listePlatz}"></span>
                                     </a>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.listePartei}">
                                 <td><i class="fa fa-list-alt" aria-hidden="true"></i> Liste</td>
                                 <td>
-                                    <a th:href="@{|/listepartei/${kandidat.listePartei.id}/|}">
+                                    <a th:href="@{|/listepartei/${kandidat.id}/|}">
                                         <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                     </a>
                                 </td>
