@@ -77,7 +77,7 @@ public class ListeBundeslandLandController {
         model.addAttribute("pageContent",pageContent);
 
         Page<Bundesland> listebundeslandPage  = kandidatService.findByListeBundeslandLandAll(pageable);
-        model.addAttribute("listebundeslandPage",listebundeslandPage);
+        model.addAttribute("bundeslaender",listebundeslandPage);
 
         return "listebundesland/all";
     }

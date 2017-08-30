@@ -8,68 +8,7 @@
 <header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
-    <div class="container">
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${bundeslaender.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${bundeslaender.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well">
-                        <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th>ID</th>
-                                <th>BL</th>
-                                <th>Bundesland</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="bundesland : ${bundeslaender}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/bundesland/${bundesland.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${bundesland.id}">id</span>
-                                        </a>
-                                    </span>
-                                </span>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/bundesland/${bundesland.id}/|}">
-                                        <span th:if="${bundesland.bundesland}" th:text="${bundesland.bundesland}">bundesland.bundesland</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span th:text="${bundesland.bundeslandLang}">bundesland.bundeslandLang</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${bundeslaender.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${bundeslaender.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
-                </div>
-            </div>
-        </div>
+    <div th:include="layoutMain :: tw-page-condent-bundeslaender">
     </div>
 </main>
 
