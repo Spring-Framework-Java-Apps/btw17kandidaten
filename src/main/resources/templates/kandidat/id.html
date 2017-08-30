@@ -154,7 +154,7 @@
             });
         }
     </script>
-    <script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${googleMapsApiKey}|}" ></script>
+    <script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${pageContent.googleMapsApiKey}|}" ></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="webjars/jquery/1.11.1/jquery.min.js" th:attr="src=@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
