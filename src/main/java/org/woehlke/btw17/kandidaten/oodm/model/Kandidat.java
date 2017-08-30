@@ -18,7 +18,6 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_geschlecht", columnList = "geschlecht"),
         @Index(name = "idx_kandidat_geburtsjahr", columnList = "geburtsjahr"),
         @Index(name = "idx_kandidat_alter", columnList = "alter"),
-        @Index(name = "idx_kandidat_liste_bundesland_land", columnList = "liste_bundesland_land"),
         @Index(name = "idx_kandidat_liste_platz", columnList = "liste_platz"),
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
         @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
@@ -151,7 +150,7 @@ public class Kandidat implements Serializable {
     private String logoUrl;
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "kandidat_flat", nullable = false, updatable = false)
+    @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
 
     public static long getSerialVersionUID() {

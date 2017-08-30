@@ -56,9 +56,7 @@ public class KandidatController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
-            if(kandidat.getListePartei() != null){
-                pageTitle += ", "+kandidat.getListePartei().getListePartei();
-            } else if (kandidat.getPartei() != null){
+            if (kandidat.getPartei() != null){
                 pageTitle += ", "+kandidat.getPartei().getPartei();
             }
             String pageSubTitle = "Kandidaten der btw17";
@@ -72,74 +70,6 @@ public class KandidatController {
             model.addAttribute("kandidat",kandidat);
             return "kandidat/id";
         }
-    }
-
-    @RequestMapping("/geburtsjahr/all")
-    public String getUserForGeburtsjahrAll(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            Model model
-    ) {
-        return "redirect:/geburtsjahr/all";
-    }
-
-    @RequestMapping("/geburtsjahr/{id}")
-    public String getUserForGeburtsjahr(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            @PathVariable("id") Kandidat kandidat, Model model
-    ) {
-        if(kandidat == null){
-            throw new EntityNotFoundException();
-        } else {
-            return "redirect:/geburtsjahr/"+kandidat.getGeburtsjahr();
-        }
-    }
-
-    @RequestMapping("/listebundesland/{id}")
-    public String getUserForListeBundeslandLand(
-        @PageableDefault(
-            value = FIRST_PAGE_NUMBER,
-            size = PAGE_SIZE,
-            sort = PAGE_DEFAULT_SORT
-        ) Pageable pageable,
-        @PathVariable("id") Kandidat kandidat, Model model
-    ) {
-        if(kandidat == null){
-            throw new EntityNotFoundException();
-        } else {
-            return "redirect:/listebundesland/"+kandidat.getId();
-        }
-    }
-
-    @RequestMapping("/listebundesland/all")
-    public String getUserForListeBundeslandLand(
-        @PageableDefault(
-            value = FIRST_PAGE_NUMBER,
-            size = PAGE_SIZE,
-            sort = PAGE_DEFAULT_SORT
-        ) Pageable pageable,
-        Model model
-    ) {
-        return "redirect:/listebundesland/all";
-    }
-
-    @RequestMapping("/mdb")
-    public String getUserwhoAreMdB(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            Model model
-    ) {
-        return "redirect:/mdb/all";
     }
 
     private final KandidatService kandidatService;
