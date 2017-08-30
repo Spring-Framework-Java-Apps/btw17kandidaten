@@ -43,10 +43,10 @@ public class ListeBundeslandLandController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = "Landesliste: ";
-            if(kandidat.getPartei() != null){
-                pageTitle += " "+ kandidat.getPartei().getPartei();
+            if(kandidat.getListePartei() != null){
+                pageTitle += " "+ kandidat.getListePartei().getListePartei();
             }
-            if((kandidat.getPartei() != null)&&(kandidat.getListeBundeslandLand() != null)){
+            if(kandidat.getListeBundeslandLand() != null){
                 pageTitle += " in ";
             } else {
                 pageTitle += " ";

@@ -63,7 +63,7 @@ public class BundeslandController {
         if(bundesland == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = bundesland.getBundesland() + ", "+bundesland.getBundeslandLang();
+            String pageTitle = bundesland.getBundeslandLang() +" ("+bundesland.getBundesland()+")";
             String pageSubTitle = "Bundesländer der btw17 Kandidaten";
             String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
