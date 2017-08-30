@@ -45,18 +45,19 @@
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.bundesland}">
-                                <td><i class="fa fa-map-marker" aria-hidden="true"></i> Geburtsort</td>
+                                <td><i class="fa fa-map-marker" aria-hidden="true"></i> Bundesland</td>
                                 <td>
                                     <a th:href="@{|/bundesland/${kandidat.bundesland.id}/|}">
                                         <span th:text="${kandidat.bundesland.bundesland}">bundesland</span>
+                                        <span th:text="${kandidat.bundesland.bundeslandLang}">bundeslandLang</span>
                                     </a>
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.wohnort}">
-                                <td><i class="fa fa-map-marker" aria-hidden="true"></i> Wohnort</td>
+                            <tr th:if="${kandidat.geburtsort}">
+                                <td><i class="fa fa-map-marker" aria-hidden="true"></i> Geburtsort</td>
                                 <td>
-                                    <a th:href="@{|/wohnort/${kandidat.wohnort.id}/|}">
-                                        <span th:text="${kandidat.wohnort.wohnort}">wohnort</span>
+                                    <a th:href="@{|/geburtsort/${kandidat.geburtsort.id}/|}">
+                                        <span th:text="${kandidat.geburtsort.geburtsort}">Geburtsort</span>
                                     </a>
                                 </td>
                             </tr>
