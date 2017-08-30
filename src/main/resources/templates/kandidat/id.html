@@ -95,13 +95,11 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.listeBundeslandLand != null} AND ${kandidat.listePlatz != null} AND ${kandidat.listePartei != null}">
+                            <tr th:if="${kandidat.landesListe != null} AND ${kandidat.listePlatz != null}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Landesliste </td>
                                 <td>
-                                    <a th:href="@{|/listebundesland/${kandidat.id}/|}">
-                                        <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
-                                        <span>: </span>
-                                        <span th:text="${kandidat.listeBundeslandLand.bundeslandLang}">bundeslandLang</span>
+                                    <a th:href="@{|/landesliste/${kandidat.landesListe.id}/|}">
+                                        <span th:text="${kandidat.landesListe.name}">landesListe</span>
                                         <span>, Listenplatz:</span>
                                         <span th:text="${kandidat.listePlatz}"></span>
                                     </a>
