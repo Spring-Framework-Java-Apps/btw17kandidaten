@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.frontend.errorhandling;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.SpelEvaluationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
@@ -69,6 +71,22 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView handleNullPointerException(HttpServletRequest request, Exception ex) {
         log.warn("NullPointerException occured :: URL=" + request.getRequestURL());
+        log.warn(ex.getMessage());
+        return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(SpelEvaluationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView handleSpelEvaluationException(HttpServletRequest request, Exception ex) {
+        log.warn("SpelEvaluationException occured :: URL=" + request.getRequestURL());
+        log.warn(ex.getMessage());
+        return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(TemplateProcessingException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView handleTemplateProcessingException(HttpServletRequest request, Exception ex) {
+        log.warn("TemplateProcessingException occured :: URL=" + request.getRequestURL());
         log.warn(ex.getMessage());
         return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
