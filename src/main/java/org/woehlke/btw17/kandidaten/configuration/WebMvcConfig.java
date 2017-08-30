@@ -13,7 +13,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        //registry.addViewController("/adm").setViewName("redirect:/application/management");
         registry.addViewController("/").setViewName("redirect:/kandidat/all");
     }
 
@@ -21,4 +20,5 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();
     }
+
 }

@@ -14,19 +14,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers(
-                        kandidatenProperties.getWebSecurityConfigPublicPathsAsArray()
-                ).permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
+            .authorizeRequests()
+            .antMatchers(
+                kandidatenProperties.getWebSecurityConfigPublicPathsAsArray()
+            )
+            .permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .permitAll()
+            .and()
+            .logout()
+            .logoutSuccessUrl("/")
+            .permitAll();
     }
 
     @Autowired
@@ -35,8 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         String pwd = kandidatenProperties.getLoginPassword();
         String role = "USER";
         auth
-                .inMemoryAuthentication()
-                .withUser(user).password(pwd).roles(role);
+            .inMemoryAuthentication()
+            .withUser(user).password(pwd).roles(role);
     }
 
     @Autowired

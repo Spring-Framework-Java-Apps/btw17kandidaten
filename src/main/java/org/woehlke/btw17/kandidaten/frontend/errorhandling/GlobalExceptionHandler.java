@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
-
+public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
 
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -56,6 +57,22 @@ public class GlobalExceptionHandler {
         return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(IOException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView handleIOException(HttpServletRequest request, Exception ex) {
+        log.warn("IOException occured :: URL=" + request.getRequestURL());
+        log.warn(ex.getMessage());
+        return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView handleNullPointerException(HttpServletRequest request, Exception ex) {
+        log.warn("NullPointerException occured :: URL=" + request.getRequestURL());
+        log.warn(ex.getMessage());
+        return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     private ModelAndView getTemplate(HttpServletRequest request, Exception ex, HttpStatus httpStatus) {
         ModelAndView mav = new ModelAndView();
         String pageTitle = httpStatus.toString() +" Exception";
@@ -70,7 +87,6 @@ public class GlobalExceptionHandler {
         mav.setViewName("exceptionhandler/exceptionhandler");
         return mav;
     }
-
 
     @Autowired
     public GlobalExceptionHandler(KandidatenProperties kandidatenProperties) {
