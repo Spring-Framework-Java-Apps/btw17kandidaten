@@ -4,6 +4,7 @@ package org.woehlke.btw17.kandidaten.frontend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.Partei;
+import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -29,18 +30,19 @@ public class ListeBundeslandLandController {
 
 
     @RequestMapping("/{id}")
-    public String getUserForListeBundeslandLand(
+    public String getLandesliste(
             @PageableDefault(
                 value = FIRST_PAGE_NUMBER,
                 size = PAGE_SIZE,
-                sort = PAGE_DEFAULT_SORT
+                sort = "listePlatz",
+                direction= Sort.Direction.DESC
             ) Pageable pageable,
             @PathVariable("id") Kandidat kandidat, Model model
     ) {
         if(kandidat == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = "ListeBundesland: ";
+            String pageTitle = "Landesliste: ";
             if(kandidat.getPartei() != null){
                 pageTitle += " "+ kandidat.getPartei().getPartei();
             }
@@ -64,8 +66,8 @@ public class ListeBundeslandLandController {
             model.addAttribute("pageContent",pageContent);
 
             Bundesland listeBundeslandLand = kandidat.getListeBundeslandLand();
-            Partei partei = kandidat.getPartei();
-            Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLandAndPartei(listeBundeslandLand,partei,pageable);
+            ListePartei listePartei = kandidat.getListePartei();
+            Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLandAndListePartei(listeBundeslandLand,listePartei,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
             model.addAttribute("kandidat",kandidat);

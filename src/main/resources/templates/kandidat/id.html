@@ -93,7 +93,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.listeBundeslandLand}">
+                            <tr th:if="${kandidat.listeBundeslandLand} AND ${kandidat.listePlatz} AND ${kandidat.listeBundeslandLand}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Landesliste </td>
                                 <td>
                                     <a th:href="@{|/listebundesland/${kandidat.id}/|}">
