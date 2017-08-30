@@ -14,12 +14,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
+
+    private final static String sqlFileUpdateFotoUrls = "etc/3nf/update_foto_url.sql";
 
     @Autowired
     private BerufService berufService;
@@ -51,6 +56,8 @@ public class KandidatenNormalizedTableBuilder {
     @Autowired
     private WohnortService wohnortService;
 
+    @Autowired
+    private JdbcService jdbcService;
 
     @Commit
     @Test
@@ -115,5 +122,13 @@ public class KandidatenNormalizedTableBuilder {
                 goOn = false;
             }
         }
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
+        long id = 0;
+        while (br.ready()){
+            id++;
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
     }
 }
