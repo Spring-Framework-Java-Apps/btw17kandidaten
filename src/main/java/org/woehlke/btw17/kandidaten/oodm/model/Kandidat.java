@@ -6,8 +6,11 @@ import java.io.Serializable;
 @Entity
 @Table(
     name = "kandidat",
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
+    },
     indexes = {
-        @Index(name = "idx_kandidat_kandidat_key",columnList = "kandidat_key"),
+        @Index(name = "idx_kandidat_remote_kandidat_key", columnList = "remote_kandidat_key"),
         @Index(name = "idx_kandidat_titel", columnList = "titel"),
         @Index(name = "idx_kandidat_namenszusatz", columnList = "namenszusatz"),
         @Index(name = "idx_kandidat_nachname_ohne", columnList = "nachname_ohne"),
@@ -44,8 +47,11 @@ public class Kandidat implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column(name = "kandidat_key")
+    @Column(name = "kandidat_key",nullable = false, unique = true)
     private String key;
+
+    @Column(name = "remote_kandidat_key")
+    private String remoteKey;
 
     @Column
     private String titel;
@@ -170,6 +176,14 @@ public class Kandidat implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getRemoteKey() {
+        return remoteKey;
+    }
+
+    public void setRemoteKey(String remoteKey) {
+        this.remoteKey = remoteKey;
     }
 
     public String getTitel() {
@@ -438,6 +452,7 @@ public class Kandidat implements Serializable {
 
         if (id != null ? !id.equals(kandidat.id) : kandidat.id != null) return false;
         if (key != null ? !key.equals(kandidat.key) : kandidat.key != null) return false;
+        if (remoteKey != null ? !remoteKey.equals(kandidat.remoteKey) : kandidat.remoteKey != null) return false;
         if (titel != null ? !titel.equals(kandidat.titel) : kandidat.titel != null) return false;
         if (namenszusatz != null ? !namenszusatz.equals(kandidat.namenszusatz) : kandidat.namenszusatz != null)
             return false;
@@ -482,6 +497,7 @@ public class Kandidat implements Serializable {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (key != null ? key.hashCode() : 0);
+        result = 31 * result + (remoteKey != null ? remoteKey.hashCode() : 0);
         result = 31 * result + (titel != null ? titel.hashCode() : 0);
         result = 31 * result + (namenszusatz != null ? namenszusatz.hashCode() : 0);
         result = 31 * result + (nachnameOhne != null ? nachnameOhne.hashCode() : 0);
@@ -522,6 +538,7 @@ public class Kandidat implements Serializable {
         return "Kandidat{" +
                 "id=" + id +
                 ", key='" + key + '\'' +
+                ", remoteKey='" + remoteKey + '\'' +
                 ", titel='" + titel + '\'' +
                 ", namenszusatz='" + namenszusatz + '\'' +
                 ", nachnameOhne='" + nachnameOhne + '\'' +

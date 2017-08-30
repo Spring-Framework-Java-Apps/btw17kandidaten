@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Locale;
 
 @Entity
 @Table(
@@ -131,6 +132,46 @@ public class KandidatFlat implements Serializable {
 
     @Column
     private String color;
+
+    @Transient
+    public String getTransientKey(){
+        String newKandidatKey = null;
+        Locale locale = Locale.GERMANY;
+        String titel = this.getTitel();
+        String vorname = this.getVorname();
+        String nachname = this.getNachname();
+        String namenszusatz = this.getNamenszusatz();
+        String geschlecht = this.getGeschlecht();
+        String geburtsort = this.getGeburtsort();
+        Integer geburtsjahr = this.getGeburtsjahr();
+        vorname = vorname.replaceAll("\\w","").toLowerCase(locale);
+        nachname = nachname.replaceAll("\\w","").toLowerCase(locale);
+        newKandidatKey = vorname +"-"+nachname;
+        if(namenszusatz!=null){
+            namenszusatz = namenszusatz.replaceAll("\\w","").toLowerCase(locale);
+            newKandidatKey =  namenszusatz +"-"+ newKandidatKey;
+        }
+        if(titel!=null){
+            titel = titel.replaceAll("\\w","").toLowerCase(locale);
+            newKandidatKey =  titel+"-"+ newKandidatKey;
+        }
+        if(geschlecht!=null){
+            if(geschlecht.compareTo("M")==0){
+                newKandidatKey = "herr-"+ newKandidatKey;
+            }
+            if(geschlecht.compareTo("W")==0){
+                newKandidatKey = "frau-"+ newKandidatKey;
+            }
+        }
+        if(geburtsjahr != null){
+            newKandidatKey = newKandidatKey +"-geboren-"+geburtsjahr;
+        }
+        if(geburtsort != null){
+            geburtsort = geburtsort.replaceAll("\\w","").toLowerCase(locale);
+            newKandidatKey = newKandidatKey +"-in-"+geburtsort;
+        }
+        return newKandidatKey;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

@@ -24,7 +24,7 @@ public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
 
-    private final static String sqlFileUpdateFotoUrls = "etc/3nf/update_foto_url.sql";
+    private final static String sqlFileUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
 
     @Autowired
     private BerufService berufService;
@@ -77,8 +77,6 @@ public class KandidatenNormalizedTableBuilder {
                 out.setFoto(in.getFoto());
                 out.setGeburtsjahr(in.getGeburtsjahr());
                 out.setGeschlecht(in.getGeschlecht());
-                out.setIdEigen(in.getIdEigen());
-                out.setKey(in.getKey());
                 out.setLat(in.getLat());
                 out.setLng(in.getLng());
                 out.setMdb(in.getMdb());
@@ -90,6 +88,9 @@ public class KandidatenNormalizedTableBuilder {
                 out.setScatterY(in.getScatterY());
                 out.setVorname(in.getVorname());
                 out.setTitel(in.getTitel());
+                out.setRemoteKey(in.getKey());
+                out.setIdEigen(in.getIdEigen());
+                out.setKey(in.getTransientKey());
 
                 Beruf beruf = berufService.findByBeruf(in.getBeruf());
                 Berufsgruppe berufsgruppe = berufsgruppeService.findByBerufsgruppe(in.getBerufsgruppe());
