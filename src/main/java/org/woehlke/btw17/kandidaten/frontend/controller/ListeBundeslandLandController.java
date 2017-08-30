@@ -49,11 +49,11 @@ public class ListeBundeslandLandController {
             model.addAttribute("pageContent",pageContent);
 
             Bundesland listeBundeslandLand = kandidat.getListeBundeslandLand();
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLand(listeBundeslandLand,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
             model.addAttribute("kandidat",kandidat);
+            model.addAttribute("bundeslandIdTarget","listebundesland");
             return "listebundesland/id";
         }
     }
@@ -78,7 +78,7 @@ public class ListeBundeslandLandController {
 
         Page<Bundesland> listebundeslandPage  = kandidatService.findByListeBundeslandLandAll(pageable);
         model.addAttribute("bundeslaender",listebundeslandPage);
-
+        model.addAttribute("bundeslandIdTarget","listebundesland");
         return "listebundesland/all";
     }
 

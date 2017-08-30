@@ -47,6 +47,7 @@ public class BundeslandController {
 
         Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
+        model.addAttribute("bundeslandIdTarget","bundesland");
         return "bundesland/all";
     }
 
@@ -74,7 +75,7 @@ public class BundeslandController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByBundesland(bundesland,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
+            model.addAttribute("bundeslandIdTarget","bundesland");
             return "bundesland/id";
         }
     }
