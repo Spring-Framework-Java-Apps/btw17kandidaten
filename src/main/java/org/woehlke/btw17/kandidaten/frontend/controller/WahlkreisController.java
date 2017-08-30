@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend;
+package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
-import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
+import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
+import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
-import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
+import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,29 +23,32 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/wohnort")
-public class WohnortController {
+@RequestMapping("/wahlkreis")
+public class WahlkreisController {
+
 
     @RequestMapping("/all")
     public String getAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "wohnort"
+                    sort = "wahlkreisName"
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Wohnorte";
+        String pageTitle = "Wahlkreise";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
+        String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/wohnort/all";
+        String pagerUrl = "/wahlkreis/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
-        Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
-        model.addAttribute("wohnorte", allWohnortPage);
-        return "wohnort/all";
+
+        Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
+        model.addAttribute("wahlkreise", allWahlkreisPage);
+        model.addAttribute("pageTitle","Wahlkreise");
+        return "wahlkreis/all";
     }
 
     @RequestMapping("/{id}")
@@ -55,37 +58,38 @@ public class WohnortController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Wohnort wohnort, Model model
+            @PathVariable("id") Wahlkreis wahlkreis, Model model
     ) {
-        if(wohnort == null){
+        if(wahlkreis == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = wohnort.getWohnort();
-            String pageSubTitle = "Wohnorte der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
+            String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();
+            String pageSubTitle = "Wahlkreise der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/wohnort/"+wohnort.getId();
+            String pagerUrl = "/wahlkreis/"+wahlkreis.getId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("wohnort",wohnort);
+            model.addAttribute("wahlkreis",wahlkreis);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByWohnort(wohnort,pageable);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByWahlkreis(wahlkreis,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
-            return "wohnort/id";
+            return "wahlkreis/id";
         }
     }
 
-    private final WohnortService wohnortService;
+
+    private final WahlkreisService wahlkreisService;
 
     private final KandidatService kandidatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public WohnortController(WohnortService wohnortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.wohnortService = wohnortService;
+    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.wahlkreisService = wahlkreisService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
     }

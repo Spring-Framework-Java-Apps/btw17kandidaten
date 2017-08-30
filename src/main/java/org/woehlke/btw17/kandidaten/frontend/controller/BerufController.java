@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend;
+package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
-import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
-import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
+import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
+import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -23,30 +23,29 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/berufsgruppe")
-public class BerufsgruppeController {
+@RequestMapping("/beruf")
+public class BerufController {
 
     @RequestMapping("/all")
     public String getAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "berufsgruppe"
+                    sort = "beruf"
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Berufsgruppe";
+        String pageTitle = "Berufe";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
+        String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/berufsgruppe/all";
+        String pagerUrl = "/beruf/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
-
-        Page<Berufsgruppe> allBerufsgruppePage =  berufsgruppeService.getAll(pageable);
-        model.addAttribute("berufsgruppen", allBerufsgruppePage);
-        return "berufsgruppe/all";
+        Page<Beruf> allBerufPage =  berufService.getAll(pageable);
+        model.addAttribute("berufe", allBerufPage);
+        return "beruf/all";
     }
 
     @RequestMapping("/{id}")
@@ -56,40 +55,38 @@ public class BerufsgruppeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Berufsgruppe berufsgruppe, Model model
+            @PathVariable("id") Beruf beruf, Model model
     ) {
-        if(berufsgruppe == null){
+        if(beruf == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = berufsgruppe.getBerufsgruppe();
-            String pageSubTitle = "Berufsgruppen der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
+            String pageTitle = beruf.getBeruf();
+            String pageSubTitle = "Berufe der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/berufsgruppe/"+berufsgruppe.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey,pagerUrl);
+            String pagerUrl = "/beruf/"+beruf.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("berufsgruppe",berufsgruppe);
+            model.addAttribute("beruf",beruf);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByBerufsgruppe(berufsgruppe,pageable);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByBeruf(beruf,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
-            return "berufsgruppe/id";
+            return "beruf/id";
         }
     }
 
-    private final BerufsgruppeService berufsgruppeService;
-
     private final KandidatService kandidatService;
+
+    private final BerufService berufService;
 
     private final KandidatenProperties kandidatenProperties;
 
-
-
     @Autowired
-    public BerufsgruppeController(BerufsgruppeService berufsgruppeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.berufsgruppeService = berufsgruppeService;
+    public BerufController(KandidatService kandidatService, BerufService berufService, KandidatenProperties kandidatenProperties) {
         this.kandidatService = kandidatService;
+        this.berufService = berufService;
         this.kandidatenProperties = kandidatenProperties;
     }
 }

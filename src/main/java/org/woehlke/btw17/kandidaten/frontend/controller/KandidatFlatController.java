@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend;
+package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
-import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
-import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
-import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
+import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,71 +21,66 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/listepartei")
-public class ListeParteiController {
+@RequestMapping("/kandidatflat")
+public class KandidatFlatController {
+
 
     @RequestMapping("/all")
     public String getAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "listePartei"
+                    sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "ListePartei";
+        String pageTitle = "Kandidaten";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
+        String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/listepartei/all";
+        String pagerUrl = "/kandidatflat/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
-        Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
-        model.addAttribute("listeparteien", allListeParteiPage);
-        return "listepartei/all";
+        Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+        return "kandidatflat/all";
     }
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            @PathVariable("id") ListePartei listePartei, Model model
+            @PathVariable("id") KandidatFlat kandidatFlat, Model model
     ) {
-        if(listePartei == null){
+        if(kandidatFlat == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = listePartei.getListePartei() + ", " + listePartei.getListeParteiLang();
-            String pageSubTitle = "ListePartei der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
+            String pageTitle = kandidatFlat.getVorname()+" "+kandidatFlat.getNachname();
+            if(kandidatFlat.getListePartei() != null){
+                pageTitle += ", "+kandidatFlat.getListePartei();
+            } else if (kandidatFlat.getPartei() != null){
+                pageTitle += ", "+kandidatFlat.getPartei();
+            }
+            String pageSubTitle = "Kandidaten der btw17";
+            String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/listepartei/"+listePartei.getId();
+            String pagerUrl = "/kandidatflat/"+kandidatFlat.getId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("listePartei",listePartei);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByListePartei(listePartei,pageable);
-            model.addAttribute("kandidaten",kandidatenPage);
-
-            return "listepartei/id";
+            model.addAttribute("kandidat",kandidatFlat);
+            return "kandidatflat/id";
         }
     }
 
-    private final ListeParteiService listeParteiService;
-
-    private final KandidatService kandidatService;
+    private final KandidatFlatService kandidatFlatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public ListeParteiController(ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.listeParteiService = listeParteiService;
-        this.kandidatService = kandidatService;
+    public KandidatFlatController(KandidatFlatService kandidatFlatService, KandidatenProperties kandidatenProperties) {
+        this.kandidatFlatService = kandidatFlatService;
         this.kandidatenProperties = kandidatenProperties;
     }
 }

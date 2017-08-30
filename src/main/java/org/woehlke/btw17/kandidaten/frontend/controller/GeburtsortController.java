@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend;
+package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
-import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
-import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
+import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
+import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -23,31 +23,31 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/bundesland")
-public class BundeslandController {
-
+@RequestMapping("/geburtsort")
+public class GeburtsortController {
 
     @RequestMapping("/all")
     public String getAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "bundesland"
+                    sort = "geburtsort"
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Bundesland";
+        String pageTitle = "Geburtsort";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+        String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/bundesland/all";
+        String pagerUrl = "/geburtsort/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
-        Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
-        model.addAttribute("bundeslaender", allBundeslandPage);
-        return "bundesland/all";
+        Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
+        model.addAttribute("geburtsorte", allGeburtsortPage);
+        model.addAttribute("pageTitle","Geburtsorte");
+        return "geburtsort/all";
     }
 
     @RequestMapping("/{id}")
@@ -57,37 +57,37 @@ public class BundeslandController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Bundesland bundesland, Model model
+            @PathVariable("id") Geburtsort geburtsort, Model model
     ) {
-        if(bundesland == null){
+        if(geburtsort == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = bundesland.getBundesland() + ", "+bundesland.getBundeslandLang();
-            String pageSubTitle = "Bundesländer der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+            String pageTitle = geburtsort.getGeburtsort();
+            String pageSubTitle = "Geburtsorte der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/bundesland/"+bundesland.getId();
+            String pagerUrl = "/geburtsort/"+geburtsort.getId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("bundesland",bundesland);
+            model.addAttribute("geburtsort",geburtsort);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByBundesland(bundesland,pageable);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsort(geburtsort,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
-            return "bundesland/id";
+            return "geburtsort/id";
         }
     }
 
-    private final BundeslandService bundeslandService;
+    private final GeburtsortService geburtsortService;
 
     private final KandidatService kandidatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public BundeslandController(BundeslandService bundeslandService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.bundeslandService = bundeslandService;
+    public GeburtsortController(GeburtsortService geburtsortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.geburtsortService = geburtsortService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
     }

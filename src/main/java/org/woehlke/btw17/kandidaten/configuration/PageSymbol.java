@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend.content;
+package org.woehlke.btw17.kandidaten.configuration;
 
 public enum PageSymbol {
 
@@ -21,7 +21,8 @@ public enum PageSymbol {
     WEBSEITE("<i class=\"fa fa-cloud\" aria-hidden=\"true\"></i>"),
     STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     GEBURTSJAHR("<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i>"),
-    MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>");
+    MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
+    EXCEPTION("<i class=\"fa fa-bolt\" aria-hidden=\"true\"></i>");
 
     private String symbolHtml;
 

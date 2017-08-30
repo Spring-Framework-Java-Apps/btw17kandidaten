@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend;
+package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
-import org.woehlke.btw17.kandidaten.frontend.content.PageSymbol;
+import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
+import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
-import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,32 +23,30 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/wahlkreis")
-public class WahlkreisController {
-
+@RequestMapping("/berufsgruppe")
+public class BerufsgruppeController {
 
     @RequestMapping("/all")
     public String getAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "wahlkreisName"
+                    sort = "berufsgruppe"
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Wahlkreise";
+        String pageTitle = "Berufsgruppe";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
+        String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/wahlkreis/all";
+        String pagerUrl = "/berufsgruppe/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
-        Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
-        model.addAttribute("wahlkreise", allWahlkreisPage);
-        model.addAttribute("pageTitle","Wahlkreise");
-        return "wahlkreis/all";
+        Page<Berufsgruppe> allBerufsgruppePage =  berufsgruppeService.getAll(pageable);
+        model.addAttribute("berufsgruppen", allBerufsgruppePage);
+        return "berufsgruppe/all";
     }
 
     @RequestMapping("/{id}")
@@ -58,38 +56,39 @@ public class WahlkreisController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Wahlkreis wahlkreis, Model model
+            @PathVariable("id") Berufsgruppe berufsgruppe, Model model
     ) {
-        if(wahlkreis == null){
+        if(berufsgruppe == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();
-            String pageSubTitle = "Wahlkreise der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
+            String pageTitle = berufsgruppe.getBerufsgruppe();
+            String pageSubTitle = "Berufsgruppen der btw17 Kandidaten";
+            String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/wahlkreis/"+wahlkreis.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String pagerUrl = "/berufsgruppe/"+berufsgruppe.getId();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey,pagerUrl);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("wahlkreis",wahlkreis);
+            model.addAttribute("berufsgruppe",berufsgruppe);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByWahlkreis(wahlkreis,pageable);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByBerufsgruppe(berufsgruppe,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
-            return "wahlkreis/id";
+            return "berufsgruppe/id";
         }
     }
 
-
-    private final WahlkreisService wahlkreisService;
+    private final BerufsgruppeService berufsgruppeService;
 
     private final KandidatService kandidatService;
 
     private final KandidatenProperties kandidatenProperties;
 
+
+
     @Autowired
-    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
-        this.wahlkreisService = wahlkreisService;
+    public BerufsgruppeController(BerufsgruppeService berufsgruppeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.berufsgruppeService = berufsgruppeService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
     }
