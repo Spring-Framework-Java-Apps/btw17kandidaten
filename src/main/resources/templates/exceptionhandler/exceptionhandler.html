@@ -8,34 +8,36 @@
 </header>
 
 <main class="page-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Application Error, please contact <a href="/imprint" th:href="@{/imprint}"> Support</a>.</h2>
-                <h3>Debug Information:</h3>
-                <div class="well">
-                    <div class="row">
-                        <div class="col-md-6">Requested URL=</div>
-                        <div class="col-md-6">
-                            <span th:text="${pageContent.pagerUrl}">url</span>
+    <div class="tw-page-content tw-page-content-exceptions">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Application Error, please contact <a href="/imprint" th:href="@{/imprint}"> Support</a>.</h2>
+                    <h3>Debug Information:</h3>
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-6">Requested URL=</div>
+                            <div class="col-md-6">
+                                <span th:text="${pageContent.pagerUrl}">url</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">Exception=</div>
-                        <div class="col-md-6">
-                            <span th:text="${exception.message}">exception.message</span>
+                        <div class="row">
+                            <div class="col-md-6">Exception=</div>
+                            <div class="col-md-6">
+                                <span th:text="${exception.message}">exception.message</span>
+                            </div>
                         </div>
-                    </div>
-                    <!--
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong>Exception Stack Trace</strong><br/>
-                            <ul th:each="ste : ${exception.stackTrace}">
-                                <li th:text="${ste}">ste</li>
-                            </ul>
+                        <!--
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong>Exception Stack Trace</strong><br/>
+                                <ul th:each="ste : ${exception.stackTrace}">
+                                    <li th:text="${ste}">ste</li>
+                                </ul>
+                            </div>
                         </div>
+                        -->
                     </div>
-                    -->
                 </div>
             </div>
         </div>

@@ -8,8 +8,8 @@
 <header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
-    <div class="container tw-kandidat-profile">
-        <div>
+    <div class="tw-page-content tw-page-content-kandidat-profile tw-kandidat-profile">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="well">
@@ -94,22 +94,14 @@
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.listeBundeslandLand}">
-                                <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Liste Bundesland</td>
+                                <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Landesliste </td>
                                 <td>
                                     <a th:href="@{|/listebundesland/${kandidat.id}/|}">
-                                        <span th:text="${kandidat.listeBundeslandLand.bundesland}">bundesland</span>
+                                        <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                         <span>: </span>
                                         <span th:text="${kandidat.listeBundeslandLand.bundeslandLang}">bundeslandLang</span>
                                         <span>, Listenplatz:</span>
                                         <span th:text="${kandidat.listePlatz}"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr th:if="${kandidat.listePartei}">
-                                <td><i class="fa fa-list-alt" aria-hidden="true"></i> Liste</td>
-                                <td>
-                                    <a th:href="@{|/listepartei/${kandidat.id}/|}">
-                                        <abbr th:attr="title=${kandidat.listePartei.listeParteiLang}" th:text="${kandidat.listePartei.listePartei}">listePartei</abbr>
                                     </a>
                                 </td>
                             </tr>

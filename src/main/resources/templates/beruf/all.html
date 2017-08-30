@@ -8,61 +8,63 @@
 <header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
-    <div class="container">
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${berufe.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well">
-                        <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th>ID</th>
-                                <th>Beruf</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="beruf : ${berufe}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/beruf/${beruf.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${beruf.id}">id</span>
-                                        </a>
-                                    </span>
-                                </span>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/beruf/${beruf.id}/|}">
-                                        <span th:if="${beruf.beruf}" th:text="${beruf.beruf}">beruf.beruf</span>
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+    <div class="tw-page-content tw-page-content-berufe">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <span  class="tw-pager-arrow tw-pager-up" th:if="${berufe.hasPrevious()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.previousPageable().pageNumber}|}">
+                            <span>
+                            <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${berufe.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <table class="table table-striped">
+                                <thead th:fragment="tw-data-view-thead">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Beruf</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="beruf : ${berufe}">
+                                    <td>
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/beruf/${beruf.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${beruf.id}">id</span>
+                                            </a>
+                                        </span>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/beruf/${beruf.id}/|}">
+                                            <span th:if="${beruf.beruf}" th:text="${beruf.beruf}">beruf.beruf</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <span class="tw-pager-arrow tw-pager-down" th:if="${berufe.hasNext()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${berufe.nextPageable().pageNumber}|}" >
+                            <span>
+                            <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
+                    </div>
                 </div>
             </div>
         </div>

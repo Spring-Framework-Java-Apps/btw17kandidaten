@@ -8,95 +8,97 @@
 <header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
-    <div class="container">
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well">
-                        <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>m/w</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
-                                <th>Partei</th>
-                                <th>Bundesland</th>
-                                <th>Liste</th>
-                                <th>mdb</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="kandidat : ${kandidaten}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${kandidat.id}">id</span>
-                                        </a>
-                                    </span>
+    <div class="tw-page-content tw-page-content-kandidaten-flat">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
+                                <span>
+                                <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                                 </span>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
-                                    <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
-                                    <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
-                                    <!--
-                                    <span th:if="${kandidat.nachnameOhne}" th:text="${kandidat.nachnameOhne}">nachnameOhne</span><br th:if="${kandidat.nachnameOhne}"/>
-                                    -->
-                                    <span th:text="${kandidat.vorname}">vorname</span><br/>
-                                    <span th:text="${kandidat.nachname}">nachname</span><br/>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.geschlecht}">geschlecht</span>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.wohnort}">wohnort</span>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.beruf}">beruf</span>
-                                </td>
-                                <td>
-                                    <abbr th:attr="title=${kandidat.parteiLang}" th:text="${kandidat.partei}">partei</abbr>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
-                                </td>
-                                <td>
-                                    <abbr th:attr="title=${kandidat.listeParteiLang}" th:text="${kandidat.listePartei}">listePartei</abbr>
-                                </td>
-                                <td>
-                                    <span th:text="${kandidat.mdb}">mdb</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                            </a>
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <table class="table table-striped">
+                                <thead th:fragment="tw-data-view-thead">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>m/w</th>
+                                    <th>Wohnort</th>
+                                    <th>Beruf</th>
+                                    <th>Partei</th>
+                                    <th>Bundesland</th>
+                                    <th>Liste</th>
+                                    <th>mdb</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="kandidat : ${kandidaten}">
+                                    <td>
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${kandidat.id}">id</span>
+                                            </a>
+                                        </span>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">
+                                        <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span><br th:if="${kandidat.titel}" />
+                                        <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span><br th:if="${kandidat.namenszusatz}" />
+                                        <!--
+                                        <span th:if="${kandidat.nachnameOhne}" th:text="${kandidat.nachnameOhne}">nachnameOhne</span><br th:if="${kandidat.nachnameOhne}"/>
+                                        -->
+                                        <span th:text="${kandidat.vorname}">vorname</span><br/>
+                                        <span th:text="${kandidat.nachname}">nachname</span><br/>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span th:text="${kandidat.geschlecht}">geschlecht</span>
+                                    </td>
+                                    <td>
+                                        <span th:text="${kandidat.wohnort}">wohnort</span>
+                                    </td>
+                                    <td>
+                                        <span th:text="${kandidat.beruf}">beruf</span>
+                                    </td>
+                                    <td>
+                                        <abbr th:attr="title=${kandidat.parteiLang}" th:text="${kandidat.partei}">partei</abbr>
+                                    </td>
+                                    <td>
+                                        <span th:text="${kandidat.listeBundeslandLand}">listeBundeslandLand</span>
+                                    </td>
+                                    <td>
+                                        <abbr th:attr="title=${kandidat.listeParteiLang}" th:text="${kandidat.listePartei}">listePartei</abbr>
+                                    </td>
+                                    <td>
+                                        <span th:text="${kandidat.mdb}">mdb</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
+                                <span>
+                                <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
+                    </div>
                 </div>
             </div>
         </div>

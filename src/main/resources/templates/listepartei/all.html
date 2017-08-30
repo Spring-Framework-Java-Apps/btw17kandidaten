@@ -8,65 +8,67 @@
 <header th:include="layoutMain :: tw-header"></header>
 
 <main class="page-content">
-    <div class="container">
-        <div>
-            <div class="row">
-                <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${listeparteien.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${listeparteien.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="well">
-                        <table class="table table-striped">
-                            <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th>ID</th>
-                                <th>ListePartei</th>
-                                <th>ListeParteiLang</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="listepartei : ${listeparteien}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/listepartei/${listepartei.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${listepartei.id}">id</span>
-                                        </a>
-                                    </span>
+    <div class="tw-page-content tw-page-content-listeparteien">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span  class="tw-pager-arrow tw-pager-up" th:if="${listeparteien.hasPrevious()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${listeparteien.previousPageable().pageNumber}|}">
+                                <span>
+                                <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                                 </span>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/listepartei/${listepartei.id}/|}">
-                                        <span th:if="${listepartei.listePartei}" th:text="${listepartei.listePartei}">listePartei</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <span th:text="${listepartei.listeParteiLang}">listeParteiLang</span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                            </a>
+                        </span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${listeparteien.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${listeparteien.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <table class="table table-striped">
+                                <thead th:fragment="tw-data-view-thead">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>ListePartei</th>
+                                    <th>ListeParteiLang</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="listepartei : ${listeparteien}">
+                                    <td>
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/listepartei/${listepartei.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${listepartei.id}">id</span>
+                                            </a>
+                                        </span>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/listepartei/${listepartei.id}/|}">
+                                            <span th:if="${listepartei.listePartei}" th:text="${listepartei.listePartei}">listePartei</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span th:text="${listepartei.listeParteiLang}">listeParteiLang</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="tw-pager-arrow tw-pager-down" th:if="${listeparteien.hasNext()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${listeparteien.nextPageable().pageNumber}|}" >
+                                <span>
+                                <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
+                    </div>
                 </div>
             </div>
         </div>
