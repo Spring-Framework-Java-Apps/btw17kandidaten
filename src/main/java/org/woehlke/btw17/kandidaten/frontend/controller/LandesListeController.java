@@ -134,7 +134,7 @@ public class LandesListeController {
 
         Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
-        model.addAttribute("bundeslandIdTarget","bundesland");
+        model.addAttribute("bundeslandIdTarget","landesliste/bundesland");
         return "landesliste/bundesland/all";
     }
 
