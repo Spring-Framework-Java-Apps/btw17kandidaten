@@ -78,8 +78,10 @@ public class LandesListeController {
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("bundesland",bundesland);
 
+
             Page<LandesListe> landeslistePage  = landesListeService.findByBundesland(bundesland,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
+            model.addAttribute("bundeslandIdTarget","landesliste");
 
             return "landesliste/bundesland/id";
         }
@@ -156,7 +158,7 @@ public class LandesListeController {
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
-        Page<ListePartei> allListeParteiPage =  landesListeService.getAllListePartei(pageable);
+        Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
         return "landesliste/listepartei/all";
     }

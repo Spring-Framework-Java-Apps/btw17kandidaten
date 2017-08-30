@@ -19,6 +19,14 @@ import java.io.Serializable;
     @NamedQuery(
         name = "LandesListe.getAllListePartei",
         query = "select DISTINCT o.listePartei from LandesListe as o"
+    ),
+    @NamedQuery(
+        name = "LandesListe.findByBundesland",
+        query = "select o from LandesListe as o where o.bundesland=:bundesland"
+    ),
+    @NamedQuery(
+        name = "LandesListe.findByListePartei",
+        query = "select o from LandesListe as o where o.listePartei=:listePartei"
     )
 })
 public class LandesListe implements Serializable {
