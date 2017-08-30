@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
@@ -17,4 +18,9 @@ public interface LandesListeRepository extends PagingAndSortingRepository<Landes
 
     Page<LandesListe> findByListePartei(ListePartei listePartei, Pageable pageable);
 
+    @Query(name="LandesListe.getAllBundesland")
+    Page<Bundesland> getAllBundesland(Pageable pageable);
+
+    @Query(name="LandesListe.getAllListePartei")
+    Page<ListePartei> getAllListePartei(Pageable pageable);
 }

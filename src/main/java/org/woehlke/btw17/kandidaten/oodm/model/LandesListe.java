@@ -11,6 +11,16 @@ import java.io.Serializable;
         @UniqueConstraint(name="unique_liste_partei",columnNames = {"fk_bundesland","fk_liste_partei"})
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "LandesListe.getAllBundesland",
+        query = "select DISTINCT o.bundesland from LandesListe as o"
+    ),
+    @NamedQuery(
+        name = "LandesListe.getAllListePartei",
+        query = "select DISTINCT o.listePartei from LandesListe as o"
+    )
+})
 public class LandesListe implements Serializable {
 
     private static final long serialVersionUID = 1L;

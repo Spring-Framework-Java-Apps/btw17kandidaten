@@ -35,4 +35,9 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     public long count() {
         return wahlkreisRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        wahlkreisRepository.deleteAll();
+    }
 }

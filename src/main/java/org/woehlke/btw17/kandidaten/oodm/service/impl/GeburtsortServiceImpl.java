@@ -35,4 +35,9 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     public long count() {
         return geburtsortRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        geburtsortRepository.deleteAll();
+    }
 }

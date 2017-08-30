@@ -23,4 +23,8 @@ public interface LandesListeService {
     Page<LandesListe> findByBundesland(Bundesland bundesland, Pageable pageable);
 
     Page<LandesListe> findByListePartei(ListePartei listePartei, Pageable pageable);
+
+    Page<Bundesland> getAllBundesland(Pageable pageable);
+
+    Page<ListePartei> getAllListePartei(Pageable pageable);
 }

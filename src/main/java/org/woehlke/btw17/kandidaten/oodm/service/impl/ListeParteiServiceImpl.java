@@ -35,4 +35,9 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public long count() {
         return listeParteiRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        listeParteiRepository.deleteAll();
+    }
 }

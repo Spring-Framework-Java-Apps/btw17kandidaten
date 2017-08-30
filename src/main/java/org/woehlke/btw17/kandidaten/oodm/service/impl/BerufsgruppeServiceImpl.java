@@ -35,4 +35,9 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     public long count() {
         return berufsgruppeRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        berufsgruppeRepository.deleteAll();
+    }
 }

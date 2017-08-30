@@ -74,4 +74,14 @@ public class LandesListeServiceImpl implements LandesListeService {
     public Page<LandesListe> findByListePartei(ListePartei listePartei, Pageable pageable) {
         return landesListeRepository.findByListePartei(listePartei,pageable);
     }
+
+    @Override
+    public Page<Bundesland> getAllBundesland(Pageable pageable) {
+        return landesListeRepository.getAllBundesland(pageable);
+    }
+
+    @Override
+    public Page<ListePartei> getAllListePartei(Pageable pageable) {
+        return landesListeRepository.getAllListePartei(pageable);
+    }
 }

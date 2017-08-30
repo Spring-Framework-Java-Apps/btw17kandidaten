@@ -35,4 +35,9 @@ public class WohnortServiceImpl implements WohnortService {
     public long count() {
         return wohnortRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        wohnortRepository.deleteAll();
+    }
 }

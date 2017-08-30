@@ -112,9 +112,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/listebundesland/all" th:href="@{/listebundesland/all}">
-                                    <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
-                                    <span>ListeBundesland</span>
+                                <a href="/landesliste/bundesland/all" th:href="@{/landesliste/bundesland/all}">
+                                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                                    <span>Bundesländer der Landeslisten</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/landesliste/listepartei/all" th:href="@{/landesliste/listepartei/all}">
+                                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                                    <span>ListeParteien der Landeslisten</span>
                                 </a>
                             </li>
                         </ul>
@@ -248,7 +254,9 @@
             </div>
         </div>
     </div>
-    <div class="container" th:fragment="tw-page-condent-bundeslaender">
+
+
+    <div class="container" th:fragment="tw-page-content-bundeslaender">
         <div class="tw-page-content tw-page-content-bundeslaender">
             <div class="row">
                 <div class="col-md-12">

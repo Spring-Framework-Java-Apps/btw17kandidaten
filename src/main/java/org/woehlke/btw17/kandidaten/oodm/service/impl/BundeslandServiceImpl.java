@@ -35,4 +35,9 @@ public class BundeslandServiceImpl implements BundeslandService {
     public long count() {
         return bundeslandRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        bundeslandRepository.deleteAll();
+    }
 }

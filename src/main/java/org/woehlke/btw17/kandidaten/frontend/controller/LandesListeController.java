@@ -81,7 +81,7 @@ public class LandesListeController {
             Page<LandesListe> landeslistePage  = landesListeService.findByBundesland(bundesland,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
 
-            return "landesliste/bundesland";
+            return "landesliste/bundesland/id";
         }
     }
 
@@ -110,8 +110,55 @@ public class LandesListeController {
             Page<LandesListe> landeslistePage  = landesListeService.findByListePartei(listePartei,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
 
-            return "landesliste/listepartei";
+            return "landesliste/listepartei/id";
         }
+    }
+
+    @RequestMapping("/bundesland/all")
+    public String getLandesListeForBundeslandAll(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            Model model
+    ) {
+        String pageTitle = "Bundesländer der LandesListen";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/landesliste/bundesland/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
+        model.addAttribute("bundeslaender", allBundeslandPage);
+        model.addAttribute("bundeslandIdTarget","bundesland");
+        return "landesliste/bundesland/all";
+    }
+
+    @RequestMapping("/listepartei/all")
+    public String getLandesListeForListeParteiAll(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            Model model
+    ) {
+        String pageTitle = "Partei Listen der LandesListen";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/landesliste/bundesland/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<ListePartei> allListeParteiPage =  landesListeService.getAllListePartei(pageable);
+        model.addAttribute("listeparteien", allListeParteiPage);
+        return "landesliste/listepartei/all";
     }
 
     private final LandesListeService landesListeService;

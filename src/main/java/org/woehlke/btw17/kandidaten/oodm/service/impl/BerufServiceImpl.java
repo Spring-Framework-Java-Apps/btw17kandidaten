@@ -35,4 +35,9 @@ public class BerufServiceImpl implements BerufService {
     public long count() {
         return berufRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        berufRepository.deleteAll();;
+    }
 }

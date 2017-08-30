@@ -35,4 +35,9 @@ public class ParteiServiceImpl implements ParteiService {
     public long count() {
         return parteiRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        parteiRepository.deleteAll();
+    }
 }
