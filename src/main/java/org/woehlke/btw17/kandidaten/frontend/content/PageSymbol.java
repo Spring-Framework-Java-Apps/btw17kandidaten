@@ -6,7 +6,7 @@ public enum PageSymbol {
     BERUFSGRUPPE("<i class=\"fa fa-graduation-cap\" aria-hidden=\"true\"></i>"),
     BUNDESLAND("<i class=\"fa fa-puzzle-piece\" aria-hidden=\"true\"></i>"),
     GEBURTSORT("<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>"),
-    IMPRESSUM("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
+    IMPRESSUM("<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>"),
     SUCHE("<i class=\"fa fa-search\" aria-hidden=\"true\"></i>"),
     KANDIDAT("<i class=\"fa fa-user-circle\" aria-hidden=\"true\"></i>"),
     LISTE_PARTEI("<i class=\"fa fa-list-alt\" aria-hidden=\"true\"></i>"),
@@ -19,7 +19,9 @@ public enum PageSymbol {
     YOUTUBE("<i class=\"fa fa-youtube\" aria-hidden=\"true\"></i>"),
     FACEBOOK("<i class=\"fa fa-facebook-square\" aria-hidden=\"true\"></i>"),
     WEBSEITE("<i class=\"fa fa-cloud\" aria-hidden=\"true\"></i>"),
-    STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>");
+    STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
+    GEBURTSJAHR("<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i>"),
+    MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>");
 
     private String symbolHtml;
 

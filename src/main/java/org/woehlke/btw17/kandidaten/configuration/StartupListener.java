@@ -60,40 +60,40 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         List<String> outputLines = new ArrayList<>();
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add("   Bundestagswahl 2017 - Direkt Kandidaten");
+        outputLines.add("    ***  Bundestagswahl 2017 - Direkt Kandidaten  ***");
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add("btw17.kandidaten.pageSize =                         "+kandidatenProperties.getPageSize());
-        outputLines.add("btw17.kandidaten.loginUsername =                    "+kandidatenProperties.getLoginUsername());
-        outputLines.add("btw17.kandidaten.loginPassword =                    "+kandidatenProperties.getLoginPassword());
         int i = 0;
         for(String path:kandidatenProperties.getWebSecurityConfigPublicPaths()){
-            outputLines.add("btw17.kandidaten.webSecurityConfigPublicPaths["+i+"] =  "+path);
+            outputLines.add(" btw17.kandidaten.webSecurityConfigPublicPaths["+i+"] =   "+path);
             i++;
         }
         i = 0;
         for(String urlPrefix:kandidatenProperties.getUrlPrefixForKandidatFoto()){
-            outputLines.add("btw17.kandidaten.urlPrefixForKandidatFoto["+i+"] =       "+urlPrefix);
+            outputLines.add(" btw17.kandidaten.urlPrefixForKandidatFoto["+i+"] =        "+urlPrefix);
             i++;
         }
-        outputLines.add("btw17.kandidaten.googleMapsApiKey =                  "+kandidatenProperties.getGoogleMapsApiKey());
-        outputLines.add("btw17.kandidaten.googleAnalyticsKey =                "+kandidatenProperties.getGoogleAnalyticsKey());
-        outputLines.add("btw17.kandidaten.connTimeToLive =                    "+kandidatenProperties.getConnTimeToLive());
-        outputLines.add("btw17.kandidaten.maxIdleTime =                       "+kandidatenProperties.getMaxIdleTime());
-        outputLines.add("btw17.kandidaten.millisToWaitBetweenTwoApiCalls =    "+kandidatenProperties.getMillisToWaitBetweenTwoApiCalls());
-        outputLines.add("btw17.kandidaten.checkFotoUrl =                      "+kandidatenProperties.getCheckFotoUrl());
+        outputLines.add(" btw17.kandidaten.pageSize =                           "+kandidatenProperties.getPageSize());
+        outputLines.add(" btw17.kandidaten.loginUsername =                      "+kandidatenProperties.getLoginUsername());
+        outputLines.add(" btw17.kandidaten.loginPassword =                      "+kandidatenProperties.getLoginPassword());
+        outputLines.add(" btw17.kandidaten.googleMapsApiKey =                   "+kandidatenProperties.getGoogleMapsApiKey());
+        outputLines.add(" btw17.kandidaten.googleAnalyticsKey =                 "+kandidatenProperties.getGoogleAnalyticsKey());
+        outputLines.add(" btw17.kandidaten.connTimeToLive =                     "+kandidatenProperties.getConnTimeToLive());
+        outputLines.add(" btw17.kandidaten.maxIdleTime =                        "+kandidatenProperties.getMaxIdleTime());
+        outputLines.add(" btw17.kandidaten.millisToWaitBetweenTwoApiCalls =     "+kandidatenProperties.getMillisToWaitBetweenTwoApiCalls());
+        outputLines.add(" btw17.kandidaten.checkFotoUrl =                       "+kandidatenProperties.getCheckFotoUrl());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add("spring.datasource.url = "+springProperties.getDatasource().getUrl());
+        outputLines.add(" spring.datasource.url = "+springProperties.getDatasource().getUrl());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add("Beruf:        "+berufService.count());
-        outputLines.add("Berufsgruppe: "+berufsgruppeService.count());
-        outputLines.add("Bundesland:   "+bundeslandService.count());
-        outputLines.add("Geburtsort:   "+geburtsortService.count());
-        outputLines.add("ListePartei:  "+listeParteiService.count());
-        outputLines.add("Partei:       "+parteiService.count());
-        outputLines.add("Wahlkreis:    "+wahlkreisService.count());
-        outputLines.add("Wohnort:      "+wohnortService.count());
-        outputLines.add("KandidatFlat: "+kandidatFlatService.count());
-        outputLines.add("Kandidat:     "+kandidatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:        "+berufService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe: "+berufsgruppeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:   "+bundeslandService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:   "+geburtsortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:  "+listeParteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:       "+parteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:    "+wahlkreisService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:      "+wohnortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat: "+kandidatFlatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:     "+kandidatService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         StringBuffer sb = new StringBuffer();
         sb.append("\n");

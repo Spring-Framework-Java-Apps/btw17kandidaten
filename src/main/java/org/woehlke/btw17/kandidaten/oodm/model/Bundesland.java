@@ -25,7 +25,7 @@ public class Bundesland implements Serializable {
     @Column
     private String bundesland;
 
-    @Column(name="bundesland_lang",nullable = true)
+    @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
     @Column

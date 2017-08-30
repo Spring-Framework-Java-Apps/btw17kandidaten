@@ -72,6 +72,88 @@ public class KandidatController {
         }
     }
 
+    @RequestMapping("/geburtsjahr/all")
+    public String getUserForGeburtsjahrAll(Model model) {
+        String pageTitle = "Geburtsjahre ";
+        String pageSubTitle = "Kandidaten der btw17";
+        String pageSymbol = PageSymbol.GEBURTSJAHR.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
+        return "kandidat/geburtsjahr/all";
+    }
+
+    @RequestMapping("/geburtsjahr/{id}")
+    public String getUserForGeburtsjahr(
+            @PathVariable("id") Kandidat kandidat, Model model
+    ) {
+        if(kandidat == null){
+            throw new EntityNotFoundException();
+        } else {
+            String pageTitle = "Geburtsjahr "+kandidat.getGeburtsjahr();
+            String pageSubTitle = "Kandidaten der btw17";
+            String pageSymbol = PageSymbol.GEBURTSJAHR.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
+            model.addAttribute("kandidat",kandidat);
+            return "kandidat/geburtsjahr/id";
+        }
+    }
+
+    @RequestMapping("/listebundesland/{id}")
+    public String getUserForListeBundeslandLand(
+            @PathVariable("id") Kandidat kandidat, Model model
+    ) {
+        if(kandidat == null){
+            throw new EntityNotFoundException();
+        } else {
+            String pageTitle = "ListeBundesland "+kandidat.getListeBundeslandLand();
+            String pageSubTitle = "Kandidaten der btw17";
+            String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+            model.addAttribute("pageContent",pageContent);
+
+            model.addAttribute("kandidat",kandidat);
+            return "kandidat/listebundesland/id";
+        }
+    }
+
+    @RequestMapping("/listebundesland/all")
+    public String getUserForListeBundeslandLand(Model model) {
+
+        String pageTitle = "ListeBundesLänder ";
+        String pageSubTitle = "Kandidaten der btw17";
+        String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
+        return "kandidat/listebundesland/all";
+    }
+
+    @RequestMapping("/mdb")
+    public String getUserwhoAreMdB(
+            Model model
+    ) {
+        String pageTitle = "MdB";
+        String pageSubTitle = "Kandidaten der btw17";
+        String pageSymbol = PageSymbol.MDB.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey);
+        model.addAttribute("pageContent",pageContent);
+
+        return "kandidat/mdb";
+    }
+
     private final KandidatService kandidatService;
 
     private final KandidatenProperties kandidatenProperties;
