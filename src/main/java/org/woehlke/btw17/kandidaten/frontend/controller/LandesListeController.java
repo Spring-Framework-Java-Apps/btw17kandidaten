@@ -111,6 +111,7 @@ public class LandesListeController {
 
             Page<LandesListe> landeslistePage  = landesListeService.findByListePartei(listePartei,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
+            model.addAttribute("bundeslandIdTarget","landesliste");
 
             return "landesliste/listepartei/id";
         }

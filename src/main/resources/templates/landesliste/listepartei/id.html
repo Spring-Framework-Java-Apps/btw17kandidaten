@@ -9,12 +9,60 @@
 
 <main class="page-content">
     <div class="tw-page-content tw-page-content-landesliste-listepartei">
-        <div class="container">
-            <div>
-                <div class="row">
-                    <div class="col-md-12">
-                        Bla Blubb landesliste-listepartei ID
+        <div class="container" th:fragment="tw-page-content-bundeslaender">
+            <div class="row">
+                <div class="col-md-12">
+                    <span  class="tw-pager-arrow tw-pager-up" th:if="${landeslistePage.hasPrevious()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${landeslistePage.previousPageable().pageNumber}|}">
+                            <span>
+                            <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <table class="table table-striped">
+                            <thead th:fragment="tw-data-view-thead">
+                            <tr>
+                                <th>ID</th>
+                                <th>landesliste</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="landesliste : ${landeslistePage}">
+                                <td>
+                                        <span th:fragment="tw-data-view-id">
+                                            <span class="tw-vector">
+                                                <a href="" th:href="@{|/${bundeslandIdTarget}/${landesliste.id}/|}">
+                                                <i class="fa fa-database" aria-hidden="true"></i>
+                                                <span th:text="${landesliste.id}">id</span>
+                                                </a>
+                                            </span>
+                                        </span>
+                                </td>
+                                <td>
+                                    <a href="" th:href="@{|/${bundeslandIdTarget}/${landesliste.id}/|}">
+                                        <span th:text="${landesliste.name}">landesliste.name</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <span class="tw-pager-arrow tw-pager-down" th:if="${landeslistePage.hasNext()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${landeslistePage.nextPageable().pageNumber}|}" >
+                        <span>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
                 </div>
             </div>
         </div>
