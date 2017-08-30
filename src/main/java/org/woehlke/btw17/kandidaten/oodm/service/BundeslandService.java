@@ -11,4 +11,7 @@ public interface BundeslandService {
     Bundesland findByBundesland(String bundesland);
 
     long count();
+
+    void deleteAll();
+
 }

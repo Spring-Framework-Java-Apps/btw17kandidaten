@@ -11,4 +11,7 @@ public interface WohnortService {
     Wohnort findByWohnort(String wohnort);
 
     long count();
+
+    void deleteAll();
+
 }

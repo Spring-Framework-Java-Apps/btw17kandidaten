@@ -11,4 +11,7 @@ public interface ListeParteiService {
     ListePartei findByListePartei(String listePartei, String listeParteiLang);
 
     long count();
+
+    void deleteAll();
+
 }

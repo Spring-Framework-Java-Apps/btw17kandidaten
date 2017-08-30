@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(
     name = "liste_partei",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_liste_partei",columnNames = {"liste_partei"})
+        @UniqueConstraint(name="unique_liste_partei",columnNames = {"liste_partei","liste_partei_lang"})
     },
     indexes = {
         @Index(name = "idx_liste_partei_liste_partei_lang", columnList = "liste_partei_lang")

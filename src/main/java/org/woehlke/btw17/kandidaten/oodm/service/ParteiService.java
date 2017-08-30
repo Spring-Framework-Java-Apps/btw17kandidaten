@@ -11,4 +11,7 @@ public interface ParteiService {
     Partei findByPartei(String partei, String parteiLang);
 
     long count();
+
+    void deleteAll();
+
 }

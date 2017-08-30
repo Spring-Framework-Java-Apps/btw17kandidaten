@@ -8,10 +8,9 @@ import java.io.Serializable;
 @Table(
     name = "partei",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_partei",columnNames = {"partei"})
+        @UniqueConstraint(name="unique_partei",columnNames = {"partei","partei_lang"})
     },
     indexes = {
-        @Index(name = "idx_partei_partei_lang", columnList = "partei_lang"),
         @Index(name = "idx_partei_webseite", columnList = "webseite"),
         @Index(name = "idx_partei_twitter", columnList = "twitter"),
         @Index(name = "idx_partei_facebook", columnList = "facebook"),

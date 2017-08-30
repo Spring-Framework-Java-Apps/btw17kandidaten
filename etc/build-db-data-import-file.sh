@@ -67,11 +67,11 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-wohnort.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resources/data.sql
-echo '-- Table: kandidat' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.LandesListe' >> ../src/main/resources/data.sql
+echo '-- Table: landesliste' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-cat ./3nf/data/insert-data-kandidat.sql >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-landesliste.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat' >> ../src/main/resources/data.sql
@@ -79,5 +79,14 @@ echo '-- Table: kandidat_flat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat_flat.sql >> ../src/main/resources/data.sql
+
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resources/data.sql
+echo '-- Table: kandidat' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-kandidat.sql >> ../src/main/resources/data.sql
+
+
 
 exit 0

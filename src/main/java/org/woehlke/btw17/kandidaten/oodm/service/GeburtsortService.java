@@ -11,4 +11,7 @@ public interface GeburtsortService {
     Geburtsort findByGeburtsort(String geburtsort);
 
     long count();
+
+    void deleteAll();
+
 }

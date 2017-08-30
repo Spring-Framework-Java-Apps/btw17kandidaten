@@ -21,7 +21,7 @@ public class Wahlkreis implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column(name="wahlkreis_id")
+    @Column(name="wahlkreis_id",unique = true)
     private Integer wahlkreisId;
 
     @Column(name="wahlkreis_name")

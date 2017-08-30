@@ -11,4 +11,7 @@ public interface BerufsgruppeService {
     Berufsgruppe findByBerufsgruppe(String berufsgruppe);
 
     long count();
+
+    void deleteAll();
+
 }

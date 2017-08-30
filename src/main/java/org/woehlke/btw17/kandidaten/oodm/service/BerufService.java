@@ -11,4 +11,7 @@ public interface BerufService {
     Beruf findByBeruf(String beruf);
 
     long count();
+
+    void deleteAll();
+
 }
