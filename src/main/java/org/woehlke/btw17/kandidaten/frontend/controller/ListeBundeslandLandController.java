@@ -14,6 +14,7 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -39,7 +40,21 @@ public class ListeBundeslandLandController {
         if(kandidat == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = "ListeBundesland "+kandidat.getListeBundeslandLand();
+            String pageTitle = "ListeBundesland: ";
+            if(kandidat.getPartei() != null){
+                pageTitle += " "+ kandidat.getPartei().getPartei();
+            }
+            if((kandidat.getPartei() != null)&&(kandidat.getListeBundeslandLand() != null)){
+                pageTitle += " in ";
+            } else {
+                pageTitle += " ";
+            }
+            if(kandidat.getListeBundeslandLand() != null){
+                if(kandidat.getListeBundeslandLand().getBundeslandLang() != null){
+                    pageTitle += kandidat.getListeBundeslandLand().getBundeslandLang();
+                }
+                pageTitle += " ("+kandidat.getListeBundeslandLand().getBundesland()+")";
+            }
             String pageSubTitle = "Kandidaten der btw17";
             String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -49,7 +64,8 @@ public class ListeBundeslandLandController {
             model.addAttribute("pageContent",pageContent);
 
             Bundesland listeBundeslandLand = kandidat.getListeBundeslandLand();
-            Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLand(listeBundeslandLand,pageable);
+            Partei partei = kandidat.getPartei();
+            Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLandAndPartei(listeBundeslandLand,partei,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
             model.addAttribute("kandidat",kandidat);

@@ -98,8 +98,9 @@
                                 <td>
                                     <a th:href="@{|/listebundesland/${kandidat.id}/|}">
                                         <span th:text="${kandidat.listeBundeslandLand.bundesland}">bundesland</span>
+                                        <span>: </span>
                                         <span th:text="${kandidat.listeBundeslandLand.bundeslandLang}">bundeslandLang</span>
-                                        <span>Listenplatz:</span>
+                                        <span>, Listenplatz:</span>
                                         <span th:text="${kandidat.listePlatz}"></span>
                                     </a>
                                 </td>
