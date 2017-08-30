@@ -32,6 +32,10 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.findByGeburtsjahrAll",
         query = "select DISTINCT o.geburtsjahr from Kandidat as o where o.geburtsjahr is not null order by o.geburtsjahr"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByListePartei",
+        query = "select o from Kandidat as o where o.landesListe.listePartei=:listePartei"
     )
 })
 public class Kandidat implements Serializable {

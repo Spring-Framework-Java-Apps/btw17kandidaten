@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
+import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
 import javax.persistence.EntityNotFoundException;
@@ -70,9 +73,13 @@ public class ListeParteiController {
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
 
+            Page<Kandidat> pageKandidat = kandidatService.findByListePartei(listePartei,pageable);
+            model.addAttribute("kandidaten",pageKandidat);
             return "listepartei/id";
         }
     }
+
+    private final LandesListeService landesListeService;
 
     private final ListeParteiService listeParteiService;
 
@@ -81,7 +88,8 @@ public class ListeParteiController {
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public ListeParteiController(ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public ListeParteiController(LandesListeService landesListeService, ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        this.landesListeService = landesListeService;
         this.listeParteiService = listeParteiService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;

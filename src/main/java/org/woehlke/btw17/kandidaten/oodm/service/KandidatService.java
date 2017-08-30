@@ -41,4 +41,6 @@ public interface KandidatService {
     Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
     Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
+
+    Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
 }
