@@ -51,6 +51,9 @@ public class KandidatenNormalizedTableBuilder {
     private ParteiService parteiService;
 
     @Autowired
+    private LandesListeService landesListeService;
+
+    @Autowired
     private WahlkreisService wahlkreisService;
 
     @Autowired
@@ -63,6 +66,7 @@ public class KandidatenNormalizedTableBuilder {
     @Test
     public void buildNormalizedTData() throws Exception {
         kandidatService.deleteAll();
+        landesListeService.deleteAll();
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
@@ -96,21 +100,26 @@ public class KandidatenNormalizedTableBuilder {
                 Berufsgruppe berufsgruppe = berufsgruppeService.findByBerufsgruppe(in.getBerufsgruppe());
                 Bundesland bundesland =  bundeslandService.findByBundesland(in.getBundesland());
                 Geburtsort geburtsort = geburtsortService.findByGeburtsort(in.getGeburtsort());
-                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
                 Partei partei = parteiService.findByPartei(in.getPartei(),in.getParteiLang());
                 Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(in.getWahlkreisId());
                 Wohnort wohnort = wohnortService.findByWohnort(in.getWohnort());
+
+                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
                 Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
+
+                if((listePartei!=null)&&(listeBundeslandLand!=null)){
+                    LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
+                    out.setLandesListe(landesListe);
+                }
 
                 out.setBeruf(beruf);
                 out.setBerufsgruppe(berufsgruppe);
                 out.setBundesland(bundesland);
                 out.setGeburtsort(geburtsort);
-                out.setListePartei(listePartei);
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
-                out.setListeBundeslandLand(listeBundeslandLand);
+                out.setKandidatFlat(in);
 
                 out = kandidatService.create(out);
 

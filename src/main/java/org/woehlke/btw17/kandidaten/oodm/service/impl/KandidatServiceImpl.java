@@ -64,11 +64,6 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
-    public Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable) {
-        return kandidatRepository.findByListePartei(listePartei,pageable);
-    }
-
-    @Override
     public Page<Kandidat> findByPartei(Partei partei, Pageable pageable) {
         return kandidatRepository.findByPartei(partei, pageable);
     }
@@ -94,19 +89,13 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
-    public Page<Bundesland> findByListeBundeslandLandAll(Pageable pageable) {
-        return kandidatRepository.findByListeBundeslandLandAll(pageable);
-    }
-
-    @Override
     public Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable) {
         return kandidatRepository.findByGeburtsjahrOrderByGeburtsjahr(geburtsjahr,pageable);
     }
 
     @Override
-    public Page<Kandidat> findByListeBundeslandLandAndListePartei(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable) {
-        return kandidatRepository.findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzAsc(listeBundeslandLand,listePartei,pageable);
+    public Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable) {
+        return kandidatRepository.findByLandesListe(landesListe,pageable);
     }
-
 
 }

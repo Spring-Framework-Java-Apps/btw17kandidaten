@@ -33,10 +33,6 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.findByGeburtsjahrAll",
         query = "select DISTINCT o.geburtsjahr from Kandidat as o where o.geburtsjahr is not null order by o.geburtsjahr"
-    ),
-    @NamedQuery(
-        name = "Kandidat.findByListeBundeslandLandAll",
-        query = "select DISTINCT o.listeBundeslandLand from Kandidat as o where o.listeBundeslandLand is not null order by o.listeBundeslandLand.bundeslandLang"
     )
 })
 public class Kandidat implements Serializable {
@@ -106,12 +102,8 @@ public class Kandidat implements Serializable {
     private Partei partei;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_liste_partei", nullable = true, updatable = false)
-    private ListePartei listePartei;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "liste_bundesland_land", nullable = true, updatable = false)
-    private Bundesland listeBundeslandLand;
+    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
+    private LandesListe landesListe;
 
     @Column(name = "liste_platz")
     private Integer listePlatz;
@@ -157,6 +149,10 @@ public class Kandidat implements Serializable {
 
     @Column(name = "logo_url")
     private String logoUrl;
+
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "kandidat_flat", nullable = false, updatable = false)
+    private KandidatFlat kandidatFlat;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -379,12 +375,12 @@ public class Kandidat implements Serializable {
         this.color = color;
     }
 
-    public ListePartei getListePartei() {
-        return listePartei;
+    public LandesListe getLandesListe() {
+        return landesListe;
     }
 
-    public void setListePartei(ListePartei listePartei) {
-        this.listePartei = listePartei;
+    public void setLandesListe(LandesListe landesListe) {
+        this.landesListe = landesListe;
     }
 
     public String getFotoUrl() {
@@ -435,12 +431,12 @@ public class Kandidat implements Serializable {
         this.logoUrl = logoUrl;
     }
 
-    public Bundesland getListeBundeslandLand() {
-        return listeBundeslandLand;
+    public KandidatFlat getKandidatFlat() {
+        return kandidatFlat;
     }
 
-    public void setListeBundeslandLand(Bundesland listeBundeslandLand) {
-        this.listeBundeslandLand = listeBundeslandLand;
+    public void setKandidatFlat(KandidatFlat kandidatFlat) {
+        this.kandidatFlat = kandidatFlat;
     }
 
     @Override
@@ -472,9 +468,7 @@ public class Kandidat implements Serializable {
         if (bundesland != null ? !bundesland.equals(kandidat.bundesland) : kandidat.bundesland != null) return false;
         if (wahlkreis != null ? !wahlkreis.equals(kandidat.wahlkreis) : kandidat.wahlkreis != null) return false;
         if (partei != null ? !partei.equals(kandidat.partei) : kandidat.partei != null) return false;
-        if (listePartei != null ? !listePartei.equals(kandidat.listePartei) : kandidat.listePartei != null)
-            return false;
-        if (listeBundeslandLand != null ? !listeBundeslandLand.equals(kandidat.listeBundeslandLand) : kandidat.listeBundeslandLand != null)
+        if (landesListe != null ? !landesListe.equals(kandidat.landesListe) : kandidat.landesListe != null)
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
@@ -490,7 +484,8 @@ public class Kandidat implements Serializable {
         if (twitter != null ? !twitter.equals(kandidat.twitter) : kandidat.twitter != null) return false;
         if (facebook != null ? !facebook.equals(kandidat.facebook) : kandidat.facebook != null) return false;
         if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
-        return logoUrl != null ? logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl == null;
+        if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
+        return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
 
     @Override
@@ -513,8 +508,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
-        result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
-        result = 31 * result + (listeBundeslandLand != null ? listeBundeslandLand.hashCode() : 0);
+        result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
@@ -530,6 +524,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
     }
 
@@ -554,8 +549,7 @@ public class Kandidat implements Serializable {
                 ", bundesland=" + bundesland +
                 ", wahlkreis=" + wahlkreis +
                 ", partei=" + partei +
-                ", listePartei=" + listePartei +
-                ", listeBundeslandLand=" + listeBundeslandLand +
+                ", landesListe=" + landesListe +
                 ", listePlatz=" + listePlatz +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
@@ -571,6 +565,7 @@ public class Kandidat implements Serializable {
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
+                ", kandidatFlat=" + kandidatFlat +
                 '}';
     }
 }

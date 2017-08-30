@@ -37,7 +37,7 @@ public class ListeParteiController {
     ) {
         String pageTitle = "ListePartei";
         String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
+        String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/listepartei/all";
@@ -63,16 +63,13 @@ public class ListeParteiController {
         } else {
             String pageTitle = listePartei.getListePartei() + ", " + listePartei.getListeParteiLang();
             String pageSubTitle = "ListePartei der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.LISTE_PARTEI.getSymbolHtml();
+            String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/listepartei/"+listePartei.getId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
-
-            Page<Kandidat> kandidatenPage  = kandidatService.findByListePartei(listePartei,pageable);
-            model.addAttribute("kandidaten",kandidatenPage);
 
             return "listepartei/id";
         }

@@ -9,7 +9,7 @@ public enum PageSymbol {
     IMPRESSUM("<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>"),
     SUCHE("<i class=\"fa fa-search\" aria-hidden=\"true\"></i>"),
     KANDIDAT("<i class=\"fa fa-user-circle\" aria-hidden=\"true\"></i>"),
-    LISTE_PARTEI("<i class=\"fa fa-list-alt\" aria-hidden=\"true\"></i>"),
+    LANDESLISTE("<i class=\"fa fa-list-alt\" aria-hidden=\"true\"></i>"),
     PARTEI("<i class=\"fa fa-users\" aria-hidden=\"true\"></i>"),
     WAHLKREIS("<i class=\"fa fa-map-o\" aria-hidden=\"true\"></i>"),
     WOHNORT("<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>"),

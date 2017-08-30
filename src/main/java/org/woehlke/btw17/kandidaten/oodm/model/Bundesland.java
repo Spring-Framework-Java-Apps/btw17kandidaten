@@ -43,6 +43,16 @@ public class Bundesland implements Serializable {
     @Column(name="logo_url")
     private String logoUrl;
 
+    @Transient
+    public String getName(){
+        StringBuffer name = new StringBuffer();
+        name.append(bundeslandLang);
+        name.append(" (");
+        name.append(bundesland);
+        name.append(")");
+        return name.toString();
+    }
+
     public Long getId() {
         return id;
     }

@@ -28,8 +28,6 @@ public interface KandidatService {
 
     Page<Kandidat> findByGeburtsort(Geburtsort geburtsort, Pageable pageable);
 
-    Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
-
     Page<Kandidat> findByPartei(Partei partei, Pageable pageable);
 
     Page<Kandidat> findByWahlkreis(Wahlkreis wahlkreis, Pageable pageable);
@@ -40,9 +38,7 @@ public interface KandidatService {
 
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
 
-    Page<Bundesland> findByListeBundeslandLandAll(Pageable pageable);
-
     Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
-    Page<Kandidat> findByListeBundeslandLandAndListePartei(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable);
+    Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
 }

@@ -19,8 +19,6 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     Page<Kandidat> findByGeburtsort(Geburtsort geburtsort, Pageable pageable);
 
-    Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
-
     Page<Kandidat> findByPartei(Partei partei, Pageable pageable);
 
     Page<Kandidat> findByWahlkreis(Wahlkreis wahlkreis, Pageable pageable);
@@ -33,10 +31,8 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.findByGeburtsjahrAll")
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
 
-    @Query(name="Kandidat.findByListeBundeslandLandAll")
-    Page<Bundesland> findByListeBundeslandLandAll(Pageable pageable);
-
     Page<Kandidat> findByGeburtsjahrOrderByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
-    Page<Kandidat> findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzAsc(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable);
+    Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
+
 }

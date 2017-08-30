@@ -36,12 +36,14 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final ParteiService parteiService;
 
+    private final LandesListeService landesListeService;
+
     private final WahlkreisService wahlkreisService;
 
     private final WohnortService wohnortService;
 
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, WahlkreisService wahlkreisService, WohnortService wohnortService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.berufService = berufService;
@@ -52,6 +54,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.kandidatService = kandidatService;
         this.listeParteiService = listeParteiService;
         this.parteiService = parteiService;
+        this.landesListeService = landesListeService;
         this.wahlkreisService = wahlkreisService;
         this.wohnortService = wohnortService;
     }
@@ -92,6 +95,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:       "+parteiService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:    "+wahlkreisService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:      "+wohnortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.LandesListe:  "+landesListeService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat: "+kandidatFlatService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:     "+kandidatService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
