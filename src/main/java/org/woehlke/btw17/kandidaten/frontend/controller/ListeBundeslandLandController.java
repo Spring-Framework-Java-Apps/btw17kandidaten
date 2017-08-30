@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.frontend.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -42,9 +43,14 @@ public class ListeBundeslandLandController {
             String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/kandidat/listebundesland/"+kandidat.getId();
+            String pagerUrl = "/listebundesland/"+kandidat.getId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
             model.addAttribute("pageContent",pageContent);
+
+            String listeBundeslandLand = kandidat.getListeBundeslandLand();
+
+            Page<Kandidat> kandidatenPage  = kandidatService.findByListeBundeslandLand(listeBundeslandLand,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
 
             model.addAttribute("kandidat",kandidat);
             return "listebundesland/id";
@@ -65,9 +71,12 @@ public class ListeBundeslandLandController {
         String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/kandidat/listebundesland/all";
+        String pagerUrl = "/listebundesland/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
+
+        Page<String> listebundeslandPage  = kandidatService.findByListeBundeslandLandAll(pageable);
+        model.addAttribute("listebundeslandPage",listebundeslandPage);
 
         return "listebundesland/all";
     }

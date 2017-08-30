@@ -94,7 +94,17 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
+    public Page<String> findByListeBundeslandLandAll(Pageable pageable) {
+        return kandidatRepository.findByListeBundeslandLandAll(pageable);
+    }
+
+    @Override
     public Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable) {
         return kandidatRepository.findByGeburtsjahrOrderByGeburtsjahr(geburtsjahr,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByListeBundeslandLand(String listeBundeslandLand, Pageable pageable) {
+        return kandidatRepository.findByListeBundeslandLand(listeBundeslandLand,pageable);
     }
 }

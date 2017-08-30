@@ -33,5 +33,10 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.findByGeburtsjahrAll")
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
 
+    @Query(name="Kandidat.findByListeBundeslandLandAll")
+    Page<String> findByListeBundeslandLandAll(Pageable pageable);
+
     Page<Kandidat> findByGeburtsjahrOrderByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
+
+    Page<Kandidat> findByListeBundeslandLand(String listeBundeslandLand, Pageable pageable);
 }
