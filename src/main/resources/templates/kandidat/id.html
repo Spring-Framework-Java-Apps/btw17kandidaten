@@ -112,8 +112,8 @@
                             <tr th:if="${kandidat.mdb}">
                                 <td><i class="fa fa-university" aria-hidden="true"></i> MdB</td>
                                 <td>
-                                    <a th:href="@{|/kandidat/mdb/|}">
-                                        <span th:text="${kandidat.mdb}">mdb</span>
+                                    <a th:if="${kandidat.mdb}" href="/kandidat/mdb" th:href="@{/kandidat/mdb}">
+                                        <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>

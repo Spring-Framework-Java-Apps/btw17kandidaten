@@ -100,19 +100,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/kandidat/mdb" th:href="@{/kandidat/mdb}">
+                                <a href="/mdb/all" th:href="@{/mdb/all}">
                                     <i class="fa fa-university" aria-hidden="true"></i>
                                     <span>MdB</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/kandidat/geburtsjahr/all" th:href="@{/templates/geburtsjahr/all}">
+                                <a href="/geburtsjahr/all" th:href="@{/geburtsjahr/all}">
                                     <i class="fa fa-id-card" aria-hidden="true"></i>
                                     <span>Geburtsjahr</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/kandidat/listebundesland/all" th:href="@{/templates/listebundesland/all}">
+                                <a href="/listebundesland/all" th:href="@{/listebundesland/all}">
                                     <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
                                     <span>ListeBundesland</span>
                                 </a>
@@ -172,17 +172,17 @@
                         <table class="table table-striped tw-kandidaten-all">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
-                                <th>ID</th>
-                                <th>Foto</th>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Wohnort</th>
                                 <th>Beruf</th>
                                 <th>Partei</th>
-                                <th>mdb</th>
+                                <th>MdB</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="kandidat : ${kandidaten}">
+                                <!--
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
@@ -193,6 +193,7 @@
                                     </span>
                                 </span>
                                 </td>
+                                -->
                                 <td>
                                     <img th:if="${kandidat.fotoUrl}"
                                          th:src="${kandidat.fotoUrl}"
@@ -225,7 +226,7 @@
                                 </td>
                                 <td>
                                     <a th:if="${kandidat.mdb}" href="/kandidat/mdb" th:href="@{/kandidat/mdb}">
-                                        <span th:text="${kandidat.mdb}">mdb</span>
+                                        <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>
