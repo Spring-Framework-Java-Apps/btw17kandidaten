@@ -38,5 +38,5 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     Page<Kandidat> findByGeburtsjahrOrderByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
-    Page<Kandidat> findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzDesc(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable);
+    Page<Kandidat> findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzAsc(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable);
 }

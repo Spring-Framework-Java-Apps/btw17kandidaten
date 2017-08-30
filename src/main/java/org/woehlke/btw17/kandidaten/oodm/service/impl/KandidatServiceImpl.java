@@ -105,7 +105,7 @@ public class KandidatServiceImpl implements KandidatService {
 
     @Override
     public Page<Kandidat> findByListeBundeslandLandAndListePartei(Bundesland listeBundeslandLand, ListePartei listePartei, Pageable pageable) {
-        return kandidatRepository.findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzDesc(listeBundeslandLand,listePartei,pageable);
+        return kandidatRepository.findByListeBundeslandLandAndListeParteiAndListePlatzNotNullOrderByListePlatzAsc(listeBundeslandLand,listePartei,pageable);
     }
 
 
