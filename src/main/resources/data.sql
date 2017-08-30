@@ -1,4 +1,3 @@
-
 --
 -- Empty Tables
 -- etc/empty-tables.sql
@@ -13,7 +12,8 @@ DELETE FROM partei;
 DELETE FROM wahlkreis;
 DELETE FROM wohnort;
 DELETE FROM kandidat;
-DELETE FROM kandidat_flat;--
+DELETE FROM kandidat_flat;
+--
 -- org.woehlke.btw17.kandidaten.oodm.model.Beruf
 -- Table: beruf
 --
@@ -2398,7 +2398,6 @@ INSERT INTO geburtsort (id,geburtsort) VALUES (1083, 'Warstein' );
 -- org.woehlke.btw17.kandidaten.oodm.model.ListePartei
 -- Table: liste_partei
 --
-DELETE FROM liste_partei;
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (1, 'BP','Bayernpartei' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (2, 'NPD','Nationaldemokratische Partei Deutschlands' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (3, 'PDV','Partei der Vernunft' );
@@ -2430,7 +2429,6 @@ INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (27, 'CDU','
 -- org.woehlke.btw17.kandidaten.oodm.model.Partei
 -- Table: partei
 --
-DELETE FROM partei;
 INSERT INTO partei (id,partei,partei_lang) VALUES (1, 'Einzelbewerber','Markus Beckmann – Den Menschen verpflichtet, keiner Partei!' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (2, 'Einzelbewerber','Otto Ritter' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (3, 'Einzelbewerber','wir-direkt' );
@@ -2569,7 +2567,6 @@ INSERT INTO partei (id,partei,partei_lang) VALUES (134, 'CDU','Christlich Demokr
 -- org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis
 -- Table: wahlkreis
 --
-DELETE FROM wahlkreis;
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (1, 281,'Freiburg' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (2, 47,'Hannover-Land II' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (3, 154,'Leipzig-Land' );
@@ -2873,7 +2870,6 @@ INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (299, 1,'Flensburg
 -- org.woehlke.btw17.kandidaten.oodm.model.Wohnort
 -- Table: wohnort
 --
-DELETE FROM wohnort;
 INSERT INTO wohnort (id,wohnort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO wohnort (id,wohnort) VALUES (2, 'Mühldorf a.Inn' );
 INSERT INTO wohnort (id,wohnort) VALUES (3, 'Staufen im Breisgau' );
@@ -6660,7 +6656,6 @@ INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, g
 -- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat
 -- Table: kandidat_flat
 --
-DELETE FROM kandidat_flat;
 INSERT INTO kandidat_flat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (1,null,null,null,'Ducke','Ducke','Kai-Uwe','M',1975,42,'Berlin','Crimmitschau','Fachinformatiker','IT-Fachleute','BE',76,'Berlin-Pankow','BüSo','Bürgerrechtsbewegung Solidarität','SL','BüSo','Bürgerrechtsbewegung Solidarität',5,null,50.8173491,12.3906771,'kai-uwe-ducke',null,null,null,'grey');
 INSERT INTO kandidat_flat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (2,null,null,null,'Herrlinger','Herrlinger','Siegmar','M',1952,65,'Kornwestheim','Birkenfeld','IT-Spezialist für Medientechnik','IT-Fachleute','BW',266,'Neckar-Zaber','MLPD','Marxistisch-Leninistische Partei Deutschlands',null,null,null,null,null,49.6512438,7.1631611,'siegmar-herrlinger',null,null,null,'grey');
 INSERT INTO kandidat_flat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (3,null,'Dr.',null,'Schulte-Wissermann','Schulte-Wissermann','Martin','M',1971,46,'Dresden','Mainz','Physiker','naturwissenschaftliche Berufe','SN',160,'Dresden II – Bautzen II','PIRATEN','Piratenpartei Deutschland','SL','PIRATEN','Piratenpartei Deutschland',4,null,49.9928617,8.2472526,'martin-schulte-wissermann',null,null,null,'grey');
