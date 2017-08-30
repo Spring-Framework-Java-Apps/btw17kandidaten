@@ -26,6 +26,29 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 @RequestMapping("/geburtsjahr")
 public class GeburtsjahrController {
 
+    @RequestMapping("/all")
+    public String getUserForGeburtsjahrAll(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            Model model
+    ) {
+        String pageTitle = "Geburtsjahre ";
+        String pageSubTitle = "Kandidaten der btw17";
+        String pageSymbol = PageSymbol.GEBURTSJAHR.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/kandidat/geburtsjahr/all";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Integer> geburtsjahrPage  = kandidatService.findByGeburtsjahrAll(pageable);
+        model.addAttribute("geburtsjahrPage",geburtsjahrPage);
+
+        return "geburtsjahr/all";
+    }
 
     @RequestMapping("/{geburtsjahr}")
     public String getKandidatenForGeburtsjahr(

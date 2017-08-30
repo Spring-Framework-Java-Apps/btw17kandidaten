@@ -95,6 +95,6 @@ public class KandidatServiceImpl implements KandidatService {
 
     @Override
     public Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable) {
-        return kandidatRepository.findByGeburtsjahr(geburtsjahr,pageable);
+        return kandidatRepository.findByGeburtsjahrOrderByGeburtsjahr(geburtsjahr,pageable);
     }
 }
