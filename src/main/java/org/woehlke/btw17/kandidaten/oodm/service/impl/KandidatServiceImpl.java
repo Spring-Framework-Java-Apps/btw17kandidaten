@@ -82,4 +82,19 @@ public class KandidatServiceImpl implements KandidatService {
     public Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable) {
         return kandidatRepository.findByWohnort(wohnort, pageable);
     }
+
+    @Override
+    public Page<Kandidat> findByMdB(Pageable pageable) {
+        return kandidatRepository.findByMdB(pageable);
+    }
+
+    @Override
+    public Page<Integer> findByGeburtsjahrAll(Pageable pageable) {
+        return kandidatRepository.findByGeburtsjahrAll(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable) {
+        return kandidatRepository.findByGeburtsjahr(geburtsjahr,pageable);
+    }
 }

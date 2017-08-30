@@ -22,6 +22,16 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_foto", columnList = "foto")
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Kandidat.findByMdB",
+        query = "select o from Kandidat as o where o.mdb is not null and o.mdb='1'"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByGeburtsjahrAll",
+        query = "select DISTINCT o.geburtsjahr from Kandidat as o where o.geburtsjahr is not null"
+    )
+})
 public class Kandidat implements Serializable {
 
     private static final long serialVersionUID = 1L;

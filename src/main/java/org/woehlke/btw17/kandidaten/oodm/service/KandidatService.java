@@ -36,4 +36,9 @@ public interface KandidatService {
 
     Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
 
+    Page<Kandidat> findByMdB(Pageable pageable);
+
+    Page<Integer> findByGeburtsjahrAll(Pageable pageable);
+
+    Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 }

@@ -75,7 +75,14 @@ public class KandidatController {
     }
 
     @RequestMapping("/geburtsjahr/all")
-    public String getUserForGeburtsjahrAll(Model model) {
+    public String getUserForGeburtsjahrAll(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            Model model
+    ) {
         String pageTitle = "Geburtsjahre ";
         String pageSubTitle = "Kandidaten der btw17";
         String pageSymbol = PageSymbol.GEBURTSJAHR.getSymbolHtml();
@@ -84,6 +91,9 @@ public class KandidatController {
         String pagerUrl = "/kandidat/geburtsjahr/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
+
+        Page<Integer> geburtsjahrPage  = kandidatService.findByGeburtsjahrAll(pageable);
+        model.addAttribute("geburtsjahrPage",geburtsjahrPage);
 
         return "kandidat/geburtsjahr/all";
     }
@@ -147,6 +157,11 @@ public class KandidatController {
 
     @RequestMapping("/mdb")
     public String getUserwhoAreMdB(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
             Model model
     ) {
         String pageTitle = "MdB";
@@ -157,6 +172,9 @@ public class KandidatController {
         String pagerUrl = "/kandidat/mdb/";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> kandidatenPage  = kandidatService.findByMdB(pageable);
+        model.addAttribute("kandidaten",kandidatenPage);
 
         return "kandidat/mdb";
     }

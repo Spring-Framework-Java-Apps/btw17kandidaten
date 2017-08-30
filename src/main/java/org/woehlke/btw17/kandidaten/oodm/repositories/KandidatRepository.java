@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
@@ -25,5 +26,13 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     Page<Kandidat> findByWahlkreis(Wahlkreis wahlkreis, Pageable pageable);
 
     Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
+
+    @Query(name="Kandidat.findByMdB")
+    Page<Kandidat> findByMdB(Pageable pageable);
+
+    @Query(name="Kandidat.findByGeburtsjahrAll")
+    Page<Integer> findByGeburtsjahrAll(Pageable pageable);
+
+    Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
 }
