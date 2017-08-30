@@ -1,4 +1,22 @@
+
+--
+-- Empty Tables
+-- etc/empty-tables.sql
+-- This data.sql File is build by etc/build-db-data-import-file.sh
+--
 DELETE FROM beruf;
+DELETE FROM berufsgruppe;
+DELETE FROM bundesland;
+DELETE FROM geburtsort;
+DELETE FROM liste_partei;
+DELETE FROM partei;
+DELETE FROM wahlkreis;
+DELETE FROM wohnort;
+DELETE FROM kandidat;
+DELETE FROM kandidat_flat;--
+-- org.woehlke.btw17.kandidaten.oodm.model.Beruf
+-- Table: beruf
+--
 INSERT INTO beruf (id,beruf) VALUES (1, 'selbst. Finanzberaterin' );
 INSERT INTO beruf (id,beruf) VALUES (2, 'Assistent der Geschäftsführung' );
 INSERT INTO beruf (id,beruf) VALUES (3, 'Maschinenbauer i. R.' );
@@ -1210,7 +1228,10 @@ INSERT INTO beruf (id,beruf) VALUES (1208, 'MdL / Elektromonteur' );
 INSERT INTO beruf (id,beruf) VALUES (1209, 'Dozentin (M. Ed.)' );
 INSERT INTO beruf (id,beruf) VALUES (1210, 'Projektmanager im Innovationsbereich' );
 INSERT INTO beruf (id,beruf) VALUES (1211, 'MdB / Dipl.-Chemiker' );
-DELETE FROM berufsgruppe;
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe
+-- Table: berufsgruppe
+--
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (1, 'Selbsständige' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (2, 'Wirtschaftsprüfer / Steuerberater' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (3, 'Dipl.-Kaufleute' );
@@ -1266,7 +1287,10 @@ INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (52, 'IT-Fachleute' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (53, 'Banker, Finanzprofis' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (54, 'wissenschaftliche Mitarbeiter' );
 INSERT INTO berufsgruppe (id,berufsgruppe) VALUES (55, 'Betriebswirt (Ausbildung)' );
-DELETE FROM bundesland;
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Bundesland
+-- Table: bundesland
+--
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (1, 'BB', 'Brandenburg');
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (2, 'SN', 'SN' );
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (3, 'NW', 'Nordrhein-Westfalen' );
@@ -1283,7 +1307,10 @@ INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (13, 'MV', 'Meckle
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (14, 'RP', 'Rheinland-Pfalz' );
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (15, 'HH', 'Hansestadt Hamburg' );
 INSERT INTO bundesland (id,bundesland,bundesland_lang) VALUES (16, 'TH', 'Thüringen' );
-DELETE FROM geburtsort;
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Geburtsort
+-- Table: geburtsort
+--
 INSERT INTO geburtsort (id,geburtsort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (2, 'Mühldorf a.Inn' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (3, 'Speyer' );
@@ -2367,6 +2394,10 @@ INSERT INTO geburtsort (id,geburtsort) VALUES (1080, 'Fürth' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1081, 'Skalica' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1082, 'Westenfeld' );
 INSERT INTO geburtsort (id,geburtsort) VALUES (1083, 'Warstein' );
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei
+-- Table: liste_partei
+--
 DELETE FROM liste_partei;
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (1, 'BP','Bayernpartei' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (2, 'NPD','Nationaldemokratische Partei Deutschlands' );
@@ -2395,6 +2426,10 @@ INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (24, 'du.','
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (25, 'PIRATEN','Piratenpartei Deutschland' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (26, 'Tierschutzpartei','PARTEI MENSCH UMWELT TIERSCHUTZ' );
 INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (27, 'CDU','Christlich Demokratische Union Deutschlands' );
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Partei
+-- Table: partei
+--
 DELETE FROM partei;
 INSERT INTO partei (id,partei,partei_lang) VALUES (1, 'Einzelbewerber','Markus Beckmann – Den Menschen verpflichtet, keiner Partei!' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (2, 'Einzelbewerber','Otto Ritter' );
@@ -2530,6 +2565,10 @@ INSERT INTO partei (id,partei,partei_lang) VALUES (131, 'Tierschutzpartei','PART
 INSERT INTO partei (id,partei,partei_lang) VALUES (132, 'Einzelbewerber','Überparteilich! Mit gutem Beispiel voran: www.eidesstattliches-wahlversprechen.de' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (133, 'Einzelbewerber','Babnik' );
 INSERT INTO partei (id,partei,partei_lang) VALUES (134, 'CDU','Christlich Demokratische Union Deutschlands' );
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis
+-- Table: wahlkreis
+--
 DELETE FROM wahlkreis;
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (1, 281,'Freiburg' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (2, 47,'Hannover-Land II' );
@@ -2830,6 +2869,10 @@ INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (296, 232,'Amberg'
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (297, 161,'Mittelsachsen' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (298, 140,'Bochum I' );
 INSERT INTO wahlkreis (id,wahlkreis_id,wahlkreis_name) VALUES (299, 1,'Flensburg – Schleswig' );
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Wohnort
+-- Table: wohnort
+--
 DELETE FROM wohnort;
 INSERT INTO wohnort (id,wohnort) VALUES (1, 'Moosburg a.d.Isar' );
 INSERT INTO wohnort (id,wohnort) VALUES (2, 'Mühldorf a.Inn' );
@@ -4050,7 +4093,10 @@ INSERT INTO wohnort (id,wohnort) VALUES (1216, 'Tengen' );
 INSERT INTO wohnort (id,wohnort) VALUES (1217, 'Poseritz' );
 INSERT INTO wohnort (id,wohnort) VALUES (1218, 'Kolbermoor' );
 INSERT INTO wohnort (id,wohnort) VALUES (1219, 'Warstein' );
-DELETE FROM kandidat;
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+-- Table: kandidat
+--
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1773, 53, 'grey', NULL, NULL, NULL, 1964, 'W', 'narziss-nianur', 'narziss-nianur', 54.3232927, 'HH', 3, 10.1227651, NULL, NULL, 'Nianur', 'Nianur', NULL, NULL, NULL, NULL, NULL, 'Narziss', NULL, NULL, 750, 42, 15, 624, 11, 66, 128, 399);
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1777, 40, '#ff0000', NULL, NULL, NULL, 1977, 'W', 'nezaket-yildirim', 'nezaket-yildirim', 39.8263688, 'RP', 29, 39.9512624, NULL, NULL, 'Yildirim', 'Yildirim', NULL, NULL, NULL, NULL, NULL, 'Nezaket', NULL, NULL, 744, 47, 12, 998, 21, 105, 166, 186);
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1778, 48, 'grey', NULL, NULL, NULL, 1969, 'M', 'nick-oliver-machts', 'nick-oliver-machts', 52.284424, NULL, NULL, 11.4181493, NULL, NULL, 'Machts', 'Machts', NULL, NULL, NULL, NULL, NULL, 'Nick-Oliver', NULL, NULL, 393, 12, 5, 80, NULL, 11, 190, 93);
@@ -6610,6 +6656,10 @@ INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, g
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1762, 53, '#33cc33', NULL, NULL, NULL, 1964, 'W', 'monika-geils', 'monika-geils', 53.0792962, 'NI', 23, 8.8016936, NULL, NULL, 'Geils', 'Geils', NULL, NULL, NULL, NULL, NULL, 'Monika', NULL, NULL, 958, 47, 8, 841, 22, 112, 84, 416);
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1768, 35, '#ffff00', NULL, NULL, NULL, 1982, 'M', 'moritz johann martin-pöllath', 'moritz-pollath', 49.7320956, 'BY', 22, 12.1781271, NULL, NULL, 'Pöllath', 'Pöllath', NULL, 0.640788418897227, -0.090070397596913, 'Dr.', NULL, 'Moritz Johann Martin', NULL, NULL, 776, 34, 4, 671, 17, 85, 296, 183);
 INSERT INTO kandidat (id, alter, color, facebook, foto, foto_url, geburtsjahr, geschlecht, id_eigen, kandidat_key, lat, liste_bundesland_land, liste_platz, lng, logo_url, mdb, nachname, nachname_ohne, namenszusatz, scatter_x, scatter_y, titel, twitter, vorname, webseite, youtube, fk_beruf, fk_berufsgruppe, fk_bundesland, fk_geburtsort, fk_liste_partei, fk_partei, fk_wahlkreis, fk_wohnort) VALUES (1769, 52, 'grey', NULL, NULL, NULL, 1965, 'M', 'mustafa-kurt', 'mustafa-kurt', 38.2522117, 'HH', 2, 37.3827234, NULL, NULL, 'Kurt', 'Kurt', NULL, NULL, NULL, NULL, NULL, 'Mustafa', NULL, NULL, 223, 8, 15, 1036, 11, 66, 249, 399);
+--
+-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat
+-- Table: kandidat_flat
+--
 DELETE FROM kandidat_flat;
 INSERT INTO kandidat_flat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (1,null,null,null,'Ducke','Ducke','Kai-Uwe','M',1975,42,'Berlin','Crimmitschau','Fachinformatiker','IT-Fachleute','BE',76,'Berlin-Pankow','BüSo','Bürgerrechtsbewegung Solidarität','SL','BüSo','Bürgerrechtsbewegung Solidarität',5,null,50.8173491,12.3906771,'kai-uwe-ducke',null,null,null,'grey');
 INSERT INTO kandidat_flat (id,kandidat_key,titel,namenszusatz,nachname_ohne,nachname,vorname,geschlecht,geburtsjahr,alter,wohnort,geburtsort,beruf,berufsgruppe,bundesland,wahlkreis_id,wahlkreis_name,partei,partei_lang,liste_bundesland_land,liste_partei,liste_partei_lang,liste_platz,mdb,lat,lng,id_eigen,foto,scatter_x,scatter_y,color) VALUES (2,null,null,null,'Herrlinger','Herrlinger','Siegmar','M',1952,65,'Kornwestheim','Birkenfeld','IT-Spezialist für Medientechnik','IT-Fachleute','BW',266,'Neckar-Zaber','MLPD','Marxistisch-Leninistische Partei Deutschlands',null,null,null,null,null,49.6512438,7.1631611,'siegmar-herrlinger',null,null,null,'grey');
