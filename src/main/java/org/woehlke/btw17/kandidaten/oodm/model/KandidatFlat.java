@@ -135,7 +135,6 @@ public class KandidatFlat implements Serializable {
 
     @Transient
     public String getTransientKey(){
-        String newKandidatKey = null;
         Locale locale = Locale.GERMANY;
         String titel = this.getTitel();
         String vorname = this.getVorname();
@@ -144,15 +143,15 @@ public class KandidatFlat implements Serializable {
         String geschlecht = this.getGeschlecht();
         String geburtsort = this.getGeburtsort();
         Integer geburtsjahr = this.getGeburtsjahr();
-        vorname = vorname.replaceAll("\\w","").toLowerCase(locale);
-        nachname = nachname.replaceAll("\\w","").toLowerCase(locale);
-        newKandidatKey = vorname +"-"+nachname;
+        vorname = vorname.replaceAll("\\W","").toLowerCase(locale);
+        nachname = nachname.replaceAll("\\W","").toLowerCase(locale);
+        String newKandidatKey = vorname +"-"+nachname;
         if(namenszusatz!=null){
-            namenszusatz = namenszusatz.replaceAll("\\w","").toLowerCase(locale);
+            namenszusatz = namenszusatz.replaceAll("\\W","").toLowerCase(locale);
             newKandidatKey =  namenszusatz +"-"+ newKandidatKey;
         }
         if(titel!=null){
-            titel = titel.replaceAll("\\w","").toLowerCase(locale);
+            titel = titel.replaceAll("\\W","").toLowerCase(locale);
             newKandidatKey =  titel+"-"+ newKandidatKey;
         }
         if(geschlecht!=null){
@@ -167,7 +166,7 @@ public class KandidatFlat implements Serializable {
             newKandidatKey = newKandidatKey +"-geboren-"+geburtsjahr;
         }
         if(geburtsort != null){
-            geburtsort = geburtsort.replaceAll("\\w","").toLowerCase(locale);
+            geburtsort = geburtsort.replaceAll("\\W","").toLowerCase(locale);
             newKandidatKey = newKandidatKey +"-in-"+geburtsort;
         }
         return newKandidatKey;
