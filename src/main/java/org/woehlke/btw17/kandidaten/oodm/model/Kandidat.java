@@ -162,6 +162,10 @@ public class Kandidat implements Serializable {
     private String wikipediaArticle;
 
     @URL
+    @Column(name="bundestag_abgeordnete")
+    private String bundestagAbgeordnete;
+
+    @URL
     @Column(name = "logo_url")
     private String logoUrl;
 
@@ -462,6 +466,14 @@ public class Kandidat implements Serializable {
         this.wikipediaArticle = wikipediaArticle;
     }
 
+    public String getBundestagAbgeordnete() {
+        return bundestagAbgeordnete;
+    }
+
+    public void setBundestagAbgeordnete(String bundestagAbgeordnete) {
+        this.bundestagAbgeordnete = bundestagAbgeordnete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -509,6 +521,8 @@ public class Kandidat implements Serializable {
         if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
         if (wikipediaArticle != null ? !wikipediaArticle.equals(kandidat.wikipediaArticle) : kandidat.wikipediaArticle != null)
             return false;
+        if (bundestagAbgeordnete != null ? !bundestagAbgeordnete.equals(kandidat.bundestagAbgeordnete) : kandidat.bundestagAbgeordnete != null)
+            return false;
         if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
@@ -549,6 +563,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
+        result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
@@ -591,6 +606,7 @@ public class Kandidat implements Serializable {
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';

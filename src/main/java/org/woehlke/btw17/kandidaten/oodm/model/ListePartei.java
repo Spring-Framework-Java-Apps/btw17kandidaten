@@ -54,6 +54,10 @@ public class ListePartei implements Serializable {
     @Column
     private String wikipediaArticle;
 
+    @URL
+    @Column(name="bundeszentrale_politische_bildung")
+    private String bundeszentralePolitischeBildung;
+
     public Long getId() {
         return id;
     }
@@ -126,6 +130,14 @@ public class ListePartei implements Serializable {
         this.wikipediaArticle = wikipediaArticle;
     }
 
+    public String getBundeszentralePolitischeBildung() {
+        return bundeszentralePolitischeBildung;
+    }
+
+    public void setBundeszentralePolitischeBildung(String bundeszentralePolitischeBildung) {
+        this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -142,7 +154,9 @@ public class ListePartei implements Serializable {
         if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
         if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
         if (logoUrl != null ? !logoUrl.equals(that.logoUrl) : that.logoUrl != null) return false;
-        return wikipediaArticle != null ? wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle == null;
+        if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
+            return false;
+        return bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.equals(that.bundeszentralePolitischeBildung) : that.bundeszentralePolitischeBildung == null;
     }
 
     @Override
@@ -156,6 +170,7 @@ public class ListePartei implements Serializable {
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
+        result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
         return result;
     }
 
@@ -171,6 +186,7 @@ public class ListePartei implements Serializable {
                 ", youtube='" + youtube + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
                 '}';
     }
 }
