@@ -26,6 +26,8 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
 
+    private final static String sqlFileUpdateKandidatUrls = "etc/3nf/data/update-kandidat-urls.sql";
+
     @Autowired
     private BerufService berufService;
 
@@ -134,6 +136,14 @@ public class KandidatenNormalizedTableBuilder {
         }
         BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
         long id = 0;
+        while (br.ready()){
+            id++;
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+        br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
+        id = 0;
         while (br.ready()){
             id++;
             String sqlStatement = br.readLine();
