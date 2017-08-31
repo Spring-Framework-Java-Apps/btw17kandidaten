@@ -114,6 +114,25 @@
                                 </td>
                             </tr>
                         </table>
+                        <table>
+                            <tr>
+                                <td>
+                                    <a th:if="${kandidat.webseite}" th:href="${kandidat.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${kandidat.twitter}" th:href="${kandidat.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${kandidat.facebook}" th:href="${kandidat.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${kandidat.youtube}" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <div class="col-md-4">
