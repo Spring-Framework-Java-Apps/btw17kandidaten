@@ -31,11 +31,20 @@
                                 <th class="tw-debug">ID</th>
                                 <th>wahlkreisId</th>
                                 <th>wahlkreisName</th>
+                                <th>
+                                    &nbsp;&nbsp;&nbsp;
+                                </th>
+                                <th>
+                                    <i class="fa fa-cloud" aria-hidden="true"></i>
+                                </th>
+                                <th>
+                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="wahlkreis : ${wahlkreise}">
-                                <td> class="tw-debug"
+                                <td class="tw-debug">
                                     <span th:fragment="tw-data-view-id">
                                         <span class="tw-vector">
                                             <a href="" th:href="@{|/wahlkreis/${wahlkreis.id}/|}">
@@ -52,6 +61,15 @@
                                 </td>
                                 <td>
                                     <span th:text="${wahlkreis.wahlkreisName}">wahlkreisName</span>
+                                </td>
+                                <td>
+                                    &nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <a th:if="${wahlkreis.webseite}" th:href="${wahlkreis.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${wahlkreis.wikipediaArticle}" th:href="${wahlkreis.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             </tbody>

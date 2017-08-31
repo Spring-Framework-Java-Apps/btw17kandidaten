@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,6 +29,18 @@ public class Wahlkreis implements Serializable {
     @Column(name="wahlkreis_name")
     private String wahlkreisName;
 
+    @URL
+    @Column
+    private String webseite;
+
+    @URL
+    @Column
+    private String wikipediaArticle;
+
+    @URL
+    @Column
+    private String googleMapsUrl;
+
     public Long getId() {
         return id;
     }
@@ -51,6 +65,30 @@ public class Wahlkreis implements Serializable {
         this.wahlkreisName = wahlkreisName;
     }
 
+    public String getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(String webseite) {
+        this.webseite = webseite;
+    }
+
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
+    public String getGoogleMapsUrl() {
+        return googleMapsUrl;
+    }
+
+    public void setGoogleMapsUrl(String googleMapsUrl) {
+        this.googleMapsUrl = googleMapsUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,7 +99,12 @@ public class Wahlkreis implements Serializable {
         if (id != null ? !id.equals(wahlkreis.id) : wahlkreis.id != null) return false;
         if (wahlkreisId != null ? !wahlkreisId.equals(wahlkreis.wahlkreisId) : wahlkreis.wahlkreisId != null)
             return false;
-        return wahlkreisName != null ? wahlkreisName.equals(wahlkreis.wahlkreisName) : wahlkreis.wahlkreisName == null;
+        if (wahlkreisName != null ? !wahlkreisName.equals(wahlkreis.wahlkreisName) : wahlkreis.wahlkreisName != null)
+            return false;
+        if (webseite != null ? !webseite.equals(wahlkreis.webseite) : wahlkreis.webseite != null) return false;
+        if (wikipediaArticle != null ? !wikipediaArticle.equals(wahlkreis.wikipediaArticle) : wahlkreis.wikipediaArticle != null)
+            return false;
+        return googleMapsUrl != null ? googleMapsUrl.equals(wahlkreis.googleMapsUrl) : wahlkreis.googleMapsUrl == null;
     }
 
     @Override
@@ -69,6 +112,9 @@ public class Wahlkreis implements Serializable {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (wahlkreisId != null ? wahlkreisId.hashCode() : 0);
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
+        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
         return result;
     }
 
@@ -78,6 +124,9 @@ public class Wahlkreis implements Serializable {
                 "id=" + id +
                 ", wahlkreisId=" + wahlkreisId +
                 ", wahlkreisName='" + wahlkreisName + '\'' +
+                ", webseite='" + webseite + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", googleMapsUrl='" + googleMapsUrl + '\'' +
                 '}';
     }
 }
