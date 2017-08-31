@@ -28,13 +28,17 @@
                         <table class="table table-striped">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
+                                <!--
                                 <th>ID</th>
+                                -->
+                                <th></th>
                                 <th>Partei</th>
                                 <th>parteiLang</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="partei : ${parteien}">
+                                <!--
                                 <td>
                                 <span th:fragment="tw-data-view-id">
                                     <span class="tw-vector">
@@ -45,17 +49,18 @@
                                     </span>
                                 </span>
                                 </td>
-                                <td>
-                                    <a href="" th:href="@{|/partei/${partei.id}/|}">
-                                        <span th:if="${partei.partei}" th:text="${partei.partei}">partei</span>
-                                    </a>
-                                </td>
+                                -->
                                 <td>
                                     <a th:if="${partei.webseite}" th:href="${partei.webseite}" alt="Webseite" title="Webseite"><i class="fa fa-cloud" aria-hidden="true"></i></a>
                                     <a th:if="${partei.twitter}" th:href="${partei.twitter}" alt="Twitter" title="Twitter"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                                     <a th:if="${partei.facebook}" th:href="${partei.facebook}" alt="Facebook" title="Facebook"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                                     <a th:if="${partei.youtube}" th:href="${partei.youtube}" alt="YouTube" title="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                     <a th:if="${partei.wikipediaArticle}" th:href="${partei.wikipediaArticle}" alt="Wikipedia" title="Wikipedia"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a href="" th:href="@{|/partei/${partei.id}/|}">
+                                        <span th:if="${partei.partei}" th:text="${partei.partei}">partei</span>
+                                    </a>
                                 </td>
                                 <td>
                                     <span th:text="${partei.parteiLang}">parteiLang</span>
