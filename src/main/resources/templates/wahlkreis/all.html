@@ -28,22 +28,22 @@
                         <table class="table table-striped">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
-                                <th>ID</th>
+                                <th class="tw-debug">ID</th>
                                 <th>wahlkreisId</th>
                                 <th>wahlkreisName</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="wahlkreis : ${wahlkreise}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/wahlkreis/${wahlkreis.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${wahlkreis.id}">id</span>
-                                        </a>
+                                <td> class="tw-debug"
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/wahlkreis/${wahlkreis.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${wahlkreis.id}">id</span>
+                                            </a>
+                                        </span>
                                     </span>
-                                </span>
                                 </td>
                                 <td>
                                     <a href="" th:href="@{|/wahlkreis/${wahlkreis.id}/|}">

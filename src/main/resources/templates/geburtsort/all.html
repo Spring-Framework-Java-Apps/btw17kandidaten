@@ -28,13 +28,22 @@
                             <table class="table table-striped">
                                 <thead th:fragment="tw-data-view-thead">
                                 <tr>
-                                    <th>ID</th>
+                                    <th class="tw-debug">ID</th>
                                     <th>Geburtsort</th>
+                                    <th>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="geburtsort : ${geburtsorte}">
-                                    <td>
+                                    <td class="tw-debug">
                                     <span th:fragment="tw-data-view-id">
                                         <span class="tw-vector">
                                             <a href="" th:href="@{|/geburtsort/${geburtsort.id}/|}">
@@ -48,6 +57,15 @@
                                         <a href="" th:href="@{|/geburtsort/${geburtsort.id}/|}">
                                             <span th:if="${geburtsort.geburtsort}" th:text="${geburtsort.geburtsort}">geburtsort.geburtsort</span>
                                         </a>
+                                    </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    <td>
+                                        <a th:if="${geburtsort.webseite}" th:href="${geburtsort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${geburtsort.wikipediaArticle}" th:href="${geburtsort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>

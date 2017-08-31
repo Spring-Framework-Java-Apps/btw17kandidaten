@@ -28,7 +28,7 @@
                             <table class="table table-striped">
                                 <thead th:fragment="tw-data-view-thead">
                                 <tr>
-                                    <th>ID</th>
+                                    <th class="tw-debug">ID</th>
                                     <th>Name</th>
                                     <th>m/w</th>
                                     <th>Wohnort</th>
@@ -41,7 +41,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="kandidat : ${kandidaten}">
-                                    <td>
+                                    <td class="tw-debug">
                                     <span th:fragment="tw-data-view-id">
                                         <span class="tw-vector">
                                             <a href="" th:href="@{|/kandidatflat/${kandidat.id}/|}">

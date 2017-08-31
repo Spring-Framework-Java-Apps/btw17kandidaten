@@ -28,13 +28,13 @@
                             <table class="table table-striped">
                                 <thead th:fragment="tw-data-view-thead">
                                 <tr>
-                                    <th>ID</th>
+                                    <th class="tw-debug">ID</th>
                                     <th>Beruf</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="beruf : ${berufe}">
-                                    <td>
+                                    <td class="tw-debug">
                                     <span th:fragment="tw-data-view-id">
                                         <span class="tw-vector">
                                             <a href="" th:href="@{|/beruf/${beruf.id}/|}">

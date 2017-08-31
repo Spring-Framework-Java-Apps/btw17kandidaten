@@ -178,6 +178,7 @@
                         <table class="table table-striped tw-kandidaten-all">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
+                                <th class="tw-debug"></th>
                                 <th></th>
                                 <th>Name</th>
                                 <th></th>
@@ -188,18 +189,16 @@
                             </thead>
                             <tbody>
                             <tr th:each="kandidat : ${kandidaten}">
-                                <!--
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
-                                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                                        <span th:text="${kandidat.id}">id</span>
-                                        </a>
+                                <td class="tw-debug">
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
+                                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                            <span th:text="${kandidat.id}">id</span>
+                                            </a>
+                                        </span>
                                     </span>
-                                </span>
                                 </td>
-                                -->
                                 <td>
                                     <img th:if="${kandidat.fotoUrl}"
                                          th:src="${kandidat.fotoUrl}"
@@ -275,30 +274,50 @@
                         <table class="table table-striped">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
-                                <th>ID</th>
-                                <th>BL</th>
+                                <th class="tw-debug">ID</th>
+                                <th class="tw-debug">BL</th>
                                 <th>Bundesland</th>
+                                <th>
+                                    &nbsp;&nbsp;&nbsp;
+                                </th>
+                                <th>
+                                    <i class="fa fa-cloud" aria-hidden="true"></i>
+                                </th>
+                                <th>
+                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="bundesland : ${bundeslaender}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${bundesland.id}">id</span>
-                                        </a>
+                                <td class="tw-debug">
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${bundesland.id}">id</span>
+                                            </a>
+                                        </span>
                                     </span>
-                                </span>
                                 </td>
-                                <td>
+                                <td class="tw-debug">
                                     <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
                                         <span th:if="${bundesland.bundesland}" th:text="${bundesland.bundesland}">bundesland.bundesland</span>
                                     </a>
                                 </td>
                                 <td>
-                                    <span th:text="${bundesland.bundeslandLang}">bundesland.bundeslandLang</span>
+                                    <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
+                                        <span th:text="${bundesland.bundeslandLang}">bundesland.bundeslandLang</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    &nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <a th:if="${bundesland.webseite}" th:href="${bundesland.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${bundesland.wikipediaArticle}" th:href="${bundesland.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             </tbody>

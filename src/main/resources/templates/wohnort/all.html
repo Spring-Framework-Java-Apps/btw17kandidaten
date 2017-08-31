@@ -27,26 +27,44 @@
                         <table class="table table-striped">
                             <thead th:fragment="tw-data-view-thead">
                             <tr>
-                                <th>ID</th>
+                                <th class="tw-debug">ID</th>
                                 <th>Wohnort</th>
+                                <th>
+                                    &nbsp;&nbsp;&nbsp;
+                                </th>
+                                <th>
+                                    <i class="fa fa-cloud" aria-hidden="true"></i>
+                                </th>
+                                <th>
+                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="wohnort : ${wohnorte}">
-                                <td>
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
-                                        <span th:text="${wohnort.id}">id</span>
-                                        </a>
+                                <td class="tw-debug">
+                                    <span th:fragment="tw-data-view-id">
+                                        <span class="tw-vector">
+                                            <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
+                                            <i class="fa fa-database" aria-hidden="true"></i>
+                                            <span th:text="${wohnort.id}">id</span>
+                                            </a>
+                                        </span>
                                     </span>
-                                </span>
                                 </td>
                                 <td>
                                     <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
                                         <span th:if="${wohnort.wohnort}" th:text="${wohnort.wohnort}">wohnort</span>
                                     </a>
+                                </td>
+                                <td>
+                                    &nbsp;&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    <a th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                </td>
+                                <td>
+                                    <a th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                                 </td>
                             </tr>
                             </tbody>

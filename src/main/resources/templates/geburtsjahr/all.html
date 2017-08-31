@@ -28,23 +28,23 @@
                         <div class="well">
                             <table class="table table-striped">
                                 <thead th:fragment="tw-data-view-thead">
-                                <tr>
-                                    <th>Geburtsjahr</th>
-                                </tr>
+                                    <tr>
+                                        <th>Geburtsjahr</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="geburtsjahr : ${geburtsjahrPage}">
-                                    <td>
-                                    <span th:fragment="tw-data-view-id">
-                                        <span class="tw-vector">
-                                            <a href="" th:href="@{|/geburtsjahr/${geburtsjahr}/|}">
-                                            <i class="fa fa-id-card" aria-hidden="true"></i>
-                                            <span th:text="${geburtsjahr}">geburtsjahr</span>
-                                            </a>
-                                        </span>
-                                    </span>
-                                    </td>
-                                </tr>
+                                    <tr th:each="geburtsjahr : ${geburtsjahrPage}">
+                                        <td>
+                                            <span th:fragment="tw-data-view-id">
+                                                <span class="tw-vector">
+                                                    <a href="" th:href="@{|/geburtsjahr/${geburtsjahr}/|}">
+                                                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                                                    <span th:text="${geburtsjahr}">geburtsjahr</span>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
