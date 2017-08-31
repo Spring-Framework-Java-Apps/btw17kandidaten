@@ -149,6 +149,11 @@
         height: 25px;
         margin: auto;
     }
+
+    .tw-social-media-link {
+        margin-right: 25px;
+        font-size: 1.4em;
+    }
 }
 
 

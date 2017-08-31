@@ -7,6 +7,23 @@
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
 <header th:include="layoutMain :: tw-header"></header>
 
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+
+                    <a class="tw-social-media-link" th:if="${bundesland.webseite}" th:href="${bundesland.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+
+                    <a class="tw-social-media-link" th:if="${bundesland.wikipediaArticle}" th:href="${bundesland.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <main class="page-content">
     <div class="tw-page-content tw-page-content-landesliste-bundesland">
         <div class="container" th:fragment="tw-page-content-bundeslaender">

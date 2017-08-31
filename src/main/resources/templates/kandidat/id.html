@@ -14,7 +14,7 @@
                 <div class="col-md-8">
                     <div class="well">
                         <table class="table table-striped">
-                            <tr>
+                            <tr class="tw-debug">
                                 <td>ID</td>
                                 <td>
                                 <span th:fragment="tw-data-view-id">
@@ -28,18 +28,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Name</td>
-                                <td>
-                                    <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
-                                    <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span>
-                                    <span th:text="${kandidat.vorname}">vorname</span>
-                                    <span th:text="${kandidat.nachname}">nachname</span>
-                                </td>
+                                <th>&nbsp;</th>
+                                <th>
+                                    <b>
+                                        <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
+                                        <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span>
+                                        <span th:text="${kandidat.vorname}">vorname</span>
+                                        <span th:text="${kandidat.nachname}">nachname</span>
+                                    </b>
+                                </th>
                             </tr>
                             <tr>
                                 <td><i class="fa fa-id-card" aria-hidden="true"></i> Jahrgang</td>
                                 <td>
-                                    <a th:href="@{|/kandidat/geburtsjahr/${kandidat.id}/|}">
+                                    <a th:href="@{|/geburtsjahr/${kandidat.geburtsjahr}/|}">
                                         <span th:text="${kandidat.geburtsjahr}">geburtsjahr</span>
                                     </a>
                                 </td>
@@ -113,23 +115,20 @@
                                     </a>
                                 </td>
                             </tr>
-                        </table>
-                        <table>
                             <tr>
+                                <td>&nbsp;</td>
                                 <td>
-                                    <a th:if="${kandidat.webseite}" th:href="${kandidat.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.twitter}" th:href="${kandidat.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.facebook}" th:href="${kandidat.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.youtube}" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.webseite}" th:href="${kandidat.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.twitter}" th:href="${kandidat.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.facebook}" th:href="${kandidat.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.youtube}" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+
                                 </td>
                             </tr>
                         </table>
