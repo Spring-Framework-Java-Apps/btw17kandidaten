@@ -20,15 +20,15 @@ public class SearchForKandidat implements Serializable {
 
     private String beruf;
 
-    private Berufsgruppe berufsgruppe;
+    private String berufsgruppe;
 
-    private Bundesland bundesland;
+    private String bundesland;
 
-    private Wahlkreis wahlkreis;
+    private String wahlkreis;
 
-    private Partei partei;
+    private String partei;
 
-    private LandesListe landesListe;
+    private String landesListe;
 
     //@Pattern(regexp="[a-zA-Z0-9_]*")
     private String twitter;
@@ -89,43 +89,43 @@ public class SearchForKandidat implements Serializable {
         this.beruf = beruf;
     }
 
-    public Berufsgruppe getBerufsgruppe() {
+    public String getBerufsgruppe() {
         return berufsgruppe;
     }
 
-    public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
+    public void setBerufsgruppe(String berufsgruppe) {
         this.berufsgruppe = berufsgruppe;
     }
 
-    public Bundesland getBundesland() {
+    public String getBundesland() {
         return bundesland;
     }
 
-    public void setBundesland(Bundesland bundesland) {
+    public void setBundesland(String bundesland) {
         this.bundesland = bundesland;
     }
 
-    public Wahlkreis getWahlkreis() {
+    public String getWahlkreis() {
         return wahlkreis;
     }
 
-    public void setWahlkreis(Wahlkreis wahlkreis) {
+    public void setWahlkreis(String wahlkreis) {
         this.wahlkreis = wahlkreis;
     }
 
-    public Partei getPartei() {
+    public String getPartei() {
         return partei;
     }
 
-    public void setPartei(Partei partei) {
+    public void setPartei(String partei) {
         this.partei = partei;
     }
 
-    public LandesListe getLandesListe() {
+    public String getLandesListe() {
         return landesListe;
     }
 
-    public void setLandesListe(LandesListe landesListe) {
+    public void setLandesListe(String landesListe) {
         this.landesListe = landesListe;
     }
 
@@ -183,15 +183,15 @@ public class SearchForKandidat implements Serializable {
                 "nachname='" + nachname + '\'' +
                 ", vorname='" + vorname + '\'' +
                 ", geschlecht='" + geschlecht + '\'' +
-                ", geburtsjahr=" + geburtsjahr +
+                ", geburtsjahr='" + geburtsjahr + '\'' +
                 ", wohnort='" + wohnort + '\'' +
                 ", geburtsort='" + geburtsort + '\'' +
                 ", beruf='" + beruf + '\'' +
-                ", berufsgruppe=" + berufsgruppe +
-                ", bundesland=" + bundesland +
-                ", wahlkreis=" + wahlkreis +
-                ", partei=" + partei +
-                ", landesListe=" + landesListe +
+                ", berufsgruppe='" + berufsgruppe + '\'' +
+                ", bundesland='" + bundesland + '\'' +
+                ", wahlkreis='" + wahlkreis + '\'' +
+                ", partei='" + partei + '\'' +
+                ", landesListe='" + landesListe + '\'' +
                 ", twitter='" + twitter + '\'' +
                 '}';
     }

@@ -88,7 +88,7 @@ public class SucheServiceImpl implements SucheService {
             } else {
                 isFirst = false;
             }
-            criteria += " o.berufsgruppe.id = "+ formular.getBerufsgruppe().getId() +" ";
+            criteria += " o.berufsgruppe.id = "+ formular.getBerufsgruppe() +" ";
         }
         if(formular.getBundesland()!=null){
             if(!isFirst){
@@ -96,7 +96,7 @@ public class SucheServiceImpl implements SucheService {
             } else {
                 isFirst = false;
             }
-            criteria += " o.bundesland.id = "+ formular.getBundesland().getId() +" ";
+            criteria += " o.bundesland.id = "+ formular.getBundesland() +" ";
         }
         if(formular.getLandesListe()!=null){
             if(!isFirst){
@@ -104,7 +104,7 @@ public class SucheServiceImpl implements SucheService {
             } else {
                 isFirst = false;
             }
-            criteria += " o.landesListe.id = "+ formular.getLandesListe().getId() +" ";
+            criteria += " o.landesListe.id = "+ formular.getLandesListe() +" ";
         }
         if(formular.getPartei()!=null){
             if(!isFirst){
@@ -112,7 +112,7 @@ public class SucheServiceImpl implements SucheService {
             } else {
                 isFirst = false;
             }
-            criteria += " o.partei.id = "+ formular.getPartei().getId() +" ";
+            criteria += " o.partei.id = "+ formular.getPartei() +" ";
         }
 
         String query;
