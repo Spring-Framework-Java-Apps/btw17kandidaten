@@ -27,7 +27,7 @@
                                 <span th:text="${exception.message}">exception.message</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" class="tw-debug">
                             <div class="col-md-12">
                                 <strong>Exception Stack Trace</strong><br/>
                                 <ul th:each="e : ${exception.suppressed}">

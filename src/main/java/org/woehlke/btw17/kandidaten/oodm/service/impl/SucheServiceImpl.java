@@ -50,16 +50,6 @@ public class SucheServiceImpl implements SucheService {
                 criteria += " o.geschlecht = 'W' ";
             }
         }
-        /*
-        if(formular.getBeruf()!=null){
-            if(!isFirst){
-                criteria += " OR ";
-            } else {
-                isFirst = false;
-            }
-            criteria += " o.nachname LIKE '%"+formular.getNachname()+"%' ";
-        }
-        */
         if((formular.getGeburtsjahr()!=null)&&(!formular.getGeburtsjahr().isEmpty())){
             if(!isFirst){
                 criteria += " OR ";
@@ -69,32 +59,62 @@ public class SucheServiceImpl implements SucheService {
             int jahr = Integer.parseInt(formular.getGeburtsjahr());
             criteria += " o.geburtsjahr = "+jahr+" ";
         }
-        /*
-        if(formular.getWohnort()!=null){
+        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
             if(!isFirst){
                 criteria += " OR ";
             } else {
                 isFirst = false;
             }
-
+            criteria += " o.wohnort.wohnort LIKE '%"+formular.getWohnort() +"%' ";
         }
-        if(formular.getGeburtsort()!=null){
+        if((formular.getGeburtsort()!=null)&&(!formular.getGeburtsort().isEmpty())){
             if(!isFirst){
                 criteria += " OR ";
             } else {
                 isFirst = false;
             }
-
+            criteria += " o.geburtsort.geburtsort LIKE '%"+ formular.getGeburtsort() +"%' ";
         }
-        if(formular.getBeruf()!=null){
+        if((formular.getBeruf()!=null)&&(!formular.getBeruf().isEmpty())){
             if(!isFirst){
                 criteria += " OR ";
             } else {
                 isFirst = false;
             }
-
+            criteria += " o.beruf.beruf LIKE '%"+formular.getBeruf() +"%' ";
         }
-        */
+        if(formular.getBerufsgruppe()!=null){
+            if(!isFirst){
+                criteria += " OR ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.berufsgruppe.id = "+ formular.getBerufsgruppe().getId() +" ";
+        }
+        if(formular.getBundesland()!=null){
+            if(!isFirst){
+                criteria += " OR ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.bundesland.id = "+ formular.getBundesland().getId() +" ";
+        }
+        if(formular.getLandesListe()!=null){
+            if(!isFirst){
+                criteria += " OR ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.landesListe.id = "+ formular.getLandesListe().getId() +" ";
+        }
+        if(formular.getPartei()!=null){
+            if(!isFirst){
+                criteria += " OR ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.partei.id = "+ formular.getPartei().getId() +" ";
+        }
 
         String query;
         String countQuery;
