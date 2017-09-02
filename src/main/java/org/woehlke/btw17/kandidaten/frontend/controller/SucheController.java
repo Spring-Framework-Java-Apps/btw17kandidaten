@@ -8,16 +8,21 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -29,7 +34,14 @@ public class SucheController {
 
 
     @GetMapping("/formular")
-    public String suchFormularGet(Model model) {
+    public String suchFormularAnzeigenGet(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            Model model
+    ) {
         String pageTitle = "Suche";
         String pageSubTitle = "btw17 Kandidaten";
         String pageSymbol = PageSymbol.SUCHE.getSymbolHtml();
@@ -47,14 +59,14 @@ public class SucheController {
         return "suche/formular";
     }
 
-    @PostMapping("/formular")
-    public String suchFormularPost(
+
+    @GetMapping("/ergebnis")
+    public String suchFormularGet(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @ModelAttribute SearchForKandidat formular,
             Model model
     ) {
         String pageTitle = "Suchergebnis";
@@ -62,19 +74,39 @@ public class SucheController {
         String pageSymbol = PageSymbol.SUCHE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/suche/formular";
+        String pagerUrl = "/suche/ergebnis";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
-        model.addAttribute("formular",formular);
+        if (!model.containsAttribute("formular")) {
+            SearchForKandidat formular = new SearchForKandidat();
+            model.addAttribute("formular",formular);
+        } else {
+            SearchForKandidat formular = (SearchForKandidat) model.asMap().get("formular");
+            Page<Kandidat> kandidatPage = sucheService.suchePerFormular(formular,pageable);
+            model.addAttribute("kandidaten",kandidatPage);
+        }
         model.addAttribute("berufsgruppen",berufsgruppeService.getAll());
         model.addAttribute("bundeslaender",bundeslandService.getAll());
         model.addAttribute("landesListen",landesListeService.getAll());
         model.addAttribute("parteien",parteiService.getAll());
-
-        Page<Kandidat> kandidatPage = sucheService.suchePerFormular(formular,pageable);
-        model.addAttribute("kandidaten",kandidatPage);
-
         return "suche/formular";
+    }
+
+
+    @PostMapping("/ergebnis")
+    public String suchFormularPost(
+            @ModelAttribute("formular") @Valid final SearchForKandidat formular,
+            final BindingResult binding,
+            RedirectAttributes attr,
+            HttpSession session
+    ) {
+        if (binding.hasErrors()) {
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
+            attr.addFlashAttribute("formular", formular);
+        } else {
+            attr.addAttribute("formular", formular);
+        }
+        return "redirect:/suche/ergebnis";
     }
 
     @Autowired

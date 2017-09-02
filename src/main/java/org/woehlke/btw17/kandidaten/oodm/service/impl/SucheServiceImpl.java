@@ -31,7 +31,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if((formular.getNachname()!=null)&&(!formular.getNachname().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -39,7 +39,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if((formular.getGeschlecht()!=null)&&(!formular.getGeschlecht().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -50,18 +50,25 @@ public class SucheServiceImpl implements SucheService {
                 criteria += " o.geschlecht = 'W' ";
             }
         }
-        if((formular.getGeburtsjahr()!=null)&&(!formular.getGeburtsjahr().isEmpty())){
+        if((formular.getMinGeburtsjahr()!=null)&&(!formular.getMinGeburtsjahr().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            int jahr = Integer.parseInt(formular.getGeburtsjahr());
-            criteria += " o.geburtsjahr = "+jahr+" ";
+            criteria += " o.geburtsjahr >= "+formular.getMinGeburtsjahr()+" ";
+        }
+        if((formular.getMaxGeburtsjahr()!=null)&&(!formular.getMaxGeburtsjahr().isEmpty())){
+            if(!isFirst){
+                criteria += " AND ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.geburtsjahr <= "+formular.getMaxGeburtsjahr()+" ";
         }
         if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -69,7 +76,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if((formular.getGeburtsort()!=null)&&(!formular.getGeburtsort().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -77,7 +84,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if((formular.getBeruf()!=null)&&(!formular.getBeruf().isEmpty())){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -85,7 +92,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if(formular.getBerufsgruppe()!=null){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -93,7 +100,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if(formular.getBundesland()!=null){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -101,7 +108,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if(formular.getLandesListe()!=null){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }
@@ -109,7 +116,7 @@ public class SucheServiceImpl implements SucheService {
         }
         if(formular.getPartei()!=null){
             if(!isFirst){
-                criteria += " OR ";
+                criteria += " AND ";
             } else {
                 isFirst = false;
             }

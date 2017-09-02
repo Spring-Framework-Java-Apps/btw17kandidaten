@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well">
-                        <form action="#" th:action="@{/suche/formular}" th:object="${formular}" method="post" class="form-horizontal">
+                        <form action="#" th:action="@{/suche/ergebnis}" th:object="${formular}" method="post" class="form-horizontal">
                             <div class="form-group">
                                 <label for="vorname-input" class="col-sm-2 control-label">Vorname:</label>
                                 <div class="col-sm-10">
@@ -59,9 +59,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="geburtsjahr-input" class="col-sm-2 control-label">Geburtsjahr:</label>
+                                <label for="geburtsjahr-min-input" class="col-sm-2 control-label">Geburtsjahr Min:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{geburtsjahr}" type="text" name="geburtsjahr" id="geburtsjahr-input" class="form-control" placeholder="Geburtsjahr"/>
+                                    <input th:field="*{minGeburtsjahr}" type="text" name="mingeburtsjahr" id="geburtsjahr-min-input" class="form-control" placeholder="GeburtsjahrMin"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="geburtsjahr-max-input" class="col-sm-2 control-label">Geburtsjahr Max:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{maxGeburtsjahr}" type="text" name="maxgeburtsjahr" id="geburtsjahr-max-input" class="form-control" placeholder="GeburtsjahrMax"/>
                                 </div>
                             </div>
                             <div class="form-group">

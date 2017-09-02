@@ -99,6 +99,8 @@ btw17:
       - "/geburtsjahr/**"
       - "/imprint"
       - "/suche/formular"
+      - "/suche/ergebnis"
+      - "/suche/ergebnis**"
       - "/css/*"
       - "/css/**"
       - "/favicon/*"
