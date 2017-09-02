@@ -27,16 +27,20 @@
                                 <span th:text="${exception.message}">exception.message</span>
                             </div>
                         </div>
-                        <!--
                         <div class="row">
                             <div class="col-md-12">
                                 <strong>Exception Stack Trace</strong><br/>
+                                <ul th:each="e : ${exception.suppressed}">
+                                    <span th:text="${e.message}">e.message</span>
+                                    <ul th:each="stack : ${e.stackTrace}">
+                                        <li th:text="${stack">stack</li>
+                                    </ul>
+                                </ul>
                                 <ul th:each="ste : ${exception.stackTrace}">
                                     <li th:text="${ste}">ste</li>
                                 </ul>
                             </div>
                         </div>
-                        -->
                     </div>
                 </div>
             </div>
