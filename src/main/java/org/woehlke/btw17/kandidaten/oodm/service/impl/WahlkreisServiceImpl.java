@@ -37,6 +37,7 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         wahlkreisRepository.deleteAll();
     }

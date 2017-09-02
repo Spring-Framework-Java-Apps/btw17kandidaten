@@ -37,6 +37,7 @@ public class BundeslandServiceImpl implements BundeslandService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         bundeslandRepository.deleteAll();
     }

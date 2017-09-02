@@ -37,6 +37,7 @@ public class ParteiServiceImpl implements ParteiService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         parteiRepository.deleteAll();
     }

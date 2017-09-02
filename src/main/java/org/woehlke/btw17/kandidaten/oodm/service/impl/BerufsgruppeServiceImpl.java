@@ -37,6 +37,7 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         berufsgruppeRepository.deleteAll();
     }

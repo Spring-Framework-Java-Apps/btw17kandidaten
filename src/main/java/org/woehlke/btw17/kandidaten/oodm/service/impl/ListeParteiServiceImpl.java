@@ -37,6 +37,7 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         listeParteiRepository.deleteAll();
     }
