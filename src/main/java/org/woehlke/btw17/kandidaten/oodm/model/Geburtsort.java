@@ -39,6 +39,11 @@ public class Geburtsort implements Serializable {
     @Column
     private String googleMapsUrl;
 
+    @Transient
+    public String getName() {
+        return geburtsort;
+    }
+
     public String getWebseite() {
         return webseite;
     }

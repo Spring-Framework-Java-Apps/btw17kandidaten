@@ -62,6 +62,15 @@ public class Partei implements Serializable {
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
+    @Transient
+    public String getName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(partei);
+        sb.append(" - ");
+        sb.append(parteiLang);
+        return sb.toString();
+    }
+
     public Long getId() {
         return id;
     }

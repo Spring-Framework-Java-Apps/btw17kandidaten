@@ -21,6 +21,11 @@ public class Berufsgruppe implements Serializable {
     @Column
     private String berufsgruppe;
 
+    @Transient
+    public String getName() {
+        return berufsgruppe;
+    }
+
     public Long getId() {
         return id;
     }

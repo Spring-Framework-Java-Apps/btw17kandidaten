@@ -12,7 +12,7 @@ public class SearchForKandidat implements Serializable {
 
     private String geschlecht;
 
-    private Integer geburtsjahr;
+    private String geburtsjahr;
 
     private String wohnort;
 
@@ -56,11 +56,11 @@ public class SearchForKandidat implements Serializable {
         this.geschlecht = geschlecht;
     }
 
-    public Integer getGeburtsjahr() {
+    public String getGeburtsjahr() {
         return geburtsjahr;
     }
 
-    public void setGeburtsjahr(Integer geburtsjahr) {
+    public void setGeburtsjahr(String geburtsjahr) {
         this.geburtsjahr = geburtsjahr;
     }
 

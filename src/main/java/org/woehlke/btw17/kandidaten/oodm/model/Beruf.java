@@ -22,6 +22,11 @@ public class Beruf implements Serializable {
     @Column
     private String beruf;
 
+    @Transient
+    public String getName() {
+        return beruf;
+    }
+
     public Long getId() {
         return id;
     }
