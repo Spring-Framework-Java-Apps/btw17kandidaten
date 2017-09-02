@@ -27,6 +27,11 @@ public class BundeslandServiceImpl implements BundeslandService {
     }
 
     @Override
+    public Iterable<Bundesland> getAll() {
+        return this.bundeslandRepository.findAll();
+    }
+
+    @Override
     public Bundesland findByBundesland(String bundesland) {
         return bundeslandRepository.findByBundesland(bundesland);
     }

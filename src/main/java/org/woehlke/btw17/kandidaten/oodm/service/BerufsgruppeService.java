@@ -4,9 +4,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 
+
 public interface BerufsgruppeService {
 
     Page<Berufsgruppe> getAll(Pageable pageRequest);
+
+    Iterable<Berufsgruppe> getAll();
 
     Berufsgruppe findByBerufsgruppe(String berufsgruppe);
 

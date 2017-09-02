@@ -27,6 +27,11 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     }
 
     @Override
+    public Iterable<Berufsgruppe> getAll() {
+        return berufsgruppeRepository.findAll();
+    }
+
+    @Override
     public Berufsgruppe findByBerufsgruppe(String berufsgruppe) {
         return berufsgruppeRepository.findByBerufsgruppe(berufsgruppe);
     }

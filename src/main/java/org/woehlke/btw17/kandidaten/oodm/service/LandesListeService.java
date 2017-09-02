@@ -10,6 +10,8 @@ public interface LandesListeService {
 
     Page<LandesListe> getAll(Pageable pageRequest);
 
+    Iterable<LandesListe> getAll();
+
     LandesListe create(LandesListe out);
 
     void deleteAll();

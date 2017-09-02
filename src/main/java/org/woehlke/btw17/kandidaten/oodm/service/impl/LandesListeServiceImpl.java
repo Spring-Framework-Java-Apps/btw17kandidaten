@@ -12,7 +12,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.LandesListeRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
-
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class LandesListeServiceImpl implements LandesListeService {
@@ -27,6 +26,11 @@ public class LandesListeServiceImpl implements LandesListeService {
     @Override
     public Page<LandesListe> getAll(Pageable pageRequest) {
         return landesListeRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<LandesListe> getAll() {
+        return this.landesListeRepository.findAll();
     }
 
     @Override

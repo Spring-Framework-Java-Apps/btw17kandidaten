@@ -10,6 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.ParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class ParteiServiceImpl implements ParteiService {
@@ -24,6 +25,11 @@ public class ParteiServiceImpl implements ParteiService {
     @Override
     public Page<Partei> getAll(Pageable pageRequest) {
         return parteiRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<Partei> getAll() {
+        return this.parteiRepository.findAll();
     }
 
     @Override
