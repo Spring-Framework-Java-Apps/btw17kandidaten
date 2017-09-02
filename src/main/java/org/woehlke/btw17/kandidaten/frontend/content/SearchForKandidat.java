@@ -1,44 +1,23 @@
 package org.woehlke.btw17.kandidaten.frontend.content;
 
-import org.hibernate.validator.constraints.SafeHtml;
-import org.springframework.validation.annotation.Validated;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
-@Validated
 public class SearchForKandidat implements Serializable {
 
-    @SafeHtml
     private String nachname;
 
-    @SafeHtml
     private String vorname;
 
-    @SafeHtml
     private String geschlecht;
 
-    @Digits(integer=4,fraction = 0)
-    @DecimalMin("1936")
-    @DecimalMax("2017")
-    private String minGeburtsjahr;
+    private String geburtsjahr;
 
-    @Digits(integer=4,fraction = 0)
-    @DecimalMin("1936")
-    @DecimalMax("2017")
-    private String maxGeburtsjahr;
-
-    @SafeHtml
     private String wohnort;
 
-    @SafeHtml
     private String geburtsort;
 
-    @SafeHtml
     private String beruf;
 
     private Berufsgruppe berufsgruppe;
@@ -51,7 +30,7 @@ public class SearchForKandidat implements Serializable {
 
     private LandesListe landesListe;
 
-    @Pattern(regexp="[a-zA-Z0-9_]*")
+    //@Pattern(regexp="[a-zA-Z0-9_]*")
     private String twitter;
 
     public String getNachname() {
@@ -78,20 +57,12 @@ public class SearchForKandidat implements Serializable {
         this.geschlecht = geschlecht;
     }
 
-    public String getMinGeburtsjahr() {
-        return minGeburtsjahr;
+    public String getGeburtsjahr() {
+        return geburtsjahr;
     }
 
-    public void setMinGeburtsjahr(String minGeburtsjahr) {
-        this.minGeburtsjahr = minGeburtsjahr;
-    }
-
-    public String getMaxGeburtsjahr() {
-        return maxGeburtsjahr;
-    }
-
-    public void setMaxGeburtsjahr(String maxGeburtsjahr) {
-        this.maxGeburtsjahr = maxGeburtsjahr;
+    public void setGeburtsjahr(String geburtsjahr) {
+        this.geburtsjahr = geburtsjahr;
     }
 
     public String getWohnort() {
@@ -176,10 +147,7 @@ public class SearchForKandidat implements Serializable {
         if (nachname != null ? !nachname.equals(that.nachname) : that.nachname != null) return false;
         if (vorname != null ? !vorname.equals(that.vorname) : that.vorname != null) return false;
         if (geschlecht != null ? !geschlecht.equals(that.geschlecht) : that.geschlecht != null) return false;
-        if (minGeburtsjahr != null ? !minGeburtsjahr.equals(that.minGeburtsjahr) : that.minGeburtsjahr != null)
-            return false;
-        if (maxGeburtsjahr != null ? !maxGeburtsjahr.equals(that.maxGeburtsjahr) : that.maxGeburtsjahr != null)
-            return false;
+        if (geburtsjahr != null ? !geburtsjahr.equals(that.geburtsjahr) : that.geburtsjahr != null) return false;
         if (wohnort != null ? !wohnort.equals(that.wohnort) : that.wohnort != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
         if (beruf != null ? !beruf.equals(that.beruf) : that.beruf != null) return false;
@@ -196,8 +164,7 @@ public class SearchForKandidat implements Serializable {
         int result = nachname != null ? nachname.hashCode() : 0;
         result = 31 * result + (vorname != null ? vorname.hashCode() : 0);
         result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
-        result = 31 * result + (minGeburtsjahr != null ? minGeburtsjahr.hashCode() : 0);
-        result = 31 * result + (maxGeburtsjahr != null ? maxGeburtsjahr.hashCode() : 0);
+        result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
@@ -216,8 +183,7 @@ public class SearchForKandidat implements Serializable {
                 "nachname='" + nachname + '\'' +
                 ", vorname='" + vorname + '\'' +
                 ", geschlecht='" + geschlecht + '\'' +
-                ", minGeburtsjahr='" + minGeburtsjahr + '\'' +
-                ", maxGeburtsjahr='" + maxGeburtsjahr + '\'' +
+                ", geburtsjahr=" + geburtsjahr +
                 ", wohnort='" + wohnort + '\'' +
                 ", geburtsort='" + geburtsort + '\'' +
                 ", beruf='" + beruf + '\'' +

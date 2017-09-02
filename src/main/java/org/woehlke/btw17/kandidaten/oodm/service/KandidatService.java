@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 
+import java.util.List;
+
 public interface KandidatService {
 
     int FIRST_PAGE_NUMBER = 0;
@@ -43,4 +45,6 @@ public interface KandidatService {
     Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
 
     Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
+
+    List<Integer> getAllGeburtsjahre();
 }

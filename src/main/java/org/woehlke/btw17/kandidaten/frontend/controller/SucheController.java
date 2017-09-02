@@ -9,10 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
@@ -21,19 +18,15 @@ import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/suche")
+@RequestMapping(value ="/suche")
 public class SucheController {
 
-
-    @GetMapping("/formular")
+    @RequestMapping(value = "/formular", method = RequestMethod.GET)
     public String suchFormularAnzeigenGet(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
@@ -50,38 +43,13 @@ public class SucheController {
         String pagerUrl = "/suche/formular";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
-        SearchForKandidat formular = new SearchForKandidat();
-        model.addAttribute("formular",formular);
-        model.addAttribute("berufsgruppen",berufsgruppeService.getAll());
-        model.addAttribute("bundeslaender",bundeslandService.getAll());
-        model.addAttribute("landesListen",landesListeService.getAll());
-        model.addAttribute("parteien",parteiService.getAll());
-        return "suche/formular";
-    }
-
-
-    @GetMapping("/ergebnis")
-    public String suchFormularGet(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            Model model
-    ) {
-        String pageTitle = "Suchergebnis";
-        String pageSubTitle = "btw17 Kandidaten";
-        String pageSymbol = PageSymbol.SUCHE.getSymbolHtml();
-        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
-        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/suche/ergebnis";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
-        model.addAttribute("pageContent",pageContent);
-        if (!model.containsAttribute("formular")) {
+        if (!model.containsAttribute("suchformular")) {
             SearchForKandidat formular = new SearchForKandidat();
-            model.addAttribute("formular",formular);
+            log.info(formular.toString());
+            model.addAttribute("suchformular",formular);
         } else {
-            SearchForKandidat formular = (SearchForKandidat) model.asMap().get("formular");
+            SearchForKandidat formular = (SearchForKandidat) model.asMap().get("suchformular");
+            log.info(formular.toString());
             Page<Kandidat> kandidatPage = sucheService.suchePerFormular(formular,pageable);
             model.addAttribute("kandidaten",kandidatPage);
         }
@@ -89,29 +57,31 @@ public class SucheController {
         model.addAttribute("bundeslaender",bundeslandService.getAll());
         model.addAttribute("landesListen",landesListeService.getAll());
         model.addAttribute("parteien",parteiService.getAll());
+        model.addAttribute("geburtsjahre",kandidatService.getAllGeburtsjahre());
         return "suche/formular";
     }
 
 
-    @PostMapping("/ergebnis")
+    @RequestMapping(value = "/formular", method = RequestMethod.POST)
     public String suchFormularPost(
-            @ModelAttribute("formular") @Valid final SearchForKandidat formular,
-            final BindingResult binding,
-            RedirectAttributes attr,
-            HttpSession session
+            @ModelAttribute("suchformular") SearchForKandidat suchformular,
+            BindingResult binding,
+            RedirectAttributes attr
     ) {
+        log.info(suchformular.toString());
         if (binding.hasErrors()) {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
-            attr.addFlashAttribute("formular", formular);
+            attr.addFlashAttribute("suchformular", suchformular);
         } else {
-            attr.addAttribute("formular", formular);
+            attr.addAttribute("suchformular", suchformular);
         }
-        return "redirect:/suche/ergebnis";
+        return "redirect:/suche/formular";
     }
 
     @Autowired
-    public SucheController(SucheService sucheService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, LandesListeService landesListeService, ParteiService parteiService, KandidatenProperties kandidatenProperties) {
+    public SucheController(SucheService sucheService, KandidatService kandidatService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, LandesListeService landesListeService, ParteiService parteiService, KandidatenProperties kandidatenProperties) {
         this.sucheService = sucheService;
+        this.kandidatService = kandidatService;
         this.berufsgruppeService = berufsgruppeService;
         this.bundeslandService = bundeslandService;
         this.landesListeService = landesListeService;
@@ -120,6 +90,8 @@ public class SucheController {
     }
 
     private final SucheService sucheService;
+
+    private final KandidatService kandidatService;
 
     private final BerufsgruppeService berufsgruppeService;
 

@@ -50,21 +50,13 @@ public class SucheServiceImpl implements SucheService {
                 criteria += " o.geschlecht = 'W' ";
             }
         }
-        if((formular.getMinGeburtsjahr()!=null)&&(!formular.getMinGeburtsjahr().isEmpty())){
+        if((formular.getGeburtsjahr()!=null)&&(!formular.getGeburtsjahr().isEmpty())){
             if(!isFirst){
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.geburtsjahr >= "+formular.getMinGeburtsjahr()+" ";
-        }
-        if((formular.getMaxGeburtsjahr()!=null)&&(!formular.getMaxGeburtsjahr().isEmpty())){
-            if(!isFirst){
-                criteria += " AND ";
-            } else {
-                isFirst = false;
-            }
-            criteria += " o.geburtsjahr <= "+formular.getMaxGeburtsjahr()+" ";
+            criteria += " o.geburtsjahr >= "+ formular.getGeburtsjahr() +" ";
         }
         if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
             if(!isFirst){

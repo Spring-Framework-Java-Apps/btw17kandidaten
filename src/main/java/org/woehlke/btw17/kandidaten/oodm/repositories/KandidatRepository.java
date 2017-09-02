@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.KandidatRepositoryCustom;
 
+import java.util.List;
+
 @Repository
 public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,Long>,KandidatRepositoryCustom {
 
@@ -38,4 +40,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.findByListePartei")
     Page<Kandidat> findByListePartei(@Param("listePartei") ListePartei listePartei, Pageable pageable);
+
+    @Query(name="Kandidat.findByGeburtsjahrAll")
+    List<Integer> getAllGeburtsjahre();
 }

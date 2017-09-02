@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.repositories.KandidatRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class KandidatServiceImpl implements KandidatService {
@@ -101,6 +103,11 @@ public class KandidatServiceImpl implements KandidatService {
     @Override
     public Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable) {
         return kandidatRepository.findByListePartei(listePartei,pageable);
+    }
+
+    @Override
+    public List<Integer> getAllGeburtsjahre() {
+        return kandidatRepository.getAllGeburtsjahre();
     }
 
 }
