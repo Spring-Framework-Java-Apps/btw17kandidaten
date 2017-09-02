@@ -8,6 +8,37 @@
 <header th:include="layoutMain :: tw-header" >
 </header>
 
+<section class="page-content-kandidaten-suche-ergebnis" th:if="${kandidaten}">
+    <div th:fragment="tw-page-content-kandidaten">
+        <div class="container tw-page-content tw-page-content-kandidaten">
+            <div class="row">
+                <div class="col-md-12">
+                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
+                        <span>
+                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                </div>
+            </div>
+            <div class="row" th:include="layoutMain :: tw-page-content-kandidaten-table">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
+                        <span>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <main class="page-content">
     <div class="tw-page-content tw-page-content-login">
         <div class="container">
