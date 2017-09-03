@@ -43,4 +43,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.findByGeburtsjahrAll")
     List<Integer> getAllGeburtsjahre();
+
+    @Query(name="Kandidat.findByKandidatFlatId")
+    Kandidat findByKandidatFlatId(@Param("kandidatFlatId") long kandidatFlatId);
 }

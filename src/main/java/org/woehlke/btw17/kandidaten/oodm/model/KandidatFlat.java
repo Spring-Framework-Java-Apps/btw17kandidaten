@@ -35,6 +35,12 @@ import java.util.Locale;
         @Index(name = "idx_kandidat_flat_alter", columnList = "alter")
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "KandidatFlat.getAllIdsWhereMdbIsNotNull",
+        query = "select o.id from KandidatFlat as o where o.mdb is not null"
+    )
+})
 public class KandidatFlat implements Serializable {
 
     private static final long serialVersionUID = 1L;

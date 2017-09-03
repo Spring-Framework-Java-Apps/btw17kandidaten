@@ -110,4 +110,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.getAllGeburtsjahre();
     }
 
+    @Override
+    public Kandidat findByKandidatFlatId(long kandidatFlatId) {
+        return kandidatRepository.findByKandidatFlatId(kandidatFlatId);
+    }
+
 }

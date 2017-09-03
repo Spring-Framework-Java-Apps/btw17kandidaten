@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.repositories.KandidatFlatRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class KandidatFlatServiceImpl implements KandidatFlatService {
@@ -29,5 +31,10 @@ public class KandidatFlatServiceImpl implements KandidatFlatService {
     @Override
     public long count() {
         return kandidatFlatRepository.count();
+    }
+
+    @Override
+    public List<Long> getAllIdsWhereMdbIsNotNull() {
+        return kandidatFlatRepository.getAllIdsWhereMdbIsNotNull();
     }
 }

@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 
 import java.util.List;
@@ -47,4 +48,6 @@ public interface KandidatService {
     Page<Kandidat> findByListePartei(ListePartei listePartei, Pageable pageable);
 
     List<Integer> getAllGeburtsjahre();
+
+    Kandidat findByKandidatFlatId(long kandidatFlatId);
 }

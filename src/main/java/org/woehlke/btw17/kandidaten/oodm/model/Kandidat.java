@@ -38,6 +38,10 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.findByListePartei",
         query = "select o from Kandidat as o where o.landesListe.listePartei=:listePartei"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByKandidatFlatId",
+        query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId"
     )
 })
 public class Kandidat implements Serializable {

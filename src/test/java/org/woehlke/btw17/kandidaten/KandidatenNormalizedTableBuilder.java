@@ -85,7 +85,9 @@ public class KandidatenNormalizedTableBuilder {
                 out.setGeschlecht(in.getGeschlecht());
                 out.setLat(in.getLat());
                 out.setLng(in.getLng());
-                out.setMdb(in.getMdb());
+                if((in.getMdb()!=null)&&(!in.getMdb().isEmpty())){
+                    out.setMdb("1");
+                }
                 out.setListePlatz(in.getListePlatz());
                 out.setNachname(in.getNachname());
                 out.setNachnameOhne(in.getNachnameOhne());
