@@ -50,15 +50,23 @@ public class SucheServiceImpl implements SucheService {
                 criteria += " o.geschlecht = 'W' ";
             }
         }
-        if((formular.getGeburtsjahr()!=null)&&(!formular.getGeburtsjahr().isEmpty())){
+        if((formular.getGeburtsjahrMin()!=null)&&(!formular.getGeburtsjahrMin().isEmpty())&&(formular.getGeburtsjahrMin().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.geburtsjahr >= "+ formular.getGeburtsjahr() +" ";
+            criteria += " o.geburtsjahr >= "+ formular.getGeburtsjahrMin() +" ";
         }
-        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
+        if((formular.getGeburtsjahrMax()!=null)&&(!formular.getGeburtsjahrMax().isEmpty())&&(formular.getGeburtsjahrMax().compareTo("0")!=0)){
+            if(!isFirst){
+                criteria += " AND ";
+            } else {
+                isFirst = false;
+            }
+            criteria += " o.geburtsjahr <= "+ formular.getGeburtsjahrMax() +" ";
+        }
+        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())&&(formular.getGeburtsjahrMax().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {
@@ -82,7 +90,7 @@ public class SucheServiceImpl implements SucheService {
             }
             criteria += " o.beruf.beruf LIKE '%"+formular.getBeruf() +"%' ";
         }
-        if(formular.getBerufsgruppe()!=null){
+        if((formular.getBerufsgruppe()!=null)&&(!formular.getBerufsgruppe().isEmpty())&&(formular.getBerufsgruppe().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {
@@ -90,7 +98,7 @@ public class SucheServiceImpl implements SucheService {
             }
             criteria += " o.berufsgruppe.id = "+ formular.getBerufsgruppe() +" ";
         }
-        if(formular.getBundesland()!=null){
+        if((formular.getBundesland()!=null)&&(!formular.getBundesland().isEmpty())&&(formular.getBundesland().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {
@@ -98,7 +106,7 @@ public class SucheServiceImpl implements SucheService {
             }
             criteria += " o.bundesland.id = "+ formular.getBundesland() +" ";
         }
-        if(formular.getLandesListe()!=null){
+        if((formular.getLandesListe()!=null)&&(!formular.getLandesListe().isEmpty())&&(formular.getLandesListe().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {
@@ -106,7 +114,7 @@ public class SucheServiceImpl implements SucheService {
             }
             criteria += " o.landesListe.id = "+ formular.getLandesListe() +" ";
         }
-        if(formular.getPartei()!=null){
+        if((formular.getPartei()!=null)&&(!formular.getPartei().isEmpty())&&(formular.getPartei().compareTo("0")!=0)){
             if(!isFirst){
                 criteria += " AND ";
             } else {

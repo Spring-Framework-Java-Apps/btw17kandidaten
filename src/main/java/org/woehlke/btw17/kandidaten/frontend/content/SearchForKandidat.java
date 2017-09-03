@@ -1,10 +1,10 @@
 package org.woehlke.btw17.kandidaten.frontend.content;
 
-import org.woehlke.btw17.kandidaten.oodm.model.*;
-
 import java.io.Serializable;
 
 public class SearchForKandidat implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String nachname;
 
@@ -12,7 +12,9 @@ public class SearchForKandidat implements Serializable {
 
     private String geschlecht;
 
-    private String geburtsjahr;
+    private String geburtsjahrMin;
+
+    private String geburtsjahrMax;
 
     private String wohnort;
 
@@ -57,12 +59,20 @@ public class SearchForKandidat implements Serializable {
         this.geschlecht = geschlecht;
     }
 
-    public String getGeburtsjahr() {
-        return geburtsjahr;
+    public String getGeburtsjahrMin() {
+        return geburtsjahrMin;
     }
 
-    public void setGeburtsjahr(String geburtsjahr) {
-        this.geburtsjahr = geburtsjahr;
+    public void setGeburtsjahrMin(String geburtsjahrMin) {
+        this.geburtsjahrMin = geburtsjahrMin;
+    }
+
+    public String getGeburtsjahrMax() {
+        return geburtsjahrMax;
+    }
+
+    public void setGeburtsjahrMax(String geburtsjahrMax) {
+        this.geburtsjahrMax = geburtsjahrMax;
     }
 
     public String getWohnort() {
@@ -147,7 +157,10 @@ public class SearchForKandidat implements Serializable {
         if (nachname != null ? !nachname.equals(that.nachname) : that.nachname != null) return false;
         if (vorname != null ? !vorname.equals(that.vorname) : that.vorname != null) return false;
         if (geschlecht != null ? !geschlecht.equals(that.geschlecht) : that.geschlecht != null) return false;
-        if (geburtsjahr != null ? !geburtsjahr.equals(that.geburtsjahr) : that.geburtsjahr != null) return false;
+        if (geburtsjahrMin != null ? !geburtsjahrMin.equals(that.geburtsjahrMin) : that.geburtsjahrMin != null)
+            return false;
+        if (geburtsjahrMax != null ? !geburtsjahrMax.equals(that.geburtsjahrMax) : that.geburtsjahrMax != null)
+            return false;
         if (wohnort != null ? !wohnort.equals(that.wohnort) : that.wohnort != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
         if (beruf != null ? !beruf.equals(that.beruf) : that.beruf != null) return false;
@@ -164,7 +177,8 @@ public class SearchForKandidat implements Serializable {
         int result = nachname != null ? nachname.hashCode() : 0;
         result = 31 * result + (vorname != null ? vorname.hashCode() : 0);
         result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
-        result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
+        result = 31 * result + (geburtsjahrMin != null ? geburtsjahrMin.hashCode() : 0);
+        result = 31 * result + (geburtsjahrMax != null ? geburtsjahrMax.hashCode() : 0);
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
@@ -183,7 +197,8 @@ public class SearchForKandidat implements Serializable {
                 "nachname='" + nachname + '\'' +
                 ", vorname='" + vorname + '\'' +
                 ", geschlecht='" + geschlecht + '\'' +
-                ", geburtsjahr='" + geburtsjahr + '\'' +
+                ", geburtsjahrMin='" + geburtsjahrMin + '\'' +
+                ", geburtsjahrMax='" + geburtsjahrMax + '\'' +
                 ", wohnort='" + wohnort + '\'' +
                 ", geburtsort='" + geburtsort + '\'' +
                 ", beruf='" + beruf + '\'' +
