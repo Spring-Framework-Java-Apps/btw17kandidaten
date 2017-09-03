@@ -155,7 +155,7 @@ public class LandesListeController {
         String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/landesliste/bundesland/all";
+        String pagerUrl = "/landesliste/listepartei/all";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
 
