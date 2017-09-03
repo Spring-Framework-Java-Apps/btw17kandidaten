@@ -31,7 +31,7 @@ public class BundeslandServiceTest {
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
-        int resultSize = bundeslaender.getNumber();
+        int resultSize = bundeslaender.getContent().size();
         log.info("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Bundesland bundesland:bundeslaender.getContent()){
