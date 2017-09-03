@@ -1,23 +1,33 @@
 package org.woehlke.btw17.kandidaten.frontend.content;
 
+import org.hibernate.validator.constraints.SafeHtml;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
+@Validated
 public class SearchForKandidat implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @SafeHtml
     private String nachname;
 
+    @SafeHtml
     private String vorname;
 
+    @SafeHtml
     private String geschlecht;
 
     private String geburtsjahrMin;
 
     private String geburtsjahrMax;
 
+    @SafeHtml
     private String wohnort;
 
+    @SafeHtml
     private String geburtsort;
 
     private String beruf;
@@ -32,7 +42,7 @@ public class SearchForKandidat implements Serializable {
 
     private String landesListe;
 
-    //@Pattern(regexp="[a-zA-Z0-9_]*")
+    @Pattern(regexp="[a-zA-Z0-9_]*")
     private String twitter;
 
     public String getNachname() {

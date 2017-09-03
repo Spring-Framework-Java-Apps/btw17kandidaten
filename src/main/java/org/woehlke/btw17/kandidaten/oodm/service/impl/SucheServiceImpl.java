@@ -66,7 +66,7 @@ public class SucheServiceImpl implements SucheService {
             }
             criteria += " o.geburtsjahr <= "+ formular.getGeburtsjahrMax() +" ";
         }
-        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())&&(formular.getGeburtsjahrMax().compareTo("0")!=0)){
+        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
             if(!isFirst){
                 criteria += " AND ";
             } else {

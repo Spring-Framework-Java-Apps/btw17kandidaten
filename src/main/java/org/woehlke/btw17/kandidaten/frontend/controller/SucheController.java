@@ -19,6 +19,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -70,7 +71,7 @@ public class SucheController {
 
     @RequestMapping(value = "/formular", method = RequestMethod.POST)
     public String suchFormularPost(
-            @ModelAttribute("suchformular") SearchForKandidat suchformular,
+            @Valid @ModelAttribute("suchformular") SearchForKandidat suchformular,
             BindingResult binding,
             RedirectAttributes attr,
             HttpSession session
