@@ -37,7 +37,7 @@ public class BundeslandController {
             Model model
     ) {
         String pageTitle = "Bundesland";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -64,7 +64,7 @@ public class BundeslandController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = bundesland.getBundeslandLang() +" ("+bundesland.getBundesland()+")";
-            String pageSubTitle = "Bundesländer der btw17 Kandidaten";
+            String pageSubTitle = "Bundesländer der Bundestagswahl 2017 Direktkandidatenn";
             String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

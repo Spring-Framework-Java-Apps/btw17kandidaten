@@ -40,7 +40,7 @@ public class SucheController {
             Model model
     ) {
         String pageTitle = "Suche";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.SUCHE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

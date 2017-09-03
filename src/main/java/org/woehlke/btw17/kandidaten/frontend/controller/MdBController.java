@@ -31,7 +31,7 @@ public class MdBController {
             Model model
     ) {
         String pageTitle = "MdB";
-        String pageSubTitle = "Kandidaten der btw17";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

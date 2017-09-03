@@ -37,7 +37,7 @@ public class WahlkreisController {
             Model model
     ) {
         String pageTitle = "Wahlkreise";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -64,7 +64,7 @@ public class WahlkreisController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();
-            String pageSubTitle = "Wahlkreise der btw17 Kandidaten";
+            String pageSubTitle = "Wahlkreise der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

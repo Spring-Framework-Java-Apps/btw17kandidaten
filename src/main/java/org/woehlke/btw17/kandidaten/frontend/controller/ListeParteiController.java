@@ -38,7 +38,7 @@ public class ListeParteiController {
             Model model
     ) {
         String pageTitle = "ListePartei";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -64,7 +64,7 @@ public class ListeParteiController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = listePartei.getListePartei() + ", " + listePartei.getListeParteiLang();
-            String pageSubTitle = "ListePartei der btw17 Kandidaten";
+            String pageSubTitle = "ListePartei der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

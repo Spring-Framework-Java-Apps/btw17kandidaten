@@ -36,7 +36,7 @@ public class BerufController {
             Model model
     ) {
         String pageTitle = "Berufe";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -61,7 +61,7 @@ public class BerufController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = beruf.getBeruf();
-            String pageSubTitle = "Berufe der btw17 Kandidaten";
+            String pageSubTitle = "Berufe der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.BERUF.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

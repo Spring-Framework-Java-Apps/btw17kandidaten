@@ -36,7 +36,7 @@ public class GeburtsortController {
             Model model
     ) {
         String pageTitle = "Geburtsort";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -63,7 +63,7 @@ public class GeburtsortController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = geburtsort.getGeburtsort();
-            String pageSubTitle = "Geburtsorte der btw17 Kandidaten";
+            String pageSubTitle = "Geburtsorte der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.GEBURTSORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

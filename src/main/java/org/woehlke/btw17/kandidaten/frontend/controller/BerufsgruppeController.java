@@ -36,7 +36,7 @@ public class BerufsgruppeController {
             Model model
     ) {
         String pageTitle = "Berufsgruppe";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -62,7 +62,7 @@ public class BerufsgruppeController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = berufsgruppe.getBerufsgruppe();
-            String pageSubTitle = "Berufsgruppen der btw17 Kandidaten";
+            String pageSubTitle = "Berufsgruppen der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.BERUFSGRUPPE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

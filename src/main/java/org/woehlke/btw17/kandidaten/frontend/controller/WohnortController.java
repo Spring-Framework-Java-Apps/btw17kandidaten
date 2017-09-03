@@ -36,7 +36,7 @@ public class WohnortController {
             Model model
     ) {
         String pageTitle = "Wohnorte";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -61,7 +61,7 @@ public class WohnortController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = wohnort.getWohnort();
-            String pageSubTitle = "Wohnorte der btw17 Kandidaten";
+            String pageSubTitle = "Wohnorte der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

@@ -36,7 +36,7 @@ public class GeburtsjahrController {
             Model model
     ) {
         String pageTitle = "Geburtsjahre ";
-        String pageSubTitle = "Kandidaten der btw17";
+        String pageSubTitle = "Kandidaten der Bundestagswahl 2017 Direktkandidaten";
         String pageSymbol = PageSymbol.GEBURTSJAHR.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -68,7 +68,7 @@ public class GeburtsjahrController {
                 throw new EntityNotFoundException();
             }
             String pageTitle = "Geburtsjahr: "+geburtsjahr;
-            String pageSubTitle = "Kandidaten der btw17";
+            String pageSubTitle = kandidatenProperties.getPageSubTitle();
             String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

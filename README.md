@@ -79,7 +79,7 @@ If you _really really_ like it and want to support the author, I will be glad to
 
 ### Acknowledgements
 
-+ Twitterwall Frontend is built on [Bootstrap][bootstrap].
++ btw17 Frontend is built on [Bootstrap][bootstrap].
 + These include icons from [Glyphicons][glyphicons] and web fonts from [Google][webfonts].
 + JavaScript goodies with [jQuery][jquery].
 + More icons by [fontawesome][fontawesome].
@@ -112,7 +112,7 @@ If you _really really_ like it and want to support the author, I will be glad to
 
 &copy; 2017 Thomas Wöhlke for the Software at [Github](https://github.com/phasenraum2010/btw17kandidaten)
 
-&copy; 2017 [abgeordnetenwatch.de](https://www.abgeordnetenwatch.de/ueber-uns/impressum) for the Data (mentioned by morgenpost.de)
+&copy; 2017 [Bundeswahlleiter](https://www.bundeswahlleiter.de/dam/jcr/4d632553-d0be-4a4a-acde-5bb985a6302c/btw17_kandidaten.zip) for the Data (mentioned by morgenpost.de)
 
 &copy; 2017 [morgenpost.de][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017] for the Data (CSV-Download)
 

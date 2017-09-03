@@ -17,7 +17,7 @@ public class LoginController {
     public String login(Model model) {
         log.info("-----------------------------------------");
         String pageTitle = "Login";
-        String pageSubTitle = "Enter your Credentials";
+        String pageSubTitle = "Geben Sie Ihre Zugangsdaten ein:";
         String pageSymbol = PageSymbol.LOGIN.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

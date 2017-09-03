@@ -16,7 +16,7 @@ public class ImprintController {
     @RequestMapping
     public String getAll(Model model) {
         String pageTitle = "Impressum";
-        String pageSubTitle = "btw17 Kandidaten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.IMPRESSUM.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

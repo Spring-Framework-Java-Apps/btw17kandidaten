@@ -45,6 +45,9 @@ public class KandidatenProperties {
     @NotNull
     private Boolean checkFotoUrl;
 
+    @NotNull
+    private String pageSubTitle;
+
     public Integer getPageSize() {
         return pageSize;
     }
@@ -131,6 +134,14 @@ public class KandidatenProperties {
 
     public void setCheckFotoUrl(Boolean checkFotoUrl) {
         this.checkFotoUrl = checkFotoUrl;
+    }
+
+    public String getPageSubTitle() {
+        return pageSubTitle;
+    }
+
+    public void setPageSubTitle(String pageSubTitle) {
+        this.pageSubTitle = pageSubTitle;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {
