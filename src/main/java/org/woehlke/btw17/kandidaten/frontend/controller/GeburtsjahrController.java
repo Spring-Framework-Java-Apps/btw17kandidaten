@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import java.util.Date;
 
@@ -33,6 +36,7 @@ public class GeburtsjahrController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Geburtsjahre ";
@@ -47,6 +51,7 @@ public class GeburtsjahrController {
         Page<Integer> geburtsjahrPage  = kandidatService.findByGeburtsjahrAll(pageable);
         model.addAttribute("geburtsjahrPage",geburtsjahrPage);
 
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "geburtsjahr/all";
     }
 
@@ -57,7 +62,7 @@ public class GeburtsjahrController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("geburtsjahr") Integer geburtsjahr, Model model
+            @PathVariable("geburtsjahr") Integer geburtsjahr, HttpSession session, Model model
     ) {
         if(geburtsjahr == null){
             throw new EntityNotFoundException();
@@ -80,6 +85,7 @@ public class GeburtsjahrController {
             model.addAttribute("kandidaten",kandidatenPage);
 
             model.addAttribute("geburtsjahr",geburtsjahr);
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "geburtsjahr/id";
         }
     }
@@ -88,10 +94,13 @@ public class GeburtsjahrController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
 
     @Autowired
-    public GeburtsjahrController(KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public GeburtsjahrController(KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

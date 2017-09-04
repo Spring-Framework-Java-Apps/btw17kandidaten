@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -33,6 +36,7 @@ public class WohnortController {
                     size = PAGE_SIZE,
                     sort = "wohnort"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Wohnorte";
@@ -45,6 +49,8 @@ public class WohnortController {
         model.addAttribute("pageContent",pageContent);
         Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
         model.addAttribute("wohnorte", allWohnortPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "wohnort/all";
     }
 
@@ -55,7 +61,8 @@ public class WohnortController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Wohnort wohnort, Model model
+            @PathVariable("id") Wohnort wohnort,
+            HttpSession session, Model model
     ) {
         if(wohnort == null){
             throw new EntityNotFoundException();
@@ -73,6 +80,7 @@ public class WohnortController {
             Page<Kandidat> kandidatenPage  = kandidatService.findByWohnort(wohnort,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "wohnort/id";
         }
     }
@@ -83,10 +91,13 @@ public class WohnortController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public WohnortController(WohnortService wohnortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public WohnortController(WohnortService wohnortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.wohnortService = wohnortService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
@@ -65,9 +67,9 @@ public class SucheController {
         model.addAttribute("landesListen",landesListeService.getAll());
         model.addAttribute("parteien",parteiService.getAll());
         model.addAttribute("geburtsjahre",kandidatService.getAllGeburtsjahre());
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "suche/formular";
     }
-
 
     @RequestMapping(value = "/formular", method = RequestMethod.POST)
     public String suchFormularPost(
@@ -86,8 +88,57 @@ public class SucheController {
         return "redirect:/suche/formular";
     }
 
+
+    @RequestMapping(value = "/freitext/formular", method = RequestMethod.GET)
+    public String tretextsucheFormularAnzeigenGet(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ) {
+        String pageTitle = "Freitext Suche";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.SUCHE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/suche/freitext/formular";
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        model.addAttribute("pageContent",pageContent);
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        if((suchformularFreitext.getSearchTerm()!=null)&&(!suchformularFreitext.getSearchTerm().isEmpty())){
+            Page<Kandidat> kandidatPage = sucheService.suchePerFreitextFormular(suchformularFreitext,pageable);
+            model.addAttribute("kandidaten",kandidatPage);
+        }
+        model.addAttribute("berufsgruppen",berufsgruppeService.getAll());
+        model.addAttribute("bundeslaender",bundeslandService.getAll());
+        model.addAttribute("landesListen",landesListeService.getAll());
+        model.addAttribute("parteien",parteiService.getAll());
+        model.addAttribute("geburtsjahre",kandidatService.getAllGeburtsjahre());
+        return "suche/freitext";
+    }
+
+    @RequestMapping(value = "/freitext/formular", method = RequestMethod.POST)
+    public String suchFormularPost(
+            @Valid @ModelAttribute("suchformular") FreitextSucheFormular suchformularFreitext,
+            BindingResult binding,
+            RedirectAttributes attr,
+            HttpSession session
+    ) {
+        log.info(suchformularFreitext.toString());
+        if (binding.hasErrors()) {
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
+            attr.addFlashAttribute("suchformularFreitext", suchformularFreitext);
+        } else {
+            session.setAttribute("suchformularFreitext", suchformularFreitext);
+        }
+        return "redirect:/suche/freitext/formular";
+    }
+
     @Autowired
-    public SucheController(SucheService sucheService, KandidatService kandidatService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, LandesListeService landesListeService, ParteiService parteiService, KandidatenProperties kandidatenProperties) {
+    public SucheController(SucheService sucheService, KandidatService kandidatService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, LandesListeService landesListeService, ParteiService parteiService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.sucheService = sucheService;
         this.kandidatService = kandidatService;
         this.berufsgruppeService = berufsgruppeService;
@@ -95,6 +146,7 @@ public class SucheController {
         this.landesListeService = landesListeService;
         this.parteiService = parteiService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 
     private final SucheService sucheService;
@@ -110,6 +162,8 @@ public class SucheController {
     private final ParteiService parteiService;
 
     private final KandidatenProperties kandidatenProperties;
+
+    private final SessionHandler sessionHandler;
 
     private static final Logger log = LoggerFactory.getLogger(SucheController.class);
 }

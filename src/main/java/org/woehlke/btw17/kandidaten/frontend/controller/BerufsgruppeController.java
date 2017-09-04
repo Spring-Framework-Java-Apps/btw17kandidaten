@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -33,6 +36,7 @@ public class BerufsgruppeController {
                     size = PAGE_SIZE,
                     sort = "berufsgruppe"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Berufsgruppe";
@@ -46,6 +50,8 @@ public class BerufsgruppeController {
 
         Page<Berufsgruppe> allBerufsgruppePage =  berufsgruppeService.getAll(pageable);
         model.addAttribute("berufsgruppen", allBerufsgruppePage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "berufsgruppe/all";
     }
 
@@ -56,7 +62,7 @@ public class BerufsgruppeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Berufsgruppe berufsgruppe, Model model
+            @PathVariable("id") Berufsgruppe berufsgruppe, HttpSession session, Model model
     ) {
         if(berufsgruppe == null){
             throw new EntityNotFoundException();
@@ -74,6 +80,7 @@ public class BerufsgruppeController {
             Page<Kandidat> kandidatenPage  = kandidatService.findByBerufsgruppe(berufsgruppe,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "berufsgruppe/id";
         }
     }
@@ -84,12 +91,13 @@ public class BerufsgruppeController {
 
     private final KandidatenProperties kandidatenProperties;
 
-
+    private final SessionHandler sessionHandler;
 
     @Autowired
-    public BerufsgruppeController(BerufsgruppeService berufsgruppeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public BerufsgruppeController(BerufsgruppeService berufsgruppeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.berufsgruppeService = berufsgruppeService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

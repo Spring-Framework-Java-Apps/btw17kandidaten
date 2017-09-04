@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -34,6 +37,7 @@ public class WahlkreisController {
                     size = PAGE_SIZE,
                     sort = "wahlkreisName"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Wahlkreise";
@@ -58,7 +62,7 @@ public class WahlkreisController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Wahlkreis wahlkreis, Model model
+            @PathVariable("id") Wahlkreis wahlkreis, HttpSession session, Model model
     ) {
         if(wahlkreis == null){
             throw new EntityNotFoundException();
@@ -75,7 +79,7 @@ public class WahlkreisController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByWahlkreis(wahlkreis,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "wahlkreis/id";
         }
     }
@@ -87,10 +91,13 @@ public class WahlkreisController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.wahlkreisService = wahlkreisService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

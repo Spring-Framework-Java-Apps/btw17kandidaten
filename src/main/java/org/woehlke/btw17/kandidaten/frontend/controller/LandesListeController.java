@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -34,7 +37,7 @@ public class LandesListeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") LandesListe landesListe, Model model
+            @PathVariable("id") LandesListe landesListe, HttpSession session, Model model
     ) {
         if(landesListe == null){
             throw new EntityNotFoundException();
@@ -51,6 +54,7 @@ public class LandesListeController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByLandesListe(landesListe,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
             return "landesliste/id";
         }
@@ -63,7 +67,7 @@ public class LandesListeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Bundesland bundesland, Model model
+            @PathVariable("id") Bundesland bundesland, HttpSession session, Model model
     ) {
         if(bundesland == null){
             throw new EntityNotFoundException();
@@ -82,6 +86,7 @@ public class LandesListeController {
             Page<LandesListe> landeslistePage  = landesListeService.findByBundesland(bundesland,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
             model.addAttribute("bundeslandIdTarget","landesliste");
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
             return "landesliste/bundesland/id";
         }
@@ -94,7 +99,7 @@ public class LandesListeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") ListePartei listePartei, Model model
+            @PathVariable("id") ListePartei listePartei,HttpSession session,  Model model
     ) {
         if(listePartei == null){
             throw new EntityNotFoundException();
@@ -113,6 +118,7 @@ public class LandesListeController {
             model.addAttribute("landeslistePage",landeslistePage);
             model.addAttribute("bundeslandIdTarget","landesliste");
 
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "landesliste/listepartei/id";
         }
     }
@@ -124,6 +130,7 @@ public class LandesListeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Bundesländer der LandesListen";
@@ -138,6 +145,7 @@ public class LandesListeController {
         Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
         model.addAttribute("bundeslandIdTarget","landesliste/bundesland");
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "landesliste/bundesland/all";
     }
 
@@ -148,6 +156,7 @@ public class LandesListeController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Partei Listen der LandesListen";
@@ -161,6 +170,7 @@ public class LandesListeController {
 
         Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "landesliste/listepartei/all";
     }
 
@@ -170,10 +180,13 @@ public class LandesListeController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public LandesListeController(LandesListeService landesListeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public LandesListeController(LandesListeService landesListeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.landesListeService = landesListeService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

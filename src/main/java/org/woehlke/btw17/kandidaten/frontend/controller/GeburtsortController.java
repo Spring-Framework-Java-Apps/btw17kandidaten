@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -33,6 +36,7 @@ public class GeburtsortController {
                     size = PAGE_SIZE,
                     sort = "geburtsort"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Geburtsort";
@@ -47,6 +51,8 @@ public class GeburtsortController {
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
         model.addAttribute("geburtsorte", allGeburtsortPage);
         model.addAttribute("pageTitle","Geburtsorte");
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "geburtsort/all";
     }
 
@@ -57,7 +63,7 @@ public class GeburtsortController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Geburtsort geburtsort, Model model
+            @PathVariable("id") Geburtsort geburtsort, HttpSession session, Model model
     ) {
         if(geburtsort == null){
             throw new EntityNotFoundException();
@@ -75,6 +81,7 @@ public class GeburtsortController {
             Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsort(geburtsort,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
 
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "geburtsort/id";
         }
     }
@@ -85,10 +92,13 @@ public class GeburtsortController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public GeburtsortController(GeburtsortService geburtsortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public GeburtsortController(GeburtsortService geburtsortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.geburtsortService = geburtsortService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

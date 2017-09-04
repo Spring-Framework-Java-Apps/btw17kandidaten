@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:include="layoutMain :: tw-head">
+</head>
+<body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<header th:include="layoutMain :: tw-header" >
+</header>
+
+<main class="page-content">
+    <div class="tw-page-content tw-page-content-login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <form action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="search-term-input" class="col-sm-2 control-label">Suche nach:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{searchTerm}" type="text" name="vorname" id="search-term-input" class="form-control" placeholder="Suche nach"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-primary form-control">Suche</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section class="page-content-kandidaten-suche-ergebnis" th:if="${kandidaten}">
+    <div th:fragment="tw-page-content-kandidaten">
+        <div class="container tw-page-content tw-page-content-kandidaten">
+            <div class="row">
+                <div class="col-md-12">
+                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
+                        <span>
+                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                </div>
+            </div>
+            <div class="row" th:include="layoutMain :: tw-page-content-kandidaten-table">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
+                        <span>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section th:include="layoutMain :: tw-history-back-section" >
+</section>
+
+<footer th:include="layoutMain :: footer" >
+
+</footer>
+</body>
+</html>

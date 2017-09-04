@@ -9,14 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -34,6 +37,7 @@ public class ParteiController {
                     size = PAGE_SIZE,
                     sort = "partei"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Parteien";
@@ -47,6 +51,8 @@ public class ParteiController {
 
         Page<Partei> allListeParteiPage =  parteiService.getAll(pageable);
         model.addAttribute("parteien", allListeParteiPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "partei/all";
     }
 
@@ -57,7 +63,7 @@ public class ParteiController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Partei partei, Model model
+            @PathVariable("id") Partei partei, HttpSession session, Model model
     ) {
         if(partei == null){
             throw new EntityNotFoundException();
@@ -74,6 +80,7 @@ public class ParteiController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByPartei(partei,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
             return "partei/id";
         }
@@ -85,10 +92,13 @@ public class ParteiController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public ParteiController(ParteiService parteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public ParteiController(ParteiService parteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.parteiService = parteiService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

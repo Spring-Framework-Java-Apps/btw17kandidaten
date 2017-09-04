@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.repositories.SucheRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.SucheService;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class SucheServiceImpl implements SucheService {
 
     @Override
@@ -132,6 +136,53 @@ public class SucheServiceImpl implements SucheService {
             query = queryStart + criteria;
             countQuery = countQueryStart + criteria;
         }
+
+        log.info("query:      "+query);
+        log.info("countQuery: "+countQuery);
+
+        long counted = sucheRepository.countByJpaQueryStatement(countQuery);
+
+        log.info("counted:    "+counted);
+
+        return sucheRepository.findByJpaQueryStatement(query,counted,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> suchePerFreitextFormular(FreitextSucheFormular suchformular, Pageable pageable) {
+
+        String queryStart = "select o from Kandidat as o ";
+
+        String countQueryStart = "select count(o) from Kandidat as o ";
+
+        String criteria = "";
+
+        if((suchformular!=null)&&(suchformular.getSearchTerm()!=null)&&(!suchformular.getSearchTerm().isEmpty())){
+            String searchTerm = suchformular.getSearchTerm();
+
+            criteria += " WHERE ";
+
+            criteria += " o.vorname LIKE '%"+searchTerm+"%' OR ";
+            criteria += " o.nachname LIKE '%"+searchTerm+"%' OR ";
+            try {
+                int geburtsjahr = Integer.parseInt(searchTerm);
+                if((geburtsjahr > 1935) && (geburtsjahr < 2000)){
+                    criteria += " o.geburtsjahr = " + searchTerm + " OR ";
+                }
+            } catch (NumberFormatException e) {}
+            criteria += " o.wohnort.wohnort LIKE '%"+searchTerm +"%'  OR";
+            criteria += " o.geburtsort.geburtsort LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.beruf.beruf LIKE '%"+searchTerm +"%' OR ";
+            criteria += " o.berufsgruppe.berufsgruppe LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.bundesland.bundeslandLang LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.landesListe.bundesland.bundesland LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.landesListe.listePartei.listePartei LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.partei.partei LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.partei.parteiLang LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.twitter LIKE '%"+ searchTerm +"%' ";
+        }
+
+        String query = queryStart + criteria;
+        String countQuery = countQueryStart + criteria;
 
         log.info("query:      "+query);
         log.info("countQuery: "+countQuery);

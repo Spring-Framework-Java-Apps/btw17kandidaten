@@ -10,12 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -32,6 +35,7 @@ public class KandidatController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "Alle Kandidaten";
@@ -45,12 +49,14 @@ public class KandidatController {
 
         Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "kandidat/all";
     }
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PathVariable("id") Kandidat kandidat, Model model
+            @PathVariable("id") Kandidat kandidat, HttpSession session, Model model
     ) {
         if(kandidat == null){
             throw new EntityNotFoundException();
@@ -68,6 +74,8 @@ public class KandidatController {
             model.addAttribute("pageContent",pageContent);
 
             model.addAttribute("kandidat",kandidat);
+
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/id";
         }
     }
@@ -76,10 +84,13 @@ public class KandidatController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 
 }

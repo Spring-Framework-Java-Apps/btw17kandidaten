@@ -6,14 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/welcome")
 public class WelcomeController {
 
     @RequestMapping
-    public String getAll(Model model) {
+    public String getAll(HttpSession session, Model model) {
         String pageTitle = "Bundestagswahl 2017";
         String pageSubTitle = "Alle 2559 Direktkandidaten";
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
@@ -22,6 +26,7 @@ public class WelcomeController {
         String pagerUrl = "/welcome";
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
         model.addAttribute("pageContent",pageContent);
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
         return "welcome/welcome";
     }
@@ -29,8 +34,11 @@ public class WelcomeController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public WelcomeController(KandidatenProperties kandidatenProperties) {
+    public WelcomeController(KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }

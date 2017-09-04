@@ -9,16 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -35,6 +37,7 @@ public class ListeParteiController {
                     size = PAGE_SIZE,
                     sort = "listePartei"
             ) Pageable pageable,
+            HttpSession session,
             Model model
     ) {
         String pageTitle = "ListePartei";
@@ -48,6 +51,7 @@ public class ListeParteiController {
 
         Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "listepartei/all";
     }
 
@@ -58,7 +62,7 @@ public class ListeParteiController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") ListePartei listePartei, Model model
+            @PathVariable("id") ListePartei listePartei, HttpSession session, Model model
     ) {
         if(listePartei == null){
             throw new EntityNotFoundException();
@@ -75,6 +79,7 @@ public class ListeParteiController {
 
             Page<Kandidat> pageKandidat = kandidatService.findByListePartei(listePartei,pageable);
             model.addAttribute("kandidaten",pageKandidat);
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "listepartei/id";
         }
     }
@@ -87,11 +92,14 @@ public class ListeParteiController {
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final SessionHandler sessionHandler;
+
     @Autowired
-    public ListeParteiController(LandesListeService landesListeService, ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public ListeParteiController(LandesListeService landesListeService, ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.landesListeService = landesListeService;
         this.listeParteiService = listeParteiService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
+        this.sessionHandler = sessionHandler;
     }
 }
