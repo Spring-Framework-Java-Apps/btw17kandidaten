@@ -20,6 +20,8 @@ import org.woehlke.btw17.kandidaten.oodm.service.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 
 @RunWith(SpringRunner.class)
@@ -75,7 +77,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build1LandesListeTableContent() throws IOException {
+    public void build1LandesListe() throws IOException {
         kandidatService.deleteAll();
         landesListeService.deleteAll();
         int page = 0;
@@ -104,10 +106,9 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
-
     @Commit
     @Test
-    public void build2NormalizedTData() throws Exception {
+    public void build2Kandidat() throws Exception {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
@@ -179,7 +180,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build3LandesListe() throws IOException {
+    public void build3LandesListeSql() throws IOException {
         File landesliste = new File(sqlFileDataLandesliste);
         landesliste.delete();
         BufferedWriter bw = new BufferedWriter(new FileWriter(landesliste));
@@ -194,7 +195,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build4FileUpdateFotoUrls() throws IOException {
+    public void build4UpdateFotoUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
@@ -205,7 +206,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build5FileUpdateKandidatUrls() throws IOException {
+    public void build5UpdateKandidatUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
@@ -216,7 +217,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build6FileDataKandidat() throws IOException {
+    public void build6KandidatSql() throws IOException {
         File dataOut = new File(sqlFileDataKandidat);
         dataOut.delete();
         BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
@@ -238,5 +239,40 @@ public class KandidatenNormalizedTableBuilder {
         long countKandidatenFlat = kandidatFlatService.count();
         long countKandidaten = kandidatService.count();
         Assert.assertEquals(countKandidatenFlat,countKandidaten);
+    }
+
+    @Commit
+    @Test
+    public void build8BuildDataSql() throws IOException,InterruptedException {
+        boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
+        ProcessBuilder builder = new ProcessBuilder();
+        if (isWindows) {
+            builder.command("cmd.exe", "/c", "dir");
+        } else {
+            builder.command("sh", "-c", "./build-db-data-import-file.sh");
+        }
+        builder.directory(new File("etc"));
+        Process process = builder.start();
+        StreamGobbler streamGobbler =
+                new StreamGobbler(process.getInputStream(), System.out::println);
+        Executors.newSingleThreadExecutor().submit(streamGobbler);
+        int exitCode = process.waitFor();
+        assert exitCode == 0;
+    }
+
+    private static class StreamGobbler implements Runnable {
+        private InputStream inputStream;
+        private Consumer<String> consumer;
+
+        public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
+            this.inputStream = inputStream;
+            this.consumer = consumer;
+        }
+
+        @Override
+        public void run() {
+            new BufferedReader(new InputStreamReader(inputStream)).lines()
+                    .forEach(consumer);
+        }
     }
 }
