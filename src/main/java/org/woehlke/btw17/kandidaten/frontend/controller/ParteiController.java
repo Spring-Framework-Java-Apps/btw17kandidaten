@@ -68,8 +68,8 @@ public class ParteiController {
         if(partei == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = partei.getPartei() + ", " + partei.getParteiLang();
-            String pageSubTitle = "Parteien der Bundestagswahl 2017 Direktkandidaten";
+            String pageTitle = partei.getPartei();
+            String pageSubTitle = partei.getParteiLang();
             String pageSymbol = PageSymbol.PARTEI.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

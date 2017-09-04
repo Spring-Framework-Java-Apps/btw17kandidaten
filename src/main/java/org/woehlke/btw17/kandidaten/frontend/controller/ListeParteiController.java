@@ -67,8 +67,8 @@ public class ListeParteiController {
         if(listePartei == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = listePartei.getListePartei() + ", " + listePartei.getListeParteiLang();
-            String pageSubTitle = "ListePartei der Bundestagswahl 2017 Direktkandidaten";
+            String pageTitle = listePartei.getListePartei();
+            String pageSubTitle = listePartei.getListeParteiLang();
             String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
@@ -84,8 +84,6 @@ public class ListeParteiController {
         }
     }
 
-    private final LandesListeService landesListeService;
-
     private final ListeParteiService listeParteiService;
 
     private final KandidatService kandidatService;
@@ -95,8 +93,7 @@ public class ListeParteiController {
     private final SessionHandler sessionHandler;
 
     @Autowired
-    public ListeParteiController(LandesListeService landesListeService, ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
-        this.landesListeService = landesListeService;
+    public ListeParteiController(ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.listeParteiService = listeParteiService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
