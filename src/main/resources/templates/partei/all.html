@@ -30,10 +30,7 @@
                             <tr>
                                 <th class="tw-debug">ID</th>
                                 <th>Partei</th>
-                                <th>parteiLang</th>
-                                <th>
-                                    &nbsp;&nbsp;&nbsp;
-                                </th>
+                                <th>Partei Lang</th>
                                 <th>
                                     <i class="fa fa-cloud" aria-hidden="true"></i>
                                 </th>
@@ -67,9 +64,6 @@
                                     <a href="" th:href="@{|/partei/${partei.id}/|}">
                                         <span th:if="${partei.partei}" th:text="${partei.partei}">partei</span>
                                     </a>
-                                </td>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
                                     <span th:text="${partei.parteiLang}">parteiLang</span>
