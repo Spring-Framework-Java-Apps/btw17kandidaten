@@ -26,6 +26,7 @@
                                     </span>
                                 </span>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr>
                                 <th>&nbsp;</th>
@@ -37,6 +38,7 @@
                                         <span th:text="${kandidat.nachname}">nachname</span>
                                     </b>
                                 </th>
+                                <th>&nbsp;</th>
                             </tr>
                             <tr>
                                 <td><i class="fa fa-id-card" aria-hidden="true"></i> Jahrgang</td>
@@ -45,6 +47,7 @@
                                         <span th:text="${kandidat.geburtsjahr}">geburtsjahr</span>
                                     </a>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr th:if="${kandidat.bundesland != null}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Bundesland</td>
@@ -56,12 +59,42 @@
                                         <span>)</span>
                                     </a>
                                 </td>
+                                <td>
+                                    <a th:href="${kandidat.bundesland.webseite}" th:if="${kandidat.bundesland.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.bundesland.twitter}" th:if="${kandidat.bundesland.twitter != null}" alt="Twitter" title="Twitter" target="_blank">
+                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.bundesland.facebook}" th:if="${kandidat.bundesland.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:if="${kandidat.bundesland.youtube}" th:href="${kandidat.bundesland.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.bundesland.wikipediaArticle}" th:if="${kandidat.bundesland.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr th:if="${kandidat.geburtsort != null}">
                                 <td><i class="fa fa-map-marker" aria-hidden="true"></i> Geburtsort</td>
                                 <td>
                                     <a th:href="@{|/geburtsort/${kandidat.geburtsort.id}/|}">
                                         <span th:text="${kandidat.geburtsort.geburtsort}">Geburtsort</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="${kandidat.geburtsort.webseite}" th:if="${kandidat.geburtsort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.geburtsort.wikipediaArticle}" th:if="${kandidat.geburtsort.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -72,6 +105,19 @@
                                         <span th:text="${kandidat.wohnort.wohnort}">wohnort</span>
                                     </a>
                                 </td>
+                                <td>
+                                    <a th:href="${kandidat.wohnort.webseite}" th:if="${kandidat.wohnort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.wohnort.facebook}" th:if="${kandidat.wohnort.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.wohnort.wikipediaArticle}" th:if="${kandidat.wohnort.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr th:if="${kandidat.beruf != null}">
                                 <td><i class="fa fa-cubes" aria-hidden="true"></i> Beruf</td>
@@ -80,6 +126,7 @@
                                         <span th:text="${kandidat.beruf.beruf}">beruf</span>
                                     </a>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr th:if="${kandidat.berufsgruppe != null}">
                                 <td><i class="fa fa-graduation-cap" aria-hidden="true"></i> Berufsgruppe</td>
@@ -88,12 +135,34 @@
                                         <span th:text="${kandidat.berufsgruppe.berufsgruppe}">berufsgruppe</span>
                                     </a>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr th:if="${kandidat.partei != null}">
                                 <td><i class="fa fa-empire" aria-hidden="true"></i> Partei</td>
                                 <td>
                                     <a th:href="@{|/partei/${kandidat.partei.id}/|}">
                                         <abbr th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="${kandidat.partei.webseite}" th:if="${kandidat.partei.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.partei.twitter}" th:if="${kandidat.partei.twitter != null}" alt="Twitter" title="Twitter" target="_blank">
+                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.partei.facebook}" th:if="${kandidat.partei.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:if="${kandidat.partei.youtube}" th:href="${kandidat.partei.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.partei.wikipediaArticle}" th:if="${kandidat.partei.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -106,6 +175,7 @@
                                         <span th:text="${kandidat.listePlatz}"></span>
                                     </a>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr th:if="${kandidat.mdb != null}">
                                 <td><i class="fa fa-university" aria-hidden="true"></i> MdB</td>
@@ -114,6 +184,7 @@
                                         <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
                                     </a>
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
@@ -130,6 +201,7 @@
                                     <a class="tw-social-media-link" th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
 
                                 </td>
+                                <td>&nbsp;</td>
                             </tr>
                         </table>
                     </div>

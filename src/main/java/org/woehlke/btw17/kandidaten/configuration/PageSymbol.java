@@ -19,6 +19,7 @@ public enum PageSymbol {
     YOUTUBE("<i class=\"fa fa-youtube\" aria-hidden=\"true\"></i>"),
     FACEBOOK("<i class=\"fa fa-facebook-square\" aria-hidden=\"true\"></i>"),
     WEBSEITE("<i class=\"fa fa-cloud\" aria-hidden=\"true\"></i>"),
+    WIKIPEDIA("<i class=\"fa fa-wikipedia-w\" aria-hidden=\"true\"></i>"),
     STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     GEBURTSJAHR("<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i>"),
     MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
