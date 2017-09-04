@@ -1,7 +1,9 @@
 package org.woehlke.btw17.kandidaten;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,13 @@ import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
@@ -69,21 +74,44 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void buildNormalizedTData() throws Exception {
-        buildLandesListe();
-        File dataOut = new File(sqlFileDataKandidat);
-        dataOut.delete();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
-        bw.write("DELETE FROM kandidat;");
-        bw.newLine();
-        kandidatService.deleteAll();
+    public void build1LandesListeTableContent() throws IOException {
         landesListeService.deleteAll();
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
         Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
         boolean goOn = true;
-        long id = 0;
+        List<LandesListe> landesListen = new ArrayList<>();
+        while(goOn) {
+            for (KandidatFlat in : allKandidatenPage.getContent()) {
+                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
+                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
+                if((listePartei!=null)&&(listeBundeslandLand!=null)){
+                    LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
+                    if(!landesListen.contains(landesListe)){
+                        landesListen.add(landesListe);
+                    }
+                }
+            }
+            if(allKandidatenPage.hasNext()){
+                pageable = allKandidatenPage.nextPageable();
+                allKandidatenPage = kandidatFlatService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
+        }
+    }
+
+
+    @Commit
+    @Test
+    public void build2NormalizedTData() throws Exception {
+        kandidatService.deleteAll();
+        int page = 0;
+        int size = 250;
+        Pageable pageable = new PageRequest(page,size);
+        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
+        boolean goOn = true;
         while(goOn){
             for(KandidatFlat in :allKandidatenPage.getContent()){
                 log.info(in.toString());
@@ -122,7 +150,7 @@ public class KandidatenNormalizedTableBuilder {
                 Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
 
                 if((listePartei!=null)&&(listeBundeslandLand!=null)){
-                    LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
+                    LandesListe landesListe = landesListeService.findByBundeslandAndListePartei(listeBundeslandLand,listePartei);
                     out.setLandesListe(landesListe);
                 }
 
@@ -138,11 +166,6 @@ public class KandidatenNormalizedTableBuilder {
                 out = kandidatService.create(out);
 
                 log.info(out.toString());
-
-                id++;
-
-                bw.write(out.getSqlInsert(id));
-                bw.newLine();
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
@@ -151,45 +174,26 @@ public class KandidatenNormalizedTableBuilder {
                 goOn = false;
             }
         }
-        bw.flush();
-        bw.close();
-        buildFileUpdateFotoUrls();
-        buildFileUpdateKandidatUrls();
     }
 
-    private void buildLandesListe() throws IOException {
+    @Commit
+    @Test
+    public void build3LandesListe() throws IOException {
         File landesliste = new File(sqlFileDataLandesliste);
         landesliste.delete();
         BufferedWriter bw = new BufferedWriter(new FileWriter(landesliste));
-        int page = 0;
-        int size = 250;
-        Pageable pageable = new PageRequest(page,size);
-        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
-        boolean goOn = true;
-        long id = 0;
-        while(goOn) {
-            for (KandidatFlat in : allKandidatenPage.getContent()) {
-                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
-                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
-                if((listePartei!=null)&&(listeBundeslandLand!=null)){
-                    LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
-                    String sql = landesListe.getSqlInsert();
-                    bw.write(sql);
-                    bw.newLine();
-                }
-            }
-            if(allKandidatenPage.hasNext()){
-                pageable = allKandidatenPage.nextPageable();
-                allKandidatenPage = kandidatFlatService.getAll(pageable);
-            } else {
-                goOn = false;
-            }
+        for(LandesListe landesListe:landesListeService.getAll()){
+            String sql = landesListe.getSqlInsert();
+            bw.write(sql);
+            bw.newLine();
         }
         bw.flush();
         bw.close();
     }
 
-    private void buildFileUpdateFotoUrls() throws IOException {
+    @Commit
+    @Test
+    public void build4FileUpdateFotoUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
@@ -198,12 +202,32 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
-    private void buildFileUpdateKandidatUrls() throws IOException {
+    @Commit
+    @Test
+    public void build5FileUpdateKandidatUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
             jdbcService.executeSqlStatemen(sqlStatement);
         }
         br.close();
+    }
+
+    @Commit
+    @Test
+    public void build6FileDataKandidat() throws IOException {
+        File dataOut = new File(sqlFileDataKandidat);
+        dataOut.delete();
+        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
+        bw.write("DELETE FROM kandidat;");
+        bw.newLine();
+        long id = 0;
+        for(Kandidat k :kandidatService.getAll()) {
+            id++;
+            bw.write(k.getSqlInsert(id));
+            bw.newLine();
+        }
+        bw.flush();
+        bw.close();
     }
 }

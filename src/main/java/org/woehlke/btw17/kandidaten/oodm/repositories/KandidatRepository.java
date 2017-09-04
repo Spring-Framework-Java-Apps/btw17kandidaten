@@ -46,4 +46,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.findByKandidatFlatId")
     Kandidat findByKandidatFlatId(@Param("kandidatFlatId") long kandidatFlatId);
+
+    @Query(name="Kandidat.getAll")
+    List<Kandidat> getAll();
 }

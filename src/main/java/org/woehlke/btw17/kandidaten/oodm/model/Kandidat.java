@@ -42,6 +42,10 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.findByKandidatFlatId",
         query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getAll",
+        query = "select o from Kandidat as o order by id"
     )
 })
 public class Kandidat implements Serializable {
@@ -619,18 +623,24 @@ public class Kandidat implements Serializable {
     public String getSqlInsert(long id){
         Long idParameter = id;
         String columns[] = {
-            "id","alter","color","facebook","foto","foto_url","geburtsjahr","geschlecht","id_eigen","kandidat_key","lat",
-            "liste_platz","lng","logo_url","mdb","nachname","nachname_ohne","namenszusatz","remote_kandidat_key",
-            "scatter_x","scatter_y","titel","twitter","vorname","webseite","wikipedia_article","youtube",
-            "fk_beruf","fk_berufsgruppe","fk_bundesland","fk_geburtsort","fk_kandidat_flat","fk_landes_liste",
-            "fk_partei","fk_wahlkreis","fk_wohnort","bundestag_abgeordnete"
+            "id","alter","color","facebook","foto",
+            "foto_url","geburtsjahr","geschlecht","id_eigen","kandidat_key",
+            "lat","liste_platz","lng","logo_url","mdb",
+            "nachname","nachname_ohne","namenszusatz","remote_kandidat_key","scatter_x",
+            "scatter_y","titel","twitter","vorname","webseite",
+            "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
+            "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
+            "fk_wohnort","bundestag_abgeordnete"
         };
         Object fields[] = {
-            idParameter,alter,color,facebook,foto,fotoUrl,geburtsjahr,geschlecht,idEigen,key,lat,
-            listePlatz,lng,logoUrl,mdb,nachname,nachnameOhne,namenszusatz,remoteKey,
-            scatterX,scatterY,titel,twitter,vorname,webseite,wikipediaArticle,youtube,
-            beruf,berufsgruppe,bundesland,geburtsort,kandidatFlat,landesListe,
-            partei,wahlkreis,wohnort,bundestagAbgeordnete
+            idParameter,alter,color,facebook,foto,
+            fotoUrl,geburtsjahr,geschlecht,idEigen,key,
+            lat,listePlatz,lng,logoUrl,mdb,
+            nachname,nachnameOhne,namenszusatz,remoteKey,scatterX,
+            scatterY,titel,twitter,vorname,webseite,
+            wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
+            geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
+            wohnort,bundestagAbgeordnete
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");

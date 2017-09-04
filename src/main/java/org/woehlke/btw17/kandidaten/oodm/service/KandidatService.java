@@ -15,6 +15,8 @@ public interface KandidatService {
 
     String PAGE_DEFAULT_SORT ="nachname";
 
+    List<Kandidat> getAll();
+
     Page<Kandidat> getAll(Pageable pageRequest);
 
     Kandidat create(Kandidat out);

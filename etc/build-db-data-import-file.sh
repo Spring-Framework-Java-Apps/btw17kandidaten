@@ -71,7 +71,7 @@ echo '-- org.woehlke.btw17.kandidaten.oodm.model.LandesListe' >> ../src/main/res
 echo '-- Table: landesliste' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-#cat ./3nf/data/insert-data-landesliste.sql >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-landesliste.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat' >> ../src/main/resources/data.sql
@@ -85,7 +85,7 @@ echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resour
 echo '-- Table: kandidat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-#cat ./3nf/data/insert-data-kandidat.sql >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-kandidat.sql >> ../src/main/resources/data.sql
 
 
 

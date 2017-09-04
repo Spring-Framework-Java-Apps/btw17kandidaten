@@ -24,6 +24,11 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
+    public List<Kandidat> getAll() {
+        return kandidatRepository.getAll();
+    }
+
+    @Override
     public Page<Kandidat> getAll(Pageable pageRequest) {
         return kandidatRepository.findAll(pageRequest);
     }
