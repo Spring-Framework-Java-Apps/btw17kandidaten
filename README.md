@@ -1,9 +1,28 @@
 # [btw17kandidaten](https://github.com/phasenraum2010/btw17kandidaten)
 
+
+## Alle 2559 Direktkandidaten
+
+Die Anwendung basiert auf den Daten des Bundeswahlleiters zu allen zugelassenen Kandidaten. 
+Die offiziellen Angaben zu Namen (inklusive Zweitnamen), Beruf sowie Wohn- und Geburtsort wurden exakt übernommen. 
+Bei der Angabe des Alters kann es zu Abweichungen kommen, da dies lediglich auf Grundlage des Geburtsjahres errechnet wurde.
+
+## public BETA
+
+Einige Informationen werden aktuell noch manuell gesammelt und sukzessive bereit gestellt.
+Einige Funktionen der Software werden aktuell noch weiter entwickelt und sukzessive bereit gestellt
+Die Daten können Inkonsistenzen oder Fehler enthalten.
+Die Funktionen der Software können Inkonsistenzen oder Fehler enthalten.
+Sie können Fehler bei Daten oder Software-Funktionen melden unter: https://github.com/phasenraum2010/btw17kandidaten/issues
+Das Hosting bei Heroku ist der kleinste, kostenlose, Tarif. Das kann je nach Anzahl der Besucher langsam werden. 
+Kostenpflichtige Upgrades mit extremer Skalierung sind durch Sponsoring zeitnah möglich.
+Das Hosting bei Heroku ist in Europa, nicht in den USA.
+
+## Abstract
+
 + App the Browse Data for #btw17 with [spring:boot](https://projects.spring.io/spring-boot/) for [heroku](https://heroku.com)
 + More Info: [https://phasenraum2010.github.io/btw17kandidaten/](https://phasenraum2010.github.io/btw17kandidaten/)
 + Moore Info and Source of Data: [interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017]
-
 
 ## Development 
 
