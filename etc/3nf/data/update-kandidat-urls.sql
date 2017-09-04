@@ -1091,7 +1091,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dr-lothar-mundt-geboren-1940-in-berlin';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-lothar-riebsamen-geboren-1957-in-schwblishausen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-ludwig-maier-geboren-1961-in-hub';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-luise-amtsberg-geboren-1984-in-greifswald';
+UPDATE kandidat SET twitter=NULL, facebook='https://www.facebook.com/LuiseAmtsberg/', webseite='http://luise-amtsberg.de/', youtube='https://www.youtube.com/channel/UCWeBUjQI08-we-KkJoeVC1Q', wikipedia_article='https://de.wikipedia.org/wiki/Luise_Amtsberg'  WHERE  kandidat_key='frau-luise-amtsberg-geboren-1984-in-greifswald';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-lutz-egerer-geboren-1964-in-nrnberg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-mahmut-zdemir-geboren-1987-in-duisburg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-maik-babenhauserheide-geboren-1975-in-bnde';
