@@ -22,6 +22,7 @@
     <![endif]-->
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<div id="page">
 <header th:fragment="tw-header">
     <nav id="main-navbar" class="navbar navbar-fixed-top Fixed navbar-inverse">
         <div class="container">
@@ -147,17 +148,14 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="page-header">
-                    <h1>
-                        <span th:utext="${pageContent.pageSymbol}"></span>
-                        <span class="header-h1" th:text="${pageContent.pageTitle}">pageTitle</span>
-                        <br/>
-                        <small th:text="${pageContent.pageSubTitle}">pageSubTitle</small>
-                    </h1>
-                </div>
+    <div class="jumbotron hidden-xs hidden-sm tw-jumbotron-header">
+        <div class="container">
+            <div id="jumbotron-header">
+                <h1>
+                    <span class="header-h1" th:utext="${pageContent.pageTitleWithSymbol}">pageTitleWithSymbol</span>
+                    <br/>
+                    <small class="tw-header-small" th:text="${pageContent.pageSubTitle}">pageSubTitle</small>
+                </h1>
             </div>
         </div>
     </div>
@@ -346,7 +344,6 @@
     </div>
 </main>
 
-
 <section th:fragment="tw-history-back-section">
     <div class="container">
         <div class="row" th:fragment="tw-history-back-row">
@@ -361,6 +358,8 @@
         </div>
     </div>
 </section>
+
+</div>
 <footer th:fragment="tw-footer">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="webjars/jquery/1.11.1/jquery.min.js" th:attr="src=@{/webjars/jquery/1.11.1/jquery.min.js}"></script>

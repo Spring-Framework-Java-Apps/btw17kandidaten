@@ -34,7 +34,7 @@ public class KandidatController {
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Kandidaten";
+        String pageTitle = "Alle Kandidaten";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();

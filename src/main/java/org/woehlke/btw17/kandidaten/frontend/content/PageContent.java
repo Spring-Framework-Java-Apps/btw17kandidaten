@@ -25,6 +25,10 @@ public class PageContent implements Serializable {
         this.pagerUrl = pagerUrl;
     }
 
+    public String getPageTitleWithSymbol(){
+        return pageSymbol + " " +  pageTitle;
+    }
+
     public String getPageTitle() {
         return pageTitle;
     }
