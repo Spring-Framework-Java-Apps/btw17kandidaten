@@ -48,7 +48,9 @@ public class LandesListeController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/landesliste/"+landesListe.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("landesListe",landesListe);
 
@@ -78,7 +80,9 @@ public class LandesListeController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/landesliste/bundesland/"+bundesland.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("bundesland",bundesland);
 
@@ -110,7 +114,9 @@ public class LandesListeController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/landesliste/listepartei/"+listePartei.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
 
@@ -139,7 +145,9 @@ public class LandesListeController {
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/landesliste/bundesland/all";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
         model.addAttribute("pageContent",pageContent);
 
         Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
@@ -165,7 +173,9 @@ public class LandesListeController {
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/landesliste/listepartei/all";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
         model.addAttribute("pageContent",pageContent);
 
         Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);

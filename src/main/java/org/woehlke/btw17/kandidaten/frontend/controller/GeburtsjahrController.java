@@ -45,7 +45,9 @@ public class GeburtsjahrController {
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/geburtsjahr/all";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
         model.addAttribute("pageContent",pageContent);
 
         Page<Integer> geburtsjahrPage  = kandidatService.findByGeburtsjahrAll(pageable);
@@ -78,7 +80,9 @@ public class GeburtsjahrController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/geburtsjahr/"+geburtsjahr;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsjahr(geburtsjahr,pageable);

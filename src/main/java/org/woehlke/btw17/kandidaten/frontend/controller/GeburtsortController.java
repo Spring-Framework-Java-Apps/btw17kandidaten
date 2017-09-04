@@ -45,7 +45,9 @@ public class GeburtsortController {
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/geburtsort/all";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
         model.addAttribute("pageContent",pageContent);
 
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
@@ -74,7 +76,9 @@ public class GeburtsortController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/geburtsort/"+geburtsort.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("geburtsort",geburtsort);
 

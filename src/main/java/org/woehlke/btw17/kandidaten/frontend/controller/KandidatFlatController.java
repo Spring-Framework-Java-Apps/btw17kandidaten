@@ -44,7 +44,9 @@ public class KandidatFlatController {
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/kandidatflat/all";
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
         model.addAttribute("pageContent",pageContent);
 
         Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
@@ -72,7 +74,9 @@ public class KandidatFlatController {
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/kandidatflat/"+kandidatFlat.getId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl);
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
             model.addAttribute("pageContent",pageContent);
 
             model.addAttribute("kandidat",kandidatFlat);

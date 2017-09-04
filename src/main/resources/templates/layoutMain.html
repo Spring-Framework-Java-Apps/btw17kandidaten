@@ -6,6 +6,16 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@port80guru" th:attr="content=${pageContent.twitterCardSite}"  />
+    <meta name="twitter:creator" content="@port80guru" th:attr="content=${pageContent.twitterCardCreator}"  />
+    <meta name="twitter:image" content="https://btw17-kandidaten.herokuapp.com/img/reichstag.jpg" />
+    <meta name="twitter:title" content="#btw17 Direktkandidaten" th:attr="content=${pageContent.pageTitle}" />
+    <meta name="twitter:description" content="Bundestagswahl 2017 - Alle 2559 Direktkandidaten" />
+    <meta property="og:url" th:attr="content=@{|https://btw17-kandidaten.herokuapp.com${pageContent.pagerUrl}|}" />
+    <meta property="og:title" content="#btw17 Direktkandidaten" th:attr="content=${pageContent.pageTitle}" />
+    <meta property="og:description" content="Bundestagswahl 2017 - Alle 2559 Direktkandidaten" />
+    <meta property="og:image" content="https://btw17-kandidaten.herokuapp.com/img/reichstag.jpg" />
     <title th:text="${pageContent.pageTitle}">btw17 Kandidaten</title>
     <!-- Bootstrap -->
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -19,6 +29,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">

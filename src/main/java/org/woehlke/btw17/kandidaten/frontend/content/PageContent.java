@@ -16,13 +16,19 @@ public class PageContent implements Serializable {
 
     private String pagerUrl;
 
-    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl) {
+    private String twitterCardSite;
+
+    private String twitterCardCreator;
+
+    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator) {
         this.pageTitle = pageTitle;
         this.pageSubTitle = pageSubTitle;
         this.pageSymbol = pageSymbol;
         this.googleMapsApiKey = googleMapsApiKey;
         this.googleAnalyticsKey = googleAnalyticsKey;
         this.pagerUrl = pagerUrl;
+        this.twitterCardSite = twitterCardSite;
+        this.twitterCardCreator = twitterCardCreator;
     }
 
     public String getPageTitleWithSymbol(){
@@ -77,6 +83,22 @@ public class PageContent implements Serializable {
         this.pagerUrl = pagerUrl;
     }
 
+    public String getTwitterCardSite() {
+        return "@"+twitterCardSite;
+    }
+
+    public void setTwitterCardSite(String twitterCardSite) {
+        this.twitterCardSite = twitterCardSite;
+    }
+
+    public String getTwitterCardCreator() {
+        return "@"+twitterCardCreator;
+    }
+
+    public void setTwitterCardCreator(String twitterCardCreator) {
+        this.twitterCardCreator = twitterCardCreator;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,7 +113,10 @@ public class PageContent implements Serializable {
             return false;
         if (googleAnalyticsKey != null ? !googleAnalyticsKey.equals(that.googleAnalyticsKey) : that.googleAnalyticsKey != null)
             return false;
-        return pagerUrl != null ? pagerUrl.equals(that.pagerUrl) : that.pagerUrl == null;
+        if (pagerUrl != null ? !pagerUrl.equals(that.pagerUrl) : that.pagerUrl != null) return false;
+        if (twitterCardSite != null ? !twitterCardSite.equals(that.twitterCardSite) : that.twitterCardSite != null)
+            return false;
+        return twitterCardCreator != null ? twitterCardCreator.equals(that.twitterCardCreator) : that.twitterCardCreator == null;
     }
 
     @Override
@@ -102,6 +127,8 @@ public class PageContent implements Serializable {
         result = 31 * result + (googleMapsApiKey != null ? googleMapsApiKey.hashCode() : 0);
         result = 31 * result + (googleAnalyticsKey != null ? googleAnalyticsKey.hashCode() : 0);
         result = 31 * result + (pagerUrl != null ? pagerUrl.hashCode() : 0);
+        result = 31 * result + (twitterCardSite != null ? twitterCardSite.hashCode() : 0);
+        result = 31 * result + (twitterCardCreator != null ? twitterCardCreator.hashCode() : 0);
         return result;
     }
 
@@ -114,6 +141,8 @@ public class PageContent implements Serializable {
                 ", googleMapsApiKey='" + googleMapsApiKey + '\'' +
                 ", googleAnalyticsKey='" + googleAnalyticsKey + '\'' +
                 ", pagerUrl='" + pagerUrl + '\'' +
+                ", twitterCardSite='" + twitterCardSite + '\'' +
+                ", twitterCardCreator='" + twitterCardCreator + '\'' +
                 '}';
     }
 }

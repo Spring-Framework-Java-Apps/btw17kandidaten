@@ -69,6 +69,8 @@ btw17:
     millisToWaitBetweenTwoApiCalls: 1000
     checkFotoUrl: false
     pageSubTitle: Bundestagswahl 2017 - Alle 2559 Direktkandidaten
+    twitterCardSite: port80guru
+    twitterCardCreator: port80guru
     webSecurityConfigPublicPaths:
       - "/"
       - "/kandidat/all"

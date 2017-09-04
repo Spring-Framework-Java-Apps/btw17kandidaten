@@ -48,6 +48,12 @@ public class KandidatenProperties {
     @NotNull
     private String pageSubTitle;
 
+    @NotNull
+    private String twitterCardSite;
+
+    @NotNull
+    private String twitterCardCreator;
+
     public Integer getPageSize() {
         return pageSize;
     }
@@ -142,6 +148,22 @@ public class KandidatenProperties {
 
     public void setPageSubTitle(String pageSubTitle) {
         this.pageSubTitle = pageSubTitle;
+    }
+
+    public String getTwitterCardSite() {
+        return twitterCardSite;
+    }
+
+    public void setTwitterCardSite(String twitterCardSite) {
+        this.twitterCardSite = twitterCardSite;
+    }
+
+    public String getTwitterCardCreator() {
+        return twitterCardCreator;
+    }
+
+    public void setTwitterCardCreator(String twitterCardCreator) {
+        this.twitterCardCreator = twitterCardCreator;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {
