@@ -33,6 +33,25 @@
     <![endif]-->
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1721279777913278',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <div id="page">
 <header th:fragment="tw-header">
     <nav id="main-navbar" class="navbar navbar-fixed-top Fixed navbar-inverse">
@@ -390,25 +409,6 @@
         ga('set', 'anonymizeIp', true);
         ga('send', 'pageview');
 
-    </script>
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '1721279777913278',
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v2.8'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
     </script>
 </footer>
 </body>
