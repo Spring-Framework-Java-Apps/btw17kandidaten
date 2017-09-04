@@ -13,3 +13,9 @@ export BTW17_GOOGLE_ANALYTICS_ID=UA-17174370-11
 ./mvnw clean install site
 
 ./mvnw clean release:prepare
+
+./mvnw release:perform
+
+git commit -m "after release"
+
+git push

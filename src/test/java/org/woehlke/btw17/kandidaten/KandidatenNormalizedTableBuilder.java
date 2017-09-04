@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten;
 
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,6 +76,7 @@ public class KandidatenNormalizedTableBuilder {
     @Commit
     @Test
     public void build1LandesListeTableContent() throws IOException {
+        kandidatService.deleteAll();
         landesListeService.deleteAll();
         int page = 0;
         int size = 250;
@@ -106,7 +108,6 @@ public class KandidatenNormalizedTableBuilder {
     @Commit
     @Test
     public void build2NormalizedTData() throws Exception {
-        kandidatService.deleteAll();
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
@@ -229,5 +230,13 @@ public class KandidatenNormalizedTableBuilder {
         }
         bw.flush();
         bw.close();
+    }
+
+    @Commit
+    @Test
+    public void build7CheckResults() throws IOException {
+        long countKandidatenFlat = kandidatFlatService.count();
+        long countKandidaten = kandidatService.count();
+        Assert.assertEquals(countKandidatenFlat,countKandidaten);
     }
 }
