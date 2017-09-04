@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -12,7 +11,7 @@ import java.io.Serializable;
         @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
     }
 )
-public class Wohnort implements Serializable {
+public class Wohnort implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +37,11 @@ public class Wohnort implements Serializable {
     @URL
     @Column
     private String googleMapsUrl;
+
+    @Transient
+    public String getName() {
+        return wohnort;
+    }
 
     public Long getId() {
         return id;

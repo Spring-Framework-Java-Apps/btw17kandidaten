@@ -9,3 +9,4 @@ DELETE FROM liste_partei;
 DELETE FROM partei;
 DELETE FROM wahlkreis;
 DELETE FROM wohnort;
+ALTER SEQUENCE hibernate_sequence RESTART WITH 1;

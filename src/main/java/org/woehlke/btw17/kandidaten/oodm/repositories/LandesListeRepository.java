@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 
+import java.util.List;
+
 @Repository
 public interface LandesListeRepository extends PagingAndSortingRepository<LandesListe,Long> {
 
@@ -26,4 +28,7 @@ public interface LandesListeRepository extends PagingAndSortingRepository<Landes
 
     @Query(name="LandesListe.getAllListePartei")
     Page<ListePartei> getAllListePartei(Pageable pageable);
+
+    @Query(name="LandesListe.getAllOrOrderById")
+    List<LandesListe> getAll();
 }

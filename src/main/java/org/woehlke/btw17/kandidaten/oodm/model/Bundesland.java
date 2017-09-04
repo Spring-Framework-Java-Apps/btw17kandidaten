@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 @Entity
@@ -16,7 +15,7 @@ import java.io.Serializable;
         @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
     }
 )
-public class Bundesland implements Serializable {
+public class Bundesland implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 

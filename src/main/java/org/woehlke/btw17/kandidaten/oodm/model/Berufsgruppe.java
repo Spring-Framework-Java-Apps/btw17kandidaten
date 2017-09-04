@@ -1,7 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -10,7 +9,7 @@ import java.io.Serializable;
         @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
     }
 )
-public class Berufsgruppe implements Serializable {
+public class Berufsgruppe implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 

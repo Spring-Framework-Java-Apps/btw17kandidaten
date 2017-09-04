@@ -14,8 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 
 @RunWith(SpringRunner.class)
@@ -27,6 +26,10 @@ public class KandidatenNormalizedTableBuilder {
     private final static String sqlFileUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
 
     private final static String sqlFileUpdateKandidatUrls = "etc/3nf/data/update-kandidat-urls.sql";
+
+    private final static String sqlFileDataKandidat = "etc/3nf/data/insert-data-kandidat.sql";
+
+    private final static String sqlFileDataLandesliste = "etc/3nf/data/insert-data-landesliste.sql";
 
     @Autowired
     private BerufService berufService;
@@ -67,6 +70,12 @@ public class KandidatenNormalizedTableBuilder {
     @Commit
     @Test
     public void buildNormalizedTData() throws Exception {
+        buildLandesListe();
+        File dataOut = new File(sqlFileDataKandidat);
+        dataOut.delete();
+        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
+        bw.write("DELETE FROM kandidat;");
+        bw.newLine();
         kandidatService.deleteAll();
         landesListeService.deleteAll();
         int page = 0;
@@ -74,6 +83,7 @@ public class KandidatenNormalizedTableBuilder {
         Pageable pageable = new PageRequest(page,size);
         Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
         boolean goOn = true;
+        long id = 0;
         while(goOn){
             for(KandidatFlat in :allKandidatenPage.getContent()){
                 log.info(in.toString());
@@ -128,6 +138,11 @@ public class KandidatenNormalizedTableBuilder {
                 out = kandidatService.create(out);
 
                 log.info(out.toString());
+
+                id++;
+
+                bw.write(out.getSqlInsert(id));
+                bw.newLine();
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
@@ -136,18 +151,56 @@ public class KandidatenNormalizedTableBuilder {
                 goOn = false;
             }
         }
-        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
+        bw.flush();
+        bw.close();
+        buildFileUpdateFotoUrls();
+        buildFileUpdateKandidatUrls();
+    }
+
+    private void buildLandesListe() throws IOException {
+        File landesliste = new File(sqlFileDataLandesliste);
+        landesliste.delete();
+        BufferedWriter bw = new BufferedWriter(new FileWriter(landesliste));
+        int page = 0;
+        int size = 250;
+        Pageable pageable = new PageRequest(page,size);
+        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
+        boolean goOn = true;
         long id = 0;
+        while(goOn) {
+            for (KandidatFlat in : allKandidatenPage.getContent()) {
+                ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
+                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
+                if((listePartei!=null)&&(listeBundeslandLand!=null)){
+                    LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
+                    String sql = landesListe.getSqlInsert();
+                    bw.write(sql);
+                    bw.newLine();
+                }
+            }
+            if(allKandidatenPage.hasNext()){
+                pageable = allKandidatenPage.nextPageable();
+                allKandidatenPage = kandidatFlatService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
+        }
+        bw.flush();
+        bw.close();
+    }
+
+    private void buildFileUpdateFotoUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
         while (br.ready()){
-            id++;
             String sqlStatement = br.readLine();
             jdbcService.executeSqlStatemen(sqlStatement);
         }
         br.close();
-        br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
-        id = 0;
+    }
+
+    private void buildFileUpdateKandidatUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
         while (br.ready()){
-            id++;
             String sqlStatement = br.readLine();
             jdbcService.executeSqlStatemen(sqlStatement);
         }

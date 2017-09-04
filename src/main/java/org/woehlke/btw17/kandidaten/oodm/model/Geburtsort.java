@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -14,7 +13,7 @@ import java.io.Serializable;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     }
 )
-public class Geburtsort implements Serializable {
+public class Geburtsort implements KandidatDimension {
 
 
     private static final long serialVersionUID = 1L;

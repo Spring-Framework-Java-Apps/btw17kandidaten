@@ -2,7 +2,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -27,9 +26,13 @@ import java.io.Serializable;
     @NamedQuery(
         name = "LandesListe.findByListePartei",
         query = "select o from LandesListe as o where o.listePartei=:listePartei"
+    ),
+    @NamedQuery(
+        name = "LandesListe.getAllOrOrderById",
+        query = "select o from LandesListe as o order by id"
     )
 })
-public class LandesListe implements Serializable {
+public class LandesListe implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 
@@ -110,5 +113,17 @@ public class LandesListe implements Serializable {
                 ", bundesland=" + bundesland +
                 ", listePartei=" + listePartei +
                 '}';
+    }
+
+    public String getSqlInsert(){
+        StringBuffer sql = new StringBuffer();
+        sql.append("INSERT INTO landesliste (id, fk_bundesland, fk_liste_partei) VALUES (");
+        sql.append(id);
+        sql.append(",");
+        sql.append(bundesland.getId());
+        sql.append(",");
+        sql.append(listePartei.getId());
+        sql.append(");");
+        return sql.toString();
     }
 }

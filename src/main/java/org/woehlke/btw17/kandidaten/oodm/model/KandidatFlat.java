@@ -1,7 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Locale;
 
 @Entity
@@ -41,7 +40,7 @@ import java.util.Locale;
         query = "select o.id from KandidatFlat as o where o.mdb is not null"
     )
 })
-public class KandidatFlat implements Serializable {
+public class KandidatFlat implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 
@@ -138,6 +137,11 @@ public class KandidatFlat implements Serializable {
 
     @Column
     private String color;
+
+    @Transient
+    public String getName() {
+        return getTransientKey();
+    }
 
     @Transient
     public String getTransientKey(){

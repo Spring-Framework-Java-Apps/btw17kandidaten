@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -15,7 +14,7 @@ import java.io.Serializable;
         @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name")
     }
 )
-public class Wahlkreis implements Serializable {
+public class Wahlkreis implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +39,11 @@ public class Wahlkreis implements Serializable {
     @URL
     @Column
     private String googleMapsUrl;
+
+    @Transient
+    public String getName() {
+        return wahlkreisName + " ( " +wahlkreisId+" )";
+    }
 
     public Long getId() {
         return id;

@@ -12,6 +12,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.LandesListeRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class LandesListeServiceImpl implements LandesListeService {
@@ -29,8 +31,8 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
-    public Iterable<LandesListe> getAll() {
-        return this.landesListeRepository.findAll();
+    public List<LandesListe> getAll() {
+        return this.landesListeRepository.getAll();
     }
 
     @Override
@@ -51,6 +53,11 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
+    public LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei) {
+        return landesListeRepository.findByBundeslandAndListePartei(bundesland,listePartei);
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public LandesListe fetchOrCreateByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei) {
         LandesListe found = landesListeRepository.findByBundeslandAndListePartei(bundesland,listePartei);
@@ -62,11 +69,6 @@ public class LandesListeServiceImpl implements LandesListeService {
             landesListe.setListePartei(listePartei);
             return landesListeRepository.save(landesListe);
         }
-    }
-
-    @Override
-    public LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei) {
-        return landesListeRepository.findByBundeslandAndListePartei(bundesland,listePartei);
     }
 
     @Override

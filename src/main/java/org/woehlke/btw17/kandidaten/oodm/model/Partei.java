@@ -4,7 +4,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(
@@ -20,7 +19,7 @@ import java.io.Serializable;
         @Index(name = "idx_partei_logo_url", columnList = "logo_url"),
     }
 )
-public class Partei implements Serializable {
+public class Partei implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
 

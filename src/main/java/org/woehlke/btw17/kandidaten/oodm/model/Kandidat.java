@@ -615,6 +615,61 @@ public class Kandidat implements Serializable {
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
     }
+
+    public String getSqlInsert(long id){
+        Long idParameter = id;
+        String columns[] = {
+            "id","alter","color","facebook","foto","foto_url","geburtsjahr","geschlecht","id_eigen","kandidat_key","lat",
+            "liste_platz","lng","logo_url","mdb","nachname","nachname_ohne","namenszusatz","remote_kandidat_key",
+            "scatter_x","scatter_y","titel","twitter","vorname","webseite","wikipedia_article","youtube",
+            "fk_beruf","fk_berufsgruppe","fk_bundesland","fk_geburtsort","fk_kandidat_flat","fk_landes_liste",
+            "fk_partei","fk_wahlkreis","fk_wohnort","bundestag_abgeordnete"
+        };
+        Object fields[] = {
+            idParameter,alter,color,facebook,foto,fotoUrl,geburtsjahr,geschlecht,idEigen,key,lat,
+            listePlatz,lng,logoUrl,mdb,nachname,nachnameOhne,namenszusatz,remoteKey,
+            scatterX,scatterY,titel,twitter,vorname,webseite,wikipediaArticle,youtube,
+            beruf,berufsgruppe,bundesland,geburtsort,kandidatFlat,landesListe,
+            partei,wahlkreis,wohnort,bundestagAbgeordnete
+        };
+        StringBuffer sb = new StringBuffer();
+        sb.append("INSERT INTO kandidat (");
+        for(int i=0;i<columns.length; i++){
+            sb.append(columns[i]);
+            if((i+1)<columns.length){
+                sb.append(",");
+            }
+        }
+        sb.append(") VALUES (");
+        for(int i=0;i<fields.length; i++){
+            Object o = fields[i];
+            if(o == null){
+                sb.append("NULL");
+            } else if(o instanceof Long){
+                Long x = (Long) o;
+                sb.append(x);
+            }else if(o instanceof Integer){
+                Integer x = (Integer) o;
+                sb.append(x);
+            } else if(o instanceof Double){
+                Double x = (Double) o;
+                sb.append(x);
+            } else if(o instanceof String){
+                String x = (String) o;
+                sb.append("'");
+                sb.append(x);
+                sb.append("'");
+            } else if(o instanceof KandidatDimension){
+                KandidatDimension x = (KandidatDimension) o;
+                sb.append(x.getId());
+            }
+            if((i+1)<fields.length){
+                sb.append(", ");
+            }
+        }
+        sb.append(");");
+        return sb.toString();
+    }
 }
 
 
