@@ -13,7 +13,7 @@ Einige Informationen werden aktuell noch manuell gesammelt und sukzessive bereit
 Einige Funktionen der Software werden aktuell noch weiter entwickelt und sukzessive bereit gestellt
 Die Daten können Inkonsistenzen oder Fehler enthalten.
 Die Funktionen der Software können Inkonsistenzen oder Fehler enthalten.
-Sie können Fehler bei Daten oder Software-Funktionen melden unter: https://github.com/phasenraum2010/btw17kandidaten/issues
+Sie können Fehler bei Daten oder Software-Funktionen melden unter: [https://github.com/phasenraum2010/btw17kandidaten/issues](https://github.com/phasenraum2010/btw17kandidaten/issues)
 Das Hosting bei Heroku ist der kleinste, kostenlose, Tarif. Das kann je nach Anzahl der Besucher langsam werden. 
 Kostenpflichtige Upgrades mit extremer Skalierung sind durch Sponsoring zeitnah möglich.
 Das Hosting bei Heroku ist in Europa, nicht in den USA.
