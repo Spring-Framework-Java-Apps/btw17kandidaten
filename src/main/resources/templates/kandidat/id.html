@@ -59,7 +59,7 @@
                                         <span>)</span>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <a th:href="${kandidat.bundesland.webseite}" th:if="${kandidat.bundesland.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
@@ -88,7 +88,7 @@
                                         <span th:text="${kandidat.geburtsort.geburtsort}">Geburtsort</span>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <a th:href="${kandidat.geburtsort.webseite}" th:if="${kandidat.geburtsort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
@@ -105,7 +105,7 @@
                                         <span th:text="${kandidat.wohnort.wohnort}">wohnort</span>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <a th:href="${kandidat.wohnort.webseite}" th:if="${kandidat.wohnort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
@@ -144,7 +144,7 @@
                                         <abbr th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <a th:href="${kandidat.partei.webseite}" th:if="${kandidat.partei.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
