@@ -64,10 +64,10 @@ public class KandidatController {
             throw new EntityNotFoundException();
         } else {
             String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
-            if (kandidat.getPartei() != null){
-                pageTitle += ", "+kandidat.getPartei().getPartei();
-            }
             String pageSubTitle = "Kandidaten der btw17";
+            if (kandidat.getPartei() != null){
+                pageSubTitle = kandidat.getPartei().getName();
+            }
             String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

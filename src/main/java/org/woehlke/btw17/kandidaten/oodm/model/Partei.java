@@ -72,8 +72,10 @@ public class Partei implements KandidatDimension {
     public String getName() {
         StringBuilder sb = new StringBuilder();
         sb.append(partei);
-        sb.append(" - ");
-        sb.append(parteiLang);
+        if(partei.compareTo(parteiLang)!=0){
+            sb.append(" - ");
+            sb.append(parteiLang);
+        }
         return sb.toString();
     }
 

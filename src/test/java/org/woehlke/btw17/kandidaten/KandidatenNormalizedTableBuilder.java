@@ -16,7 +16,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
-import org.woehlke.btw17.support.oodm.service.JdbcService;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
-package org.woehlke.btw17.support.oodm.repositories.impl;
+package org.woehlke.btw17.kandidaten.support.oodm.repositories.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.woehlke.btw17.support.oodm.repositories.JdbcRepository;
+import org.woehlke.btw17.kandidaten.support.oodm.repositories.JdbcRepository;
 
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;

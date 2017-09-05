@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
-import org.woehlke.btw17.support.oodm.service.UrlService;
+import org.woehlke.btw17.kandidaten.support.oodm.service.UrlService;
 
 import java.net.URL;
 

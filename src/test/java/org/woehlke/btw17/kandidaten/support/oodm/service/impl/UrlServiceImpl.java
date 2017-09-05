@@ -1,4 +1,4 @@
-package org.woehlke.btw17.support.oodm.service.impl;
+package org.woehlke.btw17.kandidaten.support.oodm.service.impl;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.support.oodm.service.UrlService;
+import org.woehlke.btw17.kandidaten.support.oodm.service.UrlService;
 
 import java.io.IOException;
 import java.net.URL;
