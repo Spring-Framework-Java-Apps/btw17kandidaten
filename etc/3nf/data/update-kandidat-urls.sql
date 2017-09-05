@@ -383,7 +383,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-doris-barnett-geboren-1953-in-ludwigshafenamrhein';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-doris-kamke-geboren-1968-in-ratzeburg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-von-doritemmybeate-vonpentz-geboren-1950-in-berlin';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-alice-weidel-geboren-1979-in-gtersloh';
+UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite='https://www.afd.de/alice-weidel/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Alice_Weidel'  WHERE  kandidat_key='frau-alice-weidel-geboren-1979-in-gtersloh';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dirk-wiese-geboren-1983-in-paderborn';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-diyar-agu-geboren-1999-in-gummersbach';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dominic-harapat-geboren-1983-in-braunfels';
