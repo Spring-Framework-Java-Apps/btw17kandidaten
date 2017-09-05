@@ -11,7 +11,15 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_liste_partei",columnNames = {"liste_partei","liste_partei_lang"})
     },
     indexes = {
-        @Index(name = "idx_liste_partei_liste_partei_lang", columnList = "liste_partei_lang")
+        @Index(name = "idx_liste_partei_liste_partei_lang", columnList = "liste_partei_lang"),
+        @Index(name = "idx_liste_partei_webseite", columnList = "webseite"),
+        @Index(name = "idx_liste_partei_twitter", columnList = "twitter"),
+        @Index(name = "idx_liste_partei_facebook", columnList = "facebook"),
+        @Index(name = "idx_liste_partei_youtube", columnList = "youtube"),
+        @Index(name = "idx_liste_partei_logo_url", columnList = "logo_url"),
+        @Index(name = "idx_liste_partei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
+        @Index(name = "idx_liste_partei_lobbypedia_url", columnList = "lobbypedia_url"),
+        @Index(name = "idx_liste_partei_wikipedia_article", columnList = "wikipedia_article")
     }
 )
 public class ListePartei implements KandidatDimension {
@@ -50,12 +58,16 @@ public class ListePartei implements KandidatDimension {
     private String logoUrl;
 
     @URL
-    @Column
+    @Column(name="wikipedia_article")
     private String wikipediaArticle;
 
     @URL
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
+
+    @URL
+    @Column(name="lobbypedia_url")
+    private String lobbypediaUrl;
 
 
     @Transient
@@ -147,6 +159,14 @@ public class ListePartei implements KandidatDimension {
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
+    public String getLobbypediaUrl() {
+        return lobbypediaUrl;
+    }
+
+    public void setLobbypediaUrl(String lobbypediaUrl) {
+        this.lobbypediaUrl = lobbypediaUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -165,7 +185,9 @@ public class ListePartei implements KandidatDimension {
         if (logoUrl != null ? !logoUrl.equals(that.logoUrl) : that.logoUrl != null) return false;
         if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
             return false;
-        return bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.equals(that.bundeszentralePolitischeBildung) : that.bundeszentralePolitischeBildung == null;
+        if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(that.bundeszentralePolitischeBildung) : that.bundeszentralePolitischeBildung != null)
+            return false;
+        return lobbypediaUrl != null ? lobbypediaUrl.equals(that.lobbypediaUrl) : that.lobbypediaUrl == null;
     }
 
     @Override
@@ -180,6 +202,7 @@ public class ListePartei implements KandidatDimension {
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
+        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
         return result;
     }
 
@@ -196,6 +219,7 @@ public class ListePartei implements KandidatDimension {
                 ", logoUrl='" + logoUrl + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
+                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
                 '}';
     }
 }

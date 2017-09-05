@@ -9,6 +9,13 @@ import javax.persistence.*;
     name = "wohnort",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
+    },
+    indexes = {
+        @Index(name = "idx_wohnort_webseite", columnList = "webseite"),
+        @Index(name = "idx_wohnort_facebook", columnList = "facebook"),
+        @Index(name = "idx_wohnort_logo_url", columnList = "logo_url"),
+        @Index(name = "idx_wohnort_wikipedia_article", columnList = "wikipedia_article"),
+        @Index(name = "idx_wohnort_google_maps_url", columnList = "google_maps_url")
     }
 )
 public class Wohnort implements KandidatDimension {
@@ -27,7 +34,7 @@ public class Wohnort implements KandidatDimension {
     private String webseite;
 
     @URL
-    @Column
+    @Column(name = "wikipedia_article")
     private String wikipediaArticle;
 
     @URL
@@ -35,7 +42,11 @@ public class Wohnort implements KandidatDimension {
     private String facebook;
 
     @URL
-    @Column
+    @Column(name="logo_url")
+    private String logoUrl;
+
+    @URL
+    @Column(name = "google_maps_url")
     private String googleMapsUrl;
 
     @Transient
@@ -95,6 +106,14 @@ public class Wohnort implements KandidatDimension {
         this.googleMapsUrl = googleMapsUrl;
     }
 
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -108,6 +127,7 @@ public class Wohnort implements KandidatDimension {
         if (wikipediaArticle != null ? !wikipediaArticle.equals(wohnort1.wikipediaArticle) : wohnort1.wikipediaArticle != null)
             return false;
         if (facebook != null ? !facebook.equals(wohnort1.facebook) : wohnort1.facebook != null) return false;
+        if (logoUrl != null ? !logoUrl.equals(wohnort1.logoUrl) : wohnort1.logoUrl != null) return false;
         return googleMapsUrl != null ? googleMapsUrl.equals(wohnort1.googleMapsUrl) : wohnort1.googleMapsUrl == null;
     }
 
@@ -118,6 +138,7 @@ public class Wohnort implements KandidatDimension {
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
         return result;
     }
@@ -130,6 +151,7 @@ public class Wohnort implements KandidatDimension {
                 ", webseite='" + webseite + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", facebook='" + facebook + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
                 '}';
     }

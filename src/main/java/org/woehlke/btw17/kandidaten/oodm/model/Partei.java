@@ -17,6 +17,9 @@ import javax.persistence.*;
         @Index(name = "idx_partei_facebook", columnList = "facebook"),
         @Index(name = "idx_partei_youtube", columnList = "youtube"),
         @Index(name = "idx_partei_logo_url", columnList = "logo_url"),
+        @Index(name = "idx_partei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
+        @Index(name = "idx_partei_lobbypedia_url", columnList = "lobbypedia_url"),
+        @Index(name = "idx_partei_wikipedia_article", columnList = "wikipedia_article")
     }
 )
 public class Partei implements KandidatDimension {
@@ -54,12 +57,16 @@ public class Partei implements KandidatDimension {
     private String logoUrl;
 
     @URL
-    @Column
+    @Column(name="wikipedia_article")
     private String wikipediaArticle;
 
     @URL
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
+
+    @URL
+    @Column(name="lobbypedia_url")
+    private String lobbypediaUrl;
 
     @Transient
     public String getName() {
@@ -150,6 +157,14 @@ public class Partei implements KandidatDimension {
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
+    public String getLobbypediaUrl() {
+        return lobbypediaUrl;
+    }
+
+    public void setLobbypediaUrl(String lobbypediaUrl) {
+        this.lobbypediaUrl = lobbypediaUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -167,7 +182,9 @@ public class Partei implements KandidatDimension {
         if (logoUrl != null ? !logoUrl.equals(partei1.logoUrl) : partei1.logoUrl != null) return false;
         if (wikipediaArticle != null ? !wikipediaArticle.equals(partei1.wikipediaArticle) : partei1.wikipediaArticle != null)
             return false;
-        return bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung == null;
+        if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung != null)
+            return false;
+        return lobbypediaUrl != null ? lobbypediaUrl.equals(partei1.lobbypediaUrl) : partei1.lobbypediaUrl == null;
     }
 
     @Override
@@ -182,6 +199,7 @@ public class Partei implements KandidatDimension {
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
+        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
         return result;
     }
 
@@ -198,6 +216,7 @@ public class Partei implements KandidatDimension {
                 ", logoUrl='" + logoUrl + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
+                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
                 '}';
     }
 }

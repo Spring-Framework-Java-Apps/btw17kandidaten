@@ -165,6 +165,14 @@
                                     <a th:href="${kandidat.partei.wikipediaArticle}" th:if="${kandidat.partei.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+
+                                    <a th:href="${kandidat.partei.bundeszentralePolitischeBildung}" th:if="${kandidat.partei.bundeszentralePolitischeBildung != null}" alt="Bundeszentrale Politische Bildung" title="Bundeszentrale Politische Bildung" target="_blank">
+                                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a th:href="${kandidat.partei.lobbypediaUrl}" th:if="${kandidat.partei.lobbypediaUrl != null}" alt="LobbypediaUrl" title="Lobbypedia" target="_blank">
+                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                    </a>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.landesListe != null} AND ${kandidat.listePlatz != null}">
@@ -200,6 +208,12 @@
                                     <a class="tw-social-media-link" th:if="${kandidat.youtube}" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
 
                                     <a class="tw-social-media-link" th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.bundestagAbgeordnete}" th:href="${kandidat.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank"><i class="fa fa-university" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.abgeordnetenwatch}" th:href="${kandidat.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                                    <a class="tw-social-media-link" th:if="${kandidat.lobbypediaUrl}" th:href="${kandidat.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank"><i class="fa fa-balance-scale" aria-hidden="true"></i></a>
 
                                 </td>
                                 <td>&nbsp;</td>

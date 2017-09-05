@@ -23,6 +23,10 @@ public enum PageSymbol {
     STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     GEBURTSJAHR("<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i>"),
     MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
+    BUNDESTAG("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
+    ABGEORDNETENWATCH("<i class=\"fa fa-eye\" aria-hidden=\"true\"></i>"),
+    LOBBYPEDIA("<i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i>"),
+    BUNDESZENTRALE_POLITISCHE_BILDUNG("<i class=\"fa fa-clipboard\" aria-hidden=\"true\"></i>"),
     EXCEPTION("<i class=\"fa fa-bolt\" aria-hidden=\"true\"></i>"),
     LOGIN("<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>");
 

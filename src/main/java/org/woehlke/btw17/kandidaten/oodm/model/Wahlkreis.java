@@ -11,7 +11,9 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_wahlkreis",columnNames = {"wahlkreis_id"})
     },
     indexes = {
-        @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name")
+        @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name"),
+        @Index(name = "idx_wahlkreis_wikipedia_article", columnList = "wikipedia_article"),
+        @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
     }
 )
 public class Wahlkreis implements KandidatDimension {
@@ -33,11 +35,11 @@ public class Wahlkreis implements KandidatDimension {
     private String webseite;
 
     @URL
-    @Column
+    @Column(name = "wikipedia_article")
     private String wikipediaArticle;
 
     @URL
-    @Column
+    @Column(name = "google_maps_url")
     private String googleMapsUrl;
 
     @Transient

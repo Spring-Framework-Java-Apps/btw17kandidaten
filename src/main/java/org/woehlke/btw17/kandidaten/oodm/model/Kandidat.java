@@ -23,7 +23,15 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_liste_platz", columnList = "liste_platz"),
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
         @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
-        @Index(name = "idx_kandidat_foto", columnList = "foto")
+        @Index(name = "idx_kandidat_foto", columnList = "foto"),
+        @Index(name = "idx_kandidat_webseite", columnList = "webseite"),
+        @Index(name = "idx_kandidat_twitter", columnList = "twitter"),
+        @Index(name = "idx_kandidat_facebook", columnList = "facebook"),
+        @Index(name = "idx_kandidat_youtube", columnList = "youtube"),
+        @Index(name = "idx_kandidat_wikipedia_article", columnList = "wikipedia_article"),
+        @Index(name = "idx_kandidat_bundestag_abgeordnete", columnList = "bundestag_abgeordnete"),
+        @Index(name = "idx_kandidat_abgeordnetenwatch", columnList = "abgeordnetenwatch"),
+        @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url")
     }
 )
 @NamedQueries({
@@ -158,7 +166,7 @@ public class Kandidat implements Serializable {
     private String twitter;
 
     @URL
-    @Column
+    @Column(name="facebook")
     private String facebook;
 
     @URL
@@ -166,7 +174,7 @@ public class Kandidat implements Serializable {
     private String youtube;
 
     @URL
-    @Column
+    @Column(name="wikipedia_article")
     private String wikipediaArticle;
 
     @URL
@@ -176,6 +184,14 @@ public class Kandidat implements Serializable {
     @URL
     @Column
     private String abgeordnetenwatch;
+
+    @URL
+    @Column(name="lobbypedia_url")
+    private String lobbypediaUrl;
+
+    @URL
+    @Column(name = "google_maps_url")
+    private String googleMapsUrl;
 
     @URL
     @Column(name = "logo_url")
@@ -332,7 +348,6 @@ public class Kandidat implements Serializable {
     public void setPartei(Partei partei) {
         this.partei = partei;
     }
-
 
     public Integer getListePlatz() {
         return listePlatz;
@@ -494,6 +509,22 @@ public class Kandidat implements Serializable {
         this.abgeordnetenwatch = abgeordnetenwatch;
     }
 
+    public String getLobbypediaUrl() {
+        return lobbypediaUrl;
+    }
+
+    public void setLobbypediaUrl(String lobbypediaUrl) {
+        this.lobbypediaUrl = lobbypediaUrl;
+    }
+
+    public String getGoogleMapsUrl() {
+        return googleMapsUrl;
+    }
+
+    public void setGoogleMapsUrl(String googleMapsUrl) {
+        this.googleMapsUrl = googleMapsUrl;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -545,6 +576,10 @@ public class Kandidat implements Serializable {
             return false;
         if (abgeordnetenwatch != null ? !abgeordnetenwatch.equals(kandidat.abgeordnetenwatch) : kandidat.abgeordnetenwatch != null)
             return false;
+        if (lobbypediaUrl != null ? !lobbypediaUrl.equals(kandidat.lobbypediaUrl) : kandidat.lobbypediaUrl != null)
+            return false;
+        if (googleMapsUrl != null ? !googleMapsUrl.equals(kandidat.googleMapsUrl) : kandidat.googleMapsUrl != null)
+            return false;
         if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
@@ -587,6 +622,8 @@ public class Kandidat implements Serializable {
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
         result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
+        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
+        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
@@ -631,6 +668,8 @@ public class Kandidat implements Serializable {
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
                 ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
+                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
+                ", googleMapsUrl='" + googleMapsUrl + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
@@ -646,7 +685,7 @@ public class Kandidat implements Serializable {
             "scatter_y","titel","twitter","vorname","webseite",
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
-            "fk_wohnort","bundestag_abgeordnete"
+            "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -656,7 +695,7 @@ public class Kandidat implements Serializable {
             scatterY,titel,twitter,vorname,webseite,
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
-            wohnort,bundestagAbgeordnete
+            wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");
