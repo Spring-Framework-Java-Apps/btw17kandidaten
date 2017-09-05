@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.service.impl;
+package org.woehlke.btw17.support.oodm.service.impl;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -9,8 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.service.UrlService;
+import org.woehlke.btw17.support.oodm.service.UrlService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +22,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class UrlServiceImpl implements UrlService {
 
     private static final Logger log = LoggerFactory.getLogger(UrlServiceImpl.class);

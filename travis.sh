@@ -10,4 +10,6 @@ export BTW17_JPA_HIBERNATE_DDL_AUTO=update
 export BTW17_GOOGLE_APS_API_KEY=AIzaSyCMWLD6SK1QY3f-94mDS6x7u_jxwYASgqY
 export BTW17_GOOGLE_ANALYTICS_ID=UA-17174370-11
 
-./mvnw clean install site -Ptravis
+#./mvnw clean install site -Ptravis
+
+./mvnw clean install -Ptravis

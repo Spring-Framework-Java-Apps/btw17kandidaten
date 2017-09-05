@@ -1,14 +1,14 @@
-package org.woehlke.btw17.importer;
+package org.woehlke.btw17.importer.dimensions;
 
 import org.junit.Test;
 
 import java.io.*;
 
-public class ListeParteiImporter {
+public class BerufImporter {
 
-    private final static String dateiName = "etc/3nf/SELECT_liste_partei_liste_partei_lang_FR.csv";
-    private final static String dateiNameOut = "etc/3nf/insert-data-liste_partei.sql";
-    private final static String sqlStart = "INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (";
+    private final static String dateiName = "etc/3nf/SELECT_beruf_FROM_kandidat_GROUP_BY_beru.csv";
+    private final static String dateiNameOut = "etc/3nf/insert-data-beruf.sql";
+    private final static String sqlStart = "INSERT INTO beruf (id,beruf) VALUES (";
 
     @Test
     public void createSql() throws Exception {

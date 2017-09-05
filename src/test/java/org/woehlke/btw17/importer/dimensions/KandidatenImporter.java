@@ -1,4 +1,4 @@
-package org.woehlke.btw17.importer;
+package org.woehlke.btw17.importer.dimensions;
 
 import org.junit.Test;
 

@@ -1,11 +1,11 @@
-package org.woehlke.btw17.kandidaten.oodm.service.impl;
+package org.woehlke.btw17.support.oodm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.oodm.repositories.JdbcRepository;
-import org.woehlke.btw17.kandidaten.oodm.service.JdbcService;
+import org.woehlke.btw17.support.oodm.repositories.JdbcRepository;
+import org.woehlke.btw17.support.oodm.service.JdbcService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)

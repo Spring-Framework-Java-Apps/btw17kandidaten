@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.service;
+package org.woehlke.btw17.support.oodm.service;
 
 import java.net.URL;
 

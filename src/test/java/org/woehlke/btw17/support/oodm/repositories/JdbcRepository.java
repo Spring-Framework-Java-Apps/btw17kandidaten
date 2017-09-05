@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.repositories;
+package org.woehlke.btw17.support.oodm.repositories;
 
 public interface JdbcRepository {
 
