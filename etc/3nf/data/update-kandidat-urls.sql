@@ -154,7 +154,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-barbaramaria-schilke-geboren-1953-in-dsseldorf';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-brbel-bas-geboren-1968-in-walsumjetztduisburg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-beate-haneknoll-geboren-1961-in-dortmund';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
+UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Beatrix_von_Storch'  WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dr-benjaminherbert-grimm-geboren-1984-in-jerusalem';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-benjamin-strasser-geboren-1987-in-weingarten';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-gerhardhelmuthberengar-elsnervongronow-geboren-1978-in-badgodesbergjetztbonn';

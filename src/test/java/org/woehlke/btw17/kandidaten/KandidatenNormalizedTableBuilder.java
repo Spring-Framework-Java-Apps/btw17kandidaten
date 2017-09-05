@@ -44,6 +44,9 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileKandidatUpdateAbgeordnetenwatchUrls = "etc/3nf/data/update-kandidat-abgeordnetenwatch.sql";
 
+    private final static String sqlFileKandidatUpdateLobbypediaUrls = "etc/3nf/data/update-kandidat-lobbypedia.sql";
+
+
     @Autowired
     private BerufService berufService;
 
@@ -220,6 +223,19 @@ public class KandidatenNormalizedTableBuilder {
     @Test
     public void build012KandidatUpdateAbgeordnetenwatchUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateAbgeordnetenwatchUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+
+
+    @Commit
+    @Test
+    public void build014KandidatUpdateLobbypediaUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateLobbypediaUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
             jdbcService.executeSqlStatemen(sqlStatement);

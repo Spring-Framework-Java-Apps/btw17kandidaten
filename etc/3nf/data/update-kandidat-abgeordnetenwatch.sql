@@ -52,7 +52,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreas-jun
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreas-leps-geboren-1970-in-lutherstadtwittenberg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-karin-puppel-geboren-1955-in-westenfeld';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreaswerner-mller-geboren-1992-in-koblenz';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreas-niklaus-geboren-1961-in-stilgenjetztleimen';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/andreas-niklaus' WHERE  kandidat_key='herr-andreas-niklaus-geboren-1961-in-stilgenjetztleimen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreas-otti-geboren-1968-in-badberleburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreaslutz-richter-geboren-1961-in-leipzig';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreasmario-schuffenhauer-geboren-1960-in-dresden';
@@ -154,7 +154,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-aydansaliha
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-barbaramaria-schilke-geboren-1953-in-dsseldorf';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-brbel-bas-geboren-1968-in-walsumjetztduisburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-beate-haneknoll-geboren-1961-in-dortmund';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/beatrix-von-storch-2' WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-benjaminherbert-grimm-geboren-1984-in-jerusalem';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-benjamin-strasser-geboren-1987-in-weingarten';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-gerhardhelmuthberengar-elsnervongronow-geboren-1978-in-badgodesbergjetztbonn';
@@ -513,7 +513,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-erwin-rddel
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-esther-dilcher-geboren-1965-in-hofgeismar';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-eugen-ciresa-geboren-1957-in-schelklingen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-eva-goldbach-geboren-1965-in-frischborn';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE kandidat_key='frau-dr-eva-hgl-geboren-1969-in-osnabrck';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/eva-hogl' WHERE kandidat_key='frau-dr-eva-hgl-geboren-1969-in-osnabrck';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-evamarie-gent-geboren-1951-in-guntershausen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-fabian-jacobi-geboren-1973-in-mnster';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-fabiantobias-siggelkow-geboren-1984-in-bremen';
@@ -554,7 +554,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-franz-bosse
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frank-aumeier-geboren-1975-in-ktzting';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frankreinhardjakob-diefenbach-geboren-1969-in-jugenheim';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frank-heinrich-geboren-1964-in-siegen';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frank-henkel-geboren-1963-in-berlin';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/frank-henkel' WHERE  kandidat_key='herr-frank-henkel-geboren-1963-in-berlin';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frank-herrmann-geboren-1961-in-ratingen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frankmichael-junge-geboren-1967-in-hallesaale';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-frankmichael-giebel-geboren-1966-in-buchenodenwald';
@@ -714,7 +714,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-heiko-grupp
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-heiko-wundram-geboren-1982-in-hannover';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-heinrichtheodor-garbe-geboren-1955-in-dortmund';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-heinz-schammert-geboren-1951-in-marburg';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-helga-zepplarouche-geboren-1948-in-trier';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/helga-zepp-larouche' WHERE  kandidat_key='frau-helga-zepplarouche-geboren-1948-in-trier';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-helmutrudi-bohnklein-geboren-1952-in-dudweilerjetztsaarbrcken';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-jonas-dachner-geboren-1986-in-pforzheim';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-helmut-dietz-geboren-1950-in-heidenheim';
@@ -977,7 +977,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-katharin
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-katharina-kloke-geboren-1987-in-dsseldorf';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-katharina-landgraf-geboren-1954-in-kirchengel';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-katharinamarianneute-schrader-geboren-1981-in-oberhausen';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-katharina-ziolkowski-geboren-1973-in-brombergpolen';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/katharina-ziolkowski' WHERE  kandidat_key='frau-dr-katharina-ziolkowski-geboren-1973-in-brombergpolen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-kathrin-koch-geboren-1960-in-gttingen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-kathrin-vogler-geboren-1963-in-mnchen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-katja-drner-geboren-1976-in-siegen';
@@ -1034,7 +1034,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-konrad-kelm
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-konrad-wanner-geboren-1956-in-ludwigsburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-konstantinos-katevas-geboren-1993-in-thessalonikigriechenland';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-korbiniansimon-gall-geboren-1992-in-badaibling';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-markus-krtzschmar-geboren-1988-in-hallesaale';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/kratzschmar-markus' WHERE  kandidat_key='herr-markus-krtzschmar-geboren-1988-in-hallesaale';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-krimhildemarianne-dornach-geboren-1966-in-zelleisenberg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-kristian-kater-geboren-1983-in-lohneoldenburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-kristin-krumm-geboren-1987-in-wolfsburg';
@@ -1049,7 +1049,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-konrad-maie
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-kordulaannapaula-schulzasche-geboren-1956-in-berlin';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-kristin-hgelschfer-geboren-1997-in-eberbach';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-kurt-rieder-geboren-1960-in-kln';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-leajoy-friedel-geboren-1993-in-frth';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/lea-joy-friedel' WHERE  kandidat_key='frau-leajoy-friedel-geboren-1993-in-frth';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-lena-oberbumer-geboren-1979-in-bielefeld';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-lennart-obenauer-geboren-1994-in-pliezhausen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-lennartsebastianstefan-schwarzbach-geboren-1990-in-henstedtulzburg';
@@ -1407,7 +1407,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-orhan-kara-
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-oscar-fernbacher-geboren-1945-in-rudnik';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-oswald-greim-geboren-1954-in-kupferberg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-otto-ritter-geboren-1959-in-rheine';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/ozcan-mutlu' WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-zden-ates-geboren-1970-in-pinarbasikayseritrkei';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-parsa-marvi-geboren-1982-in-teheran';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-pascal-haggenmller-geboren-1988-in-bretten';
@@ -1759,7 +1759,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-stephan-tho
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-stephanie-erben-geboren-1971-in-riesa';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-stephanie-reinhold-geboren-1975-in-freiburgimbreisgau';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-stev-tinger-geboren-1976-in-crivitz';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE kandidat_key='herr-stephan-rauhut-geboren-1972-in-hamburg';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/steve-rauhut' WHERE kandidat_key='herr-stephan-rauhut-geboren-1972-in-hamburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-susann-rthrich-geboren-1977-in-meien';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-susanneanita-holbein-geboren-1970-in-gtersloh';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-susanne-mittag-geboren-1958-in-clevelandusa';
@@ -1768,7 +1768,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-swantje-mic
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-sybille-mack-geboren-1964-in-stuttgart';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-sylvia-makowski-geboren-1978-in-osterode';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-taras-maygutiak-geboren-1973-in-longmont';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-mohamad-tawil-geboren-1953-in-beirut';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/tawil-mohamad' WHERE  kandidat_key='herr-mohamad-tawil-geboren-1953-in-beirut';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-sven-lehmann-geboren-1979-in-troisdorfsieglar';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-sven-volmering-geboren-1976-in-rhede';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-svenja-stadler-geboren-1976-in-oldenburgoldenburg';
@@ -1847,7 +1847,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-tobiasdiete
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-christophtobiasmzingisi-faku-geboren-1988-in-alttting';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-tobias-gotthardt-geboren-1977-in-regensburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-tobias-huth-geboren-1977-in-erfurt';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-timoliver-kray-geboren-1993-in-kirchen';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/tim-oliver-kray' WHERE  kandidat_key='herr-timoliver-kray-geboren-1993-in-kirchen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-tim-wortmann-geboren-1987-in-essen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-timo-jeguschke-geboren-1990-in-badsegeberg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-johanneserichtino-gnther-geboren-1962-in-olbernhau';
