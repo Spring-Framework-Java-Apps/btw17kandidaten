@@ -754,7 +754,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-dr-herlind-gundelach-geboren-1949-in-aalen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-hermann-frber-geboren-1963-in-bhmenkirch';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-grafvonder-hermann-grafvonderschulenburg-geboren-1961-in-bonn';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-hermann-grhe-geboren-1961-in-uedem';
+UPDATE kandidat SET twitter='https://twitter.com/groehe', facebook='https://www.facebook.com/groehe/', webseite='http://www.hermann-groehe.de/', youtube='https://www.youtube.com/user/cdutv', wikipedia_article='https://de.wikipedia.org/wiki/Hermann_Gr%C3%B6he' WHERE  kandidat_key='herr-hermann-grhe-geboren-1961-in-uedem';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-hildegard-mattheis-geboren-1954-in-finnentrop';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-hiltrud-lotze-geboren-1958-in-bauhausjetztnentershausen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-holger-krestel-geboren-1955-in-berlin';
@@ -1535,7 +1535,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-reinhard-hegewald-geboren-1964-in-loppersumjetzthinte';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-reinhard-neudorfer-geboren-1946-in-mnchen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-reinhold-sendker-geboren-1952-in-warendorf';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-renate-knast-geboren-1955-in-recklinghausen';
+UPDATE kandidat SET twitter='https://twitter.com/RenateKuenast', facebook='https://www.facebook.com/renate.kuenast/', webseite='http://www.renate-kuenast.de/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Renate_K%C3%BCnast'  WHERE  kandidat_key='frau-renate-knast-geboren-1955-in-recklinghausen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-renate-schmidt-geboren-1959-in-ebingen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dr-renatus-rieger-geboren-1958-in-moers';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-renjens-hhnlein-geboren-1971-in-sonneberg';
@@ -2072,7 +2072,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-christina-jantzherrmann-geboren-1978-in-bremen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-christina-wilhelm-geboren-1978-in-neuburgaddonau';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-paulthomas-vogel-geboren-1991-in-badsalzungen';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-peter-altmaier-geboren-1958-in-ensdorfsaar';
+UPDATE kandidat SET twitter='https://twitter.com/peteraltmaier', facebook='https://www.facebook.com/peter.altmaier/', webseite='https://peteraltmaier.de/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Peter_Altmaier'  WHERE  kandidat_key='herr-peter-altmaier-geboren-1958-in-ensdorfsaar';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-peterchristianpascal-boehringer-geboren-1969-in-schwbischgmnd';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-peter-felser-geboren-1969-in-dillingenaddonau';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-peter-heilrath-geboren-1969-in-mnchen';
@@ -2555,5 +2555,5 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-alberthelmut-weiler-geboren-1965-in-mayen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-albrechtheinzerhard-glaser-geboren-1942-in-worms';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-alexander-arpaschi-geboren-1970-in-karlsruhe';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-alexander-dobrindt-geboren-1970-in-peienberg';
+UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite='https://test-seite-fuer-ad.jimdo.com/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Alexander_Dobrindt'  WHERE  kandidat_key='herr-alexander-dobrindt-geboren-1970-in-peienberg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Alexander_Gauland' WHERE kandidat_key='herr-dr-eberhardtalexander-gauland-geboren-1941-in-chemnitz';
