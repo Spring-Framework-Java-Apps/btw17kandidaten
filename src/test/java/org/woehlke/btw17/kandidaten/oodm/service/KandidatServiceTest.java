@@ -40,4 +40,10 @@ public class KandidatServiceTest {
 
     }
 
+    @Commit
+    @Test
+    public void test003count() throws Exception {
+
+    }
+
 }

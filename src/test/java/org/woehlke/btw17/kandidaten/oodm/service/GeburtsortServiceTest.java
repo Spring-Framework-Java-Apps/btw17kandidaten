@@ -63,4 +63,10 @@ public class GeburtsortServiceTest {
         }
     }
 
+    @Commit
+    @Test
+    public void test003count() throws Exception {
+
+    }
+
 }

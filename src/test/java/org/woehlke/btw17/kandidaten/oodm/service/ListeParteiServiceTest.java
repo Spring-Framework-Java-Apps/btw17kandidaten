@@ -62,4 +62,10 @@ public class ListeParteiServiceTest {
             log.info("found: "+found.toString());
         }
     }
+
+    @Commit
+    @Test
+    public void test003count() throws Exception {
+
+    }
 }

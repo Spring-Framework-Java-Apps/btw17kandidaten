@@ -62,4 +62,10 @@ public class BundeslandServiceTest {
             log.info("found: "+found.toString());
         }
     }
+
+    @Commit
+    @Test
+    public void test003count() throws Exception {
+
+    }
 }
