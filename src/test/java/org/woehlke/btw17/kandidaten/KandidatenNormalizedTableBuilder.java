@@ -31,13 +31,17 @@ public class KandidatenNormalizedTableBuilder {
 
     private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
 
-    private final static String sqlFileUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
+    private final static String sqlFileLandeslisteData = "etc/3nf/data/insert-data-landesliste.sql";
 
-    private final static String sqlFileUpdateKandidatUrls = "etc/3nf/data/update-kandidat-urls.sql";
+    private final static String sqlFileKandidatData = "etc/3nf/data/insert-data-kandidat.sql";
 
-    private final static String sqlFileDataKandidat = "etc/3nf/data/insert-data-kandidat.sql";
+    private final static String sqlFileKandidatUpdateUrls = "etc/3nf/data/update-kandidat-urls.sql";
 
-    private final static String sqlFileDataLandesliste = "etc/3nf/data/insert-data-landesliste.sql";
+    private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
+
+    private final static String sqlFileKandidatUpdateBundetagUrls = "etc/3nf/data/update-kandidat-bundestag.sql";
+
+    private final static String sqlFileKandidatUpdateAbgeordnetenwatchUrls = "etc/3nf/data/update-kandidat-abgeordnetenwatch.sql";
 
     @Autowired
     private BerufService berufService;
@@ -77,7 +81,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build1LandesListe() throws IOException {
+    public void build001LandesListe() throws IOException {
         kandidatService.deleteAll();
         landesListeService.deleteAll();
         int page = 0;
@@ -108,7 +112,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build2Kandidat() throws Exception {
+    public void build002Kandidat() throws Exception {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
@@ -180,8 +184,52 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build3LandesListeSql() throws IOException {
-        File landesliste = new File(sqlFileDataLandesliste);
+    public void build004UpdateFotoUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateFotoUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build010UpdateKandidatUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build011KandidatUpdateBundetagUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateBundetagUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build012KandidatUpdateAbgeordnetenwatchUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateAbgeordnetenwatchUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build100LandesListeSql() throws IOException {
+        File landesliste = new File(sqlFileLandeslisteData);
         landesliste.delete();
         BufferedWriter bw = new BufferedWriter(new FileWriter(landesliste));
         for(LandesListe landesListe:landesListeService.getAll()){
@@ -195,30 +243,8 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build4UpdateFotoUrls() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateFotoUrls));
-        while (br.ready()){
-            String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
-        }
-        br.close();
-    }
-
-    @Commit
-    @Test
-    public void build5UpdateKandidatUrls() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(sqlFileUpdateKandidatUrls));
-        while (br.ready()){
-            String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
-        }
-        br.close();
-    }
-
-    @Commit
-    @Test
-    public void build6KandidatSql() throws IOException {
-        File dataOut = new File(sqlFileDataKandidat);
+    public void build101KandidatSql() throws IOException {
+        File dataOut = new File(sqlFileKandidatData);
         dataOut.delete();
         BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
         bw.write("DELETE FROM kandidat;");
@@ -235,7 +261,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build7CheckResults() throws IOException {
+    public void build200CheckResults() throws IOException {
         long countKandidatenFlat = kandidatFlatService.count();
         long countKandidaten = kandidatService.count();
         Assert.assertEquals(countKandidatenFlat,countKandidaten);
@@ -243,7 +269,7 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build8BuildDataSql() throws IOException,InterruptedException {
+    public void build300BuildDataSqlFile() throws IOException,InterruptedException {
         boolean isWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
         ProcessBuilder builder = new ProcessBuilder();
         if (isWindows) {
