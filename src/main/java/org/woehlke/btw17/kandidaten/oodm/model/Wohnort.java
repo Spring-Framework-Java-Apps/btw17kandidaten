@@ -45,9 +45,17 @@ public class Wohnort implements KandidatDimension {
     @Column(name="logo_url")
     private String logoUrl;
 
-    @URL
     @Column(name = "google_maps_url")
     private String googleMapsUrl;
+
+    @Column(name = "geo_longitude")
+    private Double geoLongitude;
+
+    @Column(name = "geo_lattitude")
+    private Double geoLattitude;
+
+    @Column(name = "geo_zoom")
+    private Integer geoZoom;
 
     @Transient
     public String getName() {
@@ -114,6 +122,30 @@ public class Wohnort implements KandidatDimension {
         this.logoUrl = logoUrl;
     }
 
+    public Double getGeoLongitude() {
+        return geoLongitude;
+    }
+
+    public void setGeoLongitude(Double geoLongitude) {
+        this.geoLongitude = geoLongitude;
+    }
+
+    public Double getGeoLattitude() {
+        return geoLattitude;
+    }
+
+    public void setGeoLattitude(Double geoLattitude) {
+        this.geoLattitude = geoLattitude;
+    }
+
+    public Integer getGeoZoom() {
+        return geoZoom;
+    }
+
+    public void setGeoZoom(Integer geoZoom) {
+        this.geoZoom = geoZoom;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,7 +160,13 @@ public class Wohnort implements KandidatDimension {
             return false;
         if (facebook != null ? !facebook.equals(wohnort1.facebook) : wohnort1.facebook != null) return false;
         if (logoUrl != null ? !logoUrl.equals(wohnort1.logoUrl) : wohnort1.logoUrl != null) return false;
-        return googleMapsUrl != null ? googleMapsUrl.equals(wohnort1.googleMapsUrl) : wohnort1.googleMapsUrl == null;
+        if (googleMapsUrl != null ? !googleMapsUrl.equals(wohnort1.googleMapsUrl) : wohnort1.googleMapsUrl != null)
+            return false;
+        if (geoLongitude != null ? !geoLongitude.equals(wohnort1.geoLongitude) : wohnort1.geoLongitude != null)
+            return false;
+        if (geoLattitude != null ? !geoLattitude.equals(wohnort1.geoLattitude) : wohnort1.geoLattitude != null)
+            return false;
+        return geoZoom != null ? geoZoom.equals(wohnort1.geoZoom) : wohnort1.geoZoom == null;
     }
 
     @Override
@@ -140,6 +178,9 @@ public class Wohnort implements KandidatDimension {
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
+        result = 31 * result + (geoLongitude != null ? geoLongitude.hashCode() : 0);
+        result = 31 * result + (geoLattitude != null ? geoLattitude.hashCode() : 0);
+        result = 31 * result + (geoZoom != null ? geoZoom.hashCode() : 0);
         return result;
     }
 
@@ -153,6 +194,9 @@ public class Wohnort implements KandidatDimension {
                 ", facebook='" + facebook + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
+                ", geoLongitude=" + geoLongitude +
+                ", geoLattitude=" + geoLattitude +
+                ", geoZoom=" + geoZoom +
                 '}';
     }
 }
