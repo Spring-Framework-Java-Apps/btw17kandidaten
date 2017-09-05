@@ -46,6 +46,9 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileKandidatUpdateLobbypediaUrls = "etc/3nf/data/update-kandidat-lobbypedia.sql";
 
+    private final static String sqlFileKandidatUpdateSoundcloudUrls = "etc/3nf/data/update-kandidat-soundcloud.sql";
+
+
 
     @Autowired
     private BerufService berufService;
@@ -230,12 +233,21 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
-
-
     @Commit
     @Test
     public void build014KandidatUpdateLobbypediaUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateLobbypediaUrls));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            jdbcService.executeSqlStatemen(sqlStatement);
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build015KandidatUpdateSoundcloudUrls() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateSoundcloudUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
             jdbcService.executeSqlStatemen(sqlStatement);

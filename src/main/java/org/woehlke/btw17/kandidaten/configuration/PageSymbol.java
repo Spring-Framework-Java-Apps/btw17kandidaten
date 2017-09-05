@@ -16,6 +16,7 @@ public enum PageSymbol {
     MANN("<i class=\"fa fa-mars\" aria-hidden=\"true\"></i>"),
     FRAU("<i class=\"fa fa-venus\" aria-hidden=\"true\"></i>"),
     TWITTER("<i class=\"fa fa-twitter-square\" aria-hidden=\"true\"></i>"),
+    SOUNDCLOUD("<i class=\"fa fa-soundcloud\" aria-hidden=\"true\"></i>"),
     YOUTUBE("<i class=\"fa fa-youtube\" aria-hidden=\"true\"></i>"),
     FACEBOOK("<i class=\"fa fa-facebook-square\" aria-hidden=\"true\"></i>"),
     WEBSEITE("<i class=\"fa fa-cloud\" aria-hidden=\"true\"></i>"),

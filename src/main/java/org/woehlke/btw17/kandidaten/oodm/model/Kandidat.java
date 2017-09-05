@@ -174,6 +174,10 @@ public class Kandidat implements Serializable {
     private String youtube;
 
     @URL
+    @Column
+    private String soundcloud;
+
+    @URL
     @Column(name="wikipedia_article")
     private String wikipediaArticle;
 
@@ -525,6 +529,14 @@ public class Kandidat implements Serializable {
         this.googleMapsUrl = googleMapsUrl;
     }
 
+    public String getSoundcloud() {
+        return soundcloud;
+    }
+
+    public void setSoundcloud(String soundcloud) {
+        this.soundcloud = soundcloud;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -570,6 +582,7 @@ public class Kandidat implements Serializable {
         if (twitter != null ? !twitter.equals(kandidat.twitter) : kandidat.twitter != null) return false;
         if (facebook != null ? !facebook.equals(kandidat.facebook) : kandidat.facebook != null) return false;
         if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
+        if (soundcloud != null ? !soundcloud.equals(kandidat.soundcloud) : kandidat.soundcloud != null) return false;
         if (wikipediaArticle != null ? !wikipediaArticle.equals(kandidat.wikipediaArticle) : kandidat.wikipediaArticle != null)
             return false;
         if (bundestagAbgeordnete != null ? !bundestagAbgeordnete.equals(kandidat.bundestagAbgeordnete) : kandidat.bundestagAbgeordnete != null)
@@ -619,6 +632,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
         result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
         result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
@@ -665,6 +679,7 @@ public class Kandidat implements Serializable {
                 ", twitter='" + twitter + '\'' +
                 ", facebook='" + facebook + '\'' +
                 ", youtube='" + youtube + '\'' +
+                ", soundcloud='" + soundcloud + '\'' +
                 ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
                 ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
@@ -685,7 +700,8 @@ public class Kandidat implements Serializable {
             "scatter_y","titel","twitter","vorname","webseite",
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
-            "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url"
+            "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
+            "soundcloud"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -695,7 +711,8 @@ public class Kandidat implements Serializable {
             scatterY,titel,twitter,vorname,webseite,
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
-            wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl
+            wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
+            soundcloud
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");

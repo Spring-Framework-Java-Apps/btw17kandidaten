@@ -77,7 +77,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-paul-le
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-patrickernsthermann-sensburg-geboren-1971-in-paderborn';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-patrick-schnieder-geboren-1968-in-kyllburg';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-patricia-lips-geboren-1963-in-mailanditalien';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
+UPDATE kandidat SET bundestag_abgeordnete='https://www.bundestag.de/abgeordnete18/biografien/M/mutlu_oezcan/259348' WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-oswin-veith-geboren-1961-in-oberwllstadt';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-omid-nouripour-geboren-1975-in-teheraniran';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-oliver-wittke-geboren-1966-in-marl';

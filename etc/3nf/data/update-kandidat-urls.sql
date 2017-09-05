@@ -154,7 +154,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-barbaramaria-schilke-geboren-1953-in-dsseldorf';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-brbel-bas-geboren-1968-in-walsumjetztduisburg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-beate-haneknoll-geboren-1961-in-dortmund';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Beatrix_von_Storch'  WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
+UPDATE kandidat SET twitter='https://www.facebook.com/BeatrixVonStorch', facebook='https://www.facebook.com/BeatrixVonStorch', webseite='https://beatrixvonstorch.de/', youtube='https://www.youtube.com/BeatrixvonStorch', wikipedia_article='https://de.wikipedia.org/wiki/Beatrix_von_Storch'  WHERE  kandidat_key='frau-von-beatrix-vonstorch-geboren-1971-in-lbeck';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-dr-benjaminherbert-grimm-geboren-1984-in-jerusalem';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-benjamin-strasser-geboren-1987-in-weingarten';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-gerhardhelmuthberengar-elsnervongronow-geboren-1978-in-badgodesbergjetztbonn';
@@ -554,7 +554,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-aumeier-geboren-1975-in-ktzting';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frankreinhardjakob-diefenbach-geboren-1969-in-jugenheim';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-heinrich-geboren-1964-in-siegen';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-henkel-geboren-1963-in-berlin';
+UPDATE kandidat SET twitter=NULL, facebook='https://www.facebook.com/frank.henkel/', webseite='http://www.frank-henkel-berlin.de/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Frank_Henkel'  WHERE  kandidat_key='herr-frank-henkel-geboren-1963-in-berlin';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-herrmann-geboren-1961-in-ratingen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frankmichael-junge-geboren-1967-in-hallesaale';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frankmichael-giebel-geboren-1966-in-buchenodenwald';
@@ -1049,7 +1049,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-kordulaannapaula-schulzasche-geboren-1956-in-berlin';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-kristin-hgelschfer-geboren-1997-in-eberbach';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-kurt-rieder-geboren-1960-in-kln';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-leajoy-friedel-geboren-1993-in-frth';
+UPDATE kandidat SET twitter=NULL, facebook='https://www.facebook.com/FrauLeaJoy/', webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-leajoy-friedel-geboren-1993-in-frth';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-lena-oberbumer-geboren-1979-in-bielefeld';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-lennart-obenauer-geboren-1994-in-pliezhausen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-lennartsebastianstefan-schwarzbach-geboren-1990-in-henstedtulzburg';
@@ -1407,7 +1407,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-oscar-fernbacher-geboren-1945-in-rudnik';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-oswald-greim-geboren-1954-in-kupferberg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-otto-ritter-geboren-1959-in-rheine';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
+UPDATE kandidat SET twitter='https://twitter.com/OezcanMutlu', facebook='https://www.facebook.com/MutluOezcanBundestag', webseite='http://www.mutlu.de/', youtube='https://www.youtube.com/channel/UC6xpjxBXKszzI38cjQQ_icw', wikipedia_article='https://de.wikipedia.org/wiki/%C3%96zcan_Mutlu'  WHERE  kandidat_key='herr-zcan-mutlu-geboren-1968-in-kelkittrkei';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-zden-ates-geboren-1970-in-pinarbasikayseritrkei';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-parsa-marvi-geboren-1982-in-teheran';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-pascal-haggenmller-geboren-1988-in-bretten';
