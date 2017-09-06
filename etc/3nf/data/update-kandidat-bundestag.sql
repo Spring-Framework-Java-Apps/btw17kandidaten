@@ -266,7 +266,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-fritz-g
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-frithjof-schmidt-geboren-1953-in-badharzburg';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-friedrich-ostendorff-geboren-1953-in-dortmund';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-frank-tempel-geboren-1969-in-belzig';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-frank-schwabe-geboren-1970-in-waltrop';
+UPDATE kandidat SET bundestag_abgeordnete='https://www.bundestag.de/abgeordnete18/biografien/S/schwabe_frank/259090' WHERE  kandidat_key='herr-frank-schwabe-geboren-1970-in-waltrop';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-frankmichael-junge-geboren-1967-in-hallesaale';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-frank-heinrich-geboren-1964-in-siegen';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-florian-pronold-geboren-1972-in-passau';

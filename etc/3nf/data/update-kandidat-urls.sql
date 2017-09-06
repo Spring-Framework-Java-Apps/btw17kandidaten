@@ -106,7 +106,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-annamaria-lanzinger-geboren-1996-in-erding';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-anna-neuhof-geboren-1952-in-wissensieg';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-annalena-baerbock-geboren-1980-in-hannover';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-anne-krger-geboren-1980-in-castroprauxel';
+UPDATE kandidat SET twitter=NULL, facebook='https://www.facebook.com/FDP.Anne.Krueger/', webseite='https://annekrueger.2017.fdp.de/', youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-anne-krger-geboren-1980-in-castroprauxel';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-annette-sawade-geboren-1953-in-nordhausenamharz';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-annette-widmannmauz-geboren-1966-in-tbingen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='frau-dr-annette-wittmtzheublein-geboren-1973-in-essen';
@@ -559,7 +559,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frankmichael-junge-geboren-1967-in-hallesaale';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frankmichael-giebel-geboren-1966-in-buchenodenwald';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-schffler-geboren-1968-in-schwbischgmnd';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-schwabe-geboren-1970-in-waltrop';
+UPDATE kandidat SET twitter='https://twitter.com/FrankSchwabe', facebook='https://www.facebook.com/frank.schwabe.94', webseite='http://www.frank-schwabe.de/', youtube=NULL, wikipedia_article='https://de.wikipedia.org/wiki/Frank_Schwabe'  WHERE  kandidat_key='herr-frank-schwabe-geboren-1970-in-waltrop';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-frank-sitta-geboren-1978-in-sangerhausen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-franzmartin-fleischer-geboren-1954-in-brand';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-franz-maier-geboren-1963-in-burghausen';
@@ -1279,7 +1279,7 @@ UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wi
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-stewart-geboren-1986-in-achim';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-andrejewski-geboren-1959-in-badenbaden';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-bienek-geboren-1977-in-merzig';
-UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-breilmann-geboren-1983-in-herne';
+UPDATE kandidat SET twitter=NULL, facebook='https://www.facebook.com/mbreilmann/', webseite='http://michaelbreilmann.de/', youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-breilmann-geboren-1983-in-herne';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-dachner-geboren-1957-in-pforzheim';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-michael-eiche-geboren-1964-in-hagen';
 UPDATE kandidat SET twitter=NULL, facebook=NULL, webseite=NULL, youtube=NULL, wikipedia_article=NULL  WHERE  kandidat_key='herr-detlefmichael-frahm-geboren-1944-in-erfurt';
