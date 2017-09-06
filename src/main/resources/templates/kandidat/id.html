@@ -246,10 +246,10 @@
                          class="img-responsive img-thumbnail"/>
                 </div>
             </div>
-            <div class="row" th:if="${kandidat.wohnort.googleMapsUrl}">
+            <div class="row" th:if="${kandidat.wohnort}">
                 <div class="col-md-12">
-                    <div class="well">
-                        <h3>Wohnort</h3>
+                    <div class="well" th:if="${kandidat.wohnort.googleMapsUrl}">
+                        <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
                         <hr/>
                         <div id="map-wohnort"></div>
                     </div>
@@ -258,7 +258,8 @@
             <div class="row" th:if="${kandidat.lat}">
                 <div class="col-md-12">
                     <div class="well">
-                        <h3>Geburtsort</h3>
+                        <h3 th:if="${kandidat.geburtsort}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
+                        <h3 th:if="${!kandidat.geburtsort}">Geburtsort</h3>
                         <hr/>
                         <div id="map-geburtsort"></div>
                     </div>
