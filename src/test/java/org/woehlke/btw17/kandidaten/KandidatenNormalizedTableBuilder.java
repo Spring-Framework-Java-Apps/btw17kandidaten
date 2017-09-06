@@ -2,7 +2,6 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -20,7 +19,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
-import javax.persistence.Column;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +49,7 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileKandidatUpdateSoundcloudUrls = "etc/3nf/data/update-kandidat-soundcloud.sql";
 
-
+    private final static String sqlFileWohnortData = "etc/3nf/data/insert-data-wohnort.sql";
 
     @Autowired
     private BerufService berufService;
@@ -92,7 +90,6 @@ public class KandidatenNormalizedTableBuilder {
     @Autowired
     private KandidatenProperties kandidatenProperties;
 
-    @Ignore
     @Commit
     @Test
     public void build001LandesListe() throws IOException {
@@ -124,7 +121,6 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
-    @Ignore
     @Commit
     @Test
     public void build002Kandidat() throws Exception {
@@ -311,6 +307,23 @@ public class KandidatenNormalizedTableBuilder {
         for(Kandidat k :kandidatService.getAll()) {
             id++;
             bw.write(k.getSqlInsert(id));
+            bw.newLine();
+        }
+        bw.flush();
+        bw.close();
+    }
+
+    @Commit
+    @Test
+    public void build103WohnortSql() throws Exception {
+        File dataOut = new File(sqlFileWohnortData);
+        dataOut.delete();
+        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
+        bw.write("DELETE FROM wohnort;");
+        bw.newLine();
+        for(Wohnort wohnort:wohnortService.getAllOrderById()){
+            String sql = wohnort.getSqlInsert();
+            bw.write(sql);
             bw.newLine();
         }
         bw.flush();

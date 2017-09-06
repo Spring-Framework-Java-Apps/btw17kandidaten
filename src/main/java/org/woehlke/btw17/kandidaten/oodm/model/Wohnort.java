@@ -206,4 +206,52 @@ public class Wohnort implements KandidatDimension {
                 ", geoZoom=" + geoZoom +
                 '}';
     }
+
+    public String getSqlInsert() {
+        String columns[] = {
+            "id","wohnort","webseite","wikipedia_article","facebook","logo_url",
+            "google_maps_url","geo_longitude","geo_lattitude","geo_zoom"
+        };
+        Object fields[] = {
+            id,wohnort,webseite,wikipediaArticle,facebook,logoUrl,
+            googleMapsUrl,geoLongitude,geoLattitude,geoZoom
+        };
+        StringBuffer sb = new StringBuffer();
+        sb.append("INSERT INTO wohnort (");
+        for(int i=0;i<columns.length; i++){
+            sb.append(columns[i]);
+            if((i+1)<columns.length){
+                sb.append(",");
+            }
+        }
+        sb.append(") VALUES (");
+        for(int i=0;i<fields.length; i++){
+            Object o = fields[i];
+            if(o == null){
+                sb.append("NULL");
+            } else if(o instanceof Long){
+                Long x = (Long) o;
+                sb.append(x);
+            }else if(o instanceof Integer){
+                Integer x = (Integer) o;
+                sb.append(x);
+            } else if(o instanceof Double){
+                Double x = (Double) o;
+                sb.append(x);
+            } else if(o instanceof String){
+                String x = (String) o;
+                sb.append("'");
+                sb.append(x);
+                sb.append("'");
+            } else if(o instanceof KandidatDimension){
+                KandidatDimension x = (KandidatDimension) o;
+                sb.append(x.getId());
+            }
+            if((i+1)<fields.length){
+                sb.append(", ");
+            }
+        }
+        sb.append(");");
+        return sb.toString();
+    }
 }
