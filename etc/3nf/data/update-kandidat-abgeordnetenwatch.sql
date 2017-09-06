@@ -43,7 +43,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreasmart
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-andr-berghegger-geboren-1972-in-osnabrck';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andr-grote-geboren-1968-in-hamburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andr-oehler-geboren-1972-in-werdau';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-andrea-nahles-geboren-1970-in-mendig';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/andrea-nahles-0' WHERE  kandidat_key='frau-andrea-nahles-geboren-1970-in-mendig';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-andrea-swoboda-geboren-1968-in-essen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreas-bist-geboren-1978-in-viersen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-andreashermann-bttner-geboren-1973-in-kassel';
