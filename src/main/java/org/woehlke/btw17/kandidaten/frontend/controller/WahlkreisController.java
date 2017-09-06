@@ -48,7 +48,8 @@ public class WahlkreisController {
         String pagerUrl = "/wahlkreis/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
         Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
@@ -78,7 +79,8 @@ public class WahlkreisController {
             String pagerUrl = "/wahlkreis/"+wahlkreis.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("wahlkreis",wahlkreis);
 

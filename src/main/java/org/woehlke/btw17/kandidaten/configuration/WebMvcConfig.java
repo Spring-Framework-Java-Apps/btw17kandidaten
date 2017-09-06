@@ -15,6 +15,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("redirect:/welcome");
+        registry.addViewController("/adm").setViewName("redirect:/report/overview");
     }
 
     @Bean

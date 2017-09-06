@@ -50,7 +50,8 @@ public class LandesListeController {
             String pagerUrl = "/landesliste/"+landesListe.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("landesListe",landesListe);
 
@@ -82,7 +83,8 @@ public class LandesListeController {
             String pagerUrl = "/landesliste/bundesland/"+bundesland.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("bundesland",bundesland);
 
@@ -116,7 +118,8 @@ public class LandesListeController {
             String pagerUrl = "/landesliste/listepartei/"+listePartei.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
 
@@ -147,7 +150,8 @@ public class LandesListeController {
         String pagerUrl = "/landesliste/bundesland/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
         Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
@@ -175,7 +179,8 @@ public class LandesListeController {
         String pagerUrl = "/landesliste/listepartei/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
         Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head  th:include="layoutMain :: tw-head">
+</head>
+<body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<script th:include="layoutMain :: tw-seo-fb"></script>
+<header th:include="layoutMain :: tw-header"></header>
+
+<main class="page-content">
+    <div class="tw-page-content tw-page-content-impressum">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Reports</h2>
+                        <ul>
+                            <li>
+                                <a href="/report/mdb/bundestag" th:href="@{/report/mdb/bundestag}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne bundestag</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/mdb/abgeordnetenwatch" th:href="@{/report/mdb/abgeordnetenwatch}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne abgeordnetenwatch</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/mdb/wikipedia" th:href="@{/report/mdb/wikipedia}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne wikipedia</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/mdb/webseite" th:href="@{/report/mdb/webseite}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne webseite</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/mdb/facebook" th:href="@{/report/mdb/facebook}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/mdb/twitter" th:href="@{/report/mdb/twitter}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne twitter</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/kandidat/webseite" th:href="@{/report/kandidat/webseite}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>Kandidaten ohne webseite</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/kandidat/facebook" th:href="@{/report/kandidat/facebook}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>Kandidaten ohne facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/report/kandidat/twitter" th:href="@{/report/kandidat/twitter}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>Kandidaten ohne twitter</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section th:include="layoutMain :: tw-history-back-section" >
+</section>
+
+<footer th:include="layoutMain :: footer" >
+</footer>
+</body>
+</html>

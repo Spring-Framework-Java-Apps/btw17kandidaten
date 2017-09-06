@@ -48,7 +48,8 @@ public class ListeParteiController {
         String pagerUrl = "/listepartei/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
         Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
@@ -77,7 +78,8 @@ public class ListeParteiController {
             String pagerUrl = "/listepartei/"+listePartei.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
 

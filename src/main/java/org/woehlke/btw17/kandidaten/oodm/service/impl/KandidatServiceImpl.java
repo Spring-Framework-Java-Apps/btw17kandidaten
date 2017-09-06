@@ -120,4 +120,49 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByKandidatFlatId(kandidatFlatId);
     }
 
+    @Override
+    public Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutBundestagProfile(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutAbgeordnetenwatch(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutWikipediaArticle(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getMdbWithoutWebseite(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutWebseite(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getMdbWithoutFacebook(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutFacebook(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getMdbWithoutTwitter(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutTwitter(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutWebseite(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutFacebook(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutTwitter(pageable);
+    }
+
 }

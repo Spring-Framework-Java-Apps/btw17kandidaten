@@ -49,4 +49,32 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.getAll")
     List<Kandidat> getAll();
+
+    @Query(name="Kandidat.getMdbWithoutBundestagProfile")
+    Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable);
+
+    @Query(name="Kandidat.getMdbWithoutAbgeordnetenwatch")
+    Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable);
+
+    @Query(name="Kandidat.getMdbWithoutWikipediaArticle")
+    Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable);
+
+    @Query(name="Kandidat.getMdbWithoutWebseite")
+    Page<Kandidat> getMdbWithoutWebseite(Pageable pageable);
+
+    @Query(name="Kandidat.getMdbWithoutFacebook")
+    Page<Kandidat> getMdbWithoutFacebook(Pageable pageable);
+
+    @Query(name="Kandidat.getMdbWithoutTwitter")
+    Page<Kandidat> getMdbWithoutTwitter(Pageable pageable);
+
+    @Query(name="Kandidat.getKandidatWithoutWebseite")
+    Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable);
+
+    @Query(name="Kandidat.getKandidatWithoutFacebook")
+    Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable);
+
+    @Query(name="Kandidat.getKandidatWithoutTwitter")
+    Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
+
 }

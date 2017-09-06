@@ -20,7 +20,9 @@ public class PageContent implements Serializable {
 
     private String twitterCardCreator;
 
-    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator) {
+    private Boolean showDebugInfos;
+
+    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator,Boolean showDebugInfos) {
         this.pageTitle = pageTitle;
         this.pageSubTitle = pageSubTitle;
         this.pageSymbol = pageSymbol;
@@ -29,6 +31,7 @@ public class PageContent implements Serializable {
         this.pagerUrl = pagerUrl;
         this.twitterCardSite = twitterCardSite;
         this.twitterCardCreator = twitterCardCreator;
+        this.showDebugInfos = showDebugInfos;
     }
 
     public String getPageTitleWithSymbol(){
@@ -99,6 +102,14 @@ public class PageContent implements Serializable {
         this.twitterCardCreator = twitterCardCreator;
     }
 
+    public Boolean getShowDebugInfos() {
+        return showDebugInfos;
+    }
+
+    public void setShowDebugInfos(Boolean showDebugInfos) {
+        this.showDebugInfos = showDebugInfos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,7 +127,9 @@ public class PageContent implements Serializable {
         if (pagerUrl != null ? !pagerUrl.equals(that.pagerUrl) : that.pagerUrl != null) return false;
         if (twitterCardSite != null ? !twitterCardSite.equals(that.twitterCardSite) : that.twitterCardSite != null)
             return false;
-        return twitterCardCreator != null ? twitterCardCreator.equals(that.twitterCardCreator) : that.twitterCardCreator == null;
+        if (twitterCardCreator != null ? !twitterCardCreator.equals(that.twitterCardCreator) : that.twitterCardCreator != null)
+            return false;
+        return showDebugInfos != null ? showDebugInfos.equals(that.showDebugInfos) : that.showDebugInfos == null;
     }
 
     @Override
@@ -129,6 +142,7 @@ public class PageContent implements Serializable {
         result = 31 * result + (pagerUrl != null ? pagerUrl.hashCode() : 0);
         result = 31 * result + (twitterCardSite != null ? twitterCardSite.hashCode() : 0);
         result = 31 * result + (twitterCardCreator != null ? twitterCardCreator.hashCode() : 0);
+        result = 31 * result + (showDebugInfos != null ? showDebugInfos.hashCode() : 0);
         return result;
     }
 
@@ -143,6 +157,7 @@ public class PageContent implements Serializable {
                 ", pagerUrl='" + pagerUrl + '\'' +
                 ", twitterCardSite='" + twitterCardSite + '\'' +
                 ", twitterCardCreator='" + twitterCardCreator + '\'' +
+                ", showDebugInfos=" + showDebugInfos +
                 '}';
     }
 }

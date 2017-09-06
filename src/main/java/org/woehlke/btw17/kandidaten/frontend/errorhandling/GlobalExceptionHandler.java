@@ -44,7 +44,8 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         String pagerUrl = request.getRequestURL().toString();
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         mav.addObject("pageContent",pageContent);
         mav.addObject("exception", throwable);
         mav.setViewName("exceptionhandler/exceptionhandler");
@@ -103,7 +104,8 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         String pagerUrl = request.getRequestURL().toString();
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator);
+        boolean showDebugInfos = false;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
         mav.addObject("pageContent",pageContent);
         mav.addObject("exception", ex);
         mav.setViewName("exceptionhandler/exceptionhandler");

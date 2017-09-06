@@ -2,7 +2,6 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 
 import java.util.List;
@@ -52,4 +51,23 @@ public interface KandidatService {
     List<Integer> getAllGeburtsjahre();
 
     Kandidat findByKandidatFlatId(long kandidatFlatId);
+
+    Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable);
+
+    Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable);
+
+    Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable);
+
+    Page<Kandidat> getMdbWithoutWebseite(Pageable pageable);
+
+    Page<Kandidat> getMdbWithoutFacebook(Pageable pageable);
+
+    Page<Kandidat> getMdbWithoutTwitter(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
+
 }
