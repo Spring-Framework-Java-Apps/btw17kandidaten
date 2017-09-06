@@ -11,4 +11,3 @@ addons:
     packages:
       - oracle-java8-installer
 script:  ./mvnw clean install -Ptravis  -B -V
-script:  ./mvnw clean install -Ptesting  -B -V
