@@ -249,6 +249,8 @@
             <div class="row" th:if="${kandidat.wohnort.googleMapsUrl}">
                 <div class="col-md-12">
                     <div class="well">
+                        <h3>Wohnort</h3>
+                        <hr/>
                         <div id="map-wohnort"></div>
                     </div>
                 </div>
@@ -256,6 +258,8 @@
             <div class="row" th:if="${kandidat.lat}">
                 <div class="col-md-12">
                     <div class="well">
+                        <h3>Geburtsort</h3>
+                        <hr/>
                         <div id="map-geburtsort"></div>
                     </div>
                 </div>
@@ -273,7 +277,8 @@
         function initMap() {
             var wohnort = {lat: [[${kandidat.wohnort.geoLattitude}]], lng: [[${kandidat.wohnort.geoLongitude}]]};
             var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
-                zoom: [[${kandidat.wohnort.geoZoom}]],
+                /* zoom: [[${kandidat.wohnort.geoZoom}]], */
+                zoom: 8,
                 center: wohnort
             });
             var markerwohnort = new google.maps.Marker({
