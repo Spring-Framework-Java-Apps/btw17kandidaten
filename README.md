@@ -1,5 +1,6 @@
 # [btw17kandidaten](https://github.com/phasenraum2010/btw17kandidaten)
 
+[![Build Status](https://travis-ci.org/phasenraum2010/btw17kandidaten.svg?branch=master)](https://travis-ci.org/phasenraum2010/btw17kandidaten)
 
 ## Alle 2559 Direktkandidaten
 
