@@ -192,7 +192,7 @@
                         </a>
                     </li>
                 </ul>
-                <form action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="navbar-form navbar-right">
+                <form th:if="${suchformularFreitext}" action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="navbar-form navbar-right">
                     <div class="form-group">
                         <input th:field="*{searchTerm}" type="text" name="vorname" id="search-term-input" class="form-control" placeholder="Suche nach"/>
                     </div>
