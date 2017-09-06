@@ -246,10 +246,17 @@
                          class="img-responsive img-thumbnail"/>
                 </div>
             </div>
+            <div class="row" th:if="${kandidat.wohnort.googleMapsUrl}">
+                <div class="col-md-12">
+                    <div class="well">
+                        <div id="map-wohnort"></div>
+                    </div>
+                </div>
+            </div>
             <div class="row" th:if="${kandidat.lat}">
                 <div class="col-md-12">
                     <div class="well">
-                        <div id="map"></div>
+                        <div id="map-geburtsort"></div>
                     </div>
                 </div>
             </div>
@@ -264,14 +271,24 @@
 
     <script th:inline="text">
         function initMap() {
+            var wohnort = {lat: [[${kandidat.wohnort.geoLattitude}]], lng: [[${kandidat.wohnort.geoLongitude}]]};
+            var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
+                zoom: [[${kandidat.wohnort.geoZoom}]],
+                center: wohnort
+            });
+            var markerwohnort = new google.maps.Marker({
+                position: wohnort,
+                map: mapwohnort
+            });
+
             var kandidat = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
-            var map = new google.maps.Map(document.getElementById('map'), {
+            var mapgeburtsort = new google.maps.Map(document.getElementById('map-geburtsort'), {
                 zoom: 8,
                 center: kandidat
             });
-            var marker = new google.maps.Marker({
+            var markergeburtsort = new google.maps.Marker({
                 position: kandidat,
-                map: map
+                map: mapgeburtsort
             });
         }
     </script>

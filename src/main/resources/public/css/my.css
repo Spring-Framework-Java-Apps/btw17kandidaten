@@ -141,7 +141,7 @@
         color: #317eac;
     }
 
-    #map {
+    #map-wohnort, #map-geburtsort {
         width: 100%;
         height: 320px;
     }
