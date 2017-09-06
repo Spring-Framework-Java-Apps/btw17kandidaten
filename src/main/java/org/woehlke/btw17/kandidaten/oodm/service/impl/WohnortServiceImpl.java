@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.repositories.WohnortRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WohnortServiceImpl implements WohnortService {
@@ -40,5 +42,16 @@ public class WohnortServiceImpl implements WohnortService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         wohnortRepository.deleteAll();
+    }
+
+    @Override
+    public List<Wohnort> getAllOrderById() {
+        return wohnortRepository.getAllOrderById();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void update(Wohnort wohnort) {
+        wohnortRepository.save(wohnort);
     }
 }

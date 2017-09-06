@@ -370,7 +370,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (369, 'Fürstenberg/Havel', NULL, NULL, 'https://de.wikipedia.org/wiki/F%C3%BCrstenberg/Havel','@53.1519994,13.0565285,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (370, 'Uetersen', NULL, NULL, 'https://de.wikipedia.org/wiki/Uetersen','@53.686715,9.6246539,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (371, 'Hennigsdorf', NULL, NULL, 'https://de.wikipedia.org/wiki/Hennigsdorf','@52.6312514,13.1283544,12z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (372, 'Schwalmstadt', NULL, NULL, 'https://de.wikipedia.org/wiki/Schwalmstadt','@50.9185235,9.1353537,12z/');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (372, 'Schwalmstadt', NULL, NULL, 'https://de.wikipedia.org/wiki/Schwalmstadt','@50.9185235,9.1353537,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (373, 'Medebach', NULL, NULL, 'https://de.wikipedia.org/wiki/Medebach','@51.2047255,8.5379688,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (374, 'Solingen', NULL, NULL, 'https://de.wikipedia.org/wiki/Solingen','@51.1673719,6.9925738,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (375, 'Tecklenburg', NULL, NULL, 'https://de.wikipedia.org/wiki/Tecklenburg','@52.2189338,7.7369594,12z');
@@ -393,7 +393,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (392, 'Netphen', NULL, NULL, 'https://de.wikipedia.org/wiki/Netphen','@50.9036407,8.0183624,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (393, 'Prenzlau', NULL, NULL, 'https://de.wikipedia.org/wiki/Prenzlau','@53.3215267,13.718964,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (394, 'Spreenhagen', NULL, NULL, 'https://de.wikipedia.org/wiki/Spreenhagen','@52.3436233,13.8656892,15z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (395, 'Giesen', NULL, NULL, 'https://de.wikipedia.org/wiki/Giesen','@52.1982293,9.8265936,12zs');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (395, 'Giesen', NULL, NULL, 'https://de.wikipedia.org/wiki/Giesen','@52.1982293,9.8265936,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (396, 'Bad Boll', NULL, NULL, 'https://de.wikipedia.org/wiki/Bad_Boll','@48.6393487,9.5706296,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (397, 'Schramberg', NULL, NULL, 'https://de.wikipedia.org/wiki/Schramberg','@48.2189377,8.3384757,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (398, 'Großschirma', NULL, NULL, 'https://de.wikipedia.org/wiki/Gro%C3%9Fschirma','@50.989767,13.2010207,12z');
@@ -539,7 +539,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (538, 'Siegen', NULL, NULL, 'https://de.wikipedia.org/wiki/Siegen','@50.8815126,7.8847102,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (539, 'Waldstetten', NULL, NULL, 'https://de.wikipedia.org/wiki/Waldstetten_(Ostalbkreis)','@48.7516309,9.7540603,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (540, 'Northeim', NULL, NULL, 'https://de.wikipedia.org/wiki/Northeim','@51.7156064,9.8644691,11z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (541, 'Burgdorf', NULL, NULL, 'https://de.wikipedia.org/wiki/Burgdorf_(Region_Hannover)','@52.4743842,9.8713172,11z/');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (541, 'Burgdorf', NULL, NULL, 'https://de.wikipedia.org/wiki/Burgdorf_(Region_Hannover)','@52.4743842,9.8713172,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (542, 'Hannover', NULL, NULL, 'https://de.wikipedia.org/wiki/Hannover','@52.3797932,9.6213864,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (543, 'Imsbach', NULL, NULL, 'https://de.wikipedia.org/wiki/Imsbach','@49.5910809,7.8609765,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (544, 'Pellingen', NULL, NULL, 'https://de.wikipedia.org/wiki/Pellingen','@49.6708988,6.6365299,13z');
@@ -730,7 +730,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (729, 'Bad Zwischenahn', NULL, NULL, 'https://de.wikipedia.org/wiki/Bad_Zwischenahn','@53.1978344,7.8923863,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (730, 'Dinslaken', NULL, NULL, 'https://de.wikipedia.org/wiki/Dinslaken','@51.5704035,6.7063142,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (731, 'Westoverledingen', NULL, NULL, 'https://de.wikipedia.org/wiki/Westoverledingen','@53.1457052,7.2991175,11z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (732, 'Eich', NULL, NULL, 'https://de.wikipedia.org/wiki/Eich','49.7487733,8.3691358,13z');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (732, 'Eich', NULL, NULL, 'https://de.wikipedia.org/wiki/Eich','@49.7487733,8.3691358,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (733, 'Seelingstädt', NULL, NULL, 'https://de.wikipedia.org/wiki/Seelingst%C3%A4dt','@50.7719311,12.2052864,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (734, 'Würzburg', NULL, NULL, 'https://de.wikipedia.org/wiki/W%C3%BCrzburg','@49.7782104,9.802943,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (735, 'Detmold', NULL, NULL, 'https://de.wikipedia.org/wiki/Detmold','@51.9286607,8.7362562,11z');
@@ -1072,7 +1072,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1071, 'St. Gallen, Schweiz', NULL, NULL, 'https://de.wikipedia.org/wiki/St._Gallen','@47.4241597,9.2933296,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1072, 'Osnabrück', NULL, NULL, 'https://de.wikipedia.org/wiki/Osnabr%C3%BCck','@52.2781138,7.9153444,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1073, 'Kandel', NULL, NULL, 'https://de.wikipedia.org/wiki/Kandel_(Pfalz)','@49.0833462,8.1912452,15z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1074, 'Vreden', NULL, NULL, 'https://de.wikipedia.org/wiki/Vreden','Vreden');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1074, 'Vreden', NULL, NULL, 'https://de.wikipedia.org/wiki/Vreden','@52.0609228,6.6587495,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1075, 'Niestetal', NULL, NULL, 'https://de.wikipedia.org/wiki/Niestetal','@51.3168771,9.5499094,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1076, 'Wismar', NULL, NULL, 'https://de.wikipedia.org/wiki/Wismar','@53.9040446,11.3920987,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1077, 'Obergünzburg', NULL, NULL, 'https://de.wikipedia.org/wiki/Oberg%C3%BCnzburg','@47.86719,10.3664961,12z');
@@ -1157,7 +1157,7 @@ INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1156, 'Massen-Niederlausitz', NULL, NULL, 'https://de.wikipedia.org/wiki/Massen-Niederlausitz','@51.6745654,13.6144828,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1157, 'Hagen im Bremischen', NULL, NULL, 'https://de.wikipedia.org/wiki/Hagen_im_Bremischen','@53.3529827,8.5734396,12z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1158, 'Wenden', NULL, NULL, 'https://de.wikipedia.org/wiki/Wenden','@50.9639803,7.7909252,12z');
-INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1159, 'Offenburg', NULL, NULL, 'https://de.wikipedia.org/wiki/Offenburg','@48.4749011,7.8049767,11z/');
+INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1159, 'Offenburg', NULL, NULL, 'https://de.wikipedia.org/wiki/Offenburg','@48.4749011,7.8049767,11z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1160, 'Gimbsheim', NULL, NULL, 'https://de.wikipedia.org/wiki/Gimbsheim','@49.7739333,8.3481823,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1161, 'Reichenbach-Steegen', NULL, NULL, 'https://de.wikipedia.org/wiki/Reichenbach-Steegen','@49.506246,7.490328,13z');
 INSERT INTO wohnort (id, wohnort, facebook, webseite, wikipedia_article, google_maps_url) VALUES (1162, 'Alt Schwerin', NULL, NULL, 'https://de.wikipedia.org/wiki/Alt_Schwerin','@53.5278291,12.263426,12z');

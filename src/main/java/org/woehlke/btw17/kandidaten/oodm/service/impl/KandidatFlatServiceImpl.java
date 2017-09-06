@@ -29,6 +29,11 @@ public class KandidatFlatServiceImpl implements KandidatFlatService {
     }
 
     @Override
+    public Page<KandidatFlat> getAllOrderByNachname(Pageable pageRequest) {
+        return kandidatFlatRepository.getAllOrderByNachname(pageRequest);
+    }
+
+    @Override
     public long count() {
         return kandidatFlatRepository.count();
     }

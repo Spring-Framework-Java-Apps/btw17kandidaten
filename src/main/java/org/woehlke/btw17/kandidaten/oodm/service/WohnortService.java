@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 
+import java.util.List;
+
 public interface WohnortService {
 
     Page<Wohnort> getAll(Pageable pageRequest);
@@ -14,4 +16,7 @@ public interface WohnortService {
 
     void deleteAll();
 
+    List<Wohnort> getAllOrderById();
+
+    void update(Wohnort wohnort);
 }

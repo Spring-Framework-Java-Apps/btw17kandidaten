@@ -18,6 +18,12 @@ import javax.persistence.*;
         @Index(name = "idx_wohnort_google_maps_url", columnList = "google_maps_url")
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Wohnort.getAllOrderById",
+        query = "select o from Wohnort as o order by o.id"
+    )
+})
 public class Wohnort implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;
@@ -29,19 +35,19 @@ public class Wohnort implements KandidatDimension {
     @Column
     private String wohnort;
 
-    @URL
+    //@URL
     @Column
     private String webseite;
 
-    @URL
+    //@URL
     @Column(name = "wikipedia_article")
     private String wikipediaArticle;
 
-    @URL
-    @Column
+    //@URL
+    @Column()
     private String facebook;
 
-    @URL
+    //@URL
     @Column(name="logo_url")
     private String logoUrl;
 
@@ -49,13 +55,13 @@ public class Wohnort implements KandidatDimension {
     private String googleMapsUrl;
 
     @Column(name = "geo_longitude")
-    private Double geoLongitude;
+    private String geoLongitude;
 
     @Column(name = "geo_lattitude")
-    private Double geoLattitude;
+    private String geoLattitude;
 
     @Column(name = "geo_zoom")
-    private Integer geoZoom;
+    private String geoZoom;
 
     @Transient
     public String getName() {
@@ -122,27 +128,28 @@ public class Wohnort implements KandidatDimension {
         this.logoUrl = logoUrl;
     }
 
-    public Double getGeoLongitude() {
+
+    public String getGeoLongitude() {
         return geoLongitude;
     }
 
-    public void setGeoLongitude(Double geoLongitude) {
+    public void setGeoLongitude(String geoLongitude) {
         this.geoLongitude = geoLongitude;
     }
 
-    public Double getGeoLattitude() {
+    public String getGeoLattitude() {
         return geoLattitude;
     }
 
-    public void setGeoLattitude(Double geoLattitude) {
+    public void setGeoLattitude(String geoLattitude) {
         this.geoLattitude = geoLattitude;
     }
 
-    public Integer getGeoZoom() {
+    public String getGeoZoom() {
         return geoZoom;
     }
 
-    public void setGeoZoom(Integer geoZoom) {
+    public void setGeoZoom(String geoZoom) {
         this.geoZoom = geoZoom;
     }
 

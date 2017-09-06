@@ -10,6 +10,8 @@ public interface KandidatFlatService {
 
     Page<KandidatFlat> getAll(Pageable pageRequest);
 
+    Page<KandidatFlat> getAllOrderByNachname(Pageable pageRequest);
+
     long count();
 
     List<Long> getAllIdsWhereMdbIsNotNull();

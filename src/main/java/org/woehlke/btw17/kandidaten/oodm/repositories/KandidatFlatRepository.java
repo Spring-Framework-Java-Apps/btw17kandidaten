@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -12,4 +14,7 @@ public interface KandidatFlatRepository  extends PagingAndSortingRepository<Kand
 
     @Query(name="KandidatFlat.getAllIdsWhereMdbIsNotNull")
     List<Long> getAllIdsWhereMdbIsNotNull();
+
+    @Query(name="KandidatFlat.getAllOrderByNachname")
+    Page<KandidatFlat> getAllOrderByNachname(Pageable pageRequest);
 }

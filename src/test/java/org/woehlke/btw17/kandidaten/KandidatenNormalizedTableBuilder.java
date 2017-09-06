@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -19,6 +20,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
+import javax.persistence.Column;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +92,7 @@ public class KandidatenNormalizedTableBuilder {
     @Autowired
     private KandidatenProperties kandidatenProperties;
 
+    @Ignore
     @Commit
     @Test
     public void build001LandesListe() throws IOException {
@@ -121,6 +124,7 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
+    @Ignore
     @Commit
     @Test
     public void build002Kandidat() throws Exception {
@@ -189,6 +193,27 @@ public class KandidatenNormalizedTableBuilder {
                 allKandidatenPage = kandidatFlatService.getAll(pageable);
             } else {
                 goOn = false;
+            }
+        }
+    }
+
+    @Commit
+    @Test
+    public void build003WohnortGeoCoordinates() throws Exception {
+        for(Wohnort wohnort:wohnortService.getAllOrderById()){
+            String myGoogleMapsUrl = wohnort.getGoogleMapsUrl();
+            if(myGoogleMapsUrl != null){
+                String parts[] = myGoogleMapsUrl.split(",");
+                Assert.assertTrue(myGoogleMapsUrl,parts.length==3);
+                Assert.assertTrue(myGoogleMapsUrl,parts[0].startsWith("@"));
+                Assert.assertTrue(myGoogleMapsUrl,parts[2].endsWith("z"));
+                String geoLattitude = parts[0].replace("@","");
+                String geoLongitude = parts[1];
+                String geoZoom = parts[2].replace("z","");
+                wohnort.setGeoLattitude(geoLattitude);
+                wohnort.setGeoLongitude(geoLongitude);
+                wohnort.setGeoZoom(geoZoom);
+                wohnortService.update(wohnort);
             }
         }
     }

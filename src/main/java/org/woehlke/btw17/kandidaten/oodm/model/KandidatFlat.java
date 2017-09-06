@@ -38,6 +38,10 @@ import java.util.Locale;
     @NamedQuery(
         name = "KandidatFlat.getAllIdsWhereMdbIsNotNull",
         query = "select o.id from KandidatFlat as o where o.mdb is not null"
+    ),
+    @NamedQuery(
+        name = "KandidatFlat.getAllOrderByNachname",
+        query = "select o from KandidatFlat as o order by o.nachname"
     )
 })
 public class KandidatFlat implements KandidatDimension {
