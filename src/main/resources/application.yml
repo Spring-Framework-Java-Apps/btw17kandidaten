@@ -120,6 +120,17 @@ btw17:
       - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/"
       - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/users/"
       - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/media_thumbnail/public/users/"
+    tableContent:
+      countBeruf: 1211
+      countBerufsgruppe: 55
+      countBundesland: 16
+      countGeburtsort: 1081
+      countPartei: 134
+      countWahlkreis: 299
+      countWohnort: 1219
+      countLandesListe: 118
+      countKandidatFlat: 2559
+      countKandidat: 2559
 ---
 spring:
   profiles: testing
