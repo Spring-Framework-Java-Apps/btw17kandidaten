@@ -13,10 +13,13 @@
         <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
                 <div class="well" th:if="${wohnort.googleMapsUrl}">
-                    <h3>Wohnort: <span th:text="${wohnort.wohnort}">wohnort</span></h3>
+                    <h3>Wohnort: <span th:text="${wohnort.wohnort}">wohnort</span>
+                        <span class="text-right">
+                        <a class="tw-social-media-link" th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                        <a class="tw-social-media-link" th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                        </span>
+                    </h3>
                     <hr/>
-                    <a class="tw-social-media-link" th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
-                    <a class="tw-social-media-link" th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                     <div id="map-wohnort"></div>
                 </div>
             </div>
