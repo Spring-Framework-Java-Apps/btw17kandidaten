@@ -258,8 +258,8 @@
             <div class="row" th:if="${kandidat.lat}">
                 <div class="col-md-12">
                     <div class="well">
-                        <h3 th:if="${kandidat.geburtsort}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
-                        <h3 th:if="${!kandidat.geburtsort}">Geburtsort</h3>
+                        <h3 th:if="${kandidat.geburtsort != null}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
+                        <h3 th:if="${kandidat.geburtsort == null}">Geburtsort</h3>
                         <hr/>
                         <div id="map-geburtsort"></div>
                     </div>
