@@ -10,14 +10,14 @@
 
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
-                <div class="well">
-
+                <div class="well" th:if="${wohnort.googleMapsUrl}">
+                    <h3>Wohnort: <span th:text="${wohnort.wohnort}">wohnort</span></h3>
+                    <hr/>
                     <a class="tw-social-media-link" th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
-
                     <a class="tw-social-media-link" th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
-
+                    <div id="map-wohnort"></div>
                 </div>
             </div>
         </div>
@@ -31,6 +31,21 @@
 
 <section th:include="layoutMain :: tw-history-back-section" >
 </section>
+
+<script th:inline="text">
+    function initMap() {
+        var wohnort = {lat: [[${wohnort.geoLattitude}]], lng: [[${wohnort.geoLongitude}]]};
+        var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
+            zoom: 8,
+            center: wohnort
+        });
+        var markerwohnort = new google.maps.Marker({
+            position: wohnort,
+            map: mapwohnort
+        });
+    }
+</script>
+<script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${pageContent.googleMapsApiKey}|}" ></script>
 
 <footer th:include="layoutMain :: footer" >
 </footer>

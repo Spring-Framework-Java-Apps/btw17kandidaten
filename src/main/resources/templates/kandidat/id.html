@@ -278,7 +278,6 @@
         function initMap() {
             var wohnort = {lat: [[${kandidat.wohnort.geoLattitude}]], lng: [[${kandidat.wohnort.geoLongitude}]]};
             var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
-                /* zoom: [[${kandidat.wohnort.geoZoom}]], */
                 zoom: 8,
                 center: wohnort
             });
