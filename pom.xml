@@ -4,7 +4,7 @@
 
 	<groupId>org.woehlke.btw17</groupId>
 	<artifactId>kandidaten</artifactId>
-	<version>0.0.7-SNAPSHOT</version>
+	<version>0.0.7</version>
 	<packaging>jar</packaging>
 
 	<name>btw17kandidaten</name>
@@ -30,7 +30,7 @@
         <url>https://github.com/phasenraum2010/btw17kandidaten.git</url>
         <connection>scm:git:https://github.com/phasenraum2010/btw17kandidaten.git</connection>
         <developerConnection>scm:git:https://github.com/phasenraum2010/btw17kandidaten.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>kandidaten-0.0.7</tag>
     </scm>
 
     <issueManagement>
