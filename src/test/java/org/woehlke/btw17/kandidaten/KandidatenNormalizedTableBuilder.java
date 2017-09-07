@@ -98,7 +98,7 @@ public class KandidatenNormalizedTableBuilder {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
-        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
+        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         List<LandesListe> landesListen = new ArrayList<>();
         while(goOn) {
@@ -114,7 +114,7 @@ public class KandidatenNormalizedTableBuilder {
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
-                allKandidatenPage = kandidatFlatService.getAll(pageable);
+                allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
             } else {
                 goOn = false;
             }
@@ -127,7 +127,7 @@ public class KandidatenNormalizedTableBuilder {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
-        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAll(pageable);
+        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         while(goOn){
             for(KandidatFlat in :allKandidatenPage.getContent()){
@@ -186,7 +186,7 @@ public class KandidatenNormalizedTableBuilder {
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
-                allKandidatenPage = kandidatFlatService.getAll(pageable);
+                allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
             } else {
                 goOn = false;
             }
