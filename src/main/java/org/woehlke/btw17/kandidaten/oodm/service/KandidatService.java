@@ -70,4 +70,6 @@ public interface KandidatService {
 
     Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
 
+    Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable);
+
 }

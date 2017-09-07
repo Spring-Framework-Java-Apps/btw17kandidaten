@@ -77,4 +77,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.getKandidatWithoutTwitter")
     Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
 
+    @Query(name="Kandidat.getKandidatWithoutFotoUrl")
+    Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable);
+
 }

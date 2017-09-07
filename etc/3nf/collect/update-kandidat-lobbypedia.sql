@@ -439,7 +439,7 @@ UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-klaus-schra
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-kristian-reinhold-geboren-1958-in-dresden';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-lothar-ackermann-geboren-1953-in-niederlahnstein';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-hansuwe-scharnweber-geboren-1941-in-mnchen';
-UPDATE kandidat SET lobbypedia_url=NULL WHERE kandidat_key='herr-dr-mark-benecke-geboren-1970-in-rosenheim';
+UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-mark-benecke-geboren-1970-in-rosenheim';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-michaeltillmann-berndt-geboren-1956-in-berlin';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-philipthomasernst-zeschmann-geboren-1967-in-berlin';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-manfredwernerreinhold-dietrich-geboren-1952-in-mllrose';
@@ -450,7 +450,7 @@ UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-matthias-ba
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-michaelgnther-meister-geboren-1961-in-lorsch';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-michaelklaus-rder-geboren-1966-in-schweinfurt';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-von-michael-vonabercron-geboren-1952-in-ehlerstorf';
-UPDATE kandidat SET lobbypedia_url=NULL WHERE kandidat_key='frau-dr-nina-scheer-geboren-1971-in-berlin';
+UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-dr-nina-scheer-geboren-1971-in-berlin';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-dr-petra-sitte-geboren-1960-in-dresden';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-robert-rankl-geboren-1963-in-hanau';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-jakob-sedlmeier-geboren-1967-in-freising';
@@ -1535,7 +1535,7 @@ UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-regina-preysin
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-reinhard-hegewald-geboren-1964-in-loppersumjetzthinte';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-reinhard-neudorfer-geboren-1946-in-mnchen';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-reinhold-sendker-geboren-1952-in-warendorf';
-UPDATE kandidat SET lobbypedia_url=NULL WHERE kandidat_key='frau-renate-knast-geboren-1955-in-recklinghausen';
+UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-renate-knast-geboren-1955-in-recklinghausen';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-renate-schmidt-geboren-1959-in-ebingen';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-dr-renatus-rieger-geboren-1958-in-moers';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-renjens-hhnlein-geboren-1971-in-sonneberg';
@@ -1759,7 +1759,7 @@ UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-stephan-thomae
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-stephanie-erben-geboren-1971-in-riesa';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-stephanie-reinhold-geboren-1975-in-freiburgimbreisgau';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-stev-tinger-geboren-1976-in-crivitz';
-UPDATE kandidat SET lobbypedia_url=NULL WHERE kandidat_key='herr-stephan-rauhut-geboren-1972-in-hamburg';
+UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='herr-stephan-rauhut-geboren-1972-in-hamburg';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-susann-rthrich-geboren-1977-in-meien';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-susanneanita-holbein-geboren-1970-in-gtersloh';
 UPDATE kandidat SET lobbypedia_url=NULL WHERE  kandidat_key='frau-susanne-mittag-geboren-1958-in-clevelandusa';

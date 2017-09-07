@@ -39,7 +39,7 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileKandidatUpdateUrls = "etc/3nf/data/update-kandidat-urls.sql";
 
-    private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/data/update_foto_url.sql";
+    private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/data/update_foto_url_from_foto.sql";
 
     private final static String sqlFileKandidatUpdateBundetagUrls = "etc/3nf/data/update-kandidat-bundestag.sql";
 

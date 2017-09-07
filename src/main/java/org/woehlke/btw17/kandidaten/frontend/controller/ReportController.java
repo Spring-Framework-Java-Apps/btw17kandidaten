@@ -47,36 +47,6 @@ public class ReportController {
     }
 
 
-    @RequestMapping("/mdb/bundestag")
-    public String getMdbWithoutBundestagProfile(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            HttpSession session,
-            Model model
-    ) {
-        String pageTitle = "Alle MdB ohne Bundestags Profil";
-        String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
-        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
-        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/report/mdb/bundestag";
-        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
-        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = true;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
-        model.addAttribute("pageContent",pageContent);
-
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutBundestagProfile(pageable);
-        model.addAttribute("kandidaten", allKandidatenPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "report/mdb/bundestag";
-    }
-
-
     @RequestMapping("/mdb/abgeordnetenwatch")
     public String getMdbWithoutAbgeordnetenwatch(
             @PageableDefault(
@@ -106,8 +76,9 @@ public class ReportController {
         return "report/mdb/abgeordnetenwatch";
     }
 
-    @RequestMapping("/mdb/wikipedia")
-    public String getMdbWithoutWikipediaArticle(
+
+    @RequestMapping("/mdb/bundestag")
+    public String getMdbWithoutBundestagProfile(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
@@ -115,53 +86,24 @@ public class ReportController {
             ) Pageable pageable,
             HttpSession session,
             Model model
-    ){
-        String pageTitle = "Alle MdB ohne Wikipedia";
+    ) {
+        String pageTitle = "Alle MdB ohne Bundestags Profil";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/report/mdb/wikipedia";
+        String pagerUrl = "/report/mdb/bundestag";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         boolean showDebugInfos = true;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWikipediaArticle(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutBundestagProfile(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
 
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "report/mdb/wikipedia";
-    }
-
-    @RequestMapping("/mdb/webseite")
-    public String getMdbWithoutWebseite(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            HttpSession session,
-            Model model
-    ){
-        String pageTitle = "Alle MdB ohne Webseitel";
-        String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
-        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
-        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/report/mdb/webseite";
-        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
-        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = true;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
-        model.addAttribute("pageContent",pageContent);
-
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWebseite(pageable);
-        model.addAttribute("kandidaten", allKandidatenPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "report/mdb/webseite";
+        return "report/mdb/bundestag";
     }
 
     @RequestMapping("/mdb/facebook")
@@ -193,6 +135,35 @@ public class ReportController {
         return "report/mdb/facebook";
     }
 
+    @RequestMapping("/kandidat/foto")
+    public String getKandidatWithoutFotoUrl(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidat ohne Foto";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/foto";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutFotoUrl(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/foto";
+    }
+
     @RequestMapping("/mdb/twitter")
     public String getMdbWithoutTwitter(
             @PageableDefault(
@@ -221,6 +192,65 @@ public class ReportController {
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "report/mdb/twitter";
     }
+
+    @RequestMapping("/mdb/webseite")
+    public String getMdbWithoutWebseite(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Alle MdB ohne Webseitel";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/mdb/webseite";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWebseite(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/mdb/webseite";
+    }
+
+    @RequestMapping("/mdb/wikipedia")
+    public String getMdbWithoutWikipediaArticle(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Alle MdB ohne Wikipedia";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/mdb/wikipedia";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWikipediaArticle(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/mdb/wikipedia";
+    }
+
 
     @RequestMapping("/kandidat/webseite")
     public String getKandidatWithoutWebseite(
@@ -308,6 +338,8 @@ public class ReportController {
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "report/kandidat/twitter";
     }
+
+
 
 
 

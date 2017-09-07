@@ -55,42 +55,46 @@ import java.io.Serializable;
         name = "Kandidat.getAll",
         query = "select o from Kandidat as o order by id"
     ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutBundestagProfile",
-                query = "select o from Kandidat as o where o.bundestagAbgeordnete is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutAbgeordnetenwatch",
-                query = "select o from Kandidat as o where o.abgeordnetenwatch is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutWikipediaArticle",
-                query = "select o from Kandidat as o where o.wikipediaArticle is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutWebseite",
-                query = "select o from Kandidat as o where o.webseite is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutFacebook",
-                query = "select o from Kandidat as o where o.facebook is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getMdbWithoutTwitter",
-                query = "select o from Kandidat as o where o.twitter is null and o.mdb is not null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getKandidatWithoutWebseite",
-                query = "select o from Kandidat as o where o.webseite is null and o.mdb is null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getKandidatWithoutFacebook",
-                query = "select o from Kandidat as o where o.facebook is null and o.mdb is null order by id"
-        ),
-        @NamedQuery(
-                name = "Kandidat.getKandidatWithoutTwitter",
-                query = "select o from Kandidat as o where o.twitter is null and o.mdb is null order by id"
-        )
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutBundestagProfile",
+        query = "select o from Kandidat as o where o.bundestagAbgeordnete is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutAbgeordnetenwatch",
+        query = "select o from Kandidat as o where o.abgeordnetenwatch is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutWikipediaArticle",
+        query = "select o from Kandidat as o where o.wikipediaArticle is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutWebseite",
+        query = "select o from Kandidat as o where o.webseite is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutFacebook",
+        query = "select o from Kandidat as o where o.facebook is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMdbWithoutTwitter",
+        query = "select o from Kandidat as o where o.twitter is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getKandidatWithoutWebseite",
+        query = "select o from Kandidat as o where o.webseite is null and o.mdb is null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getKandidatWithoutFacebook",
+        query = "select o from Kandidat as o where o.facebook is null and o.mdb is null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getKandidatWithoutTwitter",
+        query = "select o from Kandidat as o where o.twitter is null and o.mdb is null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getKandidatWithoutFotoUrl",
+        query = "select o from Kandidat as o where o.fotoUrl is null order by key"
+    )
 })
 public class Kandidat implements Serializable {
 

@@ -165,4 +165,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.getKandidatWithoutTwitter(pageable);
     }
 
+    @Override
+    public Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutFotoUrl(pageable);
+    }
+
 }
