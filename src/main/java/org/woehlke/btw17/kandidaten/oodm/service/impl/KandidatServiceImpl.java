@@ -170,4 +170,24 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.getKandidatWithoutFotoUrl(pageable);
     }
 
+    @Override
+    public Page<Kandidat> getKandidatWithoutLobbypediaUrl(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutLobbypediaUrl(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutSoundcloud(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutSoundcloud(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutYoutube(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutYoutube(pageable);
+    }
+
+    @Override
+    public Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable) {
+        return kandidatRepository.getKandidatWithoutAbgeordnetenwatch(pageable);
+    }
+
 }

@@ -72,4 +72,12 @@ public interface KandidatService {
 
     Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable);
 
+    Page<Kandidat> getKandidatWithoutLobbypediaUrl(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutSoundcloud(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutYoutube(Pageable pageable);
+
+    Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable);
+
 }

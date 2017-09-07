@@ -57,7 +57,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Alle MdB ohne Abgeordnetenwatch";
+        String pageTitle = "MdB ohne Abgeordnetenwatch";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -87,7 +87,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ) {
-        String pageTitle = "Alle MdB ohne Bundestags Profil";
+        String pageTitle = "MdB ohne Bundestags Profil";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -116,7 +116,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Alle MdB ohne Facebook";
+        String pageTitle = "MdB ohne Facebook";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -135,35 +135,6 @@ public class ReportController {
         return "report/mdb/facebook";
     }
 
-    @RequestMapping("/kandidat/foto")
-    public String getKandidatWithoutFotoUrl(
-            @PageableDefault(
-                    value = FIRST_PAGE_NUMBER,
-                    size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
-            ) Pageable pageable,
-            HttpSession session,
-            Model model
-    ){
-        String pageTitle = "Kandidat ohne Foto";
-        String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
-        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
-        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/report/kandidat/foto";
-        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
-        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = true;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
-        model.addAttribute("pageContent",pageContent);
-
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutFotoUrl(pageable);
-        model.addAttribute("kandidaten", allKandidatenPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "report/kandidat/foto";
-    }
-
     @RequestMapping("/mdb/twitter")
     public String getMdbWithoutTwitter(
             @PageableDefault(
@@ -174,7 +145,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Alle MdB ohne Twitter";
+        String pageTitle = "MdB ohne Twitter";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -203,7 +174,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Alle MdB ohne Webseitel";
+        String pageTitle = "MdB ohne Webseitel";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -232,7 +203,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Alle MdB ohne Wikipedia";
+        String pageTitle = "MdB ohne Wikipedia";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -252,8 +223,8 @@ public class ReportController {
     }
 
 
-    @RequestMapping("/kandidat/webseite")
-    public String getKandidatWithoutWebseite(
+    @RequestMapping("/kandidat/abgeordnetenwatch")
+    public String getKandidatWithoutAbgeordnetenwatch(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
@@ -262,23 +233,23 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Kandidat ohne Webseite";
+        String pageTitle = "Kandidaten ohne Abgeordnetenwatch";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/report/kandidat/webseite";
+        String pagerUrl = "/report/kandidat/abgeordnetenwatch";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         boolean showDebugInfos = true;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
         model.addAttribute("pageContent",pageContent);
 
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutWebseite(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutAbgeordnetenwatch(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
 
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "report/kandidat/webseite";
+        return "report/kandidat/abgeordnetenwatch";
     }
 
     @RequestMapping("/kandidat/facebook")
@@ -291,7 +262,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Kandidat ohne Facebook";
+        String pageTitle = "Kandidaten ohne Facebook";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
@@ -310,6 +281,153 @@ public class ReportController {
         return "report/kandidat/facebook";
     }
 
+
+    @RequestMapping("/kandidat/webseite")
+    public String getKandidatWithoutWebseite(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidaten ohne Webseite";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/webseite";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutWebseite(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/webseite";
+    }
+
+    @RequestMapping("/kandidat/foto")
+    public String getKandidatWithoutFotoUrl(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidaten ohne Foto";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/foto";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutFotoUrl(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/foto";
+    }
+
+    @RequestMapping("/kandidat/lobbypedia")
+    public String getKandidatWithoutLobbypediaUrl(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidaten ohne Lobbypedia";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/lobbypedia";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutLobbypediaUrl(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/lobbypedia";
+    }
+
+    @RequestMapping("/kandidat/soundcloud")
+    public String getKandidatWithoutSoundcloud(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidaten ohne Soundcloud";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/soundcloud";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutSoundcloud(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/soundcloud";
+    }
+
+    @RequestMapping("/kandidat/youtube")
+    public String getKandidatWithoutYoutube(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "Kandidaten ohne YouTube";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/youtube";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutYoutube(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/kandidat/youtube";
+    }
+
+
     @RequestMapping("/kandidat/twitter")
     public String getKandidatWithoutTwitter(
             @PageableDefault(
@@ -320,7 +438,7 @@ public class ReportController {
             HttpSession session,
             Model model
     ){
-        String pageTitle = "Kandidat ohne Twitter";
+        String pageTitle = "Kandidaten ohne Twitter";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();

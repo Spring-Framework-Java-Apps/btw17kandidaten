@@ -94,7 +94,23 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFotoUrl",
         query = "select o from Kandidat as o where o.fotoUrl is null order by key"
-    )
+    ),
+        @NamedQuery(
+                name = "Kandidat.getKandidatWithoutLobbypediaUrl",
+                query = "select o from Kandidat as o where o.lobbypediaUrl is null order by key"
+        ),
+        @NamedQuery(
+                name = "Kandidat.getKandidatWithoutSoundcloud",
+                query = "select o from Kandidat as o where o.soundcloud is null order by key"
+        ),
+        @NamedQuery(
+                name = "Kandidat.getKandidatWithoutYoutube",
+                query = "select o from Kandidat as o where o.youtube is null order by key"
+        ),
+        @NamedQuery(
+                name = "Kandidat.getKandidatWithoutAbgeordnetenwatch",
+                query = "select o from Kandidat as o where o.abgeordnetenwatch is null order by key"
+        )
 })
 public class Kandidat implements Serializable {
 
