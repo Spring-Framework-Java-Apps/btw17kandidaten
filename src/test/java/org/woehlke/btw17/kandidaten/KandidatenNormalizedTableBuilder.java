@@ -37,19 +37,34 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileKandidatData = "etc/3nf/data/insert-data-kandidat.sql";
 
-    private final static String sqlFileKandidatUpdateUrls = "etc/3nf/data/update-kandidat-urls.sql";
-
-    private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/data/update_foto_url_from_foto.sql";
-
-    private final static String sqlFileKandidatUpdateBundetagUrls = "etc/3nf/data/update-kandidat-bundestag.sql";
-
-    private final static String sqlFileKandidatUpdateAbgeordnetenwatchUrls = "etc/3nf/data/update-kandidat-abgeordnetenwatch.sql";
-
-    private final static String sqlFileKandidatUpdateLobbypediaUrls = "etc/3nf/data/update-kandidat-lobbypedia.sql";
-
-    private final static String sqlFileKandidatUpdateSoundcloudUrls = "etc/3nf/data/update-kandidat-soundcloud.sql";
-
     private final static String sqlFileWohnortData = "etc/3nf/data/insert-data-wohnort.sql";
+
+    //private final static String sqlFileKandidatUpdateUrls = "etc/3nf/collect/update-kandidat-urls.sql";
+
+    private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/collect/update_foto_url_from_foto.sql";
+
+    private final static String sqlFileKandidatUpdateBundetagUrls = "etc/3nf/collect/update-kandidat-bundestag.sql";
+
+    private final static String sqlFileKandidatUpdateAbgeordnetenwatchUrls = "etc/3nf/collect/update-kandidat-abgeordnetenwatch.sql";
+
+    private final static String sqlFileKandidatUpdateLobbypediaUrls = "etc/3nf/collect/update-kandidat-lobbypedia.sql";
+
+    private final static String sqlFileKandidatUpdateSoundcloudUrls = "etc/3nf/collect/update-kandidat-soundcloud.sql";
+
+    private final static String sqlFileKandidatUpdateBundestag = "etc/3nf/collect/update-kandidat-bundestag.sql";
+
+    private final static String sqlFileKandidatUpdateFacebook = "etc/3nf/collect/update-kandidat-facebook.sql";
+
+    private final static String sqlFileKandidatUpdateFoto = "etc/3nf/collect/update-kandidat-foto.sql";
+
+    private final static String sqlFileKandidatUpdateTwitter = "etc/3nf/collect/update-kandidat-twitter.sql";
+
+    private final static String sqlFileKandidatUpdateWebseite = "etc/3nf/collect/update-kandidat-webseite.sql";
+
+    private final static String sqlFileKandidatUpdateWikipedia = "etc/3nf/collect/update-kandidat-wikipedia.sql";
+
+    private final static String sqlFileKandidatUpdateYoutube = "etc/3nf/collect/update-kandidat-youtube.sql";
+
 
     @Autowired
     private BerufService berufService;
@@ -227,22 +242,13 @@ public class KandidatenNormalizedTableBuilder {
 
     @Commit
     @Test
-    public void build010UpdateKandidatUrls() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateUrls));
-        while (br.ready()){
-            String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
-        }
-        br.close();
-    }
-
-    @Commit
-    @Test
     public void build011KandidatUpdateBundetagUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateBundetagUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
         }
         br.close();
     }
@@ -253,29 +259,126 @@ public class KandidatenNormalizedTableBuilder {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateAbgeordnetenwatchUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
         }
         br.close();
     }
 
     @Commit
     @Test
-    public void build014KandidatUpdateLobbypediaUrls() throws IOException {
+    public void build014UpdateKandidatBundestag() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateBundestag));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build015UpdateKandidatFacebook() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateFacebook));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build016UpdateKandidatFoto() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateFoto));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build017KandidatUpdateLobbypediaUrls() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateLobbypediaUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
         }
         br.close();
     }
 
     @Commit
     @Test
-    public void build015KandidatUpdateSoundcloudUrls() throws IOException {
+    public void build018UpdateKandidatSoundcloud() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateSoundcloudUrls));
         while (br.ready()){
             String sqlStatement = br.readLine();
-            jdbcService.executeSqlStatemen(sqlStatement);
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build019KandidatUpdateTwitter() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateTwitter));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build020UpdateKandidatWebseite() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateWebseite));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build021UpdateKandidatWikipedia() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateWikipedia));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
+        }
+        br.close();
+    }
+
+    @Commit
+    @Test
+    public void build022UpdateKandidatYouTube() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(sqlFileKandidatUpdateYoutube));
+        while (br.ready()){
+            String sqlStatement = br.readLine();
+            if(!sqlStatement.contains("NULL")){
+                jdbcService.executeSqlStatemen(sqlStatement);
+            }
         }
         br.close();
     }
