@@ -7,18 +7,24 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
+import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -86,8 +92,8 @@ public class KandidatController {
         }
     }
 
-    @RequestMapping("/edit/{id}")
-    public String editKandidatForId(
+    @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+    public String editKandidatForIdGet(
             @PathVariable("id") Kandidat kandidat, HttpSession session, Model model
     ) {
         if(kandidat == null){
@@ -113,6 +119,25 @@ public class KandidatController {
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/edit";
         }
+    }
+
+    @RequestMapping(value = "/edit/{id}",method = RequestMethod.POST)
+    public String editKandidatForIdPost(
+            @Valid @ModelAttribute("kandidat") Kandidat kandidat,
+            @PathVariable Long id,
+            BindingResult binding,
+            RedirectAttributes attr,
+            HttpSession session,
+            Model model
+    ) {
+        if (binding.hasErrors()) {
+            attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
+            attr.addFlashAttribute("kandidat", kandidat);
+        } else {
+            kandidat= kandidatService.update(kandidat);
+            session.setAttribute("kandidat", kandidat);
+        }
+        return "redirect:/kandidat/edit/"+id;
     }
 
     private final KandidatService kandidatService;

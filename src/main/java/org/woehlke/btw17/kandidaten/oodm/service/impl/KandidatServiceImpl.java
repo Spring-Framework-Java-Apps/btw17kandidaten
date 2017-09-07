@@ -195,4 +195,10 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.getMdbWithoutFotoUrl(pageable);
     }
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Kandidat update(Kandidat kandidat) {
+        return kandidatRepository.save(kandidat);
+    }
+
 }

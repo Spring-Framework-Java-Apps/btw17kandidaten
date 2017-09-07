@@ -82,4 +82,6 @@ public interface KandidatService {
 
     Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable);
 
+    Kandidat update(Kandidat kandidat);
+
 }

@@ -252,7 +252,72 @@
             </div>
             <div class="row" sec:authorize="isAuthenticated()">
                 <div class="col-md-12">
-                    <a th:href="@{|/kandidat/edit/${kandidat.id}|}" class="btn btn-primary form-control">Bearbeiten</a>
+                    <div class="well">
+                        <form action="#" th:action="@{|/kandidat/edit/${kandidat.id}|}" th:object="${kandidat}" method="post" class="form-horizontal">
+
+                            <div class="form-group">
+                                <label for="fotourl-input" class="col-sm-2 control-label">fotoUrl:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{fotoUrl}" type="text" name="fotourl" id="fotourl-input" class="form-control" placeholder="fotoUrl"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="twitter-input" class="col-sm-2 control-label">twitter:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="facebook-input" class="col-sm-2 control-label">facebook:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="soundcloud-input" class="col-sm-2 control-label">soundcloud:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="wikipedia-article-input" class="col-sm-2 control-label">wikipediaArticle:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{wikipediaArticle}" type="text" name="fotourl" id="wikipedia-article-input" class="form-control" placeholder="wikipediaArticle"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fotourl-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{abgeordnetenwatch}" type="text" name="fotourl" id="abgeordnetenwatcha-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lobbypedia-input" class="col-sm-2 control-label">lobbypediaUrl:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{lobbypediaUrl}" type="text" name="lobbypedia" id="lobbypedia-input" class="form-control" placeholder="lobbypedia"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-primary form-control">Bearbeiten</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <br/><br/>
                 </div>
             </div>
