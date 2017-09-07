@@ -177,8 +177,8 @@
                                     <span>ListeParteien der Landeslisten</span>
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
+                            <li sec:authorize="isAuthenticated()" role="separator" class="divider"></li>
+                            <li sec:authorize="isAuthenticated()">
                                 <a href="/adm" th:href="@{/adm}">
                                     <i class="fa fa-play-circle" aria-hidden="true"></i>
                                     <span>Reports</span>

@@ -58,7 +58,7 @@ public class KandidatController {
     }
 
     @RequestMapping("/{id}")
-    public String getUserForId(
+    public String getKandidatForId(
             @PathVariable("id") Kandidat kandidat, HttpSession session, Model model
     ) {
         if(kandidat == null){
@@ -83,6 +83,35 @@ public class KandidatController {
 
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/id";
+        }
+    }
+
+    @RequestMapping("/edit/{id}")
+    public String editKandidatForId(
+            @PathVariable("id") Kandidat kandidat, HttpSession session, Model model
+    ) {
+        if(kandidat == null){
+            throw new EntityNotFoundException();
+        } else {
+            String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
+            String pageSubTitle = kandidatenProperties.getPageSubTitle();
+            if (kandidat.getPartei() != null){
+                pageSubTitle = kandidat.getPartei().getName();
+            }
+            String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
+            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+            String pagerUrl = "/kandidat/"+kandidat.getId();
+            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            boolean showDebugInfos = false;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+            model.addAttribute("pageContent",pageContent);
+
+            model.addAttribute("kandidat",kandidat);
+
+            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+            return "kandidat/edit";
         }
     }
 

@@ -256,25 +256,6 @@
                     <br/><br/>
                 </div>
             </div>
-            <div class="row" th:if="${kandidat.wohnort}">
-                <div class="col-md-12">
-                    <div class="well" th:if="${kandidat.wohnort.googleMapsUrl}">
-                        <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
-                        <hr/>
-                        <div id="map-wohnort"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" th:if="${kandidat.lat}">
-                <div class="col-md-12">
-                    <div class="well">
-                        <h3 th:if="${kandidat.geburtsort != null}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
-                        <h3 th:if="${kandidat.geburtsort == null}">Geburtsort</h3>
-                        <hr/>
-                        <div id="map-geburtsort"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </main>
@@ -282,51 +263,7 @@
 <section th:include="layoutMain :: tw-history-back-section" >
 </section>
 
-<footer th:fragment="tw-footer">
-
-    <script th:inline="text">
-        function initMap() {
-            var wohnort = {lat: [[${kandidat.wohnort.geoLattitude}]], lng: [[${kandidat.wohnort.geoLongitude}]]};
-            var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
-                zoom: 8,
-                center: wohnort
-            });
-            var markerwohnort = new google.maps.Marker({
-                position: wohnort,
-                map: mapwohnort
-            });
-
-            var kandidat = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
-            var mapgeburtsort = new google.maps.Map(document.getElementById('map-geburtsort'), {
-                zoom: 8,
-                center: kandidat
-            });
-            var markergeburtsort = new google.maps.Marker({
-                position: kandidat,
-                map: mapgeburtsort
-            });
-        }
-    </script>
-    <script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${pageContent.googleMapsApiKey}|}" ></script>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="webjars/jquery/1.11.1/jquery.min.js" th:attr="src=@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js" th:attr="src=@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-    <!-- Map Icons -->
-    <script src="map-icons/js/map-icons.min.js" th:attr="src=@{/map-icons/js/map-icons.min.js}"></script>
-    <!-- my own JavaScript -->
-    <script src="js/my.js" th:attr="src=@{/js/my.js}"></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-17174370-11', 'auto');
-        ga('send', 'pageview');
-
-    </script>
+<footer th:include="layoutMain :: footer" >
 </footer>
 </body>
 </html>
