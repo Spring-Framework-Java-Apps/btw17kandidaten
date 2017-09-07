@@ -212,7 +212,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-johann-
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-joachim-pfeiffer-geboren-1967-in-mutlangen';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-jens-spahn-geboren-1980-in-ahaus';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-jens-koeppen-geboren-1962-in-zeitz';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-jeannine-pflugradt-geboren-1973-in-neustrelitz';
+UPDATE kandidat SET bundestag_abgeordnete='http://www.bundestag.de/abgeordnete18/biografien/P/pflugradt_jeannine/258860' WHERE  kandidat_key='frau-jeannine-pflugradt-geboren-1973-in-neustrelitz';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-jana-schimke-geboren-1979-in-cottbus';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-jan-metzler-geboren-1981-in-worms';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-jan-korte-geboren-1977-in-osnabrck';
@@ -295,7 +295,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-mart
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-martin-ptzold-geboren-1984-in-moskaurussland';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-mariafranziska-flachsbarth-geboren-1963-in-lnen';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-von-konstantin-vonnotz-geboren-1971-in-mlln';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-kirsten-tackmann-geboren-1960-in-schmalkalden';
+UPDATE kandidat SET bundestag_abgeordnete='http://www.bundestag.de/abgeordnete18/biografien/T/tackmann_kirsten/259108' WHERE  kandidat_key='frau-dr-kirsten-tackmann-geboren-1960-in-schmalkalden';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-katarina-barley-geboren-1968-in-kln';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-profhcdr-karl-lamers-geboren-1951-in-duisburghamborn';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-karlheinz-brunner-geboren-1953-in-mnchen';
@@ -318,7 +318,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-doro
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-dietmargerhard-bartsch-geboren-1958-in-stralsund';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-jrgdietherwilhelm-dehmdesoi-geboren-1950-in-frankfurtammain';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-de-daniela-deridder-geboren-1962-in-kiel';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-claudiamaria-lckingmichel-geboren-1962-in-dortmund';
+UPDATE kandidat SET bundestag_abgeordnete='http://www.bundestag.de/abgeordnete18/biografien/L/luecking_michel_claudia/259390' WHERE  kandidat_key='frau-dr-claudiamaria-lckingmichel-geboren-1962-in-dortmund';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-carola-reimann-geboren-1967-in-goch';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-birgit-malechanissen-geboren-1958-in-essen';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-brbel-kofler-geboren-1967-in-freilassing';
@@ -330,7 +330,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-andr
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dr-alexander-neu-geboren-1969-in-harmoniejetzteitorf';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dorothee-br-geboren-1978-in-bamberg';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-doris-wagner-geboren-1963-in-bremen';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-doris-barnett-geboren-1953-in-ludwigshafenamrhein';
+UPDATE kandidat SET bundestag_abgeordnete='http://www.bundestag.de/abgeordnete18/biografien/B/barnett_doris/258186' WHERE  kandidat_key='frau-doris-barnett-geboren-1953-in-ludwigshafenamrhein';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dirk-wiese-geboren-1983-in-paderborn';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dirk-vpel-geboren-1971-in-oberhausen';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-dirk-heidenblut-geboren-1961-in-essen';
@@ -386,7 +386,7 @@ UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-bernhar
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-berndhelmut-westphal-geboren-1960-in-hildesheim';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-bernd-siebert-geboren-1949-in-gudensberg';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='herr-bernd-rtzel-geboren-1968-in-gemndenamain';
-UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
+UPDATE kandidat SET bundestag_abgeordnete='http://www.bundestag.de/abgeordnete18/biografien/W/walter_rosenheimer__beate/259184' WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-beate-mllergemmeke-geboren-1960-in-frankfurtammain';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-brbel-bas-geboren-1968-in-walsumjetztduisburg';
 UPDATE kandidat SET bundestag_abgeordnete=NULL WHERE  kandidat_key='frau-dr-barbara-hendricks-geboren-1952-in-kleve';

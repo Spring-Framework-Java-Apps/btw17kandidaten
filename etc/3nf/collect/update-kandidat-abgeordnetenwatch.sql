@@ -143,7 +143,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-barbara-pfe
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-beate-hrigdickersbach-geboren-1957-in-gerolstein';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-beatejulitta-lange-geboren-1958-in-danzig';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-beate-oertel-geboren-1957-in-ratingen';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/beate-walter-rosenheimer' WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-bela-bach-geboren-1990-in-magdeburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-benjamin-krohn-geboren-1979-in-zittau';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-benno-prtner-geboren-1952-in-elz';
@@ -380,7 +380,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dominic-len
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dominik-eichbaum-geboren-1978-in-marburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dominik-strmer-geboren-1989-in-aalen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-doris-aschenbrenner-geboren-1985-in-coburg';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-doris-barnett-geboren-1953-in-ludwigshafenamrhein';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/doris-barnett' WHERE  kandidat_key='frau-doris-barnett-geboren-1953-in-ludwigshafenamrhein';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-doris-kamke-geboren-1968-in-ratzeburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-von-doritemmybeate-vonpentz-geboren-1950-in-berlin';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-alice-weidel-geboren-1979-in-gtersloh';
@@ -398,7 +398,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-anton-ho
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-bernd-baumann-geboren-1958-in-wanneeickel';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-bernd-buchholz-geboren-1961-in-berlin';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-bettina-hoffmann-geboren-1960-in-heimboldshausen';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-claudiamaria-lckingmichel-geboren-1962-in-dortmund';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/dr-claudia-lucking-michel' WHERE  kandidat_key='frau-dr-claudiamaria-lckingmichel-geboren-1962-in-dortmund';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-dieter-neuendorf-geboren-1953-in-prenzlau';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-edzardaurelius-schmidtjortzig-geboren-1969-in-lneburg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-ernstalbert-herbert-geboren-1952-in-gerolzhofen';
@@ -434,7 +434,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-jrgen-ri
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-karin-thissen-geboren-1960-in-neuss';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-karlheinz-brunner-geboren-1953-in-mnchen';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-kirsten-kappertgonther-geboren-1966-in-marburg';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-dr-kirsten-tackmann-geboren-1960-in-schmalkalden';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/dr-kirsten-tackmann' WHERE  kandidat_key='frau-dr-kirsten-tackmann-geboren-1960-in-schmalkalden';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-klaus-schrader-geboren-1955-in-hof';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-kristian-reinhold-geboren-1958-in-dresden';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-dr-lothar-ackermann-geboren-1953-in-niederlahnstein';
@@ -812,7 +812,7 @@ UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-jana-sasse-
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-janis-wiskandt-geboren-1994-in-pforzheim';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-jasminmargot-laub-geboren-1976-in-amberg';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-jeannette-auricht-geboren-1970-in-berlin';
-UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='frau-jeannine-pflugradt-geboren-1973-in-neustrelitz';
+UPDATE kandidat SET abgeordnetenwatch='https://www.abgeordnetenwatch.de/profile/jeannine-pflugradt' WHERE  kandidat_key='frau-jeannine-pflugradt-geboren-1973-in-neustrelitz';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-jens-baur-geboren-1979-in-dresden';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-jenseberhard-jahn-geboren-1967-in-berlin';
 UPDATE kandidat SET abgeordnetenwatch=NULL WHERE  kandidat_key='herr-jan-pauls-geboren-1984-in-aachen';

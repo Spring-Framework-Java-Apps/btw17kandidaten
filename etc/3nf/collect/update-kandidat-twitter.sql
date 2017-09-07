@@ -143,7 +143,7 @@ UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-barbara-pfeuffer-gebo
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-beate-hrigdickersbach-geboren-1957-in-gerolstein';
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-beatejulitta-lange-geboren-1958-in-danzig';
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-beate-oertel-geboren-1957-in-ratingen';
-UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
+UPDATE kandidat SET twitter='https://twitter.com/BeateWaRo' WHERE  kandidat_key='frau-beate-walterrosenheimer-geboren-1964-in-weienburgibay';
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='frau-bela-bach-geboren-1990-in-magdeburg';
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='herr-benjamin-krohn-geboren-1979-in-zittau';
 UPDATE kandidat SET twitter=NULL WHERE  kandidat_key='herr-benno-prtner-geboren-1952-in-elz';
