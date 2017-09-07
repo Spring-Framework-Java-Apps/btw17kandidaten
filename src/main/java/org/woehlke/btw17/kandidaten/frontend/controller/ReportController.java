@@ -106,6 +106,35 @@ public class ReportController {
         return "report/mdb/bundestag";
     }
 
+    @RequestMapping("/mdb/foto")
+    public String getMdbWithoutFotoUrl(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ){
+        String pageTitle = "MdB ohne Foto";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/mdb/foto";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        boolean showDebugInfos = true;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator, showDebugInfos);
+        model.addAttribute("pageContent",pageContent);
+
+        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutFotoUrl(pageable);
+        model.addAttribute("kandidaten", allKandidatenPage);
+
+        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+        return "report/mdb/foto";
+    }
+
     @RequestMapping("/mdb/facebook")
     public String getMdbWithoutFacebook(
             @PageableDefault(

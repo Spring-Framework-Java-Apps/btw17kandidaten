@@ -80,4 +80,6 @@ public interface KandidatService {
 
     Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable);
 
+    Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable);
+
 }

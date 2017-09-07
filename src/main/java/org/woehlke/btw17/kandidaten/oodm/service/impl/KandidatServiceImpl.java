@@ -190,4 +190,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.getKandidatWithoutAbgeordnetenwatch(pageable);
     }
 
+    @Override
+    public Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable) {
+        return kandidatRepository.getMdbWithoutFotoUrl(pageable);
+    }
+
 }
