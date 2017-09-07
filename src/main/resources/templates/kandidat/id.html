@@ -41,6 +41,10 @@
                                 </th>
                                 <th>&nbsp;</th>
                             </tr>
+                            <tr sec:authorize="isAuthenticated()">
+                                <td>&nbsp;</td>
+                                <td colspan="2"><span th:text="${kandidat.key}">key</span></td>
+                            </tr>
                             <tr>
                                 <td><i class="fa fa-id-card" aria-hidden="true"></i> Jahrgang</td>
                                 <td>
