@@ -16,3 +16,6 @@ buildNumber.properties
 
 test.log.txt
 test.log.txt*
+
+export-kandidat.log.txt
+export-kandidat.log.txt*
