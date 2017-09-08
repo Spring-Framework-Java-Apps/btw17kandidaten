@@ -280,6 +280,13 @@
                             <input type="hidden" th:field="*{logoUrl}" />
 
                             <div class="form-group">
+                                <label for="abgeordnetenwatch-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{abgeordnetenwatch}" type="text" name="fotourl" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="fotourl-input" class="col-sm-2 control-label">fotoUrl:</label>
                                 <div class="col-sm-10">
                                     <input th:field="*{fotoUrl}" type="text" name="fotourl" id="fotourl-input" class="form-control" placeholder="fotoUrl"/>
@@ -287,30 +294,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
+                                <label for="bundestag-abgeordnete-input" class="col-sm-2 control-label">bundestagAbgeordnete:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="twitter-input" class="col-sm-2 control-label">twitter:</label>
-                                <div class="col-sm-10">
-                                    <input th:field="*{twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="facebook-input" class="col-sm-2 control-label">facebook:</label>
-                                <div class="col-sm-10">
-                                    <input th:field="*{facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="soundcloud-input" class="col-sm-2 control-label">soundcloud:</label>
-                                <div class="col-sm-10">
-                                    <input th:field="*{soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud"/>
+                                    <input th:field="*{bundestagAbgeordnete}" type="text" name="fotourl" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete"/>
                                 </div>
                             </div>
 
@@ -322,16 +308,37 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="abgeordnetenwatch-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
+                                <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{abgeordnetenwatch}" type="text" name="fotourl" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                    <input th:field="*{webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite"/>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="bundestag-abgeordnete-input" class="col-sm-2 control-label">bundestagAbgeordnete:</label>
+                                <label for="facebook-input" class="col-sm-2 control-label">facebook:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{bundestagAbgeordnete}" type="text" name="fotourl" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete"/>
+                                    <input th:field="*{facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="twitter-input" class="col-sm-2 control-label">twitter:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="youtube-input" class="col-sm-2 control-label">youtube:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{youtube}" type="text" name="youtube" id="youtube-input" class="form-control" placeholder="youtube"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="soundcloud-input" class="col-sm-2 control-label">soundcloud:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud"/>
                                 </div>
                             </div>
 

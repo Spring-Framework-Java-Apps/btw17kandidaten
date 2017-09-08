@@ -184,6 +184,18 @@
                                     <span>Reports</span>
                                 </a>
                             </li>
+                            <li sec:authorize="isAuthenticated()">
+                                <a href="/report/mdb/foto" th:href="@{/report/mdb/foto}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>MdB ohne Foto</span>
+                                </a>
+                            </li>
+                            <li sec:authorize="isAuthenticated()">
+                                <a href="/report/kandidat/foto" th:href="@{/report/kandidat/foto}">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    <span>Kandidaten ohne Foto</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
