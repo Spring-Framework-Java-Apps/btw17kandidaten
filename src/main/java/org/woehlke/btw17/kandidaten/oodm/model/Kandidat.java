@@ -254,6 +254,14 @@ public class Kandidat implements Serializable {
     private String lobbypediaUrl;
 
     @URL
+    @Column(name = "google_plus")
+    private String googlePlus;
+
+    @URL
+    @Column(name = "instagram")
+    private String instagram;
+
+    @URL
     @Column(name = "google_maps_url")
     private String googleMapsUrl;
 
@@ -264,6 +272,7 @@ public class Kandidat implements Serializable {
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -597,6 +606,22 @@ public class Kandidat implements Serializable {
         this.soundcloud = soundcloud;
     }
 
+    public String getGooglePlus() {
+        return googlePlus;
+    }
+
+    public void setGooglePlus(String googlePlus) {
+        this.googlePlus = googlePlus;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -651,56 +676,12 @@ public class Kandidat implements Serializable {
             return false;
         if (lobbypediaUrl != null ? !lobbypediaUrl.equals(kandidat.lobbypediaUrl) : kandidat.lobbypediaUrl != null)
             return false;
+        if (googlePlus != null ? !googlePlus.equals(kandidat.googlePlus) : kandidat.googlePlus != null) return false;
+        if (instagram != null ? !instagram.equals(kandidat.instagram) : kandidat.instagram != null) return false;
         if (googleMapsUrl != null ? !googleMapsUrl.equals(kandidat.googleMapsUrl) : kandidat.googleMapsUrl != null)
             return false;
         if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (key != null ? key.hashCode() : 0);
-        result = 31 * result + (remoteKey != null ? remoteKey.hashCode() : 0);
-        result = 31 * result + (titel != null ? titel.hashCode() : 0);
-        result = 31 * result + (namenszusatz != null ? namenszusatz.hashCode() : 0);
-        result = 31 * result + (nachnameOhne != null ? nachnameOhne.hashCode() : 0);
-        result = 31 * result + (nachname != null ? nachname.hashCode() : 0);
-        result = 31 * result + (vorname != null ? vorname.hashCode() : 0);
-        result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
-        result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
-        result = 31 * result + (alter != null ? alter.hashCode() : 0);
-        result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
-        result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
-        result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
-        result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
-        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
-        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
-        result = 31 * result + (partei != null ? partei.hashCode() : 0);
-        result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
-        result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
-        result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
-        result = 31 * result + (lat != null ? lat.hashCode() : 0);
-        result = 31 * result + (lng != null ? lng.hashCode() : 0);
-        result = 31 * result + (idEigen != null ? idEigen.hashCode() : 0);
-        result = 31 * result + (foto != null ? foto.hashCode() : 0);
-        result = 31 * result + (fotoUrl != null ? fotoUrl.hashCode() : 0);
-        result = 31 * result + (scatterX != null ? scatterX.hashCode() : 0);
-        result = 31 * result + (scatterY != null ? scatterY.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
-        result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
-        result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
-        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
-        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
-        result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
-        return result;
     }
 
     @Override
@@ -744,10 +725,60 @@ public class Kandidat implements Serializable {
                 ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
                 ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
                 ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
+                ", googlePlus='" + googlePlus + '\'' +
+                ", instagram='" + instagram + '\'' +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (key != null ? key.hashCode() : 0);
+        result = 31 * result + (remoteKey != null ? remoteKey.hashCode() : 0);
+        result = 31 * result + (titel != null ? titel.hashCode() : 0);
+        result = 31 * result + (namenszusatz != null ? namenszusatz.hashCode() : 0);
+        result = 31 * result + (nachnameOhne != null ? nachnameOhne.hashCode() : 0);
+        result = 31 * result + (nachname != null ? nachname.hashCode() : 0);
+        result = 31 * result + (vorname != null ? vorname.hashCode() : 0);
+        result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
+        result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
+        result = 31 * result + (alter != null ? alter.hashCode() : 0);
+        result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
+        result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
+        result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
+        result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
+        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
+        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
+        result = 31 * result + (partei != null ? partei.hashCode() : 0);
+        result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
+        result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
+        result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
+        result = 31 * result + (lat != null ? lat.hashCode() : 0);
+        result = 31 * result + (lng != null ? lng.hashCode() : 0);
+        result = 31 * result + (idEigen != null ? idEigen.hashCode() : 0);
+        result = 31 * result + (foto != null ? foto.hashCode() : 0);
+        result = 31 * result + (fotoUrl != null ? fotoUrl.hashCode() : 0);
+        result = 31 * result + (scatterX != null ? scatterX.hashCode() : 0);
+        result = 31 * result + (scatterY != null ? scatterY.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
+        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
+        result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
+        result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
+        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
+        result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
+        result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
+        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
+        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
+        return result;
     }
 
     public String getSqlInsert(long id){
@@ -761,7 +792,7 @@ public class Kandidat implements Serializable {
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
-            "soundcloud"
+            "soundcloud", "google_plus", "instagram"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -772,7 +803,7 @@ public class Kandidat implements Serializable {
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
-            soundcloud
+            soundcloud, googlePlus, instagram
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");
