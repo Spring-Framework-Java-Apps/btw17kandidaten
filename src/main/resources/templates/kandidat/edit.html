@@ -8,6 +8,7 @@
 <script th:include="layoutMain :: tw-seo-fb"></script>
 <header th:include="layoutMain :: tw-header"></header>
 
+
 <main class="page-content">
     <div class="tw-page-content tw-page-content-kandidat-profile tw-kandidat-profile">
         <div class="container">
@@ -253,7 +254,30 @@
             <div class="row" sec:authorize="isAuthenticated()">
                 <div class="col-md-12">
                     <div class="well">
+
                         <form action="#" th:action="@{|/kandidat/edit/${kandidat.id}|}" th:object="${kandidat}" method="post" class="form-horizontal">
+
+                            <input type="hidden" th:field="*{key}" />
+                            <input type="hidden" th:field="*{remoteKey}" />
+                            <input type="hidden" th:field="*{titel}" />
+                            <input type="hidden" th:field="*{namenszusatz}" />
+                            <input type="hidden" th:field="*{nachnameOhne}" />
+                            <input type="hidden" th:field="*{nachname}" />
+                            <input type="hidden" th:field="*{vorname}" />
+                            <input type="hidden" th:field="*{geschlecht}" />
+                            <input type="hidden" th:field="*{geburtsjahr}" />
+                            <input type="hidden" th:field="*{alter}" />
+                            <input type="hidden" th:field="*{listePlatz}" />
+                            <input type="hidden" th:field="*{mdb}" />
+                            <input type="hidden" th:field="*{lat}" />
+                            <input type="hidden" th:field="*{lng}" />
+                            <input type="hidden" th:field="*{idEigen}" />
+                            <input type="hidden" th:field="*{foto}" />
+                            <input type="hidden" th:field="*{scatterX}" />
+                            <input type="hidden" th:field="*{scatterY}" />
+                            <input type="hidden" th:field="*{color}" />
+                            <input type="hidden" th:field="*{googleMapsUrl}" />
+                            <input type="hidden" th:field="*{logoUrl}" />
 
                             <div class="form-group">
                                 <label for="fotourl-input" class="col-sm-2 control-label">fotoUrl:</label>
@@ -298,9 +322,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="fotourl-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
+                                <label for="abgeordnetenwatch-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{abgeordnetenwatch}" type="text" name="fotourl" id="abgeordnetenwatcha-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                    <input th:field="*{abgeordnetenwatch}" type="text" name="fotourl" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bundestag-abgeordnete-input" class="col-sm-2 control-label">bundestagAbgeordnete:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{bundestagAbgeordnete}" type="text" name="fotourl" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete"/>
                                 </div>
                             </div>
 
@@ -316,6 +347,7 @@
                                     <button class="btn btn-primary form-control">Bearbeiten</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                     <br/><br/>
