@@ -85,7 +85,7 @@ echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resour
 echo '-- Table: kandidat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-cat ./3nf/data/insert-data-kandidat.sql >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-kandidat.sql | grep -v "SET " >> ../src/main/resources/data.sql
 
 
 
