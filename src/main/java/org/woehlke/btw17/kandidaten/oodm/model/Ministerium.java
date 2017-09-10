@@ -69,7 +69,7 @@ public class Ministerium implements KandidatDimension {
     private String wikipediaArticle;
 
     @URL
-    @Column(name="bundestag_abgeordnete")
+    @Column(name="bundestag")
     private String bundestagAbgeordnete;
 
     @URL
