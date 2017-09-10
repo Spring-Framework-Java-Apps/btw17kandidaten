@@ -72,8 +72,8 @@ public class MinisteriumController {
         if(ministerium == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = ministerium.getName();
-            String pageSubTitle = kandidatenProperties.getPageSubTitle();
+            String pageTitle = ministerium.getMinisterium();
+            String pageSubTitle = ministerium.getMinisteriumLang();
             String pageSymbol = PageSymbol.MINISTERIUM.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

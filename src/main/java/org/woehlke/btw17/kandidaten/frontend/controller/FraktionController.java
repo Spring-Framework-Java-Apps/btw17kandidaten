@@ -73,7 +73,7 @@ public class FraktionController {
         if(fraktion == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = fraktion.getName();
+            String pageTitle = fraktion.getFraktion();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();
             String pageSymbol = PageSymbol.FRAKTION.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
