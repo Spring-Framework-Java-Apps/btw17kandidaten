@@ -43,7 +43,7 @@ public class MinisteriumController {
     ) {
         String pageTitle = "Parteien";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.PARTEI.getSymbolHtml();
+        String pageSymbol = PageSymbol.MINISTERIUM.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/ministerium/all";
@@ -74,7 +74,7 @@ public class MinisteriumController {
         } else {
             String pageTitle = ministerium.getName();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();
-            String pageSymbol = PageSymbol.PARTEI.getSymbolHtml();
+            String pageSymbol = PageSymbol.MINISTERIUM.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/ministerium/"+ministerium.getId();

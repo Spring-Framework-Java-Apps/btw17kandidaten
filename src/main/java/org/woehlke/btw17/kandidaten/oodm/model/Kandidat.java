@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -34,12 +36,13 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url"),
         @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_kandidat_instagram_url", columnList = "instagram"),
+        @Index(name = "idx_kandidat_funktion", columnList = "funktion"),
     }
 )
 @NamedQueries({
     @NamedQuery(
         name = "Kandidat.findByMdB",
-        query = "select o from Kandidat as o where o.mdb is not null and o.mdb='1'"
+        query = "select o from Kandidat as o where o.mdb is not null and o.mdb='1' order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByGeburtsjahrAll",
@@ -47,11 +50,11 @@ import java.io.Serializable;
     ),
     @NamedQuery(
         name = "Kandidat.findByListePartei",
-        query = "select o from Kandidat as o where o.landesListe.listePartei=:listePartei"
+        query = "select o from Kandidat as o where o.landesListe.listePartei=:listePartei order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByKandidatFlatId",
-        query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId"
+        query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.getAll",
@@ -119,7 +122,7 @@ import java.io.Serializable;
     ),
     @NamedQuery(
         name = "Kandidat.findByMinisterium",
-        query = "select o from Kandidat as o where o.ministerium=:ministerium order by o.ministerium"
+        query = "select o from Kandidat as o where o.ministerium=:ministerium order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByMinisteriumCount",
@@ -127,11 +130,19 @@ import java.io.Serializable;
     ),
     @NamedQuery(
         name = "Kandidat.findByFraktion",
-        query = "select o from Kandidat as o where o.fraktion=:fraktion order by o.fraktion"
+        query = "select o from Kandidat as o where o.fraktion=:fraktion order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByFraktionCount",
         query = "select count(o) from Kandidat as o where o.fraktion=:fraktion"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByAusschuss",
+        query = "select o from Kandidat as o where o.ausschuss=:ausschuss order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByAusschussCount",
+        query = "select count(o) from Kandidat as o where o.ausschuss=:ausschuss"
     )
 })
 public class Kandidat implements Serializable {
@@ -171,6 +182,9 @@ public class Kandidat implements Serializable {
 
     @Column
     private Integer alter;
+
+    @Column
+    private String funktion;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = true, updatable = false)
@@ -214,6 +228,10 @@ public class Kandidat implements Serializable {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},optional = true)
     @JoinColumn(name = "fk_ministerium", nullable = true, updatable = false)
     private Ministerium ministerium;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_ministerium", nullable = true, updatable = false)
+    private Set<Ausschuss> ausschuss = new HashSet<>();
 
     @Column
     private String mdb;
@@ -664,6 +682,14 @@ public class Kandidat implements Serializable {
         this.ministerium = ministerium;
     }
 
+    public String getFunktion() {
+        return funktion;
+    }
+
+    public void setFunktion(String funktion) {
+        this.funktion = funktion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -685,6 +711,7 @@ public class Kandidat implements Serializable {
         if (geburtsjahr != null ? !geburtsjahr.equals(kandidat.geburtsjahr) : kandidat.geburtsjahr != null)
             return false;
         if (alter != null ? !alter.equals(kandidat.alter) : kandidat.alter != null) return false;
+        if (funktion != null ? !funktion.equals(kandidat.funktion) : kandidat.funktion != null) return false;
         if (wohnort != null ? !wohnort.equals(kandidat.wohnort) : kandidat.wohnort != null) return false;
         if (geburtsort != null ? !geburtsort.equals(kandidat.geburtsort) : kandidat.geburtsort != null) return false;
         if (beruf != null ? !beruf.equals(kandidat.beruf) : kandidat.beruf != null) return false;
@@ -742,6 +769,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
         result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
         result = 31 * result + (alter != null ? alter.hashCode() : 0);
+        result = 31 * result + (funktion != null ? funktion.hashCode() : 0);
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
@@ -793,6 +821,7 @@ public class Kandidat implements Serializable {
                 ", geschlecht='" + geschlecht + '\'' +
                 ", geburtsjahr=" + geburtsjahr +
                 ", alter=" + alter +
+                ", funktion='" + funktion + '\'' +
                 ", wohnort=" + wohnort +
                 ", geburtsort=" + geburtsort +
                 ", beruf=" + beruf +
@@ -841,7 +870,7 @@ public class Kandidat implements Serializable {
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
-            "soundcloud", "google_plus", "instagram", "fraktion", "ministerium"
+            "soundcloud", "google_plus", "instagram", "fraktion", "ministerium", "funktion"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -852,7 +881,7 @@ public class Kandidat implements Serializable {
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
-            soundcloud, googlePlus, instagram, fraktion, ministerium
+            soundcloud, googlePlus, instagram, fraktion, ministerium, funktion
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");

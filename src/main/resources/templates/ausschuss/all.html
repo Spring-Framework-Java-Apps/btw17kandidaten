@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head  th:include="layoutMain :: tw-head">
+</head>
+<body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<script th:include="layoutMain :: tw-seo-fb"></script>
+<header th:include="layoutMain :: tw-header"></header>
+
+<main class="page-content">
+    <div class="tw-page-content tw-page-content-parteien">
+        <div class="container">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                <span  class="tw-pager-arrow tw-pager-up" th:if="${ausschuesse.hasPrevious()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${ausschuesse.previousPageable().pageNumber}|}">
+                        <span>
+                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <table class="table table-striped">
+                                <thead th:fragment="tw-data-view-thead">
+                                <tr>
+                                    <th class="tw-debug">ID</th>
+                                    <th>Fraktion</th>
+                                    <th>
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="ausschuss : ${ausschuesse}">
+                                    <td class="tw-debug">
+                                <span th:fragment="tw-data-view-id">
+                                    <span class="tw-vector">
+                                        <a href="" th:href="@{|/ausschuss/${ausschuss.id}/|}">
+                                        <i class="fa fa-empire" aria-hidden="true"></i>
+                                        <span th:text="${ausschuss.id}">id</span>
+                                        </a>
+                                    </span>
+                                </span>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/ausschuss/${ausschuss.id}/|}">
+                                            <span th:if="${ausschuss.ausschuss}" th:text="${ausschuss.ausschuss}">ausschuss</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.webseite}" th:href="${ausschuss.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.twitter}" th:href="${ausschuss.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.facebook}" th:href="${ausschuss.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.youtube}" th:href="${ausschuss.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.wikipediaArticle}" th:href="${ausschuss.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                <span class="tw-pager-arrow tw-pager-down" th:if="${ausschuesse.hasNext()}">
+                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${ausschuesse.nextPageable().pageNumber}|}" >
+                        <span>
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section th:include="layoutMain :: tw-history-back-section" >
+</section>
+
+<footer th:include="layoutMain :: footer" >
+</footer>
+</body>
+</html>

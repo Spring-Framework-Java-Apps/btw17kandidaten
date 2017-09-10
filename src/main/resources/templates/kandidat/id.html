@@ -124,6 +124,14 @@
                                     </a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><i class="fa fa-map-marker" aria-hidden="true"></i> Wahlkreis</td>
+                                <td colspan="2">
+                                    <a th:href="@{|/wahlkreis/${kandidat.wahlkreis.id}/|}">
+                                        <span th:text="${kandidat.wahlkreis.name}">wahlkreis</span>
+                                    </a>
+                                </td>
+                            </tr>
                             <tr th:if="${kandidat.beruf != null}">
                                 <td><i class="fa fa-cubes" aria-hidden="true"></i> Beruf</td>
                                 <td>

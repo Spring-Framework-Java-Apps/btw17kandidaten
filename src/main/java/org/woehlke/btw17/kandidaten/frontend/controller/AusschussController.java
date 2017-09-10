@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +15,10 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
+import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -27,8 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEF
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
-@RequestMapping("/fraktion")
-public class FraktionController {
+@RequestMapping("/ausschuss")
+public class AusschussController {
 
 
 
@@ -37,28 +39,28 @@ public class FraktionController {
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "fraktion"
+                    sort = "ausschuss"
             ) Pageable pageable,
             HttpSession session,
             Model model
     ) {
-        String pageTitle = "Fraktionen";
+        String pageTitle = "Ausschüsse";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.FRAKTION.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-        String pagerUrl = "/fraktion/all";
+        String pagerUrl = "/ausschuss/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
 
-        Page<Fraktion> pageAllFraktion =  fraktionService.getAll(pageable);
-        model.addAttribute("fraktionen", pageAllFraktion);
+        Page<Ausschuss> pageAllAusschuss =  ausschussService.getAll(pageable);
+        model.addAttribute("ausschuesse", pageAllAusschuss);
 
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-        return "fraktion/all";
+        return "ausschuss/all";
     }
 
     @RequestMapping("/{id}")
@@ -68,33 +70,33 @@ public class FraktionController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Fraktion fraktion, HttpSession session, Model model
+            @PathVariable("id") Ausschuss ausschuss, HttpSession session, Model model
     ) {
-        if(fraktion == null){
+        if(ausschuss == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = fraktion.getName();
+            String pageTitle = ausschuss.getName();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();
             String pageSymbol = PageSymbol.FRAKTION.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/fraktion/"+fraktion.getId();
+            String pagerUrl = "/ausschuss/"+ausschuss.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("fraktion",fraktion);
+            model.addAttribute("ausschuss",ausschuss);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByFraktion(fraktion,pageable);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
-            return "fraktion/id";
+            return "ausschuss/id";
         }
     }
 
-    private final FraktionService fraktionService;
+    private final AusschussService ausschussService;
 
     private final KandidatService kandidatService;
 
@@ -104,8 +106,8 @@ public class FraktionController {
 
 
     @Autowired
-    public FraktionController(FraktionService fraktionService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
-        this.fraktionService = fraktionService;
+    public AusschussController(AusschussService ausschussService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+        this.ausschussService = ausschussService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
         this.sessionHandler = sessionHandler;
