@@ -1,2 +1,5 @@
-INSERT INTO ministerium (id, ministerium, ministerium_lang) VALUES (1,'ASDF','fdsfsdgth');
-INSERT INTO ministerium (id, ministerium, ministerium_lang) VALUES (2,'HIJK','trewgzrthfgf');
+--
+-- https://www.bundesregierung.de/Webs/Breg/DE/Bundesregierung/Bundesministerien/bundesministerien.html
+--
+INSERT INTO ministerium (id, ministerium, ministerium_lang, webseite, twitter, facebook, youtube, soundcloud, wikipedia_article, bundestag, abgeordnetenwatch, lobbypedia_url, google_plus, instagram, google_maps_url, geo_longitude, geo_lattitude, geo_zoom) VALUES (1,'BMI','Bundesministerium des Innern','http://www.bmi.bund.de/','https://twitter.com/BMI_Bund',NULL,'https://www.youtube.com/channel/UCEj9_d1bBphisn1KSv96TZA',NULL,'https://de.wikipedia.org/wiki/Bundesministerium_des_Innern',NULL,NULL,NULL,NULL,NULL,NULL ,NULL, NULL ,NULL);
+INSERT INTO ministerium (id, ministerium, ministerium_lang, webseite, twitter, facebook, youtube, soundcloud, wikipedia_article, bundestag, abgeordnetenwatch, lobbypedia_url, google_plus, instagram, google_maps_url, geo_longitude, geo_lattitude, geo_zoom) VALUES (2,'BMWI','Bundesministerium für Wirtschaft und Energie','http://www.bmwi.de/','https://twitter.com/BMWi_Bund/','https://www.facebook.com/bundeswirtschaftsministerium','https://www.youtube.com/user/wirtschaftspolitik','https://soundcloud.com/bmwi_bund','https://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Wirtschaft_und_Energie',NULL,NULL,NULL,'https://plus.google.com/+bundeswirtschaftsministerium',NULL,NULL,NULL, NULL ,NULL);
