@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
 
 import javax.persistence.*;
 

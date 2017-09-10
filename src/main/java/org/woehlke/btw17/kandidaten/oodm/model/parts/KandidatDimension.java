@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.model;
+package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import java.io.Serializable;
 
