@@ -1,8 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Table(
@@ -30,17 +32,13 @@ public class Wahlkreis implements KandidatDimension {
     @Column(name="wahlkreis_name")
     private String wahlkreisName;
 
-    @URL
-    @Column
-    private String webseite;
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @URL
-    @Column(name = "wikipedia_article")
-    private String wikipediaArticle;
-
-    @URL
-    @Column(name = "google_maps_url")
-    private String googleMapsUrl;
+    @Valid
+    @Embedded
+    private GeoPosition geoPosition = new GeoPosition();
 
     @Transient
     public String getName() {
@@ -71,28 +69,20 @@ public class Wahlkreis implements KandidatDimension {
         this.wahlkreisName = wahlkreisName;
     }
 
-    public String getWebseite() {
-        return webseite;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
     }
 
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
-    public String getGoogleMapsUrl() {
-        return googleMapsUrl;
-    }
-
-    public void setGoogleMapsUrl(String googleMapsUrl) {
-        this.googleMapsUrl = googleMapsUrl;
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
     }
 
     @Override
@@ -107,10 +97,9 @@ public class Wahlkreis implements KandidatDimension {
             return false;
         if (wahlkreisName != null ? !wahlkreisName.equals(wahlkreis.wahlkreisName) : wahlkreis.wahlkreisName != null)
             return false;
-        if (webseite != null ? !webseite.equals(wahlkreis.webseite) : wahlkreis.webseite != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(wahlkreis.wikipediaArticle) : wahlkreis.wikipediaArticle != null)
+        if (onlineStrategie != null ? !onlineStrategie.equals(wahlkreis.onlineStrategie) : wahlkreis.onlineStrategie != null)
             return false;
-        return googleMapsUrl != null ? googleMapsUrl.equals(wahlkreis.googleMapsUrl) : wahlkreis.googleMapsUrl == null;
+        return geoPosition != null ? geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition == null;
     }
 
     @Override
@@ -118,9 +107,8 @@ public class Wahlkreis implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (wahlkreisId != null ? wahlkreisId.hashCode() : 0);
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
 
@@ -130,9 +118,8 @@ public class Wahlkreis implements KandidatDimension {
                 "id=" + id +
                 ", wahlkreisId=" + wahlkreisId +
                 ", wahlkreisName='" + wahlkreisName + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", googleMapsUrl='" + googleMapsUrl + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
+                ", geoPosition=" + geoPosition +
                 '}';
     }
 }

@@ -1,8 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 
 @Entity
@@ -49,62 +51,13 @@ public class Ministerium implements KandidatDimension {
     @Column(name="ministerium_lang")
     private String ministeriumLang;
 
-    @URL
-    @Column
-    private String webseite;
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @URL
-    @Column
-    private String twitter;
-
-    @URL
-    @Column(name="facebook")
-    private String facebook;
-
-    @URL
-    @Column
-    private String youtube;
-
-    @URL
-    @Column
-    private String soundcloud;
-
-    @URL
-    @Column(name="wikipedia_article")
-    private String wikipediaArticle;
-
-    @URL
-    @Column(name="bundestag")
-    private String bundestagAbgeordnete;
-
-    @URL
-    @Column
-    private String abgeordnetenwatch;
-
-    @URL
-    @Column(name="lobbypedia_url")
-    private String lobbypediaUrl;
-
-    @URL
-    @Column(name = "google_plus")
-    private String googlePlus;
-
-    @URL
-    @Column(name = "instagram")
-    private String instagram;
-
-    @URL
-    @Column(name = "google_maps_url")
-    private String googleMapsUrl;
-
-    @Column(name = "geo_longitude")
-    private String geoLongitude;
-
-    @Column(name = "geo_lattitude")
-    private String geoLattitude;
-
-    @Column(name = "geo_zoom")
-    private String geoZoom;
+    @Valid
+    @Embedded
+    private GeoPosition geoPosition = new GeoPosition();
 
     @Override
     public Long getId() {
@@ -129,102 +82,6 @@ public class Ministerium implements KandidatDimension {
         this.ministerium = ministerium;
     }
 
-    public String getWebseite() {
-        return webseite;
-    }
-
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getYoutube() {
-        return youtube;
-    }
-
-    public void setYoutube(String youtube) {
-        this.youtube = youtube;
-    }
-
-    public String getSoundcloud() {
-        return soundcloud;
-    }
-
-    public void setSoundcloud(String soundcloud) {
-        this.soundcloud = soundcloud;
-    }
-
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
-    }
-
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
-    public String getBundestagAbgeordnete() {
-        return bundestagAbgeordnete;
-    }
-
-    public void setBundestagAbgeordnete(String bundestagAbgeordnete) {
-        this.bundestagAbgeordnete = bundestagAbgeordnete;
-    }
-
-    public String getAbgeordnetenwatch() {
-        return abgeordnetenwatch;
-    }
-
-    public void setAbgeordnetenwatch(String abgeordnetenwatch) {
-        this.abgeordnetenwatch = abgeordnetenwatch;
-    }
-
-    public String getLobbypediaUrl() {
-        return lobbypediaUrl;
-    }
-
-    public void setLobbypediaUrl(String lobbypediaUrl) {
-        this.lobbypediaUrl = lobbypediaUrl;
-    }
-
-    public String getGooglePlus() {
-        return googlePlus;
-    }
-
-    public void setGooglePlus(String googlePlus) {
-        this.googlePlus = googlePlus;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
-    }
-
-    public String getGoogleMapsUrl() {
-        return googleMapsUrl;
-    }
-
-    public void setGoogleMapsUrl(String googleMapsUrl) {
-        this.googleMapsUrl = googleMapsUrl;
-    }
-
     public String getMinisteriumLang() {
         return ministeriumLang;
     }
@@ -233,28 +90,20 @@ public class Ministerium implements KandidatDimension {
         this.ministeriumLang = ministeriumLang;
     }
 
-    public String getGeoLongitude() {
-        return geoLongitude;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setGeoLongitude(String geoLongitude) {
-        this.geoLongitude = geoLongitude;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 
-    public String getGeoLattitude() {
-        return geoLattitude;
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
     }
 
-    public void setGeoLattitude(String geoLattitude) {
-        this.geoLattitude = geoLattitude;
-    }
-
-    public String getGeoZoom() {
-        return geoZoom;
-    }
-
-    public void setGeoZoom(String geoZoom) {
-        this.geoZoom = geoZoom;
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
     }
 
     @Override
@@ -268,26 +117,9 @@ public class Ministerium implements KandidatDimension {
         if (ministerium != null ? !ministerium.equals(that.ministerium) : that.ministerium != null) return false;
         if (ministeriumLang != null ? !ministeriumLang.equals(that.ministeriumLang) : that.ministeriumLang != null)
             return false;
-        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
-        if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
-        if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
-        if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
-        if (soundcloud != null ? !soundcloud.equals(that.soundcloud) : that.soundcloud != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
+        if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        if (bundestagAbgeordnete != null ? !bundestagAbgeordnete.equals(that.bundestagAbgeordnete) : that.bundestagAbgeordnete != null)
-            return false;
-        if (abgeordnetenwatch != null ? !abgeordnetenwatch.equals(that.abgeordnetenwatch) : that.abgeordnetenwatch != null)
-            return false;
-        if (lobbypediaUrl != null ? !lobbypediaUrl.equals(that.lobbypediaUrl) : that.lobbypediaUrl != null)
-            return false;
-        if (googlePlus != null ? !googlePlus.equals(that.googlePlus) : that.googlePlus != null) return false;
-        if (instagram != null ? !instagram.equals(that.instagram) : that.instagram != null) return false;
-        if (googleMapsUrl != null ? !googleMapsUrl.equals(that.googleMapsUrl) : that.googleMapsUrl != null)
-            return false;
-        if (geoLongitude != null ? !geoLongitude.equals(that.geoLongitude) : that.geoLongitude != null) return false;
-        if (geoLattitude != null ? !geoLattitude.equals(that.geoLattitude) : that.geoLattitude != null) return false;
-        return geoZoom != null ? geoZoom.equals(that.geoZoom) : that.geoZoom == null;
+        return geoPosition != null ? geoPosition.equals(that.geoPosition) : that.geoPosition == null;
     }
 
     @Override
@@ -295,21 +127,8 @@ public class Ministerium implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
-        result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
-        result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
-        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
-        result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
-        result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
-        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
-        result = 31 * result + (geoLongitude != null ? geoLongitude.hashCode() : 0);
-        result = 31 * result + (geoLattitude != null ? geoLattitude.hashCode() : 0);
-        result = 31 * result + (geoZoom != null ? geoZoom.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
 
@@ -319,21 +138,8 @@ public class Ministerium implements KandidatDimension {
                 "id=" + id +
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
-                ", soundcloud='" + soundcloud + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
-                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
-                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
-                ", googlePlus='" + googlePlus + '\'' +
-                ", instagram='" + instagram + '\'' +
-                ", googleMapsUrl='" + googleMapsUrl + '\'' +
-                ", geoLongitude='" + geoLongitude + '\'' +
-                ", geoLattitude='" + geoLattitude + '\'' +
-                ", geoZoom='" + geoZoom + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
+                ", geoPosition=" + geoPosition +
                 '}';
     }
 }

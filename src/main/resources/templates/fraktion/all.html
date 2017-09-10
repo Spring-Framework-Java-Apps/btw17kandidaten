@@ -46,6 +46,9 @@
                                     <th>
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </th>
+                                    <th>
+                                        <i class="fa fa-university" aria-hidden="true"></i>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,19 +69,22 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a th:if="${fraktion.webseite}" th:href="${fraktion.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                        <a th:if="${fraktion.onlineStrategie.webseite}" th:href="${fraktion.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
-                                        <a th:if="${fraktion.twitter}" th:href="${fraktion.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                        <a th:if="${fraktion.onlineStrategie.twitter}" th:href="${fraktion.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
-                                        <a th:if="${fraktion.facebook}" th:href="${fraktion.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                        <a th:if="${fraktion.onlineStrategie.facebook}" th:href="${fraktion.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
-                                        <a th:if="${fraktion.youtube}" th:href="${fraktion.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                        <a th:if="${fraktion.onlineStrategie.youtube}" th:href="${fraktion.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
-                                        <a th:if="${fraktion.wikipediaArticle}" th:href="${fraktion.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                        <a th:if="${fraktion.onlineStrategie.wikipediaArticle}" th:href="${fraktion.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${fraktion.onlineStrategie.bundestagAbgeordnete}" th:href="${fraktion.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank"><i class="fa fa-university" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>

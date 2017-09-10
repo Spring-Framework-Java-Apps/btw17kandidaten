@@ -2,6 +2,8 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+
 import javax.persistence.*;
 import javax.validation.Valid;
 
@@ -40,7 +42,7 @@ public class Ausschuss implements KandidatDimension {
 
     @Valid
     @Embedded
-    private OnlineStrategie onlineStrategie;
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
     @Override
     public Long getId() {

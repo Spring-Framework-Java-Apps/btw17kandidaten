@@ -46,6 +46,9 @@
                                     <th>
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </th>
+                                    <th>
+                                        <i class="fa fa-university" aria-hidden="true"></i>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,19 +69,46 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a th:if="${ministerium.webseite}" th:href="${ministerium.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.webseite}" th:href="${ministerium.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                                <i class="fa fa-cloud" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${ministerium.twitter}" th:href="${ministerium.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.twitter}" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${ministerium.facebook}" th:href="${ministerium.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.facebook}" th:href="${ministerium.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${ministerium.youtube}" th:href="${ministerium.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.youtube}" th:href="${ministerium.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${ministerium.wikipediaArticle}" th:href="${ministerium.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span th:if="${ministerium.onlineStrategie}">
+                                            <a th:if="${ministerium.onlineStrategie.bundestagAbgeordnete}" th:href="${ministerium.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                                <i class="fa fa-university" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 </tbody>

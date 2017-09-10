@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.model;
+package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
@@ -11,12 +11,14 @@ import java.io.Serializable;
 @Embeddable
 public class OnlineStrategie implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @URL
-    @Column
+    @Column(name="webseite")
     private String webseite;
 
     @URL
-    @Column
+    @Column(name="twitter")
     private String twitter;
 
     @URL
@@ -24,11 +26,11 @@ public class OnlineStrategie implements Serializable {
     private String facebook;
 
     @URL
-    @Column
+    @Column(name="youtube")
     private String youtube;
 
     @URL
-    @Column
+    @Column(name="soundcloud")
     private String soundcloud;
 
     @URL
@@ -40,7 +42,7 @@ public class OnlineStrategie implements Serializable {
     private String bundestagAbgeordnete;
 
     @URL
-    @Column
+    @Column(name="abgeordnetenwatch")
     private String abgeordnetenwatch;
 
     @URL
