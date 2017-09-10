@@ -12,6 +12,7 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_fraktion",columnNames = {"fraktion"})
     },
     indexes = {
+        @Index(name = "idx_fraktion_fraktion_lang", columnList = "fraktion_lang"),
         @Index(name = "idx_fraktion_webseite", columnList = "webseite"),
         @Index(name = "idx_fraktion_twitter", columnList = "twitter"),
         @Index(name = "idx_fraktion_facebook", columnList = "facebook"),
@@ -43,6 +44,9 @@ public class Fraktion implements KandidatDimension {
 
     @Column
     private String fraktion;
+
+    @Column(name="fraktion_lang")
+    private String fraktionLang;
 
     @Column(name="logo_url")
     private String logoUrl;
@@ -211,6 +215,14 @@ public class Fraktion implements KandidatDimension {
         this.instagram = instagram;
     }
 
+    public String getFraktionLang() {
+        return fraktionLang;
+    }
+
+    public void setFraktionLang(String fraktionLang) {
+        this.fraktionLang = fraktionLang;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -220,6 +232,8 @@ public class Fraktion implements KandidatDimension {
 
         if (id != null ? !id.equals(fraktion1.id) : fraktion1.id != null) return false;
         if (fraktion != null ? !fraktion.equals(fraktion1.fraktion) : fraktion1.fraktion != null) return false;
+        if (fraktionLang != null ? !fraktionLang.equals(fraktion1.fraktionLang) : fraktion1.fraktionLang != null)
+            return false;
         if (logoUrl != null ? !logoUrl.equals(fraktion1.logoUrl) : fraktion1.logoUrl != null) return false;
         if (webseite != null ? !webseite.equals(fraktion1.webseite) : fraktion1.webseite != null) return false;
         if (twitter != null ? !twitter.equals(fraktion1.twitter) : fraktion1.twitter != null) return false;
@@ -241,6 +255,7 @@ public class Fraktion implements KandidatDimension {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (fraktionLang != null ? fraktionLang.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
@@ -261,6 +276,7 @@ public class Fraktion implements KandidatDimension {
         return "Fraktion{" +
                 "id=" + id +
                 ", fraktion='" + fraktion + '\'' +
+                ", fraktionLang='" + fraktionLang + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", webseite='" + webseite + '\'' +
                 ", twitter='" + twitter + '\'' +

@@ -12,6 +12,7 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_ministerium",columnNames = {"ministerium"})
     },
     indexes = {
+        @Index(name = "idx_ministerium_ministerium_lang", columnList = "ministerium_lang"),
         @Index(name = "idx_ministerium_webseite", columnList = "webseite"),
         @Index(name = "idx_ministerium_twitter", columnList = "twitter"),
         @Index(name = "idx_ministerium_facebook", columnList = "facebook"),
@@ -42,7 +43,11 @@ public class Ministerium implements KandidatDimension {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
+    @Column
     private String ministerium;
+
+    @Column(name="ministerium_lang")
+    private String ministeriumLang;
 
     @URL
     @Column
@@ -220,6 +225,38 @@ public class Ministerium implements KandidatDimension {
         this.googleMapsUrl = googleMapsUrl;
     }
 
+    public String getMinisteriumLang() {
+        return ministeriumLang;
+    }
+
+    public void setMinisteriumLang(String ministeriumLang) {
+        this.ministeriumLang = ministeriumLang;
+    }
+
+    public String getGeoLongitude() {
+        return geoLongitude;
+    }
+
+    public void setGeoLongitude(String geoLongitude) {
+        this.geoLongitude = geoLongitude;
+    }
+
+    public String getGeoLattitude() {
+        return geoLattitude;
+    }
+
+    public void setGeoLattitude(String geoLattitude) {
+        this.geoLattitude = geoLattitude;
+    }
+
+    public String getGeoZoom() {
+        return geoZoom;
+    }
+
+    public void setGeoZoom(String geoZoom) {
+        this.geoZoom = geoZoom;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -229,6 +266,8 @@ public class Ministerium implements KandidatDimension {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (ministerium != null ? !ministerium.equals(that.ministerium) : that.ministerium != null) return false;
+        if (ministeriumLang != null ? !ministeriumLang.equals(that.ministeriumLang) : that.ministeriumLang != null)
+            return false;
         if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
         if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
         if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
@@ -244,13 +283,18 @@ public class Ministerium implements KandidatDimension {
             return false;
         if (googlePlus != null ? !googlePlus.equals(that.googlePlus) : that.googlePlus != null) return false;
         if (instagram != null ? !instagram.equals(that.instagram) : that.instagram != null) return false;
-        return googleMapsUrl != null ? googleMapsUrl.equals(that.googleMapsUrl) : that.googleMapsUrl == null;
+        if (googleMapsUrl != null ? !googleMapsUrl.equals(that.googleMapsUrl) : that.googleMapsUrl != null)
+            return false;
+        if (geoLongitude != null ? !geoLongitude.equals(that.geoLongitude) : that.geoLongitude != null) return false;
+        if (geoLattitude != null ? !geoLattitude.equals(that.geoLattitude) : that.geoLattitude != null) return false;
+        return geoZoom != null ? geoZoom.equals(that.geoZoom) : that.geoZoom == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
+        result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
@@ -263,6 +307,9 @@ public class Ministerium implements KandidatDimension {
         result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
         result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
         result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
+        result = 31 * result + (geoLongitude != null ? geoLongitude.hashCode() : 0);
+        result = 31 * result + (geoLattitude != null ? geoLattitude.hashCode() : 0);
+        result = 31 * result + (geoZoom != null ? geoZoom.hashCode() : 0);
         return result;
     }
 
@@ -271,6 +318,7 @@ public class Ministerium implements KandidatDimension {
         return "Ministerium{" +
                 "id=" + id +
                 ", ministerium='" + ministerium + '\'' +
+                ", ministeriumLang='" + ministeriumLang + '\'' +
                 ", webseite='" + webseite + '\'' +
                 ", twitter='" + twitter + '\'' +
                 ", facebook='" + facebook + '\'' +
@@ -283,6 +331,9 @@ public class Ministerium implements KandidatDimension {
                 ", googlePlus='" + googlePlus + '\'' +
                 ", instagram='" + instagram + '\'' +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
+                ", geoLongitude='" + geoLongitude + '\'' +
+                ", geoLattitude='" + geoLattitude + '\'' +
+                ", geoZoom='" + geoZoom + '\'' +
                 '}';
     }
 }
