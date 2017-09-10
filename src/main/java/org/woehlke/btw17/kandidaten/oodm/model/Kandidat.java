@@ -31,7 +31,9 @@ import java.io.Serializable;
         @Index(name = "idx_kandidat_wikipedia_article", columnList = "wikipedia_article"),
         @Index(name = "idx_kandidat_bundestag_abgeordnete", columnList = "bundestag_abgeordnete"),
         @Index(name = "idx_kandidat_abgeordnetenwatch", columnList = "abgeordnetenwatch"),
-        @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url")
+        @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url"),
+        @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
+        @Index(name = "idx_kandidat_instagram_url", columnList = "instagram"),
     }
 )
 @NamedQueries({
@@ -114,6 +116,22 @@ import java.io.Serializable;
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFotoUrl",
         query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is not null order by key"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByMinisterium",
+        query = "select o from Kandidat as o where o.ministerium=:ministerium order by o.ministerium"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByMinisteriumCount",
+        query = "select count(o) from Kandidat as o where o.ministerium=:ministerium"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByFraktion",
+        query = "select o from Kandidat as o where o.fraktion=:fraktion order by o.fraktion"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByFraktionCount",
+        query = "select count(o) from Kandidat as o where o.fraktion=:fraktion"
     )
 })
 public class Kandidat implements Serializable {
@@ -188,6 +206,14 @@ public class Kandidat implements Serializable {
 
     @Column(name = "liste_platz")
     private Integer listePlatz;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},optional = true)
+    @JoinColumn(name = "fk_fraktion", nullable = true, updatable = false)
+    private Fraktion fraktion;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},optional = true)
+    @JoinColumn(name = "fk_ministerium", nullable = true, updatable = false)
+    private Ministerium ministerium;
 
     @Column
     private String mdb;
@@ -622,6 +648,22 @@ public class Kandidat implements Serializable {
         this.instagram = instagram;
     }
 
+    public Fraktion getFraktion() {
+        return fraktion;
+    }
+
+    public void setFraktion(Fraktion fraktion) {
+        this.fraktion = fraktion;
+    }
+
+    public Ministerium getMinisterium() {
+        return ministerium;
+    }
+
+    public void setMinisterium(Ministerium ministerium) {
+        this.ministerium = ministerium;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -654,6 +696,9 @@ public class Kandidat implements Serializable {
         if (landesListe != null ? !landesListe.equals(kandidat.landesListe) : kandidat.landesListe != null)
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
+        if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
+        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
+            return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -685,55 +730,6 @@ public class Kandidat implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Kandidat{" +
-                "id=" + id +
-                ", key='" + key + '\'' +
-                ", remoteKey='" + remoteKey + '\'' +
-                ", titel='" + titel + '\'' +
-                ", namenszusatz='" + namenszusatz + '\'' +
-                ", nachnameOhne='" + nachnameOhne + '\'' +
-                ", nachname='" + nachname + '\'' +
-                ", vorname='" + vorname + '\'' +
-                ", geschlecht='" + geschlecht + '\'' +
-                ", geburtsjahr=" + geburtsjahr +
-                ", alter=" + alter +
-                ", wohnort=" + wohnort +
-                ", geburtsort=" + geburtsort +
-                ", beruf=" + beruf +
-                ", berufsgruppe=" + berufsgruppe +
-                ", bundesland=" + bundesland +
-                ", wahlkreis=" + wahlkreis +
-                ", partei=" + partei +
-                ", landesListe=" + landesListe +
-                ", listePlatz=" + listePlatz +
-                ", mdb='" + mdb + '\'' +
-                ", lat=" + lat +
-                ", lng=" + lng +
-                ", idEigen='" + idEigen + '\'' +
-                ", foto='" + foto + '\'' +
-                ", fotoUrl='" + fotoUrl + '\'' +
-                ", scatterX=" + scatterX +
-                ", scatterY=" + scatterY +
-                ", color='" + color + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
-                ", soundcloud='" + soundcloud + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
-                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
-                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
-                ", googlePlus='" + googlePlus + '\'' +
-                ", instagram='" + instagram + '\'' +
-                ", googleMapsUrl='" + googleMapsUrl + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
-                ", kandidatFlat=" + kandidatFlat +
-                '}';
-    }
-
-    @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (key != null ? key.hashCode() : 0);
@@ -755,6 +751,8 @@ public class Kandidat implements Serializable {
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
+        result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -781,6 +779,57 @@ public class Kandidat implements Serializable {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Kandidat{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", remoteKey='" + remoteKey + '\'' +
+                ", titel='" + titel + '\'' +
+                ", namenszusatz='" + namenszusatz + '\'' +
+                ", nachnameOhne='" + nachnameOhne + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", vorname='" + vorname + '\'' +
+                ", geschlecht='" + geschlecht + '\'' +
+                ", geburtsjahr=" + geburtsjahr +
+                ", alter=" + alter +
+                ", wohnort=" + wohnort +
+                ", geburtsort=" + geburtsort +
+                ", beruf=" + beruf +
+                ", berufsgruppe=" + berufsgruppe +
+                ", bundesland=" + bundesland +
+                ", wahlkreis=" + wahlkreis +
+                ", partei=" + partei +
+                ", landesListe=" + landesListe +
+                ", listePlatz=" + listePlatz +
+                ", fraktion=" + fraktion +
+                ", ministerium=" + ministerium +
+                ", mdb='" + mdb + '\'' +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                ", idEigen='" + idEigen + '\'' +
+                ", foto='" + foto + '\'' +
+                ", fotoUrl='" + fotoUrl + '\'' +
+                ", scatterX=" + scatterX +
+                ", scatterY=" + scatterY +
+                ", color='" + color + '\'' +
+                ", webseite='" + webseite + '\'' +
+                ", twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", soundcloud='" + soundcloud + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
+                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
+                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
+                ", googlePlus='" + googlePlus + '\'' +
+                ", instagram='" + instagram + '\'' +
+                ", googleMapsUrl='" + googleMapsUrl + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", kandidatFlat=" + kandidatFlat +
+                '}';
+    }
+
     public String getSqlInsert(long id){
         Long idParameter = id;
         String columns[] = {
@@ -792,7 +841,7 @@ public class Kandidat implements Serializable {
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
-            "soundcloud", "google_plus", "instagram"
+            "soundcloud", "google_plus", "instagram", "fraktion", "ministerium"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -803,7 +852,7 @@ public class Kandidat implements Serializable {
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
-            soundcloud, googlePlus, instagram
+            soundcloud, googlePlus, instagram, fraktion, ministerium
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");

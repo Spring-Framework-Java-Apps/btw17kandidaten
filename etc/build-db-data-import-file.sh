@@ -74,6 +74,20 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-landesliste.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Fraktion' >> ../src/main/resources/data.sql
+echo '-- Table: fraktion' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-fraktion.sql >> ../src/main/resources/data.sql
+
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium' >> ../src/main/resources/data.sql
+echo '-- Table: ministerium' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-ministerium.sql >> ../src/main/resources/data.sql
+
+echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat' >> ../src/main/resources/data.sql
 echo '-- Table: kandidat_flat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -86,7 +100,6 @@ echo '-- Table: kandidat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep -v "SET " >> ../src/main/resources/data.sql
-
 
 
 exit 0

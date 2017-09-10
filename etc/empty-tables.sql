@@ -9,4 +9,6 @@ DELETE FROM liste_partei;
 DELETE FROM partei;
 DELETE FROM wahlkreis;
 DELETE FROM wohnort;
+DELETE FROM fraktion;
+DELETE FROM ministerium;
 ALTER SEQUENCE hibernate_sequence RESTART WITH 1;

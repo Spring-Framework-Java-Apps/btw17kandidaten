@@ -84,4 +84,8 @@ public interface KandidatService {
 
     Kandidat update(Kandidat kandidat);
 
+    Page<Kandidat> findByMinisterium(Ministerium ministerium, Pageable pageable);
+
+    Page<Kandidat> findByFraktion(Fraktion fraktion, Pageable pageable);
+
 }

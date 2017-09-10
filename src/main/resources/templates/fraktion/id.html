@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head  th:include="layoutMain :: tw-head">
+</head>
+<body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
+<script th:include="layoutMain :: tw-seo-fb"></script>
+<header th:include="layoutMain :: tw-header"></header>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well">
+
+                    <a class="tw-social-media-link" th:if="${fraktion.webseite}" th:href="${fraktion.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+
+                    <a class="tw-social-media-link" th:if="${fraktion.twitter}" th:href="${fraktion.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+
+                    <a class="tw-social-media-link" th:if="${fraktion.facebook}" th:href="${fraktion.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+
+                    <a class="tw-social-media-link" th:if="${fraktion.youtube}" th:href="${fraktion.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+
+                    <a class="tw-social-media-link" th:if="${fraktion.wikipediaArticle}" th:href="${fraktion.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="page-content">
+    <div th:include="layoutMain :: tw-page-content-kandidaten">
+    </div>
+</main>
+
+<section th:include="layoutMain :: tw-history-back-section" >
+</section>
+
+<footer th:include="layoutMain :: footer" >
+</footer>
+</body>
+</html>
