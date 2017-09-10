@@ -11,4 +11,5 @@ DELETE FROM wahlkreis;
 DELETE FROM wohnort;
 DELETE FROM fraktion;
 DELETE FROM ministerium;
+DELETE FROM ausschuss;
 ALTER SEQUENCE hibernate_sequence RESTART WITH 1;

@@ -88,6 +88,13 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-ministerium.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ausschuss' >> ../src/main/resources/data.sql
+echo '-- Table: ausschuss' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-ausschuss.sql >> ../src/main/resources/data.sql
+
+echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat' >> ../src/main/resources/data.sql
 echo '-- Table: kandidat_flat' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql

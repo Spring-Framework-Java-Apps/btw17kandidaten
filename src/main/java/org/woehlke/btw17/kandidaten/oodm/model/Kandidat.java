@@ -870,7 +870,8 @@ public class Kandidat implements Serializable {
             "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
-            "soundcloud", "google_plus", "instagram", "fraktion", "ministerium", "funktion"
+            "soundcloud", "google_plus", "instagram", "fraktion", "ministerium",
+            "funktion","ausschuss"
         };
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
@@ -881,7 +882,8 @@ public class Kandidat implements Serializable {
             wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
-            soundcloud, googlePlus, instagram, fraktion, ministerium, funktion
+            soundcloud, googlePlus, instagram, fraktion, ministerium,
+            funktion, ausschuss
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");
