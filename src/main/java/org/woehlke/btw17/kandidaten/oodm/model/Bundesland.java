@@ -1,9 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 
 @Entity
@@ -30,6 +31,11 @@ public class Bundesland implements KandidatDimension {
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+
+    /*
     @URL
     @Column
     private String webseite;
@@ -49,6 +55,7 @@ public class Bundesland implements KandidatDimension {
     @URL
     @Column
     private String wikipediaArticle;
+    */
 
     @Column(name="logo_url")
     private String logoUrl;
@@ -87,36 +94,12 @@ public class Bundesland implements KandidatDimension {
         this.bundeslandLang = bundeslandLang;
     }
 
-    public String getWebseite() {
-        return webseite;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getYoutube() {
-        return youtube;
-    }
-
-    public void setYoutube(String youtube) {
-        this.youtube = youtube;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 
     public String getLogoUrl() {
@@ -125,14 +108,6 @@ public class Bundesland implements KandidatDimension {
 
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
-    }
-
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
-    }
-
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
     }
 
     @Override
@@ -146,11 +121,7 @@ public class Bundesland implements KandidatDimension {
         if (bundesland != null ? !bundesland.equals(that.bundesland) : that.bundesland != null) return false;
         if (bundeslandLang != null ? !bundeslandLang.equals(that.bundeslandLang) : that.bundeslandLang != null)
             return false;
-        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
-        if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
-        if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
-        if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
+        if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
         return logoUrl != null ? logoUrl.equals(that.logoUrl) : that.logoUrl == null;
     }
@@ -160,11 +131,7 @@ public class Bundesland implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         return result;
     }
@@ -175,11 +142,7 @@ public class Bundesland implements KandidatDimension {
                 "id=" + id +
                 ", bundesland='" + bundesland + '\'' +
                 ", bundeslandLang='" + bundeslandLang + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
                 ", logoUrl='" + logoUrl + '\'' +
                 '}';
     }

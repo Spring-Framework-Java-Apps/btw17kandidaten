@@ -15,6 +15,8 @@
             <div class="col-md-12">
                 <div class="well">
 
+                    <span th:if="${fraktion.onlineStrategie}">
+
                     <a class="tw-social-media-link" th:if="${fraktion.onlineStrategie.webseite}" th:href="${fraktion.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                         <i class="fa fa-cloud" aria-hidden="true"></i>
                     </a>
@@ -42,6 +44,8 @@
                     <a class="tw-social-media-link" th:if="${fraktion.onlineStrategie.abgeordnetenwatch}" th:href="${fraktion.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
+
+                    </span>
 
                 </div>
             </div>

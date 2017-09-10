@@ -507,10 +507,14 @@
                                     &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
-                                    <a th:if="${bundesland.webseite}" th:href="${bundesland.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    <span th:if="${bundesland.onlineStrategie}">
+                                        <a th:if="${bundesland.onlineStrategie.webseite}" th:href="${bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    </span>
                                 </td>
                                 <td>
-                                    <a th:if="${bundesland.wikipediaArticle}" th:href="${bundesland.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    <span th:if="${bundesland.onlineStrategie}">
+                                        <a th:if="${bundesland.onlineStrategie.wikipediaArticle}" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    </span>
                                 </td>
                             </tr>
                             </tbody>

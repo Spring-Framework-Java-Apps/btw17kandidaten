@@ -65,25 +65,29 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.bundesland.webseite}" th:if="${kandidat.bundesland.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
+
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.webseite}" th:if="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.twitter}" th:if="${kandidat.bundesland.twitter != null}" alt="Twitter" title="Twitter" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.twitter}" th:if="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                         <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.facebook}" th:if="${kandidat.bundesland.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.facebook}" th:if="${kandidat.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:if="${kandidat.bundesland.youtube}" th:href="${kandidat.bundesland.youtube != null}" alt="YouTube" title="YouTube" target="_blank">
+                                    <a th:if="${kandidat.bundesland.onlineStrategie.youtube}" th:href="${kandidat.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                         <i class="fa fa-youtube" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.wikipediaArticle}" th:if="${kandidat.bundesland.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+
+                                    </span>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.geburtsort != null}">
