@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
@@ -49,8 +50,8 @@ public class SucheController {
         String pagerUrl = "/suche/formular";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = false;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
 
         SearchForKandidat suchformular = (SearchForKandidat) session.getAttribute("suchformular");
@@ -110,8 +111,8 @@ public class SucheController {
         String pagerUrl = "/suche/freitext/formular";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = false;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
         FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         if((suchformularFreitext.getSearchTerm()!=null)&&(!suchformularFreitext.getSearchTerm().isEmpty())){

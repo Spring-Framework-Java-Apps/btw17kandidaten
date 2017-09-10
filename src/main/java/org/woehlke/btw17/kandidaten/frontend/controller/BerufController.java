@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
@@ -47,8 +48,8 @@ public class BerufController {
         String pagerUrl = "/beruf/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = false;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
         Page<Beruf> allBerufPage =  berufService.getAll(pageable);
         model.addAttribute("berufe", allBerufPage);
@@ -77,8 +78,8 @@ public class BerufController {
             String pagerUrl = "/beruf/"+beruf.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            boolean showDebugInfos = false;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+            JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("beruf",beruf);
 

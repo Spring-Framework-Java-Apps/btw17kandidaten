@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
-import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -52,8 +52,8 @@ public class KandidatController {
         String pagerUrl = "/kandidat/all";
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-        boolean showDebugInfos = false;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
 
         Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
@@ -81,8 +81,8 @@ public class KandidatController {
             String pagerUrl = "/kandidat/"+kandidat.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            boolean showDebugInfos = false;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+            JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
 
             model.addAttribute("kandidat",kandidat);
@@ -110,8 +110,8 @@ public class KandidatController {
             String pagerUrl = "/kandidat/"+kandidat.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            boolean showDebugInfos = false;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,showDebugInfos);
+            JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
 
             model.addAttribute("kandidat",kandidat);

@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.frontend.content;
 
+import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
+
 import java.io.Serializable;
 
 public class PageContent implements Serializable {
@@ -20,9 +22,9 @@ public class PageContent implements Serializable {
 
     private String twitterCardCreator;
 
-    private Boolean showDebugInfos;
+    private String jumbotronImage;
 
-    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator,Boolean showDebugInfos) {
+    public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator,JumbotronImage imageCss) {
         this.pageTitle = pageTitle;
         this.pageSubTitle = pageSubTitle;
         this.pageSymbol = pageSymbol;
@@ -31,7 +33,7 @@ public class PageContent implements Serializable {
         this.pagerUrl = pagerUrl;
         this.twitterCardSite = twitterCardSite;
         this.twitterCardCreator = twitterCardCreator;
-        this.showDebugInfos = showDebugInfos;
+        this.jumbotronImage = imageCss.getCss();
     }
 
     public String getPageTitleWithSymbol(){
@@ -102,12 +104,12 @@ public class PageContent implements Serializable {
         this.twitterCardCreator = twitterCardCreator;
     }
 
-    public Boolean getShowDebugInfos() {
-        return showDebugInfos;
+    public String getJumbotronImage() {
+        return jumbotronImage;
     }
 
-    public void setShowDebugInfos(Boolean showDebugInfos) {
-        this.showDebugInfos = showDebugInfos;
+    public void setJumbotronImage(String jumbotronImage) {
+        this.jumbotronImage = jumbotronImage;
     }
 
     @Override
@@ -129,7 +131,7 @@ public class PageContent implements Serializable {
             return false;
         if (twitterCardCreator != null ? !twitterCardCreator.equals(that.twitterCardCreator) : that.twitterCardCreator != null)
             return false;
-        return showDebugInfos != null ? showDebugInfos.equals(that.showDebugInfos) : that.showDebugInfos == null;
+        return jumbotronImage != null ? jumbotronImage.equals(that.jumbotronImage) : that.jumbotronImage == null;
     }
 
     @Override
@@ -142,7 +144,7 @@ public class PageContent implements Serializable {
         result = 31 * result + (pagerUrl != null ? pagerUrl.hashCode() : 0);
         result = 31 * result + (twitterCardSite != null ? twitterCardSite.hashCode() : 0);
         result = 31 * result + (twitterCardCreator != null ? twitterCardCreator.hashCode() : 0);
-        result = 31 * result + (showDebugInfos != null ? showDebugInfos.hashCode() : 0);
+        result = 31 * result + (jumbotronImage != null ? jumbotronImage.hashCode() : 0);
         return result;
     }
 
@@ -157,7 +159,7 @@ public class PageContent implements Serializable {
                 ", pagerUrl='" + pagerUrl + '\'' +
                 ", twitterCardSite='" + twitterCardSite + '\'' +
                 ", twitterCardCreator='" + twitterCardCreator + '\'' +
-                ", showDebugInfos=" + showDebugInfos +
+                ", jumbotronImage='" + jumbotronImage + '\'' +
                 '}';
     }
 }
