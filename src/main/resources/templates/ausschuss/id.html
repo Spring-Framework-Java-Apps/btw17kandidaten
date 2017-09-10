@@ -15,15 +15,33 @@
             <div class="col-md-12">
                 <div class="well">
 
-                    <a class="tw-social-media-link" th:if="${ausschuss.webseite}" th:href="${ausschuss.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.webseite}" th:href="${ausschuss.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${ausschuss.twitter}" th:href="${ausschuss.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.twitter}" th:href="${ausschuss.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${ausschuss.facebook}" th:href="${ausschuss.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.facebook}" th:href="${ausschuss.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${ausschuss.youtube}" th:href="${ausschuss.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.youtube}" th:href="${ausschuss.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${ausschuss.wikipediaArticle}" th:href="${ausschuss.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.wikipediaArticle}" th:href="${ausschuss.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                    </a>
+
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.bundestagAbgeordnete}" th:href="${ausschuss.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                        <i class="fa fa-university" aria-hidden="true"></i>
+                    </a>
+
+                    <a class="tw-social-media-link" th:if="${ausschuss.onlineStrategie.abgeordnetenwatch}" th:href="${ausschuss.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
 
                 </div>
             </div>

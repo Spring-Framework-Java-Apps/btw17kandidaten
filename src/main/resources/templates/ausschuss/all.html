@@ -30,7 +30,7 @@
                                 <thead th:fragment="tw-data-view-thead">
                                 <tr>
                                     <th class="tw-debug">ID</th>
-                                    <th>Fraktion</th>
+                                    <th>Ausschuss</th>
                                     <th>
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </th>
@@ -45,6 +45,9 @@
                                     </th>
                                     <th>
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-university" aria-hidden="true"></i>
                                     </th>
                                 </tr>
                                 </thead>
@@ -79,6 +82,9 @@
                                     </td>
                                     <td>
                                         <a th:if="${ausschuss.onlineStrategie.wikipediaArticle}" th:href="${ausschuss.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${ausschuss.onlineStrategie.bundestagAbgeordnete}" th:href="${ausschuss.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank"><i class="fa fa-university" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>

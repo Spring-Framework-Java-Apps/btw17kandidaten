@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.URL;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -138,11 +139,11 @@ import java.util.Set;
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschuss",
-        query = "select o from Kandidat as o where o.ausschuss=:ausschuss order by o.nachname"
+        query = "select o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschussCount",
-        query = "select count(o) from Kandidat as o where o.ausschuss=:ausschuss"
+        query = "select count(o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
     )
 })
 public class Kandidat implements Serializable {
@@ -230,8 +231,8 @@ public class Kandidat implements Serializable {
     private Ministerium ministerium;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_ministerium", nullable = true, updatable = false)
-    private Set<Ausschuss> ausschuss = new HashSet<>();
+    @JoinTable(name="kandidat_ausschuss")
+    private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
     @Column
     private String mdb;

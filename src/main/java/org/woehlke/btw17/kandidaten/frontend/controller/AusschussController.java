@@ -16,7 +16,6 @@ import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
-import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;

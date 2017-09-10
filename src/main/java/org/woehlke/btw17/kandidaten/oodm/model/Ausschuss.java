@@ -20,7 +20,7 @@ import javax.validation.Valid;
     ),
     @NamedQuery(
         name = "Ausschuss.getAllCount",
-        query = "select count(o) from Ausschuss as o order by id"
+        query = "select count(o) from Ausschuss as o"
     )
 })
 public class Ausschuss implements KandidatDimension {

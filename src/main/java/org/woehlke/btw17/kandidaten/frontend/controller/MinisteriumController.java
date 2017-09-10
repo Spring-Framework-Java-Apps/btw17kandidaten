@@ -41,7 +41,7 @@ public class MinisteriumController {
             HttpSession session,
             Model model
     ) {
-        String pageTitle = "Parteien";
+        String pageTitle = "Ministerien";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.MINISTERIUM.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();

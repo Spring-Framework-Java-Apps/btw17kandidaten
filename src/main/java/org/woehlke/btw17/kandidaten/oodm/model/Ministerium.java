@@ -32,7 +32,7 @@ import javax.persistence.*;
     ),
     @NamedQuery(
         name = "Ministerium.getAllCount",
-        query = "select count(o) from Ministerium as o order by id"
+        query = "select count(o) from Ministerium as o"
     )
 })
 public class Ministerium implements KandidatDimension {

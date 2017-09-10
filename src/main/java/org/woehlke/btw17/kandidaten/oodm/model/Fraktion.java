@@ -31,7 +31,7 @@ import javax.persistence.*;
     ),
     @NamedQuery(
         name = "Fraktion.getAllCount",
-        query = "select count(o) from Fraktion as o order by id"
+        query = "select count(o) from Fraktion as o"
     )
 })
 public class Fraktion implements KandidatDimension {
