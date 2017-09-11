@@ -80,7 +80,7 @@ public class Ministerium implements KandidatDimension {
     @Transient
     @Override
     public String getName() {
-        return ministerium;
+        return ministerium +"  "+ministeriumLang;
     }
 
     public void setId(Long id) {

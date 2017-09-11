@@ -66,25 +66,29 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.bundesland.webseite}" th:if="${kandidat.bundesland.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
+
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.webseite}" th:if="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.twitter}" th:if="${kandidat.bundesland.twitter != null}" alt="Twitter" title="Twitter" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.twitter}" th:if="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                         <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.facebook}" th:if="${kandidat.bundesland.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.facebook}" th:if="${kandidat.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:if="${kandidat.bundesland.youtube}" th:href="${kandidat.bundesland.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                    <a th:if="${kandidat.bundesland.onlineStrategie.youtube}" th:href="${kandidat.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                         <i class="fa fa-youtube" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.bundesland.wikipediaArticle}" th:if="${kandidat.bundesland.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+
+                                    </span>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.geburtsort != null}">
@@ -112,17 +116,19 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.wohnort.webseite}" th:if="${kandidat.wohnort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.wohnort.onlineStrategie}">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.webseite}" th:if="${kandidat.wohnort.onlineStrategie.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.wohnort.facebook}" th:if="${kandidat.wohnort.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.facebook}" th:if="${kandidat.wohnort.onlineStrategie.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
                                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.wohnort.wikipediaArticle}" th:if="${kandidat.wohnort.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.wikipediaArticle}" th:if="${kandidat.wohnort.onlineStrategie.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.beruf != null}">
@@ -360,6 +366,26 @@
                                 <label for="instagram-input" class="col-sm-2 control-label">instagram:</label>
                                 <div class="col-sm-10">
                                     <input th:field="*{instagram}" type="text" name="instagram" id="instagram-input" class="form-control" placeholder="instagram"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fraktion-input" class="col-sm-2 control-label">Fraktion:</label>
+                                <div class="col-sm-10">
+                                    <select th:field="*{fraktion}" name="fraktion" id="fraktion-input" class="form-control">
+                                        <option value="0" >Keine</option>
+                                        <option th:text="${fraktion.name}" th:value="${fraktion.id}" th:each="fraktion : ${fraktionen}">fraktion</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fraktion-input" class="col-sm-2 control-label">Ministerium:</label>
+                                <div class="col-sm-10">
+                                    <select th:field="*{ministerium}" name="fraktion" id="fraktion-input" class="form-control">
+                                        <option value="0" >Keine</option>
+                                        <option th:text="${ministerium.name}" th:value="${ministerium.id}" th:each="ministerium : ${ministerien}">ministerium</option>
+                                    </select>
                                 </div>
                             </div>
 

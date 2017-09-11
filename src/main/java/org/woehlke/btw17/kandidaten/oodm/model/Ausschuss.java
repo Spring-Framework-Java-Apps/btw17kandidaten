@@ -15,7 +15,6 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
     }
 )
-
 @NamedQueries({
     @NamedQuery(
         name = "Ausschuss.getAll",

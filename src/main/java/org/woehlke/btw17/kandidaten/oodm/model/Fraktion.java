@@ -60,7 +60,7 @@ public class Fraktion implements KandidatDimension {
     @Transient
     @Override
     public String getName() {
-        return null;
+        return fraktionLang;
     }
 
     @Override
