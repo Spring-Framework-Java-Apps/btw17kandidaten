@@ -328,7 +328,7 @@
 
 <footer th:fragment="tw-footer">
 
-    <script th:inline="text">
+    <script th:inline="text" th:if="${kandidat.wohnort.geoPosition}">
         function initMap() {
             var wohnort = {lat: [[${kandidat.wohnort.geoPosition.geoLattitude}]], lng: [[${kandidat.wohnort.geoPosition.geoLongitude}]]};
             var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
