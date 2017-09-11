@@ -222,12 +222,12 @@ public class Kandidat implements Serializable {
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},optional = true)
-    @JoinColumn(name = "fk_fraktion", nullable = true, updatable = false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},optional = true)
-    @JoinColumn(name = "fk_ministerium", nullable = true, updatable = false)
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_ministerium")
     private Ministerium ministerium;
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
