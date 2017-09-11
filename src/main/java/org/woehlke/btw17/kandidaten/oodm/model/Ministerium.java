@@ -53,9 +53,12 @@ public class Ministerium implements KandidatDimension {
     @Column(name="ministerium_lang")
     private String ministeriumLang;
 
+    @Column(name="bundesminister")
+    private String bundesminister;
+
     @OneToOne(optional=true,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name="fk_bundesminister")
-    private Kandidat bundesminister;
+    private Kandidat kandidat;
 
     @Valid
     @Embedded
@@ -116,12 +119,21 @@ public class Ministerium implements KandidatDimension {
         this.geoPosition = geoPosition;
     }
 
-    public Kandidat getBundesminister() {
+
+    public String getBundesminister() {
         return bundesminister;
     }
 
-    public void setBundesminister(Kandidat bundesminister) {
+    public void setBundesminister(String bundesminister) {
         this.bundesminister = bundesminister;
+    }
+
+    public Kandidat getKandidat() {
+        return kandidat;
+    }
+
+    public void setKandidat(Kandidat kandidat) {
+        this.kandidat = kandidat;
     }
 
     public Adresse getAdresse() {
@@ -145,6 +157,7 @@ public class Ministerium implements KandidatDimension {
             return false;
         if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
             return false;
+        if (kandidat != null ? !kandidat.equals(that.kandidat) : that.kandidat != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
@@ -157,6 +170,7 @@ public class Ministerium implements KandidatDimension {
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
         result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
+        result = 31 * result + (kandidat != null ? kandidat.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
@@ -169,7 +183,8 @@ public class Ministerium implements KandidatDimension {
                 "id=" + id +
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
-                ", bundesminister=" + bundesminister +
+                ", bundesminister='" + bundesminister + '\'' +
+                ", kandidat=" + kandidat +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", adresse=" + adresse +
