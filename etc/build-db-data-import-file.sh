@@ -81,13 +81,6 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-fraktion.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium' >> ../src/main/resources/data.sql
-echo '-- Table: ministerium' >> ../src/main/resources/data.sql
-echo '--' >> ../src/main/resources/data.sql
-
-cat ./3nf/data/insert-data-ministerium.sql >> ../src/main/resources/data.sql
-
-echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ausschuss' >> ../src/main/resources/data.sql
 echo '-- Table: ausschuss' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -108,5 +101,11 @@ echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep -v "SET " >> ../src/main/resources/data.sql
 
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium' >> ../src/main/resources/data.sql
+echo '-- Table: ministerium' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-ministerium.sql >> ../src/main/resources/data.sql
 
 exit 0
