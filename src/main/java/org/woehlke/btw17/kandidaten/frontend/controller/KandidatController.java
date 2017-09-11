@@ -19,12 +19,20 @@ import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
+import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
+import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
+import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
+import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -116,6 +124,15 @@ public class KandidatController {
 
             model.addAttribute("kandidat",kandidat);
 
+            List<Ausschuss> ausschuesse = ausschussService.getAll();
+            model.addAttribute("ausschuesse",ausschuesse);
+
+            List<Fraktion> fraktionen = fraktionService.getAll();
+            model.addAttribute("fraktionen",fraktionen);
+
+            List<Ministerium> ministerien = ministeriumService.getAll();
+            model.addAttribute("ministerien",ministerien);
+
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/edit";
         }
@@ -142,13 +159,22 @@ public class KandidatController {
 
     private final KandidatService kandidatService;
 
+    private final AusschussService ausschussService;
+
+    private final FraktionService fraktionService;
+
+    private final MinisteriumService ministeriumService;
+
     private final KandidatenProperties kandidatenProperties;
 
     private final SessionHandler sessionHandler;
 
     @Autowired
-    public KandidatController(KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public KandidatController(KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
         this.kandidatService = kandidatService;
+        this.ausschussService = ausschussService;
+        this.fraktionService = fraktionService;
+        this.ministeriumService = ministeriumService;
         this.kandidatenProperties = kandidatenProperties;
         this.sessionHandler = sessionHandler;
     }

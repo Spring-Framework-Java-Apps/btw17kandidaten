@@ -57,6 +57,10 @@ public class OnlineStrategie implements Serializable {
     @Column(name = "instagram")
     private String instagram;
 
+    @URL
+    @Column(name = "flickr")
+    private String flickr;
+
 
     public String getWebseite() {
         return webseite;
@@ -146,6 +150,14 @@ public class OnlineStrategie implements Serializable {
         this.instagram = instagram;
     }
 
+    public String getFlickr() {
+        return flickr;
+    }
+
+    public void setFlickr(String flickr) {
+        this.flickr = flickr;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -167,7 +179,8 @@ public class OnlineStrategie implements Serializable {
         if (lobbypediaUrl != null ? !lobbypediaUrl.equals(that.lobbypediaUrl) : that.lobbypediaUrl != null)
             return false;
         if (googlePlus != null ? !googlePlus.equals(that.googlePlus) : that.googlePlus != null) return false;
-        return instagram != null ? instagram.equals(that.instagram) : that.instagram == null;
+        if (instagram != null ? !instagram.equals(that.instagram) : that.instagram != null) return false;
+        return flickr != null ? flickr.equals(that.flickr) : that.flickr == null;
     }
 
     @Override
@@ -183,6 +196,7 @@ public class OnlineStrategie implements Serializable {
         result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
         result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
         result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
+        result = 31 * result + (flickr != null ? flickr.hashCode() : 0);
         return result;
     }
 
@@ -200,6 +214,7 @@ public class OnlineStrategie implements Serializable {
                 ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
                 ", googlePlus='" + googlePlus + '\'' +
                 ", instagram='" + instagram + '\'' +
+                ", flickr='" + flickr + '\'' +
                 '}';
     }
 }
