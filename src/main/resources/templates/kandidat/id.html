@@ -65,6 +65,7 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
+
                                     <span th:if="${kandidat.bundesland.onlineStrategie}">
 
                                     <a th:href="${kandidat.bundesland.onlineStrategie.webseite}" th:if="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
@@ -164,32 +165,37 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.partei.webseite}" th:if="${kandidat.partei.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+
+                                    <span th:if="${kandidat.partei.onlineStrategie}">
+
+                                    <a th:href="${kandidat.partei.onlineStrategie.webseite}" th:if="${kandidat.partei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.partei.twitter}" th:if="${kandidat.partei.twitter != null}" alt="Twitter" title="Twitter" target="_blank">
+                                    <a th:href="${kandidat.partei.onlineStrategie.twitter}" th:if="${kandidat.partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                         <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.partei.facebook}" th:if="${kandidat.partei.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                    <a th:href="${kandidat.partei.onlineStrategie.facebook}" th:if="${kandidat.partei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:if="${kandidat.partei.youtube}" th:href="${kandidat.partei.youtube != null}" alt="YouTube" title="YouTube" target="_blank">
+                                    <a th:if="${kandidat.partei.onlineStrategie.youtube}" th:href="${kandidat.partei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                         <i class="fa fa-youtube" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.partei.wikipediaArticle}" th:if="${kandidat.partei.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.partei.onlineStrategie.wikipediaArticle}" th:if="${kandidat.partei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.partei.bundeszentralePolitischeBildung}" th:if="${kandidat.partei.bundeszentralePolitischeBildung != null}" alt="Bundeszentrale Politische Bildung" title="Bundeszentrale Politische Bildung" target="_blank">
-                                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                                    <a th:href="${kandidat.partei.onlineStrategie.lobbypediaUrl}" th:if="${kandidat.partei.onlineStrategie.lobbypediaUrl}" alt="LobbypediaUrl" title="Lobbypedia" target="_blank">
+                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.partei.lobbypediaUrl}" th:if="${kandidat.partei.lobbypediaUrl != null}" alt="LobbypediaUrl" title="Lobbypedia" target="_blank">
-                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                    </span>
+
+                                    <a th:href="${kandidat.partei.bundeszentralePolitischeBildung}" th:if="${kandidat.partei.bundeszentralePolitischeBildung}" alt="Bundeszentrale Politische Bildung" title="Bundeszentrale Politische Bildung" target="_blank">
+                                        <i class="fa fa-clipboard" aria-hidden="true"></i>
                                     </a>
                                 </td>
                             </tr>

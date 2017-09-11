@@ -3,8 +3,10 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Table(
@@ -37,6 +39,12 @@ public class Partei implements KandidatDimension {
     @Column(name="partei_lang")
     private String parteiLang;
 
+
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+
+    /*
     @URL
     @Column
     private String webseite;
@@ -52,22 +60,24 @@ public class Partei implements KandidatDimension {
     @URL
     @Column
     private String youtube;
-
+*/
     @URL
     @Column(name="logo_url")
     private String logoUrl;
 
     @URL
+    @Column(name="bundeszentrale_politische_bildung")
+    private String bundeszentralePolitischeBildung;
+
+    /*
+    @URL
     @Column(name="wikipedia_article")
     private String wikipediaArticle;
 
     @URL
-    @Column(name="bundeszentrale_politische_bildung")
-    private String bundeszentralePolitischeBildung;
-
-    @URL
     @Column(name="lobbypedia_url")
     private String lobbypediaUrl;
+*/
 
     @Transient
     public String getName() {
@@ -104,54 +114,6 @@ public class Partei implements KandidatDimension {
         this.parteiLang = parteiLang;
     }
 
-    public String getWebseite() {
-        return webseite;
-    }
-
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getYoutube() {
-        return youtube;
-    }
-
-    public void setYoutube(String youtube) {
-        this.youtube = youtube;
-    }
-
-    public String getLogoUrl() {
-        return logoUrl;
-    }
-
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
-    }
-
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
-    }
-
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
     public String getBundeszentralePolitischeBildung() {
         return bundeszentralePolitischeBildung;
     }
@@ -160,12 +122,20 @@ public class Partei implements KandidatDimension {
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
-    public String getLobbypediaUrl() {
-        return lobbypediaUrl;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setLobbypediaUrl(String lobbypediaUrl) {
-        this.lobbypediaUrl = lobbypediaUrl;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     @Override
@@ -178,16 +148,10 @@ public class Partei implements KandidatDimension {
         if (id != null ? !id.equals(partei1.id) : partei1.id != null) return false;
         if (partei != null ? !partei.equals(partei1.partei) : partei1.partei != null) return false;
         if (parteiLang != null ? !parteiLang.equals(partei1.parteiLang) : partei1.parteiLang != null) return false;
-        if (webseite != null ? !webseite.equals(partei1.webseite) : partei1.webseite != null) return false;
-        if (twitter != null ? !twitter.equals(partei1.twitter) : partei1.twitter != null) return false;
-        if (facebook != null ? !facebook.equals(partei1.facebook) : partei1.facebook != null) return false;
-        if (youtube != null ? !youtube.equals(partei1.youtube) : partei1.youtube != null) return false;
+        if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
+            return false;
         if (logoUrl != null ? !logoUrl.equals(partei1.logoUrl) : partei1.logoUrl != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(partei1.wikipediaArticle) : partei1.wikipediaArticle != null)
-            return false;
-        if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung != null)
-            return false;
-        return lobbypediaUrl != null ? lobbypediaUrl.equals(partei1.lobbypediaUrl) : partei1.lobbypediaUrl == null;
+        return bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung == null;
     }
 
     @Override
@@ -195,14 +159,9 @@ public class Partei implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
         result = 31 * result + (parteiLang != null ? parteiLang.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
-        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
         return result;
     }
 
@@ -212,14 +171,9 @@ public class Partei implements KandidatDimension {
                 "id=" + id +
                 ", partei='" + partei + '\'' +
                 ", parteiLang='" + parteiLang + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
                 ", logoUrl='" + logoUrl + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
-                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
                 '}';
     }
 }

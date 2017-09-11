@@ -14,9 +14,11 @@
             <div class="col-md-12">
                 <div class="well">
 
+                    <span th:if="${bundesland.onlineStrategie}">
                     <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.webseite}" th:href="${bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
 
                     <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.wikipediaArticle}" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                    </span>
 
                 </div>
             </div>
