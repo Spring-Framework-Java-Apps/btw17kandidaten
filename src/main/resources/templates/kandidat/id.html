@@ -302,7 +302,7 @@
             </div>
             <div class="row" th:if="${kandidat.wohnort}">
                 <div class="col-md-12">
-                    <div class="well" th:if="${kandidat.wohnort.geoPosition.googleMapsUrl}">
+                    <div class="well" th:if="${kandidat.wohnort.geoPosition}">
                         <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
                         <hr/>
                         <div id="map-wohnort"></div>
