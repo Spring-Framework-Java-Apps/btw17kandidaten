@@ -62,10 +62,18 @@
                                     &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
-                                    <a th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    <span th:if="${wohnort.onlineStrategie}">
+                                    <a th:if="${wohnort.onlineStrategie.webseite}" th:href="${wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                                    </a>
+                                    </span>
                                 </td>
                                 <td>
-                                    <a th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    <span th:if="${wohnort.onlineStrategie}">
+                                    <a th:if="${wohnort.onlineStrategie.wikipediaArticle}" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </a>
+                                    </span>
                                 </td>
                             </tr>
                             </tbody>

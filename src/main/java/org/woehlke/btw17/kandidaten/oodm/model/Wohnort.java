@@ -1,8 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Table(
@@ -35,22 +38,34 @@ public class Wohnort implements KandidatDimension {
     @Column
     private String wohnort;
 
-    //@URL
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
+    private Bundesland bundesland;
+
+
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+
+    /*
     @Column
     private String webseite;
 
-    //@URL
     @Column(name = "wikipedia_article")
     private String wikipediaArticle;
 
-    //@URL
     @Column()
     private String facebook;
+    */
 
-    //@URL
     @Column(name="logo_url")
     private String logoUrl;
 
+    @Valid
+    @Embedded
+    private GeoPosition geoPosition = new GeoPosition();
+
+    /*
     @Column(name = "google_maps_url")
     private String googleMapsUrl;
 
@@ -62,12 +77,14 @@ public class Wohnort implements KandidatDimension {
 
     @Column(name = "geo_zoom")
     private String geoZoom;
+    */
 
     @Transient
     public String getName() {
         return wohnort;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -84,40 +101,20 @@ public class Wohnort implements KandidatDimension {
         this.wohnort = wohnort;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Bundesland getBundesland() {
+        return bundesland;
     }
 
-    public String getWebseite() {
-        return webseite;
+    public void setBundesland(Bundesland bundesland) {
+        this.bundesland = bundesland;
     }
 
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
-    }
-
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getGoogleMapsUrl() {
-        return googleMapsUrl;
-    }
-
-    public void setGoogleMapsUrl(String googleMapsUrl) {
-        this.googleMapsUrl = googleMapsUrl;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 
     public String getLogoUrl() {
@@ -128,29 +125,12 @@ public class Wohnort implements KandidatDimension {
         this.logoUrl = logoUrl;
     }
 
-
-    public String getGeoLongitude() {
-        return geoLongitude;
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
     }
 
-    public void setGeoLongitude(String geoLongitude) {
-        this.geoLongitude = geoLongitude;
-    }
-
-    public String getGeoLattitude() {
-        return geoLattitude;
-    }
-
-    public void setGeoLattitude(String geoLattitude) {
-        this.geoLattitude = geoLattitude;
-    }
-
-    public String getGeoZoom() {
-        return geoZoom;
-    }
-
-    public void setGeoZoom(String geoZoom) {
-        this.geoZoom = geoZoom;
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
     }
 
     @Override
@@ -162,32 +142,21 @@ public class Wohnort implements KandidatDimension {
 
         if (id != null ? !id.equals(wohnort1.id) : wohnort1.id != null) return false;
         if (wohnort != null ? !wohnort.equals(wohnort1.wohnort) : wohnort1.wohnort != null) return false;
-        if (webseite != null ? !webseite.equals(wohnort1.webseite) : wohnort1.webseite != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(wohnort1.wikipediaArticle) : wohnort1.wikipediaArticle != null)
+        if (bundesland != null ? !bundesland.equals(wohnort1.bundesland) : wohnort1.bundesland != null) return false;
+        if (onlineStrategie != null ? !onlineStrategie.equals(wohnort1.onlineStrategie) : wohnort1.onlineStrategie != null)
             return false;
-        if (facebook != null ? !facebook.equals(wohnort1.facebook) : wohnort1.facebook != null) return false;
         if (logoUrl != null ? !logoUrl.equals(wohnort1.logoUrl) : wohnort1.logoUrl != null) return false;
-        if (googleMapsUrl != null ? !googleMapsUrl.equals(wohnort1.googleMapsUrl) : wohnort1.googleMapsUrl != null)
-            return false;
-        if (geoLongitude != null ? !geoLongitude.equals(wohnort1.geoLongitude) : wohnort1.geoLongitude != null)
-            return false;
-        if (geoLattitude != null ? !geoLattitude.equals(wohnort1.geoLattitude) : wohnort1.geoLattitude != null)
-            return false;
-        return geoZoom != null ? geoZoom.equals(wohnort1.geoZoom) : wohnort1.geoZoom == null;
+        return geoPosition != null ? geoPosition.equals(wohnort1.geoPosition) : wohnort1.geoPosition == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
-        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
-        result = 31 * result + (geoLongitude != null ? geoLongitude.hashCode() : 0);
-        result = 31 * result + (geoLattitude != null ? geoLattitude.hashCode() : 0);
-        result = 31 * result + (geoZoom != null ? geoZoom.hashCode() : 0);
+        result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
 
@@ -196,18 +165,33 @@ public class Wohnort implements KandidatDimension {
         return "Wohnort{" +
                 "id=" + id +
                 ", wohnort='" + wohnort + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", facebook='" + facebook + '\'' +
+                ", bundesland=" + bundesland +
+                ", onlineStrategie=" + onlineStrategie +
                 ", logoUrl='" + logoUrl + '\'' +
-                ", googleMapsUrl='" + googleMapsUrl + '\'' +
-                ", geoLongitude=" + geoLongitude +
-                ", geoLattitude=" + geoLattitude +
-                ", geoZoom=" + geoZoom +
+                ", geoPosition=" + geoPosition +
                 '}';
     }
 
     public String getSqlInsert() {
+
+        String googleMapsUrl = geoPosition.getGoogleMapsUrl();
+        String geoLongitude = geoPosition.getGeoLongitude();
+        String geoLattitude = geoPosition.getGeoLattitude();
+        String geoZoom = geoPosition.getGeoZoom();
+
+        String webseite = onlineStrategie.getWebseite();
+        String twitter = onlineStrategie.getTwitter();
+        String facebook = onlineStrategie.getFacebook();
+        String youtube = onlineStrategie.getYoutube();
+        String soundcloud = onlineStrategie.getSoundcloud();
+        String wikipediaArticle = onlineStrategie.getWikipediaArticle();
+        String bundestagAbgeordnete = onlineStrategie.getBundestagAbgeordnete();
+        String abgeordnetenwatch = onlineStrategie.getAbgeordnetenwatch();
+        String lobbypediaUrl = onlineStrategie.getLobbypediaUrl();
+        String googlePlus = onlineStrategie.getGooglePlus();
+        String instagram = onlineStrategie.getInstagram();
+        String flickr = onlineStrategie.getFlickr();
+
         String columns[] = {
             "id","wohnort","webseite","wikipedia_article","facebook","logo_url",
             "google_maps_url","geo_longitude","geo_lattitude","geo_zoom"

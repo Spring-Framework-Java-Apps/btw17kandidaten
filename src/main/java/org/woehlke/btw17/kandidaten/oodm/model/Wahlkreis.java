@@ -41,6 +41,10 @@ public class Wahlkreis implements KandidatDimension {
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
+    private Bundesland bundesland;
+
     @Transient
     public String getName() {
         return wahlkreisName + " ( " +wahlkreisId+" )";
@@ -86,6 +90,14 @@ public class Wahlkreis implements KandidatDimension {
         this.geoPosition = geoPosition;
     }
 
+    public Bundesland getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(Bundesland bundesland) {
+        this.bundesland = bundesland;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,7 +112,9 @@ public class Wahlkreis implements KandidatDimension {
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(wahlkreis.onlineStrategie) : wahlkreis.onlineStrategie != null)
             return false;
-        return geoPosition != null ? geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition == null;
+        if (geoPosition != null ? !geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition != null)
+            return false;
+        return bundesland != null ? bundesland.equals(wahlkreis.bundesland) : wahlkreis.bundesland == null;
     }
 
     @Override
@@ -110,6 +124,7 @@ public class Wahlkreis implements KandidatDimension {
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         return result;
     }
 
@@ -121,6 +136,7 @@ public class Wahlkreis implements KandidatDimension {
                 ", wahlkreisName='" + wahlkreisName + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
+                ", bundesland=" + bundesland +
                 '}';
     }
 }

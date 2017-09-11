@@ -115,17 +115,19 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.wohnort.webseite}" th:if="${kandidat.wohnort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.wohnort.onlineStrategie}">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.webseite}" th:if="${kandidat.wohnort.onlineStrategie.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.wohnort.facebook}" th:if="${kandidat.wohnort.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.facebook}" th:if="${kandidat.wohnort.onlineStrategie.facebook != null}" alt="Facebook" title="Facebook" target="_blank">
                                         <i class="fa fa-facebook-square" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.wohnort.wikipediaArticle}" th:if="${kandidat.wohnort.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.wohnort.onlineStrategie.wikipediaArticle}" th:if="${kandidat.wohnort.onlineStrategie.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -300,7 +302,7 @@
             </div>
             <div class="row" th:if="${kandidat.wohnort}">
                 <div class="col-md-12">
-                    <div class="well" th:if="${kandidat.wohnort.googleMapsUrl}">
+                    <div class="well" th:if="${kandidat.wohnort.geoPosition.googleMapsUrl}">
                         <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
                         <hr/>
                         <div id="map-wohnort"></div>
@@ -328,7 +330,7 @@
 
     <script th:inline="text">
         function initMap() {
-            var wohnort = {lat: [[${kandidat.wohnort.geoLattitude}]], lng: [[${kandidat.wohnort.geoLongitude}]]};
+            var wohnort = {lat: [[${kandidat.wohnort.geoPosition.geoLattitude}]], lng: [[${kandidat.wohnort.geoPosition.geoLongitude}]]};
             var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
                 zoom: 8,
                 center: wohnort

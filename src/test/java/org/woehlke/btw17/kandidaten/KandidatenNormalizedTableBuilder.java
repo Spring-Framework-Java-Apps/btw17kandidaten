@@ -39,8 +39,6 @@ public class KandidatenNormalizedTableBuilder {
 
     private final static String sqlFileWohnortData = "etc/3nf/data/insert-data-wohnort.sql";
 
-    //private final static String sqlFileKandidatUpdateUrls = "etc/3nf/collect/update-kandidat-urls.sql";
-
     private final static String sqlFileKandidatUpdateFotoUrls = "etc/3nf/collect/update_foto_url_from_foto.sql";
 
     private final static String sqlFileKandidatUpdateBundetagUrls = "etc/3nf/collect/update-kandidat-bundestag.sql";
@@ -212,7 +210,7 @@ public class KandidatenNormalizedTableBuilder {
     @Test
     public void build003WohnortGeoCoordinates() throws Exception {
         for(Wohnort wohnort:wohnortService.getAllOrderById()){
-            String myGoogleMapsUrl = wohnort.getGoogleMapsUrl();
+            String myGoogleMapsUrl = wohnort.getGeoPosition().getGoogleMapsUrl();
             if(myGoogleMapsUrl != null){
                 String parts[] = myGoogleMapsUrl.split(",");
                 Assert.assertTrue(myGoogleMapsUrl,parts.length==3);
@@ -221,9 +219,9 @@ public class KandidatenNormalizedTableBuilder {
                 String geoLattitude = parts[0].replace("@","");
                 String geoLongitude = parts[1];
                 String geoZoom = parts[2].replace("z","");
-                wohnort.setGeoLattitude(geoLattitude);
-                wohnort.setGeoLongitude(geoLongitude);
-                wohnort.setGeoZoom(geoZoom);
+                wohnort.getGeoPosition().setGeoLattitude(geoLattitude);
+                wohnort.getGeoPosition().setGeoLongitude(geoLongitude);
+                wohnort.getGeoPosition().setGeoZoom(geoZoom);
                 wohnortService.update(wohnort);
             }
         }

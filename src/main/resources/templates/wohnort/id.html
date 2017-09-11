@@ -12,20 +12,22 @@
     <div class="container">
         <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
-                <div class="well" th:if="${wohnort.googleMapsUrl}">
+                <span th:if="${wohnort.geoPosition}">
+                <div class="well" th:if="${wohnort.geoPosition.googleMapsUrl}">
                     <h3>Wohnort: <span th:text="${wohnort.wohnort}">wohnort</span></h3>
                     <hr/>
                     <div id="map-wohnort"></div>
                 </div>
+                </span>
             </div>
         </div>
         <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
-                <blockquote>
-                <a class="tw-social-media-link" th:if="${wohnort.webseite}" th:href="${wohnort.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                <blockquote th:if="${wohnort.onlineStrategie}">
+                <a class="tw-social-media-link" th:if="${wohnort.onlineStrategie.webseite}" th:href="${wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                     <i class="fa fa-cloud" aria-hidden="true"></i>
                 </a>
-                <a class="tw-social-media-link" th:if="${wohnort.wikipediaArticle}" th:href="${wohnort.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                <a class="tw-social-media-link" th:if="${wohnort.onlineStrategie.wikipediaArticle}" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                     <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                 </a>
                 </blockquote>
@@ -44,7 +46,7 @@
 
 <script th:inline="text">
     function initMap() {
-        var wohnort = {lat: [[${wohnort.geoLattitude}]], lng: [[${wohnort.geoLongitude}]]};
+        var wohnort = {lat: [[${wohnort.geoPosition.geoLattitude}]], lng: [[${wohnort.geoPosition.geoLongitude}]]};
         var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
             zoom: 8,
             center: wohnort

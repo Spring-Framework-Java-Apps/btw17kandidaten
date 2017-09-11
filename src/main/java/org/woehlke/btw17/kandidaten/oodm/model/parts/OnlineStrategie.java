@@ -61,6 +61,18 @@ public class OnlineStrategie implements Serializable {
     @Column(name = "flickr")
     private String flickr;
 
+    @URL
+    @Column(name = "vimeo")
+    private String vimeo;
+
+    @URL
+    @Column(name = "xing")
+    private String xing;
+
+    @URL
+    @Column(name = "linked_in")
+    private String linkedIn;
+
 
     public String getWebseite() {
         return webseite;
@@ -158,6 +170,30 @@ public class OnlineStrategie implements Serializable {
         this.flickr = flickr;
     }
 
+    public String getVimeo() {
+        return vimeo;
+    }
+
+    public void setVimeo(String vimeo) {
+        this.vimeo = vimeo;
+    }
+
+    public String getXing() {
+        return xing;
+    }
+
+    public void setXing(String xing) {
+        this.xing = xing;
+    }
+
+    public String getLinkedIn() {
+        return linkedIn;
+    }
+
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -180,7 +216,10 @@ public class OnlineStrategie implements Serializable {
             return false;
         if (googlePlus != null ? !googlePlus.equals(that.googlePlus) : that.googlePlus != null) return false;
         if (instagram != null ? !instagram.equals(that.instagram) : that.instagram != null) return false;
-        return flickr != null ? flickr.equals(that.flickr) : that.flickr == null;
+        if (flickr != null ? !flickr.equals(that.flickr) : that.flickr != null) return false;
+        if (vimeo != null ? !vimeo.equals(that.vimeo) : that.vimeo != null) return false;
+        if (xing != null ? !xing.equals(that.xing) : that.xing != null) return false;
+        return linkedIn != null ? linkedIn.equals(that.linkedIn) : that.linkedIn == null;
     }
 
     @Override
@@ -197,6 +236,9 @@ public class OnlineStrategie implements Serializable {
         result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
         result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
         result = 31 * result + (flickr != null ? flickr.hashCode() : 0);
+        result = 31 * result + (vimeo != null ? vimeo.hashCode() : 0);
+        result = 31 * result + (xing != null ? xing.hashCode() : 0);
+        result = 31 * result + (linkedIn != null ? linkedIn.hashCode() : 0);
         return result;
     }
 
@@ -215,6 +257,9 @@ public class OnlineStrategie implements Serializable {
                 ", googlePlus='" + googlePlus + '\'' +
                 ", instagram='" + instagram + '\'' +
                 ", flickr='" + flickr + '\'' +
+                ", vimeo='" + vimeo + '\'' +
+                ", xing='" + xing + '\'' +
+                ", linkedIn='" + linkedIn + '\'' +
                 '}';
     }
 }

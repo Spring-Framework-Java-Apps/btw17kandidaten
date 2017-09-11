@@ -67,10 +67,18 @@
                                     &nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
-                                    <a th:if="${wahlkreis.webseite}" th:href="${wahlkreis.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                    <span th:if="${wahlkreis.onlineStrategie}">
+                                        <a th:if="${wahlkreis.onlineStrategie.webseite}" th:href="${wahlkreis.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
                                 </td>
                                 <td>
-                                    <a th:if="${wahlkreis.wikipediaArticle}" th:href="${wahlkreis.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                    <span th:if="${wahlkreis.onlineStrategie}">
+                                        <a th:if="${wahlkreis.onlineStrategie.wikipediaArticle}" th:href="${wahlkreis.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
                                 </td>
                             </tr>
                             </tbody>

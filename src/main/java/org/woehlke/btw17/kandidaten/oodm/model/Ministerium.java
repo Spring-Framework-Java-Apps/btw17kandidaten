@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.parts.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
@@ -52,6 +53,10 @@ public class Ministerium implements KandidatDimension {
     @Column(name="ministerium_lang")
     private String ministeriumLang;
 
+    @OneToOne(optional=true,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name="fk_bundesminister")
+    private Kandidat bundesminister;
+
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
@@ -59,6 +64,10 @@ public class Ministerium implements KandidatDimension {
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
+
+    @Valid
+    @Embedded
+    private Adresse adresse = new Adresse();
 
     @Override
     public Long getId() {
@@ -107,6 +116,22 @@ public class Ministerium implements KandidatDimension {
         this.geoPosition = geoPosition;
     }
 
+    public Kandidat getBundesminister() {
+        return bundesminister;
+    }
+
+    public void setBundesminister(Kandidat bundesminister) {
+        this.bundesminister = bundesminister;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -118,9 +143,12 @@ public class Ministerium implements KandidatDimension {
         if (ministerium != null ? !ministerium.equals(that.ministerium) : that.ministerium != null) return false;
         if (ministeriumLang != null ? !ministeriumLang.equals(that.ministeriumLang) : that.ministeriumLang != null)
             return false;
+        if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
+            return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return geoPosition != null ? geoPosition.equals(that.geoPosition) : that.geoPosition == null;
+        if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
+        return adresse != null ? adresse.equals(that.adresse) : that.adresse == null;
     }
 
     @Override
@@ -128,8 +156,10 @@ public class Ministerium implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
+        result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
         return result;
     }
 
@@ -139,8 +169,10 @@ public class Ministerium implements KandidatDimension {
                 "id=" + id +
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
+                ", bundesminister=" + bundesminister +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
+                ", adresse=" + adresse +
                 '}';
     }
 }
