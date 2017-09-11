@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -103,6 +104,7 @@ public class KandidatenNormalizedTableBuilder {
     @Autowired
     private KandidatenProperties kandidatenProperties;
 
+    @Ignore
     @Commit
     @Test
     public void build001LandesListe() throws IOException {
@@ -134,6 +136,7 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
+    @Ignore
     @Commit
     @Test
     public void build002Kandidat() throws Exception {
@@ -206,6 +209,7 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
+    @Ignore
     @Commit
     @Test
     public void build003WohnortGeoCoordinates() throws Exception {
@@ -227,6 +231,7 @@ public class KandidatenNormalizedTableBuilder {
         }
     }
 
+    @Ignore
     @Commit
     @Test
     public void build004UpdateFotoUrls() throws IOException {
@@ -238,6 +243,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build011KandidatUpdateBundetagUrls() throws IOException {
@@ -251,6 +257,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build012KandidatUpdateAbgeordnetenwatchUrls() throws IOException {
@@ -264,6 +271,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build014UpdateKandidatBundestag() throws IOException {
@@ -277,6 +285,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build015UpdateKandidatFacebook() throws IOException {
@@ -290,6 +299,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build016UpdateKandidatFoto() throws IOException {
@@ -303,6 +313,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build017KandidatUpdateLobbypediaUrls() throws IOException {
@@ -316,6 +327,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build018UpdateKandidatSoundcloud() throws IOException {
@@ -329,6 +341,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build019KandidatUpdateTwitter() throws IOException {
@@ -342,6 +355,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build020UpdateKandidatWebseite() throws IOException {
@@ -355,6 +369,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build021UpdateKandidatWikipedia() throws IOException {
@@ -368,6 +383,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build022UpdateKandidatYouTube() throws IOException {
@@ -381,6 +397,7 @@ public class KandidatenNormalizedTableBuilder {
         br.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build100LandesListeSql() throws IOException {
@@ -396,6 +413,7 @@ public class KandidatenNormalizedTableBuilder {
         bw.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build101KandidatSql() throws IOException {
@@ -414,6 +432,7 @@ public class KandidatenNormalizedTableBuilder {
         bw.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build103WohnortSql() throws Exception {
@@ -431,6 +450,7 @@ public class KandidatenNormalizedTableBuilder {
         bw.close();
     }
 
+    @Ignore
     @Commit
     @Test
     public void build200CheckResults() throws IOException {
@@ -439,6 +459,7 @@ public class KandidatenNormalizedTableBuilder {
         Assert.assertEquals(countKandidatenFlat,countKandidaten);
     }
 
+    @Ignore
     @Commit
     @Test
     public void build300CheckCount() throws Exception {
@@ -476,6 +497,7 @@ public class KandidatenNormalizedTableBuilder {
         Assert.assertEquals(countKandidatSoll,countKandidatIst);
     }
 
+    @Ignore
     @Commit
     @Test
     public void build300BuildDataSqlFile() throws IOException,InterruptedException {

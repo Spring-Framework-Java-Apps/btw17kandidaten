@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten;
 
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ public class ExportKandidatTable {
 
     private static final Logger log = LoggerFactory.getLogger(ExportKandidatTable.class);
 
+    @Ignore
     @Commit
     @Test
     public void build300BuildKandidatSqlFile() throws IOException,InterruptedException {
@@ -35,6 +37,7 @@ public class ExportKandidatTable {
         assert exitCode == 0;
     }
 
+    @Ignore
     @Commit
     @Test
     public void build301BuildDataSqlFile() throws IOException,InterruptedException {
