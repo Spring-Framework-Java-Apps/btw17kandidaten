@@ -15,15 +15,29 @@
             <div class="col-md-12">
                 <div class="well">
 
-                    <a class="tw-social-media-link" th:if="${listePartei.webseite}" th:href="${listePartei.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                    <span th:if="${listePartei.onlineStrategie}">
 
-                    <a class="tw-social-media-link" th:if="${listePartei.twitter}" th:href="${listePartei.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${listePartei.onlineStrategie.webseite}" th:href="${listePartei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                        <i class="fa fa-cloud" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${listePartei.facebook}" th:href="${listePartei.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${listePartei.onlineStrategie.twitter}" th:href="${listePartei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${listePartei.youtube}" th:href="${listePartei.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${listePartei.onlineStrategie.facebook}" th:href="${listePartei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                    </a>
 
-                    <a class="tw-social-media-link" th:if="${listePartei.wikipediaArticle}" th:href="${listePartei.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                    <a class="tw-social-media-link" th:if="${listePartei.onlineStrategie.youtube}" th:href="${listePartei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                        <i class="fa fa-youtube" aria-hidden="true"></i>
+                    </a>
+
+                    <a class="tw-social-media-link" th:if="${listePartei.onlineStrategie.wikipediaArticle}" th:href="${listePartei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                    </a>
+
+                    </span>
 
                 </div>
             </div>
