@@ -70,22 +70,21 @@
 
 <footer th:fragment="tw-footer">
 
-    <script th:inline="javascript" th:if="${ministerium.geoPosition}">
+    <script th:inline="text" th:if="${ministerium.geoPosition}">
         function initMap() {
             var ministerium = {
                 lat: [[${ministerium.geoPosition.geoLattitude}]],
                 lng: [[${ministerium.geoPosition.geoLongitude}]]
             };
             var ministeriumMap = new google.maps.Map(document.getElementById('map-ministerium'), {
-                /* zoom: [[${ministerium.geoPosition.geoZoom}]], */
-                zoom: 17,
+                zoom: [[${ministerium.geoPosition.geoZoom}]],
                 center: ministerium
             });
             var ministeriumMarker = new google.maps.Marker({
                 position: ministerium,
                 map: ministeriumMap,
-                title: [[${ministerium.markerTitle}]],
-                label: [[${ministerium.markerLabel}]]
+                title: '[[${ministerium.markerTitle}]]',
+                label: '[[${ministerium.markerLabel}]]'
             });
         }
     </script>
