@@ -130,7 +130,7 @@
         color: #317eac;
     }
 
-    #map-wohnort, #map-geburtsort {
+    #map-wohnort, #map-geburtsort, #map-ministerium {
         width: 100%;
         height: 320px;
     }

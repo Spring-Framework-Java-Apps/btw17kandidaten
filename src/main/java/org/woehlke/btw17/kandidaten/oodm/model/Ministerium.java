@@ -83,6 +83,16 @@ public class Ministerium implements KandidatDimension {
         return ministerium +"  "+ministeriumLang;
     }
 
+    @Transient
+    public String getMarkerTitle(){
+        return ""+ministerium+"<br/>"+ministeriumLang+"<br/>Bundesminister: <b>"+bundesministerName+"</b>";
+    }
+
+    @Transient
+    public String getMarkerLabel(){
+        return ""+ministerium+"";
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
