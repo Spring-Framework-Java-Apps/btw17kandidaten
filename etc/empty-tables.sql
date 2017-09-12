@@ -1,3 +1,5 @@
+DELETE FROM ministerium;
+DELETE FROM kandidat_ausschuss;
 DELETE FROM kandidat;
 DELETE FROM kandidat_flat;
 DELETE FROM landesliste;
@@ -10,6 +12,6 @@ DELETE FROM partei;
 DELETE FROM wahlkreis;
 DELETE FROM wohnort;
 DELETE FROM fraktion;
-DELETE FROM ministerium;
 DELETE FROM ausschuss;
+DELETE FROM ministerium;
 ALTER SEQUENCE hibernate_sequence RESTART WITH 1;

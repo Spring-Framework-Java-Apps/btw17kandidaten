@@ -56,7 +56,7 @@ public class Ministerium implements KandidatDimension {
     @Column(name="bundesminister")
     private String bundesministerName;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
     @JoinColumn(name="fk_bundesminister")
     private Kandidat bundesminister;
 

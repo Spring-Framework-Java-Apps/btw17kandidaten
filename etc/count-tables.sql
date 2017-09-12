@@ -8,4 +8,8 @@ SELECT count(*) FROM geburtsort;
 SELECT count(*) FROM liste_partei;
 SELECT count(*) FROM partei;
 SELECT count(*) FROM wahlkreis;
+SELECT count(*) FROM ausschuss;
+SELECT count(*) FROM fraktion;
+SELECT count(*) FROM ministerium;
+SELECT count(*) FROM kandidat_ausschuss;
 SELECT count(*) FROM wohnort;
