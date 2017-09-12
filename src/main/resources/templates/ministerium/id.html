@@ -72,9 +72,13 @@
 
     <script th:inline="javascript" th:if="${ministerium.geoPosition}">
         function initMap() {
-            var ministerium = {lat: [[${ministerium.geoPosition.geoLattitude}]], lng: [[${ministerium.geoPosition.geoLongitude}]]};
+            var ministerium = {
+                lat: [[${ministerium.geoPosition.geoLattitude}]],
+                lng: [[${ministerium.geoPosition.geoLongitude}]]
+            };
             var ministeriumMap = new google.maps.Map(document.getElementById('map-ministerium'), {
-                zoom: [[${ministerium.geoPosition.geoZoom}]],
+                /* zoom: [[${ministerium.geoPosition.geoZoom}]], */
+                zoom: 17,
                 center: ministerium
             });
             var ministeriumMarker = new google.maps.Marker({
