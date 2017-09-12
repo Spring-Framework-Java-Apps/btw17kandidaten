@@ -39,7 +39,3 @@ INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, abgeordnetenwatch, bundest
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, abgeordnetenwatch, bundestag, facebook, google_plus, instagram, lobbypedia_url, soundcloud, twitter, webseite, wikipedia_article, youtube) VALUES (39,'Expertenkommission zur Zukunft der Behörde des Bundesbeauftragten für die Unterlagen des Staatssicherheitsdienstes der ehemaligen DDR (BStU)',NULL,NULL,'https://www.bundestag.de/ausschuesse18/gremien18/bstu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, abgeordnetenwatch, bundestag, facebook, google_plus, instagram, lobbypedia_url, soundcloud, twitter, webseite, wikipedia_article, youtube) VALUES (40,'Gremium nach § 23c Absatz 8 des Zollfahndungsdienstgesetzes',NULL,NULL,'https://www.bundestag.de/ausschuesse18/gremien18/zfdg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, abgeordnetenwatch, bundestag, facebook, google_plus, instagram, lobbypedia_url, soundcloud, twitter, webseite, wikipedia_article, youtube) VALUES (41,'Parlamentarischer Beirat für nachhaltige Entwicklung',NULL,NULL,'https://www.bundestag.de/nachhaltigkeit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-
-
-
-
