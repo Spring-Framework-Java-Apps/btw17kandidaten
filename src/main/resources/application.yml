@@ -99,6 +99,7 @@ btw17:
       - "/landesliste/**"
       - "/landesliste/bundesland/**"
       - "/landesliste/listepartei/**"
+      - "/regierung/kanzleramt"
       - "/geburtsjahr/**"
       - "/imprint"
       - "/welcome"
