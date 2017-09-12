@@ -107,20 +107,24 @@ If you _really really_ like it and want to support the author, I will be glad to
 + Google Analytics [google-analytics][google-analytics]
 + Serverside is made with [Java][java] and [Spring-Boot][spring-boot].
 + Spring Frameworks used: [spring-web-mvc][spring-web-mvc] [JPA][spring-data-jpa], [Security][spring-security]
++ HTML Templating: [Thymeleaf][thymeleaf]
 + Database [PostgreSQL][postgresql] and jdbc by [PostgreSQL-JDBC][postgresql-jdbc].
-+ Running on Cloud-Service [Heroku][heroku] with [Heroku PostegreSQL][postgresql-heroku].
++ Continous Integration with [Travis-CI][travis-ci]
++ Scalable Operating on Cloud-Service in Zone EU [Heroku][heroku] with [Heroku PostegreSQL][postgresql-heroku].
 
 [java]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [fontawesome]: http://fontawesome.io/icons/
 [postgresql-jdbc]: https://jdbc.postgresql.org/
 [postgresql]: https://www.postgresql.org/
 [heroku]: https://heroku.com/
+[travis-ci]: https://travis-ci.org/
 [postgresql-heroku]: https://devcenter.heroku.com/categories/heroku-postgres/
 [spring-web-mvc]: http://projects.spring.io/spring-framework/
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-data-jpa]: http://projects.spring.io/spring-data-jpa/
 [spring-security]: http://projects.spring.io/spring-security/
-[bootstrap]: http://getbootstrap.com/
+[thymeleaf]: http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html
+[bootstrap]: https://getbootstrap.com/docs/3.3/
 [glyphicons]: http://glyphicons.com/
 [webfonts]: http://www.google.com/webfonts/
 [jquery]: http://jquery.org

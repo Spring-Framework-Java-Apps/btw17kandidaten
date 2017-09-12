@@ -32,21 +32,6 @@
                                     <th class="tw-debug">ID</th>
                                     <th>Ausschuss</th>
                                     <th>
-                                        <i class="fa fa-cloud" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
                                         <i class="fa fa-university" aria-hidden="true"></i>
                                     </th>
                                 </tr>
@@ -67,21 +52,6 @@
                                         <a href="" th:href="@{|/ausschuss/${ausschuss.id}/|}">
                                             <span th:if="${ausschuss.ausschuss}" th:text="${ausschuss.ausschuss}">ausschuss</span>
                                         </a>
-                                    </td>
-                                    <td>
-                                        <a th:if="${ausschuss.onlineStrategie.webseite}" th:href="${ausschuss.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a th:if="${ausschuss.onlineStrategie.twitter}" th:href="${ausschuss.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a th:if="${ausschuss.onlineStrategie.facebook}" th:href="${ausschuss.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a th:if="${ausschuss.onlineStrategie.youtube}" th:href="${ausschuss.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                                    </td>
-                                    <td>
-                                        <a th:if="${ausschuss.onlineStrategie.wikipediaArticle}" th:href="${ausschuss.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
                                     </td>
                                     <td>
                                         <a th:if="${ausschuss.onlineStrategie.bundestagAbgeordnete}" th:href="${ausschuss.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank"><i class="fa fa-university" aria-hidden="true"></i></a>
