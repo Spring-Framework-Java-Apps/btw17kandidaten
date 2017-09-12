@@ -83,8 +83,6 @@ public class Ministerium implements KandidatDimension {
         return ministerium +"  "+ministeriumLang;
     }
 
-
-    //TODO: TEST map
     @Transient
     public String getMarkerTitle(){
         return ""+ministerium+"<br/>"+ministeriumLang+"<br/>Bundesminister: <b>"+bundesministerName+"</b>";
