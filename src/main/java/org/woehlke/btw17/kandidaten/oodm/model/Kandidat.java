@@ -230,6 +230,7 @@ public class Kandidat implements Serializable {
     @JoinColumn(name = "fk_ministerium")
     private Ministerium ministerium;
 
+
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
