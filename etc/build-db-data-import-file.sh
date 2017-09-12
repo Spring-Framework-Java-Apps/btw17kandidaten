@@ -39,7 +39,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-geburtsort.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei'  | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO liste_partei" >> ../src/main/resources/data.sql
 echo '-- Table: liste_partei' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
