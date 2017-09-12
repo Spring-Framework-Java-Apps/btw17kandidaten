@@ -226,7 +226,7 @@ public class Kandidat implements Serializable {
     @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "fk_ministerium")
     private Ministerium ministerium;
 

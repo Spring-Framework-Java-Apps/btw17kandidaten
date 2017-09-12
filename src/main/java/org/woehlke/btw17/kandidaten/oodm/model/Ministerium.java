@@ -54,11 +54,11 @@ public class Ministerium implements KandidatDimension {
     private String ministeriumLang;
 
     @Column(name="bundesminister")
-    private String bundesminister;
+    private String bundesministerName;
 
-    @OneToOne(optional=true,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="fk_bundesminister")
-    private Kandidat kandidat;
+    private Kandidat bundesminister;
 
     @Valid
     @Embedded
@@ -103,6 +103,22 @@ public class Ministerium implements KandidatDimension {
         this.ministeriumLang = ministeriumLang;
     }
 
+    public String getBundesministerName() {
+        return bundesministerName;
+    }
+
+    public void setBundesministerName(String bundesministerName) {
+        this.bundesministerName = bundesministerName;
+    }
+
+    public Kandidat getBundesminister() {
+        return bundesminister;
+    }
+
+    public void setBundesminister(Kandidat bundesminister) {
+        this.bundesminister = bundesminister;
+    }
+
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -117,23 +133,6 @@ public class Ministerium implements KandidatDimension {
 
     public void setGeoPosition(GeoPosition geoPosition) {
         this.geoPosition = geoPosition;
-    }
-
-
-    public String getBundesminister() {
-        return bundesminister;
-    }
-
-    public void setBundesminister(String bundesminister) {
-        this.bundesminister = bundesminister;
-    }
-
-    public Kandidat getKandidat() {
-        return kandidat;
-    }
-
-    public void setKandidat(Kandidat kandidat) {
-        this.kandidat = kandidat;
     }
 
     public Adresse getAdresse() {
@@ -155,9 +154,8 @@ public class Ministerium implements KandidatDimension {
         if (ministerium != null ? !ministerium.equals(that.ministerium) : that.ministerium != null) return false;
         if (ministeriumLang != null ? !ministeriumLang.equals(that.ministeriumLang) : that.ministeriumLang != null)
             return false;
-        if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
+        if (bundesministerName != null ? !bundesministerName.equals(that.bundesministerName) : that.bundesministerName != null)
             return false;
-        if (kandidat != null ? !kandidat.equals(that.kandidat) : that.kandidat != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
@@ -169,8 +167,7 @@ public class Ministerium implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
-        result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
-        result = 31 * result + (kandidat != null ? kandidat.hashCode() : 0);
+        result = 31 * result + (bundesministerName != null ? bundesministerName.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
@@ -183,8 +180,7 @@ public class Ministerium implements KandidatDimension {
                 "id=" + id +
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
-                ", bundesminister='" + bundesminister + '\'' +
-                ", kandidat=" + kandidat +
+                ", bundesministerName='" + bundesministerName + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", adresse=" + adresse +
