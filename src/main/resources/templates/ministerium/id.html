@@ -8,45 +8,71 @@
 <script th:include="layoutMain :: tw-seo-fb"></script>
 <header th:include="layoutMain :: tw-header"></header>
 
-
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td><span th:text="${ministerium.ministerium}"></span></td>
+                                <td><span th:text="${ministerium.ministeriumLang}"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Bundesminister</td>
+                                <td>
+                                    <span th:if="${ministerium.bundesminister == null}">
+                                        <span th:text="${ministerium.bundesministerName}"></span>
+                                    </span>
+                                    <span th:if="${ministerium.bundesminister}">
+                                        <a th:href="@{|/kandidat/${ministerium.bundesminister.id}|}">
+                                            <span th:text="${ministerium.bundesministerName}"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                     <span th:if="${ministerium.onlineStrategie}">
 
-                    <span th:if="${ministerium.onlineStrategie}">
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.webseite}" th:href="${ministerium.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.webseite}" th:href="${ministerium.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                        <i class="fa fa-cloud" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.twitter}" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.twitter}" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.facebook}" th:href="${ministerium.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.facebook}" th:href="${ministerium.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.youtube}" th:href="${ministerium.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.youtube}" th:href="${ministerium.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.bundestagAbgeordnete}" th:href="${ministerium.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.bundestagAbgeordnete}" th:href="${ministerium.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                        <i class="fa fa-university" aria-hidden="true"></i>
-                    </a>
+                                        <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.abgeordnetenwatch}" th:href="${ministerium.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
 
-                    <a class="tw-social-media-link" th:if="${ministerium.onlineStrategie.abgeordnetenwatch}" th:href="${ministerium.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </a>
-
-                    </span>
-
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td><td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
