@@ -13,6 +13,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.model.Partei;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
@@ -32,16 +33,20 @@ public class UpdatePartei {
     private ParteiService parteiService;
 
 
-    @Ignore
     @Commit
     @Test
-    public void updateKandidatenFotoUrl() throws Exception {
+    public void updatePartei() throws Exception {
         List<Partei> allKandidatenPage = parteiService.getAll();
         for (Partei in : allKandidatenPage) {
             log.info(in.toString());
-            ListePartei out = listeParteiService.findByListePartei(in.getPartei(),in.getParteiLang());
-            out.setOnlineStrategie(in.getOnlineStrategie());
-            listeParteiService.update(out);
+            ListePartei out = listeParteiService.findByPartei(in.getPartei());
+            if(out != null) {
+                OnlineStrategie os = in.getOnlineStrategie();
+                if (os != null) {
+                    out.setOnlineStrategie(os);
+                    listeParteiService.update(out);
+                }
+            }
         }
     }
 }

@@ -47,4 +47,9 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public void update(ListePartei out) {
         listeParteiRepository.save(out);
     }
+
+    @Override
+    public ListePartei findByPartei(String partei) {
+        return listeParteiRepository.findByPartei(partei);
+    }
 }

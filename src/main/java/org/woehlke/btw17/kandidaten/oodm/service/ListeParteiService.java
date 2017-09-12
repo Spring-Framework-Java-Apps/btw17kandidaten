@@ -15,4 +15,7 @@ public interface ListeParteiService {
     void deleteAll();
 
     void update(ListePartei out);
+
+    ListePartei findByPartei(String partei);
+
 }

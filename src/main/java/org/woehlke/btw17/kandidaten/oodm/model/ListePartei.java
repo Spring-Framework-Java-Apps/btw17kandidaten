@@ -25,6 +25,12 @@ import javax.validation.Valid;
         @Index(name = "idx_liste_partei_wikipedia_article", columnList = "wikipedia_article")
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "ListePartei.findByPartei",
+        query = "select o from ListePartei as o where o.listePartei=:listePartei"
+    )
+})
 public class ListePartei implements KandidatDimension {
 
 
