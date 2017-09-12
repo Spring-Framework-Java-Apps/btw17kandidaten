@@ -47,9 +47,6 @@
                                     <th>
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </th>
-                                    <th>
-                                        <i class="fa fa-university" aria-hidden="true"></i>
-                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -106,13 +103,6 @@
                                         <span th:if="${ministerium.onlineStrategie}">
                                             <a th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.bundestagAbgeordnete}" th:href="${ministerium.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                                                <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
                                     </td>
