@@ -88,42 +88,22 @@
 <section th:include="layoutMain :: tw-history-back-section" >
 </section>
 
-<footer th:fragment="tw-footer">
+<script th:inline="text">
+    function initMap() {
+        var kandidat = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: kandidat
+        });
+        var marker = new google.maps.Marker({
+            position: kandidat,
+            map: map
+        });
+    }
+</script>
+<script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${googleMapsApiKey}|}" ></script>
 
-    <script th:inline="text">
-        function initMap() {
-            var kandidat = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: kandidat
-            });
-            var marker = new google.maps.Marker({
-                position: kandidat,
-                map: map
-            });
-        }
-    </script>
-    <script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${googleMapsApiKey}|}" ></script>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="webjars/jquery/1.11.1/jquery.min.js" th:attr="src=@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js" th:attr="src=@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-    <!-- Map Icons -->
-    <script src="map-icons/js/map-icons.min.js" th:attr="src=@{/map-icons/js/map-icons.min.js}"></script>
-    <!-- my own JavaScript -->
-    <script src="js/my.js" th:attr="src=@{/js/my.js}"></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-17174370-11', 'auto');
-        ga('set', 'anonymizeIp', true);
-        ga('send', 'pageview');
-
-    </script>
+<footer th:include="layoutMain :: footer" >
 </footer>
 </body>
 </html>
