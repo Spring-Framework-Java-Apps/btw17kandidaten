@@ -32,7 +32,7 @@ public class UpdatePartei {
     @Autowired
     private ParteiService parteiService;
 
-
+    @Ignore
     @Commit
     @Test
     public void updatePartei() throws Exception {
