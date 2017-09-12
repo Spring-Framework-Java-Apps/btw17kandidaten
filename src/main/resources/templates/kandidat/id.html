@@ -211,13 +211,19 @@
                                 <td>&nbsp;</td>
                             </tr>
                             <tr th:if="${kandidat.mdb != null}">
-                                <td><i class="fa fa-university" aria-hidden="true"></i> MdB</td>
+                                <td><i class="fa fa-handshake-o" aria-hidden="true"></i> Fraktion</td>
                                 <td>
-                                    <a th:if="${kandidat.mdb}" href="/mdb/all" th:href="@{/mdb/all}">
-                                        <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
+                                    <a th:if="${kandidat.fraktion}" href="/fraktion/id" th:href="@{|/fraktion/${kandidat.fraktion.id}|}">
+                                        <span th:text="${kandidat.fraktion.name}"></span>
                                     </a>
                                 </td>
                                 <td>&nbsp;</td>
+                            </tr>
+                            <tr th:if="${kandidat.funktion}">
+                                <td><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Funktion</td>
+                                <td colspan="2">
+                                    <span th:text="${kandidat.funktion}"></span>
+                                </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
