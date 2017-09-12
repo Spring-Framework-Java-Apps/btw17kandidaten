@@ -95,17 +95,17 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-kandidat_flat.sql >> ../src/main/resources/data.sql
 
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resources/data.sql
-echo '-- Table: kandidat' >> ../src/main/resources/data.sql
-echo '--' >> ../src/main/resources/data.sql
-
-cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat" >> ../src/main/resources/data.sql
-
-echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium' >> ../src/main/resources/data.sql
 echo '-- Table: ministerium' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-ministerium.sql >> ../src/main/resources/data.sql
+
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat' >> ../src/main/resources/data.sql
+echo '-- Table: kandidat' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat" >> ../src/main/resources/data.sql
 
 exit 0

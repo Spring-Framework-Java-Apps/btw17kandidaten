@@ -594,7 +594,6 @@ INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_art
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (594, 'Parchim', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (595, 'Olbernhau', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (596, 'Ober-Wöllstadt', NULL, NULL, NULL);
-INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (597, 'Recklinghausen', NULL, NULL, 'https://de.wikipedia.org/wiki/Recklinghausen');
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (598, 'Bergneustadt', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (599, 'Dessau', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (600, 'St. Ilgen (jetzt Leimen)', NULL, NULL, NULL);
@@ -673,7 +672,6 @@ INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_art
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (673, 'Heimboldshausen', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (674, 'Münster', NULL, NULL, 'https://de.wikipedia.org/wiki/M%C3%BCnster');
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (675, 'Weiden i.d.Opf.', NULL, NULL, 'https://de.wikipedia.org/wiki/Weiden_in_der_Oberpfalz');
-INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (676, 'Teheran, Iran', NULL, NULL, 'https://de.wikipedia.org/wiki/Teheran');
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (677, 'Wesenberg', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (678, 'Sömmerda', NULL, NULL, NULL);
 INSERT INTO geburtsort (id, geburtsort, google_maps_url, webseite, wikipedia_article) VALUES (679, 'Manhagen', NULL, NULL, NULL);
