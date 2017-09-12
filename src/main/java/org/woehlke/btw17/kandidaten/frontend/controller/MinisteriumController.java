@@ -84,9 +84,10 @@ public class MinisteriumController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("ministerium",ministerium);
-
+            /*
             Page<Kandidat> kandidatenPage  = kandidatService.findByMinisterium(ministerium,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
+            */
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
             return "ministerium/id";

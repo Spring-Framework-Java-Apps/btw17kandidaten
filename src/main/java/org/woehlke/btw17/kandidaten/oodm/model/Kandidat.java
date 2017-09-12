@@ -122,14 +122,6 @@ import java.util.Set;
         query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
-        name = "Kandidat.findByMinisterium",
-        query = "select o from Kandidat as o where o.ministerium=:ministerium order by o.nachname"
-    ),
-    @NamedQuery(
-        name = "Kandidat.findByMinisteriumCount",
-        query = "select count(o) from Kandidat as o where o.ministerium=:ministerium"
-    ),
-    @NamedQuery(
         name = "Kandidat.findByFraktion",
         query = "select o from Kandidat as o where o.fraktion=:fraktion order by o.nachname"
     ),

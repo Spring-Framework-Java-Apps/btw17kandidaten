@@ -202,11 +202,6 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
-    public Page<Kandidat> findByMinisterium(Ministerium ministerium, Pageable pageable) {
-        return kandidatRepository.findByMinisterium(ministerium, pageable);
-    }
-
-    @Override
     public Page<Kandidat> findByFraktion(Fraktion fraktion, Pageable pageable) {
         return kandidatRepository.findByFraktion(fraktion,pageable);
     }

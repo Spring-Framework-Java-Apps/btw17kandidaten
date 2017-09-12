@@ -13,4 +13,4 @@ DROP TABLE wohnort CASCADE;
 DROP TABLE fraktion CASCADE;
 DROP TABLE ausschuss CASCADE;
 DROP TABLE ministerium CASCADE;
-DROP SEQUENCE hibernate_sequence CASCADE;
+DROP SEQUENCE hibernate_sequence RESTRICT;

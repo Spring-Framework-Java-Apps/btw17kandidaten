@@ -85,9 +85,7 @@ echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ausschuss' >> ../src/main/resou
 echo '-- Table: ausschuss' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-
 cat ./3nf/data/insert-data-ausschuss.sql >> ../src/main/resources/data.sql
-
 
 echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium' >> ../src/main/resources/data.sql
