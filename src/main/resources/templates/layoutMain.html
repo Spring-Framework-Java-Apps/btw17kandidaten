@@ -113,7 +113,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="tw-navbar-collapse-tasks">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-left">
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -349,20 +349,30 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="/suche/formular" th:href="@{/suche/formular}">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <span>Suche</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/imprint" th:href="@{/imprint}">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span>Impressum</span>
+                            <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/suche/formular" th:href="@{/suche/formular}">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <span>Suche</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/imprint" th:href="@{/imprint}">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <span>Impressum</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
-                <form th:if="${suchformularFreitext}" action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="navbar-form navbar-right">
+                <form th:if="${suchformularFreitext}" action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="nav navbar-form navbar-right">
                     <div class="form-group">
                         <input th:field="*{searchTerm}" type="text" name="vorname" id="search-term-input" class="form-control" placeholder="Suche nach"/>
                     </div>
