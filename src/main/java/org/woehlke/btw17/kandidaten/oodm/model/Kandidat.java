@@ -691,6 +691,14 @@ public class Kandidat implements Serializable {
         this.funktion = funktion;
     }
 
+    public Set<Ausschuss> getAusschuss() {
+        return ausschuss;
+    }
+
+    public void setAusschuss(Set<Ausschuss> ausschuss) {
+        this.ausschuss = ausschuss;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -727,6 +735,7 @@ public class Kandidat implements Serializable {
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
         if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
             return false;
+        if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -782,6 +791,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
+        result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -834,6 +844,7 @@ public class Kandidat implements Serializable {
                 ", listePlatz=" + listePlatz +
                 ", fraktion=" + fraktion +
                 ", ministerium=" + ministerium +
+                ", ausschuss=" + ausschuss +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
