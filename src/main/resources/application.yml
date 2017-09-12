@@ -103,6 +103,7 @@ btw17:
       - "/geburtsjahr/**"
       - "/imprint"
       - "/welcome"
+      - "/datenschutz"
       - "/suche/formular"
       - "/suche/freitext/formular"
       - "/fraktion/all"
