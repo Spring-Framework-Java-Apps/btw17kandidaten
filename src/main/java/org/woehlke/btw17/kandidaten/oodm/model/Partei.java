@@ -25,6 +25,12 @@ import javax.validation.Valid;
         @Index(name = "idx_partei_wikipedia_article", columnList = "wikipedia_article")
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Partei.getAll",
+        query = "select o from Partei as o order by o.id"
+    )
+})
 public class Partei implements KandidatDimension {
 
     private static final long serialVersionUID = 1L;

@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.ParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
+import java.util.List;
+
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -28,8 +30,8 @@ public class ParteiServiceImpl implements ParteiService {
     }
 
     @Override
-    public Iterable<Partei> getAll() {
-        return this.parteiRepository.findAll();
+    public List<Partei> getAll() {
+        return this.parteiRepository.getAll();
     }
 
     @Override

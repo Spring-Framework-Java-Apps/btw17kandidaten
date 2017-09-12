@@ -76,19 +76,39 @@
                                         &nbsp;&nbsp;&nbsp;
                                     </td>
                                     <td>
-                                        <a th:if="${listepartei.webseite}" th:href="${listepartei.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-cloud" aria-hidden="true"></i></a>
+                                        <span th:if="${listepartei.onlineStrategie}">
+                                        <a th:if="${listepartei.onlineStrategie.webseite}" th:href="${listepartei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                                        </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${listepartei.twitter}" th:href="${listepartei.twitter}" alt="Twitter" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                        <span th:if="${listepartei.onlineStrategie}">
+                                            <a th:if="${listepartei.onlineStrategie.twitter}" th:href="${listepartei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${listepartei.facebook}" th:href="${listepartei.facebook}" alt="Facebook" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                        <span th:if="${listepartei.onlineStrategie}">
+                                            <a th:if="${listepartei.onlineStrategie.facebook}" th:href="${listepartei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${listepartei.youtube}" th:href="${listepartei.youtube}" alt="YouTube" title="YouTube" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                        <span th:if="${listepartei.onlineStrategie}">
+                                            <a th:if="${listepartei.onlineStrategie.youtube}" th:href="${listepartei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                     <td>
-                                        <a th:if="${listepartei.wikipediaArticle}" th:href="${listepartei.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                        <span th:if="${listepartei.onlineStrategie}">
+                                            <a th:if="${listepartei.onlineStrategie.wikipediaArticle}" th:href="${listepartei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                            </a>
+                                        </span>
                                     </td>
                                 </tr>
                                 </tbody>

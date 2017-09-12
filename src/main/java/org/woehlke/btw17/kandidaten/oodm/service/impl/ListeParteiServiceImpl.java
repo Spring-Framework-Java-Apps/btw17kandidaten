@@ -41,4 +41,10 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public void deleteAll() {
         listeParteiRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void update(ListePartei out) {
+        listeParteiRepository.save(out);
+    }
 }
