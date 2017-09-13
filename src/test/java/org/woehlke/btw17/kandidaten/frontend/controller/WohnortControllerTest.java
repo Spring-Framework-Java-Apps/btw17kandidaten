@@ -11,12 +11,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
+import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,6 +43,12 @@ public class WohnortControllerTest {
 
     @Autowired
     private WohnortController controller;
+
+    @Autowired
+    private WohnortService wohnortService;
+
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
 
     @Commit
     @Test
@@ -66,6 +78,36 @@ public class WohnortControllerTest {
         log.info(msg + content);
         log.info(msg + "#######################################");
         log.info(msg + "#######################################");
+        Assert.assertTrue(true);
+    }
+
+    @WithAnonymousUser
+    @Commit
+    @Test
+    public void test020getUserForId()  throws Exception {
+        String msg ="test020getUserForId: ";
+        int page=0;
+        int size=10;
+        Pageable pageable = new PageRequest(page,size);
+        Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
+        for(Wohnort wohnort:wohnorte){
+            MvcResult result = this.mockMvc.perform(get("/wohnort/"+wohnort.getId()))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name( "wohnort/id"))
+                    .andExpect(model().attributeExists("pageContent"))
+                    .andExpect(model().attributeExists("wohnort"))
+                    .andExpect(model().attributeExists("kandidaten"))
+                    .andExpect(model().attributeExists("suchformularFreitext"))
+                    .andReturn();
+
+            String content = result.getResponse().getContentAsString();
+
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+            log.info(msg+content);
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+        }
         Assert.assertTrue(true);
     }
 

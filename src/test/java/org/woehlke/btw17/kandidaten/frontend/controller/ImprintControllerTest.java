@@ -48,7 +48,7 @@ public class ImprintControllerTest {
     @WithAnonymousUser
     @Commit
     @Test
-    public void test010getAll()throws Exception {
+    public void test010getAll() throws Exception {
         String msg ="test010getAll: ";
 
         MvcResult result = this.mockMvc.perform(get("/imprint"))

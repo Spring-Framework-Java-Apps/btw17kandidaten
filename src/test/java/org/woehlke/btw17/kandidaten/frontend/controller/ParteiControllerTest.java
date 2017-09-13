@@ -11,12 +11,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
+import org.woehlke.btw17.kandidaten.oodm.model.Partei;
+import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,6 +45,12 @@ public class ParteiControllerTest {
 
     @Autowired
     private ParteiController controller;
+
+    @Autowired
+    private ParteiService parteiService;
+
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
 
     @Commit
     @Test
@@ -67,6 +80,36 @@ public class ParteiControllerTest {
         log.info(msg+content);
         log.info(msg+"#######################################");
         log.info(msg+"#######################################");
+        Assert.assertTrue(true);
+    }
+
+    @WithAnonymousUser
+    @Commit
+    @Test
+    public void test020getUserForId()  throws Exception {
+        String msg ="test020getUserForId: ";
+        int page=0;
+        int size=10;
+        Pageable pageable = new PageRequest(page,size);
+        Page<Partei> parteien = parteiService.getAll(pageable);
+        for(Partei partei:parteien){
+            MvcResult result = this.mockMvc.perform(get("/partei/"+partei.getId()))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name( "partei/id"))
+                    .andExpect(model().attributeExists("pageContent"))
+                    .andExpect(model().attributeExists("partei"))
+                    .andExpect(model().attributeExists("kandidaten"))
+                    .andExpect(model().attributeExists("suchformularFreitext"))
+                    .andReturn();
+
+            String content = result.getResponse().getContentAsString();
+
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+            log.info(msg+content);
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+        }
         Assert.assertTrue(true);
     }
 }
