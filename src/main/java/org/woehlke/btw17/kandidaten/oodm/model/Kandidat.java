@@ -132,7 +132,7 @@ import static javax.persistence.FetchType.EAGER;
     @NamedQuery(
         name = "Kandidat.findByFraktionCount",
         query = "select count(o) from Kandidat as o where o.fraktion=:fraktion"
-    ),
+    )/*,
     @NamedQuery(
         name = "Kandidat.findByAusschuss",
         query = "select o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
@@ -140,7 +140,7 @@ import static javax.persistence.FetchType.EAGER;
     @NamedQuery(
         name = "Kandidat.findByAusschussCount",
         query = "select count(o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
-    )
+    )*/
 })
 public class Kandidat implements Serializable {
 
@@ -222,16 +222,15 @@ public class Kandidat implements Serializable {
     @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-
     /*
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ministerium")
     private Set<Ministerium> ministerium = new LinkedHashSet<>();
-    */
 
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
+    */
 
     @Column
     private String mdb;
@@ -504,14 +503,6 @@ public class Kandidat implements Serializable {
         this.fraktion = fraktion;
     }
 
-    public Set<Ausschuss> getAusschuss() {
-        return ausschuss;
-    }
-
-    public void setAusschuss(Set<Ausschuss> ausschuss) {
-        this.ausschuss = ausschuss;
-    }
-
     public String getMdb() {
         return mdb;
     }
@@ -650,7 +641,6 @@ public class Kandidat implements Serializable {
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
-        if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -692,7 +682,6 @@ public class Kandidat implements Serializable {
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
-        result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -734,7 +723,6 @@ public class Kandidat implements Serializable {
                 ", landesListe=" + landesListe +
                 ", listePlatz=" + listePlatz +
                 ", fraktion=" + fraktion +
-                ", ausschuss=" + ausschuss +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
@@ -763,7 +751,7 @@ public class Kandidat implements Serializable {
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
             "soundcloud", "google_plus", "instagram", "fraktion",
-            "funktion","ausschuss", "flickr", "vimeo", "xing",
+            "funktion", "flickr", "vimeo", "xing",
             "linked_in", "stackoverflow", "github"
         };
         String facebook = onlineStrategie.getFacebook();
@@ -794,7 +782,7 @@ public class Kandidat implements Serializable {
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
             soundcloud, googlePlus, instagram, fraktion,
-            funktion, ausschuss, flickr, vimeo, xing,
+            funktion, flickr, vimeo, xing,
             linkedIn, stackoverflow, github
         };
         StringBuffer sb = new StringBuffer();

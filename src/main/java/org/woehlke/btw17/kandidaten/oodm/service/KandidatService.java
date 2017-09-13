@@ -86,6 +86,6 @@ public interface KandidatService {
 
     Page<Kandidat> findByFraktion(Fraktion fraktion, Pageable pageable);
 
-    Page<Kandidat> findByAusschuss(Ausschuss ausschuss, Pageable pageable);
+    //Page<Kandidat> findByAusschuss(Ausschuss ausschuss, Pageable pageable);
 
 }

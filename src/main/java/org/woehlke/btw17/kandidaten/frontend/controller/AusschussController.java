@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -87,9 +91,13 @@ public class AusschussController {
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("ausschuss",ausschuss);
 
-            Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
-            model.addAttribute("kandidaten",kandidatenPage);
+            //Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
+            //model.addAttribute("kandidaten",kandidatenPage);
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
+
+            List<Kandidat> kandidatenList  = new ArrayList<>();
+            Page<Kandidat> kandidatenPage  = new PageImpl<Kandidat>(kandidatenList,pageable,0L);
+            model.addAttribute("kandidaten",kandidatenPage);
 
             return "ausschuss/id";
         }

@@ -98,7 +98,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.findByFraktion",countName = "Kandidat.findByFraktionCount")
     Page<Kandidat> findByFraktion(@Param("fraktion") Fraktion fraktion, Pageable pageable);
 
-    @Query(name="Kandidat.findByAusschuss",countName = "Kandidat.findByAusschussCount")
-    Page<Kandidat> findByAusschuss(@Param("ausschuss") Ausschuss ausschuss, Pageable pageable);
+    //@Query(name="Kandidat.findByAusschuss",countName = "Kandidat.findByAusschussCount")
+    //Page<Kandidat> findByAusschuss(@Param("ausschuss") Ausschuss ausschuss, Pageable pageable);
 
 }
