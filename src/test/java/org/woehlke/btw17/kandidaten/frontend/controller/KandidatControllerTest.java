@@ -115,7 +115,7 @@ public class KandidatControllerTest {
     @WithMockUser
     @Commit
     @Test
-    public void editKandidatForIdGet()  throws Exception {
+    public void test030editKandidatForIdGet() throws Exception {
         String msg ="editKandidatForIdGet: ";
         int page=0;
         int size=10;
