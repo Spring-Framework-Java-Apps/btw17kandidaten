@@ -117,8 +117,6 @@ jQuery(function() {
                 'content': [
                     '<a class="glyphicon glyphicon-search" href="/information/suche/"></a>',
                     '<a class="fa fa-envelope" href="/kontakt/"></a>',
-                    '<a class="fa fa-twitter" href="https://twitter.com/OekumeneMoabit\" target="_blank"></a>',
-                    '<a class="fa fa-facebook-official" href="https://www.facebook.com/Ökumene-in-Berlin-Tiergarten-107187572947095/" target="_blank"></a>'
                 ]
             }]
         });
