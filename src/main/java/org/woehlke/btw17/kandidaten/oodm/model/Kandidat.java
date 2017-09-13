@@ -222,7 +222,6 @@ public class Kandidat implements Serializable {
     @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-    /*
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ministerium")
     private Set<Ministerium> ministerium = new LinkedHashSet<>();
@@ -230,7 +229,6 @@ public class Kandidat implements Serializable {
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
-    */
 
     @Column
     private String mdb;
@@ -607,6 +605,22 @@ public class Kandidat implements Serializable {
         this.kandidatFlat = kandidatFlat;
     }
 
+    public Set<Ministerium> getMinisterium() {
+        return ministerium;
+    }
+
+    public void setMinisterium(Set<Ministerium> ministerium) {
+        this.ministerium = ministerium;
+    }
+
+    public Set<Ausschuss> getAusschuss() {
+        return ausschuss;
+    }
+
+    public void setAusschuss(Set<Ausschuss> ausschuss) {
+        this.ausschuss = ausschuss;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -641,6 +655,9 @@ public class Kandidat implements Serializable {
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
+        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
+            return false;
+        if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -682,6 +699,8 @@ public class Kandidat implements Serializable {
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
+        result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
