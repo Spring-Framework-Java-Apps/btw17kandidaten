@@ -1,25 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.6.4
--- Dumped by pg_dump version 9.6.4
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
-SET search_path = public, pg_catalog;
-
---
--- Data for Name: liste_partei; Type: TABLE DATA; Schema: public; Owner: kandidaten
---
-
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (1, NULL, 'https://www.facebook.com/Bayernpartei/', 'BP', 'Bayernpartei', NULL, NULL, 'https://twitter.com/Bayernpartei', 'http://landesverband.bayernpartei.de/', 'https://de.wikipedia.org/wiki/Bayernpartei', 'https://www.youtube.com/user/BayernparteiTV', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (2, 'http://www.bpb.de/politik/grundfragen/parteien-in-deutschland/kleinparteien/42205/npd', 'https://www.facebook.com/Nationaldemokratische-Partei-Deutschlands-NPD-108829132512019/', 'NPD', 'Nationaldemokratische Partei Deutschlands', NULL, NULL, NULL, 'https://npd.de/', 'https://de.wikipedia.org/wiki/Nationaldemokratische_Partei_Deutschlands', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (4, NULL, 'https://www.facebook.com/MENSCHLICHE-WELT-245758938922923/', 'MENSCHLICHE WELT', 'Menschliche Welt', NULL, NULL, 'https://twitter.com/menschlichewelt', 'http://www.menschlichewelt.de/', 'https://de.wikipedia.org/wiki/Menschliche_Welt', 'https://www.youtube.com/channel/UC-LodlwMJeYZW1SJV8_sKMQ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -47,9 +25,3 @@ INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (3, NULL, 'https://www.facebook.com/Parteidervernunft/', 'PDV', 'Partei der Vernunft', NULL, NULL, NULL, 'https://parteidervernunft.de/', 'https://de.wikipedia.org/wiki/Partei_der_Vernunft', 'https://www.youtube.com/user/DieParteiderVernunft', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (6, 'https://www.bpb.de/politik/grundfragen/parteien-in-deutschland/kleinparteien/211108/afd', 'https://www.facebook.com/afdberlin/', 'AfD', 'Alternative für Deutschland', 'https://lobbypedia.de/wiki/Alternative_f%C3%BCr_Deutschland_(Afd)', NULL, 'https://twitter.com/AfD_Bund', 'https://www.afd.de', 'https://de.wikipedia.org/wiki/Alternative_f%C3%BCr_Deutschland', 'https://www.youtube.com/channel/UCq2rogaxLtQFrYG3X3KYNww', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO liste_partei (id, bundeszentrale_politische_bildung, facebook, liste_partei, liste_partei_lang, lobbypedia_url, logo_url, twitter, webseite, wikipedia_article, youtube, abgeordnetenwatch, bundestag, flickr, google_plus, instagram, linked_in, soundcloud, vimeo, xing) VALUES (27, 'https://www.bpb.de/politik/grundfragen/parteien-in-deutschland/cdu/', NULL, 'CDU', 'Christlich Demokratische Union Deutschlands', 'https://lobbypedia.de/wiki/CDU', NULL, 'https://twitter.com/CDU', 'https://www.cdu.de/', 'https://de.wikipedia.org/wiki/Christlich_Demokratische_Union_Deutschlands', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
-
---
--- PostgreSQL database dump complete
---
-
