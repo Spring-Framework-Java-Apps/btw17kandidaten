@@ -12,6 +12,6 @@ export BTW17_GOOGLE_ANALYTICS_ID=UA-17174370-11
 
 #./mvnw clean install site -Ptravis
 
-./mvnw clean install
+#./mvnw clean install
 
 ./mvnw clean install -Ptravis  -B -V
