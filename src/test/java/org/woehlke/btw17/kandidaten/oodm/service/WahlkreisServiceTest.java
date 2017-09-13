@@ -53,12 +53,12 @@ public class WahlkreisServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         int resultSize = wahlkreise.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Wahlkreis wahlkreis:wahlkreise.getContent()){
             Wahlkreis found = wahlkreisService.findByWahlkreisId(wahlkreis.getWahlkreisId());
             Assert.assertEquals(wahlkreis.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

@@ -54,12 +54,12 @@ public class BerufsgruppeServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
         int resultSize = berufsgruppen.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Berufsgruppe berufsgruppe:berufsgruppen.getContent()){
             Berufsgruppe found = berufsgruppeService.findByBerufsgruppe(berufsgruppe.getBerufsgruppe());
             Assert.assertEquals(berufsgruppe.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

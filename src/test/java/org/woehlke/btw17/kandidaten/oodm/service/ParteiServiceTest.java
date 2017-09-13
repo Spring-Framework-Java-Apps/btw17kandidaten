@@ -54,12 +54,12 @@ public class ParteiServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Partei> parteien = parteiService.getAll(pageable);
         int resultSize = parteien.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Partei partei:parteien.getContent()){
             Partei found = parteiService.findByPartei(partei.getPartei(),partei.getParteiLang());
             Assert.assertEquals(partei.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

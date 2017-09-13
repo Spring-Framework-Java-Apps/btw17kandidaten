@@ -54,12 +54,12 @@ public class GeburtsortServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
         int resultSize = geburtsorte.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Geburtsort geburtsort:geburtsorte.getContent()){
             Geburtsort found = geburtsortService.findByGeburtsort(geburtsort.getGeburtsort());
             Assert.assertEquals(geburtsort.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

@@ -53,12 +53,12 @@ public class BerufServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
         int resultSize = berufe.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Beruf beruf:berufe.getContent()){
             Beruf found = berufService.findByBeruf(beruf.getBeruf());
             Assert.assertEquals(beruf.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

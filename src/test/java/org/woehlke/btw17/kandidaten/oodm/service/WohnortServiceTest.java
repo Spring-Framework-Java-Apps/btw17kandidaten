@@ -54,12 +54,12 @@ public class WohnortServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
         int resultSize = wohnorte.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Wohnort wohnort:wohnorte.getContent()){
             Wohnort found = wohnortService.findByWohnort(wohnort.getWohnort());
             Assert.assertEquals(wohnort.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

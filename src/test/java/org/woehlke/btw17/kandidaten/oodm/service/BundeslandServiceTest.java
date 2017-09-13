@@ -54,12 +54,12 @@ public class BundeslandServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
         int resultSize = bundeslaender.getContent().size();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Bundesland bundesland:bundeslaender.getContent()){
             Bundesland found = bundeslandService.findByBundesland(bundesland.getBundesland());
             Assert.assertEquals(bundesland.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

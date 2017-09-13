@@ -54,12 +54,12 @@ public class FraktionServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         int resultSize = fraktionen.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Fraktion fraktion:fraktionen.getContent()){
             Fraktion found = fraktionService.findByFraktion(fraktion.getFraktion());
             Assert.assertEquals(fraktion.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

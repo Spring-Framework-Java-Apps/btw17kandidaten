@@ -13,7 +13,7 @@
     <logger name="org.apache.tomcat" level="warn" />
     <logger name="org.springframework.boot" level="WARN" />
     <logger name="org.springframework.test" level="INFO" />
-    <logger name="org.hibernate" level="INFO" />
+    <logger name="org.hibernate" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten" level="INFO" />
     <root level="INFO"></root>
 </configuration>

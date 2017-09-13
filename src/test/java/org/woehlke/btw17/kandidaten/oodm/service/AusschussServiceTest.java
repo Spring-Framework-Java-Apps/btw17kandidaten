@@ -54,12 +54,12 @@ public class AusschussServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         int resultSize = ausschuesse.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Ausschuss ausschuss:ausschuesse.getContent()){
             Ausschuss found = ausschussService.findByAusschuss(ausschuss.getAusschuss());
             Assert.assertEquals(ausschuss.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 

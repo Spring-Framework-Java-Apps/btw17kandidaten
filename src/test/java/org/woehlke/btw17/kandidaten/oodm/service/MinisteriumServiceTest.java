@@ -55,12 +55,12 @@ public class MinisteriumServiceTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
         int resultSize = ministerien.getNumber();
-        log.info("found: # "+resultSize);
+        log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
         for(Ministerium ministerium:ministerien.getContent()){
             Ministerium found = ministeriumService.findByMinisterium(ministerium.getMinisterium());
             Assert.assertEquals(ministerium.getId(),found.getId());
-            log.info("found: "+found.toString());
+            log.debug("found: "+found.toString());
         }
     }
 
