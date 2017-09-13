@@ -95,7 +95,7 @@ public class ListeParteiControllerTest {
                     .andExpect(status().isOk())
                     .andExpect(view().name( "listepartei/id"))
                     .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("listepartei"))
+                    .andExpect(model().attributeExists("listePartei"))
                     .andExpect(model().attributeExists("kandidaten"))
                     .andExpect(model().attributeExists("suchformularFreitext"))
                     .andReturn();

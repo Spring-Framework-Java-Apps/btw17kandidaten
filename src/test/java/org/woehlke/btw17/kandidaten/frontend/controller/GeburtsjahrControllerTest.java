@@ -89,7 +89,6 @@ public class GeburtsjahrControllerTest {
     @Commit
     @Test
     public void test020getUserForId() throws Exception {
-
         String msg ="test020getUserForId: ";
         int page=0;
         int size=10;
@@ -101,11 +100,11 @@ public class GeburtsjahrControllerTest {
             if(i>=size){
                 break;
             }
-            MvcResult result = this.mockMvc.perform(get("/fraktion/"+geburtsjahr))
+            MvcResult result = this.mockMvc.perform(get("/geburtsjahr/"+geburtsjahr))
                     .andExpect(status().isOk())
-                    .andExpect(view().name( "fraktion/id"))
+                    .andExpect(view().name( "geburtsjahr/id"))
                     .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("fraktion"))
+                    .andExpect(model().attributeExists("geburtsjahr"))
                     .andExpect(model().attributeExists("kandidaten"))
                     .andExpect(model().attributeExists("suchformularFreitext"))
                     .andReturn();
