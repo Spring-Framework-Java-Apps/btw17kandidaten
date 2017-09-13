@@ -99,13 +99,15 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a th:href="${kandidat.geburtsort.webseite}" th:if="${kandidat.geburtsort.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.geburtsort.onlineStrategie}">
+                                    <a th:href="${kandidat.geburtsort.onlineStrategie.webseite}" th:if="${kandidat.geburtsort.onlineStrategie.webseite != null}" alt="Webseite" title="Webseite" target="_blank">
                                         <i class="fa fa-cloud" aria-hidden="true"></i>
                                     </a>
 
-                                    <a th:href="${kandidat.geburtsort.wikipediaArticle}" th:if="${kandidat.geburtsort.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <a th:href="${kandidat.geburtsort.onlineStrategie.wikipediaArticle}" th:if="${kandidat.geburtsort.onlineStrategie.wikipediaArticle != null}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                         <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                     </a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr th:if="${kandidat.wohnort != null}">
