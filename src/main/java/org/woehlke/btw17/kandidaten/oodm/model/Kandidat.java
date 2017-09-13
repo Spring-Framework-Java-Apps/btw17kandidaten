@@ -34,7 +34,7 @@ import java.util.Set;
         @Index(name = "idx_kandidat_facebook", columnList = "facebook"),
         @Index(name = "idx_kandidat_youtube", columnList = "youtube"),
         @Index(name = "idx_kandidat_wikipedia_article", columnList = "wikipedia_article"),
-        @Index(name = "idx_kandidat_bundestag_abgeordnete", columnList = "bundestag_abgeordnete"),
+        @Index(name = "idx_kandidat_bundestag", columnList = "bundestag"),
         @Index(name = "idx_kandidat_abgeordnetenwatch", columnList = "abgeordnetenwatch"),
         @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url"),
         @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
@@ -65,39 +65,39 @@ import java.util.Set;
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutBundestagProfile",
-        query = "select o from Kandidat as o where o.bundestagAbgeordnete is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutAbgeordnetenwatch",
-        query = "select o from Kandidat as o where o.abgeordnetenwatch is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutWikipediaArticle",
-        query = "select o from Kandidat as o where o.wikipediaArticle is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.wikipediaArticle is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutWebseite",
-        query = "select o from Kandidat as o where o.webseite is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFacebook",
-        query = "select o from Kandidat as o where o.facebook is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutTwitter",
-        query = "select o from Kandidat as o where o.twitter is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is not null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutWebseite",
-        query = "select o from Kandidat as o where o.webseite is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFacebook",
-        query = "select o from Kandidat as o where o.facebook is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutTwitter",
-        query = "select o from Kandidat as o where o.twitter is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFotoUrl",
@@ -105,19 +105,19 @@ import java.util.Set;
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutLobbypediaUrl",
-        query = "select o from Kandidat as o where o.lobbypediaUrl is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.lobbypediaUrl is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutSoundcloud",
-        query = "select o from Kandidat as o where o.soundcloud is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.soundcloud is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutYoutube",
-        query = "select o from Kandidat as o where o.youtube is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.youtube is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutAbgeordnetenwatch",
-        query = "select o from Kandidat as o where o.abgeordnetenwatch is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is null order by key"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFotoUrl",
