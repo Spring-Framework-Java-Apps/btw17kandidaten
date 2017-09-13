@@ -73,6 +73,14 @@ public class OnlineStrategie implements Serializable {
     @Column(name = "linked_in")
     private String linkedIn;
 
+    @URL
+    @Column(name = "stackoverflow")
+    private String stackoverflow;
+
+    @URL
+    @Column(name = "github")
+    private String github;
+
 
     public String getWebseite() {
         return webseite;
@@ -194,6 +202,22 @@ public class OnlineStrategie implements Serializable {
         this.linkedIn = linkedIn;
     }
 
+    public String getStackoverflow() {
+        return stackoverflow;
+    }
+
+    public void setStackoverflow(String stackoverflow) {
+        this.stackoverflow = stackoverflow;
+    }
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -219,7 +243,10 @@ public class OnlineStrategie implements Serializable {
         if (flickr != null ? !flickr.equals(that.flickr) : that.flickr != null) return false;
         if (vimeo != null ? !vimeo.equals(that.vimeo) : that.vimeo != null) return false;
         if (xing != null ? !xing.equals(that.xing) : that.xing != null) return false;
-        return linkedIn != null ? linkedIn.equals(that.linkedIn) : that.linkedIn == null;
+        if (linkedIn != null ? !linkedIn.equals(that.linkedIn) : that.linkedIn != null) return false;
+        if (stackoverflow != null ? !stackoverflow.equals(that.stackoverflow) : that.stackoverflow != null)
+            return false;
+        return github != null ? github.equals(that.github) : that.github == null;
     }
 
     @Override
@@ -239,6 +266,8 @@ public class OnlineStrategie implements Serializable {
         result = 31 * result + (vimeo != null ? vimeo.hashCode() : 0);
         result = 31 * result + (xing != null ? xing.hashCode() : 0);
         result = 31 * result + (linkedIn != null ? linkedIn.hashCode() : 0);
+        result = 31 * result + (stackoverflow != null ? stackoverflow.hashCode() : 0);
+        result = 31 * result + (github != null ? github.hashCode() : 0);
         return result;
     }
 
@@ -260,6 +289,8 @@ public class OnlineStrategie implements Serializable {
                 ", vimeo='" + vimeo + '\'' +
                 ", xing='" + xing + '\'' +
                 ", linkedIn='" + linkedIn + '\'' +
+                ", stackoverflow='" + stackoverflow + '\'' +
+                ", github='" + github + '\'' +
                 '}';
     }
 }
