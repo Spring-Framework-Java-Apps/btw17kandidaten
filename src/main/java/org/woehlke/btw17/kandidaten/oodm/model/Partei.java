@@ -2,7 +2,8 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ import javax.validation.Valid;
         query = "select o from Partei as o order by o.id"
     )
 })
-public class Partei implements KandidatDimension {
+public class Partei implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,45 +46,21 @@ public class Partei implements KandidatDimension {
     @Column(name="partei_lang")
     private String parteiLang;
 
+    @URL
+    @Column(name="bundeszentrale_politische_bildung")
+    private String bundeszentralePolitischeBildung;
+
+    @Column(name="wahlprogramm")
+    private String wahlprogramm;
 
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    /*
-    @URL
-    @Column
-    private String webseite;
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
-    @URL
-    @Column
-    private String twitter;
-
-    @URL
-    @Column
-    private String facebook;
-
-    @URL
-    @Column
-    private String youtube;
-*/
-    @URL
-    @Column(name="logo_url")
-    private String logoUrl;
-
-    @URL
-    @Column(name="bundeszentrale_politische_bildung")
-    private String bundeszentralePolitischeBildung;
-
-    /*
-    @URL
-    @Column(name="wikipedia_article")
-    private String wikipediaArticle;
-
-    @URL
-    @Column(name="lobbypedia_url")
-    private String lobbypediaUrl;
-*/
 
     @Transient
     public String getName() {
@@ -136,12 +113,20 @@ public class Partei implements KandidatDimension {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
+    }
+
+    public String getWahlprogramm() {
+        return wahlprogramm;
+    }
+
+    public void setWahlprogramm(String wahlprogramm) {
+        this.wahlprogramm = wahlprogramm;
     }
 
     @Override
@@ -154,10 +139,13 @@ public class Partei implements KandidatDimension {
         if (id != null ? !id.equals(partei1.id) : partei1.id != null) return false;
         if (partei != null ? !partei.equals(partei1.partei) : partei1.partei != null) return false;
         if (parteiLang != null ? !parteiLang.equals(partei1.parteiLang) : partei1.parteiLang != null) return false;
-        if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(partei1.dimensionFacetten) : partei1.dimensionFacetten != null)
             return false;
-        if (logoUrl != null ? !logoUrl.equals(partei1.logoUrl) : partei1.logoUrl != null) return false;
-        return bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung == null;
+        if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung != null)
+            return false;
+        if (wahlprogramm != null ? !wahlprogramm.equals(partei1.wahlprogramm) : partei1.wahlprogramm != null)
+            return false;
+        return onlineStrategie != null ? onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie == null;
     }
 
     @Override
@@ -165,9 +153,10 @@ public class Partei implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
         result = 31 * result + (parteiLang != null ? parteiLang.hashCode() : 0);
-        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
+        result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
 
@@ -177,9 +166,10 @@ public class Partei implements KandidatDimension {
                 "id=" + id +
                 ", partei='" + partei + '\'' +
                 ", parteiLang='" + parteiLang + '\'' +
-                ", onlineStrategie=" + onlineStrategie +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", dimensionFacetten=" + dimensionFacetten +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
+                ", wahlprogramm='" + wahlprogramm + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
                 '}';
     }
 }

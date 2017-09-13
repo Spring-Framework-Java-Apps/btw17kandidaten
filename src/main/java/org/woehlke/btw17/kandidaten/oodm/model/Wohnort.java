@@ -1,7 +1,8 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ import javax.validation.Valid;
         query = "select o from Wohnort as o order by o.id"
     )
 })
-public class Wohnort implements KandidatDimension {
+public class Wohnort implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,42 +43,17 @@ public class Wohnort implements KandidatDimension {
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     private Bundesland bundesland;
 
-
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    /*
-    @Column
-    private String webseite;
-
-    @Column(name = "wikipedia_article")
-    private String wikipediaArticle;
-
-    @Column()
-    private String facebook;
-    */
-
-    @Column(name="logo_url")
-    private String logoUrl;
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
-
-    /*
-    @Column(name = "google_maps_url")
-    private String googleMapsUrl;
-
-    @Column(name = "geo_longitude")
-    private String geoLongitude;
-
-    @Column(name = "geo_lattitude")
-    private String geoLattitude;
-
-    @Column(name = "geo_zoom")
-    private String geoZoom;
-    */
 
     @Transient
     public String getName() {
@@ -117,12 +93,12 @@ public class Wohnort implements KandidatDimension {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
     }
 
     public GeoPosition getGeoPosition() {
@@ -145,7 +121,8 @@ public class Wohnort implements KandidatDimension {
         if (bundesland != null ? !bundesland.equals(wohnort1.bundesland) : wohnort1.bundesland != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(wohnort1.onlineStrategie) : wohnort1.onlineStrategie != null)
             return false;
-        if (logoUrl != null ? !logoUrl.equals(wohnort1.logoUrl) : wohnort1.logoUrl != null) return false;
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(wohnort1.dimensionFacetten) : wohnort1.dimensionFacetten != null)
+            return false;
         return geoPosition != null ? geoPosition.equals(wohnort1.geoPosition) : wohnort1.geoPosition == null;
     }
 
@@ -155,7 +132,7 @@ public class Wohnort implements KandidatDimension {
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
@@ -167,7 +144,7 @@ public class Wohnort implements KandidatDimension {
                 ", wohnort='" + wohnort + '\'' +
                 ", bundesland=" + bundesland +
                 ", onlineStrategie=" + onlineStrategie +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", dimensionFacetten=" + dimensionFacetten +
                 ", geoPosition=" + geoPosition +
                 '}';
     }
@@ -179,26 +156,40 @@ public class Wohnort implements KandidatDimension {
         String geoLattitude = geoPosition.getGeoLattitude();
         String geoZoom = geoPosition.getGeoZoom();
 
-        String webseite = onlineStrategie.getWebseite();
-        String twitter = onlineStrategie.getTwitter();
         String facebook = onlineStrategie.getFacebook();
-        String youtube = onlineStrategie.getYoutube();
-        String soundcloud = onlineStrategie.getSoundcloud();
+        String twitter = onlineStrategie.getTwitter();
+        String webseite = onlineStrategie.getWebseite();
         String wikipediaArticle = onlineStrategie.getWikipediaArticle();
+        String youtube = onlineStrategie.getYoutube();
         String bundestagAbgeordnete = onlineStrategie.getBundestagAbgeordnete();
         String abgeordnetenwatch = onlineStrategie.getAbgeordnetenwatch();
         String lobbypediaUrl = onlineStrategie.getLobbypediaUrl();
+        String soundcloud = onlineStrategie.getSoundcloud();
         String googlePlus = onlineStrategie.getGooglePlus();
         String instagram = onlineStrategie.getInstagram();
         String flickr = onlineStrategie.getFlickr();
+        String vimeo = onlineStrategie.getVimeo();
+        String xing = onlineStrategie.getXing();
+        String linkedIn = onlineStrategie.getLinkedIn();
+        String stackoverflow = onlineStrategie.getStackoverflow();
+        String github = onlineStrategie.getGithub();
+
+        String logoUrl = dimensionFacetten.getLogoUrl();
+        String symbolBild = dimensionFacetten.getSymbolBild();
+        String beschreibungsText = dimensionFacetten.getBeschreibungsText();
 
         String columns[] = {
             "id","wohnort","webseite","wikipedia_article","facebook","logo_url",
-            "google_maps_url","geo_longitude","geo_lattitude","geo_zoom"
+            "google_maps_url","geo_longitude","geo_lattitude","geo_zoom", "soundcloud",
+            "google_plus", "instagram", "flickr", "vimeo", "xing", "linked_in",
+            "stackoverflow", "github", "symbol_bild", "beschreibungs_text"
         };
         Object fields[] = {
             id,wohnort,webseite,wikipediaArticle,facebook,logoUrl,
-            googleMapsUrl,geoLongitude,geoLattitude,geoZoom
+            googleMapsUrl,geoLongitude,geoLattitude,geoZoom, twitter,
+            youtube,  bundestagAbgeordnete, abgeordnetenwatch, lobbypediaUrl, soundcloud,
+            googlePlus, instagram, flickr, vimeo, xing, linkedIn,
+            stackoverflow, github, symbolBild, beschreibungsText
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO wohnort (");
@@ -227,8 +218,8 @@ public class Wohnort implements KandidatDimension {
                 sb.append("'");
                 sb.append(x);
                 sb.append("'");
-            } else if(o instanceof KandidatDimension){
-                KandidatDimension x = (KandidatDimension) o;
+            } else if(o instanceof DimensionKandidat){
+                DimensionKandidat x = (DimensionKandidat) o;
                 sb.append(x.getId());
             }
             if((i+1)<fields.length){

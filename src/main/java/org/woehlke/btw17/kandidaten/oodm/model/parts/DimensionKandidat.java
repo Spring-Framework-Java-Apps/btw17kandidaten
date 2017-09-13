@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import java.io.Serializable;
 
-public interface KandidatDimension extends Serializable {
+public interface DimensionKandidat extends Serializable {
 
     Long getId();
 

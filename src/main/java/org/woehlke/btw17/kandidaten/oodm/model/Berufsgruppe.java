@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
     }
 )
-public class Berufsgruppe implements KandidatDimension {
+public class Berufsgruppe implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 

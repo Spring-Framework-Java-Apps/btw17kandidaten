@@ -1,9 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -225,6 +227,10 @@ public class Kandidat implements Serializable {
     */
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name="kandidat_ministerium")
+    private Set<Ministerium> ministerium = new LinkedHashSet<>();
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
@@ -256,6 +262,11 @@ public class Kandidat implements Serializable {
     @Column
     private String color;
 
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+
+    /*
     @URL
     @Column
     private String webseite;
@@ -299,6 +310,7 @@ public class Kandidat implements Serializable {
     @URL
     @Column(name = "instagram")
     private String instagram;
+    */
 
     @URL
     @Column(name = "google_maps_url")
@@ -405,6 +417,14 @@ public class Kandidat implements Serializable {
         this.alter = alter;
     }
 
+    public String getFunktion() {
+        return funktion;
+    }
+
+    public void setFunktion(String funktion) {
+        this.funktion = funktion;
+    }
+
     public Wohnort getWohnort() {
         return wohnort;
     }
@@ -461,12 +481,36 @@ public class Kandidat implements Serializable {
         this.partei = partei;
     }
 
+    public LandesListe getLandesListe() {
+        return landesListe;
+    }
+
+    public void setLandesListe(LandesListe landesListe) {
+        this.landesListe = landesListe;
+    }
+
     public Integer getListePlatz() {
         return listePlatz;
     }
 
     public void setListePlatz(Integer listePlatz) {
         this.listePlatz = listePlatz;
+    }
+
+    public Fraktion getFraktion() {
+        return fraktion;
+    }
+
+    public void setFraktion(Fraktion fraktion) {
+        this.fraktion = fraktion;
+    }
+
+    public Set<Ausschuss> getAusschuss() {
+        return ausschuss;
+    }
+
+    public void setAusschuss(Set<Ausschuss> ausschuss) {
+        this.ausschuss = ausschuss;
     }
 
     public String getMdb() {
@@ -509,6 +553,14 @@ public class Kandidat implements Serializable {
         this.foto = foto;
     }
 
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
+    }
+
     public Double getScatterX() {
         return scatterX;
     }
@@ -533,52 +585,20 @@ public class Kandidat implements Serializable {
         this.color = color;
     }
 
-    public LandesListe getLandesListe() {
-        return landesListe;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setLandesListe(LandesListe landesListe) {
-        this.landesListe = landesListe;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 
-    public String getFotoUrl() {
-        return fotoUrl;
+    public String getGoogleMapsUrl() {
+        return googleMapsUrl;
     }
 
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
-    }
-
-    public String getWebseite() {
-        return webseite;
-    }
-
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
-
-    public String getTwitter() {
-        return twitter;
-    }
-
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getYoutube() {
-        return youtube;
-    }
-
-    public void setYoutube(String youtube) {
-        this.youtube = youtube;
+    public void setGoogleMapsUrl(String googleMapsUrl) {
+        this.googleMapsUrl = googleMapsUrl;
     }
 
     public String getLogoUrl() {
@@ -597,92 +617,12 @@ public class Kandidat implements Serializable {
         this.kandidatFlat = kandidatFlat;
     }
 
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
+    public Set<Ministerium> getMinisterium() {
+        return ministerium;
     }
 
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
-    public String getBundestagAbgeordnete() {
-        return bundestagAbgeordnete;
-    }
-
-    public void setBundestagAbgeordnete(String bundestagAbgeordnete) {
-        this.bundestagAbgeordnete = bundestagAbgeordnete;
-    }
-
-    public String getAbgeordnetenwatch() {
-        return abgeordnetenwatch;
-    }
-
-    public void setAbgeordnetenwatch(String abgeordnetenwatch) {
-        this.abgeordnetenwatch = abgeordnetenwatch;
-    }
-
-    public String getLobbypediaUrl() {
-        return lobbypediaUrl;
-    }
-
-    public void setLobbypediaUrl(String lobbypediaUrl) {
-        this.lobbypediaUrl = lobbypediaUrl;
-    }
-
-    public String getGoogleMapsUrl() {
-        return googleMapsUrl;
-    }
-
-    public void setGoogleMapsUrl(String googleMapsUrl) {
-        this.googleMapsUrl = googleMapsUrl;
-    }
-
-    public String getSoundcloud() {
-        return soundcloud;
-    }
-
-    public void setSoundcloud(String soundcloud) {
-        this.soundcloud = soundcloud;
-    }
-
-    public String getGooglePlus() {
-        return googlePlus;
-    }
-
-    public void setGooglePlus(String googlePlus) {
-        this.googlePlus = googlePlus;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
-    }
-
-    public Fraktion getFraktion() {
-        return fraktion;
-    }
-
-    public void setFraktion(Fraktion fraktion) {
-        this.fraktion = fraktion;
-    }
-
-    public String getFunktion() {
-        return funktion;
-    }
-
-    public void setFunktion(String funktion) {
-        this.funktion = funktion;
-    }
-
-    public Set<Ausschuss> getAusschuss() {
-        return ausschuss;
-    }
-
-    public void setAusschuss(Set<Ausschuss> ausschuss) {
-        this.ausschuss = ausschuss;
+    public void setMinisterium(Set<Ministerium> ministerium) {
+        this.ministerium = ministerium;
     }
 
     @Override
@@ -719,6 +659,8 @@ public class Kandidat implements Serializable {
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
+        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
+            return false;
         if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
@@ -729,21 +671,8 @@ public class Kandidat implements Serializable {
         if (scatterX != null ? !scatterX.equals(kandidat.scatterX) : kandidat.scatterX != null) return false;
         if (scatterY != null ? !scatterY.equals(kandidat.scatterY) : kandidat.scatterY != null) return false;
         if (color != null ? !color.equals(kandidat.color) : kandidat.color != null) return false;
-        if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
-        if (twitter != null ? !twitter.equals(kandidat.twitter) : kandidat.twitter != null) return false;
-        if (facebook != null ? !facebook.equals(kandidat.facebook) : kandidat.facebook != null) return false;
-        if (youtube != null ? !youtube.equals(kandidat.youtube) : kandidat.youtube != null) return false;
-        if (soundcloud != null ? !soundcloud.equals(kandidat.soundcloud) : kandidat.soundcloud != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(kandidat.wikipediaArticle) : kandidat.wikipediaArticle != null)
+        if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
-        if (bundestagAbgeordnete != null ? !bundestagAbgeordnete.equals(kandidat.bundestagAbgeordnete) : kandidat.bundestagAbgeordnete != null)
-            return false;
-        if (abgeordnetenwatch != null ? !abgeordnetenwatch.equals(kandidat.abgeordnetenwatch) : kandidat.abgeordnetenwatch != null)
-            return false;
-        if (lobbypediaUrl != null ? !lobbypediaUrl.equals(kandidat.lobbypediaUrl) : kandidat.lobbypediaUrl != null)
-            return false;
-        if (googlePlus != null ? !googlePlus.equals(kandidat.googlePlus) : kandidat.googlePlus != null) return false;
-        if (instagram != null ? !instagram.equals(kandidat.instagram) : kandidat.instagram != null) return false;
         if (googleMapsUrl != null ? !googleMapsUrl.equals(kandidat.googleMapsUrl) : kandidat.googleMapsUrl != null)
             return false;
         if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
@@ -774,6 +703,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
@@ -784,17 +714,7 @@ public class Kandidat implements Serializable {
         result = 31 * result + (scatterX != null ? scatterX.hashCode() : 0);
         result = 31 * result + (scatterY != null ? scatterY.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
-        result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
-        result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
-        result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
-        result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
-        result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
         result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
@@ -836,17 +756,7 @@ public class Kandidat implements Serializable {
                 ", scatterX=" + scatterX +
                 ", scatterY=" + scatterY +
                 ", color='" + color + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
-                ", soundcloud='" + soundcloud + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
-                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
-                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
-                ", googlePlus='" + googlePlus + '\'' +
-                ", instagram='" + instagram + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
                 ", logoUrl='" + logoUrl + '\'' +
                 ", kandidatFlat=" + kandidatFlat +
@@ -865,8 +775,27 @@ public class Kandidat implements Serializable {
             "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
             "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
             "soundcloud", "google_plus", "instagram", "fraktion",
-            "funktion","ausschuss"
+            "funktion","ausschuss", "flickr", "vimeo", "xing",
+            "linked_in", "stackoverflow", "github"
         };
+        String facebook = onlineStrategie.getFacebook();
+        String twitter = onlineStrategie.getTwitter();
+        String webseite = onlineStrategie.getWebseite();
+        String wikipediaArticle = onlineStrategie.getWikipediaArticle();
+        String youtube = onlineStrategie.getYoutube();
+        String bundestagAbgeordnete = onlineStrategie.getBundestagAbgeordnete();
+        String abgeordnetenwatch = onlineStrategie.getAbgeordnetenwatch();
+        String lobbypediaUrl = onlineStrategie.getLobbypediaUrl();
+        String soundcloud = onlineStrategie.getSoundcloud();
+        String googlePlus = onlineStrategie.getGooglePlus();
+        String instagram = onlineStrategie.getInstagram();
+        String flickr = onlineStrategie.getFlickr();
+        String vimeo = onlineStrategie.getVimeo();
+        String xing = onlineStrategie.getXing();
+        String linkedIn = onlineStrategie.getLinkedIn();
+        String stackoverflow = onlineStrategie.getStackoverflow();
+        String github = onlineStrategie.getGithub();
+
         Object fields[] = {
             idParameter,alter,color,facebook,foto,
             fotoUrl,geburtsjahr,geschlecht,idEigen,key,
@@ -877,7 +806,8 @@ public class Kandidat implements Serializable {
             geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
             wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
             soundcloud, googlePlus, instagram, fraktion,
-            funktion, ausschuss
+            funktion, ausschuss, flickr, vimeo, xing,
+            linkedIn, stackoverflow, github
         };
         StringBuffer sb = new StringBuffer();
         sb.append("INSERT INTO kandidat (");
@@ -906,8 +836,8 @@ public class Kandidat implements Serializable {
                 sb.append("'");
                 sb.append(x);
                 sb.append("'");
-            } else if(o instanceof KandidatDimension){
-                KandidatDimension x = (KandidatDimension) o;
+            } else if(o instanceof DimensionKandidat){
+                DimensionKandidat x = (DimensionKandidat) o;
                 sb.append(x.getId());
             }
             if((i+1)<fields.length){

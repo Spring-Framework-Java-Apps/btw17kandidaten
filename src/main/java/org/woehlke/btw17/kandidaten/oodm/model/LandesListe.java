@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,7 +34,7 @@ import javax.validation.constraints.NotNull;
         query = "select o from LandesListe as o order by id"
     )
 })
-public class LandesListe implements KandidatDimension {
+public class LandesListe implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 

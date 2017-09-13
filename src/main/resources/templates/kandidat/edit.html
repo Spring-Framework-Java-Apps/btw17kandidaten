@@ -230,41 +230,107 @@
                                 <td>&nbsp;</td>
                                 <td colspan="2">
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.webseite}" th:href="${kandidat.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                        <i class="fa fa-cloud" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.webseite != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.twitter}" th:href="${kandidat.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.twitter != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.facebook}" th:href="${kandidat.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.facebook != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.youtube}" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.youtube != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.soundcloud}" th:href="${kandidat.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
-                                        <i class="fa fa-soundcloud" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.soundcloud != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                                            <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.wikipediaArticle}" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.wikipediaArticle != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.bundestagAbgeordnete}" th:href="${kandidat.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                                        <i class="fa fa-university" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.bundestagAbgeordnete != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.abgeordnetenwatch}" th:href="${kandidat.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.abgeordnetenwatch != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
-                                    <a class="tw-social-media-link" th:if="${kandidat.lobbypediaUrl}" th:href="${kandidat.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
-                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                                    </a>
+                                    <span th:if="${kandidat.lobbypediaUrl}" >
+                                        <a class="tw-social-media-link" th:href="${kandidat.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.googlePlus != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.instagram != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.flickr != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.flickr}" alt="flickr" title="flickr" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.vimeo != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.xing != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.xing}" alt="xing" title="xing" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.linkedIn != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.stackoverflow != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+
+                                    <span th:if="${kandidat.github != null}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.github}" alt="github" title="github" target="_blank">
+                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
 
                                 </td>
                             </tr>
@@ -334,6 +400,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="funktion-input" class="col-sm-2 control-label">funktion:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
                                 <div class="col-sm-10">
                                     <input th:field="*{webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite"/>
@@ -390,9 +463,50 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="funktion-input" class="col-sm-2 control-label">funktion:</label>
+                                <label for="flickr-input" class="col-sm-2 control-label">flickr:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion"/>
+                                    <input th:field="*{flickr}" type="text" name="flickr" id="flickr-input" class="form-control" placeholder="flickr"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="vimeo-input" class="col-sm-2 control-label">vimeo:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{vimeo}" type="text" name="vimeo" id="vimeo-input" class="form-control" placeholder="vimeo"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="xing-input" class="col-sm-2 control-label">xing:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{xing}" type="text" name="xing" id="xing-input" class="form-control" placeholder="xing"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="linkedin-input" class="col-sm-2 control-label">linkedIn:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{linkedIn}" type="text" name="linkedin" id="linkedin-input" class="form-control" placeholder="linkedin"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stackoverflow-input" class="col-sm-2 control-label">stackoverflow:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{stackoverflow}" type="text" name="stackoverflow" id="stackoverflow-input" class="form-control" placeholder="stackoverflow"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="github-input" class="col-sm-2 control-label">github:</label>
+                                <div class="col-sm-10">
+                                    <input th:field="*{github}" type="text" name="github" id="github-input" class="form-control" placeholder="github"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-primary form-control">Bearbeiten</button>
                                 </div>
                             </div>
 
@@ -403,12 +517,6 @@
                                         <option value="0" >Keine</option>
                                         <option th:text="${fraktion.name}" th:value="${fraktion.id}" th:each="fraktion : ${fraktionen}">fraktion</option>
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-primary form-control">Bearbeiten</button>
                                 </div>
                             </div>
 

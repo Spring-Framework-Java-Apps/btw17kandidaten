@@ -1,7 +1,8 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ import javax.validation.Valid;
         query = "select o from ListePartei as o where o.listePartei=:listePartei"
     )
 })
-public class ListePartei implements KandidatDimension {
+public class ListePartei implements DimensionKandidat {
 
 
     private static final long serialVersionUID = 1L;
@@ -46,47 +47,22 @@ public class ListePartei implements KandidatDimension {
     @Column(name="liste_partei_lang")
     private String listeParteiLang;
 
-
-    @Valid
-    @Embedded
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @URL
+    @Column(name="wahlprogramm")
+    private String wahlprogramm;
 
     @URL
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
-    @URL
-    @Column(name="logo_url")
-    private String logoUrl;
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
-/*
-    @URL
-    @Column
-    private String webseite;
-
-    @URL
-    @Column
-    private String twitter;
-
-    @URL
-    @Column
-    private String facebook;
-
-    @URL
-    @Column
-    private String youtube;
-
-
-    @URL
-    @Column(name="wikipedia_article")
-    private String wikipediaArticle;
-
-
-    @URL
-    @Column(name="lobbypedia_url")
-    private String lobbypediaUrl;
-*/
 
     @Transient
     public String getName() {
@@ -97,6 +73,11 @@ public class ListePartei implements KandidatDimension {
         return sb.toString();
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    @Override
     public Long getId() {
         return id;
     }
@@ -121,12 +102,12 @@ public class ListePartei implements KandidatDimension {
         this.listeParteiLang = listeParteiLang;
     }
 
-    public OnlineStrategie getOnlineStrategie() {
-        return onlineStrategie;
+    public String getWahlprogramm() {
+        return wahlprogramm;
     }
 
-    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+    public void setWahlprogramm(String wahlprogramm) {
+        this.wahlprogramm = wahlprogramm;
     }
 
     public String getBundeszentralePolitischeBildung() {
@@ -137,12 +118,20 @@ public class ListePartei implements KandidatDimension {
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
+    }
+
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
     }
 
     @Override
@@ -156,11 +145,12 @@ public class ListePartei implements KandidatDimension {
         if (listePartei != null ? !listePartei.equals(that.listePartei) : that.listePartei != null) return false;
         if (listeParteiLang != null ? !listeParteiLang.equals(that.listeParteiLang) : that.listeParteiLang != null)
             return false;
-        if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
-            return false;
+        if (wahlprogramm != null ? !wahlprogramm.equals(that.wahlprogramm) : that.wahlprogramm != null) return false;
         if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(that.bundeszentralePolitischeBildung) : that.bundeszentralePolitischeBildung != null)
             return false;
-        return logoUrl != null ? logoUrl.equals(that.logoUrl) : that.logoUrl == null;
+        if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
+            return false;
+        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
     }
 
     @Override
@@ -168,9 +158,10 @@ public class ListePartei implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
         result = 31 * result + (listeParteiLang != null ? listeParteiLang.hashCode() : 0);
-        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         return result;
     }
 
@@ -180,9 +171,10 @@ public class ListePartei implements KandidatDimension {
                 "id=" + id +
                 ", listePartei='" + listePartei + '\'' +
                 ", listeParteiLang='" + listeParteiLang + '\'' +
-                ", onlineStrategie=" + onlineStrategie +
+                ", wahlprogramm='" + wahlprogramm + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", onlineStrategie=" + onlineStrategie +
+                ", dimensionFacetten=" + dimensionFacetten +
                 '}';
     }
 }

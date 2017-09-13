@@ -1,7 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -19,7 +19,7 @@ import javax.validation.Valid;
         @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
     }
 )
-public class Wahlkreis implements KandidatDimension {
+public class Wahlkreis implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 

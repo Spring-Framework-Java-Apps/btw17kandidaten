@@ -2,7 +2,8 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ import javax.validation.Valid;
         query = "select count(o) from Ausschuss as o"
     )
 })
-public class Ausschuss implements KandidatDimension {
+public class Ausschuss implements DimensionKandidat {
 
 
     private static final long serialVersionUID = 1L;
@@ -39,6 +40,10 @@ public class Ausschuss implements KandidatDimension {
 
     @Column(name="ausschuss_lang")
     private String ausschussLang;
+
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
     @Valid
     @Embedded
@@ -83,6 +88,14 @@ public class Ausschuss implements KandidatDimension {
         this.onlineStrategie = onlineStrategie;
     }
 
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
+    }
+
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,6 +107,8 @@ public class Ausschuss implements KandidatDimension {
         if (ausschuss != null ? !ausschuss.equals(ausschuss1.ausschuss) : ausschuss1.ausschuss != null) return false;
         if (ausschussLang != null ? !ausschussLang.equals(ausschuss1.ausschussLang) : ausschuss1.ausschussLang != null)
             return false;
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(ausschuss1.dimensionFacetten) : ausschuss1.dimensionFacetten != null)
+            return false;
         return onlineStrategie != null ? onlineStrategie.equals(ausschuss1.onlineStrategie) : ausschuss1.onlineStrategie == null;
     }
 
@@ -102,6 +117,7 @@ public class Ausschuss implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (ausschussLang != null ? ausschussLang.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
@@ -112,6 +128,7 @@ public class Ausschuss implements KandidatDimension {
                 "id=" + id +
                 ", ausschuss='" + ausschuss + '\'' +
                 ", ausschussLang='" + ausschussLang + '\'' +
+                ", dimensionFacetten=" + dimensionFacetten +
                 ", onlineStrategie=" + onlineStrategie +
                 '}';
     }

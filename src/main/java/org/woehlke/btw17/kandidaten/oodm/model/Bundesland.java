@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ import javax.validation.Valid;
         @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
     }
 )
-public class Bundesland implements KandidatDimension {
+public class Bundesland implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,30 +36,9 @@ public class Bundesland implements KandidatDimension {
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    /*
-    @URL
-    @Column
-    private String webseite;
-
-    @URL
-    @Column
-    private String twitter;
-
-    @URL
-    @Column
-    private String facebook;
-
-    @URL
-    @Column
-    private String youtube;
-
-    @URL
-    @Column
-    private String wikipediaArticle;
-    */
-
-    @Column(name="logo_url")
-    private String logoUrl;
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
     @Transient
     public String getName(){
@@ -102,12 +82,12 @@ public class Bundesland implements KandidatDimension {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
     }
 
     @Override
@@ -123,7 +103,7 @@ public class Bundesland implements KandidatDimension {
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return logoUrl != null ? logoUrl.equals(that.logoUrl) : that.logoUrl == null;
+        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
     }
 
     @Override
@@ -132,7 +112,7 @@ public class Bundesland implements KandidatDimension {
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         return result;
     }
 
@@ -143,7 +123,7 @@ public class Bundesland implements KandidatDimension {
                 ", bundesland='" + bundesland + '\'' +
                 ", bundeslandLang='" + bundeslandLang + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", dimensionFacetten=" + dimensionFacetten +
                 '}';
     }
 }

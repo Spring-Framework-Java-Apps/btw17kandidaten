@@ -1,7 +1,8 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
@@ -36,7 +37,7 @@ import javax.validation.Valid;
         query = "select count(o) from Fraktion as o"
     )
 })
-public class Fraktion implements KandidatDimension {
+public class Fraktion implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,8 +51,9 @@ public class Fraktion implements KandidatDimension {
     @Column(name="fraktion_lang")
     private String fraktionLang;
 
-    @Column(name="logo_url")
-    private String logoUrl;
+    @Valid
+    @Embedded
+    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
 
     @Valid
     @Embedded
@@ -88,12 +90,12 @@ public class Fraktion implements KandidatDimension {
         this.fraktionLang = fraktionLang;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
+    public DimensionFacetten getDimensionFacetten() {
+        return dimensionFacetten;
     }
 
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
+    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
     }
 
     public OnlineStrategie getOnlineStrategie() {
@@ -115,7 +117,8 @@ public class Fraktion implements KandidatDimension {
         if (fraktion != null ? !fraktion.equals(fraktion1.fraktion) : fraktion1.fraktion != null) return false;
         if (fraktionLang != null ? !fraktionLang.equals(fraktion1.fraktionLang) : fraktion1.fraktionLang != null)
             return false;
-        if (logoUrl != null ? !logoUrl.equals(fraktion1.logoUrl) : fraktion1.logoUrl != null) return false;
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(fraktion1.dimensionFacetten) : fraktion1.dimensionFacetten != null)
+            return false;
         return onlineStrategie != null ? onlineStrategie.equals(fraktion1.onlineStrategie) : fraktion1.onlineStrategie == null;
     }
 
@@ -124,7 +127,7 @@ public class Fraktion implements KandidatDimension {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
         result = 31 * result + (fraktionLang != null ? fraktionLang.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
@@ -135,7 +138,7 @@ public class Fraktion implements KandidatDimension {
                 "id=" + id +
                 ", fraktion='" + fraktion + '\'' +
                 ", fraktionLang='" + fraktionLang + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", dimensionFacetten=" + dimensionFacetten +
                 ", onlineStrategie=" + onlineStrategie +
                 '}';
     }

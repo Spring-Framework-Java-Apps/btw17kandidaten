@@ -1,10 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatDimension;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,8 +15,7 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     }
 )
-public class Geburtsort implements KandidatDimension {
-
+public class Geburtsort implements DimensionKandidat {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,45 +27,13 @@ public class Geburtsort implements KandidatDimension {
     @Column
     private String geburtsort;
 
-    @URL
-    @Column
-    private String webseite;
-
-    @URL
-    @Column
-    private String wikipediaArticle;
-
-    @URL
-    @Column
-    private String googleMapsUrl;
+    @Valid
+    @Embedded
+    private GeoPosition geoPosition = new GeoPosition();
 
     @Transient
     public String getName() {
         return geburtsort;
-    }
-
-    public String getWebseite() {
-        return webseite;
-    }
-
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
-
-    public String getWikipediaArticle() {
-        return wikipediaArticle;
-    }
-
-    public void setWikipediaArticle(String wikipediaArticle) {
-        this.wikipediaArticle = wikipediaArticle;
-    }
-
-    public String getGoogleMapsUrl() {
-        return googleMapsUrl;
-    }
-
-    public void setGoogleMapsUrl(String googleMapsUrl) {
-        this.googleMapsUrl = googleMapsUrl;
     }
 
     public Long getId() {
@@ -84,6 +52,14 @@ public class Geburtsort implements KandidatDimension {
         this.geburtsort = geburtsort;
     }
 
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
+    }
+
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,19 +69,14 @@ public class Geburtsort implements KandidatDimension {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
-        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
-        if (wikipediaArticle != null ? !wikipediaArticle.equals(that.wikipediaArticle) : that.wikipediaArticle != null)
-            return false;
-        return googleMapsUrl != null ? googleMapsUrl.equals(that.googleMapsUrl) : that.googleMapsUrl == null;
+        return geoPosition != null ? geoPosition.equals(that.geoPosition) : that.geoPosition == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
-        result = 31 * result + (wikipediaArticle != null ? wikipediaArticle.hashCode() : 0);
-        result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
+        result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
 
@@ -114,9 +85,7 @@ public class Geburtsort implements KandidatDimension {
         return "Geburtsort{" +
                 "id=" + id +
                 ", geburtsort='" + geburtsort + '\'' +
-                ", webseite='" + webseite + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", googleMapsUrl='" + googleMapsUrl + '\'' +
+                ", geoPosition=" + geoPosition +
                 '}';
     }
 }
