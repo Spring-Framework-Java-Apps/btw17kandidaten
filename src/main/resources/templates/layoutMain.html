@@ -25,6 +25,7 @@
     <meta property="og:image:alt" content="Deutscher Bundestag in Berlin Tiergarten" />
     <meta name="google-site-verification" content="3eksTC3Rvao6fLvSUwoRECBwd9Gdg4F51IhOE3DD-T8" />
     <title th:text="${pageContent.pageTitle}">btw17 Kandidaten</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.less" th:href="@{/css/bootstrap.less}" media="all" />
     <!-- Bootstrap -->
     <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
     <link href="webjars/font-awesome/4.7.0/css/font-awesome.min.css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
@@ -71,6 +72,12 @@
     <meta name="msapplication-TileColor" content="#ffffff"/>
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
     <meta name="theme-color" content="#ffffff"/>
+    <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+    <script type="text/javascript">
+        window.cookieconsent_options = {"message":"btw17-kandidaten.herokuapp.com verwendet Cookies für Funktions-, Komfort- und Statistikzwecke. Wenn Sie auf der Seite weitersurfen, akzeptieren Sie die Cookie-Verwendung.","dismiss":"Schließen","learnMore":"Weitere Informationen","link":"https://btw17-kandidaten.herokuapp.com/datenschutz","theme":"light-bottom"};
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent plugin -->
 </head>
 <body id="page-top" class="page-2" style="padding-top:50px; padding-bottom:200px;">
 <script th:fragment="tw-seo-fb">
@@ -603,16 +610,46 @@
 </section>
 
 </div>
-<footer th:fragment="tw-footer">
+
+<div th:fragment="tw-footer">
+    <footer id="page-footer" class="footer sticky-footer navbar navbar-inverse tw-debug">
+        <div class="container">
+            <ul class="nav nav-pills pull-right navbar-nav">
+                <li>
+                    <a href="/suche/formular" th:href="@{/suche/formular}">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <span>Suche</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/datenschutz" th:href="@{/datenschutz}">
+                        <i class="fa fa-database" aria-hidden="true"></i>
+                        <span>Datenschutz</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/imprint" th:href="@{/imprint}">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <span>Impressum</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- Google Maps -->
+    <script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${pageContent.googleMapsApiKey}|}" ></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="webjars/jquery/1.11.1/jquery.min.js" th:attr="src=@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script src="/webjars/jquery/2.2.4/jquery.min.js" th:attr="src=@{/webjars/jquery/2.2.4/jquery.min.js}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js" th:attr="src=@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js" th:attr="src=@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script src="/js/lightbox.js" th:attr="src=@{/js/lightbox.js}"></script>
+    <script src="/js/jquery.viewportchecker.min.js" th:attr="src=@{/js/jquery.viewportchecker.min.js}"></script>
+    <script src="/js/viewportSize-min.js" th:attr="src=@{/js/viewportSize-min.js}"></script>
     <!-- Map Icons -->
-    <script src="map-icons/js/map-icons.min.js" th:attr="src=@{/map-icons/js/map-icons.min.js}"></script>
+    <script src="/map-icons/js/map-icons.min.js" th:attr="src=@{/map-icons/js/map-icons.min.js}"></script>
     <!-- my own JavaScript -->
-    <script src="js/my.js" th:attr="src=@{/js/my.js}"></script>
-    <script type="text/javascript">
+    <script src="/js/my.js" th:attr="src=@{/js/my.js}"></script>
+    <script>
         var gaProperty = 'UA-17174370-11';
         var disableStr = 'ga-disable-' + gaProperty;
         if (document.cookie.indexOf(disableStr + '=true') > -1) {
@@ -622,8 +659,7 @@
             document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
             window[disableStr] = true;
         }
-    </script>
-    <script>
+
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -632,8 +668,7 @@
         ga('create', 'UA-17174370-11', 'auto');
         ga('set', 'anonymizeIp', true);
         ga('send', 'pageview');
-
     </script>
-</footer>
+</div>
 </body>
 </html>

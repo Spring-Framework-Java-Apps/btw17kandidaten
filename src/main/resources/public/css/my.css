@@ -222,6 +222,32 @@
         border-left: none;
     }
 
+    footer#page-footer.sticky-footer {
+        /*position: relative !important;*/
+        position: absolute !important;
+        bottom: 0px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #page-footer.navbar {
+        border-radius: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /*
+    .navbar {
+        position: relative;
+        min-height: 50px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+        display: block;
+    }
+*/
+
 }
 
 

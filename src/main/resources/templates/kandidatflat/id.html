@@ -101,9 +101,7 @@
         });
     }
 </script>
-<script th:attr="src=@{|https://maps.googleapis.com/maps/api/js?callback=initMap&amp;key=${googleMapsApiKey}|}" ></script>
-
-<footer th:include="layoutMain :: footer" >
-</footer>
+<div th:include="layoutMain :: tw-footer">
+</div>
 </body>
 </html>
