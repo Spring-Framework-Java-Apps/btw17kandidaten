@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -30,6 +31,10 @@ public class Geburtsort implements DimensionKandidat {
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
+
+    @Valid
+    @Embedded
+    private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
     @Transient
     public String getName() {
@@ -60,6 +65,14 @@ public class Geburtsort implements DimensionKandidat {
         this.geoPosition = geoPosition;
     }
 
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,7 +82,8 @@ public class Geburtsort implements DimensionKandidat {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
-        return geoPosition != null ? geoPosition.equals(that.geoPosition) : that.geoPosition == null;
+        if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
+        return onlineStrategie != null ? onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie == null;
     }
 
     @Override
@@ -77,6 +91,7 @@ public class Geburtsort implements DimensionKandidat {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
 
@@ -86,6 +101,7 @@ public class Geburtsort implements DimensionKandidat {
                 "id=" + id +
                 ", geburtsort='" + geburtsort + '\'' +
                 ", geoPosition=" + geoPosition +
+                ", onlineStrategie=" + onlineStrategie +
                 '}';
     }
 }
