@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -111,4 +112,35 @@ public class KandidatControllerTest {
         Assert.assertTrue(true);
     }
 
+    @WithMockUser
+    @Commit
+    @Test
+    public void editKandidatForIdGet()  throws Exception {
+        String msg ="editKandidatForIdGet: ";
+        int page=0;
+        int size=10;
+        Pageable pageable = new PageRequest(page,size);
+        Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
+        for(Kandidat kandidat:kandidaten){
+            MvcResult result = this.mockMvc.perform(get("/kandidat/edit/"+kandidat.getId()))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name( "kandidat/edit"))
+                    .andExpect(model().attributeExists("pageContent"))
+                    .andExpect(model().attributeExists("kandidat"))
+                    .andExpect(model().attributeExists("ausschuesse"))
+                    .andExpect(model().attributeExists("fraktionen"))
+                    .andExpect(model().attributeExists("ministerien"))
+                    .andExpect(model().attributeExists("suchformularFreitext"))
+                    .andReturn();
+
+            String content = result.getResponse().getContentAsString();
+
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+            log.info(msg+content);
+            log.info(msg+"#######################################");
+            log.info(msg+"#######################################");
+        }
+        Assert.assertTrue(true);
+    }
 }
