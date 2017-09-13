@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static javax.persistence.FetchType.EAGER;
+
 @Entity
 @Table(
     name = "kandidat",
@@ -220,11 +222,6 @@ public class Kandidat implements Serializable {
     @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-    /*
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_ministerium")
-    private Ministerium ministerium;
-    */
 
     /*
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
@@ -232,7 +229,7 @@ public class Kandidat implements Serializable {
     private Set<Ministerium> ministerium = new LinkedHashSet<>();
     */
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 

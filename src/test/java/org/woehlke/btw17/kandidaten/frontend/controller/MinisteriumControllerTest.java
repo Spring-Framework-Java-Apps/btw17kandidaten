@@ -90,9 +90,9 @@ public class MinisteriumControllerTest {
         int page=0;
         int size=10;
         Pageable pageable = new PageRequest(page,size);
-        Page<Ministerium> listeparteien = ministeriumService.getAll(pageable);
-        for(Ministerium listepartei:listeparteien){
-            MvcResult result = this.mockMvc.perform(get("/ministerium/"+listepartei.getId()))
+        Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
+        for(Ministerium ministerium:ministerien){
+            MvcResult result = this.mockMvc.perform(get("/ministerium/"+ministerium.getId()))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "ministerium/id"))
                     .andExpect(model().attributeExists("pageContent"))
