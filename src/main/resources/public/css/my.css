@@ -236,7 +236,7 @@
     }
 
     .tw-img-fraktion {
-        padding-right: 12px;
+        margin-right: 24px;
     }
 
     /*
@@ -250,7 +250,7 @@
     article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
         display: block;
     }
-*/
+    */
 
 }
 

@@ -24,12 +24,109 @@
         <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
                 <blockquote th:if="${wohnort.onlineStrategie}">
-                <a class="tw-social-media-link" th:if="${wohnort.onlineStrategie.webseite}" th:href="${wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                    <i class="fa fa-cloud" aria-hidden="true"></i>
-                </a>
-                <a class="tw-social-media-link" th:if="${wohnort.onlineStrategie.wikipediaArticle}" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                </a>
+
+                    <span th:if="${wohnort.onlineStrategie.webseite != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.twitter != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.facebook != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.youtube != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.soundcloud != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                            <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.wikipediaArticle != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.bundestagAbgeordnete != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.abgeordnetenwatch != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.lobbypediaUrl}" >
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.googlePlus != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.instagram != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.flickr != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
+                            <i class="fa fa-flickr" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.vimeo != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                            <i class="fa fa-vimeo-square" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.xing != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
+                            <i class="fa fa-xing-square" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.linkedIn != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.stackoverflow != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                            <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
+                    <span th:if="${wohnort.onlineStrategie.github != null}">
+                        <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.github}" alt="github" title="github" target="_blank">
+                            <i class="fa fa-github" aria-hidden="true"></i>
+                        </a>
+                    </span>
+
                 </blockquote>
             </div>
         </div>

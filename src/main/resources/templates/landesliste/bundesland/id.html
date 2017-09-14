@@ -17,33 +17,107 @@
 
                     <span th:if="${bundesland.onlineStrategie}">
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.webseite}" th:href="${bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                        <i class="fa fa-cloud" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.webseite != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                            </a>
+                        </span>s
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.twitter}" th:href="${bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.twitter != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.facebook}" th:href="${bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.facebook != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.youtube}" th:href="${bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.youtube != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.wikipediaArticle}" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.soundcloud != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                                <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.bundestagAbgeordnete}" th:href="${bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                        <i class="fa fa-university" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.wikipediaArticle != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
-                    <a class="tw-social-media-link" th:if="${bundesland.onlineStrategie.abgeordnetenwatch}" th:href="${bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </a>
+                        <span th:if="${bundesland.onlineStrategie.bundestagAbgeordnete != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                <i class="fa fa-university" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.abgeordnetenwatch != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.lobbypediaUrl}" >
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.googlePlus != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.instagram != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.flickr != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
+                                <i class="fa fa-flickr" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.vimeo != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                                <i class="fa fa-vimeo-square" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.xing != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
+                                <i class="fa fa-xing-square" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.linkedIn != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.stackoverflow != null}">
+                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                                <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+                            </a>
+                        </span>
+
+                        <span th:if="${bundesland.onlineStrategie.github != null}">
+                            <a class="tw-social-media-link" th:href="${bundeslandss.onlineStrategie.github}" alt="github" title="github" target="_blank">
+                                <i class="fa fa-github" aria-hidden="true"></i>
+                            </a>
+                        </span>
 
                     </span>
 
