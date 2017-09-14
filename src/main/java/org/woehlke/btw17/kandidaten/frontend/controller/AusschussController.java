@@ -91,13 +91,13 @@ public class AusschussController {
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("ausschuss",ausschuss);
 
-            //Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
-            //model.addAttribute("kandidaten",kandidatenPage);
+            Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
+            model.addAttribute("kandidaten",kandidatenPage);
             FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
 
-            List<Kandidat> kandidatenList  = new ArrayList<>();
-            Page<Kandidat> kandidatenPage  = new PageImpl<Kandidat>(kandidatenList,pageable,0L);
-            model.addAttribute("kandidaten",kandidatenPage);
+            //List<Kandidat> kandidatenList  = new ArrayList<>();
+            //Page<Kandidat> kandidatenPage  = new PageImpl<Kandidat>(kandidatenList,pageable,0L);
+            //model.addAttribute("kandidaten",kandidatenPage);
 
             return "ausschuss/id";
         }

@@ -133,7 +133,7 @@ import static javax.persistence.FetchType.EAGER;
     @NamedQuery(
         name = "Kandidat.findByFraktionCount",
         query = "select count(o) from Kandidat as o where o.fraktion=:fraktion"
-    )/*,
+    ),
     @NamedQuery(
         name = "Kandidat.findByAusschuss",
         query = "select o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
@@ -141,7 +141,15 @@ import static javax.persistence.FetchType.EAGER;
     @NamedQuery(
         name = "Kandidat.findByAusschussCount",
         query = "select count(o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
-    )*/
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByMinisterium",
+        query = "select o from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByMinisteriumCount",
+        query = "select count(o) from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium"
+    )
 })
 public class Kandidat implements Serializable,OnlineStrategieEmbedded {
 

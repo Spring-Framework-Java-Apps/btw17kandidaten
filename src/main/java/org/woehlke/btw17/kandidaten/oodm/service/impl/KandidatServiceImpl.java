@@ -206,9 +206,14 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByFraktion(fraktion,pageable);
     }
 
-    //@Override
-    //public Page<Kandidat> findByAusschuss(Ausschuss ausschuss, Pageable pageable) {
-    //    return kandidatRepository.findByAusschuss(ausschuss,pageable);
-    //}
+    @Override
+    public Page<Kandidat> findByAusschuss(Ausschuss ausschuss, Pageable pageable) {
+        return kandidatRepository.findByAusschuss(ausschuss,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByMinisterium(Ministerium ministerium, Pageable pageable) {
+        return kandidatRepository.findByMinisterium(ministerium,pageable);
+    }
 
 }
