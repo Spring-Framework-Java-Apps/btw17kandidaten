@@ -33,7 +33,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>
+                                    <span th:if="${ministerium.commonFields}">
+                                        <img th:if="${ministerium.commonFields.logoUrl}"
+                                             th:src="${ministerium.commonFields.logoUrl}"
+                                             class="img-responsive img-thumbnail tw-facette-logo"/>
+                                    </span>
+                                </td>
                                 <td>
                                      <span th:if="${ministerium.onlineStrategie}">
 
