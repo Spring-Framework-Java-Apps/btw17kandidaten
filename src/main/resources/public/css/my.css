@@ -235,7 +235,9 @@
         margin-bottom: 0 !important;
     }
 
-    .tw-img-fraktion {
+    .tw-facette-logo {
+        height: 36px !important;
+        width: auto !important;
         margin-right: 24px;
     }
 
