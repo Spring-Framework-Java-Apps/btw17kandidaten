@@ -1,8 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -142,7 +143,7 @@ import static javax.persistence.FetchType.EAGER;
         query = "select count(o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
     )*/
 })
-public class Kandidat implements Serializable {
+public class Kandidat implements Serializable,OnlineStrategieEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -831,8 +832,8 @@ public class Kandidat implements Serializable {
                 sb.append("'");
                 sb.append(x);
                 sb.append("'");
-            } else if(o instanceof DimensionKandidat){
-                DimensionKandidat x = (DimensionKandidat) o;
+            } else if(o instanceof KandidatFacette){
+                KandidatFacette x = (KandidatFacette) o;
                 sb.append(x.getId());
             }
             if((i+1)<fields.length){

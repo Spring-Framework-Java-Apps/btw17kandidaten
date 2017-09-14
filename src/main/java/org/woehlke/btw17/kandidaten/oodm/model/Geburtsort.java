@@ -1,9 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -16,7 +14,7 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     }
 )
-public class Geburtsort implements DimensionKandidat {
+public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +33,10 @@ public class Geburtsort implements DimensionKandidat {
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
+
+    @Valid
+    @Embedded
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Transient
     public String getName() {
@@ -73,6 +75,14 @@ public class Geburtsort implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
+    public CommonFields getDimensionFacetten() {
+        return dimensionFacetten;
+    }
+
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,7 +93,9 @@ public class Geburtsort implements DimensionKandidat {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
-        return onlineStrategie != null ? onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie == null;
+        if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
+            return false;
+        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
     }
 
     @Override
@@ -92,6 +104,7 @@ public class Geburtsort implements DimensionKandidat {
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         return result;
     }
 
@@ -102,6 +115,7 @@ public class Geburtsort implements DimensionKandidat {
                 ", geburtsort='" + geburtsort + '\'' +
                 ", geoPosition=" + geoPosition +
                 ", onlineStrategie=" + onlineStrategie +
+                ", dimensionFacetten=" + dimensionFacetten +
                 '}';
     }
 }

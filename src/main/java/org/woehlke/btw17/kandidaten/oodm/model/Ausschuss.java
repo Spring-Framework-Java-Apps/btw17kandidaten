@@ -2,9 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -26,7 +24,7 @@ import javax.validation.Valid;
         query = "select count(o) from Ausschuss as o"
     )
 })
-public class Ausschuss implements DimensionKandidat {
+public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +41,7 @@ public class Ausschuss implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Valid
     @Embedded
@@ -88,11 +86,11 @@ public class Ausschuss implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 

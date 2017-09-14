@@ -2,16 +2,14 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.io.Serializable;
 
 @Validated
 @Embeddable
-public class DimensionFacetten implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class CommonFields implements MySerializable {
 
     @URL
     @Column(name="logo_url")
@@ -55,9 +53,9 @@ public class DimensionFacetten implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DimensionFacetten)) return false;
+        if (!(o instanceof CommonFields)) return false;
 
-        DimensionFacetten that = (DimensionFacetten) o;
+        CommonFields that = (CommonFields) o;
 
         if (logoUrl != null ? !logoUrl.equals(that.logoUrl) : that.logoUrl != null) return false;
         if (symbolBild != null ? !symbolBild.equals(that.symbolBild) : that.symbolBild != null) return false;

@@ -1,7 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_beruf",columnNames = {"beruf"})
     }
 )
-public class Beruf implements DimensionKandidat {
+public class Beruf implements KandidatFacette {
 
     private static final long serialVersionUID = 1L;
 

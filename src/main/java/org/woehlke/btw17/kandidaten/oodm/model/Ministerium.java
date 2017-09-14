@@ -36,7 +36,7 @@ import javax.validation.Valid;
         query = "select count(o) from Ministerium as o"
     )
 })
-public class Ministerium implements DimensionKandidat {
+public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -59,7 +59,7 @@ public class Ministerium implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Valid
     @Embedded
@@ -154,11 +154,11 @@ public class Ministerium implements DimensionKandidat {
         this.adresse = adresse;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 

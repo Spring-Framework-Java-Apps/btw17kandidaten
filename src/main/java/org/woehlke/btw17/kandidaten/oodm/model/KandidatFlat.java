@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
 
 import javax.persistence.*;
 import java.util.Locale;
@@ -46,9 +46,7 @@ import java.util.Locale;
         query = "select o from KandidatFlat as o order by o.nachname"
     )
 })
-public class KandidatFlat implements DimensionKandidat {
-
-    private static final long serialVersionUID = 1L;
+public class KandidatFlat implements KandidatFacette {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

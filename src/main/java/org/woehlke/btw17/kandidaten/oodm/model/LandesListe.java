@@ -1,8 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFieldsEmbedded;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -34,9 +37,7 @@ import javax.validation.constraints.NotNull;
         query = "select o from LandesListe as o order by id"
     )
 })
-public class LandesListe implements DimensionKandidat {
-
-    private static final long serialVersionUID = 1L;
+public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,6 +52,11 @@ public class LandesListe implements DimensionKandidat {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_liste_partei", nullable = false, updatable = false)
     private ListePartei listePartei;
+
+    @Valid
+    @Embedded
+    private CommonFields dimensionFacetten = new CommonFields();
+
 
     @Transient
     public String getName(){
@@ -88,6 +94,18 @@ public class LandesListe implements DimensionKandidat {
         this.listePartei = listePartei;
     }
 
+    public CommonFields getDimensionFacetten() {
+        return dimensionFacetten;
+    }
+
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,7 +115,10 @@ public class LandesListe implements DimensionKandidat {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (bundesland != null ? !bundesland.equals(that.bundesland) : that.bundesland != null) return false;
-        return listePartei != null ? listePartei.equals(that.listePartei) : that.listePartei == null;
+        if (listePartei != null ? !listePartei.equals(that.listePartei) : that.listePartei != null) return false;
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten != null)
+            return false;
+        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
     }
 
     @Override
@@ -105,6 +126,8 @@ public class LandesListe implements DimensionKandidat {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         return result;
     }
 
@@ -114,6 +137,7 @@ public class LandesListe implements DimensionKandidat {
                 "id=" + id +
                 ", bundesland=" + bundesland +
                 ", listePartei=" + listePartei +
+                ", dimensionFacetten=" + dimensionFacetten +
                 '}';
     }
 

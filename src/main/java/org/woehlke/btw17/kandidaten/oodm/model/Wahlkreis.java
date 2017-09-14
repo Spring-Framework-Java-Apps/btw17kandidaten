@@ -1,8 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -19,7 +17,7 @@ import javax.validation.Valid;
         @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
     }
 )
-public class Wahlkreis implements DimensionKandidat {
+public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +38,10 @@ public class Wahlkreis implements DimensionKandidat {
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
+
+    @Valid
+    @Embedded
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
@@ -98,6 +100,14 @@ public class Wahlkreis implements DimensionKandidat {
         this.bundesland = bundesland;
     }
 
+    public CommonFields getDimensionFacetten() {
+        return dimensionFacetten;
+    }
+
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
+        this.dimensionFacetten = dimensionFacetten;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,6 +124,8 @@ public class Wahlkreis implements DimensionKandidat {
             return false;
         if (geoPosition != null ? !geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition != null)
             return false;
+        if (dimensionFacetten != null ? !dimensionFacetten.equals(wahlkreis.dimensionFacetten) : wahlkreis.dimensionFacetten != null)
+            return false;
         return bundesland != null ? bundesland.equals(wahlkreis.bundesland) : wahlkreis.bundesland == null;
     }
 
@@ -124,6 +136,7 @@ public class Wahlkreis implements DimensionKandidat {
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         return result;
     }
@@ -136,6 +149,7 @@ public class Wahlkreis implements DimensionKandidat {
                 ", wahlkreisName='" + wahlkreisName + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
+                ", dimensionFacetten=" + dimensionFacetten +
                 ", bundesland=" + bundesland +
                 '}';
     }

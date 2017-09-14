@@ -1,9 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -32,7 +30,7 @@ import javax.validation.Valid;
         query = "select o from ListePartei as o where o.listePartei=:listePartei"
     )
 })
-public class ListePartei implements DimensionKandidat {
+public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
 
     private static final long serialVersionUID = 1L;
@@ -61,7 +59,7 @@ public class ListePartei implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private CommonFields dimensionFacetten = new CommonFields();
 
 
     @Transient
@@ -126,11 +124,11 @@ public class ListePartei implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 

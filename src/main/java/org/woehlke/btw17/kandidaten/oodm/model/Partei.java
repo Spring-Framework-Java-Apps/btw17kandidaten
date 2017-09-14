@@ -2,9 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -32,7 +30,7 @@ import javax.validation.Valid;
         query = "select o from Partei as o order by o.id"
     )
 })
-public class Partei implements DimensionKandidat {
+public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded,AdresseEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -59,8 +57,15 @@ public class Partei implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private GeoPosition geoPosition = new GeoPosition();
 
+    @Valid
+    @Embedded
+    private Adresse adresse = new Adresse();
+
+    @Valid
+    @Embedded
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Transient
     public String getName() {
@@ -113,11 +118,11 @@ public class Partei implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 
@@ -130,6 +135,26 @@ public class Partei implements DimensionKandidat {
     }
 
     @Override
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
+    }
+
+    @Override
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
+    }
+
+    @Override
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    @Override
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Partei)) return false;
@@ -139,13 +164,14 @@ public class Partei implements DimensionKandidat {
         if (id != null ? !id.equals(partei1.id) : partei1.id != null) return false;
         if (partei != null ? !partei.equals(partei1.partei) : partei1.partei != null) return false;
         if (parteiLang != null ? !parteiLang.equals(partei1.parteiLang) : partei1.parteiLang != null) return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(partei1.dimensionFacetten) : partei1.dimensionFacetten != null)
-            return false;
         if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung != null)
             return false;
         if (wahlprogramm != null ? !wahlprogramm.equals(partei1.wahlprogramm) : partei1.wahlprogramm != null)
             return false;
-        return onlineStrategie != null ? onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie == null;
+        if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
+            return false;
+        if (geoPosition != null ? !geoPosition.equals(partei1.geoPosition) : partei1.geoPosition != null) return false;
+        return dimensionFacetten != null ? dimensionFacetten.equals(partei1.dimensionFacetten) : partei1.dimensionFacetten == null;
     }
 
     @Override
@@ -153,10 +179,11 @@ public class Partei implements DimensionKandidat {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
         result = 31 * result + (parteiLang != null ? parteiLang.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
         return result;
     }
 
@@ -166,10 +193,11 @@ public class Partei implements DimensionKandidat {
                 "id=" + id +
                 ", partei='" + partei + '\'' +
                 ", parteiLang='" + parteiLang + '\'' +
-                ", dimensionFacetten=" + dimensionFacetten +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
                 ", wahlprogramm='" + wahlprogramm + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
+                ", geoPosition=" + geoPosition +
+                ", dimensionFacetten=" + dimensionFacetten +
                 '}';
     }
 }

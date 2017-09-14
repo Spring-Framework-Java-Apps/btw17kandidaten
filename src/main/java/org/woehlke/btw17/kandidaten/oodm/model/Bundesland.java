@@ -1,8 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -18,7 +16,7 @@ import javax.validation.Valid;
         @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
     }
 )
-public class Bundesland implements DimensionKandidat {
+public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,7 +36,7 @@ public class Bundesland implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Transient
     public String getName(){
@@ -82,11 +80,11 @@ public class Bundesland implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 

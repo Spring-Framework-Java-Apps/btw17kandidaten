@@ -1,9 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionFacetten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DimensionKandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -28,7 +25,7 @@ import javax.validation.Valid;
         query = "select o from Wohnort as o order by o.id"
     )
 })
-public class Wohnort implements DimensionKandidat {
+public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -49,7 +46,7 @@ public class Wohnort implements DimensionKandidat {
 
     @Valid
     @Embedded
-    private DimensionFacetten dimensionFacetten = new DimensionFacetten();
+    private CommonFields dimensionFacetten = new CommonFields();
 
     @Valid
     @Embedded
@@ -93,11 +90,11 @@ public class Wohnort implements DimensionKandidat {
         this.onlineStrategie = onlineStrategie;
     }
 
-    public DimensionFacetten getDimensionFacetten() {
+    public CommonFields getDimensionFacetten() {
         return dimensionFacetten;
     }
 
-    public void setDimensionFacetten(DimensionFacetten dimensionFacetten) {
+    public void setDimensionFacetten(CommonFields dimensionFacetten) {
         this.dimensionFacetten = dimensionFacetten;
     }
 
@@ -218,8 +215,8 @@ public class Wohnort implements DimensionKandidat {
                 sb.append("'");
                 sb.append(x);
                 sb.append("'");
-            } else if(o instanceof DimensionKandidat){
-                DimensionKandidat x = (DimensionKandidat) o;
+            } else if(o instanceof KandidatFacette){
+                KandidatFacette x = (KandidatFacette) o;
                 sb.append(x.getId());
             }
             if((i+1)<fields.length){

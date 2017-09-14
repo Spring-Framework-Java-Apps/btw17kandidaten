@@ -1,16 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Validated
 @Embeddable
-public class Adresse implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Adresse implements MySerializable {
 
     @Column
     private String strasse;
