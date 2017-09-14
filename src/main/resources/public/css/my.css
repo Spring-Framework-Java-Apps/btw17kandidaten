@@ -241,6 +241,12 @@
         margin-right: 24px;
     }
 
+    .tw-facette-logo2 {
+        height: 144px !important;
+        width: auto !important;
+        margin-right: 24px;
+    }
+
     /*
     .navbar {
         position: relative;
