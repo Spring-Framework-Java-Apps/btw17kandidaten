@@ -18,6 +18,9 @@
 
 #pg_dump -U kandidaten --table=wohnort --data-only --column-inserts kandidaten > 3nf/data/insert-data-wohnort.sql
 
+pg_dump -U kandidaten --table=kandidat_ausschuss --data-only --column-inserts kandidaten > 3nf/data/insert-data-kandidat_ausschuss.sql
+
+pg_dump -U kandidaten --table=kandidat_ministerium --data-only --column-inserts kandidaten > 3nf/data/insert-data-kandidat_ministerium.sql
 
 pg_dump -U kandidaten --table=kandidat --data-only --column-inserts kandidaten > 3nf/data/insert-data-kandidat.sql
 
