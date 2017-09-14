@@ -1,3 +1,25 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: ministerium; Type: TABLE DATA; Schema: public; Owner: kandidaten
+--
+
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (1, NULL, NULL, NULL, NULL, NULL, 'Thomas de Maizière', NULL, NULL, NULL, '52.52263', '13.3612313', '15', '@52.52263,13.3612313,17z', 'BMI', 'Bundesministerium des Innern', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://twitter.com/BMI_Bund', NULL, 'http://www.bmi.bund.de/', 'https://de.wikipedia.org/wiki/Bundesministerium_des_Innern', NULL, 'https://www.youtube.com/channel/UCEj9_d1bBphisn1KSv96TZA', 7, 2522);
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (2, NULL, NULL, NULL, NULL, NULL, 'Brigitte Zypries', NULL, NULL, NULL, '52.5307067', '13.3707296', '15', '@52.5307067,13.3707296,17z', 'BMWI', 'Bundesministerium für Wirtschaft und Energie', NULL, NULL, 'https://www.facebook.com/bundeswirtschaftsministerium', NULL, NULL, 'https://plus.google.com/+bundeswirtschaftsministerium', NULL, NULL, NULL, 'https://soundcloud.com/bmwi_bund', NULL, 'https://twitter.com/BMWi_Bund/', NULL, 'http://www.bmwi.de/', 'https://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Wirtschaft_und_Energie', NULL, 'https://www.youtube.com/user/wirtschaftspolitik', 7, NULL);
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (3, NULL, NULL, NULL, NULL, NULL, 'Sigmar Gabriel', NULL, NULL, NULL, '52.5151797', '13.396869', '15', '@52.5151797,13.396869,17z', 'AA', 'Auswärtiges Amt', NULL, NULL, 'https://www.facebook.com/AuswaertigesAmt', NULL, NULL, NULL, 'https://www.instagram.com/auswaertigesamt/', NULL, NULL, NULL, NULL, 'https://twitter.com/AuswaertigesAmt', NULL, 'http://www.auswaertiges-amt.de/', 'https://de.wikipedia.org/wiki/Ausw%C3%A4rtiges_Amt', NULL, 'https://www.youtube.com/user/AuswaertigesAmtDE', 7, 553);
@@ -13,3 +35,9 @@ INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminist
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (13, NULL, NULL, NULL, NULL, NULL, 'Johanna Wanka', NULL, NULL, NULL, '52.52296', '13.3740913', '15', '@52.52296,13.3740913,17z', 'BMBF', 'Bundesministerium für Bildung und Forschung', NULL, NULL, 'https://www.facebook.com/bmbf.de', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://twitter.com/BMBF_Bund', NULL, 'https://www.bmbf.de/', 'https://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Bildung_und_Forschung', NULL, NULL, 7, NULL);
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (14, NULL, NULL, NULL, NULL, NULL, 'Gerd Müller', NULL, NULL, NULL, '52.5055509', '13.3791886', '15', '@52.5055509,13.3791886,17z', 'BMZ', 'Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung', NULL, NULL, 'https://www.facebook.com/BMZ.Bund', NULL, NULL, 'https://plus.google.com/+BMZ', NULL, NULL, NULL, NULL, NULL, 'https://twitter.com/BMZ_Bund', NULL, 'http://www.bmz.de/', 'https://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_wirtschaftliche_Zusammenarbeit_und_Entwicklung', NULL, 'https://www.youtube.com/bmz', 7, 1500);
 INSERT INTO ministerium (id, hausnummer, nation, ort, plz, strasse, bundesminister, beschreibungs_text, logo_url, symbol_bild, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, ministerium, ministerium_lang, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, fk_bundesland, fk_bundesminister) VALUES (15, NULL, NULL, NULL, NULL, NULL, 'Angela Merkel', NULL, NULL, NULL, '52.5202065', '13.3669474', '15', '@52.5202065,13.3669474,17z', 'Bundesregierung', 'Bundeskanzleramt', NULL, NULL, 'https://www.facebook.com/Bundesregierung/', NULL, NULL, NULL, 'https://www.instagram.com/bundeskanzlerin/', NULL, NULL, NULL, NULL, 'https://twitter.com/RegSprecher', NULL, 'https://www.bundesregierung.de', 'https://de.wikipedia.org/wiki/Bundeskanzleramt_(Deutschland)', NULL, NULL, 7, 1414);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

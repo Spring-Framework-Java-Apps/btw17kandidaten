@@ -1,5 +1,27 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: partei; Type: TABLE DATA; Schema: public; Owner: kandidaten
+--
+
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'liberal – ökologisch – sozial', NULL);
-INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://erststimme-markus-beckmann.de/', NULL, NULL, '', NULL, NULL, 'Einzelbewerber', 'Markus Beckmann – Den Menschen verpflichtet, keiner Partei!', NULL);
+INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://erststimme-markus-beckmann.de/', NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'Markus Beckmann – Den Menschen verpflichtet, keiner Partei!', NULL);
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'Otto Ritter', NULL);
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'wir-direkt', NULL);
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'BÜRGERKANDIDAT – FÜR GEMEINWOHL UND TRANSPARENTE, DIREKTE DEMOKRATIE', NULL);
@@ -132,3 +154,9 @@ INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, l
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (132, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'Überparteilich! Mit gutem Beispiel voran: www.eidesstattliches-wahlversprechen.de', NULL);
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (133, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Einzelbewerber', 'Babnik', NULL);
 INSERT INTO partei (id, bundeszentrale_politische_bildung, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, partei, partei_lang, wahlprogramm) VALUES (134, 'https://www.bpb.de/politik/grundfragen/parteien-in-deutschland/cdu/', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://lobbypedia.de/wiki/CDU', NULL, NULL, 'https://twitter.com/CDU', NULL, 'https://www.cdu.de/', 'https://de.wikipedia.org/wiki/Christlich_Demokratische_Union_Deutschlands', NULL, NULL, 'CDU', 'Christlich Demokratische Union Deutschlands', NULL);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

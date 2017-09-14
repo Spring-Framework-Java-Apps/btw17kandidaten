@@ -1,3 +1,25 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: wahlkreis; Type: TABLE DATA; Schema: public; Owner: kandidaten
+--
+
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 281, 'Freiburg', NULL);
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 47, 'Hannover-Land II', NULL);
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 154, 'Leipzig-Land', NULL);
@@ -297,3 +319,9 @@ INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_u
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (297, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 161, 'Mittelsachsen', NULL);
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (298, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 140, 'Bochum I', NULL);
 INSERT INTO wahlkreis (id, geo_lattitude, geo_longitude, geo_zoom, google_maps_url, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube, wahlkreis_id, wahlkreis_name, fk_bundesland) VALUES (299, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'Flensburg – Schleswig', NULL);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

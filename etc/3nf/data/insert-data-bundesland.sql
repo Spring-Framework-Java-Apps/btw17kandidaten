@@ -1,3 +1,25 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: bundesland; Type: TABLE DATA; Schema: public; Owner: kandidaten
+--
+
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (1, 'BB', 'Brandenburg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://www.brandenburg.de/', 'https://de.wikipedia.org/wiki/Brandenburg', NULL, NULL);
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (2, 'SN', 'Sachsen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://www.sachsen.de/', 'https://de.wikipedia.org/wiki/Sachsen', NULL, NULL);
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (3, 'NW', 'Nordrhein-Westfalen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://www.land.nrw/', 'https://de.wikipedia.org/wiki/Nordrhein-Westfalen', NULL, NULL);
@@ -14,3 +36,9 @@ INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, log
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (14, 'RP', 'Rheinland-Pfalz', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://www.rlp.de', 'https://de.wikipedia.org/wiki/Rheinland-Pfalz', NULL, NULL);
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (15, 'HH', 'Hansestadt Hamburg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'http://www.hamburg.de/', 'https://de.wikipedia.org/wiki/Hamburg', NULL, NULL);
 INSERT INTO bundesland (id, bundesland, bundesland_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (16, 'TH', 'Thüringen', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://www.thueringen.de/', 'https://de.wikipedia.org/wiki/Th%C3%BCringen', NULL, NULL);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

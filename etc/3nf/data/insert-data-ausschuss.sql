@@ -1,3 +1,25 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: ausschuss; Type: TABLE DATA; Schema: public; Owner: kandidaten
+--
+
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (1, 'Ausschuss für Arbeit und Soziales', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/arbeit', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (2, 'Auswärtiger Ausschuss', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/auswaertiges', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (3, 'Ausschuss für Bildung, Forschung und Technikfolgenabschätzung', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/bildung', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -39,3 +61,9 @@ INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_u
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (39, 'Expertenkommission zur Zukunft der Behörde des Bundesbeauftragten für die Unterlagen des Staatssicherheitsdienstes der ehemaligen DDR (BStU)', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/ausschuesse18/gremien18/bstu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (40, 'Gremium nach § 23c Absatz 8 des Zollfahndungsdienstgesetzes', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/ausschuesse18/gremien18/zfdg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (41, 'Parlamentarischer Beirat für nachhaltige Entwicklung', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/nachhaltigkeit', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
