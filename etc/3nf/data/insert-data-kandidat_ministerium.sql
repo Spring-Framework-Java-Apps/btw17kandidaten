@@ -19,13 +19,17 @@
 -- PostgreSQL database dump complete
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1330, 4);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1362, 9);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1514, 6);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1915, 7);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2028, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2103, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (24, 15);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2522, 1);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2548, 8);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (283, 11);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (361, 11);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (553, 3);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (653, 10);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (87, 9);
 SET check_function_bodies = false;
 SET client_encoding = 'UTF8';
