@@ -22,6 +22,8 @@ SET search_path = public, pg_catalog;
 
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (486, 14);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (486, 2);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (18, 10);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (18, 3);
 
 
 --
