@@ -19,6 +19,7 @@
 -- PostgreSQL database dump complete
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2103, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (24, 15);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (283, 11);
 SET check_function_bodies = false;
 SET client_encoding = 'UTF8';
 SET client_min_messages = warning;
