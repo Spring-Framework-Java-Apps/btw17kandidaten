@@ -39,6 +39,7 @@ INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (486, 2);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 19);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 6);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (87, 28);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (98, 11);
 SET check_function_bodies = false;
 SET client_encoding = 'UTF8';
