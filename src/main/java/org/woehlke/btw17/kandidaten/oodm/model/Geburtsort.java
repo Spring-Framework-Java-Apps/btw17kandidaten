@@ -36,7 +36,7 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Transient
     public String getName() {
@@ -75,12 +75,12 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
+        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
     }
 
     @Override
@@ -104,7 +104,7 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         return result;
     }
 
@@ -115,7 +115,7 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
                 ", geburtsort='" + geburtsort + '\'' +
                 ", geoPosition=" + geoPosition +
                 ", onlineStrategie=" + onlineStrategie +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 '}';
     }
 }

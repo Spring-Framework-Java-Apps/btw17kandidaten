@@ -36,7 +36,7 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Transient
     public String getName(){
@@ -80,12 +80,12 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
+        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         return result;
     }
 
@@ -121,7 +121,7 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
                 ", bundesland='" + bundesland + '\'' +
                 ", bundeslandLang='" + bundeslandLang + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 '}';
     }
 }

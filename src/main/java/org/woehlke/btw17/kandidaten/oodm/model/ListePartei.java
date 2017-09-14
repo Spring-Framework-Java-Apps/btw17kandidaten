@@ -59,7 +59,7 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
 
     @Transient
@@ -124,12 +124,12 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -148,7 +148,7 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
+        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
     }
 
     @Override
@@ -159,7 +159,7 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         return result;
     }
 
@@ -172,7 +172,7 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
                 ", wahlprogramm='" + wahlprogramm + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 '}';
     }
 }

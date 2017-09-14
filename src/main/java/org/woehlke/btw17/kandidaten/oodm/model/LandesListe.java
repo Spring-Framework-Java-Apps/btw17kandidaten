@@ -55,7 +55,7 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
 
     @Transient
@@ -94,12 +94,12 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
         this.listePartei = listePartei;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     public static long getSerialVersionUID() {
@@ -116,9 +116,9 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (bundesland != null ? !bundesland.equals(that.bundesland) : that.bundesland != null) return false;
         if (listePartei != null ? !listePartei.equals(that.listePartei) : that.listePartei != null) return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null)
             return false;
-        return dimensionFacetten != null ? dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten == null;
+        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
     }
 
     @Override
@@ -126,8 +126,8 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         return result;
     }
 
@@ -137,7 +137,7 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
                 "id=" + id +
                 ", bundesland=" + bundesland +
                 ", listePartei=" + listePartei +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 '}';
     }
 

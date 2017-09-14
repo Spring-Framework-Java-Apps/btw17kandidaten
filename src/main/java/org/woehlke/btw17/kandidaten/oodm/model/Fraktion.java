@@ -51,7 +51,7 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Valid
     @Embedded
@@ -88,12 +88,12 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
         this.fraktionLang = fraktionLang;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     public OnlineStrategie getOnlineStrategie() {
@@ -115,7 +115,7 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
         if (fraktion != null ? !fraktion.equals(fraktion1.fraktion) : fraktion1.fraktion != null) return false;
         if (fraktionLang != null ? !fraktionLang.equals(fraktion1.fraktionLang) : fraktion1.fraktionLang != null)
             return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(fraktion1.dimensionFacetten) : fraktion1.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(fraktion1.commonFields) : fraktion1.commonFields != null)
             return false;
         return onlineStrategie != null ? onlineStrategie.equals(fraktion1.onlineStrategie) : fraktion1.onlineStrategie == null;
     }
@@ -125,7 +125,7 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
         result = 31 * result + (fraktionLang != null ? fraktionLang.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
@@ -136,7 +136,7 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
                 "id=" + id +
                 ", fraktion='" + fraktion + '\'' +
                 ", fraktionLang='" + fraktionLang + '\'' +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 '}';
     }

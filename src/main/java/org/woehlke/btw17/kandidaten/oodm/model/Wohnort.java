@@ -46,7 +46,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Valid
     @Embedded
@@ -90,12 +90,12 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     public GeoPosition getGeoPosition() {
@@ -118,7 +118,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
         if (bundesland != null ? !bundesland.equals(wohnort1.bundesland) : wohnort1.bundesland != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(wohnort1.onlineStrategie) : wohnort1.onlineStrategie != null)
             return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(wohnort1.dimensionFacetten) : wohnort1.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(wohnort1.commonFields) : wohnort1.commonFields != null)
             return false;
         return geoPosition != null ? geoPosition.equals(wohnort1.geoPosition) : wohnort1.geoPosition == null;
     }
@@ -129,7 +129,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
         result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         return result;
     }
@@ -141,7 +141,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
                 ", wohnort='" + wohnort + '\'' +
                 ", bundesland=" + bundesland +
                 ", onlineStrategie=" + onlineStrategie +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 ", geoPosition=" + geoPosition +
                 '}';
     }
@@ -171,9 +171,9 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
         String stackoverflow = onlineStrategie.getStackoverflow();
         String github = onlineStrategie.getGithub();
 
-        String logoUrl = dimensionFacetten.getLogoUrl();
-        String symbolBild = dimensionFacetten.getSymbolBild();
-        String beschreibungsText = dimensionFacetten.getBeschreibungsText();
+        String logoUrl = commonFields.getLogoUrl();
+        String symbolBild = commonFields.getSymbolBild();
+        String beschreibungsText = commonFields.getBeschreibungsText();
 
         String columns[] = {
             "id","wohnort","webseite","wikipedia_article","facebook","logo_url",

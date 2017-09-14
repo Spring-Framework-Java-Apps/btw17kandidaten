@@ -41,7 +41,7 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Valid
     @Embedded
@@ -86,12 +86,12 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -105,7 +105,7 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
         if (ausschuss != null ? !ausschuss.equals(ausschuss1.ausschuss) : ausschuss1.ausschuss != null) return false;
         if (ausschussLang != null ? !ausschussLang.equals(ausschuss1.ausschussLang) : ausschuss1.ausschussLang != null)
             return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(ausschuss1.dimensionFacetten) : ausschuss1.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(ausschuss1.commonFields) : ausschuss1.commonFields != null)
             return false;
         return onlineStrategie != null ? onlineStrategie.equals(ausschuss1.onlineStrategie) : ausschuss1.onlineStrategie == null;
     }
@@ -115,7 +115,7 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (ausschussLang != null ? ausschussLang.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
     }
@@ -126,7 +126,7 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
                 "id=" + id +
                 ", ausschuss='" + ausschuss + '\'' +
                 ", ausschussLang='" + ausschussLang + '\'' +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 '}';
     }

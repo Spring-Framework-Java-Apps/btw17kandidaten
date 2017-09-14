@@ -41,7 +41,7 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
@@ -100,12 +100,12 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
         this.bundesland = bundesland;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -124,7 +124,7 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
             return false;
         if (geoPosition != null ? !geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition != null)
             return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(wahlkreis.dimensionFacetten) : wahlkreis.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(wahlkreis.commonFields) : wahlkreis.commonFields != null)
             return false;
         return bundesland != null ? bundesland.equals(wahlkreis.bundesland) : wahlkreis.bundesland == null;
     }
@@ -136,7 +136,7 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         return result;
     }
@@ -149,7 +149,7 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
                 ", wahlkreisName='" + wahlkreisName + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 ", bundesland=" + bundesland +
                 '}';
     }

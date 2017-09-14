@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 public interface CommonFieldsEmbedded {
 
-    CommonFields getDimensionFacetten();
+    CommonFields getCommonFields();
 
-    void setDimensionFacetten(CommonFields dimensionFacetten);
+    void setCommonFields(CommonFields commonFields);
 }

@@ -59,7 +59,7 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Valid
     @Embedded
@@ -154,12 +154,12 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
         this.adresse = adresse;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     @Override
@@ -177,7 +177,7 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
             return false;
         if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
             return false;
-        if (dimensionFacetten != null ? !dimensionFacetten.equals(that.dimensionFacetten) : that.dimensionFacetten != null)
+        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null)
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
@@ -192,7 +192,7 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
         result = 31 * result + (bundesministerName != null ? bundesministerName.hashCode() : 0);
         result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
@@ -207,7 +207,7 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
                 ", ministeriumLang='" + ministeriumLang + '\'' +
                 ", bundesministerName='" + bundesministerName + '\'' +
                 ", bundesminister=" + bundesminister +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", adresse=" + adresse +

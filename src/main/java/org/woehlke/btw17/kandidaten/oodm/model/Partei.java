@@ -65,7 +65,7 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
 
     @Valid
     @Embedded
-    private CommonFields dimensionFacetten = new CommonFields();
+    private CommonFields commonFields = new CommonFields();
 
     @Transient
     public String getName() {
@@ -118,12 +118,12 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
         this.onlineStrategie = onlineStrategie;
     }
 
-    public CommonFields getDimensionFacetten() {
-        return dimensionFacetten;
+    public CommonFields getCommonFields() {
+        return commonFields;
     }
 
-    public void setDimensionFacetten(CommonFields dimensionFacetten) {
-        this.dimensionFacetten = dimensionFacetten;
+    public void setCommonFields(CommonFields commonFields) {
+        this.commonFields = commonFields;
     }
 
     public String getWahlprogramm() {
@@ -171,7 +171,7 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
         if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
             return false;
         if (geoPosition != null ? !geoPosition.equals(partei1.geoPosition) : partei1.geoPosition != null) return false;
-        return dimensionFacetten != null ? dimensionFacetten.equals(partei1.dimensionFacetten) : partei1.dimensionFacetten == null;
+        return commonFields != null ? commonFields.equals(partei1.commonFields) : partei1.commonFields == null;
     }
 
     @Override
@@ -183,7 +183,7 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
-        result = 31 * result + (dimensionFacetten != null ? dimensionFacetten.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         return result;
     }
 
@@ -197,7 +197,7 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
                 ", wahlprogramm='" + wahlprogramm + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
-                ", dimensionFacetten=" + dimensionFacetten +
+                ", commonFields=" + commonFields +
                 '}';
     }
 }
