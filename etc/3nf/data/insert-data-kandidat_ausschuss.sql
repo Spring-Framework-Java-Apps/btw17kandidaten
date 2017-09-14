@@ -17,6 +17,7 @@
 -- Dumped from database version 9.6.5
 -- PostgreSQL database dump
 -- PostgreSQL database dump complete
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (1710, 10);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (18, 10);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (18, 3);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (28, 12);
