@@ -60,7 +60,7 @@ public class ReportControllerTest {
 
         MvcResult result = this.mockMvc.perform(get("/report/overview"))
                 .andExpect(status().isOk())
-                .andExpect(view().name( "reports/overview"))
+                .andExpect(view().name( "report/overview"))
                 .andExpect(model().attributeExists("pageContent"))
                 .andExpect(model().attributeExists("suchformularFreitext"))
                 .andReturn();
@@ -274,7 +274,7 @@ public class ReportControllerTest {
         Assert.assertTrue(true);
     }
 
-
+    @WithMockUser
     @Commit
     @Test
     public void test0100getKandidatWithoutFacebook() throws Exception {
@@ -405,7 +405,7 @@ public class ReportControllerTest {
     public void test0150getKandidatWithoutYoutube() throws Exception {
         String msg ="test0150getKandidatWithoutYoutube: ";
 
-        MvcResult result = this.mockMvc.perform(get("/report/kandidat/youtub"))
+        MvcResult result = this.mockMvc.perform(get("/report/kandidat/youtube"))
                 .andExpect(status().isOk())
                 .andExpect(view().name( "report/kandidat/youtube"))
                 .andExpect(model().attributeExists("pageContent"))
