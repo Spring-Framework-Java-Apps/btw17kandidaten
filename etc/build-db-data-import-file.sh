@@ -13,6 +13,14 @@ cat empty-tables.sql >> ../src/main/resources/data.sql
 
 
 echo '--' >> ../src/main/resources/data.sql
+echo '-- Settings' >> ../src/main/resources/data.sql
+echo '-- import-settings.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat import-settings.sql >> ../src/main/resources/data.sql
+
+
+echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Beruf' >> ../src/main/resources/data.sql
 echo '-- Table: beruf' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-beruf.sql' >> ../src/main/resources/data.sql
