@@ -49,7 +49,7 @@ public class AusschussController {
     ) {
         String pageTitle = "Ausschüsse";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.FRAKTION.getSymbolHtml();
+        String pageSymbol = PageSymbol.AUSSCHUSS.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/ausschuss/all";
@@ -80,7 +80,7 @@ public class AusschussController {
         } else {
             String pageTitle = ausschuss.getName();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();
-            String pageSymbol = PageSymbol.FRAKTION.getSymbolHtml();
+            String pageSymbol = PageSymbol.AUSSCHUSS.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
             String pagerUrl = "/ausschuss/"+ausschuss.getId();

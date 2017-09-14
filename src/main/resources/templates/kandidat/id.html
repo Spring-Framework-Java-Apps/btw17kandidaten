@@ -228,6 +228,26 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><i class="fa fa-home" aria-hidden="true"></i> Ministerien</td>
+                                <td colspan="2">
+                                    <div th:each="mi : ${kandidat.ministerium}">
+                                        <a th:href="@{|/ministerium/${mi.id}|}">
+                                            <span th:text="${mi.name}">ministerium</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-users" aria-hidden="true"></i> Ausschüsse</td>
+                                <td colspan="2">
+                                    <div th:each="au : ${kandidat.ausschuss}">
+                                        <a th:href="@{|/ausschuss/${au.id}|}">
+                                            <span th:text="${au.name}">ausschuss</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>&nbsp;</td>
                                 <td colspan="2">
 
