@@ -2,7 +2,7 @@
 
 rm ../src/main/resources/data.sql
 
-
+echo ' '
 echo '-- Empty Tables'
 echo '-- etc/empty-tables.sql'
 echo '--' > ../src/main/resources/data.sql
@@ -15,13 +15,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat empty-tables.sql >> ../src/main/resources/data.sql
 
 
-#echo '--' >> ../src/main/resources/data.sql
-#echo '-- Settings' >> ../src/main/resources/data.sql
-#echo '-- import-settings.sql' >> ../src/main/resources/data.sql
-#echo '--' >> ../src/main/resources/data.sql
-#
-#cat import-settings.sql >> ../src/main/resources/data.sql
-
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Beruf'
 echo '-- Table: beruf'
 echo '-- etc/3nf/data/insert-data-beruf.sql'
@@ -34,6 +28,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-beruf.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO beruf " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe'
 echo '-- Table: berufsgruppe'
 echo '-- etc/3nf/data/insert-data-berufsgruppe.sql'
@@ -46,6 +41,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-berufsgruppe.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO berufsgruppe " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Bundesland'
 echo '-- Table: bundesland'
 echo '-- etc/3nf/data/insert-data-bundesland.sql'
@@ -58,6 +54,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-bundesland.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO bundesland " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Geburtsort'
 echo '-- Table: geburtsort'
 echo '-- etc/3nf/data/insert-data-geburtsort.sql'
@@ -70,6 +67,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-geburtsort.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO geburtsort " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei'
 echo '-- Table: liste_partei'
 echo '-- etc/3nf/data/insert-data-liste_partei.sql'
@@ -82,6 +80,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-liste_partei.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO liste_partei " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Partei'
 echo '-- Table: partei'
 echo '-- etc/3nf/data/insert-data-partei.sql'
@@ -94,6 +93,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-partei.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO partei " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis'
 echo '-- Table: wahlkreis'
 echo '-- etc/3nf/data/insert-data-wahlkreis.sql'
@@ -106,6 +106,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-wahlkreis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO wahlkreis " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Wohnort'
 echo '-- Table: wohnort'
 echo '-- etc/3nf/data/insert-data-wohnort.sql'
@@ -118,6 +119,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-wohnort.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO wohnort" >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.LandesListe'
 echo '-- Table: landesliste'
 echo '-- etc/3nf/data/insert-data-landesliste.sql'
@@ -130,6 +132,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-landesliste.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO landesliste "  >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Fraktion'
 echo '-- Table: fraktion'
 echo '-- etc/3nf/data/insert-data-fraktion.sql'
@@ -142,6 +145,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-fraktion.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO fraktion "  >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ausschuss'
 echo '-- Table: ausschuss'
 echo '-- etc/3nf/data/insert-data-ausschuss.sql'
@@ -154,6 +158,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-ausschuss.sql  | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO ausschuss " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat'
 echo '-- Table: kandidat_flat'
 echo '-- etc/3nf/data/insert-data-kandidat_flat.sql'
@@ -166,6 +171,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-kandidat_flat.sql >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat'
 echo '-- Table: kandidat'
 echo '-- etc/3nf/data/insert-data-kandidat.sql'
@@ -178,6 +184,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium'
 echo '-- Table: ministerium'
 echo '-- etc/3nf/data/insert-data-ministerium.sql'
@@ -190,6 +197,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-ministerium.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO ministerium " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat.ministerium'
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ministerium'
 echo '-- Table: kandidat_ministerium'
@@ -204,6 +212,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-kandidat_ministerium.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat_ministerium " >> ../src/main/resources/data.sql
 
 
+echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Kandidat.ausschuss'
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.Ausschuss'
 echo '-- Table: kandidat_ausschuss'
@@ -216,5 +225,7 @@ echo '-- etc/3nf/data/insert-data-kandidat_ausschuss.sql' >> ../src/main/resourc
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat_ausschuss.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat_ausschuss "  >> ../src/main/resources/data.sql
+
+echo ' '
 
 exit 0
