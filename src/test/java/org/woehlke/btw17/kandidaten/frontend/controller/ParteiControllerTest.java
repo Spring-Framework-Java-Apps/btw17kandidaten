@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
