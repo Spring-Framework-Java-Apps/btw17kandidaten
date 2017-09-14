@@ -664,8 +664,6 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
-        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
-            return false;
         if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
@@ -708,7 +706,6 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
-        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
