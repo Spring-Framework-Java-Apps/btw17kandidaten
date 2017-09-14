@@ -18,6 +18,7 @@
 -- PostgreSQL database dump
 -- PostgreSQL database dump complete
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1362, 9);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2028, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2103, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (24, 15);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (283, 11);
