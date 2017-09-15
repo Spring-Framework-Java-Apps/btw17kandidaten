@@ -25,6 +25,7 @@ import static javax.persistence.FetchType.EAGER;
         @Index(name = "idx_kandidat_namenszusatz", columnList = "namenszusatz"),
         @Index(name = "idx_kandidat_nachname_ohne", columnList = "nachname_ohne"),
         @Index(name = "idx_kandidat_nachname", columnList = "nachname"),
+        @Index(name = "idx_kandidat_vorname", columnList = "vorname"),
         @Index(name = "idx_kandidat_geschlecht", columnList = "geschlecht"),
         @Index(name = "idx_kandidat_geburtsjahr", columnList = "geburtsjahr"),
         @Index(name = "idx_kandidat_alter", columnList = "alter"),
@@ -270,52 +271,6 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
-
-    /*
-    @URL
-    @Column
-    private String webseite;
-
-    @URL
-    @Column
-    private String twitter;
-
-    @URL
-    @Column(name="facebook")
-    private String facebook;
-
-    @URL
-    @Column
-    private String youtube;
-
-    @URL
-    @Column
-    private String soundcloud;
-
-    @URL
-    @Column(name="wikipedia_article")
-    private String wikipediaArticle;
-
-    @URL
-    @Column(name="bundestag_abgeordnete")
-    private String bundestagAbgeordnete;
-
-    @URL
-    @Column
-    private String abgeordnetenwatch;
-
-    @URL
-    @Column(name="lobbypedia_url")
-    private String lobbypediaUrl;
-
-    @URL
-    @Column(name = "google_plus")
-    private String googlePlus;
-
-    @URL
-    @Column(name = "instagram")
-    private String instagram;
-    */
 
     @URL
     @Column(name = "google_maps_url")

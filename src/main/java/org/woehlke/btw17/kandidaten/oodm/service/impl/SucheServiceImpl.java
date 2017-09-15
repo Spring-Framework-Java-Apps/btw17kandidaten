@@ -161,7 +161,9 @@ public class SucheServiceImpl implements SucheService {
 
             criteria += " WHERE ";
 
+            criteria += " o.vorname LIKE '"+searchTerm+"%' OR ";
             criteria += " o.vorname LIKE '%"+searchTerm+"%' OR ";
+            criteria += " o.nachname LIKE '"+searchTerm+"%' OR ";
             criteria += " o.nachname LIKE '%"+searchTerm+"%' OR ";
             try {
                 int geburtsjahr = Integer.parseInt(searchTerm);
@@ -169,16 +171,26 @@ public class SucheServiceImpl implements SucheService {
                     criteria += " o.geburtsjahr = " + searchTerm + " OR ";
                 }
             } catch (NumberFormatException e) {}
+            criteria += " o.wohnort.wohnort LIKE '"+searchTerm +"%'  OR";
             criteria += " o.wohnort.wohnort LIKE '%"+searchTerm +"%'  OR";
+            criteria += " o.geburtsort.geburtsort LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.geburtsort.geburtsort LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.beruf.beruf LIKE '"+searchTerm +"%' OR ";
             criteria += " o.beruf.beruf LIKE '%"+searchTerm +"%' OR ";
+            criteria += " o.berufsgruppe.berufsgruppe LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.berufsgruppe.berufsgruppe LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.bundesland.bundeslandLang LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.bundesland.bundeslandLang LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.landesListe.bundesland.bundesland LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.landesListe.bundesland.bundesland LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.landesListe.listePartei.listePartei LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.landesListe.listePartei.listePartei LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.partei.partei LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.partei.partei LIKE '%"+ searchTerm +"%' OR ";
+            criteria += " o.partei.parteiLang LIKE '"+ searchTerm +"%' OR ";
             criteria += " o.partei.parteiLang LIKE '%"+ searchTerm +"%' OR ";
-            criteria += " o.twitter LIKE '%"+ searchTerm +"%' ";
+            criteria += " o.onlineStrategie.twitter LIKE '"+ searchTerm +"%' OR";
+            criteria += " o.onlineStrategie.twitter LIKE '%"+ searchTerm +"%' ";
         }
 
         String query = queryStart + criteria;
