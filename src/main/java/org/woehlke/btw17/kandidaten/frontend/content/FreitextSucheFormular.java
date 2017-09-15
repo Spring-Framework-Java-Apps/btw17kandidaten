@@ -3,14 +3,12 @@ package org.woehlke.btw17.kandidaten.frontend.content;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 @Validated
-public class FreitextSucheFormular implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class FreitextSucheFormular implements MySerializable {
 
     @NotEmpty
     @NotNull

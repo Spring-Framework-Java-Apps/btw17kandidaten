@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
@@ -28,8 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/fraktion")
-public class FraktionController {
-
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class FraktionController extends AbstractController {
 
 
     @RequestMapping("/all")
@@ -53,11 +54,8 @@ public class FraktionController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Fraktion> pageAllFraktion =  fraktionService.getAll(pageable);
         model.addAttribute("fraktionen", pageAllFraktion);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "fraktion/all";
     }
 
@@ -85,11 +83,8 @@ public class FraktionController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("fraktion",fraktion);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByFraktion(fraktion,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-
             return "fraktion/id";
         }
     }
@@ -100,14 +95,12 @@ public class FraktionController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
 
     @Autowired
-    public FraktionController(FraktionService fraktionService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public FraktionController(SessionHandler sessionHandler, FraktionService fraktionService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.fraktionService = fraktionService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

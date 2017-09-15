@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/geburtsort")
-public class GeburtsortController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class GeburtsortController extends AbstractController {
 
     @RequestMapping("/all")
     public String getAll(
@@ -51,12 +53,9 @@ public class GeburtsortController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Geburtsort> allGeburtsortPage =  geburtsortService.getAll(pageable);
         model.addAttribute("geburtsorte", allGeburtsortPage);
         model.addAttribute("pageTitle","Geburtsorte");
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "geburtsort/all";
     }
 
@@ -84,11 +83,8 @@ public class GeburtsortController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("geburtsort",geburtsort);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsort(geburtsort,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "geburtsort/id";
         }
     }
@@ -99,13 +95,11 @@ public class GeburtsortController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public GeburtsortController(GeburtsortService geburtsortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public GeburtsortController(SessionHandler sessionHandler, GeburtsortService geburtsortService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.geburtsortService = geburtsortService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

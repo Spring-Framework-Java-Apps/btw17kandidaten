@@ -9,12 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/landesliste")
-public class LandesListeController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class LandesListeController extends AbstractController {
 
 
     @RequestMapping("/{id}")
@@ -55,11 +57,8 @@ public class LandesListeController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("landesListe",landesListe);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByLandesListe(landesListe,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-
             return "landesliste/id";
         }
     }
@@ -88,13 +87,9 @@ public class LandesListeController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("bundesland",bundesland);
-
-
             Page<LandesListe> landeslistePage  = landesListeService.findByBundesland(bundesland,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
             model.addAttribute("bundeslandIdTarget","landesliste");
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-
             return "landesliste/bundesland/id";
         }
     }
@@ -123,12 +118,9 @@ public class LandesListeController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
-
             Page<LandesListe> landeslistePage  = landesListeService.findByListePartei(listePartei,pageable);
             model.addAttribute("landeslistePage",landeslistePage);
             model.addAttribute("bundeslandIdTarget","landesliste");
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "landesliste/listepartei/id";
         }
     }
@@ -154,11 +146,9 @@ public class LandesListeController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
         model.addAttribute("bundeslandIdTarget","landesliste/bundesland");
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "landesliste/bundesland/all";
     }
 
@@ -183,10 +173,8 @@ public class LandesListeController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "landesliste/listepartei/all";
     }
 
@@ -196,13 +184,11 @@ public class LandesListeController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public LandesListeController(LandesListeService landesListeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public LandesListeController(SessionHandler sessionHandler, LandesListeService landesListeService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.landesListeService = landesListeService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

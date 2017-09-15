@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/beruf")
-public class BerufController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class BerufController extends AbstractController {
 
     @RequestMapping("/all")
     public String getAll(
@@ -53,8 +55,6 @@ public class BerufController {
         model.addAttribute("pageContent",pageContent);
         Page<Beruf> allBerufPage =  berufService.getAll(pageable);
         model.addAttribute("berufe", allBerufPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "beruf/all";
     }
 
@@ -85,8 +85,6 @@ public class BerufController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByBeruf(beruf,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "beruf/id";
         }
     }
@@ -97,13 +95,12 @@ public class BerufController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
 
     @Autowired
-    public BerufController(KandidatService kandidatService, BerufService berufService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public BerufController(SessionHandler sessionHandler, KandidatService kandidatService, BerufService berufService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.kandidatService = kandidatService;
         this.berufService = berufService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

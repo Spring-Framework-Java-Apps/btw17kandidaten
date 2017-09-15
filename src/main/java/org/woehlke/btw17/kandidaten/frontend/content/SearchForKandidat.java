@@ -2,14 +2,12 @@ package org.woehlke.btw17.kandidaten.frontend.content;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 
 @Validated
-public class SearchForKandidat implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class SearchForKandidat implements MySerializable {
 
     @SafeHtml
     private String nachname;
@@ -44,6 +42,7 @@ public class SearchForKandidat implements Serializable {
 
     @Pattern(regexp="[a-zA-Z0-9_]*")
     private String twitter;
+
 
     public String getNachname() {
         return nachname;
@@ -220,4 +219,5 @@ public class SearchForKandidat implements Serializable {
                 ", twitter='" + twitter + '\'' +
                 '}';
     }
+
 }

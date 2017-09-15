@@ -9,7 +9,8 @@ import javax.servlet.http.HttpSession;
 @Component
 public class SessionHandlerImpl implements SessionHandler {
 
-    public FreitextSucheFormular setSession(
+    @Override
+    public FreitextSucheFormular fetchOrCreateFreitextSucheFormular(
                             HttpSession session,
                             Model model){
         FreitextSucheFormular suchformularFreitext = (FreitextSucheFormular) session.getAttribute("suchformularFreitext");
@@ -19,5 +20,16 @@ public class SessionHandlerImpl implements SessionHandler {
         }
         model.addAttribute("suchformularFreitext", suchformularFreitext);
         return suchformularFreitext;
+    }
+
+    @Override
+    public SearchForKandidat fetchOrCreateSucheFormular(HttpSession session, Model model) {
+        SearchForKandidat suchformular = (SearchForKandidat) session.getAttribute("suchformular");
+        if (suchformular == null) {
+            suchformular = new SearchForKandidat();
+            session.setAttribute("suchformular", suchformular);
+        }
+        model.addAttribute("suchformular", suchformular);
+        return suchformular;
     }
 }

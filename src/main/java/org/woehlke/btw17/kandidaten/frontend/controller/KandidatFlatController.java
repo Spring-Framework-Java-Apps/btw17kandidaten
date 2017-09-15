@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 
@@ -26,7 +27,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/kandidatflat")
-public class KandidatFlatController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class KandidatFlatController extends AbstractController {
 
 
     @RequestMapping("/all")
@@ -50,11 +52,8 @@ public class KandidatFlatController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "kandidatflat/all";
     }
 
@@ -81,10 +80,7 @@ public class KandidatFlatController {
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
-
             model.addAttribute("kandidat",kandidatFlat);
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidatflat/id";
         }
     }
@@ -93,12 +89,10 @@ public class KandidatFlatController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public KandidatFlatController(KandidatFlatService kandidatFlatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public KandidatFlatController(SessionHandler sessionHandler, KandidatFlatService kandidatFlatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.kandidatFlatService = kandidatFlatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/wahlkreis")
-public class WahlkreisController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class WahlkreisController extends AbstractController {
 
 
     @RequestMapping("/all")
@@ -52,11 +54,9 @@ public class WahlkreisController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Wahlkreis> allWahlkreisPage =  wahlkreisService.getAll(pageable);
         model.addAttribute("wahlkreise", allWahlkreisPage);
         model.addAttribute("pageTitle","Wahlkreise");
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "wahlkreis/all";
     }
 
@@ -84,10 +84,8 @@ public class WahlkreisController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("wahlkreis",wahlkreis);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByWahlkreis(wahlkreis,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "wahlkreis/id";
         }
     }
@@ -99,13 +97,11 @@ public class WahlkreisController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public WahlkreisController(WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public WahlkreisController(SessionHandler sessionHandler, WahlkreisService wahlkreisService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.wahlkreisService = wahlkreisService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

@@ -8,16 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
-import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
 import javax.persistence.EntityNotFoundException;
@@ -29,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/listepartei")
-public class ListeParteiController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class ListeParteiController extends AbstractController {
 
     @RequestMapping("/all")
     public String getAll(
@@ -52,10 +53,8 @@ public class ListeParteiController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<ListePartei> allListeParteiPage =  listeParteiService.getAll(pageable);
         model.addAttribute("listeparteien", allListeParteiPage);
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "listepartei/all";
     }
 
@@ -83,10 +82,8 @@ public class ListeParteiController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("listePartei",listePartei);
-
             Page<Kandidat> pageKandidat = kandidatService.findByListePartei(listePartei,pageable);
             model.addAttribute("kandidaten",pageKandidat);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "listepartei/id";
         }
     }
@@ -97,13 +94,11 @@ public class ListeParteiController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public ListeParteiController(ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public ListeParteiController(SessionHandler sessionHandler, ListeParteiService listeParteiService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.listeParteiService = listeParteiService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

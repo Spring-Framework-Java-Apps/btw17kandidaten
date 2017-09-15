@@ -8,17 +8,14 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
@@ -40,7 +37,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/kandidat")
-public class KandidatController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class KandidatController extends AbstractController {
 
     @RequestMapping("/all")
     public String getAll(
@@ -63,11 +61,8 @@ public class KandidatController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Kandidat> allKandidatenPage =  kandidatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "kandidat/all";
     }
 
@@ -92,10 +87,7 @@ public class KandidatController {
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
-
             model.addAttribute("kandidat",kandidat);
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/id";
         }
     }
@@ -121,19 +113,13 @@ public class KandidatController {
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
-
             model.addAttribute("kandidat",kandidat);
-
             List<Ausschuss> ausschuesse = ausschussService.getAll();
             model.addAttribute("ausschuesse",ausschuesse);
-
             List<Fraktion> fraktionen = fraktionService.getAll();
             model.addAttribute("fraktionen",fraktionen);
-
             List<Ministerium> ministerien = ministeriumService.getAll();
             model.addAttribute("ministerien",ministerien);
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "kandidat/edit";
         }
     }
@@ -167,16 +153,14 @@ public class KandidatController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
     @Autowired
-    public KandidatController(KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public KandidatController(SessionHandler sessionHandler, KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.kandidatService = kandidatService;
         this.ausschussService = ausschussService;
         this.fraktionService = fraktionService;
         this.ministeriumService = ministeriumService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 
 }

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,6 +14,9 @@ import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.repositories.SucheRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.SucheService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -29,107 +33,107 @@ public class SucheServiceImpl implements SucheService {
 
         boolean isFirst = true;
 
-        if((formular.getVorname()!=null)&&(!formular.getVorname().isEmpty())){
+        if ((formular.getVorname() != null) && (!formular.getVorname().isEmpty())) {
             isFirst = false;
-            criteria += " o.vorname LIKE '%"+formular.getVorname()+"%' ";
+            criteria += " o.vorname LIKE '%" + formular.getVorname() + "%' ";
         }
-        if((formular.getNachname()!=null)&&(!formular.getNachname().isEmpty())){
-            if(!isFirst){
+        if ((formular.getNachname() != null) && (!formular.getNachname().isEmpty())) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.nachname LIKE '%"+formular.getNachname()+"%' ";
+            criteria += " o.nachname LIKE '%" + formular.getNachname() + "%' ";
         }
-        if((formular.getGeschlecht()!=null)&&(!formular.getGeschlecht().isEmpty())){
-            if(!isFirst){
+        if ((formular.getGeschlecht() != null) && (!formular.getGeschlecht().isEmpty())) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            if(formular.getGeschlecht().compareTo("M")==0) {
+            if (formular.getGeschlecht().compareTo("M") == 0) {
                 criteria += " o.geschlecht = 'M' ";
             }
-            if(formular.getGeschlecht().compareTo("W")==0) {
+            if (formular.getGeschlecht().compareTo("W") == 0) {
                 criteria += " o.geschlecht = 'W' ";
             }
         }
-        if((formular.getGeburtsjahrMin()!=null)&&(!formular.getGeburtsjahrMin().isEmpty())&&(formular.getGeburtsjahrMin().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getGeburtsjahrMin() != null) && (!formular.getGeburtsjahrMin().isEmpty()) && (formular.getGeburtsjahrMin().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.geburtsjahr >= "+ formular.getGeburtsjahrMin() +" ";
+            criteria += " o.geburtsjahr >= " + formular.getGeburtsjahrMin() + " ";
         }
-        if((formular.getGeburtsjahrMax()!=null)&&(!formular.getGeburtsjahrMax().isEmpty())&&(formular.getGeburtsjahrMax().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getGeburtsjahrMax() != null) && (!formular.getGeburtsjahrMax().isEmpty()) && (formular.getGeburtsjahrMax().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.geburtsjahr <= "+ formular.getGeburtsjahrMax() +" ";
+            criteria += " o.geburtsjahr <= " + formular.getGeburtsjahrMax() + " ";
         }
-        if((formular.getWohnort()!=null)&&(!formular.getWohnort().isEmpty())){
-            if(!isFirst){
+        if ((formular.getWohnort() != null) && (!formular.getWohnort().isEmpty())) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.wohnort.wohnort LIKE '%"+formular.getWohnort() +"%' ";
+            criteria += " o.wohnort.wohnort LIKE '%" + formular.getWohnort() + "%' ";
         }
-        if((formular.getGeburtsort()!=null)&&(!formular.getGeburtsort().isEmpty())){
-            if(!isFirst){
+        if ((formular.getGeburtsort() != null) && (!formular.getGeburtsort().isEmpty())) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.geburtsort.geburtsort LIKE '%"+ formular.getGeburtsort() +"%' ";
+            criteria += " o.geburtsort.geburtsort LIKE '%" + formular.getGeburtsort() + "%' ";
         }
-        if((formular.getBeruf()!=null)&&(!formular.getBeruf().isEmpty())){
-            if(!isFirst){
+        if ((formular.getBeruf() != null) && (!formular.getBeruf().isEmpty())) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.beruf.beruf LIKE '%"+formular.getBeruf() +"%' ";
+            criteria += " o.beruf.beruf LIKE '%" + formular.getBeruf() + "%' ";
         }
-        if((formular.getBerufsgruppe()!=null)&&(!formular.getBerufsgruppe().isEmpty())&&(formular.getBerufsgruppe().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getBerufsgruppe() != null) && (!formular.getBerufsgruppe().isEmpty()) && (formular.getBerufsgruppe().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.berufsgruppe.id = "+ formular.getBerufsgruppe() +" ";
+            criteria += " o.berufsgruppe.id = " + formular.getBerufsgruppe() + " ";
         }
-        if((formular.getBundesland()!=null)&&(!formular.getBundesland().isEmpty())&&(formular.getBundesland().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getBundesland() != null) && (!formular.getBundesland().isEmpty()) && (formular.getBundesland().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.bundesland.id = "+ formular.getBundesland() +" ";
+            criteria += " o.bundesland.id = " + formular.getBundesland() + " ";
         }
-        if((formular.getLandesListe()!=null)&&(!formular.getLandesListe().isEmpty())&&(formular.getLandesListe().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getLandesListe() != null) && (!formular.getLandesListe().isEmpty()) && (formular.getLandesListe().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.landesListe.id = "+ formular.getLandesListe() +" ";
+            criteria += " o.landesListe.id = " + formular.getLandesListe() + " ";
         }
-        if((formular.getPartei()!=null)&&(!formular.getPartei().isEmpty())&&(formular.getPartei().compareTo("0")!=0)){
-            if(!isFirst){
+        if ((formular.getPartei() != null) && (!formular.getPartei().isEmpty()) && (formular.getPartei().compareTo("0") != 0)) {
+            if (!isFirst) {
                 criteria += " AND ";
             } else {
                 isFirst = false;
             }
-            criteria += " o.partei.id = "+ formular.getPartei() +" ";
+            criteria += " o.partei.id = " + formular.getPartei() + " ";
         }
 
         String query;
         String countQuery;
-        if(isFirst) {
+        if (isFirst) {
             query = queryStart;
             countQuery = countQueryStart;
         } else {
@@ -137,14 +141,14 @@ public class SucheServiceImpl implements SucheService {
             countQuery = countQueryStart + criteria;
         }
 
-        log.info("query:      "+query);
-        log.info("countQuery: "+countQuery);
+        log.info("query:      " + query);
+        log.info("countQuery: " + countQuery);
 
         long counted = sucheRepository.countByJpaQueryStatement(countQuery);
 
-        log.info("counted:    "+counted);
+        log.info("counted:    " + counted);
 
-        return sucheRepository.findByJpaQueryStatement(query,counted,pageable);
+        return sucheRepository.findByJpaQueryStatement(query, counted, pageable);
     }
 
     @Override

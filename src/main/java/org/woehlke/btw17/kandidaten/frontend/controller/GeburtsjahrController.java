@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/geburtsjahr")
-public class GeburtsjahrController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class GeburtsjahrController extends AbstractController {
 
     @RequestMapping("/all")
     public String getUserForGeburtsjahrAll(
@@ -51,11 +53,8 @@ public class GeburtsjahrController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Integer> geburtsjahrPage  = kandidatService.findByGeburtsjahrAll(pageable);
         model.addAttribute("geburtsjahrPage",geburtsjahrPage);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "geburtsjahr/all";
     }
 
@@ -87,12 +86,9 @@ public class GeburtsjahrController {
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByGeburtsjahr(geburtsjahr,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
             model.addAttribute("geburtsjahr",geburtsjahr);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "geburtsjahr/id";
         }
     }
@@ -101,13 +97,11 @@ public class GeburtsjahrController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
 
     @Autowired
-    public GeburtsjahrController(KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public GeburtsjahrController(SessionHandler sessionHandler, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

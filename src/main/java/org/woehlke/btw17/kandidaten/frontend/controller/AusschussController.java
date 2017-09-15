@@ -3,19 +3,19 @@ package org.woehlke.btw17.kandidaten.frontend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
@@ -24,16 +24,14 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @Controller
 @RequestMapping("/ausschuss")
-public class AusschussController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class AusschussController extends AbstractController {
 
 
 
@@ -61,8 +59,6 @@ public class AusschussController {
 
         Page<Ausschuss> pageAllAusschuss =  ausschussService.getAll(pageable);
         model.addAttribute("ausschuesse", pageAllAusschuss);
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "ausschuss/all";
     }
 
@@ -93,11 +89,6 @@ public class AusschussController {
 
             Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
-
-            //List<Kandidat> kandidatenList  = new ArrayList<>();
-            //Page<Kandidat> kandidatenPage  = new PageImpl<Kandidat>(kandidatenList,pageable,0L);
-            //model.addAttribute("kandidaten",kandidatenPage);
 
             return "ausschuss/id";
         }
@@ -109,14 +100,12 @@ public class AusschussController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
 
     @Autowired
-    public AusschussController(AusschussService ausschussService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public AusschussController(SessionHandler sessionHandler, AusschussService ausschussService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.ausschussService = ausschussService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }

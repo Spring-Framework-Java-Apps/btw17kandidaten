@@ -8,12 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
@@ -28,7 +29,8 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 
 @Controller
 @RequestMapping("/bundesland")
-public class BundeslandController {
+@SessionAttributes({"suchformular","suchformularFreitext"})
+public class BundeslandController extends AbstractController {
 
 
     @RequestMapping("/all")
@@ -56,8 +58,6 @@ public class BundeslandController {
         Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
         model.addAttribute("bundeslandIdTarget","bundesland");
-
-        FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
         return "bundesland/all";
     }
 
@@ -89,8 +89,6 @@ public class BundeslandController {
             Page<Kandidat> kandidatenPage  = kandidatService.findByBundesland(bundesland,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
             model.addAttribute("bundeslandIdTarget","bundesland");
-
-            FreitextSucheFormular suchformularFreitext = sessionHandler.setSession(session,model);
             return "bundesland/id";
         }
     }
@@ -101,14 +99,12 @@ public class BundeslandController {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private final SessionHandler sessionHandler;
-
 
     @Autowired
-    public BundeslandController(BundeslandService bundeslandService, KandidatService kandidatService, KandidatenProperties kandidatenProperties, SessionHandler sessionHandler) {
+    public BundeslandController(SessionHandler sessionHandler, BundeslandService bundeslandService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+        super(sessionHandler);
         this.bundeslandService = bundeslandService;
         this.kandidatService = kandidatService;
         this.kandidatenProperties = kandidatenProperties;
-        this.sessionHandler = sessionHandler;
     }
 }
