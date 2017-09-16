@@ -27,6 +27,7 @@ INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (1915, 7);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2028, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2103, 5);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (223, 8);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (227, 15);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (24, 15);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2522, 1);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (2548, 8);
