@@ -12,10 +12,11 @@ import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
+import org.woehlke.btw17.kandidaten.frontend.content.ReportOverview;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
+import org.woehlke.btw17.kandidaten.oodm.service.KandidatReportService;
 
 import javax.servlet.http.HttpSession;
 
@@ -44,6 +45,8 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
+        ReportOverview reportOverview = kandidatReportService.getOverview();
+        model.addAttribute("reportOverview",reportOverview);
         return "report/overview";
     }
 
@@ -69,7 +72,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutAbgeordnetenwatch(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutAbgeordnetenwatch(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/abgeordnetenwatch";
     }
@@ -96,7 +99,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutBundestagProfile(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutBundestagProfile(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/bundestag";
     }
@@ -122,7 +125,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutFotoUrl(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutFotoUrl(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/foto";
     }
@@ -148,7 +151,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutFacebook(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutFacebook(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/facebook";
     }
@@ -174,7 +177,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutTwitter(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutTwitter(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/twitter";
     }
@@ -200,7 +203,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWebseite(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutWebseite(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/webseite";
     }
@@ -226,7 +229,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getMdbWithoutWikipediaArticle(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getMdbWithoutWikipediaArticle(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/mdb/wikipedia";
     }
@@ -253,7 +256,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutAbgeordnetenwatch(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutAbgeordnetenwatch(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/abgeordnetenwatch";
     }
@@ -279,7 +282,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutFacebook(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutFacebook(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/facebook";
     }
@@ -306,7 +309,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutWebseite(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutWebseite(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/webseite";
     }
@@ -332,7 +335,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutFotoUrl(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutFotoUrl(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/foto";
     }
@@ -358,7 +361,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutLobbypediaUrl(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutLobbypediaUrl(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/lobbypedia";
     }
@@ -384,7 +387,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutSoundcloud(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutSoundcloud(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/soundcloud";
     }
@@ -410,7 +413,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutYoutube(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutYoutube(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/youtube";
     }
@@ -437,7 +440,7 @@ public class ReportController extends AbstractController {
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
         model.addAttribute("pageContent",pageContent);
-        Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutTwitter(pageable);
+        Page<Kandidat> allKandidatenPage =  kandidatReportService.getKandidatWithoutTwitter(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/twitter";
     }
@@ -460,16 +463,15 @@ public class ReportController extends AbstractController {
         return "report/data/check";
     }
 
-
-    private final KandidatService kandidatService;
+    private final KandidatReportService kandidatReportService;
 
     private final KandidatenProperties kandidatenProperties;
 
 
     @Autowired
-    public ReportController(SessionHandler sessionHandler, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
+    public ReportController(SessionHandler sessionHandler, KandidatReportService kandidatReportService, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);
-        this.kandidatService = kandidatService;
+        this.kandidatReportService = kandidatReportService;
         this.kandidatenProperties = kandidatenProperties;
     }
 }

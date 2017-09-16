@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.woehlke.btw17.kandidaten.frontend.content.ReportOverview;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import java.util.ArrayList;
@@ -48,8 +49,10 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final AusschussService ausschussService;
 
+    private final KandidatReportService kandidatReportService;
+
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.berufService = berufService;
@@ -66,6 +69,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.ministeriumService = ministeriumService;
         this.fraktionService = fraktionService;
         this.ausschussService = ausschussService;
+        this.kandidatReportService = kandidatReportService;
     }
 
     @Override
@@ -95,6 +99,25 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" btw17.kandidaten.checkFotoUrl =                       "+kandidatenProperties.getCheckFotoUrl());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" spring.datasource.url = "+springProperties.getDatasource().getUrl());
+        outputLines.add("--------------------------------------------------------------------------------------------------------------");
+        ReportOverview reportOverview = kandidatReportService.getOverview();
+        outputLines.add("Mdb:                                "+reportOverview.getCountMdb());
+        outputLines.add("Mdb without Abgeordnetenwatch:      "+reportOverview.getCountMdbWithoutAbgeordnetenwatch());
+        outputLines.add("Mdb without FotoUrl:                "+reportOverview.getCountMdbWithoutFotoUrl());
+        outputLines.add("Mdb without BundestagProfile:       "+reportOverview.getCountMdbWithoutBundestagProfile());
+        outputLines.add("Mdb without Facebook:               "+reportOverview.getCountMdbWithoutFacebook());
+        outputLines.add("Mdb without Twitter:                "+reportOverview.getCountMdbWithoutTwitter());
+        outputLines.add("Mdb without Webseite:               "+reportOverview.getCountMdbWithoutWebseite());
+        outputLines.add("Mdb without WikipediaArticle:       "+reportOverview.getCountMdbWithoutWikipediaArticle());
+        outputLines.add("Kandidat:                           "+reportOverview.getCountKandidat());
+        outputLines.add("Kandidat without Abgeordnetenwatch: "+reportOverview.getCountKandidatWithoutAbgeordnetenwatch());
+        outputLines.add("Kandidat without FotoUrl:           "+reportOverview.getCountKandidatWithoutFotoUrl());
+        outputLines.add("Kandidat without Facebook:          "+reportOverview.getCountKandidatWithoutFacebook());
+        outputLines.add("Kandidat without Webseite:          "+reportOverview.getCountKandidatWithoutWebseite());
+        outputLines.add("Kandidat without LobbypediaUrl:     "+reportOverview.getCountKandidatWithoutLobbypediaUrl());
+        outputLines.add("Kandidat without Soundcloud:        "+reportOverview.getCountKandidatWithoutSoundcloud());
+        outputLines.add("Kandidat without Youtube:           "+reportOverview.getCountKandidatWithoutYoutube());
+        outputLines.add("Kandidat without Twitter:           "+reportOverview.getCountKandidatWithoutTwitter());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:        "+berufService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe: "+berufsgruppeService.count());

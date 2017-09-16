@@ -28,8 +28,17 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
 
-    @Query(name="Kandidat.findByMdB")
+    @Query(
+        name="Kandidat.findByMdB",
+        countQuery = "Kandidat.countMdB"
+    )
     Page<Kandidat> findByMdB(Pageable pageable);
+
+    @Query(
+        name="Kandidat.findByNotMdB",
+        countQuery="Kandidat.countKandidat"
+    )
+    Page<Kandidat> findByNotMdB(Pageable pageable);
 
     @Query(name="Kandidat.findByGeburtsjahrAll")
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
@@ -50,51 +59,6 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.getAll")
     List<Kandidat> getAll();
 
-    @Query(name="Kandidat.getMdbWithoutBundestagProfile")
-    Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutAbgeordnetenwatch")
-    Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutWikipediaArticle")
-    Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutWebseite")
-    Page<Kandidat> getMdbWithoutWebseite(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutFacebook")
-    Page<Kandidat> getMdbWithoutFacebook(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutTwitter")
-    Page<Kandidat> getMdbWithoutTwitter(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutWebseite")
-    Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutFacebook")
-    Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutTwitter")
-    Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutFotoUrl")
-    Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutLobbypediaUrl")
-    Page<Kandidat> getKandidatWithoutLobbypediaUrl(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutSoundcloud")
-    Page<Kandidat> getKandidatWithoutSoundcloud(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutYoutube")
-    Page<Kandidat> getKandidatWithoutYoutube(Pageable pageable);
-
-    @Query(name="Kandidat.getKandidatWithoutAbgeordnetenwatch")
-    Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable);
-
-    @Query(name="Kandidat.getMdbWithoutFotoUrl")
-    Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable);
-
     @Query(name="Kandidat.findByFraktion",countName = "Kandidat.findByFraktionCount")
     Page<Kandidat> findByFraktion(@Param("fraktion") Fraktion fraktion, Pageable pageable);
 
@@ -103,4 +67,149 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.findByMinisterium",countName = "Kandidat.findByMinisteriumCount")
     Page<Kandidat> findByMinisterium(@Param("ministerium") Ministerium ministerium, Pageable pageable);
+
+
+
+    @Query(
+        name="Kandidat.getMdbWithoutBundestagProfile",
+        countName = "Kandidat.countMdbWithoutBundestagProfile"
+    )
+    Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutAbgeordnetenwatch",
+        countName = "Kandidat.countMdbWithoutAbgeordnetenwatch"
+    )
+    Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutWikipediaArticle",
+        countName = "Kandidat.countMdbWithoutWikipediaArticle"
+    )
+    Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutWebseite",
+        countName = "Kandidat.countMdbWithoutWebseite"
+    )
+    Page<Kandidat> getMdbWithoutWebseite(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutFacebook",
+        countName = "Kandidat.countMdbWithoutFacebook"
+    )
+    Page<Kandidat> getMdbWithoutFacebook(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutTwitter",
+        countName = "Kandidat.countMdbWithoutTwitter"
+    )
+    Page<Kandidat> getMdbWithoutTwitter(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutWebseite",
+        countName = "Kandidat.countKandidatWithoutWebseite"
+    )
+    Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutFacebook",
+        countName = "Kandidat.countKandidatWithoutFacebook"
+    )
+    Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutTwitter",
+        countName = "Kandidat.countKandidatWithoutTwitter"
+    )
+    Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutFotoUrl",
+        countName = "Kandidat.countKandidatWithoutFotoUrl"
+    )
+    Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutLobbypediaUrl",
+        countName = "Kandidat.countKandidatWithoutLobbypediaUrl"
+    )
+    Page<Kandidat> getKandidatWithoutLobbypediaUrl(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutSoundcloud",
+        countName = "Kandidat.countKandidatWithoutSoundcloud"
+    )
+    Page<Kandidat> getKandidatWithoutSoundcloud(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutYoutube",
+        countName = "Kandidat.countKandidatWithoutYoutube"
+    )
+    Page<Kandidat> getKandidatWithoutYoutube(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getKandidatWithoutAbgeordnetenwatch",
+        countName = "Kandidat.countKandidatWithoutAbgeordnetenwatch"
+    )
+    Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable);
+
+    @Query(
+        name="Kandidat.getMdbWithoutFotoUrl",
+        countName = "Kandidat.countMdbWithoutFotoUrl"
+    )
+    Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable);
+
+
+
+    @Query(name="Kandidat.countMdbWithoutAbgeordnetenwatch")
+    Integer countMdbWithoutAbgeordnetenwatch();
+
+    @Query(name="Kandidat.countMdbWithoutBundestagProfile")
+    Integer countMdbWithoutBundestagProfile();
+
+    @Query(name="Kandidat.countMdbWithoutFotoUrl")
+    Integer countMdbWithoutFotoUrl();
+
+    @Query(name="Kandidat.countMdbWithoutFacebook")
+    Integer countMdbWithoutFacebook();
+
+    @Query(name="Kandidat.countMdbWithoutTwitter")
+    Integer countMdbWithoutTwitter();
+
+    @Query(name="Kandidat.countMdbWithoutWebseite")
+    Integer countMdbWithoutWebseite();
+
+    @Query(name="Kandidat.countMdbWithoutWikipediaArticle")
+    Integer countMdbWithoutWikipediaArticle();
+
+    @Query(name="Kandidat.countKandidatWithoutAbgeordnetenwatch")
+    Integer countKandidatWithoutAbgeordnetenwatch();
+
+    @Query(name="Kandidat.countKandidatWithoutFacebook")
+    Integer countKandidatWithoutFacebook();
+
+    @Query(name="Kandidat.countKandidatWithoutWebseite")
+    Integer countKandidatWithoutWebseite();
+
+    @Query(name="Kandidat.countKandidatWithoutFotoUrl")
+    Integer countKandidatWithoutFotoUrl();
+
+    @Query(name="Kandidat.countKandidatWithoutLobbypediaUrl")
+    Integer countKandidatWithoutLobbypediaUrl();
+
+    @Query(name="Kandidat.countKandidatWithoutSoundcloud")
+    Integer countKandidatWithoutSoundcloud();
+
+    @Query(name="Kandidat.countKandidatWithoutYoutube")
+    Integer countKandidatWithoutYoutube();
+
+    @Query(name="Kandidat.countKandidatWithoutTwitter")
+    Integer countKandidatWithoutTwitter();
+
+    @Query(name="Kandidat.countMdB")
+    Integer countMdb();
+
+    @Query(name="Kandidat.countKandidat")
+    Integer countKandidat();
 }

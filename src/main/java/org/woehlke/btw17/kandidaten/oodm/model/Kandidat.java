@@ -56,6 +56,18 @@ import static javax.persistence.FetchType.EAGER;
         query = "select o from Kandidat as o where o.mdb is not null and o.mdb='1' order by o.nachname"
     ),
     @NamedQuery(
+        name = "Kandidat.countMdB",
+        query = "select count(o) from Kandidat as o where o.mdb is not null and o.mdb='1'"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByNotMdB",
+        query = "select o from Kandidat as o where o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidat",
+        query = "select count(o) from Kandidat as o where o.mdb is null"
+    ),
+    @NamedQuery(
         name = "Kandidat.findByGeburtsjahrAll",
         query = "select DISTINCT o.geburtsjahr from Kandidat as o where o.geburtsjahr is not null order by o.geburtsjahr"
     ),
@@ -73,63 +85,123 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutBundestagProfile",
-        query = "select o from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutBundestagProfile",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutAbgeordnetenwatch",
-        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutAbgeordnetenwatch",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutWikipediaArticle",
-        query = "select o from Kandidat as o where o.onlineStrategie.wikipediaArticle is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.wikipediaArticle is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutWikipediaArticle",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.wikipediaArticle is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutWebseite",
-        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutWebseite",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFacebook",
-        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutFacebook",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutTwitter",
-        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutTwitter",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutWebseite",
-        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutWebseite",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFacebook",
-        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutFacebook",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.facebook is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutTwitter",
-        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutTwitter",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.twitter is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFotoUrl",
-        query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutFotoUrl",
+        query = "select count(o) from Kandidat as o where o.fotoUrl is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutLobbypediaUrl",
-        query = "select o from Kandidat as o where o.onlineStrategie.lobbypediaUrl is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.lobbypediaUrl is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutLobbypediaUrl",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.lobbypediaUrl is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutSoundcloud",
-        query = "select o from Kandidat as o where o.onlineStrategie.soundcloud is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.soundcloud is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutSoundcloud",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.soundcloud is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutYoutube",
-        query = "select o from Kandidat as o where o.onlineStrategie.youtube is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.youtube is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutYoutube",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.youtube is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutAbgeordnetenwatch",
-        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is null order by key"
+        query = "select o from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countKandidatWithoutAbgeordnetenwatch",
+        query = "select count(o) from Kandidat as o where o.onlineStrategie.abgeordnetenwatch is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFotoUrl",
-        query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is not null order by key"
+        query = "select o from Kandidat as o where o.fotoUrl is null and o.mdb is not null order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countMdbWithoutFotoUrl",
+        query = "select count(o) from Kandidat as o where o.fotoUrl is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.findByFraktion",
