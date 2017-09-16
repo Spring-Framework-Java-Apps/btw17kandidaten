@@ -223,13 +223,11 @@
     }
 
     footer#page-footer.sticky-footer {
-        /*
-        position: relative !important;
-        position: absolute !important;
-        bottom: 0px !important;
-        width: 100% !important;
-        height: auto !important;
-        */
+        /* position: relative !important; */
+        /* position: absolute !important; */
+        /* bottom: 0px !important; */
+        /* width: 100% !important; */
+        /* height: auto !important; */
     }
 
     #page-footer.navbar {
