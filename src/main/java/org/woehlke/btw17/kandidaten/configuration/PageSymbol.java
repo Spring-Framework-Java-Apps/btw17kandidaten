@@ -33,7 +33,7 @@ public enum PageSymbol {
     FUNKTION("<i class=\"fa fa-superpowers\" aria-hidden=\"true\"></i>"),
     AUSSCHUSS("<i class=\"fa fa-users\" aria-hidden=\"true\"></i>"),
     MINISTERIUM("<i class=\"fa fa-home\" aria-hidden=\"true\"></i>"),
-    FRAKTION("<i class=\"fa fa-handshake-o\" aria-hidden=\"true\"></i>"),
+    FRAKTION("<i class=\"fa A\" aria-hidden=\"true\"></i>"),
     DATENSCHUTZ("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>"),
     FOTO_URL("<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>"),
     GOOGLE_PLUS("<i class=\"fa fa-google-plus-official\" aria-hidden=\"true\"></i>"),
