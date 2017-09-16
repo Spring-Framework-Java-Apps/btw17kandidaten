@@ -17,6 +17,7 @@
 -- Dumped from database version 9.6.5
 -- PostgreSQL database dump
 -- PostgreSQL database dump complete
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (100, 10);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (1203, 13);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (1203, 16);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (1203, 19);
@@ -36,6 +37,7 @@ INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (28, 14);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (28, 15);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (32, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (32, 8);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (340, 11);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (35, 2);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (35, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (43, 11);
