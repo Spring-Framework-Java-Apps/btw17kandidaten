@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @NamedQueries({
     @NamedQuery(
         name = "Ausschuss.getAll",
-        query = "select o from Ausschuss as o order by id"
+        query = "select o from Ausschuss as o order by ausschuss"
     ),
     @NamedQuery(
         name = "Ausschuss.getAllCount",
