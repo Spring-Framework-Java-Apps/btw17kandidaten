@@ -223,14 +223,17 @@
     }
 
     footer#page-footer.sticky-footer {
-        /*position: relative !important;*/
+        /*
+        position: relative !important;
         position: absolute !important;
         bottom: 0px !important;
         width: 100% !important;
         height: auto !important;
+        */
     }
 
     #page-footer.navbar {
+        margin-top: 50px;
         border-radius: 0 !important;
         margin-bottom: 0 !important;
     }
