@@ -48,6 +48,8 @@ INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (77, 10);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 19);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (78, 6);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (86, 19);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (86, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (87, 28);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (98, 11);
 SET check_function_bodies = false;

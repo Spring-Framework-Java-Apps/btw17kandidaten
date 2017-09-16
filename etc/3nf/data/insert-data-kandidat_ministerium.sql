@@ -34,6 +34,7 @@ INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (553, 3);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (653, 10);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (772, 12);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (87, 9);
+INSERT INTO kandidat_ministerium (kandidat_id, ministerium_id) VALUES (94, 11);
 SET check_function_bodies = false;
 SET client_encoding = 'UTF8';
 SET client_min_messages = warning;
