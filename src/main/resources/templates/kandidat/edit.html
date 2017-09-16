@@ -55,7 +55,7 @@
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <tr th:if="${kandidat.bundesland != null}">
+                            <tr th:if="${kandidat.bundesland}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Bundesland</td>
                                 <td>
                                     <a th:href="@{|/bundesland/${kandidat.bundesland.id}/|}">
@@ -68,42 +68,42 @@
                                 <td class="text-right">
 
                                     <span th:if="${kandidat.bundesland.onlineStrategie}">
-                                         <span th:if="${kandidat.bundesland.onlineStrategie.webseite != null}">
+                                         <span th:if="${kandidat.bundesland.onlineStrategie.webseite}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.twitter != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.facebook != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.facebook}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.youtube != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.youtube}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.soundcloud != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.soundcloud}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
@@ -113,42 +113,42 @@
                                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.googlePlus != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.googlePlus}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.instagram != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.instagram}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.flickr != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.flickr}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.vimeo != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.vimeo}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.xing != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.xing}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.linkedIn != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.linkedIn}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.stackoverflow != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.stackoverflow}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.github != null}">
+                                        <span th:if="${kandidat.bundesland.onlineStrategie.github}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundeslands.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                                 <i class="fa fa-github" aria-hidden="true"></i>
                                             </a>
@@ -157,7 +157,7 @@
 
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.geburtsort != null}">
+                            <tr th:if="${kandidat.geburtsort}">
                                 <td><i class="fa fa-map-marker" aria-hidden="true"></i> Geburtsort</td>
                                 <td>
                                     <a th:href="@{|/geburtsort/${kandidat.geburtsort.id}/|}">
@@ -167,42 +167,42 @@
                                 <td class="text-right">
 
                                     <span th:if="${kandidat.geburtsort.onlineStrategie}">
-                                         <span th:if="${kandidat.geburtsort.onlineStrategie.webseite != null}">
+                                         <span th:if="${kandidat.geburtsort.onlineStrategie.webseite}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.twitter != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.facebook != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.facebook}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.youtube != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.youtube}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.soundcloud != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.soundcloud}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.wikipediaArticle != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.wikipediaArticle}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.bundestagAbgeordnete != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.bundestagAbgeordnete}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.abgeordnetenwatch != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.abgeordnetenwatch}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
@@ -212,42 +212,42 @@
                                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.googlePlus != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.googlePlus}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.instagram != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.instagram}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.flickr != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.flickr}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.vimeo != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.vimeo}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.xing != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.xing}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.linkedIn != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.linkedIn}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.stackoverflow != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.stackoverflow}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.github != null}">
+                                        <span th:if="${kandidat.geburtsort.onlineStrategie.github}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                                 <i class="fa fa-github" aria-hidden="true"></i>
                                             </a>
@@ -256,7 +256,7 @@
 
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.wohnort != null}">
+                            <tr th:if="${kandidat.wohnort}">
                                 <td><i class="fa fa-map-marker" aria-hidden="true"></i> Wohnort</td>
                                 <td>
                                     <a th:href="@{|/wohnort/${kandidat.wohnort.id}/|}">
@@ -266,42 +266,42 @@
                                 <td class="text-right">
 
                                     <span th:if="${kandidat.wohnort.onlineStrategie}">
-                                         <span th:if="${kandidat.wohnort.onlineStrategie.webseite != null}">
+                                         <span th:if="${kandidat.wohnort.onlineStrategie.webseite}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.twitter != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.facebook != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.facebook}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.youtube != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.youtube}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.soundcloud != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.soundcloud}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.wikipediaArticle != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.wikipediaArticle}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.bundestagAbgeordnete != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.bundestagAbgeordnete}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.abgeordnetenwatch != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.abgeordnetenwatch}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
@@ -311,42 +311,42 @@
                                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.googlePlus != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.googlePlus}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.instagram != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.instagram}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.flickr != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.flickr}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.vimeo != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.vimeo}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.xing != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.xing}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.linkedIn != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.linkedIn}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.stackoverflow != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.stackoverflow}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.github != null}">
+                                        <span th:if="${kandidat.wohnort.onlineStrategie.github}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                                 <i class="fa fa-github" aria-hidden="true"></i>
                                             </a>
@@ -355,7 +355,7 @@
 
                                 </td>
                             </tr>
-                            <tr>
+                            <tr th:if="${kandidat.wahlkreis}">
                                 <td><i class="fa fa-map-marker" aria-hidden="true"></i> Wahlkreis</td>
                                 <td colspan="2">
                                     <a th:href="@{|/wahlkreis/${kandidat.wahlkreis.id}/|}">
@@ -363,7 +363,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.beruf != null}">
+                            <tr th:if="${kandidat.beruf}">
                                 <td><i class="fa fa-cubes" aria-hidden="true"></i> Beruf</td>
                                 <td>
                                     <a th:href="@{|/beruf/${kandidat.beruf.id}/|}">
@@ -372,7 +372,7 @@
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <tr th:if="${kandidat.berufsgruppe != null}">
+                            <tr th:if="${kandidat.berufsgruppe}">
                                 <td><i class="fa fa-graduation-cap" aria-hidden="true"></i> Berufsgruppe</td>
                                 <td>
                                     <a th:href="@{|/berufsgruppe/${kandidat.berufsgruppe.id}/|}">
@@ -381,7 +381,7 @@
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <tr th:if="${kandidat.partei != null}">
+                            <tr th:if="${kandidat.partei}">
                                 <td><i class="fa fa-empire" aria-hidden="true"></i> Partei</td>
                                 <td>
                                     <a th:href="@{|/partei/${kandidat.partei.id}/|}">
@@ -391,42 +391,42 @@
                                 <td class="text-right">
 
                                     <span th:if="${kandidat.partei.onlineStrategie}">
-                                         <span th:if="${kandidat.partei.onlineStrategie.webseite != null}">
+                                         <span th:if="${kandidat.partei.onlineStrategie.webseite}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.twitter != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.facebook != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.facebook}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.youtube != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.youtube}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.soundcloud != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.soundcloud}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.wikipediaArticle != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.wikipediaArticle}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.bundestagAbgeordnete != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.bundestagAbgeordnete}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.abgeordnetenwatch != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.abgeordnetenwatch}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
@@ -436,55 +436,55 @@
                                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.googlePlus != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.googlePlus}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.instagram != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.instagram}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.flickr != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.flickr}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.vimeo != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.vimeo}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.xing != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.xing}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.linkedIn != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.linkedIn}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.stackoverflow != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.stackoverflow}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.partei.onlineStrategie.github != null}">
+                                        <span th:if="${kandidat.partei.onlineStrategie.github}">
                                             <a class="tw-social-media-link" th:href="${kandidat.parteikandidat.partei.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                                 <i class="fa fa-github" aria-hidden="true"></i>
                                             </a>
                                         </span>
                                     </span>
 
-                                    <a th:href="${kandidat.partei.bundeszentralePolitischeBildung}" th:if="${kandidat.partei.bundeszentralePolitischeBildung != null}" alt="Bundeszentrale Politische Bildung" title="Bundeszentrale Politische Bildung" target="_blank">
+                                    <a th:href="${kandidat.partei.bundeszentralePolitischeBildung}" th:if="${kandidat.partei.bundeszentralePolitischeBildung}" alt="Bundeszentrale Politische Bildung" title="Bundeszentrale Politische Bildung" target="_blank">
                                         <i class="fa fa-clipboard" aria-hidden="true"></i>
                                     </a>
 
                                 </td>
                             </tr>
-                            <tr th:if="${kandidat.landesListe != null} AND ${kandidat.listePlatz != null}">
+                            <tr th:if="${kandidat.landesListe} AND ${kandidat.listePlatz}">
                                 <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Landesliste </td>
                                 <td>
                                     <a th:href="@{|/landesliste/${kandidat.landesListe.id}/|}">
@@ -495,7 +495,7 @@
                                 </td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <tr th:if="${kandidat.mdb != null}">
+                            <tr th:if="${kandidat.mdb}">
                                 <td><i class="fa fa-handshake-o" aria-hidden="true"></i> Fraktion</td>
                                 <td>
                                     <a th:if="${kandidat.fraktion}" href="/fraktion/id" th:href="@{|/fraktion/${kandidat.fraktion.id}|}">
@@ -535,42 +535,42 @@
                                 <td colspan="2">
 
                                     <span th:if="${kandidat.onlineStrategie}">
-                                        <span th:if="${kandidat.onlineStrategie.webseite != null}">
+                                        <span th:if="${kandidat.onlineStrategie.webseite}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.twitter != null}">
+                                        <span th:if="${kandidat.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.facebook != null}">
+                                        <span th:if="${kandidat.onlineStrategie.facebook}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.youtube != null}">
+                                        <span th:if="${kandidat.onlineStrategie.youtube}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.soundcloud != null}">
+                                        <span th:if="${kandidat.onlineStrategie.soundcloud}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.wikipediaArticle != null}">
+                                        <span th:if="${kandidat.onlineStrategie.wikipediaArticle}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.bundestagAbgeordnete != null}">
+                                        <span th:if="${kandidat.onlineStrategie.bundestagAbgeordnete}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                                 <i class="fa fa-university" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.abgeordnetenwatch != null}">
+                                        <span th:if="${kandidat.onlineStrategie.abgeordnetenwatch}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a>
@@ -580,42 +580,42 @@
                                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.googlePlus != null}">
+                                        <span th:if="${kandidat.onlineStrategie.googlePlus}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.instagram != null}">
+                                        <span th:if="${kandidat.onlineStrategie.instagram}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.flickr != null}">
+                                        <span th:if="${kandidat.onlineStrategie.flickr}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.vimeo != null}">
+                                        <span th:if="${kandidat.onlineStrategie.vimeo}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.xing != null}">
+                                        <span th:if="${kandidat.onlineStrategie.xing}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.linkedIn != null}">
+                                        <span th:if="${kandidat.onlineStrategie.linkedIn}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.stackoverflow != null}">
+                                        <span th:if="${kandidat.onlineStrategie.stackoverflow}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                        <span th:if="${kandidat.onlineStrategie.github != null}">
+                                        <span th:if="${kandidat.onlineStrategie.github}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                                 <i class="fa fa-github" aria-hidden="true"></i>
                                             </a>
@@ -649,7 +649,9 @@
                             <input type="hidden" th:field="*{geschlecht}" />
                             <input type="hidden" th:field="*{geburtsjahr}" />
                             <input type="hidden" th:field="*{alter}" />
+                            <input type="hidden" th:field="*{logoUrl}" />
                             <input type="hidden" th:field="*{listePlatz}" />
+                            <input type="hidden" th:field="*{landesListe}" />
                             <input type="hidden" th:field="*{mdb}" />
                             <input type="hidden" th:field="*{lat}" />
                             <input type="hidden" th:field="*{lng}" />
@@ -660,171 +662,216 @@
                             <input type="hidden" th:field="*{color}" />
                             <input type="hidden" th:field="*{googleMapsUrl}" />
                             <input type="hidden" th:field="*{logoUrl}" />
+                            <input type="hidden" th:field="*{wahlkreis}" />
+                            <input type="hidden" th:field="*{partei}" />
+                            <input type="hidden" th:field="*{bundesland}" />
+                            <input type="hidden" th:field="*{berufsgruppe}" />
+                            <input type="hidden" th:field="*{beruf}" />
+                            <input type="hidden" th:field="*{geburtsort}" />
+                            <input type="hidden" th:field="*{wohnort}" />
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="abgeordnetenwatch-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.abgeordnetenwatch}" type="text" name="abgeordnetenwatch" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch"/>
+                                    <input th:field="*{onlineStrategie.abgeordnetenwatch}" type="text" name="abgeordnetenwatch" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch" />
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}" th:errors="*{onlineStrategie.abgeordnetenwatch}" class="help-block has-error">onlineStrategie.abgeordnetenwatch</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('fotoUrl')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="fotourl-input" class="col-sm-2 control-label">fotoUrl:</label>
                                 <div class="col-sm-10">
                                     <input th:field="*{fotoUrl}" type="text" name="fotourl" id="fotourl-input" class="form-control" placeholder="fotoUrl"/>
+                                    <span th:if="${#fields.hasErrors('fotoUrl')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('fotoUrl')}" th:errors="*{fotoUrl}" class="help-block has-error">fotoUrl</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="bundestag-abgeordnete-input" class="col-sm-2 control-label">bundestagAbgeordnete:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.bundestagAbgeordnete}" type="text" name="bundestagAbgeordnete" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete"/>
+                                    <input th:field="*{onlineStrategie.bundestagAbgeordnete}" type="text" name="bundestagAbgeordnete" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}" th:errors="*{onlineStrategie.bundestagAbgeordnete}" class="help-block has-error">onlineStrategie.bundestagAbgeordnete</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="wikipedia-article-input" class="col-sm-2 control-label">wikipediaArticle:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.wikipediaArticle}" type="text" name="wikipediaArticle" id="wikipedia-article-input" class="form-control" placeholder="wikipediaArticle"/>
+                                    <input th:field="*{onlineStrategie.wikipediaArticle}" type="text" name="wikipediaArticle" id="wikipedia-article-input" class="form-control" placeholder="wikipediaArticle" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}" th:errors="*{onlineStrategie.wikipediaArticle}" class="help-block has-error">onlineStrategie.wikipediaArticle</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('funktion')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="funktion-input" class="col-sm-2 control-label">funktion:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion"/>
+                                    <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('funktion')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('funktion')}" th:errors="*{funktion}" class="help-block has-error">funktion</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.webseite')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite"/>
+                                    <input th:field="*{onlineStrategie.webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.webseite')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.webseite')}" th:errors="*{onlineStrategie.webseite}" class="help-block has-error">onlineStrategie.webseite</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.facebook')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="facebook-input" class="col-sm-2 control-label">facebook:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook"/>
+                                    <input th:field="*{onlineStrategie.facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.facebook')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.facebook')}" th:errors="*{onlineStrategie.facebook}" class="help-block has-error">onlineStrategie.facebook</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.twitter')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="twitter-input" class="col-sm-2 control-label">twitter:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter"/>
+                                    <input th:field="*{onlineStrategie.twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.twitter')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.twitter')}" th:errors="*{onlineStrategie.twitter}" class="help-block has-error">onlineStrategie.twitter</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.youtube')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="youtube-input" class="col-sm-2 control-label">youtube:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.youtube}" type="text" name="youtube" id="youtube-input" class="form-control" placeholder="youtube"/>
+                                    <input th:field="*{onlineStrategie.youtube}" type="text" name="youtube" id="youtube-input" class="form-control" placeholder="youtube" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.youtube')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.youtube')}" th:errors="*{onlineStrategie.youtube}" class="help-block has-error">onlineStrategie.youtube</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.soundcloud')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="soundcloud-input" class="col-sm-2 control-label">soundcloud:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud"/>
+                                    <input th:field="*{onlineStrategie.soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.soundcloud')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.soundcloud')}" th:errors="*{onlineStrategie.soundcloud}" class="help-block has-error">onlineStrategie.soundcloud</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="lobbypedia-input" class="col-sm-2 control-label">lobbypediaUrl:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.lobbypediaUrl}" type="text" name="lobbypedia" id="lobbypedia-input" class="form-control" placeholder="lobbypedia"/>
+                                    <input th:field="*{onlineStrategie.lobbypediaUrl}" type="text" name="lobbypedia" id="lobbypedia-input" class="form-control" placeholder="lobbypedia" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}" th:errors="*{onlineStrategie.lobbypediaUrl}" class="help-block has-error">onlineStrategie.lobbypediaUrl</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.googlePlus')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="google-plus-input" class="col-sm-2 control-label">googlePlus:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.googlePlus}" type="text" name="googleplus" id="google-plus-input" class="form-control" placeholder="googlePlus"/>
+                                    <input th:field="*{onlineStrategie.googlePlus}" type="text" name="googleplus" id="google-plus-input" class="form-control" placeholder="googlePlus" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" th:errors="*{onlineStrategie.googlePlus}" class="help-block has-error">onlineStrategie.googlePlus</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.instagram')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="instagram-input" class="col-sm-2 control-label">instagram:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.instagram}" type="text" name="instagram" id="instagram-input" class="form-control" placeholder="instagram"/>
+                                    <input th:field="*{onlineStrategie.instagram}" type="text" name="instagram" id="instagram-input" class="form-control" placeholder="instagram" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.instagram')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.instagram')}" th:errors="*{onlineStrategie.instagram}" class="help-block has-error">onlineStrategie.instagram</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.flickr')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="flickr-input" class="col-sm-2 control-label">flickr:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.flickr}" type="text" name="flickr" id="flickr-input" class="form-control" placeholder="flickr"/>
+                                    <input th:field="*{onlineStrategie.flickr}" type="text" name="flickr" id="flickr-input" class="form-control" placeholder="flickr" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.flickr')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.flickr')}" th:errors="*{onlineStrategie.flickr}" class="help-block has-error">onlineStrategie.flickr</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.vimeo')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="vimeo-input" class="col-sm-2 control-label">vimeo:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.vimeo}" type="text" name="vimeo" id="vimeo-input" class="form-control" placeholder="vimeo"/>
+                                    <input th:field="*{onlineStrategie.vimeo}" type="text" name="vimeo" id="vimeo-input" class="form-control" placeholder="vimeo" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.vimeo')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.vimeo')}" th:errors="*{onlineStrategie.vimeo}" class="help-block has-error">onlineStrategie.vimeo</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.xing')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="xing-input" class="col-sm-2 control-label">xing:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.xing}" type="text" name="xing" id="xing-input" class="form-control" placeholder="xing"/>
+                                    <input th:field="*{onlineStrategie.xing}" type="text" name="xing" id="xing-input" class="form-control" placeholder="xing" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.xing')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.xing')}" th:errors="*{onlineStrategie.xing}" class="help-block has-error">onlineStrategie.xing</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.linkedIn')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="linkedin-input" class="col-sm-2 control-label">linkedIn:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.linkedIn}" type="text" name="linkedin" id="linkedin-input" class="form-control" placeholder="linkedin"/>
+                                    <input th:field="*{onlineStrategie.linkedIn}" type="text" name="linkedin" id="linkedin-input" class="form-control" placeholder="linkedin" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.linkedIn')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.linkedIn')}" th:errors="*{onlineStrategie.linkedIn}" class="help-block has-error">onlineStrategie.linkedIn</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.stackoverflow')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="stackoverflow-input" class="col-sm-2 control-label">stackoverflow:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.stackoverflow}" type="text" name="stackoverflow" id="stackoverflow-input" class="form-control" placeholder="stackoverflow"/>
+                                    <input th:field="*{onlineStrategie.stackoverflow}" type="text" name="stackoverflow" id="stackoverflow-input" class="form-control" placeholder="stackoverflow" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.stackoverflow')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.stackoverflow')}" th:errors="*{onlineStrategie.stackoverflow}" class="help-block has-error">onlineStrategie.stackoverflow</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div th:class="${#fields.hasErrors('onlineStrategie.github')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="github-input" class="col-sm-2 control-label">github:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.github}" type="text" name="github" id="github-input" class="form-control" placeholder="github"/>
+                                    <input th:field="*{onlineStrategie.github}" type="text" name="github" id="github-input" class="form-control" placeholder="github" th:errorclass="has-error"/>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.github')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                    <span th:if="${#fields.hasErrors('onlineStrategie.github')}" th:errors="*{onlineStrategie.github}" class="help-block has-error">onlineStrategie.github</span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-primary form-control">Bearbeiten</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group has-feedback">
                                 <label for="fraktion-input" class="col-sm-2 control-label">Fraktion:</label>
                                 <div class="col-sm-10">
-                                    <select th:field="*{fraktion}" name="fraktion" id="fraktion-input" class="form-control">
+                                    <select th:field="*{fraktion}" name="fraktion" id="fraktion-input" class="form-control" th:errorclass="has-error">
                                         <option value="0" >Keine</option>
                                         <option th:text="${fraktion.name}" th:value="${fraktion.id}" th:each="fraktion : ${fraktionen}">fraktion</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="ausschuss-input" class="col-sm-2 control-label">Ausschüsse:</label>
                                 <div class="col-sm-10">
-                                    <select th:field="*{ausschuss}" name="ausschuss" id="ausschuss-input" class="form-control" multiple="multiple" size="5">
+                                    <select th:field="*{ausschuss}" name="ausschuss" id="ausschuss-input" class="form-control" multiple="multiple" size="5" th:errorclass="has-error">
                                         <option th:text="${au.name}" th:value="${au.id}" th:each="au : ${ausschuesse}">ausschuss</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="ministerium-input" class="col-sm-2 control-label">Ministerien:</label>
                                 <div class="col-sm-10">
-                                    <select th:field="*{ministerium}" name="ministerium" id="ministerium-input" class="form-control" multiple="multiple" size="5">
+                                    <select th:field="*{ministerium}" name="ministerium" id="ministerium-input" class="form-control" multiple="multiple" size="5" th:errorclass="has-error">
                                         <option th:text="${mi.name}" th:value="${mi.id}" th:each="mi : ${ministerien}">ministerium</option>
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-primary form-control">Bearbeiten</button>
                                 </div>
                             </div>
 

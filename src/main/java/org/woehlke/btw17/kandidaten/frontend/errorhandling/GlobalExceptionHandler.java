@@ -32,6 +32,7 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         return getTemplate(request, ex, HttpStatus.NOT_FOUND);
     }
 
+/*
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView exception(final HttpServletRequest request, final Throwable throwable, final Model model) {
@@ -54,6 +55,7 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         mav.addObject("errorMessage", errorMessage);
         return mav;
     }
+*/
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

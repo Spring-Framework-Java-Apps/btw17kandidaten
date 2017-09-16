@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
@@ -7,6 +8,9 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -160,41 +164,58 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
+    @NotNull
+    @Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
     @Column(name = "kandidat_key",nullable = false, unique = true)
     private String key;
 
     @Column(name = "remote_kandidat_key")
     private String remoteKey;
 
+    @SafeHtml
     @Column
     private String titel;
 
+    @SafeHtml
     @Column
     private String namenszusatz;
 
+    @SafeHtml
     @Column(name = "nachname_ohne")
     private String nachnameOhne;
 
+    @NotNull
+    @SafeHtml
     @Column
     private String nachname;
 
+    @NotNull
+    @SafeHtml
     @Column
     private String vorname;
 
+    @NotNull
+    @Pattern(regexp="[MW]{1}")
     @Column
     private String geschlecht;
 
+    @NotNull
+    @Digits(integer=4,fraction = 0)
     @Column
     private Integer geburtsjahr;
 
+    @NotNull
+    @Digits(integer=2,fraction = 0)
     @Column
     private Integer alter;
 
+    @SafeHtml
     @Column
     private String funktion;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_wohnort", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
