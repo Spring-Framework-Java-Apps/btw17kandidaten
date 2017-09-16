@@ -5,6 +5,7 @@ public enum PageSymbol {
     BERUF("<i class=\"fa fa-cubes\" aria-hidden=\"true\"></i>"),
     BERUFSGRUPPE("<i class=\"fa fa-graduation-cap\" aria-hidden=\"true\"></i>"),
     BUNDESLAND("<i class=\"fa fa-puzzle-piece\" aria-hidden=\"true\"></i>"),
+    BUNDESTAG("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
     GEBURTSORT("<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>"),
     IMPRESSUM("<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>"),
     SUCHE("<i class=\"fa fa-search\" aria-hidden=\"true\"></i>"),
@@ -24,7 +25,6 @@ public enum PageSymbol {
     STARTSEITE("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     GEBURTSJAHR("<i class=\"fa fa-id-card\" aria-hidden=\"true\"></i>"),
     MDB("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
-    BUNDESTAG("<i class=\"fa fa-university\" aria-hidden=\"true\"></i>"),
     ABGEORDNETENWATCH("<i class=\"fa fa-eye\" aria-hidden=\"true\"></i>"),
     LOBBYPEDIA("<i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i>"),
     BUNDESZENTRALE_POLITISCHE_BILDUNG("<i class=\"fa fa-clipboard\" aria-hidden=\"true\"></i>"),
@@ -34,7 +34,16 @@ public enum PageSymbol {
     AUSSCHUSS("<i class=\"fa fa-users\" aria-hidden=\"true\"></i>"),
     MINISTERIUM("<i class=\"fa fa-home\" aria-hidden=\"true\"></i>"),
     FRAKTION("<i class=\"fa fa-handshake-o\" aria-hidden=\"true\"></i>"),
-    DATENSCHUTZ("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>");
+    DATENSCHUTZ("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>"),
+    FOTO_URL("<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>"),
+    GOOGLE_PLUS("<i class=\"fa fa-google-plus-official\" aria-hidden=\"true\"></i>"),
+    INSTAGRAM("<i class=\"fa fa-google-plus-official\" aria-hidden=\"true\"></i>"),
+    FLICKR("<i class=\"fa fa-google-plus-official\" aria-hidden=\"true\"></i>"),
+    VIMEO("<i class=\"fa fa-vimeo-square\" aria-hidden=\"true\"></i>"),
+    XING("<i class=\"fa fa-xing-square\" aria-hidden=\"true\"></i>"),
+    LINKED_IN("<i class=\"fa fa-linkedin-square\" aria-hidden=\"true\"></i>"),
+    STACKOVERFLOW("<i class=\"fa fa-stack-overflow\" aria-hidden=\"true\"></i>"),
+    GITHUB("<i class=\"fa fa-github\" aria-hidden=\"true\"></i>");
 
     private String symbolHtml;
 

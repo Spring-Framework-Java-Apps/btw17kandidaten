@@ -673,7 +673,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="abgeordnetenwatch-input" class="col-sm-2 control-label">abgeordnetenwatch:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.abgeordnetenwatch}" type="text" name="abgeordnetenwatch" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch" />
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.abgeordnetenwatch}" type="text" name="abgeordnetenwatch" id="abgeordnetenwatch-input" class="form-control" placeholder="abgeordnetenwatch" />
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.abgeordnetenwatch')}" th:errors="*{onlineStrategie.abgeordnetenwatch}" class="help-block has-error">onlineStrategie.abgeordnetenwatch</span>
                                 </div>
@@ -682,7 +685,10 @@
                             <div th:class="${#fields.hasErrors('fotoUrl')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="fotourl-input" class="col-sm-2 control-label">fotoUrl:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{fotoUrl}" type="text" name="fotourl" id="fotourl-input" class="form-control" placeholder="fotoUrl"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                        <input th:field="*{fotoUrl}" type="text" name="fotourl" id="fotourl-input" class="form-control" placeholder="fotoUrl"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('fotoUrl')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('fotoUrl')}" th:errors="*{fotoUrl}" class="help-block has-error">fotoUrl</span>
                                 </div>
@@ -691,7 +697,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="bundestag-abgeordnete-input" class="col-sm-2 control-label">bundestagAbgeordnete:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.bundestagAbgeordnete}" type="text" name="bundestagAbgeordnete" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-university" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.bundestagAbgeordnete}" type="text" name="bundestagAbgeordnete" id="bundestag-abgeordnete-input" class="form-control" placeholder="bundestagAbgeordnete" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.bundestagAbgeordnete')}" th:errors="*{onlineStrategie.bundestagAbgeordnete}" class="help-block has-error">onlineStrategie.bundestagAbgeordnete</span>
                                 </div>
@@ -700,7 +709,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="wikipedia-article-input" class="col-sm-2 control-label">wikipediaArticle:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.wikipediaArticle}" type="text" name="wikipediaArticle" id="wikipedia-article-input" class="form-control" placeholder="wikipediaArticle" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.wikipediaArticle}" type="text" name="wikipediaArticle" id="wikipedia-article-input" class="form-control" placeholder="wikipediaArticle" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.wikipediaArticle')}" th:errors="*{onlineStrategie.wikipediaArticle}" class="help-block has-error">onlineStrategie.wikipediaArticle</span>
                                 </div>
@@ -709,7 +721,10 @@
                             <div th:class="${#fields.hasErrors('funktion')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="funktion-input" class="col-sm-2 control-label">funktion:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-superpowers" aria-hidden="true"></i></span>
+                                        <input th:field="*{funktion}" type="text" name="funktion" id="funktion-input" class="form-control" placeholder="funktion" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('funktion')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('funktion')}" th:errors="*{funktion}" class="help-block has-error">funktion</span>
                                 </div>
@@ -718,7 +733,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.webseite')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="webseite-input" class="col-sm-2 control-label">webseite:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-link" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.webseite}" type="text" name="webseite" id="webseite-input" class="form-control" placeholder="webseite" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.webseite')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.webseite')}" th:errors="*{onlineStrategie.webseite}" class="help-block has-error">onlineStrategie.webseite</span>
                                 </div>
@@ -727,7 +745,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.facebook')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="facebook-input" class="col-sm-2 control-label">facebook:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.facebook}" type="text" name="facebook" id="facebook-input" class="form-control" placeholder="facebook" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.facebook')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.facebook')}" th:errors="*{onlineStrategie.facebook}" class="help-block has-error">onlineStrategie.facebook</span>
                                 </div>
@@ -736,7 +757,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.twitter')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="twitter-input" class="col-sm-2 control-label">twitter:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-twitter-square" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.twitter}" type="text" name="twitter" id="twitter-input" class="form-control" placeholder="twitter" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.twitter')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.twitter')}" th:errors="*{onlineStrategie.twitter}" class="help-block has-error">onlineStrategie.twitter</span>
                                 </div>
@@ -745,7 +769,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.youtube')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="youtube-input" class="col-sm-2 control-label">youtube:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.youtube}" type="text" name="youtube" id="youtube-input" class="form-control" placeholder="youtube" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-youtube" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.youtube}" type="text" name="youtube" id="youtube-input" class="form-control" placeholder="youtube" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.youtube')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.youtube')}" th:errors="*{onlineStrategie.youtube}" class="help-block has-error">onlineStrategie.youtube</span>
                                 </div>
@@ -754,7 +781,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.soundcloud')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="soundcloud-input" class="col-sm-2 control-label">soundcloud:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-soundcloud" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.soundcloud}" type="text" name="soundcloud" id="soundcloud-input" class="form-control" placeholder="soundcloud" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.soundcloud')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.soundcloud')}" th:errors="*{onlineStrategie.soundcloud}" class="help-block has-error">onlineStrategie.soundcloud</span>
                                 </div>
@@ -763,7 +793,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="lobbypedia-input" class="col-sm-2 control-label">lobbypediaUrl:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.lobbypediaUrl}" type="text" name="lobbypedia" id="lobbypedia-input" class="form-control" placeholder="lobbypedia" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-balance-scale" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.lobbypediaUrl}" type="text" name="lobbypedia" id="lobbypedia-input" class="form-control" placeholder="lobbypedia" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.lobbypediaUrl')}" th:errors="*{onlineStrategie.lobbypediaUrl}" class="help-block has-error">onlineStrategie.lobbypediaUrl</span>
                                 </div>
@@ -772,7 +805,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.googlePlus')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="google-plus-input" class="col-sm-2 control-label">googlePlus:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.googlePlus}" type="text" name="googleplus" id="google-plus-input" class="form-control" placeholder="googlePlus" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-google-plus-official" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.googlePlus}" type="text" name="googleplus" id="google-plus-input" class="form-control" placeholder="googlePlus" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" th:errors="*{onlineStrategie.googlePlus}" class="help-block has-error">onlineStrategie.googlePlus</span>
                                 </div>
@@ -781,7 +817,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.instagram')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="instagram-input" class="col-sm-2 control-label">instagram:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.instagram}" type="text" name="instagram" id="instagram-input" class="form-control" placeholder="instagram" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-instagram" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.instagram}" type="text" name="instagram" id="instagram-input" class="form-control" placeholder="instagram" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.instagram')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.instagram')}" th:errors="*{onlineStrategie.instagram}" class="help-block has-error">onlineStrategie.instagram</span>
                                 </div>
@@ -790,7 +829,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.flickr')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="flickr-input" class="col-sm-2 control-label">flickr:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.flickr}" type="text" name="flickr" id="flickr-input" class="form-control" placeholder="flickr" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-flickr" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.flickr}" type="text" name="flickr" id="flickr-input" class="form-control" placeholder="flickr" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.flickr')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.flickr')}" th:errors="*{onlineStrategie.flickr}" class="help-block has-error">onlineStrategie.flickr</span>
                                 </div>
@@ -799,7 +841,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.vimeo')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="vimeo-input" class="col-sm-2 control-label">vimeo:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.vimeo}" type="text" name="vimeo" id="vimeo-input" class="form-control" placeholder="vimeo" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-vimeo-square" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.vimeo}" type="text" name="vimeo" id="vimeo-input" class="form-control" placeholder="vimeo" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.vimeo')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.vimeo')}" th:errors="*{onlineStrategie.vimeo}" class="help-block has-error">onlineStrategie.vimeo</span>
                                 </div>
@@ -808,7 +853,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.xing')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="xing-input" class="col-sm-2 control-label">xing:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.xing}" type="text" name="xing" id="xing-input" class="form-control" placeholder="xing" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-xing-square" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.xing}" type="text" name="xing" id="xing-input" class="form-control" placeholder="xing" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.xing')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.xing')}" th:errors="*{onlineStrategie.xing}" class="help-block has-error">onlineStrategie.xing</span>
                                 </div>
@@ -817,7 +865,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.linkedIn')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="linkedin-input" class="col-sm-2 control-label">linkedIn:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.linkedIn}" type="text" name="linkedin" id="linkedin-input" class="form-control" placeholder="linkedin" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.linkedIn}" type="text" name="linkedin" id="linkedin-input" class="form-control" placeholder="linkedin" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.linkedIn')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.linkedIn')}" th:errors="*{onlineStrategie.linkedIn}" class="help-block has-error">onlineStrategie.linkedIn</span>
                                 </div>
@@ -826,7 +877,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.stackoverflow')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="stackoverflow-input" class="col-sm-2 control-label">stackoverflow:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.stackoverflow}" type="text" name="stackoverflow" id="stackoverflow-input" class="form-control" placeholder="stackoverflow" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-stack-overflow" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.stackoverflow}" type="text" name="stackoverflow" id="stackoverflow-input" class="form-control" placeholder="stackoverflow" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.stackoverflow')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.stackoverflow')}" th:errors="*{onlineStrategie.stackoverflow}" class="help-block has-error">onlineStrategie.stackoverflow</span>
                                 </div>
@@ -835,7 +889,10 @@
                             <div th:class="${#fields.hasErrors('onlineStrategie.github')}? 'has-error form-group has-feedback' : 'form-group'">
                                 <label for="github-input" class="col-sm-2 control-label">github:</label>
                                 <div class="col-sm-10">
-                                    <input th:field="*{onlineStrategie.github}" type="text" name="github" id="github-input" class="form-control" placeholder="github" th:errorclass="has-error"/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                        <input th:field="*{onlineStrategie.github}" type="text" name="github" id="github-input" class="form-control" placeholder="github" th:errorclass="has-error"/>
+                                    </div>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.github')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                     <span th:if="${#fields.hasErrors('onlineStrategie.github')}" th:errors="*{onlineStrategie.github}" class="help-block has-error">onlineStrategie.github</span>
                                 </div>
