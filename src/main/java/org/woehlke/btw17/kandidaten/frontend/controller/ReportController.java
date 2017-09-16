@@ -35,7 +35,7 @@ public class ReportController extends AbstractController {
     ) {
         String pageTitle = "Übersicht";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_OVERVIEW.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/bundestag";
@@ -60,7 +60,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Abgeordnetenwatch";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/abgeordnetenwatch";
@@ -87,7 +87,7 @@ public class ReportController extends AbstractController {
     ) {
         String pageTitle = "MdB ohne Bundestags Profil";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/bundestag";
@@ -113,7 +113,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Foto";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/foto";
@@ -139,7 +139,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Facebook";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/facebook";
@@ -165,7 +165,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Twitter";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/twitter";
@@ -191,7 +191,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Webseitel";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/webseite";
@@ -217,7 +217,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "MdB ohne Wikipedia";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_MDB.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/mdb/wikipedia";
@@ -244,7 +244,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Abgeordnetenwatch";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/abgeordnetenwatch";
@@ -270,7 +270,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Facebook";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/facebook";
@@ -297,7 +297,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Webseite";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/webseite";
@@ -323,7 +323,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Foto";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/foto";
@@ -349,7 +349,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Lobbypedia";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/lobbypedia";
@@ -375,7 +375,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Soundcloud";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/soundcloud";
@@ -401,7 +401,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne YouTube";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/youtube";
@@ -428,7 +428,7 @@ public class ReportController extends AbstractController {
     ){
         String pageTitle = "Kandidaten ohne Twitter";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
-        String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();
+        String pageSymbol = PageSymbol.REPORT_KANDIDAT.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
         String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
         String pagerUrl = "/report/kandidat/twitter";
@@ -440,6 +440,24 @@ public class ReportController extends AbstractController {
         Page<Kandidat> allKandidatenPage =  kandidatService.getKandidatWithoutTwitter(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "report/kandidat/twitter";
+    }
+
+    @RequestMapping("/data/check")
+    public String getDataCheckReport(
+            HttpSession session,
+            Model model){
+        String pageTitle = "Plausibilitäts-Prüfungen in den Daten";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.REPORT_DATA.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/report/kandidat/twitter";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        model.addAttribute("pageContent",pageContent);
+        return "report/data/check";
     }
 
 

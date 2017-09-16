@@ -43,7 +43,11 @@ public enum PageSymbol {
     XING("<i class=\"fa fa-xing-square\" aria-hidden=\"true\"></i>"),
     LINKED_IN("<i class=\"fa fa-linkedin-square\" aria-hidden=\"true\"></i>"),
     STACKOVERFLOW("<i class=\"fa fa-stack-overflow\" aria-hidden=\"true\"></i>"),
-    GITHUB("<i class=\"fa fa-github\" aria-hidden=\"true\"></i>");
+    GITHUB("<i class=\"fa fa-github\" aria-hidden=\"true\"></i>"),
+    REPORT_OVERVIEW("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
+    REPORT_MDB("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
+    REPORT_KANDIDAT("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
+    REPORT_DATA("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>");
 
     private String symbolHtml;
 
