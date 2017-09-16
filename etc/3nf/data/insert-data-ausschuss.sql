@@ -66,7 +66,6 @@ INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_u
 INSERT INTO ausschuss (id, ausschuss, ausschuss_lang, beschreibungs_text, logo_url, symbol_bild, abgeordnetenwatch, bundestag, facebook, flickr, github, google_plus, instagram, linked_in, lobbypedia_url, soundcloud, stackoverflow, twitter, vimeo, webseite, wikipedia_article, xing, youtube) VALUES (44, 'Unterausschuss für Zivile Krisenprävention, Konfliktbearbeitung und vernetztes Handeln', NULL, NULL, NULL, NULL, NULL, 'https://www.bundestag.de/ausschuesse18/a03/ua_zks', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
-
 --
 -- PostgreSQL database dump complete
 --
