@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
@@ -163,6 +164,9 @@ public class KandidatController extends AbstractController {
             Model model
     ) {
         if (binding.hasErrors()) {
+            for(ObjectError objectError:binding.getAllErrors()){
+                log.info("ObjectError: "+objectError.getObjectName()+" - "+objectError.toString());
+            }
             for(FieldError fieldError:binding.getFieldErrors()){
                 log.info("FieldError: "+fieldError.getField()+" - "+fieldError.getRejectedValue());
             }
@@ -178,7 +182,8 @@ public class KandidatController extends AbstractController {
             //attr.addAttribute("org.springframework.validation.BindingResult.kandidat", binding);
             log.info("OK-5");
         } else {
-            kandidat= kandidatService.update(kandidat);
+            kandidat = kandidatService.update(kandidat);
+            log.info("saved: "+kandidat);
             session.setAttribute("kandidat", kandidat);
         }
         log.info("OK - DONE");
