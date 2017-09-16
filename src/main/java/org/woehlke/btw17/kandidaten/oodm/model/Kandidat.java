@@ -237,7 +237,7 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
     protected Long id;
 
     @NotNull
-    @Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
+    //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
     @Column(name = "kandidat_key",nullable = false, unique = true)
     private String key;
 
