@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @NamedQueries({
     @NamedQuery(
         name = "Ministerium.getAll",
-        query = "select o from Ministerium as o order by id"
+        query = "select o from Ministerium as o order by ministerium"
     ),
     @NamedQuery(
         name = "Ministerium.getAllCount",
