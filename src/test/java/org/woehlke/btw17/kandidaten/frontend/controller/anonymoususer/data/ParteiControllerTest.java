@@ -32,7 +32,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={KandidatenApplication.class},webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes={KandidatenApplication.class},
+    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+)
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParteiControllerTest {

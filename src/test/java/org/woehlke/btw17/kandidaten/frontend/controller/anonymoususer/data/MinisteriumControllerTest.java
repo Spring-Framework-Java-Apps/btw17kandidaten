@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.MinisteriumController;
 import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
@@ -31,7 +30,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={KandidatenApplication.class},webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes={KandidatenApplication.class},
+    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+)
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MinisteriumControllerTest {

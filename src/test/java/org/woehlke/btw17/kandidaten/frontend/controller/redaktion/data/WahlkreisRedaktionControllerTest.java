@@ -11,13 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,20 +28,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes={KandidatenApplication.class},
-    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+        classes={KandidatenApplication.class},
+        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class KandidatFlatControllerTest {
+public class WahlkreisRedaktionControllerTest {
 
-    private static final Logger log = LoggerFactory.getLogger(KandidatFlatControllerTest.class);
+    private static final Logger log = LoggerFactory.getLogger(WahlkreisRedaktionControllerTest.class);
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private KandidatFlatController controller;
+    private WahlkreisRedaktionController controller;
+
+    @Autowired
+    private WahlkreisService wahlkreisService;
+
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
 
     @Commit
     @Test
@@ -55,11 +62,11 @@ public class KandidatFlatControllerTest {
     public void test010getAll()throws Exception {
         String msg ="test010getAll: ";
 
-        MvcResult result = this.mockMvc.perform(get("/kandidatflat/all"))
+        MvcResult result = this.mockMvc.perform(get("/redaktion/wahlkreis/all"))
                 .andExpect(status().isOk())
-                .andExpect(view().name( "kandidatflat/all"))
+                .andExpect(view().name( "wahlkreis/all"))
                 .andExpect(model().attributeExists("pageContent"))
-                .andExpect(model().attributeExists("kandidaten"))
+                .andExpect(model().attributeExists("wahlkreise"))
                 .andExpect(model().attributeExists("suchformularFreitext"))
                 .andReturn();
 

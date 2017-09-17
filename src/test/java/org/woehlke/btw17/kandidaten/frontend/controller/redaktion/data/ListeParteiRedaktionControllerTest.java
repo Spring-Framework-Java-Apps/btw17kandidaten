@@ -11,13 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -32,15 +33,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class KandidatFlatControllerTest {
+public class ListeParteiRedaktionControllerTest {
 
-    private static final Logger log = LoggerFactory.getLogger(KandidatFlatControllerTest.class);
+    private static final Logger log = LoggerFactory.getLogger(ListeParteiRedaktionControllerTest.class);
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private KandidatFlatController controller;
+    private ListeParteiRedaktionController controller;
+
+    @Autowired
+    private ListeParteiService listeParteiService;
+
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
 
     @Commit
     @Test
@@ -55,11 +62,11 @@ public class KandidatFlatControllerTest {
     public void test010getAll()throws Exception {
         String msg ="test010getAll: ";
 
-        MvcResult result = this.mockMvc.perform(get("/kandidatflat/all"))
+        MvcResult result = this.mockMvc.perform(get("/redaktion/listepartei/all"))
                 .andExpect(status().isOk())
-                .andExpect(view().name( "kandidatflat/all"))
+                .andExpect(view().name( "listepartei/all"))
                 .andExpect(model().attributeExists("pageContent"))
-                .andExpect(model().attributeExists("kandidaten"))
+                .andExpect(model().attributeExists("listeparteien"))
                 .andExpect(model().attributeExists("suchformularFreitext"))
                 .andReturn();
 

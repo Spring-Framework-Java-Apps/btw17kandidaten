@@ -31,7 +31,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={KandidatenApplication.class},webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes={KandidatenApplication.class},
+    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+)
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WahlkreisControllerTest {
@@ -91,7 +94,7 @@ public class WahlkreisControllerTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         for(Wahlkreis wahlkreis:wahlkreise){
-            MvcResult result = this.mockMvc.perform(get("/wahlkreis/"+wahlkreis.getId()))
+            MvcResult result = this.mockMvc.perform(get("/redaktion/wahlkreis/"+wahlkreis.getId()))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "wahlkreis/id"))
                     .andExpect(model().attributeExists("pageContent"))

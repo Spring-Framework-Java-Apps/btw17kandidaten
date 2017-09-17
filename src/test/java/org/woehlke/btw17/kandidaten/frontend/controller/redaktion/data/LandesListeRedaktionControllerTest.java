@@ -32,15 +32,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class KandidatFlatControllerTest {
+public class LandesListeRedaktionControllerTest {
 
-    private static final Logger log = LoggerFactory.getLogger(KandidatFlatControllerTest.class);
+    private static final Logger log = LoggerFactory.getLogger(LandesListeRedaktionControllerTest.class);
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private KandidatFlatController controller;
+    private LandesListeRedaktionController controller;
 
     @Commit
     @Test
@@ -52,14 +52,15 @@ public class KandidatFlatControllerTest {
     @WithMockUser
     @Commit
     @Test
-    public void test010getAll()throws Exception {
-        String msg ="test010getAll: ";
+    public void test010getLandesListeForBundeslandAll() throws Exception {
+        String msg ="test010getLandesListeForBundeslandAll: ";
 
-        MvcResult result = this.mockMvc.perform(get("/kandidatflat/all"))
+        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste/bundesland/all"))
                 .andExpect(status().isOk())
-                .andExpect(view().name( "kandidatflat/all"))
+                .andExpect(view().name( "landesliste/bundesland/all"))
                 .andExpect(model().attributeExists("pageContent"))
-                .andExpect(model().attributeExists("kandidaten"))
+                .andExpect(model().attributeExists("bundeslaender"))
+                .andExpect(model().attributeExists("bundeslandIdTarget"))
                 .andExpect(model().attributeExists("suchformularFreitext"))
                 .andReturn();
 
@@ -73,4 +74,27 @@ public class KandidatFlatControllerTest {
         Assert.assertTrue(true);
     }
 
+    @WithMockUser
+    @Commit
+    @Test
+    public void test011getLandesListeForListeParteiAll()throws Exception {
+        String msg ="test011getLandesListeForListeParteiAll: ";
+
+        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste/listepartei/all"))
+                .andExpect(status().isOk())
+                .andExpect(view().name( "landesliste/listepartei/all"))
+                .andExpect(model().attributeExists("pageContent"))
+                .andExpect(model().attributeExists("listeparteien"))
+                .andExpect(model().attributeExists("suchformularFreitext"))
+                .andReturn();
+
+        String content = result.getResponse().getContentAsString();
+
+        log.debug(msg+"#######################################");
+        log.debug(msg+"#######################################");
+        log.debug(msg+content);
+        log.debug(msg+"#######################################");
+        log.debug(msg+"#######################################");
+        Assert.assertTrue(true);
+    }
 }
