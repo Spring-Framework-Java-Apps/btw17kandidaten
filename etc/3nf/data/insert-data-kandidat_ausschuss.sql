@@ -84,6 +84,7 @@ INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (242, 8);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (253, 16);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (253, 27);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (253, 29);
+INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (253, 45);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (2554, 2);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (2554, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuss_id) VALUES (28, 12);
