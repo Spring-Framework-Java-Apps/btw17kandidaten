@@ -11,6 +11,35 @@ then
 echo "FACETTEN"
 
 
+echo "sql dump table: cms"
+
+pg_dump -U $DATABASE --table=cms --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-cms.sql
+
+
+echo "sql dump table: agentur"
+
+pg_dump -U $DATABASE --table=agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-agentur.sql
+
+echo "sql dump table: bundesland_agentur"
+
+pg_dump -U $DATABASE --table=bundesland_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-bundesland_agentur.sql
+
+echo "sql dump table: fraktion_agentur"
+
+pg_dump -U $DATABASE --table=fraktion_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-fraktion_agentur.sql
+
+echo "sql dump table: ministerium_agentur"
+
+pg_dump -U $DATABASE --table=ministerium_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-ministerium_agentur.sql
+
+echo "sql dump table: partei_agentur"
+
+pg_dump -U $DATABASE --table=partei_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-partei_agentur.sql
+
+echo "sql dump table: wohnort_agentur"
+
+pg_dump -U $DATABASE --table=wohnort_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-wohnort_agentur.sql
+
 echo "sql dump table: ausschuss"
 
 pg_dump -U $DATABASE --table=ausschuss --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-ausschuss.sql
@@ -62,6 +91,11 @@ pg_dump -U $DATABASE --table=wohnort --data-only --jobs=1 --column-inserts $DATA
 fi
 
 echo "MAIN"
+
+
+echo "sql dump table: kandidat_agentur"
+
+pg_dump -U $DATABASE --table=kandidat_agentur --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-kandidat_agentur.sql
 
 echo "sql dump table: kandidat_ausschuss"
 

@@ -2,7 +2,9 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
+import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded;
 
@@ -11,7 +13,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -228,9 +229,8 @@ import static javax.persistence.FetchType.EAGER;
         query = "select count(o) from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium"
     )
 })
-public class Kandidat implements Serializable,OnlineStrategieEmbedded {
-
-    private static final long serialVersionUID = 1L;
+@EntityListeners(KandidatListener.class)
+public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -333,6 +333,14 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_webseite_cms")
+    private WebseiteCms webseiteCms;
+
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name="kandidat_agentur")
+    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+
     @Column
     private String mdb;
 
@@ -377,6 +385,17 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
 
+    @Transient
+    @Override
+    public String getName() {
+        return vorname+" "+nachname;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+key+":"+this.getName();
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -678,6 +697,23 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
         this.ausschuss = ausschuss;
     }
 
+    public WebseiteCms getWebseiteCms() {
+        return webseiteCms;
+    }
+
+    public void setWebseiteCms(WebseiteCms webseiteCms) {
+        this.webseiteCms = webseiteCms;
+    }
+
+    public Set<WebseiteAgentur> getWebseiteAgentur() {
+        return webseiteAgentur;
+    }
+
+    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
+        this.webseiteAgentur = webseiteAgentur;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -712,7 +748,13 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
             return false;
         if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
+        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
+            return false;
         if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
+        if (webseiteCms != null ? !webseiteCms.equals(kandidat.webseiteCms) : kandidat.webseiteCms != null)
+            return false;
+        if (webseiteAgentur != null ? !webseiteAgentur.equals(kandidat.webseiteAgentur) : kandidat.webseiteAgentur != null)
+            return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -754,7 +796,10 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
         result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
+        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
+        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -796,6 +841,10 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
                 ", landesListe=" + landesListe +
                 ", listePlatz=" + listePlatz +
                 ", fraktion=" + fraktion +
+                ", ministerium=" + ministerium +
+                ", ausschuss=" + ausschuss +
+                ", webseiteCms=" + webseiteCms +
+                ", webseiteAgentur=" + webseiteAgentur +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
@@ -812,90 +861,6 @@ public class Kandidat implements Serializable,OnlineStrategieEmbedded {
                 '}';
     }
 
-    public String getSqlInsert(long id){
-        Long idParameter = id;
-        String columns[] = {
-            "id","alter","color","facebook","foto",
-            "foto_url","geburtsjahr","geschlecht","id_eigen","kandidat_key",
-            "lat","liste_platz","lng","logo_url","mdb",
-            "nachname","nachname_ohne","namenszusatz","remote_kandidat_key","scatter_x",
-            "scatter_y","titel","twitter","vorname","webseite",
-            "wikipedia_article","youtube","fk_beruf","fk_berufsgruppe","fk_bundesland",
-            "fk_geburtsort","fk_kandidat_flat","fk_landes_liste","fk_partei","fk_wahlkreis",
-            "fk_wohnort","bundestag_abgeordnete","abgeordnetenwatch","lobbypedia_url","google_maps_url",
-            "soundcloud", "google_plus", "instagram", "fraktion",
-            "funktion", "flickr", "vimeo", "xing",
-            "linked_in", "stackoverflow", "github"
-        };
-        String facebook = onlineStrategie.getFacebook();
-        String twitter = onlineStrategie.getTwitter();
-        String webseite = onlineStrategie.getWebseite();
-        String wikipediaArticle = onlineStrategie.getWikipediaArticle();
-        String youtube = onlineStrategie.getYoutube();
-        String bundestagAbgeordnete = onlineStrategie.getBundestagAbgeordnete();
-        String abgeordnetenwatch = onlineStrategie.getAbgeordnetenwatch();
-        String lobbypediaUrl = onlineStrategie.getLobbypediaUrl();
-        String soundcloud = onlineStrategie.getSoundcloud();
-        String googlePlus = onlineStrategie.getGooglePlus();
-        String instagram = onlineStrategie.getInstagram();
-        String flickr = onlineStrategie.getFlickr();
-        String vimeo = onlineStrategie.getVimeo();
-        String xing = onlineStrategie.getXing();
-        String linkedIn = onlineStrategie.getLinkedIn();
-        String stackoverflow = onlineStrategie.getStackoverflow();
-        String github = onlineStrategie.getGithub();
-
-        Object fields[] = {
-            idParameter,alter,color,facebook,foto,
-            fotoUrl,geburtsjahr,geschlecht,idEigen,key,
-            lat,listePlatz,lng,logoUrl,mdb,
-            nachname,nachnameOhne,namenszusatz,remoteKey,scatterX,
-            scatterY,titel,twitter,vorname,webseite,
-            wikipediaArticle,youtube,beruf,berufsgruppe,bundesland,
-            geburtsort,kandidatFlat,landesListe,partei,wahlkreis,
-            wohnort,bundestagAbgeordnete,abgeordnetenwatch,lobbypediaUrl,googleMapsUrl,
-            soundcloud, googlePlus, instagram, fraktion,
-            funktion, flickr, vimeo, xing,
-            linkedIn, stackoverflow, github
-        };
-        StringBuffer sb = new StringBuffer();
-        sb.append("INSERT INTO kandidat (");
-        for(int i=0;i<columns.length; i++){
-            sb.append(columns[i]);
-            if((i+1)<columns.length){
-                sb.append(",");
-            }
-        }
-        sb.append(") VALUES (");
-        for(int i=0;i<fields.length; i++){
-            Object o = fields[i];
-            if(o == null){
-                sb.append("NULL");
-            } else if(o instanceof Long){
-                Long x = (Long) o;
-                sb.append(x);
-            }else if(o instanceof Integer){
-                Integer x = (Integer) o;
-                sb.append(x);
-            } else if(o instanceof Double){
-                Double x = (Double) o;
-                sb.append(x);
-            } else if(o instanceof String){
-                String x = (String) o;
-                sb.append("'");
-                sb.append(x);
-                sb.append("'");
-            } else if(o instanceof KandidatFacette){
-                KandidatFacette x = (KandidatFacette) o;
-                sb.append(x.getId());
-            }
-            if((i+1)<fields.length){
-                sb.append(", ");
-            }
-        }
-        sb.append(");");
-        return sb.toString();
-    }
 }
 
 

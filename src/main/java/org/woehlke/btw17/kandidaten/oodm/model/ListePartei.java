@@ -1,11 +1,17 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.oodm.model.listener.ListeParteiListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
+
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "liste_partei",
@@ -26,12 +32,24 @@ import javax.validation.Valid;
 )
 @NamedQueries({
     @NamedQuery(
-        name = "ListePartei.findByPartei",
+        name = "ListePartei.getAll",
+        query = "select o from ListePartei as o order by o.listePartei"
+    ),
+    @NamedQuery(
+        name = "ListePartei.getAllCount",
+        query = "select count(o) from ListePartei as o"
+    ),
+    @NamedQuery(
+        name = "ListePartei.findByListePartei",
         query = "select o from ListePartei as o where o.listePartei=:listePartei"
+    ),
+    @NamedQuery(
+        name = "ListePartei.findByListeParteiLang",
+        query = "select o from ListePartei as o where o.listeParteiLang=:listeParteiLang"
     )
 })
-public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineStrategieEmbedded {
-
+@EntityListeners(ListeParteiListener.class)
+public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -61,8 +79,21 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "liste_partei_agentur"
+            )
+        )
+    })
+    private Webseite webseite = new Webseite();
+
 
     @Transient
+    @Override
     public String getName() {
         StringBuilder sb = new StringBuilder();
         sb.append(listePartei);
@@ -71,8 +102,10 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
         return sb.toString();
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     @Override
@@ -116,20 +149,34 @@ public class ListePartei implements KandidatFacette,CommonFieldsEmbedded,OnlineS
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
+    @Override
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
 
+    @Override
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
         this.onlineStrategie = onlineStrategie;
     }
 
+    @Override
     public CommonFields getCommonFields() {
         return commonFields;
     }
 
+    @Override
     public void setCommonFields(CommonFields commonFields) {
         this.commonFields = commonFields;
+    }
+
+    @Override
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    @Override
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 
     @Override

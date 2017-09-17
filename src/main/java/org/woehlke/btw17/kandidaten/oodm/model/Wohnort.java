@@ -1,9 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.WohnortListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+
 
 @Entity
 @Table(
@@ -25,7 +27,8 @@ import javax.validation.Valid;
         query = "select o from Wohnort as o order by o.id"
     )
 })
-public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {
+@EntityListeners(WohnortListener.class)
+public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,9 +55,28 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "wohnort_agentur"
+            )
+        )
+    })
+    private Webseite webseite = new Webseite();
+
     @Transient
+    @Override
     public String getName() {
         return wohnort;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     @Override
@@ -107,6 +129,16 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
     }
 
     @Override
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    @Override
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Wohnort)) return false;
@@ -120,7 +152,9 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
             return false;
         if (commonFields != null ? !commonFields.equals(wohnort1.commonFields) : wohnort1.commonFields != null)
             return false;
-        return geoPosition != null ? geoPosition.equals(wohnort1.geoPosition) : wohnort1.geoPosition == null;
+        if (geoPosition != null ? !geoPosition.equals(wohnort1.geoPosition) : wohnort1.geoPosition != null)
+            return false;
+        return webseite != null ? webseite.equals(wohnort1.webseite) : wohnort1.webseite == null;
     }
 
     @Override
@@ -131,6 +165,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -143,87 +178,7 @@ public class Wohnort implements KandidatFacette,OnlineStrategieEmbedded,CommonFi
                 ", onlineStrategie=" + onlineStrategie +
                 ", commonFields=" + commonFields +
                 ", geoPosition=" + geoPosition +
+                ", webseite=" + webseite +
                 '}';
-    }
-
-    public String getSqlInsert() {
-
-        String googleMapsUrl = geoPosition.getGoogleMapsUrl();
-        String geoLongitude = geoPosition.getGeoLongitude();
-        String geoLattitude = geoPosition.getGeoLattitude();
-        String geoZoom = geoPosition.getGeoZoom();
-
-        String facebook = onlineStrategie.getFacebook();
-        String twitter = onlineStrategie.getTwitter();
-        String webseite = onlineStrategie.getWebseite();
-        String wikipediaArticle = onlineStrategie.getWikipediaArticle();
-        String youtube = onlineStrategie.getYoutube();
-        String bundestagAbgeordnete = onlineStrategie.getBundestagAbgeordnete();
-        String abgeordnetenwatch = onlineStrategie.getAbgeordnetenwatch();
-        String lobbypediaUrl = onlineStrategie.getLobbypediaUrl();
-        String soundcloud = onlineStrategie.getSoundcloud();
-        String googlePlus = onlineStrategie.getGooglePlus();
-        String instagram = onlineStrategie.getInstagram();
-        String flickr = onlineStrategie.getFlickr();
-        String vimeo = onlineStrategie.getVimeo();
-        String xing = onlineStrategie.getXing();
-        String linkedIn = onlineStrategie.getLinkedIn();
-        String stackoverflow = onlineStrategie.getStackoverflow();
-        String github = onlineStrategie.getGithub();
-
-        String logoUrl = commonFields.getLogoUrl();
-        String symbolBild = commonFields.getSymbolBild();
-        String beschreibungsText = commonFields.getBeschreibungsText();
-
-        String columns[] = {
-            "id","wohnort","webseite","wikipedia_article","facebook","logo_url",
-            "google_maps_url","geo_longitude","geo_lattitude","geo_zoom", "soundcloud",
-            "google_plus", "instagram", "flickr", "vimeo", "xing", "linked_in",
-            "stackoverflow", "github", "symbol_bild", "beschreibungs_text"
-        };
-        Object fields[] = {
-            id,wohnort,webseite,wikipediaArticle,facebook,logoUrl,
-            googleMapsUrl,geoLongitude,geoLattitude,geoZoom, twitter,
-            youtube,  bundestagAbgeordnete, abgeordnetenwatch, lobbypediaUrl, soundcloud,
-            googlePlus, instagram, flickr, vimeo, xing, linkedIn,
-            stackoverflow, github, symbolBild, beschreibungsText
-        };
-        StringBuffer sb = new StringBuffer();
-        sb.append("INSERT INTO wohnort (");
-        for(int i=0;i<columns.length; i++){
-            sb.append(columns[i]);
-            if((i+1)<columns.length){
-                sb.append(",");
-            }
-        }
-        sb.append(") VALUES (");
-        for(int i=0;i<fields.length; i++){
-            Object o = fields[i];
-            if(o == null){
-                sb.append("NULL");
-            } else if(o instanceof Long){
-                Long x = (Long) o;
-                sb.append(x);
-            }else if(o instanceof Integer){
-                Integer x = (Integer) o;
-                sb.append(x);
-            } else if(o instanceof Double){
-                Double x = (Double) o;
-                sb.append(x);
-            } else if(o instanceof String){
-                String x = (String) o;
-                sb.append("'");
-                sb.append(x);
-                sb.append("'");
-            } else if(o instanceof KandidatFacette){
-                KandidatFacette x = (KandidatFacette) o;
-                sb.append(x.getId());
-            }
-            if((i+1)<fields.length){
-                sb.append(", ");
-            }
-        }
-        sb.append(");");
-        return sb.toString();
     }
 }

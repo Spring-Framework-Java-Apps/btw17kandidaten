@@ -413,42 +413,6 @@ public class KandidatenNormalizedTableBuilder {
         bw.close();
     }
 
-    @Ignore
-    @Commit
-    @Test
-    public void build101KandidatSql() throws IOException {
-        File dataOut = new File(sqlFileKandidatData);
-        dataOut.delete();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
-        bw.write("DELETE FROM kandidat;");
-        bw.newLine();
-        long id = 0;
-        for(Kandidat k :kandidatService.getAll()) {
-            id++;
-            bw.write(k.getSqlInsert(id));
-            bw.newLine();
-        }
-        bw.flush();
-        bw.close();
-    }
-
-    @Ignore
-    @Commit
-    @Test
-    public void build103WohnortSql() throws Exception {
-        File dataOut = new File(sqlFileWohnortData);
-        dataOut.delete();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(dataOut));
-        bw.write("DELETE FROM wohnort;");
-        bw.newLine();
-        for(Wohnort wohnort:wohnortService.getAllOrderById()){
-            String sql = wohnort.getSqlInsert();
-            bw.write(sql);
-            bw.newLine();
-        }
-        bw.flush();
-        bw.close();
-    }
 
     @Ignore
     @Commit

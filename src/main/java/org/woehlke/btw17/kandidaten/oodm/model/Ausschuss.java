@@ -2,11 +2,18 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.AusschussListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
+/**
+ * @see org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.AusschussController
+ * @see org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data.AusschussRedaktionController
+ *
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "ausschuss",
@@ -24,7 +31,8 @@ import javax.validation.Valid;
         query = "select count(o) from Ausschuss as o"
     )
 })
-public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStrategieEmbedded {
+@EntityListeners(AusschussListener.class)
+public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +64,12 @@ public class Ausschuss implements KandidatFacette,CommonFieldsEmbedded,OnlineStr
     @Override
     public String getName() {
         return ausschuss;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public void setId(Long id) {

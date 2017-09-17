@@ -7,6 +7,9 @@ import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPositionEmbedded
+ */
 @Validated
 @Embeddable
 public class GeoPosition implements MySerializable {

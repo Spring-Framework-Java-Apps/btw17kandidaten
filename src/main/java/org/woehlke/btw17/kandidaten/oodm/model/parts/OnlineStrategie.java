@@ -7,13 +7,12 @@ import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded
+ */
 @Validated
 @Embeddable
 public class OnlineStrategie implements MySerializable {
-
-    @URL
-    @Column(name="webseite")
-    private String webseite;
 
     @URL
     @Column(name="twitter")
@@ -78,15 +77,6 @@ public class OnlineStrategie implements MySerializable {
     @URL
     @Column(name = "github")
     private String github;
-
-
-    public String getWebseite() {
-        return webseite;
-    }
-
-    public void setWebseite(String webseite) {
-        this.webseite = webseite;
-    }
 
     public String getTwitter() {
         return twitter;
@@ -223,7 +213,6 @@ public class OnlineStrategie implements MySerializable {
 
         OnlineStrategie that = (OnlineStrategie) o;
 
-        if (webseite != null ? !webseite.equals(that.webseite) : that.webseite != null) return false;
         if (twitter != null ? !twitter.equals(that.twitter) : that.twitter != null) return false;
         if (facebook != null ? !facebook.equals(that.facebook) : that.facebook != null) return false;
         if (youtube != null ? !youtube.equals(that.youtube) : that.youtube != null) return false;
@@ -249,8 +238,7 @@ public class OnlineStrategie implements MySerializable {
 
     @Override
     public int hashCode() {
-        int result = webseite != null ? webseite.hashCode() : 0;
-        result = 31 * result + (twitter != null ? twitter.hashCode() : 0);
+        int result = twitter != null ? twitter.hashCode() : 0;
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
         result = 31 * result + (youtube != null ? youtube.hashCode() : 0);
         result = 31 * result + (soundcloud != null ? soundcloud.hashCode() : 0);
@@ -267,28 +255,5 @@ public class OnlineStrategie implements MySerializable {
         result = 31 * result + (stackoverflow != null ? stackoverflow.hashCode() : 0);
         result = 31 * result + (github != null ? github.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "OnlineStrategie{" +
-                "webseite='" + webseite + '\'' +
-                ", twitter='" + twitter + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", youtube='" + youtube + '\'' +
-                ", soundcloud='" + soundcloud + '\'' +
-                ", wikipediaArticle='" + wikipediaArticle + '\'' +
-                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
-                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
-                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
-                ", googlePlus='" + googlePlus + '\'' +
-                ", instagram='" + instagram + '\'' +
-                ", flickr='" + flickr + '\'' +
-                ", vimeo='" + vimeo + '\'' +
-                ", xing='" + xing + '\'' +
-                ", linkedIn='" + linkedIn + '\'' +
-                ", stackoverflow='" + stackoverflow + '\'' +
-                ", github='" + github + '\'' +
-                '}';
     }
 }

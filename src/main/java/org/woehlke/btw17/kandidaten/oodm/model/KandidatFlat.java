@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
+import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatFlatListener;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
 import java.util.Locale;
@@ -46,7 +47,8 @@ import java.util.Locale;
         query = "select o from KandidatFlat as o order by o.nachname"
     )
 })
-public class KandidatFlat implements KandidatFacette {
+@EntityListeners(KandidatFlatListener.class)
+public class KandidatFlat implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -145,6 +147,12 @@ public class KandidatFlat implements KandidatFacette {
     @Transient
     public String getName() {
         return getTransientKey();
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getTransientKey()+":"+this.getVorname()+" "+this.getNachname();
     }
 
     @Transient

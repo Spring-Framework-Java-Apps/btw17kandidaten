@@ -1,10 +1,16 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlkreisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
+
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "wahlkreis",
@@ -17,7 +23,8 @@ import javax.validation.Valid;
         @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
     }
 )
-public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
+@EntityListeners(WahlkreisListener.class)
+public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,10 +40,6 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
 
     @Valid
     @Embedded
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
-
-    @Valid
-    @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
     @Valid
@@ -48,8 +51,15 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
     private Bundesland bundesland;
 
     @Transient
+    @Override
     public String getName() {
         return wahlkreisName + " ( " +wahlkreisId+" )";
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {
@@ -74,14 +84,6 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
 
     public void setWahlkreisName(String wahlkreisName) {
         this.wahlkreisName = wahlkreisName;
-    }
-
-    public OnlineStrategie getOnlineStrategie() {
-        return onlineStrategie;
-    }
-
-    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
     }
 
     public GeoPosition getGeoPosition() {
@@ -120,8 +122,6 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
             return false;
         if (wahlkreisName != null ? !wahlkreisName.equals(wahlkreis.wahlkreisName) : wahlkreis.wahlkreisName != null)
             return false;
-        if (onlineStrategie != null ? !onlineStrategie.equals(wahlkreis.onlineStrategie) : wahlkreis.onlineStrategie != null)
-            return false;
         if (geoPosition != null ? !geoPosition.equals(wahlkreis.geoPosition) : wahlkreis.geoPosition != null)
             return false;
         if (commonFields != null ? !commonFields.equals(wahlkreis.commonFields) : wahlkreis.commonFields != null)
@@ -134,7 +134,6 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (wahlkreisId != null ? wahlkreisId.hashCode() : 0);
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
-        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
@@ -147,7 +146,6 @@ public class Wahlkreis implements KandidatFacette,OnlineStrategieEmbedded,GeoPos
                 "id=" + id +
                 ", wahlkreisId=" + wahlkreisId +
                 ", wahlkreisName='" + wahlkreisName + '\'' +
-                ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", commonFields=" + commonFields +
                 ", bundesland=" + bundesland +

@@ -1,11 +1,15 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.MinisteriumListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "ministerium",
@@ -36,7 +40,8 @@ import javax.validation.Valid;
         query = "select count(o) from Ministerium as o"
     )
 })
-public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
+@EntityListeners(MinisteriumListener.class)
+public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -73,6 +78,18 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
     @Embedded
     private Adresse adresse = new Adresse();
 
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "ministerium_agentur"
+            )
+        )
+    })
+    private Webseite webseite = new Webseite();
+
     @Override
     public Long getId() {
         return id;
@@ -82,6 +99,12 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
     @Override
     public String getName() {
         return ministerium +"  "+ministeriumLang;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     @Transient
@@ -130,36 +153,54 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
         this.bundesminister = bundesminister;
     }
 
+    @Override
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
 
+    @Override
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
         this.onlineStrategie = onlineStrategie;
     }
 
+    @Override
     public GeoPosition getGeoPosition() {
         return geoPosition;
     }
 
+    @Override
     public void setGeoPosition(GeoPosition geoPosition) {
         this.geoPosition = geoPosition;
     }
 
+    @Override
     public Adresse getAdresse() {
         return adresse;
     }
 
+    @Override
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
 
+    @Override
     public CommonFields getCommonFields() {
         return commonFields;
     }
 
+    @Override
     public void setCommonFields(CommonFields commonFields) {
         this.commonFields = commonFields;
+    }
+
+    @Override
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    @Override
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 
     @Override
@@ -175,12 +216,14 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
             return false;
         if (bundesministerName != null ? !bundesministerName.equals(that.bundesministerName) : that.bundesministerName != null)
             return false;
-        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null)
+        if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
             return false;
+        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
-        return adresse != null ? adresse.equals(that.adresse) : that.adresse == null;
+        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
+        return webseite != null ? webseite.equals(that.webseite) : that.webseite == null;
     }
 
     @Override
@@ -189,10 +232,12 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
         result = 31 * result + (bundesministerName != null ? bundesministerName.hashCode() : 0);
+        result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -203,10 +248,12 @@ public class Ministerium implements KandidatFacette,AdresseEmbedded,OnlineStrate
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
                 ", bundesministerName='" + bundesministerName + '\'' +
+                ", bundesminister=" + bundesminister +
                 ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", adresse=" + adresse +
+                ", webseite=" + webseite +
                 '}';
     }
 }

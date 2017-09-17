@@ -2,11 +2,17 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.oodm.model.listener.ParteiListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
+
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "partei",
@@ -27,10 +33,19 @@ import javax.validation.Valid;
 @NamedQueries({
     @NamedQuery(
         name = "Partei.getAll",
-        query = "select o from Partei as o order by o.id"
+        query = "select o from Partei as o order by o.partei"
+    ),
+    @NamedQuery(
+        name = "Partei.getAllCount",
+        query = "select count(o) from Partei as o"
+    ),
+    @NamedQuery(
+        name = "Partei.findByPartei",
+        query = "select o from Partei as o where o.partei=:partei"
     )
 })
-public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded,AdresseEmbedded {
+@EntityListeners(ParteiListener.class)
+public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded,AdresseEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -67,7 +82,20 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "partei_agentur"
+            )
+        )
+    })
+    private Webseite webseite = new Webseite();
+
     @Transient
+    @Override
     public String getName() {
         StringBuilder sb = new StringBuilder();
         sb.append(partei);
@@ -76,6 +104,12 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
             sb.append(parteiLang);
         }
         return sb.toString();
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {
@@ -155,6 +189,16 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
     }
 
     @Override
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    @Override
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Partei)) return false;
@@ -171,7 +215,10 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
         if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
             return false;
         if (geoPosition != null ? !geoPosition.equals(partei1.geoPosition) : partei1.geoPosition != null) return false;
-        return commonFields != null ? commonFields.equals(partei1.commonFields) : partei1.commonFields == null;
+        if (adresse != null ? !adresse.equals(partei1.adresse) : partei1.adresse != null) return false;
+        if (commonFields != null ? !commonFields.equals(partei1.commonFields) : partei1.commonFields != null)
+            return false;
+        return webseite != null ? webseite.equals(partei1.webseite) : partei1.webseite == null;
     }
 
     @Override
@@ -183,7 +230,9 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -197,7 +246,9 @@ public class Partei implements KandidatFacette,OnlineStrategieEmbedded,CommonFie
                 ", wahlprogramm='" + wahlprogramm + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
+                ", adresse=" + adresse +
                 ", commonFields=" + commonFields +
+                ", webseite=" + webseite +
                 '}';
     }
 }

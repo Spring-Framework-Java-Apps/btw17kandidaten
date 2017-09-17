@@ -1,11 +1,19 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.BundeslandListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import static javax.persistence.FetchType.EAGER;
 
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "bundesland",
@@ -16,7 +24,8 @@ import javax.validation.Valid;
         @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
     }
 )
-public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,CommonFieldsEmbedded {
+@EntityListeners(BundeslandListener.class)
+public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,6 +47,14 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_webseite_cms")
+    private WebseiteCms webseiteCms;
+
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name="bundesland_agentur")
+    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+
     @Transient
     public String getName(){
         StringBuffer name = new StringBuffer();
@@ -46,6 +63,12 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
         name.append(bundesland);
         name.append(")");
         return name.toString();
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {
@@ -88,6 +111,22 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
         this.commonFields = commonFields;
     }
 
+    public WebseiteCms getWebseiteCms() {
+        return webseiteCms;
+    }
+
+    public void setWebseiteCms(WebseiteCms webseiteCms) {
+        this.webseiteCms = webseiteCms;
+    }
+
+    public Set<WebseiteAgentur> getWebseiteAgentur() {
+        return webseiteAgentur;
+    }
+
+    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
+        this.webseiteAgentur = webseiteAgentur;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,7 +140,9 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
+        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null) return false;
+        if (webseiteCms != null ? !webseiteCms.equals(that.webseiteCms) : that.webseiteCms != null) return false;
+        return webseiteAgentur != null ? webseiteAgentur.equals(that.webseiteAgentur) : that.webseiteAgentur == null;
     }
 
     @Override
@@ -111,6 +152,8 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
+        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
+        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
         return result;
     }
 
@@ -122,6 +165,8 @@ public class Bundesland implements KandidatFacette,OnlineStrategieEmbedded,Commo
                 ", bundeslandLang='" + bundeslandLang + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", commonFields=" + commonFields +
+                ", webseiteCms=" + webseiteCms +
+                ", webseiteAgentur=" + webseiteAgentur +
                 '}';
     }
 }

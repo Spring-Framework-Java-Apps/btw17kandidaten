@@ -1,10 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
+import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufListener;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "beruf",
@@ -12,7 +16,8 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_beruf",columnNames = {"beruf"})
     }
 )
-public class Beruf implements KandidatFacette {
+@EntityListeners(BerufListener.class)
+public class Beruf implements DomainObject {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,8 +29,15 @@ public class Beruf implements KandidatFacette {
     private String beruf;
 
     @Transient
+    @Override
     public String getName() {
         return beruf;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {

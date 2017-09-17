@@ -1,13 +1,18 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.LandesListeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFieldsEmbedded;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.KandidatFacette;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "landesliste",
@@ -37,7 +42,8 @@ import javax.validation.constraints.NotNull;
         query = "select o from LandesListe as o order by id"
     )
 })
-public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
+@EntityListeners(LandesListeListener.class)
+public class LandesListe implements DomainObject,CommonFieldsEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +65,7 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
 
 
     @Transient
+    @Override
     public String getName(){
         StringBuffer name = new StringBuffer();
         name.append(listePartei.getListePartei());
@@ -68,6 +75,12 @@ public class LandesListe implements KandidatFacette,CommonFieldsEmbedded {
         name.append(bundesland.getBundesland());
         name.append(")");
         return name.toString();
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {

@@ -6,6 +6,9 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 import javax.persistence.*;
 
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.parts.AdresseEmbedded
+ */
 @Validated
 @Embeddable
 public class Adresse implements MySerializable {

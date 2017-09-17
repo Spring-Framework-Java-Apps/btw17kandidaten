@@ -1,11 +1,20 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.FraktionListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import static javax.persistence.FetchType.EAGER;
+
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "fraktion",
@@ -28,14 +37,15 @@ import javax.validation.Valid;
 @NamedQueries({
     @NamedQuery(
         name = "Fraktion.getAll",
-        query = "select o from Fraktion as o order by id"
+        query = "select o from Fraktion as o order by fraktion"
     ),
     @NamedQuery(
         name = "Fraktion.getAllCount",
         query = "select count(o) from Fraktion as o"
     )
 })
-public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStrategieEmbedded {
+@EntityListeners(FraktionListener.class)
+public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,10 +67,24 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_webseite_cms")
+    private WebseiteCms webseiteCms;
+
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name="fraktion_agentur")
+    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+
     @Transient
     @Override
     public String getName() {
         return fraktionLang;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     @Override
@@ -104,6 +128,22 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
         this.onlineStrategie = onlineStrategie;
     }
 
+    public WebseiteCms getWebseiteCms() {
+        return webseiteCms;
+    }
+
+    public void setWebseiteCms(WebseiteCms webseiteCms) {
+        this.webseiteCms = webseiteCms;
+    }
+
+    public Set<WebseiteAgentur> getWebseiteAgentur() {
+        return webseiteAgentur;
+    }
+
+    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
+        this.webseiteAgentur = webseiteAgentur;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,7 +157,11 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
             return false;
         if (commonFields != null ? !commonFields.equals(fraktion1.commonFields) : fraktion1.commonFields != null)
             return false;
-        return onlineStrategie != null ? onlineStrategie.equals(fraktion1.onlineStrategie) : fraktion1.onlineStrategie == null;
+        if (onlineStrategie != null ? !onlineStrategie.equals(fraktion1.onlineStrategie) : fraktion1.onlineStrategie != null)
+            return false;
+        if (webseiteCms != null ? !webseiteCms.equals(fraktion1.webseiteCms) : fraktion1.webseiteCms != null)
+            return false;
+        return webseiteAgentur != null ? webseiteAgentur.equals(fraktion1.webseiteAgentur) : fraktion1.webseiteAgentur == null;
     }
 
     @Override
@@ -127,6 +171,8 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
         result = 31 * result + (fraktionLang != null ? fraktionLang.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
+        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
         return result;
     }
 
@@ -138,6 +184,8 @@ public class Fraktion implements KandidatFacette,CommonFieldsEmbedded,OnlineStra
                 ", fraktionLang='" + fraktionLang + '\'' +
                 ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
+                ", webseiteCms=" + webseiteCms +
+                ", webseiteAgentur=" + webseiteAgentur +
                 '}';
     }
 }

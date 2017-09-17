@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.woehlke.btw17.kandidaten.oodm.model" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.model.listener" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.model.parts" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.model" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.repositories" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.model" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.common" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten" level="INFO" />

@@ -1,12 +1,17 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.listener.GeburtsortListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+
+/**
+ * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
+ */
 @Entity
 @Table(
     name = "geburtsort",
@@ -14,7 +19,8 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     }
 )
-public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
+@EntityListeners(GeburtsortListener.class)
+public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +47,12 @@ public class Geburtsort implements KandidatFacette,GeoPositionEmbedded,OnlineStr
     @Transient
     public String getName() {
         return geburtsort;
+    }
+
+    @Transient
+    @Override
+    public String getUniqueId() {
+        return id + ":"+this.getName();
     }
 
     public Long getId() {
