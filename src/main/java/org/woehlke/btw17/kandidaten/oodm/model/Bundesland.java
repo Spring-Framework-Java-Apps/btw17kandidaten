@@ -5,10 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import static javax.persistence.FetchType.EAGER;
 
 
 /**
@@ -25,7 +21,7 @@ import static javax.persistence.FetchType.EAGER;
     }
 )
 @EntityListeners(BundeslandListener.class)
-public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFieldsEmbedded {
+public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,13 +43,17 @@ public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFi
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_webseite_cms")
-    private WebseiteCms webseiteCms;
-
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="bundesland_agentur")
-    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+            @AssociationOverride(
+                    name = "webseiteAgentur",
+                    joinTable = @JoinTable(
+                            name = "bundesland_agentur"
+                    )
+            )
+    })
+    private Webseite webseite = new Webseite();
 
     @Transient
     public String getName(){
@@ -111,20 +111,14 @@ public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFi
         this.commonFields = commonFields;
     }
 
-    public WebseiteCms getWebseiteCms() {
-        return webseiteCms;
+    @Override
+    public Webseite getWebseite() {
+        return webseite;
     }
 
-    public void setWebseiteCms(WebseiteCms webseiteCms) {
-        this.webseiteCms = webseiteCms;
-    }
-
-    public Set<WebseiteAgentur> getWebseiteAgentur() {
-        return webseiteAgentur;
-    }
-
-    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
-        this.webseiteAgentur = webseiteAgentur;
+    @Override
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 
     @Override
@@ -141,8 +135,7 @@ public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFi
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
         if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null) return false;
-        if (webseiteCms != null ? !webseiteCms.equals(that.webseiteCms) : that.webseiteCms != null) return false;
-        return webseiteAgentur != null ? webseiteAgentur.equals(that.webseiteAgentur) : that.webseiteAgentur == null;
+        return webseite != null ? webseite.equals(that.webseite) : that.webseite == null;
     }
 
     @Override
@@ -152,8 +145,7 @@ public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFi
         result = 31 * result + (bundeslandLang != null ? bundeslandLang.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
-        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
-        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -165,8 +157,7 @@ public class Bundesland implements DomainObject,OnlineStrategieEmbedded,CommonFi
                 ", bundeslandLang='" + bundeslandLang + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", commonFields=" + commonFields +
-                ", webseiteCms=" + webseiteCms +
-                ", webseiteAgentur=" + webseiteAgentur +
+                ", webseite=" + webseite +
                 '}';
     }
 }

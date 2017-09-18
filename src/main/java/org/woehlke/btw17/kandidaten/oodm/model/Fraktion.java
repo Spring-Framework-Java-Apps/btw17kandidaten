@@ -40,7 +40,7 @@ import javax.validation.Valid;
     )
 })
 @EntityListeners(FraktionListener.class)
-public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
+public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
     private static final long serialVersionUID = 1L;
 

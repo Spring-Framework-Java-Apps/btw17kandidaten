@@ -4,10 +4,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.Webseite;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -230,7 +227,7 @@ import static javax.persistence.FetchType.EAGER;
     )
 })
 @EntityListeners(KandidatListener.class)
-public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbedded {
+public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,OnlineStrategieEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

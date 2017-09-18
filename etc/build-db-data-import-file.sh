@@ -73,7 +73,7 @@ echo '-- Table: liste_partei'
 echo '-- etc/3nf/data/insert-data-listepartei.sql'
 echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei' >> ../src/main/resources/data.sql
-echo '-- Table: liste_partei' >> ../src/main/resources/data.sql
+echo '-- Table: listepartei' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-listepartei.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
