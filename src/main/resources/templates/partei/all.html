@@ -70,8 +70,8 @@
                                     <span th:text="${partei.parteiLang}">parteiLang</span>
                                 </td>
                                 <td>
-                                    <span th:if="${partei.onlineStrategie}">
-                                        <a th:if="${partei.onlineStrategie.webseite}" th:href="${partei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                    <span th:if="${partei.webseite}">
+                                        <a th:if="${partei.webseite.webseite}" th:href="${partei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
                                     </span>
                                 </td>
                                 <td>

@@ -67,12 +67,15 @@
                                 </td>
                                 <td class="text-right">
 
-                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
-                                         <span th:if="${kandidat.bundesland.onlineStrategie.webseite}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.bundesland.webseite}">
+                                        <span th:if="${kandidat.bundesland.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
                                         <span th:if="${kandidat.bundesland.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
