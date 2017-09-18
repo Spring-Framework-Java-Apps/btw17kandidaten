@@ -70,14 +70,14 @@ cat ./3nf/data/insert-data-geburtsort.sql | sed "s/'',/NULL,/g" | sed "s/'')/NUL
 echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei'
 echo '-- Table: liste_partei'
-echo '-- etc/3nf/data/insert-data-liste_partei.sql'
+echo '-- etc/3nf/data/insert-data-listepartei.sql'
 echo '--' >> ../src/main/resources/data.sql
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.ListePartei' >> ../src/main/resources/data.sql
 echo '-- Table: liste_partei' >> ../src/main/resources/data.sql
-echo '-- etc/3nf/data/insert-data-liste_partei.sql' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-listepartei.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-cat ./3nf/data/insert-data-liste_partei.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO liste_partei " >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-listepartei.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO listepartei " >> ../src/main/resources/data.sql
 
 
 echo ' '

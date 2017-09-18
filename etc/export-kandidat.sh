@@ -68,9 +68,9 @@ echo "sql dump table: landesliste"
 
 pg_dump -U $DATABASE --table=landesliste --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-landesliste.sql
 
-echo "sql dump table: liste_partei"
+echo "sql dump table: listepartei"
 
-pg_dump -U $DATABASE --table=liste_partei --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-liste_partei.sql
+pg_dump -U $DATABASE --table=listepartei --data-only --jobs=1 --column-inserts $DATABASE > 3nf/data/insert-data-listepartei.sql
 
 echo "sql dump table: ministerium"
 

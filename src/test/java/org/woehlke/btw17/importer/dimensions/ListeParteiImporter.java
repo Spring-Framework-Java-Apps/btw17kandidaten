@@ -7,7 +7,7 @@ import java.io.*;
 public class ListeParteiImporter {
 
     private final static String dateiName = "etc/3nf/SELECT_liste_partei_liste_partei_lang_FR.csv";
-    private final static String dateiNameOut = "etc/3nf/insert-data-liste_partei.sql";
+    private final static String dateiNameOut = "etc/3nf/insert-data-listepartei.sql";
     private final static String sqlStart = "INSERT INTO liste_partei (id,liste_partei,liste_partei_lang) VALUES (";
 
     @Test
