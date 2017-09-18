@@ -400,23 +400,6 @@ public class KandidatenNormalizedTableBuilder {
     @Ignore
     @Commit
     @Test
-    public void build100LandesListeSql() throws IOException {
-        File landesliste = new File(sqlFileLandeslisteData);
-        landesliste.delete();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(landesliste));
-        for(LandesListe landesListe:landesListeService.getAll()){
-            String sql = landesListe.getSqlInsert();
-            bw.write(sql);
-            bw.newLine();
-        }
-        bw.flush();
-        bw.close();
-    }
-
-
-    @Ignore
-    @Commit
-    @Test
     public void build200CheckResults() throws IOException {
         long countKandidatenFlat = kandidatFlatService.count();
         long countKandidaten = kandidatService.count();

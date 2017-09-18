@@ -19,14 +19,13 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_listepartei",columnNames = {"listepartei","listepartei_lang"})
     },
     indexes = {
-        @Index(name = "idx_liste_partei_listepartei_lang", columnList = "listepartei_lang"),
-        @Index(name = "idx_liste_partei_twitter", columnList = "twitter"),
-        @Index(name = "idx_liste_partei_facebook", columnList = "facebook"),
-        @Index(name = "idx_liste_partei_youtube", columnList = "youtube"),
-        @Index(name = "idx_liste_partei_logo_url", columnList = "logo_url"),
-        @Index(name = "idx_liste_partei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
-        @Index(name = "idx_liste_partei_lobbypedia_url", columnList = "lobbypedia_url"),
-        @Index(name = "idx_liste_partei_wikipedia_article", columnList = "wikipedia_article")
+        @Index(name = "idx_listepartei_twitter", columnList = "twitter"),
+        @Index(name = "idx_listepartei_facebook", columnList = "facebook"),
+        @Index(name = "idx_listepartei_youtube", columnList = "youtube"),
+        @Index(name = "idx_listepartei_logo_url", columnList = "logo_url"),
+        @Index(name = "idx_listepartei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
+        @Index(name = "idx_listepartei_lobbypedia_url", columnList = "lobbypedia_url"),
+        @Index(name = "idx_listepartei_wikipedia_article", columnList = "wikipedia_article")
     }
 )
 @NamedQueries({

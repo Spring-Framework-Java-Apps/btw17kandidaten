@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Table(
     name = "landesliste",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_liste_partei",columnNames = {"fk_bundesland","fk_liste_partei"})
+        @UniqueConstraint(name="unique_landesliste",columnNames = {"fk_bundesland","fk_listepartei"})
     }
 )
 @NamedQueries({
@@ -39,7 +39,7 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "LandesListe.getAllOrOrderById",
-        query = "select o from LandesListe as o order by id"
+        query = "select o from LandesListe as o order by o.listePartei.listePartei"
     )
 })
 @EntityListeners(LandesListeListener.class)
@@ -56,7 +56,7 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_liste_partei", nullable = false, updatable = false)
+    @JoinColumn(name = "fk_listepartei", nullable = false, updatable = false)
     private ListePartei listePartei;
 
     @Valid
@@ -154,15 +154,4 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
                 '}';
     }
 
-    public String getSqlInsert(){
-        StringBuffer sql = new StringBuffer();
-        sql.append("INSERT INTO landesliste (id, fk_bundesland, fk_liste_partei) VALUES (");
-        sql.append(id);
-        sql.append(",");
-        sql.append(bundesland.getId());
-        sql.append(",");
-        sql.append(listePartei.getId());
-        sql.append(");");
-        return sql.toString();
-    }
 }
