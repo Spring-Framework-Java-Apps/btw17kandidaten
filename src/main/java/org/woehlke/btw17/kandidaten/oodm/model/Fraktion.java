@@ -6,10 +6,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import static javax.persistence.FetchType.EAGER;
 
 
 /**
@@ -23,7 +19,6 @@ import static javax.persistence.FetchType.EAGER;
     },
     indexes = {
         @Index(name = "idx_fraktion_fraktion_lang", columnList = "fraktion_lang"),
-        @Index(name = "idx_fraktion_webseite", columnList = "webseite"),
         @Index(name = "idx_fraktion_twitter", columnList = "twitter"),
         @Index(name = "idx_fraktion_facebook", columnList = "facebook"),
         @Index(name = "idx_fraktion_youtube", columnList = "youtube"),
@@ -67,13 +62,17 @@ public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrateg
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_webseite_cms")
-    private WebseiteCms webseiteCms;
-
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="fraktion_agentur")
-    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "fraktion_agentur"
+            )
+        )
+    })
+    private Webseite webseite = new Webseite();
 
     @Transient
     @Override
@@ -128,20 +127,12 @@ public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrateg
         this.onlineStrategie = onlineStrategie;
     }
 
-    public WebseiteCms getWebseiteCms() {
-        return webseiteCms;
+    public Webseite getWebseite() {
+        return webseite;
     }
 
-    public void setWebseiteCms(WebseiteCms webseiteCms) {
-        this.webseiteCms = webseiteCms;
-    }
-
-    public Set<WebseiteAgentur> getWebseiteAgentur() {
-        return webseiteAgentur;
-    }
-
-    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
-        this.webseiteAgentur = webseiteAgentur;
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 
     @Override
@@ -159,9 +150,7 @@ public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrateg
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(fraktion1.onlineStrategie) : fraktion1.onlineStrategie != null)
             return false;
-        if (webseiteCms != null ? !webseiteCms.equals(fraktion1.webseiteCms) : fraktion1.webseiteCms != null)
-            return false;
-        return webseiteAgentur != null ? webseiteAgentur.equals(fraktion1.webseiteAgentur) : fraktion1.webseiteAgentur == null;
+        return webseite != null ? webseite.equals(fraktion1.webseite) : fraktion1.webseite == null;
     }
 
     @Override
@@ -171,8 +160,7 @@ public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrateg
         result = 31 * result + (fraktionLang != null ? fraktionLang.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
-        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
-        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -184,8 +172,7 @@ public class Fraktion implements DomainObject,CommonFieldsEmbedded,OnlineStrateg
                 ", fraktionLang='" + fraktionLang + '\'' +
                 ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
-                ", webseiteCms=" + webseiteCms +
-                ", webseiteAgentur=" + webseiteAgentur +
+                ", webseite=" + webseite +
                 '}';
     }
 }

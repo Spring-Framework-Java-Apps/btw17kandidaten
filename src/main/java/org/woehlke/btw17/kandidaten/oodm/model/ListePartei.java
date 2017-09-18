@@ -14,13 +14,12 @@ import javax.validation.Valid;
  */
 @Entity
 @Table(
-    name = "liste_partei",
+    name = "listepartei",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_liste_partei",columnNames = {"liste_partei","liste_partei_lang"})
+        @UniqueConstraint(name="unique_listepartei",columnNames = {"listepartei","listepartei_lang"})
     },
     indexes = {
-        @Index(name = "idx_liste_partei_liste_partei_lang", columnList = "liste_partei_lang"),
-        @Index(name = "idx_liste_partei_webseite", columnList = "webseite"),
+        @Index(name = "idx_liste_partei_listepartei_lang", columnList = "listepartei_lang"),
         @Index(name = "idx_liste_partei_twitter", columnList = "twitter"),
         @Index(name = "idx_liste_partei_facebook", columnList = "facebook"),
         @Index(name = "idx_liste_partei_youtube", columnList = "youtube"),
@@ -57,10 +56,10 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column(name="liste_partei")
+    @Column(name="listepartei")
     private String listePartei;
 
-    @Column(name="liste_partei_lang")
+    @Column(name="listepartei_lang")
     private String listeParteiLang;
 
     @URL
@@ -85,7 +84,7 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
         @AssociationOverride(
             name = "webseiteAgentur",
             joinTable = @JoinTable(
-                name = "liste_partei_agentur"
+                name = "listepartei_agentur"
             )
         )
     })

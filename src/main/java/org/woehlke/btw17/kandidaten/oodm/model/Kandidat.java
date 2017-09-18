@@ -7,6 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.Webseite;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -38,7 +39,6 @@ import static javax.persistence.FetchType.EAGER;
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
         @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
         @Index(name = "idx_kandidat_foto", columnList = "foto"),
-        @Index(name = "idx_kandidat_webseite", columnList = "webseite"),
         @Index(name = "idx_kandidat_twitter", columnList = "twitter"),
         @Index(name = "idx_kandidat_facebook", columnList = "facebook"),
         @Index(name = "idx_kandidat_youtube", columnList = "youtube"),
@@ -110,11 +110,11 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutWebseite",
-        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null order by o.nachname"
+        query = "select o from Kandidat as o where o.webseite.webseite is null and o.mdb is not null order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.countMdbWithoutWebseite",
-        query = "select count(o) from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is not null"
+        query = "select count(o) from Kandidat as o where o.webseite.webseite is null and o.mdb is not null"
     ),
     @NamedQuery(
         name = "Kandidat.getMdbWithoutFacebook",
@@ -134,11 +134,11 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutWebseite",
-        query = "select o from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null order by o.nachname"
+        query = "select o from Kandidat as o where o.webseite.webseite is null and o.mdb is null order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.countKandidatWithoutWebseite",
-        query = "select count(o) from Kandidat as o where o.onlineStrategie.webseite is null and o.mdb is null"
+        query = "select count(o) from Kandidat as o where o.webseite.webseite is null and o.mdb is null"
     ),
     @NamedQuery(
         name = "Kandidat.getKandidatWithoutFacebook",
@@ -333,13 +333,17 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_webseite_cms")
-    private WebseiteCms webseiteCms;
-
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="kandidat_agentur")
-    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+    @Valid
+    @Embedded
+    @AssociationOverrides({
+            @AssociationOverride(
+                    name = "webseiteAgentur",
+                    joinTable = @JoinTable(
+                            name = "kandidat_agentur"
+                    )
+            )
+    })
+    private Webseite webseite = new Webseite();
 
     @Column
     private String mdb;
@@ -697,22 +701,13 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
         this.ausschuss = ausschuss;
     }
 
-    public WebseiteCms getWebseiteCms() {
-        return webseiteCms;
+    public Webseite getWebseite() {
+        return webseite;
     }
 
-    public void setWebseiteCms(WebseiteCms webseiteCms) {
-        this.webseiteCms = webseiteCms;
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
-
-    public Set<WebseiteAgentur> getWebseiteAgentur() {
-        return webseiteAgentur;
-    }
-
-    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
-        this.webseiteAgentur = webseiteAgentur;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -751,10 +746,7 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
         if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
             return false;
         if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
-        if (webseiteCms != null ? !webseiteCms.equals(kandidat.webseiteCms) : kandidat.webseiteCms != null)
-            return false;
-        if (webseiteAgentur != null ? !webseiteAgentur.equals(kandidat.webseiteAgentur) : kandidat.webseiteAgentur != null)
-            return false;
+        if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
@@ -798,8 +790,7 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
-        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
-        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -843,8 +834,7 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
                 ", fraktion=" + fraktion +
                 ", ministerium=" + ministerium +
                 ", ausschuss=" + ausschuss +
-                ", webseiteCms=" + webseiteCms +
-                ", webseiteAgentur=" + webseiteAgentur +
+                ", webseite=" + webseite +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
@@ -860,7 +850,6 @@ public class Kandidat implements DomainObject,MySerializable,OnlineStrategieEmbe
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
     }
-
 }
 
 

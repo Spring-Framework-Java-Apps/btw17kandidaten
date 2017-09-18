@@ -50,6 +50,6 @@ public class ListeParteiServiceImpl implements ListeParteiService {
 
     @Override
     public ListePartei findByPartei(String partei) {
-        return listeParteiRepository.findByPartei(partei);
+        return listeParteiRepository.findByListePartei(partei);
     }
 }

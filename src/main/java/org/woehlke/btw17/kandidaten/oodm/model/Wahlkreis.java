@@ -19,7 +19,6 @@ import javax.validation.Valid;
     },
     indexes = {
         @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name"),
-        @Index(name = "idx_wahlkreis_wikipedia_article", columnList = "wikipedia_article"),
         @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
     }
 )

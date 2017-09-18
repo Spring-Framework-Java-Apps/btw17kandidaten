@@ -12,6 +12,7 @@ public interface ListeParteiRepository extends PagingAndSortingRepository<ListeP
 
     ListePartei findByListeParteiAndListeParteiLang(String listePartei, String listeParteiLang);
 
-    @Query(name="ListePartei.findByPartei")
-    ListePartei findByPartei(@Param("listePartei") String partei);
+
+    @Query(name="ListePartei.findByListePartei")
+    ListePartei findByListePartei(@Param("listePartei") String listePartei);
 }
