@@ -56,7 +56,10 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.findByKandidatFlatId")
     Kandidat findByKandidatFlatId(@Param("kandidatFlatId") long kandidatFlatId);
 
-    @Query(name="Kandidat.getAll")
+    @Query(
+        name="Kandidat.getAll",
+        countName = "Kandidat.getAllCount"
+    )
     List<Kandidat> getAll();
 
     @Query(
@@ -171,53 +174,53 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
 
     @Query(name="Kandidat.countMdbWithoutAbgeordnetenwatch")
-    Integer countMdbWithoutAbgeordnetenwatch();
+    Long countMdbWithoutAbgeordnetenwatch();
 
     @Query(name="Kandidat.countMdbWithoutBundestagProfile")
-    Integer countMdbWithoutBundestagProfile();
+    Long countMdbWithoutBundestagProfile();
 
     @Query(name="Kandidat.countMdbWithoutFotoUrl")
-    Integer countMdbWithoutFotoUrl();
+    Long countMdbWithoutFotoUrl();
 
     @Query(name="Kandidat.countMdbWithoutFacebook")
-    Integer countMdbWithoutFacebook();
+    Long countMdbWithoutFacebook();
 
     @Query(name="Kandidat.countMdbWithoutTwitter")
-    Integer countMdbWithoutTwitter();
+    Long countMdbWithoutTwitter();
 
     @Query(name="Kandidat.countMdbWithoutWebseite")
-    Integer countMdbWithoutWebseite();
+    Long countMdbWithoutWebseite();
 
     @Query(name="Kandidat.countMdbWithoutWikipediaArticle")
-    Integer countMdbWithoutWikipediaArticle();
+    Long countMdbWithoutWikipediaArticle();
 
     @Query(name="Kandidat.countKandidatWithoutAbgeordnetenwatch")
-    Integer countKandidatWithoutAbgeordnetenwatch();
+    Long countKandidatWithoutAbgeordnetenwatch();
 
     @Query(name="Kandidat.countKandidatWithoutFacebook")
-    Integer countKandidatWithoutFacebook();
+    Long countKandidatWithoutFacebook();
 
     @Query(name="Kandidat.countKandidatWithoutWebseite")
-    Integer countKandidatWithoutWebseite();
+    Long countKandidatWithoutWebseite();
 
     @Query(name="Kandidat.countKandidatWithoutFotoUrl")
-    Integer countKandidatWithoutFotoUrl();
+    Long countKandidatWithoutFotoUrl();
 
     @Query(name="Kandidat.countKandidatWithoutLobbypediaUrl")
-    Integer countKandidatWithoutLobbypediaUrl();
+    Long countKandidatWithoutLobbypediaUrl();
 
     @Query(name="Kandidat.countKandidatWithoutSoundcloud")
-    Integer countKandidatWithoutSoundcloud();
+    Long countKandidatWithoutSoundcloud();
 
     @Query(name="Kandidat.countKandidatWithoutYoutube")
-    Integer countKandidatWithoutYoutube();
+    Long countKandidatWithoutYoutube();
 
     @Query(name="Kandidat.countKandidatWithoutTwitter")
-    Integer countKandidatWithoutTwitter();
+    Long countKandidatWithoutTwitter();
 
     @Query(name="Kandidat.countMdB")
-    Integer countMdb();
+    Long countMdb();
 
     @Query(name="Kandidat.countKandidat")
-    Integer countKandidat();
+    Long countKandidat();
 }

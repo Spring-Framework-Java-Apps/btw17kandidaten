@@ -102,43 +102,42 @@ public class KandidatReportServiceImpl implements KandidatReportService {
     public ReportOverview getOverview() {
         ReportOverview reportOverview = new ReportOverview();
 
-        Integer countMdb = kandidatRepository.countMdb();
+        Long countMdb = kandidatRepository.countMdb();
 
-        Integer countKandidat = kandidatRepository.countKandidat();
+        Long countKandidat = kandidatRepository.countKandidat();
 
-        Integer countMdbWithoutAbgeordnetenwatch = kandidatRepository.countMdbWithoutAbgeordnetenwatch();
+        Long countMdbWithoutAbgeordnetenwatch = kandidatRepository.countMdbWithoutAbgeordnetenwatch();
 
-        Integer countMdbWithoutBundestagProfile = kandidatRepository.countMdbWithoutBundestagProfile();
+        Long countMdbWithoutBundestagProfile = kandidatRepository.countMdbWithoutBundestagProfile();
 
-        Integer countMdbWithoutFotoUrl = kandidatRepository.countMdbWithoutFotoUrl();
+        Long countMdbWithoutFotoUrl = kandidatRepository.countMdbWithoutFotoUrl();
 
-        Integer countMdbWithoutFacebook = kandidatRepository.countMdbWithoutFacebook();
+        Long countMdbWithoutFacebook = kandidatRepository.countMdbWithoutFacebook();
 
-        Integer countMdbWithoutTwitter = kandidatRepository.countMdbWithoutTwitter();
+        Long countMdbWithoutTwitter = kandidatRepository.countMdbWithoutTwitter();
 
-        Integer countMdbWithoutWebseite = kandidatRepository.countMdbWithoutWebseite();
+        Long countMdbWithoutWebseite = kandidatRepository.countMdbWithoutWebseite();
 
-        Integer countMdbWithoutWikipediaArticle = kandidatRepository.countMdbWithoutWikipediaArticle();
+        Long countMdbWithoutWikipediaArticle = kandidatRepository.countMdbWithoutWikipediaArticle();
 
-        Integer countKandidatWithoutAbgeordnetenwatch = kandidatRepository.countKandidatWithoutAbgeordnetenwatch();
+        Long countKandidatWithoutAbgeordnetenwatch = kandidatRepository.countKandidatWithoutAbgeordnetenwatch();
 
-        Integer countKandidatWithoutFacebook = kandidatRepository.countKandidatWithoutFacebook();
+        Long countKandidatWithoutFacebook = kandidatRepository.countKandidatWithoutFacebook();
 
-        Integer countKandidatWithoutWebseite = kandidatRepository.countKandidatWithoutWebseite();
+        Long countKandidatWithoutWebseite = kandidatRepository.countKandidatWithoutWebseite();
 
-        Integer countKandidatWithoutFotoUrl = kandidatRepository.countKandidatWithoutFotoUrl();
+        Long countKandidatWithoutFotoUrl = kandidatRepository.countKandidatWithoutFotoUrl();
 
-        Integer countKandidatWithoutLobbypediaUrl = kandidatRepository.countKandidatWithoutLobbypediaUrl();
+        Long countKandidatWithoutLobbypediaUrl = kandidatRepository.countKandidatWithoutLobbypediaUrl();
 
-        Integer countKandidatWithoutSoundcloud = kandidatRepository.countKandidatWithoutSoundcloud();
+        Long countKandidatWithoutSoundcloud = kandidatRepository.countKandidatWithoutSoundcloud();
 
-        Integer countKandidatWithoutYoutube = kandidatRepository.countKandidatWithoutYoutube();
+        Long countKandidatWithoutYoutube = kandidatRepository.countKandidatWithoutYoutube();
 
-        Integer countKandidatWithoutTwitter = kandidatRepository.countKandidatWithoutTwitter();
+        Long countKandidatWithoutTwitter = kandidatRepository.countKandidatWithoutTwitter();
 
         reportOverview.setCountMdb(countMdb);
         reportOverview.setCountKandidat(countKandidat);
-
         reportOverview.setCountMdbWithoutAbgeordnetenwatch(countMdbWithoutAbgeordnetenwatch);
         reportOverview.setCountMdbWithoutBundestagProfile(countMdbWithoutBundestagProfile);
         reportOverview.setCountMdbWithoutFotoUrl(countMdbWithoutFotoUrl);

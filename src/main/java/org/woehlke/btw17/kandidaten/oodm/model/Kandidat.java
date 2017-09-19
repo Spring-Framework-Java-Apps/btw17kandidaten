@@ -82,6 +82,10 @@ import static javax.persistence.FetchType.EAGER;
         query = "select o from Kandidat as o order by id"
     ),
     @NamedQuery(
+        name = "Kandidat.getAllCount",
+        query = "select count(o) from Kandidat as o"
+    ),
+    @NamedQuery(
         name = "Kandidat.getMdbWithoutBundestagProfile",
         query = "select o from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null order by o.nachname"
     ),

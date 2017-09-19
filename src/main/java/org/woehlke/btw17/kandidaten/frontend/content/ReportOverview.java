@@ -4,174 +4,173 @@ import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
 public class ReportOverview implements MySerializable {
 
-    private Integer countMdb;
+    private Long countMdb;
 
-    private Integer countKandidat;
+    private Long countKandidat;
 
-    private Integer countMdbWithoutAbgeordnetenwatch;
+    private Long countMdbWithoutAbgeordnetenwatch;
 
-    private Integer countMdbWithoutBundestagProfile;
+    private Long countMdbWithoutBundestagProfile;
 
-    private Integer countMdbWithoutFotoUrl;
+    private Long countMdbWithoutFotoUrl;
 
-    private Integer countMdbWithoutFacebook;
+    private Long countMdbWithoutFacebook;
 
-    private Integer countMdbWithoutTwitter;
+    private Long countMdbWithoutTwitter;
 
-    private Integer countMdbWithoutWebseite;
+    private Long countMdbWithoutWebseite;
 
-    private Integer countMdbWithoutWikipediaArticle;
+    private Long countMdbWithoutWikipediaArticle;
 
-    private Integer countKandidatWithoutAbgeordnetenwatch;
+    private Long countKandidatWithoutAbgeordnetenwatch;
 
-    private Integer countKandidatWithoutFacebook;
+    private Long countKandidatWithoutFacebook;
 
-    private Integer countKandidatWithoutWebseite;
+    private Long countKandidatWithoutWebseite;
 
-    private Integer countKandidatWithoutFotoUrl;
+    private Long countKandidatWithoutFotoUrl;
 
-    private Integer countKandidatWithoutLobbypediaUrl;
+    private Long countKandidatWithoutLobbypediaUrl;
 
-    private Integer countKandidatWithoutSoundcloud;
+    private Long countKandidatWithoutSoundcloud;
 
-    private Integer countKandidatWithoutYoutube;
+    private Long countKandidatWithoutYoutube;
 
-    private Integer countKandidatWithoutTwitter;
+    private Long countKandidatWithoutTwitter;
 
-
-    public Integer getCountMdbWithoutAbgeordnetenwatch() {
-        return countMdbWithoutAbgeordnetenwatch;
-    }
-
-    public Integer getCountMdb() {
+    public Long getCountMdb() {
         return countMdb;
     }
 
-    public void setCountMdb(Integer countMdb) {
+    public void setCountMdb(Long countMdb) {
         this.countMdb = countMdb;
     }
 
-    public Integer getCountKandidat() {
+    public Long getCountKandidat() {
         return countKandidat;
     }
 
-    public void setCountKandidat(Integer countKandidat) {
+    public void setCountKandidat(Long countKandidat) {
         this.countKandidat = countKandidat;
     }
 
-    public void setCountMdbWithoutAbgeordnetenwatch(Integer countMdbWithoutAbgeordnetenwatch) {
+    public Long getCountMdbWithoutAbgeordnetenwatch() {
+        return countMdbWithoutAbgeordnetenwatch;
+    }
+
+    public void setCountMdbWithoutAbgeordnetenwatch(Long countMdbWithoutAbgeordnetenwatch) {
         this.countMdbWithoutAbgeordnetenwatch = countMdbWithoutAbgeordnetenwatch;
     }
 
-    public Integer getCountMdbWithoutBundestagProfile() {
+    public Long getCountMdbWithoutBundestagProfile() {
         return countMdbWithoutBundestagProfile;
     }
 
-    public void setCountMdbWithoutBundestagProfile(Integer countMdbWithoutBundestagProfile) {
+    public void setCountMdbWithoutBundestagProfile(Long countMdbWithoutBundestagProfile) {
         this.countMdbWithoutBundestagProfile = countMdbWithoutBundestagProfile;
     }
 
-    public Integer getCountMdbWithoutFotoUrl() {
+    public Long getCountMdbWithoutFotoUrl() {
         return countMdbWithoutFotoUrl;
     }
 
-    public void setCountMdbWithoutFotoUrl(Integer countMdbWithoutFotoUrl) {
+    public void setCountMdbWithoutFotoUrl(Long countMdbWithoutFotoUrl) {
         this.countMdbWithoutFotoUrl = countMdbWithoutFotoUrl;
     }
 
-    public Integer getCountMdbWithoutFacebook() {
+    public Long getCountMdbWithoutFacebook() {
         return countMdbWithoutFacebook;
     }
 
-    public void setCountMdbWithoutFacebook(Integer countMdbWithoutFacebook) {
+    public void setCountMdbWithoutFacebook(Long countMdbWithoutFacebook) {
         this.countMdbWithoutFacebook = countMdbWithoutFacebook;
     }
 
-    public Integer getCountMdbWithoutTwitter() {
+    public Long getCountMdbWithoutTwitter() {
         return countMdbWithoutTwitter;
     }
 
-    public void setCountMdbWithoutTwitter(Integer countMdbWithoutTwitter) {
+    public void setCountMdbWithoutTwitter(Long countMdbWithoutTwitter) {
         this.countMdbWithoutTwitter = countMdbWithoutTwitter;
     }
 
-    public Integer getCountMdbWithoutWebseite() {
+    public Long getCountMdbWithoutWebseite() {
         return countMdbWithoutWebseite;
     }
 
-    public void setCountMdbWithoutWebseite(Integer countMdbWithoutWebseite) {
+    public void setCountMdbWithoutWebseite(Long countMdbWithoutWebseite) {
         this.countMdbWithoutWebseite = countMdbWithoutWebseite;
     }
 
-    public Integer getCountMdbWithoutWikipediaArticle() {
+    public Long getCountMdbWithoutWikipediaArticle() {
         return countMdbWithoutWikipediaArticle;
     }
 
-    public void setCountMdbWithoutWikipediaArticle(Integer countMdbWithoutWikipediaArticle) {
+    public void setCountMdbWithoutWikipediaArticle(Long countMdbWithoutWikipediaArticle) {
         this.countMdbWithoutWikipediaArticle = countMdbWithoutWikipediaArticle;
     }
 
-    public Integer getCountKandidatWithoutAbgeordnetenwatch() {
+    public Long getCountKandidatWithoutAbgeordnetenwatch() {
         return countKandidatWithoutAbgeordnetenwatch;
     }
 
-    public void setCountKandidatWithoutAbgeordnetenwatch(Integer countKandidatWithoutAbgeordnetenwatch) {
+    public void setCountKandidatWithoutAbgeordnetenwatch(Long countKandidatWithoutAbgeordnetenwatch) {
         this.countKandidatWithoutAbgeordnetenwatch = countKandidatWithoutAbgeordnetenwatch;
     }
 
-    public Integer getCountKandidatWithoutFacebook() {
+    public Long getCountKandidatWithoutFacebook() {
         return countKandidatWithoutFacebook;
     }
 
-    public void setCountKandidatWithoutFacebook(Integer countKandidatWithoutFacebook) {
+    public void setCountKandidatWithoutFacebook(Long countKandidatWithoutFacebook) {
         this.countKandidatWithoutFacebook = countKandidatWithoutFacebook;
     }
 
-    public Integer getCountKandidatWithoutWebseite() {
+    public Long getCountKandidatWithoutWebseite() {
         return countKandidatWithoutWebseite;
     }
 
-    public void setCountKandidatWithoutWebseite(Integer countKandidatWithoutWebseite) {
+    public void setCountKandidatWithoutWebseite(Long countKandidatWithoutWebseite) {
         this.countKandidatWithoutWebseite = countKandidatWithoutWebseite;
     }
 
-    public Integer getCountKandidatWithoutFotoUrl() {
+    public Long getCountKandidatWithoutFotoUrl() {
         return countKandidatWithoutFotoUrl;
     }
 
-    public void setCountKandidatWithoutFotoUrl(Integer countKandidatWithoutFotoUrl) {
+    public void setCountKandidatWithoutFotoUrl(Long countKandidatWithoutFotoUrl) {
         this.countKandidatWithoutFotoUrl = countKandidatWithoutFotoUrl;
     }
 
-    public Integer getCountKandidatWithoutLobbypediaUrl() {
+    public Long getCountKandidatWithoutLobbypediaUrl() {
         return countKandidatWithoutLobbypediaUrl;
     }
 
-    public void setCountKandidatWithoutLobbypediaUrl(Integer countKandidatWithoutLobbypediaUrl) {
+    public void setCountKandidatWithoutLobbypediaUrl(Long countKandidatWithoutLobbypediaUrl) {
         this.countKandidatWithoutLobbypediaUrl = countKandidatWithoutLobbypediaUrl;
     }
 
-    public Integer getCountKandidatWithoutSoundcloud() {
+    public Long getCountKandidatWithoutSoundcloud() {
         return countKandidatWithoutSoundcloud;
     }
 
-    public void setCountKandidatWithoutSoundcloud(Integer countKandidatWithoutSoundcloud) {
+    public void setCountKandidatWithoutSoundcloud(Long countKandidatWithoutSoundcloud) {
         this.countKandidatWithoutSoundcloud = countKandidatWithoutSoundcloud;
     }
 
-    public Integer getCountKandidatWithoutYoutube() {
+    public Long getCountKandidatWithoutYoutube() {
         return countKandidatWithoutYoutube;
     }
 
-    public void setCountKandidatWithoutYoutube(Integer countKandidatWithoutYoutube) {
+    public void setCountKandidatWithoutYoutube(Long countKandidatWithoutYoutube) {
         this.countKandidatWithoutYoutube = countKandidatWithoutYoutube;
     }
 
-    public Integer getCountKandidatWithoutTwitter() {
+    public Long getCountKandidatWithoutTwitter() {
         return countKandidatWithoutTwitter;
     }
 
-    public void setCountKandidatWithoutTwitter(Integer countKandidatWithoutTwitter) {
+    public void setCountKandidatWithoutTwitter(Long countKandidatWithoutTwitter) {
         this.countKandidatWithoutTwitter = countKandidatWithoutTwitter;
     }
 
