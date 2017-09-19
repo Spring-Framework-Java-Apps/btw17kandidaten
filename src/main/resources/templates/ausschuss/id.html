@@ -15,14 +15,6 @@
             <div class="col-md-12">
                 <div class="well">
 
-                    <span th:if="${ausschuss.webseite}">
-                        <span th:if="${ausschuss.webseite.webseite}">
-                            <a class="tw-social-media-link" th:href="${ausschuss.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
-                        </span>
-                    </span>
-
                     <span th:if="${ausschuss.onlineStrategie}">
                         <span th:if="${ausschuss.onlineStrategie.twitter != null}">
                             <a class="tw-social-media-link" th:href="${ausschuss.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

@@ -32,12 +32,6 @@
                                 <th class="tw-debug">ID</th>
                                 <th>wahlkreisId</th>
                                 <th>wahlkreisName</th>
-                                <th>
-                                    &nbsp;&nbsp;&nbsp;
-                                </th>
-                                <th>
-                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -59,16 +53,6 @@
                                 </td>
                                 <td>
                                     <span th:text="${wahlkreis.wahlkreisName}">wahlkreisName</span>
-                                </td>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td>
-                                    <span th:if="${wahlkreis.onlineStrategie}">
-                                        <a th:if="${wahlkreis.onlineStrategie.wikipediaArticle}" th:href="${wahlkreis.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                        </a>
-                                    </span>
                                 </td>
                             </tr>
                             </tbody>
