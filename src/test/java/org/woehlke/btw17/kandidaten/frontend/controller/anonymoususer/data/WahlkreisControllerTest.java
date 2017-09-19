@@ -94,7 +94,7 @@ public class WahlkreisControllerTest {
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         for(Wahlkreis wahlkreis:wahlkreise){
-            MvcResult result = this.mockMvc.perform(get("/redaktion/wahlkreis/"+wahlkreis.getId()))
+            MvcResult result = this.mockMvc.perform(get("/wahlkreis/"+wahlkreis.getId()))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "wahlkreis/id"))
                     .andExpect(model().attributeExists("pageContent"))
