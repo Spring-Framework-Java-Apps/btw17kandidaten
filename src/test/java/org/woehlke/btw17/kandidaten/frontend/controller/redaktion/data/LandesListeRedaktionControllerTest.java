@@ -54,7 +54,7 @@ public class LandesListeRedaktionControllerTest {
     public void test010getLandesListeForBundeslandAll() throws Exception {
         String msg ="test010getLandesListeForBundeslandAll: ";
 
-        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste /bundesland/all"))
+        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste/bundesland/all"))
                 .andExpect(status().isOk())
                 .andExpect(view().name( "landesliste/bundesland/all"))
                 .andExpect(model().attributeExists("pageContent"))
@@ -79,7 +79,7 @@ public class LandesListeRedaktionControllerTest {
     public void test011getLandesListeForListeParteiAll()throws Exception {
         String msg ="test011getLandesListeForListeParteiAll: ";
 
-        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste /listepartei/all"))
+        MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste/listepartei/all"))
                 .andExpect(status().isOk())
                 .andExpect(view().name( "landesliste/listepartei/all"))
                 .andExpect(model().attributeExists("pageContent"))
