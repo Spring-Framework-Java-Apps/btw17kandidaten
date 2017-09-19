@@ -216,8 +216,6 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
             return false;
         if (bundesministerName != null ? !bundesministerName.equals(that.bundesministerName) : that.bundesministerName != null)
             return false;
-        if (bundesminister != null ? !bundesminister.equals(that.bundesminister) : that.bundesminister != null)
-            return false;
         if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
@@ -232,7 +230,6 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
         result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
         result = 31 * result + (ministeriumLang != null ? ministeriumLang.hashCode() : 0);
         result = 31 * result + (bundesministerName != null ? bundesministerName.hashCode() : 0);
-        result = 31 * result + (bundesminister != null ? bundesminister.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
@@ -248,7 +245,6 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
                 ", ministerium='" + ministerium + '\'' +
                 ", ministeriumLang='" + ministeriumLang + '\'' +
                 ", bundesministerName='" + bundesministerName + '\'' +
-                ", bundesminister=" + bundesminister +
                 ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +

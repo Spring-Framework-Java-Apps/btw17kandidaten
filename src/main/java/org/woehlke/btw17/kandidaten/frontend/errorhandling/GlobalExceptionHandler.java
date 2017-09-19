@@ -24,6 +24,7 @@ import java.io.IOException;
 @ControllerAdvice
 public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
 
+    /*
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ModelAndView notFound(HttpServletRequest request, Exception ex) {
@@ -31,6 +32,7 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         log.warn(ex.getMessage());
         return getTemplate(request, ex, HttpStatus.NOT_FOUND);
     }
+    */
 
 /*
     @ExceptionHandler(Throwable.class)
@@ -57,6 +59,7 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
     }
 */
 
+/*
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView handleIllegalArgumentException(HttpServletRequest request, Exception ex) {
@@ -96,6 +99,7 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
         log.warn(ex.getMessage());
         return getTemplate(request, ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    */
 
     private ModelAndView getTemplate(HttpServletRequest request, Exception ex, HttpStatus httpStatus) {
         ModelAndView mav = new ModelAndView();
