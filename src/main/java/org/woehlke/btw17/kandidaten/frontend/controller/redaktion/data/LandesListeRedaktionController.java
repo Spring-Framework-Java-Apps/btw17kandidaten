@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
@@ -16,13 +15,10 @@ import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
-import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
