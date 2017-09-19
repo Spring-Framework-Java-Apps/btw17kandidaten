@@ -41,11 +41,8 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name="ausschuss")
     private String ausschuss;
-
-    @Column(name="ausschuss_lang")
-    private String ausschussLang;
 
     @Valid
     @Embedded
@@ -84,14 +81,6 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
         this.ausschuss = ausschuss;
     }
 
-    public String getAusschussLang() {
-        return ausschussLang;
-    }
-
-    public void setAusschussLang(String ausschussLang) {
-        this.ausschussLang = ausschussLang;
-    }
-
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -117,8 +106,6 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
 
         if (id != null ? !id.equals(ausschuss1.id) : ausschuss1.id != null) return false;
         if (ausschuss != null ? !ausschuss.equals(ausschuss1.ausschuss) : ausschuss1.ausschuss != null) return false;
-        if (ausschussLang != null ? !ausschussLang.equals(ausschuss1.ausschussLang) : ausschuss1.ausschussLang != null)
-            return false;
         if (commonFields != null ? !commonFields.equals(ausschuss1.commonFields) : ausschuss1.commonFields != null)
             return false;
         return onlineStrategie != null ? onlineStrategie.equals(ausschuss1.onlineStrategie) : ausschuss1.onlineStrategie == null;
@@ -128,7 +115,6 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
-        result = 31 * result + (ausschussLang != null ? ausschussLang.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         return result;
@@ -139,7 +125,6 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
         return "Ausschuss{" +
                 "id=" + id +
                 ", ausschuss='" + ausschuss + '\'' +
-                ", ausschussLang='" + ausschussLang + '\'' +
                 ", commonFields=" + commonFields +
                 ", onlineStrategie=" + onlineStrategie +
                 '}';
