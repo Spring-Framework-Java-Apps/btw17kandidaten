@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,6 +56,7 @@ public class KandidatController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             HttpSession session,
+            HttpRequest request,
             Model model
     ) {
         String pageTitle = "Alle Kandidaten";
@@ -75,10 +77,14 @@ public class KandidatController extends AbstractController {
 
     @RequestMapping("/{id}")
     public String getKandidatForId(
-            @PathVariable("id") Kandidat kandidat, HttpSession session, Model model
+            @PathVariable("id") Kandidat kandidat,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(kandidat == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in KandidatController.getKandidatForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
             String pageSubTitle = "Kandidaten der btw17";

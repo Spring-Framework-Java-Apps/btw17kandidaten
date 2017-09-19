@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,10 +70,14 @@ public class GeburtsortController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Geburtsort geburtsort, HttpSession session, Model model
+            @PathVariable("id") Geburtsort geburtsort,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(geburtsort == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in GeburtsortController.getUserForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = geburtsort.getGeburtsort();
             String pageSubTitle = "Geburtsorte der Bundestagswahl 2017 Direktkandidaten";

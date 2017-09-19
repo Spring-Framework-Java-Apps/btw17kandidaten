@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,10 +69,14 @@ public class BerufController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Beruf beruf, HttpSession session, Model model
+            @PathVariable("id") Beruf beruf,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(beruf == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in BerufController.getUserForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = beruf.getBeruf();
             String pageSubTitle = "Berufe der Bundestagswahl 2017 Direktkandidaten";
@@ -85,7 +90,6 @@ public class BerufController extends AbstractController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("beruf",beruf);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByBeruf(beruf,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
             return "beruf/id";

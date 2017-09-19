@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,10 +69,14 @@ public class ListeParteiController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") ListePartei listePartei, HttpSession session, Model model
+            @PathVariable("id") ListePartei listePartei,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(listePartei == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in ListeParteiController.getUserForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = listePartei.getListePartei();
             String pageSubTitle = listePartei.getListeParteiLang();

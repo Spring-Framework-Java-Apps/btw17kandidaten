@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,10 +70,14 @@ public class FraktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Fraktion fraktion, HttpSession session, Model model
+            @PathVariable("id") Fraktion fraktion,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(fraktion == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in FraktionController.getFraktionForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = fraktion.getFraktion();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();

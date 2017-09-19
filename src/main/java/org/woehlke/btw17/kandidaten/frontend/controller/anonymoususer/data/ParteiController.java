@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,10 +70,14 @@ public class ParteiController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Partei partei, HttpSession session, Model model
+            @PathVariable("id") Partei partei,
+            HttpRequest request,
+            HttpSession session,
+            Model model
     ) {
         if(partei == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in ParteiController.getUserForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = partei.getPartei();
             String pageSubTitle = partei.getParteiLang();

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,10 +69,14 @@ public class GeburtsjahrController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("geburtsjahr") Integer geburtsjahr, HttpSession session, Model model
+            @PathVariable("geburtsjahr") Integer geburtsjahr,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(geburtsjahr == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in GeburtsjahrController.getKandidatenForGeburtsjahr";
+            throw new EntityNotFoundException(msg);
         } else {
             int mindestalter = 18;
             int todayYear = (new Date()).getYear() + 1901 - mindestalter;

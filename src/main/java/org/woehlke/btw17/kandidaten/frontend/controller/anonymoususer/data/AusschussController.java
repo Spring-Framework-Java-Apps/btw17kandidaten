@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,9 +59,8 @@ public class AusschussController extends AbstractController {
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss);
         model.addAttribute("pageContent",pageContent);
-
         Page<Ausschuss> pageAllAusschuss =  ausschussService.getAll(pageable);
         model.addAttribute("ausschuesse", pageAllAusschuss);
         return "ausschuss/all";
@@ -73,10 +73,14 @@ public class AusschussController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") Ausschuss ausschuss, HttpSession session, Model model
+            @PathVariable("id") Ausschuss ausschuss,
+            HttpSession session,
+            HttpRequest request,
+            Model model
     ) {
         if(ausschuss == null){
-            throw new EntityNotFoundException();
+            String msg = "url: "+request.getURI().toString()+" in AusschussController.getFraktionForId";
+            throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = ausschuss.getName();
             String pageSubTitle = kandidatenProperties.getPageSubTitle();
@@ -87,13 +91,11 @@ public class AusschussController extends AbstractController {
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("ausschuss",ausschuss);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
-
             return "ausschuss/id";
         }
     }
