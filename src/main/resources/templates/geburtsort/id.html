@@ -14,110 +14,95 @@
             <div class="col-md-12">
                 <div class="well">
 
-                    <span th:if="${geburtsort.onlineStrategie}">
-
-                        <span th:if="${geburtsort.onlineStrategie.webseite != null}">
-                            <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                    <span th:if="${geburtsort.webseite}">
+                        <span th:if="${geburtsort.webseite.webseite}">
+                            <a class="tw-social-media-link" th:href="${geburtsort.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                 <i class="fa fa-link" aria-hidden="true"></i>
                             </a>
                         </span>
+                    </span>
 
-                        <span th:if="${geburtsort.onlineStrategie.twitter != null}">
+                    <span th:if="${geburtsort.onlineStrategie}">
+                        <span th:if="${geburtsort.onlineStrategie.twitter}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.facebook != null}">
+                        <span th:if="${geburtsort.onlineStrategie.facebook}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.youtube != null}">
+                        <span th:if="${geburtsort.onlineStrategie.youtube}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
                                 <i class="fa fa-youtube" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.soundcloud != null}">
+                        <span th:if="${geburtsort.onlineStrategie.soundcloud}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
                                 <i class="fa fa-soundcloud" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.wikipediaArticle != null}">
+                        <span th:if="${geburtsort.onlineStrategie.wikipediaArticle}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
                                 <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.bundestagAbgeordnete != null}">
+                        <span th:if="${geburtsort.onlineStrategie.bundestagAbgeordnete}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
                                 <i class="fa fa-university" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.abgeordnetenwatch != null}">
+                        <span th:if="${geburtsort.onlineStrategie.abgeordnetenwatch}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                         </span>
-
                         <span th:if="${geburtsort.onlineStrategie.lobbypediaUrl}" >
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
                                 <i class="fa fa-balance-scale" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.googlePlus != null}">
+                        <span th:if="${geburtsort.onlineStrategie.googlePlus}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
                                 <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.instagram != null}">
+                        <span th:if="${geburtsort.onlineStrategie.instagram}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.flickr != null}">
+                        <span th:if="${geburtsort.onlineStrategie.flickr}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
                                 <i class="fa fa-flickr" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.vimeo != null}">
+                        <span th:if="${geburtsort.onlineStrategie.vimeo}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
                                 <i class="fa fa-vimeo-square" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.xing != null}">
+                        <span th:if="${geburtsort.onlineStrategie.xing}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
                                 <i class="fa fa-xing-square" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.linkedIn != null}">
+                        <span th:if="${geburtsort.onlineStrategie.linkedIn}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
                                 <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.stackoverflow != null}">
+                        <span th:if="${geburtsort.onlineStrategie.stackoverflow}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
                                 <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                             </a>
                         </span>
-
-                        <span th:if="${geburtsort.onlineStrategie.github != null}">
+                        <span th:if="${geburtsort.onlineStrategie.github}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.github}" alt="github" title="github" target="_blank">
                                 <i class="fa fa-github" aria-hidden="true"></i>
                             </a>
                         </span>
-
                     </span>
 
                 </div>

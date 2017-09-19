@@ -21,12 +21,15 @@
                              class="img-responsive img-thumbnail tw-facette-logo"/>
                     </span>
 
-                    <span th:if="${fraktion.onlineStrategie}">
-                        <span th:if="${fraktion.onlineStrategie.webseite != null}">
-                            <a class="tw-social-media-link" th:href="${fraktion.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                    <span th:if="${fraktion.webseite}">
+                        <span th:if="${fraktion.webseite.webseite}">
+                            <a class="tw-social-media-link" th:href="${fraktion.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                 <i class="fa fa-link" aria-hidden="true"></i>
                             </a>
                         </span>
+                    </span>
+
+                    <span th:if="${fraktion.onlineStrategie}">
                         <span th:if="${fraktion.onlineStrategie.twitter != null}">
                             <a class="tw-social-media-link" th:href="${fraktion.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>

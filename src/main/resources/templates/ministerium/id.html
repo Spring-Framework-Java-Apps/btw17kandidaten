@@ -44,13 +44,16 @@
                                     <tr>
                                         <td>&nbsp;</td>
                                         <td>
-                                             <span th:if="${ministerium.onlineStrategie}">
 
-                                                <span th:if="${ministerium.onlineStrategie.webseite != null}">
-                                                    <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <span th:if="${ministerium.webseite != null}">
+                                                <span th:if="${ministerium.webseite.webseite != null}">
+                                                    <a class="tw-social-media-link" th:href="${ministerium.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                         <i class="fa fa-link" aria-hidden="true"></i>
                                                     </a>
                                                 </span>
+                                            </span>
+
+                                            <span th:if="${ministerium.onlineStrategie}">
 
                                                 <span th:if="${ministerium.onlineStrategie.twitter != null}">
                                                     <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

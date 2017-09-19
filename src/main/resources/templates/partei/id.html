@@ -15,13 +15,15 @@
             <div class="col-md-12">
                 <div class="well">
 
-                    <span th:if="${partei.onlineStrategie}">
-
-                        <span th:if="${partei.onlineStrategie.webseite != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                    <span th:if="${partei.webseite != null}">
+                        <span th:if="${partei.webseite.webseite != null}">
+                            <a class="tw-social-media-link" th:href="${partei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                 <i class="fa fa-link" aria-hidden="true"></i>
                             </a>
                         </span>
+                    </span>
+
+                    <span th:if="${partei.onlineStrategie}">
 
                         <span th:if="${partei.onlineStrategie.twitter != null}">
                             <a class="tw-social-media-link" th:href="${partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

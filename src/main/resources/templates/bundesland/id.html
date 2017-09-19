@@ -20,12 +20,15 @@
                              class="img-responsive img-thumbnail tw-facette-logo"/>
                     </span>
 
-                    <span th:if="${bundesland.onlineStrategie}">
-                         <span th:if="${bundesland.onlineStrategie.webseite != null}">
-                            <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                    <span th:if="${bundesland.webseite}">
+                        <span th:if="${bundesland.webseite.webseite}">
+                            <a class="tw-social-media-link" th:href="${bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                 <i class="fa fa-link" aria-hidden="true"></i>
                             </a>
                         </span>
+                    </span>
+
+                    <span th:if="${bundesland.onlineStrategie}">
                         <span th:if="${bundesland.onlineStrategie.twitter != null}">
                             <a class="tw-social-media-link" th:href="${bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>

@@ -66,12 +66,15 @@
                                 </td>
                                 <td class="text-right">
 
-                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
-                                        <span th:if="${kandidat.bundesland.onlineStrategie.webseite != null}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.bundesland.webseite}">
+                                        <span th:if="${kandidat.bundesland.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.bundesland.onlineStrategie}">
                                         <span th:if="${kandidat.bundesland.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -163,12 +166,16 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <span th:if="${kandidat.geburtsort.onlineStrategie}">
-                                        <span th:if="${kandidat.geburtsort.onlineStrategie.webseite != null}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+
+                                    <span th:if="${kandidat.geburtsort.webseite}">
+                                        <span th:if="${kandidat.geburtsort.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.geburtsort.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.geburtsort.onlineStrategie}">
                                         <span th:if="${kandidat.geburtsort.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -261,12 +268,16 @@
                                 </td>
                                 <td class="text-right">
 
-                                    <span th:if="${kandidat.wohnort.onlineStrategie}">
-                                        <span th:if="${kandidat.wohnort.onlineStrategie.webseite != null}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+
+                                    <span th:if="${kandidat.wohnort.webseite}">
+                                        <span th:if="${kandidat.wohnort.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.wohnort.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.wohnort.onlineStrategie}">
                                         <span th:if="${kandidat.wohnort.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.wohnort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -386,12 +397,15 @@
                                 </td>
                                 <td class="text-right">
 
-                                    <span th:if="${kandidat.partei.onlineStrategie}">
-                                        <span th:if="${kandidat.partei.onlineStrategie.webseite != null}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.partei.webseite}">
+                                        <span th:if="${kandidat.partei.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.partei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.partei.onlineStrategie}">
                                         <span th:if="${kandidat.partei.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -529,12 +543,15 @@
                                 <td>&nbsp;</td>
                                 <td colspan="2">
 
-                                    <span th:if="${kandidat.onlineStrategie}">
-                                        <span th:if="${kandidat.onlineStrategie.webseite != null}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                    <span th:if="${kandidat.webseite}">
+                                        <span th:if="${kandidat.webseite.webseite}">
+                                            <a class="tw-social-media-link" th:href="${kandidat.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                                                 <i class="fa fa-link" aria-hidden="true"></i>
                                             </a>
                                         </span>
+                                    </span>
+
+                                    <span th:if="${kandidat.onlineStrategie}">
                                         <span th:if="${kandidat.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
