@@ -15,8 +15,10 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
+import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
+import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
@@ -36,34 +38,57 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 @SessionAttributes({"suchformular","suchformularFreitext"})
 public class LandesListeRedaktionController extends AbstractController {
 
-    @RequestMapping("/{id}")
-    public String getLandesListeForId(
+    @RequestMapping("/bundesland/all")
+    public String getLandesListeForBundeslandAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            @PathVariable("id") LandesListe landesListe, HttpSession session, Model model
+            HttpSession session,
+            Model model
     ) {
-        if(landesListe == null){
-            throw new EntityNotFoundException();
-        } else {
-            String pageTitle = landesListe.getName();
-            String pageSubTitle = "LandesListe der btw17 Kandidaten";
-            String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
-            String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
-            String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/redaktion/landesliste/"+landesListe.getId();
-            String twitterCardSite = kandidatenProperties.getTwitterCardSite();
-            String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
-            JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
-            model.addAttribute("pageContent",pageContent);
-            model.addAttribute("landesListe",landesListe);
-            Page<Kandidat> kandidatenPage  = kandidatService.findByLandesListe(landesListe,pageable);
-            model.addAttribute("kandidaten",kandidatenPage);
-            return "landesliste/id";
-        }
+        String pageTitle = "Bundesländer der LandesListen";
+        String pageSubTitle = kandidatenProperties.getPageSubTitle();
+        String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/redaktion/landesliste/bundesland/all";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        model.addAttribute("pageContent",pageContent);
+        Page<Bundesland> allBundeslandPage =  landesListeService.getAllBundesland(pageable);
+        model.addAttribute("bundeslaender", allBundeslandPage);
+        model.addAttribute("bundeslandIdTarget","landesliste/bundesland");
+        return "landesliste/bundesland/all";
+    }
+
+    @RequestMapping("/listepartei/all")
+    public String getLandesListeForListeParteiAll(
+            @PageableDefault(
+                    value = FIRST_PAGE_NUMBER,
+                    size = PAGE_SIZE,
+                    sort = PAGE_DEFAULT_SORT
+            ) Pageable pageable,
+            HttpSession session,
+            Model model
+    ) {
+        String pageTitle = "Partei Listen der LandesListen";
+        String pageSubTitle = "btw17 Kandidaten";
+        String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/redaktion/landesliste/listepartei/all";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        model.addAttribute("pageContent",pageContent);
+        Page<ListePartei> allListeParteiPage = landesListeService.getAllListePartei(pageable);
+        model.addAttribute("listeparteien", allListeParteiPage);
+        return "landesliste/listepartei/all";
     }
 
     private final LandesListeService landesListeService;
