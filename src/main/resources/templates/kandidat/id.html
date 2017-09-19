@@ -167,14 +167,6 @@
                                 </td>
                                 <td class="text-right">
 
-                                    <span th:if="${kandidat.geburtsort.webseite}">
-                                        <span th:if="${kandidat.geburtsort.webseite.webseite}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.geburtsort.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                <i class="fa fa-link" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </span>
-
                                     <span th:if="${kandidat.geburtsort.onlineStrategie}">
                                         <span th:if="${kandidat.geburtsort.onlineStrategie.twitter != null}">
                                             <a class="tw-social-media-link" th:href="${kandidat.geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
@@ -267,7 +259,6 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-
 
                                     <span th:if="${kandidat.wohnort.webseite}">
                                         <span th:if="${kandidat.wohnort.webseite.webseite}">
@@ -651,7 +642,7 @@
                     <br/><br/>
                 </div>
             </div>
-            <div class="row" th:if="${kandidat.wohnort}">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="well" th:if="${kandidat.wohnort.geoPosition}">
                         <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
@@ -660,7 +651,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" th:if="${kandidat.lat}">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="well">
                         <h3 th:if="${kandidat.geburtsort != null}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
@@ -678,8 +669,11 @@
 </section>
 
 
-<script th:inline="text" th:if="${kandidat.wohnort.geoPosition}">
-    function initMap() {
+<script th:inline="text" th:if="${kandidat.wohnort.geoPosition == null}">
+    function initMapWohnort() {}
+</script>
+<script th:inline="text" th:if="${kandidat.wohnort.geoPosition != null}">
+    function initMapWohnort() {
         var wohnort = {lat: [[${kandidat.wohnort.geoPosition.geoLattitude}]], lng: [[${kandidat.wohnort.geoPosition.geoLongitude}]]};
         var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
             zoom: 8,
@@ -689,8 +683,12 @@
             position: wohnort,
             map: mapwohnort
         });
-
-        var kandidat = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
+    }
+</script>
+<script th:inline="text">
+    function initMap() {
+        initMapWohnort();
+        var kandidat = {at: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
         var mapgeburtsort = new google.maps.Map(document.getElementById('map-geburtsort'), {
             zoom: 8,
             center: kandidat

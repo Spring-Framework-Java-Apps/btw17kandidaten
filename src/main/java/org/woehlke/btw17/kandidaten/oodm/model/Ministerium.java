@@ -49,7 +49,7 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name="ministerium")
     private String ministerium;
 
     @Column(name="ministerium_lang")

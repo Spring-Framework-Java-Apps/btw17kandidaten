@@ -59,6 +59,7 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
     @JoinColumn(name = "fk_listepartei", nullable = false, updatable = false)
     private ListePartei listePartei;
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();

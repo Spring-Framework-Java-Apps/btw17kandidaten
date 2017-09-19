@@ -73,18 +73,22 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
     @Column(name="product_demo_page")
     private String productDemoPage;
 
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @NotNull
     @Valid
     @Embedded
     private Adresse adresse = new Adresse();
 
+    @NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();

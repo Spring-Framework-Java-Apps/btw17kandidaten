@@ -5,6 +5,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -43,18 +44,22 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     private Bundesland bundesland;
 
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
+    @NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
@@ -77,6 +82,12 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     @Override
     public String getUniqueId() {
         return id + ":"+this.getName();
+    }
+
+    public Wohnort() {
+        onlineStrategie = new OnlineStrategie();
+        commonFields = new CommonFields();
+        geoPosition = new GeoPosition();
     }
 
     @Override
@@ -109,7 +120,9 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie!=null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -117,7 +130,9 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields!=null){
+            this.commonFields = commonFields;
+        }
     }
 
     public GeoPosition getGeoPosition() {
@@ -125,7 +140,9 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     }
 
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition!=null) {
+            this.geoPosition = geoPosition;
+        }
     }
 
     @Override
@@ -135,7 +152,9 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
 
     @Override
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite!=null){
+            this.webseite = webseite;
+        }
     }
 
     @Override

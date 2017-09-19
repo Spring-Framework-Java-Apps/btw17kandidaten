@@ -5,6 +5,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -29,29 +30,32 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name="bundesland",nullable = false)
     private String bundesland;
 
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
-            @AssociationOverride(
-                    name = "webseiteAgentur",
-                    joinTable = @JoinTable(
-                            name = "bundesland_agentur"
-                    )
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "bundesland_agentur"
             )
+        )
     })
     private Webseite webseite = new Webseite();
 
@@ -118,7 +122,9 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
 
     @Override
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite!=null){
+            this.webseite = webseite;
+        }
     }
 
     @Override

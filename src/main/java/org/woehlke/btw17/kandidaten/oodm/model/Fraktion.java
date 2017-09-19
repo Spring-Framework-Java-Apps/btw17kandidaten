@@ -6,6 +6,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -48,20 +49,23 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name="fraktion")
     private String fraktion;
 
     @Column(name="fraktion_lang")
     private String fraktionLang;
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
+    @NotNull
     @Valid
     @Embedded
     @AssociationOverrides({

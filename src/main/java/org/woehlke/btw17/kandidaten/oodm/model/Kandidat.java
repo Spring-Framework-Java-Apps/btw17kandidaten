@@ -246,11 +246,11 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     private String remoteKey;
 
     @SafeHtml
-    @Column
+    @Column(name = "titel")
     private String titel;
 
     @SafeHtml
-    @Column
+    @Column(name = "namenszusatz")
     private String namenszusatz;
 
     @SafeHtml
@@ -259,64 +259,107 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
 
     @NotNull
     @SafeHtml
-    @Column
+    @Column(name = "nachname")
     private String nachname;
 
     @NotNull
     @SafeHtml
-    @Column
+    @Column(name = "vorname")
     private String vorname;
 
     @NotNull
     @Pattern(regexp="[MW]{1}")
-    @Column
+    @Column(name = "geschlecht")
     private String geschlecht;
 
     @NotNull
     @Digits(integer=4,fraction = 0)
-    @Column
+    @Column(name = "geburtsjahr")
     private Integer geburtsjahr;
 
     @NotNull
     @Digits(integer=2,fraction = 0)
-    @Column
+    @Column(name = "alter")
     private Integer alter;
 
     @SafeHtml
-    @Column
+    @Column(name = "funktion")
     private String funktion;
+
+    @Column(name = "mdb")
+    private String mdb;
+
+    @Column(name = "lat")
+    private Double lat;
+
+    @Column(name = "lng")
+    private Double lng;
+
+    @Column(name = "id_eigen")
+    private String idEigen;
+
+    @Column(name = "foto")
+    private String foto;
+
+    @URL
+    @Column(name = "foto_url")
+    private String fotoUrl;
+
+    @Column(name = "scatter_x")
+    private Double scatterX;
+
+    @Column(name = "scatter_y")
+    private Double scatterY;
+
+    @Column(name = "color")
+    private String color;
+
+    @URL
+    @Column(name = "google_maps_url")
+    private String googleMapsUrl;
+
+    @URL
+    @Column(name = "logo_url")
+    private String logoUrl;
 
     @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_geburtsort", nullable = false, updatable = false)
     private Geburtsort geburtsort;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_beruf", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_berufsgruppe", nullable = false, updatable = false)
     private Berufsgruppe berufsgruppe;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
     private Bundesland bundesland;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_wahlkreis", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_partei", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
+    @NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_landes_liste", nullable = false, updatable = false)
     private LandesListe landesListe;
 
     @Column(name = "liste_platz")
@@ -334,58 +377,25 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
+    @NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
-            @AssociationOverride(
-                    name = "webseiteAgentur",
-                    joinTable = @JoinTable(
-                            name = "kandidat_agentur"
-                    )
+        @AssociationOverride(
+            name = "webseiteAgentur",
+            joinTable = @JoinTable(
+                name = "kandidat_agentur"
             )
+        )
     })
     private Webseite webseite = new Webseite();
 
-    @Column
-    private String mdb;
-
-    @Column
-    private Double lat;
-
-    @Column
-    private Double lng;
-
-    @Column(name = "id_eigen")
-    private String idEigen;
-
-    @Column
-    private String foto;
-
-    @URL
-    @Column(name = "foto_url")
-    private String fotoUrl;
-
-    @Column(name = "scatter_x")
-    private Double scatterX;
-
-    @Column(name = "scatter_y")
-    private Double scatterY;
-
-    @Column
-    private String color;
-
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @URL
-    @Column(name = "google_maps_url")
-    private String googleMapsUrl;
-
-    @URL
-    @Column(name = "logo_url")
-    private String logoUrl;
-
+    @NotNull
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
@@ -659,7 +669,9 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie!=null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public String getGoogleMapsUrl() {
@@ -707,7 +719,9 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     }
 
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite!=null){
+            this.webseite = webseite;
+        }
     }
 
     @Override

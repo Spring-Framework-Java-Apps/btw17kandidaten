@@ -10,9 +10,9 @@
 
 <section>
     <div class="container">
-        <div class="row" th:if="${wohnort}">
+        <div class="row" th:if="${wohnort != null}">
             <div class="col-md-12">
-                <span th:if="${wohnort.geoPosition}">
+                <span th:if="${wohnort.geoPosition!= null}">
                 <div class="well" th:if="${wohnort.geoPosition.googleMapsUrl}">
                     <h3>Wohnort: <span th:text="${wohnort.wohnort}">wohnort</span></h3>
                     <hr/>
@@ -24,7 +24,7 @@
         <div class="row" th:if="${wohnort}">
             <div class="col-md-12">
 
-                <span th:if="${wohnort.webseite}">
+                <span th:if="${wohnort.webseite!= null}">
                     <span th:if="${wohnort.webseite.webseite}">
                         <a class="tw-social-media-link" th:href="${wohnort.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
                             <i class="fa fa-link" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
                     </span>
                 </span>
 
-                <blockquote th:if="${wohnort.onlineStrategie}">
+                <blockquote th:if="${wohnort.onlineStrategie != null}">
 
                     <span th:if="${wohnort.onlineStrategie.twitter != null}">
                         <a class="tw-social-media-link" th:href="${wohnort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
@@ -144,7 +144,10 @@
 <section th:include="layoutMain :: tw-history-back-section" >
 </section>
 
-<script th:inline="text">
+<script th:inline="text" th:if="${wohnort.geoPosition == null}">
+    function initMap() {}
+</script>
+<script th:inline="text" th:if="${wohnort.geoPosition != null}">
     function initMap() {
         var wohnort = {lat: [[${wohnort.geoPosition.geoLattitude}]], lng: [[${wohnort.geoPosition.geoLongitude}]]};
         var mapwohnort = new google.maps.Map(document.getElementById('map-wohnort'), {
@@ -157,7 +160,6 @@
         });
     }
 </script>
-
 <div th:include="layoutMain :: tw-footer">
 </div>
 </body>

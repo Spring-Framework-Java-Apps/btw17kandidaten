@@ -57,10 +57,10 @@ public class KandidatFlat implements DomainObject {
     @Column(name="kandidat_key")
     private String key;
 
-    @Column
+    @Column(name="titel")
     private String titel;
 
-    @Column
+    @Column(name="namenszusatz")
     private String namenszusatz;
 
     @Column(name="nachname_ohne")

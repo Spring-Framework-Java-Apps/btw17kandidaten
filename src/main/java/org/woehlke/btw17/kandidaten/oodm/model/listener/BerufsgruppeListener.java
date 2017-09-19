@@ -11,7 +11,6 @@ public class BerufsgruppeListener {
     private static final Logger log = LoggerFactory.getLogger(BerufsgruppeListener.class);
 
 
-
     @PrePersist
     public void onPrePersist(Berufsgruppe domainObject) {
         log.debug("try to Persist: "+domainObject.getUniqueId());

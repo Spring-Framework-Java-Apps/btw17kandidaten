@@ -24,7 +24,7 @@ public class Berufsgruppe implements DomainObject {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name = "berufsgruppe")
     private String berufsgruppe;
 
     @Transient

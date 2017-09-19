@@ -7,6 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.AusschussController
@@ -44,10 +45,12 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     @Column(name="ausschuss")
     private String ausschuss;
 
+    @NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
+    @NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
@@ -86,7 +89,9 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -94,7 +99,9 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields!=null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override

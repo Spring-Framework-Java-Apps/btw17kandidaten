@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(
     name = "beruf",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_beruf",columnNames = {"beruf"})
+        @UniqueConstraint(name="unique_beruf", columnNames = {"beruf"})
     }
 )
 @EntityListeners(BerufListener.class)
@@ -25,7 +25,7 @@ public class Beruf implements DomainObject {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name = "beruf")
     private String beruf;
 
     @Transient
