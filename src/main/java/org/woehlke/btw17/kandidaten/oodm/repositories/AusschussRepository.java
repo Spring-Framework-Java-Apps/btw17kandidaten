@@ -16,7 +16,10 @@ public interface AusschussRepository extends PagingAndSortingRepository<Ausschus
     @Query(name="Ausschuss.getAll")
     List<Ausschuss> getAll();
 
-    @Query(name="Ausschuss.getAll",countName = "Ausschuss.getAllCount")
+    @Query(
+        name="Ausschuss.getAll",
+        countName = "Ausschuss.getAllCount"
+    )
     Page<Ausschuss> getAll(Pageable pageRequest);
 
     Ausschuss findByAusschuss(String ausschuss);

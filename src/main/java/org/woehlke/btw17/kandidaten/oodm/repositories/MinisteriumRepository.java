@@ -17,7 +17,10 @@ public interface MinisteriumRepository extends PagingAndSortingRepository<Minist
     @Query(name="Ministerium.getAll")
     List<Ministerium> getAll();
 
-    @Query(name="Ministerium.getAll",countName="Ministerium.getAllCount")
+    @Query(
+        name="Ministerium.getAll",
+        countName="Ministerium.getAllCount"
+    )
     Page<Ministerium> getAll(Pageable pageRequest);
 
     Ministerium findByMinisterium(String ministerium);

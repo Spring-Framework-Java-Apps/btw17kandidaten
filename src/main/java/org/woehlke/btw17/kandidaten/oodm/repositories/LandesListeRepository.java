@@ -15,6 +15,7 @@ import java.util.List;
 @Repository
 public interface LandesListeRepository extends PagingAndSortingRepository<LandesListe,Long> {
 
+
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
 
     @Query(name="LandesListe.findByBundesland")

@@ -16,7 +16,10 @@ public interface FraktionRepository extends PagingAndSortingRepository<Fraktion,
     @Query(name="Fraktion.getAll")
     List<Fraktion> getAll();
 
-    @Query(name="Fraktion.getAll",countName = "Fraktion.getAllCount")
+    @Query(
+        name="Fraktion.getAll",
+        countName = "Fraktion.getAllCount"
+    )
     Page<Fraktion> getAll(Pageable pageRequest);
 
     Fraktion findByFraktion(String fraktion);
