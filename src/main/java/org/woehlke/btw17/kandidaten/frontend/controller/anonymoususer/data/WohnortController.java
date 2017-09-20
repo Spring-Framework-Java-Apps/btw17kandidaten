@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -70,11 +71,11 @@ public class WohnortController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Wohnort wohnort,
-            HttpRequest request,
+            HttpServletRequest request,
             HttpSession session, Model model
     ) {
         if(wohnort == null){
-            String msg = "url: "+request.getURI().toString()+" in WohnortController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in WohnortController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = wohnort.getWohnort();

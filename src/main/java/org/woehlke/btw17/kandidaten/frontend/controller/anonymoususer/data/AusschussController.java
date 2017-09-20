@@ -23,6 +23,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -75,11 +76,11 @@ public class AusschussController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Ausschuss ausschuss,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(ausschuss == null){
-            String msg = "url: "+request.getURI().toString()+" in AusschussController.getFraktionForId";
+            String msg = "url: "+request.getRequestURL().toString() +" in AusschussController.getFraktionForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = ausschuss.getName();

@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -71,12 +72,12 @@ public class MinisteriumController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Ministerium ministerium,
-            HttpRequest request,
+            HttpServletRequest request,
             HttpSession session,
             Model model
     ) {
         if(ministerium == null){
-            String msg = "url: "+request.getURI().toString()+" in MinisteriumController.getMinisteriumForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in MinisteriumController.getMinisteriumForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = ministerium.getMinisterium();

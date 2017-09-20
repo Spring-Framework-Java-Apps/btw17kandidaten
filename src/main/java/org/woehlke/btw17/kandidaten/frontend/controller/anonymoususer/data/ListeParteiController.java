@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -71,11 +72,11 @@ public class ListeParteiController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") ListePartei listePartei,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(listePartei == null){
-            String msg = "url: "+request.getURI().toString()+" in ListeParteiController.getUserForId";
+            String msg = "url: " + request.getRequestURL().toString() +" in ListeParteiController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = listePartei.getListePartei();

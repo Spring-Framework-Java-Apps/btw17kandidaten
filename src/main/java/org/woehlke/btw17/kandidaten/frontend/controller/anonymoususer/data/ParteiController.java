@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +21,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -71,12 +71,12 @@ public class ParteiController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Partei partei,
-            HttpRequest request,
+            HttpServletRequest request,
             HttpSession session,
             Model model
     ) {
         if(partei == null){
-            String msg = "url: "+request.getURI().toString()+" in ParteiController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in ParteiController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = partei.getPartei();

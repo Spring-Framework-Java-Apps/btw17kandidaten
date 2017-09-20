@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +30,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -56,7 +56,7 @@ public class KandidatController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         String pageTitle = "Alle Kandidaten";
@@ -79,11 +79,11 @@ public class KandidatController extends AbstractController {
     public String getKandidatForId(
             @PathVariable("id") Kandidat kandidat,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(kandidat == null){
-            String msg = "url: "+request.getURI().toString()+" in KandidatController.getKandidatForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in KandidatController.getKandidatForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();
@@ -129,7 +129,9 @@ public class KandidatController extends AbstractController {
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
     public String editKandidatForIdGet(
             @PathVariable ("id") Kandidat kandidat,
-            HttpSession session, Model model
+            HttpServletRequest request,
+            HttpSession session,
+            Model model
     ) {
         long id = kandidat.getId();
         BindingResult binding = null;

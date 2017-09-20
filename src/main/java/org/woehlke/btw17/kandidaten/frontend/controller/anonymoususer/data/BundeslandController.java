@@ -93,7 +93,6 @@ public class BundeslandController extends AbstractController {
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("bundesland",bundesland);
-
             Page<Kandidat> kandidatenPage  = kandidatService.findByBundesland(bundesland,pageable);
             model.addAttribute("kandidaten",kandidatenPage);
             model.addAttribute("bundeslandIdTarget","bundesland");

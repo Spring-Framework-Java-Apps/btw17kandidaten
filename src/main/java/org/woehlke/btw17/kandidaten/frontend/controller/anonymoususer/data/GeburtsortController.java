@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -72,11 +73,11 @@ public class GeburtsortController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Geburtsort geburtsort,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(geburtsort == null){
-            String msg = "url: "+request.getURI().toString()+" in GeburtsortController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in GeburtsortController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = geburtsort.getGeburtsort();

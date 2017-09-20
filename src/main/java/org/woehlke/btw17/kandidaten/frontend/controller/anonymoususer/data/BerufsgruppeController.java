@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +21,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -70,12 +70,11 @@ public class BerufsgruppeController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Berufsgruppe berufsgruppe,
-            HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(berufsgruppe == null){
-            String msg = "url: "+request.getURI().toString()+" in BerufsgruppeController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BerufsgruppeController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = berufsgruppe.getBerufsgruppe();

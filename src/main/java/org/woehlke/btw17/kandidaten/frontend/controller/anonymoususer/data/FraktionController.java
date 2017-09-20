@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -72,11 +73,11 @@ public class FraktionController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Fraktion fraktion,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(fraktion == null){
-            String msg = "url: "+request.getURI().toString()+" in FraktionController.getFraktionForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in FraktionController.getFraktionForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = fraktion.getFraktion();

@@ -20,6 +20,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.util.Date;
@@ -71,11 +72,11 @@ public class GeburtsjahrController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("geburtsjahr") Integer geburtsjahr,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(geburtsjahr == null){
-            String msg = "url: "+request.getURI().toString()+" in GeburtsjahrController.getKandidatenForGeburtsjahr";
+            String msg = "url: "+ request.getRequestURL().toString() +" in GeburtsjahrController.getKandidatenForGeburtsjahr";
             throw new EntityNotFoundException(msg);
         } else {
             int mindestalter = 18;

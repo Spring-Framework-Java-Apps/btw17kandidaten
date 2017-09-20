@@ -22,6 +22,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -71,11 +72,11 @@ public class BerufController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Beruf beruf,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(beruf == null){
-            String msg = "url: "+request.getURI().toString()+" in BerufController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BerufController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = beruf.getBeruf();

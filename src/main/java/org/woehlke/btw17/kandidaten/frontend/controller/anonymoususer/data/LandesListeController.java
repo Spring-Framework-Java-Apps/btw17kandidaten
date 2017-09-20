@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +21,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -46,7 +46,7 @@ public class LandesListeController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") LandesListe landesListe,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(landesListe == null){
@@ -80,11 +80,11 @@ public class LandesListeController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Bundesland bundesland,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(bundesland == null){
-            String msg = "url: "+request.getURI().toString()+" in LandesListeController.getLandesListeForBundesland";
+            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = "LandesListen in "+ bundesland.getName();
@@ -115,11 +115,11 @@ public class LandesListeController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") ListePartei listePartei,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(listePartei == null){
-            String msg = "url: "+request.getURI().toString()+" in LandesListeController.getLandesListeForBundesland";
+            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = "LandesListen der "+ listePartei.getListePartei();
