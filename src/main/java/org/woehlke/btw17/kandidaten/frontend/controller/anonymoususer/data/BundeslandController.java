@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +21,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -74,11 +74,11 @@ public class BundeslandController extends AbstractController {
             ) Pageable pageable,
             @PathVariable("id") Bundesland bundesland,
             HttpSession session,
-            HttpRequest request,
+            HttpServletRequest request,
             Model model
     ) {
         if(bundesland == null){
-            String msg = "url: "+request.getURI().toString()+" in BundeslandController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BundeslandController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = bundesland.getBundeslandLang() +" ("+bundesland.getBundesland()+")";
