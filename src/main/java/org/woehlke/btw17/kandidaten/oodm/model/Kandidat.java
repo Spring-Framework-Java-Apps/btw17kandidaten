@@ -339,7 +339,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
 
     //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_berufsgruppe", nullable = false, updatable = false)
+    @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
     //@NotNull
@@ -359,7 +359,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
 
     //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_landes_liste", nullable = false, updatable = false)
+    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
     private LandesListe landesListe;
 
     @Column(name = "liste_platz")
