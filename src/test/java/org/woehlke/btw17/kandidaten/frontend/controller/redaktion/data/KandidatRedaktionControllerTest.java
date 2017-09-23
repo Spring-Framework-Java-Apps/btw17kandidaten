@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -80,4 +84,36 @@ public class KandidatRedaktionControllerTest {
         Assert.assertTrue(true);
     }
 
+
+    @WithMockUser
+    @Commit
+    @Test
+    public void test030editKandidatForIdGet() throws Exception {
+        String msg ="editKandidatForIdGet: ";
+        int page=0;
+        int size=10;
+        Pageable pageable = new PageRequest(page,size);
+        Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
+        for(Kandidat kandidat:kandidaten){
+            MvcResult result = this.mockMvc.perform(get("/redaktion/kandidat/edit/"+kandidat.getId()))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name( "kandidat/edit"))
+                    .andExpect(model().attributeExists("pageContent"))
+                    .andExpect(model().attributeExists("kandidat"))
+                    .andExpect(model().attributeExists("ausschuesse"))
+                    .andExpect(model().attributeExists("fraktionen"))
+                    .andExpect(model().attributeExists("ministerien"))
+                    .andExpect(model().attributeExists("suchformularFreitext"))
+                    .andReturn();
+
+            String content = result.getResponse().getContentAsString();
+
+            log.debug(msg+"#######################################");
+            log.debug(msg+"#######################################");
+            log.debug(msg+content);
+            log.debug(msg+"#######################################");
+            log.debug(msg+"#######################################");
+        }
+        Assert.assertTrue(true);
+    }
 }
