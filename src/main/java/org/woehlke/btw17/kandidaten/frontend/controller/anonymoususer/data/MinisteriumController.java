@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
@@ -22,7 +24,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -44,7 +45,6 @@ public class MinisteriumController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "partei"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Ministerien";
@@ -71,11 +71,10 @@ public class MinisteriumController extends AbstractController {
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Ministerium ministerium,
-            HttpServletRequest request,
-            HttpSession session,
             Model model
     ) {
         if(ministerium == null){
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             String msg = "url: "+ request.getRequestURL().toString() +" in MinisteriumController.getMinisteriumForId";
             throw new EntityNotFoundException(msg);
         } else {

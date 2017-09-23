@@ -19,7 +19,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatFlatService;
 
 import javax.persistence.EntityNotFoundException;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -38,7 +37,6 @@ public class KandidatFlatController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Kandidaten";
@@ -59,7 +57,7 @@ public class KandidatFlatController extends AbstractController {
 
     @RequestMapping("/{id}")
     public String getUserForId(
-            @PathVariable("id") KandidatFlat kandidatFlat, HttpSession session, Model model
+            @PathVariable("id") KandidatFlat kandidatFlat, Model model
     ) {
         if(kandidatFlat == null){
             throw new EntityNotFoundException();

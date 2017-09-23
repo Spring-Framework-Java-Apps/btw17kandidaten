@@ -18,8 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
-import javax.servlet.http.HttpSession;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
@@ -39,7 +37,6 @@ public class FraktionRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "fraktion"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Fraktionen";

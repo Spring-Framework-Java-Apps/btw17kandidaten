@@ -5,7 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -44,22 +43,22 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     private Bundesland bundesland;
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({

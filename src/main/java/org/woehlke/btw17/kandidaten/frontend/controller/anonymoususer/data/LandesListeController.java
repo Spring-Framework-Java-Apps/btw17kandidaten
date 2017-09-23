@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
@@ -38,19 +40,18 @@ public class LandesListeController extends AbstractController {
 
 
     @RequestMapping("/{id}")
-    public String getLandesListeForId(
+    public String id(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") LandesListe landesListe,
-            HttpSession session,
-            HttpServletRequest request,
             Model model
     ) {
         if(landesListe == null){
-            String msg = "";
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = landesListe.getName();
@@ -72,18 +73,17 @@ public class LandesListeController extends AbstractController {
     }
 
     @RequestMapping("/bundesland/{id}")
-    public String getLandesListeForBundesland(
+    public String bundeslandId(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Bundesland bundesland,
-            HttpSession session,
-            HttpServletRequest request,
             Model model
     ) {
         if(bundesland == null){
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
             throw new EntityNotFoundException(msg);
         } else {
@@ -107,18 +107,17 @@ public class LandesListeController extends AbstractController {
     }
 
     @RequestMapping("/listepartei/{id}")
-    public String getLandesListeForListePartei(
+    public String listeparteiId(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") ListePartei listePartei,
-            HttpSession session,
-            HttpServletRequest request,
             Model model
     ) {
         if(listePartei == null){
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
             throw new EntityNotFoundException(msg);
         } else {
@@ -142,13 +141,12 @@ public class LandesListeController extends AbstractController {
     }
 
     @RequestMapping("/bundesland/all")
-    public String getLandesListeForBundeslandAll(
+    public String bundeslandAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Bundesländer der LandesListen";
@@ -169,13 +167,12 @@ public class LandesListeController extends AbstractController {
     }
 
     @RequestMapping("/listepartei/all")
-    public String getLandesListeForListeParteiAll(
+    public String listeparteiAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Partei Listen der LandesListen";

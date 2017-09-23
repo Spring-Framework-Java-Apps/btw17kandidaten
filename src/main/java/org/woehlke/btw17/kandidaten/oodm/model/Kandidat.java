@@ -322,42 +322,42 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Column(name = "logo_url")
     private String logoUrl;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_geburtsort", nullable = false, updatable = false)
     private Geburtsort geburtsort;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_berufsgruppe", nullable = false, updatable = false)
     private Berufsgruppe berufsgruppe;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
     private Bundesland bundesland;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
-    @NotNull
+    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_landes_liste", nullable = false, updatable = false)
     private LandesListe landesListe;
@@ -390,12 +390,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     })
     private Webseite webseite = new Webseite();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
+    //@NotNull
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;

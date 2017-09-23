@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
@@ -22,7 +24,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -38,13 +39,12 @@ public class WahlkreisController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAll(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = "wahlkreisName"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Wahlkreise";
@@ -65,18 +65,17 @@ public class WahlkreisController extends AbstractController {
     }
 
     @RequestMapping("/{id}")
-    public String getUserForId(
+    public String id(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Wahlkreis wahlkreis,
-            HttpServletRequest request,
-            HttpSession session,
             Model model
     ) {
         if(wahlkreis == null){
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             String msg = "url: "+ request.getRequestURL().toString() +" in WahlkreisController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {

@@ -12,8 +12,6 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/imprint")
 @SessionAttributes({"suchformular","suchformularFreitext"})
@@ -21,7 +19,7 @@ public class ImprintController extends AbstractController {
 
 
     @RequestMapping
-    public String getAll(HttpSession session, Model model) {
+    public String getAll(Model model) {
         String pageTitle = "Impressum";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.IMPRESSUM.getSymbolHtml();

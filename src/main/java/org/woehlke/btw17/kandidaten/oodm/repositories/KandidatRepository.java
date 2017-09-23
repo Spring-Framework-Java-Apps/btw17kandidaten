@@ -28,6 +28,26 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
 
+    Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
+
+    @Query(
+            name = "Kandidat.findByMinisterium",
+            countQuery = "Kandidat.findByMinisteriumCount"
+    )
+    Page<Kandidat> findByMinisterium(@Param("ministerium") Ministerium ministerium, Pageable pageable);
+
+    @Query(
+            name = "Kandidat.findByFraktion",
+            countQuery = "Kandidat.findByFraktionCount"
+    )
+    Page<Kandidat> findByFraktion(@Param("fraktion") Fraktion fraktion, Pageable pageable);
+
+    @Query(
+        name = "Kandidat.findByAusschuss",
+        countQuery = "Kandidat.findByAusschussCount"
+    )
+    Page<Kandidat> findByAusschuss(@Param("ausschuss") Ausschuss ausschuss, Pageable pageable);
+
     @Query(
         name = "Kandidat.findByMdB",
         countQuery = "Kandidat.countMdB"
@@ -43,9 +63,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     @Query(name="Kandidat.findByGeburtsjahrAll")
     Page<Integer> findByGeburtsjahrAll(Pageable pageable);
 
-    Page<Kandidat> findByGeburtsjahrOrderByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
-
-    Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
+    Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
     @Query(name="Kandidat.findByListePartei")
     Page<Kandidat> findByListePartei(@Param("listePartei") ListePartei listePartei, Pageable pageable);
@@ -62,23 +80,6 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     )
     List<Kandidat> getAll();
 
-    @Query(
-        name = "Kandidat.findByFraktion",
-        countName = "Kandidat.findByFraktionCount"
-    )
-    Page<Kandidat> findByFraktion(@Param("fraktion") Fraktion fraktion, Pageable pageable);
-
-    @Query(
-        name = "Kandidat.findByAusschuss",
-        countName = "Kandidat.findByAusschussCount"
-    )
-    Page<Kandidat> findByAusschuss(@Param("ausschuss") Ausschuss ausschuss, Pageable pageable);
-
-    @Query(
-        name = "Kandidat.findByMinisterium",
-        countName = "Kandidat.findByMinisteriumCount"
-    )
-    Page<Kandidat> findByMinisterium(@Param("ministerium") Ministerium ministerium, Pageable pageable);
 
 
     @Query(

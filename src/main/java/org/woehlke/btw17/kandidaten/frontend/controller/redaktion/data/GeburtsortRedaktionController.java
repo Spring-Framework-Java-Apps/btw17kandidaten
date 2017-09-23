@@ -18,8 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
-import javax.servlet.http.HttpSession;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
@@ -39,7 +37,6 @@ public class GeburtsortRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "geburtsort"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Geburtsort";

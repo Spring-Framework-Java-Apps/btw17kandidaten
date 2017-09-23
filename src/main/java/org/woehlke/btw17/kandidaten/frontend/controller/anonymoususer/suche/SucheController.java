@@ -42,7 +42,6 @@ public class SucheController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Suche";
@@ -95,7 +94,6 @@ public class SucheController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Freitext Suche";

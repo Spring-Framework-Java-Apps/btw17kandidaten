@@ -18,8 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
-import javax.servlet.http.HttpSession;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
@@ -38,7 +36,6 @@ public class AusschussRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "ausschuss"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Ausschüsse";

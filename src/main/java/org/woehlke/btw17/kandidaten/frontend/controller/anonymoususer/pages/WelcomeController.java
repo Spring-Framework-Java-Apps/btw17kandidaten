@@ -12,15 +12,13 @@ import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/welcome")
 @SessionAttributes({"suchformular","suchformularFreitext"})
 public class WelcomeController extends AbstractController {
 
     @RequestMapping
-    public String getAll(HttpSession session, Model model) {
+    public String getAll(Model model) {
         String pageTitle = "Bundestagswahl 2017";
         String pageSubTitle = "Alle 2559 Direktkandidaten";
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();

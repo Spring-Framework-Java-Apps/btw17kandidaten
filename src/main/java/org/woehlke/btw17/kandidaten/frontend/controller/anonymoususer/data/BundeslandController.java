@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
@@ -22,7 +24,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -44,7 +45,6 @@ public class BundeslandController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "bundesland"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Bundesland";
@@ -66,18 +66,17 @@ public class BundeslandController extends AbstractController {
     }
 
     @RequestMapping("/{id}")
-    public String getUserForId(
+    public String id(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
             @PathVariable("id") Bundesland bundesland,
-            HttpSession session,
-            HttpServletRequest request,
             Model model
     ) {
         if(bundesland == null){
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             String msg = "url: "+ request.getRequestURL().toString() +" in BundeslandController.getUserForId";
             throw new EntityNotFoundException(msg);
         } else {

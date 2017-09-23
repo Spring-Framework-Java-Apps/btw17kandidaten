@@ -36,17 +36,17 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({

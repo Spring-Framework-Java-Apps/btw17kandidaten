@@ -12,8 +12,6 @@ import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequestMapping("/datenschutz")
 @SessionAttributes({"suchformular","suchformularFreitext"})
@@ -21,7 +19,7 @@ public class DatenschutzController extends AbstractController {
 
 
     @RequestMapping
-    public String getAll(HttpSession session, Model model) {
+    public String getAll(Model model) {
         String pageTitle = "Datenschutz";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.DATENSCHUTZ.getSymbolHtml();

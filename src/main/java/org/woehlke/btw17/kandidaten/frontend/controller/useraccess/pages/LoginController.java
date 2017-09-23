@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController extends AbstractController {
 
     @RequestMapping("/login")
-    public String login(HttpSession session, Model model) {
+    public String login(Model model) {
         log.info("-----------------------------------------");
         String pageTitle = "Login";
         String pageSubTitle = "Geben Sie Ihre Zugangsdaten ein:";

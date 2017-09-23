@@ -18,7 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
@@ -40,7 +39,6 @@ public class WahlkreisRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "wahlkreisName"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Wahlkreise";

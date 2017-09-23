@@ -45,12 +45,12 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     @Column(name="ausschuss")
     private String ausschuss;
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();

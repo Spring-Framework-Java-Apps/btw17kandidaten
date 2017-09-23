@@ -32,17 +32,17 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     @Column(name = "geburtsort")
     private String geburtsort;
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();

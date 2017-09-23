@@ -31,7 +31,6 @@ public class ReportController extends AbstractController {
 
     @RequestMapping("/overview")
     public String overview(
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Übersicht";
@@ -58,7 +57,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Abgeordnetenwatch";
@@ -85,7 +83,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "MdB ohne Bundestags Profil";
@@ -111,7 +108,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Foto";
@@ -137,7 +133,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Facebook";
@@ -163,7 +158,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Twitter";
@@ -189,7 +183,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Webseitel";
@@ -215,7 +208,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "MdB ohne Wikipedia";
@@ -242,7 +234,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Abgeordnetenwatch";
@@ -268,7 +259,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Facebook";
@@ -295,7 +285,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Webseite";
@@ -321,7 +310,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Foto";
@@ -347,7 +335,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Lobbypedia";
@@ -373,7 +360,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Soundcloud";
@@ -399,7 +385,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne YouTube";
@@ -426,7 +411,6 @@ public class ReportController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ){
         String pageTitle = "Kandidaten ohne Twitter";
@@ -447,7 +431,6 @@ public class ReportController extends AbstractController {
 
     @RequestMapping("/data/check")
     public String getDataCheckReport(
-            HttpSession session,
             Model model){
         String pageTitle = "Plausibilitäts-Prüfungen in den Daten";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();

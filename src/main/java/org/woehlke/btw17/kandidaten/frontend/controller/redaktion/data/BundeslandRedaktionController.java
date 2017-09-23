@@ -18,8 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
-import javax.servlet.http.HttpSession;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
@@ -40,7 +38,6 @@ public class BundeslandRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "bundesland"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Bundesland";

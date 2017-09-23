@@ -19,7 +19,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -41,7 +40,6 @@ public class LandesListeRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Bundesländer der LandesListen";
@@ -68,7 +66,6 @@ public class LandesListeRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Partei Listen der LandesListen";

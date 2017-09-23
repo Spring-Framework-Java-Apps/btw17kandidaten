@@ -18,7 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.MinisteriumService;
 
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
@@ -39,7 +38,6 @@ public class MinisteriumRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "partei"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Ministerien";

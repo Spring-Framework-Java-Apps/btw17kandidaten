@@ -18,8 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
-import javax.servlet.http.HttpSession;
-
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
@@ -38,7 +36,6 @@ public class WohnortRedaktionController extends AbstractController {
                     size = PAGE_SIZE,
                     sort = "wohnort"
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Wohnorte";

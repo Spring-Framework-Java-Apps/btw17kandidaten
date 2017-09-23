@@ -55,17 +55,17 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     @Column(name="fraktion_lang")
     private String fraktionLang;
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
+    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
