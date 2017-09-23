@@ -327,7 +327,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     private Wohnort wohnort;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_geburtsort", nullable = false, updatable = false)
+    @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Geburtsort geburtsort;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
