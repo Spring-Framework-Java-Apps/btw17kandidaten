@@ -50,16 +50,25 @@ public class BundeslandServiceTest {
     @Test
     public void test002findByBundeslandTest() throws Exception {
         int page = 0;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
         int resultSize = bundeslaender.getContent().size();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Bundesland bundesland:bundeslaender.getContent()){
-            Bundesland found = bundeslandService.findByBundesland(bundesland.getBundesland());
-            Assert.assertEquals(bundesland.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Bundesland bundesland : bundeslaender.getContent()) {
+                Bundesland found = bundeslandService.findByBundesland(bundesland.getBundesland());
+                Assert.assertEquals(bundesland.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (bundeslaender.hasNext()) {
+                pageable = bundeslaender.nextPageable();
+                bundeslaender = bundeslandService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

@@ -90,7 +90,7 @@ public class WahlkreisControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         boolean goOn = true;
@@ -115,6 +115,12 @@ public class WahlkreisControllerTest {
                 log.debug(msg + "#######################################");
             }
             Assert.assertTrue(true);
+            if (wahlkreise.hasNext()) {
+                pageable = wahlkreise.nextPageable();
+                wahlkreise = wahlkreisService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

@@ -51,16 +51,25 @@ public class MinisteriumServiceTest {
     @Test
     public void test002findByMinisterium() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
         int resultSize = ministerien.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Ministerium ministerium:ministerien.getContent()){
-            Ministerium found = ministeriumService.findByMinisterium(ministerium.getMinisterium());
-            Assert.assertEquals(ministerium.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Ministerium ministerium : ministerien.getContent()) {
+                Ministerium found = ministeriumService.findByMinisterium(ministerium.getMinisterium());
+                Assert.assertEquals(ministerium.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (ministerien.hasNext()) {
+                pageable = ministerien.nextPageable();
+                ministerien = ministeriumService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

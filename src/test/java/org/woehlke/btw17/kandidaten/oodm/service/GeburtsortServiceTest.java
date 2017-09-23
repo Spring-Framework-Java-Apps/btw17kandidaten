@@ -50,16 +50,25 @@ public class GeburtsortServiceTest {
     @Test
     public  void  test002findByGeburtsortTest() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
         int resultSize = geburtsorte.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Geburtsort geburtsort:geburtsorte.getContent()){
-            Geburtsort found = geburtsortService.findByGeburtsort(geburtsort.getGeburtsort());
-            Assert.assertEquals(geburtsort.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Geburtsort geburtsort : geburtsorte.getContent()) {
+                Geburtsort found = geburtsortService.findByGeburtsort(geburtsort.getGeburtsort());
+                Assert.assertEquals(geburtsort.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (geburtsorte.hasNext()) {
+                pageable = geburtsorte.nextPageable();
+                geburtsorte = geburtsortService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

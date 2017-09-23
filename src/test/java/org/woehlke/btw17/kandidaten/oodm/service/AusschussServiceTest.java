@@ -50,16 +50,25 @@ public class AusschussServiceTest {
     @Test
     public void test002findByAusschuss() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         int resultSize = ausschuesse.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Ausschuss ausschuss:ausschuesse.getContent()){
-            Ausschuss found = ausschussService.findByAusschuss(ausschuss.getAusschuss());
-            Assert.assertEquals(ausschuss.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Ausschuss ausschuss : ausschuesse.getContent()) {
+                Ausschuss found = ausschussService.findByAusschuss(ausschuss.getAusschuss());
+                Assert.assertEquals(ausschuss.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (ausschuesse.hasNext()) {
+                pageable = ausschuesse.nextPageable();
+                ausschuesse = ausschussService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

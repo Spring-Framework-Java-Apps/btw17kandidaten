@@ -90,28 +90,37 @@ public class MinisteriumControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=100;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
-        for(Ministerium ministerium:ministerien){
-            log.debug(msg+"/ministerium/"+ministerium.getId());
-            MvcResult result = this.mockMvc.perform(get("/ministerium/"+ministerium.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "ministerium/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("ministerium"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Ministerium ministerium : ministerien) {
+                log.debug(msg + "/ministerium/" + ministerium.getId());
+                MvcResult result = this.mockMvc.perform(get("/ministerium/" + ministerium.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("ministerium/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("ministerium"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(ministerien.hasNext()){
+                pageable = ministerien.nextPageable();
+                ministerien = ministeriumService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

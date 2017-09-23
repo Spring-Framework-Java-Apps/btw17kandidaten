@@ -91,29 +91,38 @@ public class KandidatRedaktionControllerTest {
     public void test030editKandidatForIdGet() throws Exception {
         String msg ="editKandidatForIdGet: ";
         int page=0;
-        int size=10;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
-        for(Kandidat kandidat:kandidaten){
-            MvcResult result = this.mockMvc.perform(get("/redaktion/kandidat/edit/"+kandidat.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "kandidat/edit"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("kandidat"))
-                    .andExpect(model().attributeExists("ausschuesse"))
-                    .andExpect(model().attributeExists("fraktionen"))
-                    .andExpect(model().attributeExists("ministerien"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Kandidat kandidat : kandidaten) {
+                MvcResult result = this.mockMvc.perform(get("/redaktion/kandidat/edit/" + kandidat.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("kandidat/edit"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("kandidat"))
+                        .andExpect(model().attributeExists("ausschuesse"))
+                        .andExpect(model().attributeExists("fraktionen"))
+                        .andExpect(model().attributeExists("ministerien"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if (kandidaten.hasNext()) {
+                pageable = kandidaten.nextPageable();
+                kandidaten = kandidatService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

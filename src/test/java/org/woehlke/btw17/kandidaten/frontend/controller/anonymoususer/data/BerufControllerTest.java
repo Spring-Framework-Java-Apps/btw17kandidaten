@@ -89,7 +89,7 @@ public class BerufControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
         boolean goOn = true;

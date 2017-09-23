@@ -49,16 +49,25 @@ public class WahlkreisServiceTest {
     @Test
     public void test002findByWahlkreisIdTest() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         int resultSize = wahlkreise.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Wahlkreis wahlkreis:wahlkreise.getContent()){
-            Wahlkreis found = wahlkreisService.findByWahlkreisId(wahlkreis.getWahlkreisId());
-            Assert.assertEquals(wahlkreis.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Wahlkreis wahlkreis : wahlkreise.getContent()) {
+                Wahlkreis found = wahlkreisService.findByWahlkreisId(wahlkreis.getWahlkreisId());
+                Assert.assertEquals(wahlkreis.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (wahlkreise.hasNext()) {
+                pageable = wahlkreise.nextPageable();
+                wahlkreise = wahlkreisService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

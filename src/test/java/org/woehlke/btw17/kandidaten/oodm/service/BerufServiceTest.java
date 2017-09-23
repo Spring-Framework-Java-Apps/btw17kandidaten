@@ -49,16 +49,25 @@ public class BerufServiceTest {
     @Test
     public void test002findByBeruf() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
         int resultSize = berufe.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Beruf beruf:berufe.getContent()){
-            Beruf found = berufService.findByBeruf(beruf.getBeruf());
-            Assert.assertEquals(beruf.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Beruf beruf : berufe.getContent()) {
+                Beruf found = berufService.findByBeruf(beruf.getBeruf());
+                Assert.assertEquals(beruf.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (berufe.hasNext()) {
+                pageable = berufe.nextPageable();
+                berufe = berufService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

@@ -50,16 +50,25 @@ public class ParteiServiceTest {
     @Test
     public void test002findByParteiTest() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Partei> parteien = parteiService.getAll(pageable);
         int resultSize = parteien.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Partei partei:parteien.getContent()){
-            Partei found = parteiService.findByPartei(partei.getPartei(),partei.getParteiLang());
-            Assert.assertEquals(partei.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Partei partei : parteien.getContent()) {
+                Partei found = parteiService.findByPartei(partei.getPartei(), partei.getParteiLang());
+                Assert.assertEquals(partei.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (parteien.hasNext()) {
+                pageable = parteien.nextPageable();
+                parteien = parteiService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

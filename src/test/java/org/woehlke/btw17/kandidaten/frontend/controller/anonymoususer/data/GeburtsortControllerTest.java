@@ -91,7 +91,7 @@ public class GeburtsortControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
         boolean goOn = true;

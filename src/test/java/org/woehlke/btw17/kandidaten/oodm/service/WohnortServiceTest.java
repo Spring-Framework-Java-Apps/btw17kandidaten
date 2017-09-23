@@ -50,16 +50,25 @@ public class WohnortServiceTest {
     @Test
     public void test002findByWohnortTest() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
         int resultSize = wohnorte.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Wohnort wohnort:wohnorte.getContent()){
-            Wohnort found = wohnortService.findByWohnort(wohnort.getWohnort());
-            Assert.assertEquals(wohnort.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Wohnort wohnort : wohnorte.getContent()) {
+                Wohnort found = wohnortService.findByWohnort(wohnort.getWohnort());
+                Assert.assertEquals(wohnort.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (wohnorte.hasNext()) {
+                pageable = wohnorte.nextPageable();
+                wohnorte = wohnortService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

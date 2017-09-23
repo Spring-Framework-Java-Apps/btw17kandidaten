@@ -89,28 +89,37 @@ public class FraktionControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=200;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
-        for(Fraktion fraktion:fraktionen){
-            log.debug(msg + "/fraktion/"+fraktion.getId());
-            MvcResult result = this.mockMvc.perform(get("/fraktion/"+fraktion.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "fraktion/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("fraktion"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Fraktion fraktion : fraktionen) {
+                log.debug(msg + "/fraktion/" + fraktion.getId());
+                MvcResult result = this.mockMvc.perform(get("/fraktion/" + fraktion.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("fraktion/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("fraktion"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(fraktionen.hasNext()){
+                pageable = fraktionen.nextPageable();
+                fraktionen = fraktionService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

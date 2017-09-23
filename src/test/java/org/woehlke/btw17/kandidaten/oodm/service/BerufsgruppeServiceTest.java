@@ -45,21 +45,29 @@ public class BerufsgruppeServiceTest {
 
     }
 
-
     @Commit
     @Test
     public void test002findByBerufsgruppeTest() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
         int resultSize = berufsgruppen.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Berufsgruppe berufsgruppe:berufsgruppen.getContent()){
-            Berufsgruppe found = berufsgruppeService.findByBerufsgruppe(berufsgruppe.getBerufsgruppe());
-            Assert.assertEquals(berufsgruppe.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Berufsgruppe berufsgruppe : berufsgruppen.getContent()) {
+                Berufsgruppe found = berufsgruppeService.findByBerufsgruppe(berufsgruppe.getBerufsgruppe());
+                Assert.assertEquals(berufsgruppe.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (berufsgruppen.hasNext()) {
+                pageable = berufsgruppen.nextPageable();
+                berufsgruppen = berufsgruppeService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 

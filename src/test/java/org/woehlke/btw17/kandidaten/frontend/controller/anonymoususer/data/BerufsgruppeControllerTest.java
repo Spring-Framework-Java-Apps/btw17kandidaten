@@ -90,7 +90,7 @@ public class BerufsgruppeControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=200;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
         boolean goOn = true;

@@ -90,7 +90,7 @@ public class KandidatControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=100;
+        int size=20;
         Pageable pageable = new PageRequest(page,size);
         Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
         boolean goOn = true;

@@ -50,16 +50,25 @@ public class FraktionServiceTest {
     @Test
     public void test002findByFraktion() throws Exception {
         int page = 1;
-        int size = 250;
+        int size = 20;
         Pageable pageable = new PageRequest(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         int resultSize = fraktionen.getNumber();
         log.debug("found: # "+resultSize);
         Assert.assertTrue(resultSize>0);
-        for(Fraktion fraktion:fraktionen.getContent()){
-            Fraktion found = fraktionService.findByFraktion(fraktion.getFraktion());
-            Assert.assertEquals(fraktion.getId(),found.getId());
-            log.debug("found: "+found.toString());
+        boolean goOn = true;
+        while(goOn) {
+            for (Fraktion fraktion : fraktionen.getContent()) {
+                Fraktion found = fraktionService.findByFraktion(fraktion.getFraktion());
+                Assert.assertEquals(fraktion.getId(), found.getId());
+                log.debug("found: " + found.toString());
+            }
+            if (fraktionen.hasNext()) {
+                pageable = fraktionen.nextPageable();
+                fraktionen = fraktionService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
     }
 
