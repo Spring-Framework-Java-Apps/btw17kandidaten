@@ -93,25 +93,33 @@ public class KandidatControllerTest {
         int size=100;
         Pageable pageable = new PageRequest(page,size);
         Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
-        for(Kandidat kandidat:kandidaten){
-            log.debug(msg+"/kandidat/"+kandidat.getId());
-            MvcResult result = this.mockMvc.perform(get("/kandidat/"+kandidat.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "kandidat/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("kandidat"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Kandidat kandidat : kandidaten) {
+                log.debug(msg + "/kandidat/" + kandidat.getId());
+                MvcResult result = this.mockMvc.perform(get("/kandidat/" + kandidat.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("kandidat/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("kandidat"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(kandidaten.hasNext()){
+                pageable = kandidaten.nextPageable();
+                kandidaten = kandidatService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
-
 }
