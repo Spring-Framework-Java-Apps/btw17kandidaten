@@ -510,7 +510,7 @@
                                     <span th:text="${kandidat.funktion}"></span>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr th:if="${!kandidat.ministerium.empty}">
                                 <td><i class="fa fa-home" aria-hidden="true"></i> Ministerien</td>
                                 <td colspan="2">
                                     <div th:each="mi : ${kandidat.ministerium}">
@@ -520,7 +520,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr th:if="${!kandidat.ausschuss.empty}">
                                 <td><i class="fa fa-users" aria-hidden="true"></i> Ausschüsse</td>
                                 <td colspan="2">
                                     <div th:each="au : ${kandidat.ausschuss}">

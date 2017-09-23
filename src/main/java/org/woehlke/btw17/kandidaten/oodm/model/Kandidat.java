@@ -322,42 +322,34 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Column(name = "logo_url")
     private String logoUrl;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_geburtsort", nullable = false, updatable = false)
     private Geburtsort geburtsort;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
     private Bundesland bundesland;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
-    //@NotNull
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
     private LandesListe landesListe;
@@ -390,7 +382,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     })
     private Webseite webseite = new Webseite();
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
