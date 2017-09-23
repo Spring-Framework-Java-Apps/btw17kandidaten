@@ -90,27 +90,37 @@ public class BerufsgruppeControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=200;
         Pageable pageable = new PageRequest(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
-        for(Berufsgruppe berufsgruppe:berufsgruppen){
-            MvcResult result = this.mockMvc.perform(get("/berufsgruppe/"+berufsgruppe.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "berufsgruppe/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("berufsgruppe"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Berufsgruppe berufsgruppe : berufsgruppen) {
+                log.debug(msg + "/berufsgruppe/" + berufsgruppe.getId());
+                MvcResult result = this.mockMvc.perform(get("/berufsgruppe/" + berufsgruppe.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("berufsgruppe/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("berufsgruppe"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(berufsgruppen.hasNext()){
+                pageable = berufsgruppen.nextPageable();
+                berufsgruppen = berufsgruppeService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

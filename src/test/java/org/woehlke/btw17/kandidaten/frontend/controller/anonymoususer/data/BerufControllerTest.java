@@ -92,24 +92,34 @@ public class BerufControllerTest {
         int size=10;
         Pageable pageable = new PageRequest(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
-        for(Beruf beruf:berufe){
-            MvcResult result = this.mockMvc.perform(get("/beruf/"+beruf.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "beruf/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("beruf"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Beruf beruf : berufe) {
+                log.debug(msg + "/beruf/" + beruf.getId());
+                MvcResult result = this.mockMvc.perform(get("/beruf/" + beruf.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("beruf/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("beruf"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(berufe.hasNext()){
+                pageable = berufe.nextPageable();
+                berufe = berufService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

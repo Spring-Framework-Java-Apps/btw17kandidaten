@@ -94,24 +94,34 @@ public class GeburtsortControllerTest {
         int size=10;
         Pageable pageable = new PageRequest(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
-        for(Geburtsort geburtsort:geburtsorte){
-            MvcResult result = this.mockMvc.perform(get("/geburtsort/"+geburtsort.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "geburtsort/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("geburtsort"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while (goOn) {
+            for(Geburtsort geburtsort:geburtsorte) {
+                log.debug(msg + "/geburtsort/" + geburtsort.getId());
+                MvcResult result = this.mockMvc.perform(get("/geburtsort/" + geburtsort.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("geburtsort/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("geburtsort"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(geburtsorte.hasNext()){
+                pageable = geburtsorte.nextPageable();
+                geburtsorte = geburtsortService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

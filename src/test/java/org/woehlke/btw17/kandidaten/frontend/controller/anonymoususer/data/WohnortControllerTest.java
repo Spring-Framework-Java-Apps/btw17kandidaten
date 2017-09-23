@@ -93,25 +93,35 @@ public class WohnortControllerTest {
         int size=10;
         Pageable pageable = new PageRequest(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
-        for(Wohnort wohnort:wohnorte){
-            MvcResult result = this.mockMvc.perform(get("/wohnort/"+wohnort.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "wohnort/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("wohnort"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while (goOn) {
+            for (Wohnort wohnort : wohnorte) {
+                log.debug(msg + "/wohnort/" + wohnort.getId());
+                MvcResult result = this.mockMvc.perform(get("/wohnort/" + wohnort.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("wohnort/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("wohnort"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if (wohnorte.hasNext()) {
+                pageable = wohnorte.nextPageable();
+                wohnorte = wohnortService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 
 }

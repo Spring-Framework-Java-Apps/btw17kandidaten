@@ -89,10 +89,11 @@ public class FraktionControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=200;
         Pageable pageable = new PageRequest(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         for(Fraktion fraktion:fraktionen){
+            log.debug(msg + "/fraktion/"+fraktion.getId());
             MvcResult result = this.mockMvc.perform(get("/fraktion/"+fraktion.getId()))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "fraktion/id"))

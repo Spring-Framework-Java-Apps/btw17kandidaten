@@ -92,24 +92,34 @@ public class AusschussControllerTest {
         int size=10;
         Pageable pageable = new PageRequest(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
-        for(Ausschuss ausschuss:ausschuesse){
-            MvcResult result = this.mockMvc.perform(get("/ausschuss/"+ausschuss.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "ausschuss/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("ausschuss"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while(goOn) {
+            for (Ausschuss ausschuss : ausschuesse) {
+                log.debug(msg + "/ausschuss/" + ausschuss.getId());
+                MvcResult result = this.mockMvc.perform(get("/ausschuss/" + ausschuss.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("ausschuss/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("ausschuss"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
+            if(ausschuesse.hasNext()){
+                pageable = ausschuesse.nextPageable();
+                ausschuesse = ausschussService.getAll(pageable);
+            } else {
+                goOn = false;
+            }
         }
-        Assert.assertTrue(true);
     }
 }

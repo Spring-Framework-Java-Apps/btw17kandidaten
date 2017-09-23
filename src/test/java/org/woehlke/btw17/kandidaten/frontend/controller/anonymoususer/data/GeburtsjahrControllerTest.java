@@ -100,6 +100,7 @@ public class GeburtsjahrControllerTest {
             if(i>=size){
                 break;
             }
+            log.debug(msg + "/geburtsjahr/"+geburtsjahr);
             MvcResult result = this.mockMvc.perform(get("/geburtsjahr/"+geburtsjahr))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "geburtsjahr/id"))

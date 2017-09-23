@@ -93,25 +93,29 @@ public class WahlkreisControllerTest {
         int size=10;
         Pageable pageable = new PageRequest(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
-        for(Wahlkreis wahlkreis:wahlkreise){
-            MvcResult result = this.mockMvc.perform(get("/wahlkreis/"+wahlkreis.getId()))
-                    .andExpect(status().isOk())
-                    .andExpect(view().name( "wahlkreis/id"))
-                    .andExpect(model().attributeExists("pageContent"))
-                    .andExpect(model().attributeExists("wahlkreis"))
-                    .andExpect(model().attributeExists("kandidaten"))
-                    .andExpect(model().attributeExists("suchformularFreitext"))
-                    .andReturn();
+        boolean goOn = true;
+        while (goOn) {
+            for (Wahlkreis wahlkreis : wahlkreise) {
+                log.debug(msg + "/wahlkreis/" + wahlkreis.getId());
+                MvcResult result = this.mockMvc.perform(get("/wahlkreis/" + wahlkreis.getId()))
+                        .andExpect(status().isOk())
+                        .andExpect(view().name("wahlkreis/id"))
+                        .andExpect(model().attributeExists("pageContent"))
+                        .andExpect(model().attributeExists("wahlkreis"))
+                        .andExpect(model().attributeExists("kandidaten"))
+                        .andExpect(model().attributeExists("suchformularFreitext"))
+                        .andReturn();
 
-            String content = result.getResponse().getContentAsString();
+                String content = result.getResponse().getContentAsString();
 
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
-            log.debug(msg+content);
-            log.debug(msg+"#######################################");
-            log.debug(msg+"#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+                log.debug(msg + content);
+                log.debug(msg + "#######################################");
+                log.debug(msg + "#######################################");
+            }
+            Assert.assertTrue(true);
         }
-        Assert.assertTrue(true);
     }
 
 }

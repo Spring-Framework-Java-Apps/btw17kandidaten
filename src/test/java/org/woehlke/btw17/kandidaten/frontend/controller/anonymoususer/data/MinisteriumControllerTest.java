@@ -90,10 +90,11 @@ public class MinisteriumControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=100;
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
         for(Ministerium ministerium:ministerien){
+            log.debug(msg+"/ministerium/"+ministerium.getId());
             MvcResult result = this.mockMvc.perform(get("/ministerium/"+ministerium.getId()))
                     .andExpect(status().isOk())
                     .andExpect(view().name( "ministerium/id"))
