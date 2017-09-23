@@ -395,7 +395,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
+    @NotNull
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
