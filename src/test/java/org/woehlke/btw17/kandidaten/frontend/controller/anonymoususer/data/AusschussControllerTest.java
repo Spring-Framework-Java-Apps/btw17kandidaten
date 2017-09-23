@@ -89,7 +89,7 @@ public class AusschussControllerTest {
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
         int page=0;
-        int size=10;
+        int size=50;
         Pageable pageable = new PageRequest(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         boolean goOn = true;
