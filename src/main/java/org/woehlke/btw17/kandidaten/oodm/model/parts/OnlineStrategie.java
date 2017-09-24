@@ -99,100 +99,100 @@ public class OnlineStrategie implements MySerializable {
     private String github;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "whatsapp")
     private String whatsapp;
 
 
     @URL
-    @Column(name = "github")
+    @Column(name = "wordpress")
     private String wordpress;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "spotify")
     private String spotify;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "snapchat")
     private String snapchat;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "skype")
     private String skype;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "slack")
     private String slack;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "slideshare")
     private String slideshare;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "pinterest")
     private String pinterest;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "paypal")
     private String paypal;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "meetup")
     private String meetup;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "lastfm")
     private String lastfm;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "imdb")
     private String imdb;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "foursquare")
     private String foursquare;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "digg")
     private String digg;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "delicious")
     private String delicious;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "url500px")
     private String url500px;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "amazon")
     private String amazon;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "hacker_news")
     private String hackerNews;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "scribd")
     private String scribd;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "tumblr")
     private String tumblr;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "viadeo")
     private String viadeo;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "yahoo")
     private String yahoo;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "yoast")
     private String yoast;
 
     @URL
-    @Column(name = "github")
+    @Column(name = "yelp")
     private String yelp;
 
     public String getTwitter() {
