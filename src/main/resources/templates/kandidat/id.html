@@ -688,13 +688,13 @@
 <script th:inline="text">
     function initMap() {
         initMapWohnort();
-        var kandidat = {at: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
+        var geburtsort = {lat: [[${kandidat.lat}]], lng: [[${kandidat.lng}]]};
         var mapgeburtsort = new google.maps.Map(document.getElementById('map-geburtsort'), {
             zoom: 8,
-            center: kandidat
+            center: geburtsort
         });
         var markergeburtsort = new google.maps.Marker({
-            position: kandidat,
+            position: geburtsort,
             map: mapgeburtsort
         });
     }
