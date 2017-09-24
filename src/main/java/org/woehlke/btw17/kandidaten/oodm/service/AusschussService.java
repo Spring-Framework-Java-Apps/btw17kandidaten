@@ -17,4 +17,6 @@ public interface AusschussService {
     long count();
 
     void deleteAll();
+
+    Ausschuss update(Ausschuss ausschuss);
 }

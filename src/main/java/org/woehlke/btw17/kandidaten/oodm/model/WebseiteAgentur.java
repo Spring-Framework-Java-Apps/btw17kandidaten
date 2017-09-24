@@ -35,8 +35,12 @@ import javax.validation.constraints.NotNull;
         query = "select count(o) from WebseiteAgentur as o"
     ),
     @NamedQuery(
-        name = "WebseiteCms.findByAgentur",
-        query = "select o from WebseiteAgentur as o where o.agentur=:agentur"
+        name = "WebseiteAgentur.findByAgentur",
+        query = "select o from WebseiteAgentur as o where o.agentur=:agentur order by o.agentur"
+    ),
+    @NamedQuery(
+        name = "WebseiteAgentur.countByAgentur",
+        query = "select count(o) from WebseiteAgentur as o where o.agentur=:agentur"
     )
 })
 @EntityListeners(WebseiteAgenturListener.class)

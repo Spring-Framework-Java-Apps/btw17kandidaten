@@ -46,4 +46,10 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     public void deleteAll() {
         berufsgruppeRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Berufsgruppe update(Berufsgruppe berufsgruppe) {
+        return berufsgruppeRepository.save(berufsgruppe);
+    }
 }

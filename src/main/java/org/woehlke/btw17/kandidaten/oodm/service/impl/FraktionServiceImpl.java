@@ -48,4 +48,10 @@ public class FraktionServiceImpl implements FraktionService {
     public void deleteAll() {
         fraktionRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Fraktion update(Fraktion fraktion) {
+        return fraktionRepository.save(fraktion);
+    }
 }

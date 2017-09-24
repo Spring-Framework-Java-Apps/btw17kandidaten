@@ -14,11 +14,13 @@ public interface LandesListeService {
 
     List<LandesListe> getAll();
 
-    LandesListe create(LandesListe out);
+    LandesListe create(LandesListe landesListe);
 
     void deleteAll();
 
     long count();
+
+    LandesListe update(LandesListe landesListe);
 
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
 

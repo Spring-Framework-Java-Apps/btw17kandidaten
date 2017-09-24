@@ -25,4 +25,19 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
     public Page<WebseiteCms> getAll(Pageable pageable) {
         return webseiteCmsRepository.findAll(pageable);
     }
+
+    @Override
+    public WebseiteCms findByCms(String cms) {
+        return webseiteCmsRepository.findByCms(cms);
+    }
+
+    @Override
+    public long count() {
+        return webseiteCmsRepository.count();
+    }
+
+    @Override
+    public void deleteAll() {
+        webseiteCmsRepository.deleteAll();
+    }
 }

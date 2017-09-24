@@ -26,4 +26,19 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
     public Page<WebseiteAgentur> getAll(Pageable pageable) {
         return webseiteAgenturRepository.findAll(pageable);
     }
+
+    @Override
+    public WebseiteAgentur findByAgentur(String agentur) {
+        return webseiteAgenturRepository.findByAgentur(agentur);
+    }
+
+    @Override
+    public long count() {
+        return webseiteAgenturRepository.count();
+    }
+
+    @Override
+    public void deleteAll() {
+        webseiteAgenturRepository.deleteAll();
+    }
 }

@@ -17,4 +17,5 @@ public interface BundeslandService {
 
     void deleteAll();
 
+    Bundesland update(Bundesland bundesland);
 }

@@ -41,4 +41,10 @@ public class BerufServiceImpl implements BerufService {
     public void deleteAll() {
         berufRepository.deleteAll();;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Beruf update(Beruf beruf) {
+        return berufRepository.save(beruf);
+    }
 }

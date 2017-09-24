@@ -7,4 +7,10 @@ import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 public interface WebseiteCmsService {
 
     Page<WebseiteCms> getAll(Pageable pageable);
+
+    WebseiteCms findByCms(String cms);
+
+    long count();
+
+    void deleteAll();
 }

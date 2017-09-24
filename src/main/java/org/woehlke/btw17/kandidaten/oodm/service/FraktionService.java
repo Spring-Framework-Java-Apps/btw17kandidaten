@@ -17,4 +17,6 @@ public interface FraktionService {
     long count();
 
     void deleteAll();
+
+    Fraktion update(Fraktion fraktion);
 }

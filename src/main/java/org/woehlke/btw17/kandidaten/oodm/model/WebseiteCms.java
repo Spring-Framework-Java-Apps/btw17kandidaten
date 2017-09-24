@@ -40,7 +40,11 @@ import javax.validation.constraints.NotNull;
     ),
     @NamedQuery(
         name = "WebseiteCms.findByCms",
-        query = "select o from WebseiteCms as o where o.cms=:cms"
+        query = "select o from WebseiteCms as o where o.cms=:cms order by o.cms"
+    ),
+    @NamedQuery(
+        name = "WebseiteCms.findByCms",
+        query = "select count(o) from WebseiteCms as o where o.cms=:cms"
     )
 })
 @EntityListeners(WebseiteCmsListener.class)

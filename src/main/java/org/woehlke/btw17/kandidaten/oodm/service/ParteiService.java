@@ -19,4 +19,5 @@ public interface ParteiService {
 
     void deleteAll();
 
+    Partei update(Partei partei);
 }
