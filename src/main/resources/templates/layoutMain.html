@@ -472,7 +472,7 @@
                                     <a th:href="@{|/kandidat/${kandidat.id}/|}">
                                         <span class="tw-vector">
                                             <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
-                                            <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}">namenszusatz</span>
+                                            <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}" class="tw-debug">namenszusatz</span>
                                             <span th:text="${kandidat.vorname}">vorname</span>
                                             <span th:text="${kandidat.nachname}">nachname</span>
                                         </span>
