@@ -37,6 +37,8 @@
                                             <span th:if="${ministerium.bundesminister}">
                                                 <a th:href="@{|/kandidat/${ministerium.bundesminister.id}|}">
                                                     <span th:text="${ministerium.bundesministerName}"></span>
+                                                    <span>,&nbsp;</span>
+                                                    <span th:text="${ministerium.bundesminister.partei.partei}"></span>
                                                 </a>
                                             </span>
                                         </td>
