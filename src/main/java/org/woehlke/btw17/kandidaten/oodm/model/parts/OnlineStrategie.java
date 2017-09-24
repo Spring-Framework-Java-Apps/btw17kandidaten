@@ -98,6 +98,103 @@ public class OnlineStrategie implements MySerializable {
     @Column(name = "github")
     private String github;
 
+    @URL
+    @Column(name = "github")
+    private String whatsapp;
+
+
+    @URL
+    @Column(name = "github")
+    private String wordpress;
+
+    @URL
+    @Column(name = "github")
+    private String spotify;
+
+    @URL
+    @Column(name = "github")
+    private String snapchat;
+
+    @URL
+    @Column(name = "github")
+    private String skype;
+
+    @URL
+    @Column(name = "github")
+    private String slack;
+
+    @URL
+    @Column(name = "github")
+    private String slideshare;
+
+    @URL
+    @Column(name = "github")
+    private String pinterest;
+
+    @URL
+    @Column(name = "github")
+    private String paypal;
+
+    @URL
+    @Column(name = "github")
+    private String meetup;
+
+    @URL
+    @Column(name = "github")
+    private String lastfm;
+
+    @URL
+    @Column(name = "github")
+    private String imdb;
+
+    @URL
+    @Column(name = "github")
+    private String foursquare;
+
+    @URL
+    @Column(name = "github")
+    private String digg;
+
+    @URL
+    @Column(name = "github")
+    private String delicious;
+
+    @URL
+    @Column(name = "github")
+    private String url500px;
+
+    @URL
+    @Column(name = "github")
+    private String amazon;
+
+    @URL
+    @Column(name = "github")
+    private String hackerNews;
+
+    @URL
+    @Column(name = "github")
+    private String scribd;
+
+    @URL
+    @Column(name = "github")
+    private String tumblr;
+
+    @URL
+    @Column(name = "github")
+    private String viadeo;
+
+    @URL
+    @Column(name = "github")
+    private String yahoo;
+
+    @URL
+    @Column(name = "github")
+    private String yoast;
+
+    @URL
+    @Column(name = "github")
+    private String yelp;
+
     public String getTwitter() {
         return twitter;
     }
@@ -266,6 +363,198 @@ public class OnlineStrategie implements MySerializable {
         this.netzpolitikOrg = netzpolitikOrg;
     }
 
+    public String getWhatsapp() {
+        return whatsapp;
+    }
+
+    public void setWhatsapp(String whatsapp) {
+        this.whatsapp = whatsapp;
+    }
+
+    public String getWordpress() {
+        return wordpress;
+    }
+
+    public void setWordpress(String wordpress) {
+        this.wordpress = wordpress;
+    }
+
+    public String getSpotify() {
+        return spotify;
+    }
+
+    public void setSpotify(String spotify) {
+        this.spotify = spotify;
+    }
+
+    public String getSnapchat() {
+        return snapchat;
+    }
+
+    public void setSnapchat(String snapchat) {
+        this.snapchat = snapchat;
+    }
+
+    public String getSkype() {
+        return skype;
+    }
+
+    public void setSkype(String skype) {
+        this.skype = skype;
+    }
+
+    public String getSlack() {
+        return slack;
+    }
+
+    public void setSlack(String slack) {
+        this.slack = slack;
+    }
+
+    public String getSlideshare() {
+        return slideshare;
+    }
+
+    public void setSlideshare(String slideshare) {
+        this.slideshare = slideshare;
+    }
+
+    public String getPinterest() {
+        return pinterest;
+    }
+
+    public void setPinterest(String pinterest) {
+        this.pinterest = pinterest;
+    }
+
+    public String getPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(String paypal) {
+        this.paypal = paypal;
+    }
+
+    public String getMeetup() {
+        return meetup;
+    }
+
+    public void setMeetup(String meetup) {
+        this.meetup = meetup;
+    }
+
+    public String getLastfm() {
+        return lastfm;
+    }
+
+    public void setLastfm(String lastfm) {
+        this.lastfm = lastfm;
+    }
+
+    public String getImdb() {
+        return imdb;
+    }
+
+    public void setImdb(String imdb) {
+        this.imdb = imdb;
+    }
+
+    public String getFoursquare() {
+        return foursquare;
+    }
+
+    public void setFoursquare(String foursquare) {
+        this.foursquare = foursquare;
+    }
+
+    public String getDigg() {
+        return digg;
+    }
+
+    public void setDigg(String digg) {
+        this.digg = digg;
+    }
+
+    public String getDelicious() {
+        return delicious;
+    }
+
+    public void setDelicious(String delicious) {
+        this.delicious = delicious;
+    }
+
+    public String getUrl500px() {
+        return url500px;
+    }
+
+    public void setUrl500px(String url500px) {
+        this.url500px = url500px;
+    }
+
+    public String getAmazon() {
+        return amazon;
+    }
+
+    public void setAmazon(String amazon) {
+        this.amazon = amazon;
+    }
+
+    public String getHackerNews() {
+        return hackerNews;
+    }
+
+    public void setHackerNews(String hackerNews) {
+        this.hackerNews = hackerNews;
+    }
+
+    public String getScribd() {
+        return scribd;
+    }
+
+    public void setScribd(String scribd) {
+        this.scribd = scribd;
+    }
+
+    public String getTumblr() {
+        return tumblr;
+    }
+
+    public void setTumblr(String tumblr) {
+        this.tumblr = tumblr;
+    }
+
+    public String getViadeo() {
+        return viadeo;
+    }
+
+    public void setViadeo(String viadeo) {
+        this.viadeo = viadeo;
+    }
+
+    public String getYahoo() {
+        return yahoo;
+    }
+
+    public void setYahoo(String yahoo) {
+        this.yahoo = yahoo;
+    }
+
+    public String getYoast() {
+        return yoast;
+    }
+
+    public void setYoast(String yoast) {
+        this.yoast = yoast;
+    }
+
+    public String getYelp() {
+        return yelp;
+    }
+
+    public void setYelp(String yelp) {
+        this.yelp = yelp;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -299,7 +588,31 @@ public class OnlineStrategie implements MySerializable {
         if (linkedIn != null ? !linkedIn.equals(that.linkedIn) : that.linkedIn != null) return false;
         if (stackoverflow != null ? !stackoverflow.equals(that.stackoverflow) : that.stackoverflow != null)
             return false;
-        return github != null ? github.equals(that.github) : that.github == null;
+        if (github != null ? !github.equals(that.github) : that.github != null) return false;
+        if (whatsapp != null ? !whatsapp.equals(that.whatsapp) : that.whatsapp != null) return false;
+        if (wordpress != null ? !wordpress.equals(that.wordpress) : that.wordpress != null) return false;
+        if (spotify != null ? !spotify.equals(that.spotify) : that.spotify != null) return false;
+        if (snapchat != null ? !snapchat.equals(that.snapchat) : that.snapchat != null) return false;
+        if (skype != null ? !skype.equals(that.skype) : that.skype != null) return false;
+        if (slack != null ? !slack.equals(that.slack) : that.slack != null) return false;
+        if (slideshare != null ? !slideshare.equals(that.slideshare) : that.slideshare != null) return false;
+        if (pinterest != null ? !pinterest.equals(that.pinterest) : that.pinterest != null) return false;
+        if (paypal != null ? !paypal.equals(that.paypal) : that.paypal != null) return false;
+        if (meetup != null ? !meetup.equals(that.meetup) : that.meetup != null) return false;
+        if (lastfm != null ? !lastfm.equals(that.lastfm) : that.lastfm != null) return false;
+        if (imdb != null ? !imdb.equals(that.imdb) : that.imdb != null) return false;
+        if (foursquare != null ? !foursquare.equals(that.foursquare) : that.foursquare != null) return false;
+        if (digg != null ? !digg.equals(that.digg) : that.digg != null) return false;
+        if (delicious != null ? !delicious.equals(that.delicious) : that.delicious != null) return false;
+        if (url500px != null ? !url500px.equals(that.url500px) : that.url500px != null) return false;
+        if (amazon != null ? !amazon.equals(that.amazon) : that.amazon != null) return false;
+        if (hackerNews != null ? !hackerNews.equals(that.hackerNews) : that.hackerNews != null) return false;
+        if (scribd != null ? !scribd.equals(that.scribd) : that.scribd != null) return false;
+        if (tumblr != null ? !tumblr.equals(that.tumblr) : that.tumblr != null) return false;
+        if (viadeo != null ? !viadeo.equals(that.viadeo) : that.viadeo != null) return false;
+        if (yahoo != null ? !yahoo.equals(that.yahoo) : that.yahoo != null) return false;
+        if (yoast != null ? !yoast.equals(that.yoast) : that.yoast != null) return false;
+        return yelp != null ? yelp.equals(that.yelp) : that.yelp == null;
     }
 
     @Override
@@ -325,6 +638,30 @@ public class OnlineStrategie implements MySerializable {
         result = 31 * result + (linkedIn != null ? linkedIn.hashCode() : 0);
         result = 31 * result + (stackoverflow != null ? stackoverflow.hashCode() : 0);
         result = 31 * result + (github != null ? github.hashCode() : 0);
+        result = 31 * result + (whatsapp != null ? whatsapp.hashCode() : 0);
+        result = 31 * result + (wordpress != null ? wordpress.hashCode() : 0);
+        result = 31 * result + (spotify != null ? spotify.hashCode() : 0);
+        result = 31 * result + (snapchat != null ? snapchat.hashCode() : 0);
+        result = 31 * result + (skype != null ? skype.hashCode() : 0);
+        result = 31 * result + (slack != null ? slack.hashCode() : 0);
+        result = 31 * result + (slideshare != null ? slideshare.hashCode() : 0);
+        result = 31 * result + (pinterest != null ? pinterest.hashCode() : 0);
+        result = 31 * result + (paypal != null ? paypal.hashCode() : 0);
+        result = 31 * result + (meetup != null ? meetup.hashCode() : 0);
+        result = 31 * result + (lastfm != null ? lastfm.hashCode() : 0);
+        result = 31 * result + (imdb != null ? imdb.hashCode() : 0);
+        result = 31 * result + (foursquare != null ? foursquare.hashCode() : 0);
+        result = 31 * result + (digg != null ? digg.hashCode() : 0);
+        result = 31 * result + (delicious != null ? delicious.hashCode() : 0);
+        result = 31 * result + (url500px != null ? url500px.hashCode() : 0);
+        result = 31 * result + (amazon != null ? amazon.hashCode() : 0);
+        result = 31 * result + (hackerNews != null ? hackerNews.hashCode() : 0);
+        result = 31 * result + (scribd != null ? scribd.hashCode() : 0);
+        result = 31 * result + (tumblr != null ? tumblr.hashCode() : 0);
+        result = 31 * result + (viadeo != null ? viadeo.hashCode() : 0);
+        result = 31 * result + (yahoo != null ? yahoo.hashCode() : 0);
+        result = 31 * result + (yoast != null ? yoast.hashCode() : 0);
+        result = 31 * result + (yelp != null ? yelp.hashCode() : 0);
         return result;
     }
 
@@ -352,6 +689,30 @@ public class OnlineStrategie implements MySerializable {
                 ", linkedIn='" + linkedIn + '\'' +
                 ", stackoverflow='" + stackoverflow + '\'' +
                 ", github='" + github + '\'' +
+                ", whatsapp='" + whatsapp + '\'' +
+                ", wordpress='" + wordpress + '\'' +
+                ", spotify='" + spotify + '\'' +
+                ", snapchat='" + snapchat + '\'' +
+                ", skype='" + skype + '\'' +
+                ", slack='" + slack + '\'' +
+                ", slideshare='" + slideshare + '\'' +
+                ", pinterest='" + pinterest + '\'' +
+                ", paypal='" + paypal + '\'' +
+                ", meetup='" + meetup + '\'' +
+                ", lastfm='" + lastfm + '\'' +
+                ", imdb='" + imdb + '\'' +
+                ", foursquare='" + foursquare + '\'' +
+                ", digg='" + digg + '\'' +
+                ", delicious='" + delicious + '\'' +
+                ", url500px='" + url500px + '\'' +
+                ", amazon='" + amazon + '\'' +
+                ", hackerNews='" + hackerNews + '\'' +
+                ", scribd='" + scribd + '\'' +
+                ", tumblr='" + tumblr + '\'' +
+                ", viadeo='" + viadeo + '\'' +
+                ", yahoo='" + yahoo + '\'' +
+                ", yoast='" + yoast + '\'' +
+                ", yelp='" + yelp + '\'' +
                 '}';
     }
 }
