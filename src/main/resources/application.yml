@@ -60,17 +60,18 @@ btw17:
     pageSize: 20
     loginUsername: ${BTW17_LOGIN_USERNAME}
     loginPassword: ${BTW17_LOGIN_PASSWORD}
-    #loginUsername: blubb
-    #loginPassword: blablabla
     googleMapsApiKey: ${BTW17_GOOGLE_APS_API_KEY}
     googleAnalyticsKey: ${BTW17_GOOGLE_ANALYTICS_ID}
+    googleSiteVerification: ${BTW17_GOOGLE_WEBMASTER_TOOLS_ID}
+    msvalidateKey: ${BTW17_MICROSOFT_WEBMASTER_TOOLS_ID}
+    facebookAppId: ${BTW17_FACEBOOK_APP_ID}
+    twitterCardSite: ${BTW17_TWITTER_CARD_SITE}
+    twitterCardCreator: ${BTW17_TWITTER_CARD_CREATOR}
     connTimeToLive: 10
     maxIdleTime: 120
     millisToWaitBetweenTwoApiCalls: 1000
     checkFotoUrl: false
     pageSubTitle: Bundestagswahl 2017 - Alle 2559 Direktkandidaten
-    twitterCardSite: port80guru
-    twitterCardCreator: port80guru
     webSecurityConfigPublicPaths:
       - "/"
       - "/kandidat/all"

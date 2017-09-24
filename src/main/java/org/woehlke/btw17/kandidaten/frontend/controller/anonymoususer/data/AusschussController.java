@@ -58,7 +58,10 @@ public class AusschussController extends AbstractController {
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss);
+        String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+        String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+        String facebookAppId = kandidatenProperties.getFacebookAppId();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         Page<Ausschuss> pageAllAusschuss =  ausschussService.getAll(pageable);
         model.addAttribute("ausschuesse", pageAllAusschuss);
@@ -88,8 +91,11 @@ public class AusschussController extends AbstractController {
             String pagerUrl = "/ausschuss/"+ausschuss.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+            String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+            String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+            String facebookAppId = kandidatenProperties.getFacebookAppId();
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss);
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl, twitterCardSite, twitterCardCreator, imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("ausschuss",ausschuss);
             Page<Kandidat> kandidatenPage  = kandidatService.findByAusschuss(ausschuss,pageable);

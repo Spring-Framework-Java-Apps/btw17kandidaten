@@ -35,6 +35,15 @@ public class KandidatenProperties {
     private String googleAnalyticsKey;
 
     @NotNull
+    private String googleSiteVerification;
+
+    @NotNull
+    private String msvalidateKey;
+
+    @NotNull
+    private String facebookAppId;
+
+    @NotNull
     private Long connTimeToLive;
 
     @NotNull
@@ -290,6 +299,30 @@ public class KandidatenProperties {
 
     public void setTwitterCardCreator(String twitterCardCreator) {
         this.twitterCardCreator = twitterCardCreator;
+    }
+
+    public String getGoogleSiteVerification() {
+        return googleSiteVerification;
+    }
+
+    public void setGoogleSiteVerification(String googleSiteVerification) {
+        this.googleSiteVerification = googleSiteVerification;
+    }
+
+    public String getMsvalidateKey() {
+        return msvalidateKey;
+    }
+
+    public void setMsvalidateKey(String msvalidateKey) {
+        this.msvalidateKey = msvalidateKey;
+    }
+
+    public String getFacebookAppId() {
+        return facebookAppId;
+    }
+
+    public void setFacebookAppId(String facebookAppId) {
+        this.facebookAppId = facebookAppId;
     }
 
     public String[] getWebSecurityConfigPublicPathsAsArray() {

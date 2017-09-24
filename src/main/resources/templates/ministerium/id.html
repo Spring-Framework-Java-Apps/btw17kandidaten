@@ -105,8 +105,20 @@
                                                     </a>
                                                 </span>
 
+                                                <span th:if="${ministerium.onlineStrategie.lobbycontrol}" >
+                                                    <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.lobbycontrol}" alt="Lobbycontrol" title="Lobbycontrol" target="_blank">
+                                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+
                                                 <span th:if="${ministerium.onlineStrategie.googlePlus != null}">
-                                                    <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                                    <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.googlePlus}" alt="Google Plus" title="Google Plus" target="_blank">
+                                                        <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+
+                                                <span th:if="${ministerium.onlineStrategie.googleSuche != null}">
+                                                    <a class="tw-social-media-link" th:href="${ministerium.onlineStrategie.googleSuche}" alt="Google Suche" title="Google Suche" target="_blank">
                                                         <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                                                     </a>
                                                 </span>
@@ -156,9 +168,6 @@
                                             </span>
 
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>&nbsp;</td><td>&nbsp;</td>
                                     </tr>
                                 </table>
                             </div>

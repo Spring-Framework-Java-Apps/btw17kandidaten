@@ -47,8 +47,28 @@ public class OnlineStrategie implements MySerializable {
     private String lobbypediaUrl;
 
     @URL
+    @Column(name="lobbycontrol")
+    private String lobbycontrol;
+
+    @URL
+    @Column(name="transparency")
+    private String transparency;
+
+    @URL
+    @Column(name="netzpolitik_org")
+    private String netzpolitikOrg;
+
+    @URL
     @Column(name = "google_plus")
     private String googlePlus;
+
+    @URL
+    @Column(name = "google_suche")
+    private String googleSuche;
+
+    @URL
+    @Column(name = "bing_suche")
+    private String bingSuche;
 
     @URL
     @Column(name = "instagram")
@@ -206,6 +226,46 @@ public class OnlineStrategie implements MySerializable {
         this.github = github;
     }
 
+    public String getLobbycontrol() {
+        return lobbycontrol;
+    }
+
+    public void setLobbycontrol(String lobbycontrol) {
+        this.lobbycontrol = lobbycontrol;
+    }
+
+    public String getGoogleSuche() {
+        return googleSuche;
+    }
+
+    public void setGoogleSuche(String googleSuche) {
+        this.googleSuche = googleSuche;
+    }
+
+    public String getBingSuche() {
+        return bingSuche;
+    }
+
+    public void setBingSuche(String bingSuche) {
+        this.bingSuche = bingSuche;
+    }
+
+    public String getTransparency() {
+        return transparency;
+    }
+
+    public void setTransparency(String transparency) {
+        this.transparency = transparency;
+    }
+
+    public String getNetzpolitikOrg() {
+        return netzpolitikOrg;
+    }
+
+    public void setNetzpolitikOrg(String netzpolitikOrg) {
+        this.netzpolitikOrg = netzpolitikOrg;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -225,7 +285,13 @@ public class OnlineStrategie implements MySerializable {
             return false;
         if (lobbypediaUrl != null ? !lobbypediaUrl.equals(that.lobbypediaUrl) : that.lobbypediaUrl != null)
             return false;
+        if (lobbycontrol != null ? !lobbycontrol.equals(that.lobbycontrol) : that.lobbycontrol != null) return false;
+        if (transparency != null ? !transparency.equals(that.transparency) : that.transparency != null) return false;
+        if (netzpolitikOrg != null ? !netzpolitikOrg.equals(that.netzpolitikOrg) : that.netzpolitikOrg != null)
+            return false;
         if (googlePlus != null ? !googlePlus.equals(that.googlePlus) : that.googlePlus != null) return false;
+        if (googleSuche != null ? !googleSuche.equals(that.googleSuche) : that.googleSuche != null) return false;
+        if (bingSuche != null ? !bingSuche.equals(that.bingSuche) : that.bingSuche != null) return false;
         if (instagram != null ? !instagram.equals(that.instagram) : that.instagram != null) return false;
         if (flickr != null ? !flickr.equals(that.flickr) : that.flickr != null) return false;
         if (vimeo != null ? !vimeo.equals(that.vimeo) : that.vimeo != null) return false;
@@ -246,7 +312,12 @@ public class OnlineStrategie implements MySerializable {
         result = 31 * result + (bundestagAbgeordnete != null ? bundestagAbgeordnete.hashCode() : 0);
         result = 31 * result + (abgeordnetenwatch != null ? abgeordnetenwatch.hashCode() : 0);
         result = 31 * result + (lobbypediaUrl != null ? lobbypediaUrl.hashCode() : 0);
+        result = 31 * result + (lobbycontrol != null ? lobbycontrol.hashCode() : 0);
+        result = 31 * result + (transparency != null ? transparency.hashCode() : 0);
+        result = 31 * result + (netzpolitikOrg != null ? netzpolitikOrg.hashCode() : 0);
         result = 31 * result + (googlePlus != null ? googlePlus.hashCode() : 0);
+        result = 31 * result + (googleSuche != null ? googleSuche.hashCode() : 0);
+        result = 31 * result + (bingSuche != null ? bingSuche.hashCode() : 0);
         result = 31 * result + (instagram != null ? instagram.hashCode() : 0);
         result = 31 * result + (flickr != null ? flickr.hashCode() : 0);
         result = 31 * result + (vimeo != null ? vimeo.hashCode() : 0);
@@ -255,5 +326,32 @@ public class OnlineStrategie implements MySerializable {
         result = 31 * result + (stackoverflow != null ? stackoverflow.hashCode() : 0);
         result = 31 * result + (github != null ? github.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "OnlineStrategie{" +
+                "twitter='" + twitter + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", youtube='" + youtube + '\'' +
+                ", soundcloud='" + soundcloud + '\'' +
+                ", wikipediaArticle='" + wikipediaArticle + '\'' +
+                ", bundestagAbgeordnete='" + bundestagAbgeordnete + '\'' +
+                ", abgeordnetenwatch='" + abgeordnetenwatch + '\'' +
+                ", lobbypediaUrl='" + lobbypediaUrl + '\'' +
+                ", lobbycontrol='" + lobbycontrol + '\'' +
+                ", transparency='" + transparency + '\'' +
+                ", netzpolitikOrg='" + netzpolitikOrg + '\'' +
+                ", googlePlus='" + googlePlus + '\'' +
+                ", googleSuche='" + googleSuche + '\'' +
+                ", bingSuche='" + bingSuche + '\'' +
+                ", instagram='" + instagram + '\'' +
+                ", flickr='" + flickr + '\'' +
+                ", vimeo='" + vimeo + '\'' +
+                ", xing='" + xing + '\'' +
+                ", linkedIn='" + linkedIn + '\'' +
+                ", stackoverflow='" + stackoverflow + '\'' +
+                ", github='" + github + '\'' +
+                '}';
     }
 }

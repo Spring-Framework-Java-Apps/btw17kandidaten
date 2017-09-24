@@ -29,7 +29,10 @@ public class ImprintController extends AbstractController {
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.WAHLZETTEL_BRIEFWAHL;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+        String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+        String facebookAppId = kandidatenProperties.getFacebookAppId();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         return "imprint/imprint";
     }

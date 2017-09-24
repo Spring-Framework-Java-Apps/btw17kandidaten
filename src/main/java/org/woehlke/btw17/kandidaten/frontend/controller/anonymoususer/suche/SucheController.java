@@ -53,7 +53,10 @@ public class SucheController extends AbstractController {
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+        String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+        String facebookAppId = kandidatenProperties.getFacebookAppId();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         log.info(suchformular.toString());
         Page<Kandidat> kandidatPage = sucheService.suchePerFormular(suchformular, pageable);
@@ -105,7 +108,10 @@ public class SucheController extends AbstractController {
         String twitterCardSite = kandidatenProperties.getTwitterCardSite();
         String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
         JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss);
+        String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+        String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+        String facebookAppId = kandidatenProperties.getFacebookAppId();
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         if((suchformularFreitext.getSearchTerm()!=null)&&(!suchformularFreitext.getSearchTerm().isEmpty())){
             Page<Kandidat> kandidatPage = sucheService.suchePerFreitextFormular(suchformularFreitext,pageable);
