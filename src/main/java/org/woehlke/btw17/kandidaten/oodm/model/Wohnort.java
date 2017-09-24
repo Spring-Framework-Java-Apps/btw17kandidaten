@@ -43,22 +43,18 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     private Bundesland bundesland;
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    //@NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
-    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({

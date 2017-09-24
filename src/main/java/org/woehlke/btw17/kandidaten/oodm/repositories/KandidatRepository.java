@@ -31,14 +31,14 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
 
     @Query(
-            name = "Kandidat.findByMinisterium",
-            countQuery = "Kandidat.findByMinisteriumCount"
+        name = "Kandidat.findByMinisterium",
+        countQuery = "Kandidat.findByMinisteriumCount"
     )
     Page<Kandidat> findByMinisterium(@Param("ministerium") Ministerium ministerium, Pageable pageable);
 
     @Query(
-            name = "Kandidat.findByFraktion",
-            countQuery = "Kandidat.findByFraktionCount"
+        name = "Kandidat.findByFraktion",
+        countQuery = "Kandidat.findByFraktionCount"
     )
     Page<Kandidat> findByFraktion(@Param("fraktion") Fraktion fraktion, Pageable pageable);
 
@@ -65,7 +65,10 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     Page<Kandidat> findByGeburtsjahr(Integer geburtsjahr, Pageable pageable);
 
-    @Query(name="Kandidat.findByListePartei")
+    @Query(
+        name = "Kandidat.findByListePartei",
+        countName = "Kandidat.countByListePartei"
+    )
     Page<Kandidat> findByListePartei(@Param("listePartei") ListePartei listePartei, Pageable pageable);
 
     @Query(name="Kandidat.findByGeburtsjahrAll")
@@ -224,4 +227,16 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(name="Kandidat.countKandidat")
     Long countKandidat();
+
+    @Query(
+            name = "Kandidat.findByWebseiteAgentur",
+            countName = "Kandidat.countByWebseiteAgentur"
+    )
+    Page<Kandidat> findByWebseiteAgentur(@Param("webseiteAgentur") WebseiteAgentur webseiteAgentur, Pageable pageable);
+
+    @Query(
+            name = "Kandidat.findByWebseiteCms",
+            countName = "Kandidat.contByWebseiteCms"
+    )
+    Page<Kandidat> findByWebseiteCms(@Param("webseiteCms") WebseiteCms webseiteCms, Pageable pageable);
 }

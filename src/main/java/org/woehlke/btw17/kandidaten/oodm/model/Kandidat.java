@@ -74,6 +74,10 @@ import static javax.persistence.FetchType.EAGER;
         query = "select o from Kandidat as o where o.landesListe.listePartei=:listePartei order by o.nachname"
     ),
     @NamedQuery(
+        name = "Kandidat.countByListePartei",
+        query = "select count(o) from Kandidat as o where o.landesListe.listePartei=:listePartei"
+    ),
+    @NamedQuery(
         name = "Kandidat.findByKandidatFlatId",
         query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId order by o.nachname"
     ),
@@ -227,7 +231,23 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.findByMinisteriumCount",
-        query = "select count(o) from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium"
+        query = "select count(o) from Kandidat as o join o.webseite ministerium where ministerium=:ministerium"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByWebseiteAgentur",
+        query = "select count(o) from Kandidat as o join o.webseite.webseiteAgentur webseiteAgentur where webseiteAgentur=:webseiteAgentur"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countByWebseiteAgentur",
+        query = "select count(o) from Kandidat as o join o.webseite.webseiteAgentur webseiteAgentur where webseiteAgentur=:webseiteAgentur"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByWebseiteCms",
+        query = "select count(o) from Kandidat as o join o.webseite.webseiteCms webseiteCms where webseiteCms=:webseiteCms"
+    ),
+    @NamedQuery(
+        name = "Kandidat.contByWebseiteCms",
+        query = "select count(o) from Kandidat as o join o.webseite.webseiteCms webseiteCms where webseiteCms=:webseiteCms"
     )
 })
 @EntityListeners(KandidatListener.class)

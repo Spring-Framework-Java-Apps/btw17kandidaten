@@ -62,17 +62,14 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    //@NotNull
     @Valid
     @Embedded
     private Adresse adresse = new Adresse();
 
-    //@NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();

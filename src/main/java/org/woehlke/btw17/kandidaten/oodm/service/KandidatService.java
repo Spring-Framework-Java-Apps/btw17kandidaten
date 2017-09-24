@@ -59,4 +59,9 @@ public interface KandidatService {
     Page<Kandidat> findByAusschuss(Ausschuss ausschuss, Pageable pageable);
 
     Page<Kandidat> findByMinisterium(Ministerium ministerium, Pageable pageable);
+
+    Page<Kandidat> findByWebseiteAgentur(WebseiteAgentur webseiteAgentur, Pageable pageable);
+
+    Page<Kandidat> findByWebseiteCms(WebseiteCms webseiteCms, Pageable pageable);
+
 }

@@ -147,4 +147,14 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByMinisterium(ministerium,pageable);
     }
 
+    @Override
+    public Page<Kandidat> findByWebseiteAgentur(WebseiteAgentur webseiteAgentur, Pageable pageable) {
+        return kandidatRepository.findByWebseiteAgentur(webseiteAgentur,pageable);
+    }
+
+    @Override
+    public Page<Kandidat> findByWebseiteCms(WebseiteCms webseiteCms, Pageable pageable) {
+        return kandidatRepository.findByWebseiteCms(webseiteCms,pageable);
+    }
+
 }
