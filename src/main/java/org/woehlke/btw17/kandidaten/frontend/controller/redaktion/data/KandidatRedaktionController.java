@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,7 +60,8 @@ public class KandidatRedaktionController extends AbstractController {
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
+                    sort = PAGE_DEFAULT_SORT,
+                    direction = Sort.Direction.ASC
             ) Pageable pageable,
             Model model
     ) {

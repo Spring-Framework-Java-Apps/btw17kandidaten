@@ -38,10 +38,17 @@ spring:
     #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
     url: ${DATABASE_URL}
     continue-on-error: true
+    schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+  session:
+    store-type: jdbc
+    jdbc:
+      initializer:
+        enabled: true
   devtools:
     livereload:
       enabled: false
   jpa:
+    open-in-view: true
     generate-ddl: true
     hibernate:
       #ddl-auto: create-drop
@@ -152,12 +159,17 @@ btw17:
   kandidaten:
     checkFotoUrl: false
 ---
+
 spring:
+  h2:
+    console:
+      enabled: true
   profiles: travis
   datasource:
     driverClassName: org.h2.Driver
     platform: H2
     url: jdbc:h2:mem:test
+    schema: classpath:org/springframework/session/jdbc/schema-h2.sql
   jpa:
     hibernate:
       ddl-auto: update

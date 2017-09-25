@@ -514,38 +514,72 @@
                                     <span th:text="${kandidat.funktion}"></span>
                                 </td>
                             </tr>
-                            <tr th:if="${!kandidat.ministerium.empty}">
+                            <tr th:if="${!kandidat.ministerien.empty}">
                                 <td><i class="fa fa-home" aria-hidden="true"></i> Ministerien</td>
                                 <td colspan="2">
-                                    <div th:each="mi : ${kandidat.ministerium}">
+                                    <div th:each="mi : ${kandidat.ministerien}">
                                         <a th:href="@{|/ministerium/${mi.id}|}">
                                             <span th:text="${mi.name}">ministerium</span>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                            <tr th:if="${!kandidat.ausschuss.empty}">
+                            <tr th:if="${!kandidat.ausschuesse.empty}">
                                 <td><i class="fa fa-users" aria-hidden="true"></i> Ausschüsse</td>
                                 <td colspan="2">
-                                    <div th:each="au : ${kandidat.ausschuss}">
+                                    <div th:each="au : ${kandidat.ausschuesse}">
                                         <a th:href="@{|/ausschuss/${au.id}|}">
                                             <span th:text="${au.name}">ausschuss</span>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr th:if="${kandidat.webseite}">
                                 <td>&nbsp;</td>
                                 <td colspan="2">
-
-                                    <span th:if="${kandidat.webseite}">
-                                        <span th:if="${kandidat.webseite.webseite}">
-                                            <a class="tw-social-media-link" th:href="${kandidat.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                <i class="fa fa-link" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
+                                    <span th:if="${kandidat.webseite.webseite}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                        </a>
                                     </span>
-
+                                    <span th:if="${kandidat.webseite.cms}">
+                                        <a class="tw-social-media-link" th:href="${kandidat.webseite.cms}" alt="CMS" title="CMS" target="_blank">
+                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                        </a>
+                                    </span>
+                                    <span th:each="agentur : ${kandidat.webseite.agenturen}">
+                                        <a th:href="@{|/webseite/agentur/${agentur.id}|}">
+                                            <span th:text="${agentur.name}">agentur</span>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr th:if="${kandidat.commonFields != null}">
+                                <td>Logo</td>
+                                <td colspan="2">
+                                    <span th:if="${kandidat.commonFields.logoUrl != null}">
+                                        <img th:src="${kandidat.commonFields.logoUrl}" alt="Logo" title="Logo" />
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr th:if="${kandidat.commonFields != null}">
+                                <td>Logo</td>
+                                <td colspan="2">
+                                    <span th:if="${kandidat.commonFields.symbolBild != null}">
+                                        <img th:src="${kandidat.commonFields.symbolBild}" alt="Symbol Bild" title="Symbol Bild" />
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr th:if="${kandidat.commonFields != null}">
+                                <td>Logo</td>
+                                <td colspan="2">
+                                    <span th:if="${kandidat.commonFields.beschreibungsText != null}">
+                                        <span th:text="${kandidat.commonFields.beschreibungsText}">beschreibungsText</span>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr th:if="${kandidat.onlineStrategie != null}">
+                                <td colspan="3">
                                     <span th:if="${kandidat.onlineStrategie}">
                                         <span th:if="${kandidat.onlineStrategie.twitter}">
                                             <a class="tw-social-media-link" th:href="${kandidat.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

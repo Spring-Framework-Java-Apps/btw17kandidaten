@@ -7,6 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.AdresseEmbedded
@@ -30,7 +31,7 @@ public class Adresse implements MySerializable {
     @Column(name="nation")
     private String nation;
 
-    @ManyToOne(optional=true,fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional=true,fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland",nullable=true)
     private Bundesland bundesland;
 

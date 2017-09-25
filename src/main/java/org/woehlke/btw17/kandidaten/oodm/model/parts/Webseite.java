@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.WebseiteEmbedded
@@ -22,11 +22,11 @@ public class Webseite {
     @Column(name="webseite")
     private String webseite;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_webseite_cms")
     private WebseiteCms cms;
 
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<WebseiteAgentur> agenturen = new LinkedHashSet<>();
 
     public String getWebseite() {
