@@ -248,6 +248,14 @@
         margin-right: 24px;
     }
 
+    div.tw-kandidat-profil-foto {
+        padding: 24px;
+    }
+
+    div#tw-kandidat-profil-heading,
+    table.tw-kandidat-profil tr td {
+        padding-left: 24px;
+    }
 }
 
 
