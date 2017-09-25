@@ -675,20 +675,26 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well" th:if="${kandidat.wohnort.geoPosition}">
-                        <h3>Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
-                        <hr/>
-                        <div id="map-wohnort"></div>
+                    <div class="panel panel-primary" th:if="${kandidat.wohnort.geoPosition}">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Wohnort: <span th:text="${kandidat.wohnort.wohnort}">wohnort</span></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="map-wohnort"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well">
-                        <h3 th:if="${kandidat.geburtsort != null}">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
-                        <h3 th:if="${kandidat.geburtsort == null}">Geburtsort</h3>
-                        <hr/>
-                        <div id="map-geburtsort"></div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 th:if="${kandidat.geburtsort != null}" class="panel-title">Geburtsort: <span th:text="${kandidat.geburtsort.geburtsort}">geburtsort</span></h3>
+                            <h3 th:if="${kandidat.geburtsort == null}" class="panel-title">Geburtsort</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="map-geburtsort"></div>
+                        </div>
                     </div>
                 </div>
             </div>
