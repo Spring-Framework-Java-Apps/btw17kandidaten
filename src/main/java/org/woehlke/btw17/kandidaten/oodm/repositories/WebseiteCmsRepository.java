@@ -12,7 +12,7 @@ public interface WebseiteCmsRepository extends PagingAndSortingRepository<Websei
 
     @Query(
         name = "WebseiteCms.findByCms",
-        countName = "WebseiteCms.findByCms"
+        countName = "WebseiteCms.countByCms"
     )
     WebseiteCms findByCms(@Param("cms") String cms);
 }

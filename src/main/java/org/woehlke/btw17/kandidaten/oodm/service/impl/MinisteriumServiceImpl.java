@@ -48,4 +48,10 @@ public class MinisteriumServiceImpl implements MinisteriumService {
     public void deleteAll() {
         ministeriumRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Ministerium update(Ministerium ministerium) {
+        return ministeriumRepository.save(ministerium);
+    }
 }

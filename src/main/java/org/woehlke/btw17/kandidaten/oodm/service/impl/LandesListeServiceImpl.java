@@ -53,6 +53,12 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public LandesListe update(LandesListe landesListe) {
+        return landesListeRepository.save(landesListe);
+    }
+
+    @Override
     public LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei) {
         return landesListeRepository.findByBundeslandAndListePartei(bundesland,listePartei);
     }

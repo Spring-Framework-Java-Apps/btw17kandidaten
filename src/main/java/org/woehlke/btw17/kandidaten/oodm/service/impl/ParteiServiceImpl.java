@@ -49,4 +49,10 @@ public class ParteiServiceImpl implements ParteiService {
     public void deleteAll() {
         parteiRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Partei update(Partei partei) {
+        return parteiRepository.save(partei);
+    }
 }

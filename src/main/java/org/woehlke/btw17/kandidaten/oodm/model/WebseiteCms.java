@@ -43,7 +43,7 @@ import javax.validation.constraints.NotNull;
         query = "select o from WebseiteCms as o where o.cms=:cms order by o.cms"
     ),
     @NamedQuery(
-        name = "WebseiteCms.findByCms",
+        name = "WebseiteCms.countByCms",
         query = "select count(o) from WebseiteCms as o where o.cms=:cms"
     )
 })
