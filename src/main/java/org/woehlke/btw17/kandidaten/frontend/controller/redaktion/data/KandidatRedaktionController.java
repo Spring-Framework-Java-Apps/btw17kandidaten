@@ -84,22 +84,22 @@ public class KandidatRedaktionController extends AbstractController {
         return "kandidat/all";
     }
 
-    @ModelAttribute("ausschuesse")
-    public List<Ausschuss> addAusschuesse(HttpSession session, Model model) {
+    @ModelAttribute("ausschuesseList")
+    public List<Ausschuss> addAusschuesse(Model model) {
         log.debug("addAusschuesse");
         List<Ausschuss> ausschuesse = ausschussService.getAll();
         return ausschuesse;
     }
 
-    @ModelAttribute("fraktionen")
-    public List<Fraktion> addFraktionen(HttpSession session, Model model) {
+    @ModelAttribute("fraktionenList")
+    public List<Fraktion> addFraktionen(Model model) {
         log.debug("addFraktionen");
         List<Fraktion> fraktionen = fraktionService.getAll();
         return fraktionen;
     }
 
-    @ModelAttribute("ministerien")
-    public List<Ministerium> addMinisterien(HttpSession session, Model model) {
+    @ModelAttribute("ministerienList")
+    public List<Ministerium> addMinisterien(Model model) {
         log.debug("addMinisterien");
         List<Ministerium> ministerien = ministeriumService.getAll();
         return ministerien;
