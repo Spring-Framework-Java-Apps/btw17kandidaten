@@ -59,6 +59,12 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(LandesListe landesListe) {
+        landesListeRepository.delete(landesListe);
+    }
+
+    @Override
     public LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei) {
         return landesListeRepository.findByBundeslandAndListePartei(bundesland,listePartei);
     }

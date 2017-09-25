@@ -55,13 +55,12 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 public class KandidatRedaktionController extends AbstractController {
 
     @RequestMapping("/all")
-    public String getAll(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
                     sort = PAGE_DEFAULT_SORT
             ) Pageable pageable,
-            HttpSession session,
             Model model
     ) {
         String pageTitle = "Alle Kandidaten";
@@ -105,7 +104,7 @@ public class KandidatRedaktionController extends AbstractController {
     }
 
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
-    public String editKandidatForIdGet(
+    public String editGet(
             @PathVariable("id") Kandidat kandidat,
             Model model
     ) {
@@ -145,7 +144,7 @@ public class KandidatRedaktionController extends AbstractController {
     }
 
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.POST)
-    public String editKandidatForIdPost(
+    public String editPost(
             @PathVariable("id") Long id,
             @Valid Kandidat kandidat,
             BindingResult binding,

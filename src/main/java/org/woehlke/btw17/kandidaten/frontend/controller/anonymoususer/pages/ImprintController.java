@@ -19,7 +19,7 @@ public class ImprintController extends AbstractController {
 
 
     @RequestMapping
-    public String getAll(Model model) {
+    public String impressum(Model model) {
         String pageTitle = "Impressum";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.IMPRESSUM.getSymbolHtml();

@@ -60,4 +60,10 @@ public class AusschussServiceImpl implements AusschussService {
     public Ausschuss create(Ausschuss ausschuss) {
         return ausschussRepository.save(ausschuss);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(Ausschuss ausschuss) {
+        ausschussRepository.delete(ausschuss);
+    }
 }

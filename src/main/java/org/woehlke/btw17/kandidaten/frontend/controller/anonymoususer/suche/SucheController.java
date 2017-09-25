@@ -35,7 +35,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 public class SucheController extends AbstractController {
 
     @RequestMapping(value = "/formular", method = RequestMethod.GET)
-    public String suchFormularGet(
+    public String sucheFormularGet(
             @Valid @ModelAttribute("suchformular") SearchForKandidat suchformular,
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
@@ -71,7 +71,7 @@ public class SucheController extends AbstractController {
     }
 
     @RequestMapping(value = "/formular", method = RequestMethod.POST)
-    public String suchFormularPost(
+    public String sucheFormularPost(
             @Valid @ModelAttribute("suchformular") SearchForKandidat suchformular,
             BindingResult binding,
             RedirectAttributes attr,
@@ -89,7 +89,7 @@ public class SucheController extends AbstractController {
 
 
     @RequestMapping(value = "/freitext/formular", method = RequestMethod.GET)
-    public String suchFreitextFormularGet(
+    public String sucheFreitextFormularGet(
             @Valid @ModelAttribute("suchformularFreitext") FreitextSucheFormular suchformularFreitext,
             BindingResult binding,
             @PageableDefault(
@@ -126,7 +126,7 @@ public class SucheController extends AbstractController {
     }
 
     @RequestMapping(value = "/freitext/formular", method = RequestMethod.POST)
-    public String suchFreitextFormularPost(
+    public String sucheFreitextFormularPost(
             @Valid @ModelAttribute("suchformularFreitext") FreitextSucheFormular suchformularFreitext,
             BindingResult binding,
             RedirectAttributes attr,

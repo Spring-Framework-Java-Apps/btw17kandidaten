@@ -18,4 +18,6 @@ public interface WahlkreisService {
     Wahlkreis update(Wahlkreis wahlkreis);
 
     Wahlkreis create(Wahlkreis wahlkreis);
+
+    void delete(Wahlkreis wahlkreis);
 }

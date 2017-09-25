@@ -21,4 +21,6 @@ public interface MinisteriumService {
     Ministerium update(Ministerium ministerium);
 
     Ministerium create(Ministerium ministerium);
+
+    void delete(Ministerium ministerium);
 }

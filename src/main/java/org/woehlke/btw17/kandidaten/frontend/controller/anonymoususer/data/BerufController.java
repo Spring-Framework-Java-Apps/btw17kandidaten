@@ -77,7 +77,7 @@ public class BerufController extends AbstractController {
     ) {
         if(beruf == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in BerufController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BerufController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = beruf.getBeruf();

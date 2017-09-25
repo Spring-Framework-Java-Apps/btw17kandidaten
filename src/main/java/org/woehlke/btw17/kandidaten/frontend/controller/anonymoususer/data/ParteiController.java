@@ -78,7 +78,7 @@ public class ParteiController extends AbstractController {
     ) {
         if(partei == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in ParteiController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in ParteiController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = partei.getPartei();

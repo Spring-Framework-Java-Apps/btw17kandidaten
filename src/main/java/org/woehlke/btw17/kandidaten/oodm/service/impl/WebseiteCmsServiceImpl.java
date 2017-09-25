@@ -52,4 +52,10 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
     public WebseiteCms create(WebseiteCms webseiteCms) {
         return webseiteCmsRepository.save(webseiteCms);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(WebseiteCms webseiteCms) {
+        webseiteCmsRepository.delete(webseiteCms);
+    }
 }

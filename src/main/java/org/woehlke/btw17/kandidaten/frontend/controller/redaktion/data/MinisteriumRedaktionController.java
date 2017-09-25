@@ -32,7 +32,7 @@ public class MinisteriumRedaktionController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAllMinisterium(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,

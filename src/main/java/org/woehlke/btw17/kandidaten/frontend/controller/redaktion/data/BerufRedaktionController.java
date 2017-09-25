@@ -31,7 +31,7 @@ public class BerufRedaktionController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAll(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,

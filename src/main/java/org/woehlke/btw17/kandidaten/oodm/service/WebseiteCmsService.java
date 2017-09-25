@@ -17,4 +17,6 @@ public interface WebseiteCmsService {
     WebseiteCms update(WebseiteCms webseiteCms);
 
     WebseiteCms create(WebseiteCms webseiteCms);
+
+    void delete(WebseiteCms webseiteCms);
 }

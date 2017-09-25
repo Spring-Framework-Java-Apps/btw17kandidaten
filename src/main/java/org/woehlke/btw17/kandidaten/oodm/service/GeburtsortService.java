@@ -17,4 +17,6 @@ public interface GeburtsortService {
     void update(Geburtsort geburtsort);
 
     Geburtsort create(Geburtsort geburtsort);
+
+    void delete(Geburtsort geburtsort);
 }

@@ -22,4 +22,6 @@ public interface ParteiService {
     Partei update(Partei partei);
 
     Partei create(Partei partei);
+
+    void delete(Partei partei);
 }

@@ -20,6 +20,8 @@ public interface KandidatService {
 
     Kandidat create(Kandidat kandidat);
 
+    void delete(Kandidat kandidat);
+
     void deleteAll();
 
     long count();

@@ -24,7 +24,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.LandesListeService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
@@ -87,7 +86,7 @@ public class LandesListeController extends AbstractController {
     ) {
         if(bundesland == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
+            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.bundeslandId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = "LandesListen in "+ bundesland.getName();
@@ -124,7 +123,7 @@ public class LandesListeController extends AbstractController {
     ) {
         if(listePartei == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.getLandesListeForBundesland";
+            String msg = "url: "+ request.getRequestURL().toString() +" in LandesListeController.listeparteiId";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = "LandesListen der "+ listePartei.getListePartei();

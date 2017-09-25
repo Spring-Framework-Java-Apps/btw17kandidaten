@@ -18,4 +18,6 @@ public interface WebseiteAgenturService {
 
     WebseiteAgentur create(WebseiteAgentur webseiteAgentur);
 
+    void delete(WebseiteAgentur webseiteAgentur);
+
 }

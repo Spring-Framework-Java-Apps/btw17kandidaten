@@ -39,7 +39,7 @@ public class BundeslandController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAll(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
@@ -61,7 +61,6 @@ public class BundeslandController extends AbstractController {
         String facebookAppId = kandidatenProperties.getFacebookAppId();
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
-
         Page<Bundesland> allBundeslandPage =  bundeslandService.getAll(pageable);
         model.addAttribute("bundeslaender", allBundeslandPage);
         model.addAttribute("bundeslandIdTarget","bundesland");
@@ -80,7 +79,7 @@ public class BundeslandController extends AbstractController {
     ) {
         if(bundesland == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in BundeslandController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BundeslandController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = bundesland.getBundeslandLang() +" ("+bundesland.getBundesland()+")";

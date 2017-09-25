@@ -53,4 +53,10 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     public Wahlkreis create(Wahlkreis wahlkreis) {
         return wahlkreisRepository.save(wahlkreis);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(Wahlkreis wahlkreis) {
+        wahlkreisRepository.delete(wahlkreis);
+    }
 }

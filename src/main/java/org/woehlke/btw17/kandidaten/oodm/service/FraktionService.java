@@ -21,4 +21,6 @@ public interface FraktionService {
     Fraktion update(Fraktion fraktion);
 
     Fraktion create(Fraktion fraktion);
+
+    void delete(Fraktion fraktion);
 }

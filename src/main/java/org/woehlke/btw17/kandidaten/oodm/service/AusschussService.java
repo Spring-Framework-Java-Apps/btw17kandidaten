@@ -21,4 +21,6 @@ public interface AusschussService {
     Ausschuss update(Ausschuss ausschuss);
 
     Ausschuss create(Ausschuss ausschuss);
+
+    void delete(Ausschuss ausschuss);
 }

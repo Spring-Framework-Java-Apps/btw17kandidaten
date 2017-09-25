@@ -22,6 +22,8 @@ public interface LandesListeService {
 
     LandesListe update(LandesListe landesListe);
 
+    void delete(LandesListe landesListe);
+
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
 
     LandesListe fetchOrCreateByBundeslandAndListePartei(Bundesland bundesland,ListePartei listePartei);

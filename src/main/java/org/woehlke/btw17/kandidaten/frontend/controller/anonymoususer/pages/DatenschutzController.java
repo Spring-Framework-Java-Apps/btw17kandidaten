@@ -19,7 +19,7 @@ public class DatenschutzController extends AbstractController {
 
 
     @RequestMapping
-    public String getAll(Model model) {
+    public String datenschutz(Model model) {
         String pageTitle = "Datenschutz";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.DATENSCHUTZ.getSymbolHtml();

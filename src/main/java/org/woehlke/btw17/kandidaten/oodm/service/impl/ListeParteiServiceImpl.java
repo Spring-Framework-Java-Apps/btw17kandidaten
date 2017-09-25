@@ -58,4 +58,10 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     public ListePartei findByPartei(String partei) {
         return listeParteiRepository.findByListePartei(partei);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(ListePartei listePartei) {
+        listeParteiRepository.delete(listePartei);
+    }
 }

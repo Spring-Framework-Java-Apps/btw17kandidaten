@@ -19,8 +19,6 @@ import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
-import org.woehlke.btw17.kandidaten.oodm.service.FraktionService;
 import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 
 import javax.persistence.EntityNotFoundException;
@@ -73,7 +71,7 @@ public class KandidatController extends AbstractController {
     ) {
         if(kandidat == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in KandidatController.getKandidatForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in KandidatController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = kandidat.getVorname()+" "+kandidat.getNachname();

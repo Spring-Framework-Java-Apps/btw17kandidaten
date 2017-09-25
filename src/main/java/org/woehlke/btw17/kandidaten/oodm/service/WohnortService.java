@@ -21,4 +21,6 @@ public interface WohnortService {
     void update(Wohnort wohnort);
 
     Wohnort create(Wohnort wohnort);
+
+    void delete(Wohnort wohnort);
 }

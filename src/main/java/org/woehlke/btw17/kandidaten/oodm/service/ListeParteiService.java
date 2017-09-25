@@ -20,4 +20,6 @@ public interface ListeParteiService {
 
     ListePartei findByPartei(String partei);
 
+    void delete(ListePartei listePartei);
+
 }

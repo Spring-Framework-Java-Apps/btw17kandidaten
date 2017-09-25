@@ -80,7 +80,7 @@ public class AusschussController extends AbstractController {
     ) {
         if(ausschuss == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+request.getRequestURL().toString() +" in AusschussController.getFraktionForId";
+            String msg = "url: "+request.getRequestURL().toString() +" in AusschussController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = ausschuss.getName();

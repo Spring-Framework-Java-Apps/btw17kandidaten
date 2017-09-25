@@ -79,7 +79,7 @@ public class WahlkreisController extends AbstractController {
     ) {
         if(wahlkreis == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in WahlkreisController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in WahlkreisController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = wahlkreis.getWahlkreisId() + ": " + wahlkreis.getWahlkreisName();

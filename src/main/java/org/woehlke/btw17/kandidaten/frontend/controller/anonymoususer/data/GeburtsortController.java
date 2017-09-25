@@ -78,7 +78,7 @@ public class GeburtsortController extends AbstractController {
     ) {
         if(geburtsort == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in GeburtsortController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in GeburtsortController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = geburtsort.getGeburtsort();

@@ -20,4 +20,6 @@ public interface BundeslandService {
     Bundesland update(Bundesland bundesland);
 
     Bundesland create(Bundesland bundesland);
+
+    void delete(Bundesland bundesland);
 }

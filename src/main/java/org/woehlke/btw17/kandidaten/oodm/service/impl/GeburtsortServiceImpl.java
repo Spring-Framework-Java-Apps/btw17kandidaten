@@ -53,4 +53,10 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     public Geburtsort create(Geburtsort geburtsort) {
         return geburtsortRepository.save(geburtsort);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public void delete(Geburtsort geburtsort) {
+        geburtsortRepository.delete(geburtsort);
+    }
 }

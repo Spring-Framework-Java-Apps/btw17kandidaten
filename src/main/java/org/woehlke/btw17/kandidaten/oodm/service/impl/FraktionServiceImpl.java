@@ -60,4 +60,9 @@ public class FraktionServiceImpl implements FraktionService {
     public Fraktion create(Fraktion fraktion) {
         return fraktionRepository.save(fraktion);
     }
+
+    @Override
+    public void delete(Fraktion fraktion) {
+        fraktionRepository.delete(fraktion);
+    }
 }

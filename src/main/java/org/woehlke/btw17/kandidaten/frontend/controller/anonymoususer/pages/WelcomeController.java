@@ -18,7 +18,7 @@ import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractControlle
 public class WelcomeController extends AbstractController {
 
     @RequestMapping
-    public String getAll(Model model) {
+    public String welcome(Model model) {
         String pageTitle = "Bundestagswahl 2017";
         String pageSubTitle = "Alle 2559 Direktkandidaten";
         String pageSymbol = PageSymbol.STARTSEITE.getSymbolHtml();

@@ -14,8 +14,6 @@ import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @SessionAttributes({"suchformular","suchformularFreitext"})
 public class LoginController extends AbstractController {

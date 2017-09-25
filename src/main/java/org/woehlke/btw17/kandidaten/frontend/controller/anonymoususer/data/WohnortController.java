@@ -78,7 +78,7 @@ public class WohnortController extends AbstractController {
     ) {
         if(wohnort == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in WohnortController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in WohnortController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = wohnort.getWohnort();

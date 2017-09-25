@@ -34,7 +34,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 public class LandesListeRedaktionController extends AbstractController {
 
     @RequestMapping("/bundesland/all")
-    public String getLandesListeForBundeslandAll(
+    public String bundeslandAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
@@ -63,7 +63,7 @@ public class LandesListeRedaktionController extends AbstractController {
     }
 
     @RequestMapping("/listepartei/all")
-    public String getLandesListeForListeParteiAll(
+    public String listeparteiAll(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,

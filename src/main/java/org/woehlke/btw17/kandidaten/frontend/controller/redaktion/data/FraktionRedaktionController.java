@@ -31,7 +31,7 @@ public class FraktionRedaktionController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAllFraktion(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,

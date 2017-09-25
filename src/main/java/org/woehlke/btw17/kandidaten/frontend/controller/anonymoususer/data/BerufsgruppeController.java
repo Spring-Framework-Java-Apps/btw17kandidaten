@@ -77,7 +77,7 @@ public class BerufsgruppeController extends AbstractController {
     ) {
         if(berufsgruppe == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in BerufsgruppeController.getUserForId";
+            String msg = "url: "+ request.getRequestURL().toString() +" in BerufsgruppeController.id";
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = berufsgruppe.getBerufsgruppe();

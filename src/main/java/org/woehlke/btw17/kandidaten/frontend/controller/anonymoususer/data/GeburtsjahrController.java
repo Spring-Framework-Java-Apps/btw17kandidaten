@@ -77,13 +77,14 @@ public class GeburtsjahrController extends AbstractController {
     ) {
         if(geburtsjahr == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in GeburtsjahrController.getKandidatenForGeburtsjahr";
+            String msg = "url: "+ request.getRequestURL().toString() + " in GeburtsjahrController.geburtsjahr";
             throw new EntityNotFoundException(msg);
         } else {
             int mindestalter = 18;
             int todayYear = (new Date()).getYear() + 1901 - mindestalter;
             if(geburtsjahr.intValue() < 1900 || geburtsjahr.intValue() > todayYear){
-                throw new EntityNotFoundException();
+                String msg = "/geburtsjahr" + geburtsjahr + " in GeburtsjahrController.geburtsjahr";
+                throw new EntityNotFoundException(msg);
             }
             String pageTitle = "Geburtsjahr: "+geburtsjahr;
             String pageSubTitle = kandidatenProperties.getPageSubTitle();

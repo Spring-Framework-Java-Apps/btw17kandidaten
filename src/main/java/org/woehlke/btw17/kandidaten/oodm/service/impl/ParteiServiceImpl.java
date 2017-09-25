@@ -61,4 +61,9 @@ public class ParteiServiceImpl implements ParteiService {
     public Partei create(Partei partei) {
         return parteiRepository.save(partei);
     }
+
+    @Override
+    public void delete(Partei partei) {
+        parteiRepository.delete(partei);
+    }
 }

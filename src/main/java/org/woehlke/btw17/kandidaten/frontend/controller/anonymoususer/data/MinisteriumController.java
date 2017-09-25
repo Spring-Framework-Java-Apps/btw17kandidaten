@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +40,7 @@ public class MinisteriumController extends AbstractController {
 
 
     @RequestMapping("/all")
-    public String getAllMinisterium(
+    public String all(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
@@ -67,11 +68,12 @@ public class MinisteriumController extends AbstractController {
     }
 
     @RequestMapping("/{id}")
-    public String getMinisteriumForId(
+    public String id(
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = PAGE_DEFAULT_SORT
+                    sort = PAGE_DEFAULT_SORT,
+                    direction = Sort.Direction.ASC
             ) Pageable pageable,
             @PathVariable("id") Ministerium ministerium,
             Model model

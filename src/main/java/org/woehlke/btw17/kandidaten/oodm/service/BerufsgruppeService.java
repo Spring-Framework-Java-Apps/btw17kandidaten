@@ -20,4 +20,6 @@ public interface BerufsgruppeService {
     Berufsgruppe update(Berufsgruppe berufsgruppe);
 
     Berufsgruppe create(Berufsgruppe berufsgruppe);
+
+    void delete(Berufsgruppe berufsgruppe);
 }
