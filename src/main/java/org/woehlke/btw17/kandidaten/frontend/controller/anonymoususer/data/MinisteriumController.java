@@ -1,5 +1,7 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -78,11 +80,14 @@ public class MinisteriumController extends AbstractController {
             @PathVariable("id") Ministerium ministerium,
             Model model
     ) {
+        String msg = "MinisteriumController.id";
+        log.debug(msg+"+-----------------=============------------------+");
         if(ministerium == null){
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            String msg = "url: "+ request.getRequestURL().toString() +" in MinisteriumController.getMinisteriumForId";
+            msg += " url: " + request.getRequestURL().toString();
             throw new EntityNotFoundException(msg);
         } else {
+            log.debug(msg+"+-----------------=============------------------+");
             String pageTitle = ministerium.getMinisterium();
             String pageSubTitle = ministerium.getMinisteriumLang();
             String pageSymbol = PageSymbol.MINISTERIUM.getSymbolHtml();
@@ -96,13 +101,19 @@ public class MinisteriumController extends AbstractController {
             String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
             String facebookAppId = kandidatenProperties.getFacebookAppId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+            log.debug(msg+pageContent.toString());
             model.addAttribute("pageContent",pageContent);
+            log.debug(msg+"+-----------------=============------------------+");
             model.addAttribute("ministerium",ministerium);
             Page<Kandidat> kandidatenPage  = kandidatService.findByMinisterium(ministerium,pageable);
+            log.debug(msg+kandidatenPage.toString());
             model.addAttribute("kandidaten",kandidatenPage);
+            log.debug(msg+"+-----------------=============------------------+");
             return "ministerium/id";
         }
     }
+
+    private static final Logger log = LoggerFactory.getLogger(MinisteriumController.class);
 
     private final MinisteriumService ministeriumService;
 

@@ -219,19 +219,19 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschuss",
-        query = "select o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
+        query = "select distinct o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschussCount",
-        query = "select count(o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
+        query = "select count(distinct o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
     ),
     @NamedQuery(
         name = "Kandidat.findByMinisterium",
-        query = "select o from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium order by o.nachname"
+            query = "select distinct o from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium order by o.nachname"
     ),
     @NamedQuery(
-        name = "Kandidat.findByMinisteriumCount",
-        query = "select count(o) from Kandidat as o join o.webseite ministerium where ministerium=:ministerium"
+        name = "Kandidat.countByMinisterium",
+        query = "select count(distinct o) from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium"
     ),
     @NamedQuery(
         name = "Kandidat.findByWebseiteAgentur",
@@ -248,6 +248,20 @@ import static javax.persistence.FetchType.EAGER;
     @NamedQuery(
         name = "Kandidat.contByWebseiteCms",
         query = "select count(o) from Kandidat as o join o.webseite.webseiteCms webseiteCms where webseiteCms=:webseiteCms"
+    )
+})
+@NamedNativeQueries({
+    @NamedNativeQuery(
+        name = "Kandidat.countKandidatMinisterium",
+        query = "SELECT count(*) AS z FROM kandidat_ministerium"
+    ),
+    @NamedNativeQuery(
+        name = "Kandidat.countKandidatAusschuss",
+        query = "SELECT count(*) AS z FROM kandidat_ausschuss"
+    ),
+    @NamedNativeQuery(
+        name = "Kandidat.countKandidatAgentur",
+        query = "SELECT count(*) AS z FROM kandidat_agentur"
     )
 })
 @EntityListeners(KandidatListener.class)
@@ -342,46 +356,46 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Column(name = "logo_url")
     private String logoUrl;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
-    private Wohnort wohnort;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
-    private Geburtsort geburtsort;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
-    private Beruf beruf;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
-    private Berufsgruppe berufsgruppe;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
-    private Bundesland bundesland;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
-    private Wahlkreis wahlkreis;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
-    private Partei partei;
-
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
-    private LandesListe landesListe;
-
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
+    private Wohnort wohnort;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
+    private Geburtsort geburtsort;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
+    private Beruf beruf;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
+    private Berufsgruppe berufsgruppe;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
+    private Bundesland bundesland;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
+    private Wahlkreis wahlkreis;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
+    private Partei partei;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
+    private LandesListe landesListe;
+
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_fraktion")
     private Fraktion fraktion;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ministerium")
     private Set<Ministerium> ministerium = new LinkedHashSet<>();
 
@@ -389,7 +403,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
 
-    @NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
@@ -407,7 +420,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
     @NotNull
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
 

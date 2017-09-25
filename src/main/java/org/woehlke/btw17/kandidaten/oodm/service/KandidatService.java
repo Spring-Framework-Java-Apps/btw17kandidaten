@@ -26,6 +26,12 @@ public interface KandidatService {
 
     long count();
 
+    long countKandidatMinisterium();
+
+    long countKandidatAusschuss();
+
+    long countKandidatAgentur();
+
     Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable);
 
     Page<Kandidat> findByBerufsgruppe(Berufsgruppe berufsgruppe, Pageable pageable);

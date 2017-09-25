@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.KandidatRepositoryCustom;
 
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import java.util.List;
 
 @Repository
@@ -32,7 +34,7 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
 
     @Query(
         name = "Kandidat.findByMinisterium",
-        countQuery = "Kandidat.findByMinisteriumCount"
+        countQuery = "Kandidat.countByMinisterium"
     )
     Page<Kandidat> findByMinisterium(@Param("ministerium") Ministerium ministerium, Pageable pageable);
 
@@ -83,7 +85,14 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     )
     List<Kandidat> getAll();
 
+    @Query(name="Kandidat.countKandidatMinisterium",nativeQuery=true)
+    long countKandidatMinisterium();
 
+    @Query(name="Kandidat.countKandidatAusschuss",nativeQuery=true)
+    long countKandidatAusschuss();
+
+    @Query(name="Kandidat.countKandidatAgentur",nativeQuery=true)
+    long countKandidatAgentur();
 
     @Query(
         name = "Kandidat.getMdbWithoutBundestagProfile",

@@ -51,8 +51,12 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final KandidatReportService kandidatReportService;
 
+    private final WebseiteAgenturService webseiteAgenturService;
+
+    private final WebseiteCmsService webseiteCmsService;
+
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.berufService = berufService;
@@ -70,6 +74,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.fraktionService = fraktionService;
         this.ausschussService = ausschussService;
         this.kandidatReportService = kandidatReportService;
+        this.webseiteAgenturService = webseiteAgenturService;
+        this.webseiteCmsService = webseiteCmsService;
     }
 
     @Override
@@ -125,20 +131,25 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" Kandidat without Soundcloud:        "+reportOverview.getCountKandidatWithoutSoundcloud());
         outputLines.add(" Kandidat without Youtube:           "+reportOverview.getCountKandidatWithoutYoutube());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:        "+berufService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe: "+berufsgruppeService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:   "+bundeslandService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:   "+geburtsortService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:  "+listeParteiService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:       "+parteiService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:    "+wahlkreisService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:      "+wohnortService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.LandesListe:  "+landesListeService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:     "+fraktionService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:  "+ministeriumService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:    "+ausschussService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat: "+kandidatFlatService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:     "+kandidatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:                "+berufService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe:         "+berufsgruppeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:           "+bundeslandService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:           "+geburtsortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:          "+listeParteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:               "+parteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:            "+wahlkreisService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:              "+wohnortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.LandesListe:          "+landesListeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:             "+fraktionService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:          "+ministeriumService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:            "+ausschussService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat:         "+kandidatFlatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:          "+webseiteCmsService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:      "+webseiteAgenturService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:     "+kandidatService.countKandidatAgentur());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ausschuss:   "+kandidatService.countKandidatAusschuss());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ministerium: "+kandidatService.countKandidatMinisterium());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:             "+kandidatService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         StringBuffer sb = new StringBuffer();
         sb.append("\n");

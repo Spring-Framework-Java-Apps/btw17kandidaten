@@ -22,7 +22,7 @@ public class Webseite {
     @Column(name="webseite")
     private String webseite;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_webseite_cms")
     private WebseiteCms webseiteCms;
 

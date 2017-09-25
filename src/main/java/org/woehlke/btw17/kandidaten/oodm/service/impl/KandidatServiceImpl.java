@@ -66,6 +66,21 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
+    public long countKandidatMinisterium() {
+        return kandidatRepository.countKandidatMinisterium();
+    }
+
+    @Override
+    public long countKandidatAusschuss() {
+        return kandidatRepository.countKandidatAusschuss();
+    }
+
+    @Override
+    public long countKandidatAgentur() {
+        return kandidatRepository.countKandidatAgentur();
+    }
+
+    @Override
     public Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable) {
         return kandidatRepository.findByBeruf(beruf, pageable);
     }
