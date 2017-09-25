@@ -31,81 +31,81 @@
                             </div>
                             <table class="table table-striped table-hover tw-kandidat-page">
                                 <thead th:fragment="tw-data-view-thead">
-                                <tr>
-                                    <!--
-                                    <th>ID</th>
-                                    -->
-                                    <th>ListePartei</th>
-                                    <th>ListeParteiLang</th>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;
-                                    </td>
-                                    <th>
-                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </th>
-                                </tr>
+                                    <tr>
+                                        <!--
+                                        <th>ID</th>
+                                        -->
+                                        <th>ListePartei</th>
+                                        <th>ListeParteiLang</th>
+                                        <td>
+                                            &nbsp;&nbsp;&nbsp;
+                                        </td>
+                                        <th>
+                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="listepartei : ${listeparteien}">
-                                    <td>
-                                        <a href="" th:href="@{|/landesliste/listepartei/${listepartei.id}/|}">
-                                            <span th:if="${listepartei.listePartei}" th:text="${listepartei.listePartei}">listePartei</span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span th:text="${listepartei.listeParteiLang}">listeParteiLang</span>
-                                    </td>
-                                    <td>
-                                        &nbsp;&nbsp;&nbsp;
-                                    </td>
-                                    <td>
-                                        <span th:if="${listepartei.webseite}">
-                                            <a th:if="${listepartei.webseite.webseite}" th:href="${listepartei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                <i class="fa fa-link" aria-hidden="true"></i>
+                                    <tr th:each="listepartei : ${listeparteien}">
+                                        <td>
+                                            <a href="" th:href="@{|/landesliste/listepartei/${listepartei.id}/|}">
+                                                <span th:if="${listepartei.listePartei}" th:text="${listepartei.listePartei}">listePartei</span>
                                             </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${listepartei.onlineStrategie}">
-                                            <a th:if="${listepartei.onlineStrategie.twitter}" th:href="${listepartei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${listepartei.onlineStrategie}">
-                                            <a th:if="${listepartei.onlineStrategie.facebook}" th:href="${listepartei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${listepartei.onlineStrategie}">
-                                            <a th:if="${listepartei.onlineStrategie.youtube}" th:href="${listepartei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${listepartei.onlineStrategie}">
-                                            <a th:if="${listepartei.onlineStrategie.wikipediaArticle}" th:href="${listepartei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            <span th:text="${listepartei.listeParteiLang}">listeParteiLang</span>
+                                        </td>
+                                        <td>
+                                            &nbsp;&nbsp;&nbsp;
+                                        </td>
+                                        <td>
+                                            <span th:if="${listepartei.webseite}">
+                                                <a th:if="${listepartei.webseite.webseite}" th:href="${listepartei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${listepartei.onlineStrategie}">
+                                                <a th:if="${listepartei.onlineStrategie.twitter}" th:href="${listepartei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${listepartei.onlineStrategie}">
+                                                <a th:if="${listepartei.onlineStrategie.facebook}" th:href="${listepartei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${listepartei.onlineStrategie}">
+                                                <a th:if="${listepartei.onlineStrategie.youtube}" th:href="${listepartei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${listepartei.onlineStrategie}">
+                                                <a th:if="${listepartei.onlineStrategie.wikipediaArticle}" th:href="${listepartei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -116,7 +116,7 @@
                         <span class="tw-pager-arrow tw-pager-down" th:if="${listeparteien.hasNext()}">
                             <a href="" th:href="@{|${pageContent.pagerUrl}?page=${listeparteien.nextPageable().pageNumber}|}" >
                                 <span>
-                                <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
                                 </span>
                             </a>
                         </span>
