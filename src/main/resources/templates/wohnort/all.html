@@ -13,10 +13,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <span  class="tw-pager-arrow tw-pager-up" th:if="${wohnorte.hasPrevious()}">
+                    <span class="tw-pager-arrow tw-pager-up" th:if="${wohnorte.hasPrevious()}">
                         <a href="" th:href="@{|${pageContent.pagerUrl}?page=${wohnorte.previousPageable().pageNumber}|}">
                             <span>
-                            <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                                <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                             </span>
                         </a>
                     </span>
@@ -25,47 +25,47 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="well">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-hover tw-kandidat-page">
                             <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th class="tw-debug">ID</th>
-                                <th>Wohnort</th>
-                                <th>
-                                    &nbsp;&nbsp;&nbsp;
-                                </th>
-                                <th>
-                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                </th>
-                            </tr>
+                                <tr>
+                                    <th class="tw-debug">ID</th>
+                                    <th>Wohnort</th>
+                                    <th>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="wohnort : ${wohnorte}">
-                                <td class="tw-debug">
-                                    <span th:fragment="tw-data-view-id">
-                                        <span class="tw-vector">
-                                            <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
-                                            <i class="fa fa-database" aria-hidden="true"></i>
-                                            <span th:text="${wohnort.id}">id</span>
+                                <tr th:each="wohnort : ${wohnorte}">
+                                    <td class="tw-debug">
+                                        <span th:fragment="tw-data-view-id">
+                                            <span class="tw-vector">
+                                                <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
+                                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                                    <span th:text="${wohnort.id}">id</span>
+                                                </a>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
+                                            <span th:if="${wohnort.wohnort}" th:text="${wohnort.wohnort}">wohnort</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    <td>
+                                        <span th:if="${wohnort.onlineStrategie}">
+                                            <a th:if="${wohnort.onlineStrategie.wikipediaArticle}" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
                                             </a>
                                         </span>
-                                    </span>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/wohnort/${wohnort.id}/|}">
-                                        <span th:if="${wohnort.wohnort}" th:text="${wohnort.wohnort}">wohnort</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td>
-                                    <span th:if="${wohnort.onlineStrategie}">
-                                    <a th:if="${wohnort.onlineStrategie.wikipediaArticle}" th:href="${wohnort.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </a>
-                                    </span>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -26,97 +26,97 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="well">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-hover tw-kandidat-page">
                                 <thead th:fragment="tw-data-view-thead">
-                                <tr>
-                                    <th class="tw-debug">ID</th>
-                                    <th>&nbsp;</th>
-                                    <th>Ministerium</th>
-                                    <th>
-                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                                    </th>
-                                </tr>
+                                    <tr>
+                                        <th class="tw-debug">ID</th>
+                                        <th>&nbsp;</th>
+                                        <th>Ministerium</th>
+                                        <th>
+                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="ministerium : ${ministerien}">
-                                    <td class="tw-debug">
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
-                                        <i class="fa fa-empire" aria-hidden="true"></i>
-                                        <span th:text="${ministerium.id}">id</span>
-                                        </a>
-                                    </span>
-                                </span>
-                                    </td>
-                                    <td>
-                                        <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
-                                            <span th:if="${ministerium.ministerium}" th:text="${ministerium.ministerium}">ministerium</span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
-                                            <span th:if="${ministerium.ministeriumLang}" th:text="${ministerium.ministeriumLang}">ministeriumLang</span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.webseite}">
-                                            <a th:if="${ministerium.webseite.webseite}" th:href="${ministerium.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                <i class="fa fa-link" aria-hidden="true"></i>
+                                    <tr th:each="ministerium : ${ministerien}">
+                                        <td class="tw-debug">
+                                            <span th:fragment="tw-data-view-id">
+                                                <span class="tw-vector">
+                                                    <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
+                                                        <i class="fa fa-empire" aria-hidden="true"></i>
+                                                        <span th:text="${ministerium.id}">id</span>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
+                                                <span th:if="${ministerium.ministerium}" th:text="${ministerium.ministerium}">ministerium</span>
                                             </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.twitter}" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                        </td>
+                                        <td>
+                                            <a href="" th:href="@{|/ministerium/${ministerium.id}/|}">
+                                                <span th:if="${ministerium.ministeriumLang}" th:text="${ministerium.ministeriumLang}">ministeriumLang</span>
                                             </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.facebook}" th:href="${ministerium.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.youtube}" th:href="${ministerium.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span th:if="${ministerium.onlineStrategie}">
-                                            <a th:if="${ministerium.onlineStrategie.lobbypediaUrl}" th:href="${ministerium.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
-                                                <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.webseite}">
+                                                <a th:if="${ministerium.webseite.webseite}" th:href="${ministerium.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.onlineStrategie}">
+                                                <a th:if="${ministerium.onlineStrategie.twitter}" th:href="${ministerium.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.onlineStrategie}">
+                                                <a th:if="${ministerium.onlineStrategie.facebook}" th:href="${ministerium.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.onlineStrategie}">
+                                                <a th:if="${ministerium.onlineStrategie.youtube}" th:href="${ministerium.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.onlineStrategie}">
+                                                <a th:if="${ministerium.onlineStrategie.wikipediaArticle}" th:href="${ministerium.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${ministerium.onlineStrategie}">
+                                                <a th:if="${ministerium.onlineStrategie.lobbypediaUrl}" th:href="${ministerium.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                                </a>
+                                            </span>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -124,13 +124,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${ministerien.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${ministerien.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                        <span class="tw-pager-arrow tw-pager-down" th:if="${ministerien.hasNext()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${ministerien.nextPageable().pageNumber}|}" >
+                                <span>
+                                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
                     </div>
                 </div>
             </div>

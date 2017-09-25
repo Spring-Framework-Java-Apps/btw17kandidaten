@@ -253,6 +253,8 @@
     }
 
     div#tw-kandidat-profil-heading,
+    div#tw-kandidat-page-heading,
+    table.tw-kandidat-page tr td,
     table.tw-kandidat-profil tr td {
         padding-left: 24px;
     }
