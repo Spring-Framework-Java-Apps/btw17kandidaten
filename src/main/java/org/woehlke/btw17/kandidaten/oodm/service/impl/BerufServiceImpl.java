@@ -47,4 +47,10 @@ public class BerufServiceImpl implements BerufService {
     public Beruf update(Beruf beruf) {
         return berufRepository.save(beruf);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Beruf create(Beruf beruf) {
+        return berufRepository.save(beruf);
+    }
 }

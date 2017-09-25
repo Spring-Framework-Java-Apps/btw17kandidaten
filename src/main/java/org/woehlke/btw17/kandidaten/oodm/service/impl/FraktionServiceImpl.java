@@ -54,4 +54,10 @@ public class FraktionServiceImpl implements FraktionService {
     public Fraktion update(Fraktion fraktion) {
         return fraktionRepository.save(fraktion);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Fraktion create(Fraktion fraktion) {
+        return fraktionRepository.save(fraktion);
+    }
 }

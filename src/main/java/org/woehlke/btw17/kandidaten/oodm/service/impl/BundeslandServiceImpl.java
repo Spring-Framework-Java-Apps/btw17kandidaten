@@ -52,4 +52,10 @@ public class BundeslandServiceImpl implements BundeslandService {
     public Bundesland update(Bundesland bundesland) {
         return bundeslandRepository.save(bundesland);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Bundesland create(Bundesland bundesland) {
+        return bundeslandRepository.save(bundesland);
+    }
 }

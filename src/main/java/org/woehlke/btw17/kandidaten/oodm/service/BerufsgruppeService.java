@@ -18,4 +18,6 @@ public interface BerufsgruppeService {
     void deleteAll();
 
     Berufsgruppe update(Berufsgruppe berufsgruppe);
+
+    Berufsgruppe create(Berufsgruppe berufsgruppe);
 }

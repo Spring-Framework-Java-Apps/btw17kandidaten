@@ -13,4 +13,8 @@ public interface WebseiteCmsService {
     long count();
 
     void deleteAll();
+
+    WebseiteCms update(WebseiteCms webseiteCms);
+
+    WebseiteCms create(WebseiteCms webseiteCms);
 }

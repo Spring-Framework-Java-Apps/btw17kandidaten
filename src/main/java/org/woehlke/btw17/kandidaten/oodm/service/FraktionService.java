@@ -19,4 +19,6 @@ public interface FraktionService {
     void deleteAll();
 
     Fraktion update(Fraktion fraktion);
+
+    Fraktion create(Fraktion fraktion);
 }

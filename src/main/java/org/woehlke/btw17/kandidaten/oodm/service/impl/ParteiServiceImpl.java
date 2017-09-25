@@ -55,4 +55,10 @@ public class ParteiServiceImpl implements ParteiService {
     public Partei update(Partei partei) {
         return parteiRepository.save(partei);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Partei create(Partei partei) {
+        return parteiRepository.save(partei);
+    }
 }

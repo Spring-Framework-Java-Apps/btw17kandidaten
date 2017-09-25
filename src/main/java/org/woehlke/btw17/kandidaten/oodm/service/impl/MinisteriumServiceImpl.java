@@ -54,4 +54,10 @@ public class MinisteriumServiceImpl implements MinisteriumService {
     public Ministerium update(Ministerium ministerium) {
         return ministeriumRepository.save(ministerium);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Ministerium create(Ministerium ministerium) {
+        return ministeriumRepository.save(ministerium);
+    }
 }

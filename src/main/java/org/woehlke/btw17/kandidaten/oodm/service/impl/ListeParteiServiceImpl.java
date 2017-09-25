@@ -49,6 +49,12 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public ListePartei create(ListePartei listePartei) {
+        return listeParteiRepository.save(listePartei);
+    }
+
+    @Override
     public ListePartei findByPartei(String partei) {
         return listeParteiRepository.findByListePartei(partei);
     }

@@ -20,4 +20,6 @@ public interface ParteiService {
     void deleteAll();
 
     Partei update(Partei partei);
+
+    Partei create(Partei partei);
 }

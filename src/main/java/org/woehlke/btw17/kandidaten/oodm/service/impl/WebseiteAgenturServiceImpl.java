@@ -41,4 +41,16 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
     public void deleteAll() {
         webseiteAgenturRepository.deleteAll();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public WebseiteAgentur update(WebseiteAgentur webseiteAgentur) {
+        return webseiteAgenturRepository.save(webseiteAgentur);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public WebseiteAgentur create(WebseiteAgentur webseiteAgentur) {
+        return webseiteAgenturRepository.save(webseiteAgentur);
+    }
 }

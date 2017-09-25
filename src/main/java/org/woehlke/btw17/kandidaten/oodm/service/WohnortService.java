@@ -19,4 +19,6 @@ public interface WohnortService {
     List<Wohnort> getAllOrderById();
 
     void update(Wohnort wohnort);
+
+    Wohnort create(Wohnort wohnort);
 }

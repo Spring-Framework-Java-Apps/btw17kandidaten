@@ -15,4 +15,6 @@ public interface BerufService {
     void deleteAll();
 
     Beruf update(Beruf beruf);
+
+    Beruf create(Beruf beruf);
 }

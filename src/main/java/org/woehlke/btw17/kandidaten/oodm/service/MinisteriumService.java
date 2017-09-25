@@ -19,4 +19,6 @@ public interface MinisteriumService {
     void deleteAll();
 
     Ministerium update(Ministerium ministerium);
+
+    Ministerium create(Ministerium ministerium);
 }

@@ -54,4 +54,10 @@ public class WohnortServiceImpl implements WohnortService {
     public void update(Wohnort wohnort) {
         wohnortRepository.save(wohnort);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
+    public Wohnort create(Wohnort wohnort) {
+        return wohnortRepository.save(wohnort);
+    }
 }

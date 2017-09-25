@@ -14,4 +14,8 @@ public interface WebseiteAgenturService {
 
     void deleteAll();
 
+    WebseiteAgentur update(WebseiteAgentur webseiteAgentur);
+
+    WebseiteAgentur create(WebseiteAgentur webseiteAgentur);
+
 }
