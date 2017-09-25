@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 
 /**
+ * @see org.woehlke.btw17.kandidaten.oodm.repositories.LandesListeRepository
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
  */
 @Entity
@@ -18,6 +19,9 @@ import javax.validation.constraints.NotNull;
     name = "landesliste",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_landesliste",columnNames = {"fk_bundesland","fk_listepartei"})
+    },
+    indexes = {
+        @Index(name = "idx_landesliste_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
     }
 )
 @NamedQueries({
@@ -50,20 +54,18 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
     protected Long id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
     private Bundesland bundesland;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_listepartei", nullable = false, updatable = false)
     private ListePartei listePartei;
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
-
 
     @Transient
     @Override
@@ -113,7 +115,9 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     public static long getSerialVersionUID() {

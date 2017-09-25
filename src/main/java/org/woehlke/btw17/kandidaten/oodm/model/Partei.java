@@ -17,15 +17,25 @@ import javax.validation.Valid;
 @Table(
     name = "partei",
     uniqueConstraints = {
-        @UniqueConstraint(name="unique_partei",columnNames = {"partei","partei_lang"})
+        @UniqueConstraint(name="unique_partei", columnNames = {"partei","partei_lang"})
     },
     indexes = {
+        @Index(name = "idx_partei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
+        @Index(name = "idx_partei_wahlprogramm", columnList = "wahlprogramm"),
+        @Index(name = "idx_partei_parteiprogramm", columnList = "parteiprogramm"),
+        //
+        @Index(name = "idx_partei_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
         @Index(name = "idx_partei_webseite", columnList = "webseite"),
+        //
+        @Index(name = "idx_partei_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
+        @Index(name = "idx_partei_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
+        //
         @Index(name = "idx_partei_twitter", columnList = "twitter"),
         @Index(name = "idx_partei_facebook", columnList = "facebook"),
         @Index(name = "idx_partei_youtube", columnList = "youtube"),
         @Index(name = "idx_partei_logo_url", columnList = "logo_url"),
-        @Index(name = "idx_partei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
         @Index(name = "idx_partei_lobbypedia_url", columnList = "lobbypedia_url"),
         @Index(name = "idx_partei_wikipedia_article", columnList = "wikipedia_article")
     }
@@ -53,7 +63,7 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column
+    @Column(name="partei")
     private String partei;
 
     @Column(name="partei_lang")
@@ -63,8 +73,13 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
+    @URL
     @Column(name="wahlprogramm")
     private String wahlprogramm;
+
+    @URL
+    @Column(name="parteiprogramm")
+    private String parteiprogramm;
 
     @Valid
     @Embedded
@@ -86,7 +101,7 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "partei_agentur"
             )
@@ -149,7 +164,9 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -157,7 +174,9 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     public String getWahlprogramm() {
@@ -168,6 +187,14 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
         this.wahlprogramm = wahlprogramm;
     }
 
+    public String getParteiprogramm() {
+        return parteiprogramm;
+    }
+
+    public void setParteiprogramm(String parteiprogramm) {
+        this.parteiprogramm = parteiprogramm;
+    }
+
     @Override
     public GeoPosition getGeoPosition() {
         return geoPosition;
@@ -175,7 +202,9 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
 
     @Override
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     @Override
@@ -185,7 +214,9 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
 
     @Override
     public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+        if(adresse != null){
+            this.adresse = adresse;
+        }
     }
 
     @Override
@@ -195,7 +226,9 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
 
     @Override
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite != null){
+            this.webseite = webseite;
+        }
     }
 
     @Override
@@ -211,6 +244,8 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
         if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(partei1.bundeszentralePolitischeBildung) : partei1.bundeszentralePolitischeBildung != null)
             return false;
         if (wahlprogramm != null ? !wahlprogramm.equals(partei1.wahlprogramm) : partei1.wahlprogramm != null)
+            return false;
+        if (parteiprogramm != null ? !parteiprogramm.equals(partei1.parteiprogramm) : partei1.parteiprogramm != null)
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(partei1.onlineStrategie) : partei1.onlineStrategie != null)
             return false;
@@ -228,6 +263,7 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
         result = 31 * result + (parteiLang != null ? parteiLang.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
+        result = 31 * result + (parteiprogramm != null ? parteiprogramm.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
@@ -244,6 +280,7 @@ public class Partei implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbe
                 ", parteiLang='" + parteiLang + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
                 ", wahlprogramm='" + wahlprogramm + '\'' +
+                ", parteiprogramm='" + parteiprogramm + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", geoPosition=" + geoPosition +
                 ", adresse=" + adresse +

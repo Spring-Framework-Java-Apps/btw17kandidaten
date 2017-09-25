@@ -36,6 +36,12 @@ import static javax.persistence.FetchType.EAGER;
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
         @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
         @Index(name = "idx_kandidat_foto", columnList = "foto"),
+        @Index(name = "idx_kandidat_funktion", columnList = "funktion"),
+        //
+        @Index(name = "idx_kandidat_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_kandidat_webseite", columnList = "webseite"),
+        //
         @Index(name = "idx_kandidat_twitter", columnList = "twitter"),
         @Index(name = "idx_kandidat_facebook", columnList = "facebook"),
         @Index(name = "idx_kandidat_youtube", columnList = "youtube"),
@@ -45,7 +51,6 @@ import static javax.persistence.FetchType.EAGER;
         @Index(name = "idx_kandidat_google_maps_url", columnList = "google_maps_url"),
         @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_kandidat_instagram_url", columnList = "instagram"),
-        @Index(name = "idx_kandidat_funktion", columnList = "funktion"),
     }
 )
 @NamedQueries({
@@ -219,35 +224,35 @@ import static javax.persistence.FetchType.EAGER;
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschuss",
-        query = "select distinct o from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss order by o.nachname"
+        query = "select o from Kandidat as o join o.ausschuesse ausschuss where ausschuss=:ausschuss order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.findByAusschussCount",
-        query = "select count(distinct o) from Kandidat as o join o.ausschuss ausschuss where ausschuss=:ausschuss"
+        query = "select count(o) from Kandidat as o join o.ausschuesse ausschuss where ausschuss=:ausschuss"
     ),
     @NamedQuery(
         name = "Kandidat.findByMinisterium",
-            query = "select distinct o from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium order by o.nachname"
+            query = "select o from Kandidat as o join o.ministerien ministerium where ministerium=:ministerium order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.countByMinisterium",
-        query = "select count(distinct o) from Kandidat as o join o.ministerium ministerium where ministerium=:ministerium"
+        query = "select count(o) from Kandidat as o join o.ministerien ministerium where ministerium=:ministerium"
     ),
     @NamedQuery(
         name = "Kandidat.findByWebseiteAgentur",
-        query = "select count(o) from Kandidat as o join o.webseite.webseiteAgentur webseiteAgentur where webseiteAgentur=:webseiteAgentur"
+        query = "select o from Kandidat as o join o.webseite.agenturen webseiteAgentur where webseiteAgentur=:webseiteAgentur order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.countByWebseiteAgentur",
-        query = "select count(o) from Kandidat as o join o.webseite.webseiteAgentur webseiteAgentur where webseiteAgentur=:webseiteAgentur"
+        query = "select count(o) from Kandidat as o join o.webseite.agenturen webseiteAgentur where webseiteAgentur=:webseiteAgentur"
     ),
     @NamedQuery(
         name = "Kandidat.findByWebseiteCms",
-        query = "select count(o) from Kandidat as o join o.webseite.webseiteCms webseiteCms where webseiteCms=:webseiteCms"
+        query = "select o from Kandidat as o join o.webseite.cms webseiteCms where webseiteCms=:webseiteCms order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.contByWebseiteCms",
-        query = "select count(o) from Kandidat as o join o.webseite.webseiteCms webseiteCms where webseiteCms=:webseiteCms"
+        query = "select count(o) from Kandidat as o join o.webseite.cms webseiteCms where webseiteCms=:webseiteCms"
     )
 })
 @NamedNativeQueries({
@@ -352,10 +357,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Column(name = "google_maps_url")
     private String googleMapsUrl;
 
-    @URL
-    @Column(name = "logo_url")
-    private String logoUrl;
-
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
@@ -388,26 +389,30 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     private Partei partei;
 
     @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = true)
     private LandesListe landesListe;
 
     @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_fraktion")
+    @JoinColumn(name = "fk_fraktion", nullable = true, updatable = true)
     private Fraktion fraktion;
 
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ministerium")
-    private Set<Ministerium> ministerium = new LinkedHashSet<>();
+    private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
-    private Set<Ausschuss> ausschuss = new LinkedHashSet<>();
+    private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
+
+    @Valid
+    @Embedded
+    private CommonFields commonFields = new CommonFields();
 
     @Valid
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "kandidat_agentur"
             )
@@ -706,14 +711,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
         this.googleMapsUrl = googleMapsUrl;
     }
 
-    public String getLogoUrl() {
-        return logoUrl;
-    }
-
-    public void setLogoUrl(String logoUrl) {
-        this.logoUrl = logoUrl;
-    }
-
     public KandidatFlat getKandidatFlat() {
         return kandidatFlat;
     }
@@ -722,20 +719,24 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
         this.kandidatFlat = kandidatFlat;
     }
 
-    public Set<Ministerium> getMinisterium() {
-        return ministerium;
+    public Set<Ministerium> getMinisterien() {
+        return ministerien;
     }
 
-    public void setMinisterium(Set<Ministerium> ministerium) {
-        this.ministerium = ministerium;
+    public void setMinisterien(Set<Ministerium> ministerien) {
+        if(ministerien != null){
+            this.ministerien = ministerien;
+        }
     }
 
-    public Set<Ausschuss> getAusschuss() {
-        return ausschuss;
+    public Set<Ausschuss> getAusschuesse() {
+        return ausschuesse;
     }
 
-    public void setAusschuss(Set<Ausschuss> ausschuss) {
-        this.ausschuss = ausschuss;
+    public void setAusschuesse(Set<Ausschuss> ausschuesse) {
+        if(ausschuesse != null){
+            this.ausschuesse = ausschuesse;
+        }
     }
 
     public Webseite getWebseite() {
@@ -745,6 +746,16 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     public void setWebseite(Webseite webseite) {
         if(webseite!=null){
             this.webseite = webseite;
+        }
+    }
+
+    public CommonFields getCommonFields() {
+        return commonFields;
+    }
+
+    public void setCommonFields(CommonFields commonFields) {
+        if(commonFields != null){
+            this.commonFields = commonFields;
         }
     }
 
@@ -770,6 +781,18 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
             return false;
         if (alter != null ? !alter.equals(kandidat.alter) : kandidat.alter != null) return false;
         if (funktion != null ? !funktion.equals(kandidat.funktion) : kandidat.funktion != null) return false;
+        if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
+        if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
+        if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
+        if (idEigen != null ? !idEigen.equals(kandidat.idEigen) : kandidat.idEigen != null) return false;
+        if (foto != null ? !foto.equals(kandidat.foto) : kandidat.foto != null) return false;
+        if (fotoUrl != null ? !fotoUrl.equals(kandidat.fotoUrl) : kandidat.fotoUrl != null) return false;
+        if (scatterX != null ? !scatterX.equals(kandidat.scatterX) : kandidat.scatterX != null) return false;
+        if (scatterY != null ? !scatterY.equals(kandidat.scatterY) : kandidat.scatterY != null) return false;
+        if (color != null ? !color.equals(kandidat.color) : kandidat.color != null) return false;
+        if (googleMapsUrl != null ? !googleMapsUrl.equals(kandidat.googleMapsUrl) : kandidat.googleMapsUrl != null)
+            return false;
+        if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (wohnort != null ? !wohnort.equals(kandidat.wohnort) : kandidat.wohnort != null) return false;
         if (geburtsort != null ? !geburtsort.equals(kandidat.geburtsort) : kandidat.geburtsort != null) return false;
         if (beruf != null ? !beruf.equals(kandidat.beruf) : kandidat.beruf != null) return false;
@@ -780,26 +803,16 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
         if (partei != null ? !partei.equals(kandidat.partei) : kandidat.partei != null) return false;
         if (landesListe != null ? !landesListe.equals(kandidat.landesListe) : kandidat.landesListe != null)
             return false;
-        if (listePlatz != null ? !listePlatz.equals(kandidat.listePlatz) : kandidat.listePlatz != null) return false;
         if (fraktion != null ? !fraktion.equals(kandidat.fraktion) : kandidat.fraktion != null) return false;
-        if (ministerium != null ? !ministerium.equals(kandidat.ministerium) : kandidat.ministerium != null)
+        if (ministerien != null ? !ministerien.equals(kandidat.ministerien) : kandidat.ministerien != null)
             return false;
-        if (ausschuss != null ? !ausschuss.equals(kandidat.ausschuss) : kandidat.ausschuss != null) return false;
+        if (ausschuesse != null ? !ausschuesse.equals(kandidat.ausschuesse) : kandidat.ausschuesse != null)
+            return false;
+        if (commonFields != null ? !commonFields.equals(kandidat.commonFields) : kandidat.commonFields != null)
+            return false;
         if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
-        if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
-        if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
-        if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
-        if (idEigen != null ? !idEigen.equals(kandidat.idEigen) : kandidat.idEigen != null) return false;
-        if (foto != null ? !foto.equals(kandidat.foto) : kandidat.foto != null) return false;
-        if (fotoUrl != null ? !fotoUrl.equals(kandidat.fotoUrl) : kandidat.fotoUrl != null) return false;
-        if (scatterX != null ? !scatterX.equals(kandidat.scatterX) : kandidat.scatterX != null) return false;
-        if (scatterY != null ? !scatterY.equals(kandidat.scatterY) : kandidat.scatterY != null) return false;
-        if (color != null ? !color.equals(kandidat.color) : kandidat.color != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
-        if (googleMapsUrl != null ? !googleMapsUrl.equals(kandidat.googleMapsUrl) : kandidat.googleMapsUrl != null)
-            return false;
-        if (logoUrl != null ? !logoUrl.equals(kandidat.logoUrl) : kandidat.logoUrl != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
 
@@ -817,19 +830,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
         result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
         result = 31 * result + (alter != null ? alter.hashCode() : 0);
         result = 31 * result + (funktion != null ? funktion.hashCode() : 0);
-        result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
-        result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
-        result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
-        result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
-        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
-        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
-        result = 31 * result + (partei != null ? partei.hashCode() : 0);
-        result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
-        result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
-        result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
-        result = 31 * result + (ministerium != null ? ministerium.hashCode() : 0);
-        result = 31 * result + (ausschuss != null ? ausschuss.hashCode() : 0);
-        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -839,9 +839,22 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
         result = 31 * result + (scatterX != null ? scatterX.hashCode() : 0);
         result = 31 * result + (scatterY != null ? scatterY.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (googleMapsUrl != null ? googleMapsUrl.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
+        result = 31 * result + (listePlatz != null ? listePlatz.hashCode() : 0);
+        result = 31 * result + (wohnort != null ? wohnort.hashCode() : 0);
+        result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
+        result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
+        result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
+        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
+        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
+        result = 31 * result + (partei != null ? partei.hashCode() : 0);
+        result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
+        result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
+        result = 31 * result + (ministerien != null ? ministerien.hashCode() : 0);
+        result = 31 * result + (ausschuesse != null ? ausschuesse.hashCode() : 0);
+        result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
+        result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
     }
@@ -861,19 +874,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
                 ", geburtsjahr=" + geburtsjahr +
                 ", alter=" + alter +
                 ", funktion='" + funktion + '\'' +
-                ", wohnort=" + wohnort +
-                ", geburtsort=" + geburtsort +
-                ", beruf=" + beruf +
-                ", berufsgruppe=" + berufsgruppe +
-                ", bundesland=" + bundesland +
-                ", wahlkreis=" + wahlkreis +
-                ", partei=" + partei +
-                ", landesListe=" + landesListe +
-                ", listePlatz=" + listePlatz +
-                ", fraktion=" + fraktion +
-                ", ministerium=" + ministerium +
-                ", ausschuss=" + ausschuss +
-                ", webseite=" + webseite +
                 ", mdb='" + mdb + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
@@ -883,9 +883,22 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
                 ", scatterX=" + scatterX +
                 ", scatterY=" + scatterY +
                 ", color='" + color + '\'' +
-                ", onlineStrategie=" + onlineStrategie +
                 ", googleMapsUrl='" + googleMapsUrl + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
+                ", listePlatz=" + listePlatz +
+                ", wohnort=" + wohnort +
+                ", geburtsort=" + geburtsort +
+                ", beruf=" + beruf +
+                ", berufsgruppe=" + berufsgruppe +
+                ", bundesland=" + bundesland +
+                ", wahlkreis=" + wahlkreis +
+                ", partei=" + partei +
+                ", landesListe=" + landesListe +
+                ", fraktion=" + fraktion +
+                ", ministerien=" + ministerien +
+                ", ausschuesse=" + ausschuesse +
+                ", commonFields=" + commonFields +
+                ", webseite=" + webseite +
+                ", onlineStrategie=" + onlineStrategie +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
     }

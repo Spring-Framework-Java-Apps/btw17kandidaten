@@ -15,6 +15,8 @@ public interface BundeslandService {
 
     long count();
 
+    long countBundeslandAgentur();
+
     void deleteAll();
 
     Bundesland update(Bundesland bundesland);

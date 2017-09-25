@@ -19,11 +19,17 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_listepartei",columnNames = {"listepartei","listepartei_lang"})
     },
     indexes = {
+        @Index(name = "idx_listepartei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
+        @Index(name = "idx_listepartei_wahlprogramm", columnList = "wahlprogramm"),
+        @Index(name = "idx_listepartei_parteiprogramm", columnList = "parteiprogramm"),
+        //
+        @Index(name = "idx_listepartei_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_listepartei_webseite", columnList = "webseite"),
+        //
         @Index(name = "idx_listepartei_twitter", columnList = "twitter"),
         @Index(name = "idx_listepartei_facebook", columnList = "facebook"),
         @Index(name = "idx_listepartei_youtube", columnList = "youtube"),
-        @Index(name = "idx_listepartei_logo_url", columnList = "logo_url"),
-        @Index(name = "idx_listepartei_bundeszentrale_politische_bildung", columnList = "bundeszentrale_politische_bildung"),
         @Index(name = "idx_listepartei_lobbypedia_url", columnList = "lobbypedia_url"),
         @Index(name = "idx_listepartei_wikipedia_article", columnList = "wikipedia_article")
     }
@@ -66,6 +72,10 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
     private String wahlprogramm;
 
     @URL
+    @Column(name="parteiprogramm")
+    private String parteiprogramm;
+
+    @URL
     @Column(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
@@ -81,7 +91,7 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "listepartei_agentur"
             )
@@ -147,6 +157,14 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
         this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
     }
 
+    public String getParteiprogramm() {
+        return parteiprogramm;
+    }
+
+    public void setParteiprogramm(String parteiprogramm) {
+        this.parteiprogramm = parteiprogramm;
+    }
+
     @Override
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
@@ -154,7 +172,9 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
 
     @Override
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     @Override
@@ -164,7 +184,9 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
 
     @Override
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override
@@ -174,7 +196,9 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
 
     @Override
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite != null){
+            this.webseite = webseite;
+        }
     }
 
     @Override
@@ -189,11 +213,14 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
         if (listeParteiLang != null ? !listeParteiLang.equals(that.listeParteiLang) : that.listeParteiLang != null)
             return false;
         if (wahlprogramm != null ? !wahlprogramm.equals(that.wahlprogramm) : that.wahlprogramm != null) return false;
+        if (parteiprogramm != null ? !parteiprogramm.equals(that.parteiprogramm) : that.parteiprogramm != null)
+            return false;
         if (bundeszentralePolitischeBildung != null ? !bundeszentralePolitischeBildung.equals(that.bundeszentralePolitischeBildung) : that.bundeszentralePolitischeBildung != null)
             return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
-        return commonFields != null ? commonFields.equals(that.commonFields) : that.commonFields == null;
+        if (commonFields != null ? !commonFields.equals(that.commonFields) : that.commonFields != null) return false;
+        return webseite != null ? webseite.equals(that.webseite) : that.webseite == null;
     }
 
     @Override
@@ -202,9 +229,11 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
         result = 31 * result + (listePartei != null ? listePartei.hashCode() : 0);
         result = 31 * result + (listeParteiLang != null ? listeParteiLang.hashCode() : 0);
         result = 31 * result + (wahlprogramm != null ? wahlprogramm.hashCode() : 0);
+        result = 31 * result + (parteiprogramm != null ? parteiprogramm.hashCode() : 0);
         result = 31 * result + (bundeszentralePolitischeBildung != null ? bundeszentralePolitischeBildung.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
+        result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         return result;
     }
 
@@ -215,9 +244,11 @@ public class ListePartei implements DomainObject,WebseiteEmbedded,CommonFieldsEm
                 ", listePartei='" + listePartei + '\'' +
                 ", listeParteiLang='" + listeParteiLang + '\'' +
                 ", wahlprogramm='" + wahlprogramm + '\'' +
+                ", parteiprogramm='" + parteiprogramm + '\'' +
                 ", bundeszentralePolitischeBildung='" + bundeszentralePolitischeBildung + '\'' +
                 ", onlineStrategie=" + onlineStrategie +
                 ", commonFields=" + commonFields +
+                ", webseite=" + webseite +
                 '}';
     }
 }

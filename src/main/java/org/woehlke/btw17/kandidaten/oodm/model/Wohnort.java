@@ -14,11 +14,14 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
     },
     indexes = {
+        @Index(name = "idx_wohnort_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
         @Index(name = "idx_wohnort_webseite", columnList = "webseite"),
+        //
+        @Index(name = "idx_wohnort_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
         @Index(name = "idx_wohnort_facebook", columnList = "facebook"),
-        @Index(name = "idx_wohnort_logo_url", columnList = "logo_url"),
-        @Index(name = "idx_wohnort_wikipedia_article", columnList = "wikipedia_article"),
-        @Index(name = "idx_wohnort_google_maps_url", columnList = "google_maps_url")
+        @Index(name = "idx_wohnort_wikipedia_article", columnList = "wikipedia_article")
     }
 )
 @NamedQueries({
@@ -59,7 +62,7 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "wohnort_agentur"
             )

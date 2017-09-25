@@ -42,6 +42,11 @@ public class BundeslandServiceImpl implements BundeslandService {
     }
 
     @Override
+    public long countBundeslandAgentur() {
+        return bundeslandRepository.countBundeslandAgentur();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         bundeslandRepository.deleteAll();

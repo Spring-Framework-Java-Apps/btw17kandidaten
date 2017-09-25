@@ -24,10 +24,10 @@ public class Webseite {
 
     @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_webseite_cms")
-    private WebseiteCms webseiteCms;
+    private WebseiteCms cms;
 
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    private Set<WebseiteAgentur> webseiteAgentur = new LinkedHashSet<>();
+    private Set<WebseiteAgentur> agenturen = new LinkedHashSet<>();
 
     public String getWebseite() {
         return webseite;
@@ -37,20 +37,22 @@ public class Webseite {
         this.webseite = webseite;
     }
 
-    public WebseiteCms getWebseiteCms() {
-        return webseiteCms;
+    public WebseiteCms getCms() {
+        return cms;
     }
 
-    public void setWebseiteCms(WebseiteCms webseiteCms) {
-        this.webseiteCms = webseiteCms;
+    public void setCms(WebseiteCms cms) {
+        this.cms = cms;
     }
 
-    public Set<WebseiteAgentur> getWebseiteAgentur() {
-        return webseiteAgentur;
+    public Set<WebseiteAgentur> getAgenturen() {
+        return agenturen;
     }
 
-    public void setWebseiteAgentur(Set<WebseiteAgentur> webseiteAgentur) {
-        this.webseiteAgentur = webseiteAgentur;
+    public void setAgenturen(Set<WebseiteAgentur> agenturen) {
+        if(agenturen != null){
+            this.agenturen = agenturen;
+        }
     }
 
     @Override
@@ -61,16 +63,15 @@ public class Webseite {
         Webseite webseite1 = (Webseite) o;
 
         if (webseite != null ? !webseite.equals(webseite1.webseite) : webseite1.webseite != null) return false;
-        if (webseiteCms != null ? !webseiteCms.equals(webseite1.webseiteCms) : webseite1.webseiteCms != null)
-            return false;
-        return webseiteAgentur != null ? webseiteAgentur.equals(webseite1.webseiteAgentur) : webseite1.webseiteAgentur == null;
+        if (cms != null ? !cms.equals(webseite1.cms) : webseite1.cms != null) return false;
+        return agenturen != null ? agenturen.equals(webseite1.agenturen) : webseite1.agenturen == null;
     }
 
     @Override
     public int hashCode() {
         int result = webseite != null ? webseite.hashCode() : 0;
-        result = 31 * result + (webseiteCms != null ? webseiteCms.hashCode() : 0);
-        result = 31 * result + (webseiteAgentur != null ? webseiteAgentur.hashCode() : 0);
+        result = 31 * result + (cms != null ? cms.hashCode() : 0);
+        result = 31 * result + (agenturen != null ? agenturen.hashCode() : 0);
         return result;
     }
 
@@ -78,8 +79,8 @@ public class Webseite {
     public String toString() {
         return "Webseite{" +
                 "webseite='" + webseite + '\'' +
-                ", webseiteCms=" + webseiteCms +
-                ", webseiteAgentur=" + webseiteAgentur +
+                ", cms=" + cms +
+                ", agenturen=" + agenturen +
                 '}';
     }
 }

@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 
 
 /**
+ * @see org.woehlke.btw17.kandidaten.oodm.repositories.WebseiteCmsRepository
+ *
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.Webseite
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.WebseiteEmbedded
  *
@@ -26,7 +28,12 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_cms_technology_stack", columnList = "technology_stack"),
         @Index(name = "idx_cms_hersteller", columnList = "hersteller"),
         @Index(name = "idx_cms_product_info_page", columnList = "product_info_page"),
-        @Index(name = "idx_cms_product_demo_page", columnList = "product_demo_page")
+        @Index(name = "idx_cms_product_demo_page", columnList = "product_demo_page"),
+        //
+        @Index(name = "idx_cms_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_cms_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
+        //
     }
 )
 @NamedQueries({
@@ -66,7 +73,7 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
     private String technologyStack;
 
     @SafeHtml
-    @Column
+    @Column(name="hersteller")
     private String hersteller;
 
     @URL
@@ -149,7 +156,9 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
 
     @Override
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     @Override
@@ -159,7 +168,9 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
 
     @Override
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override
@@ -169,7 +180,9 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
 
     @Override
     public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+        if(adresse != null){
+            this.adresse = adresse;
+        }
     }
 
     @Override
@@ -179,7 +192,9 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
 
     @Override
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     public String getProductInfoPage() {

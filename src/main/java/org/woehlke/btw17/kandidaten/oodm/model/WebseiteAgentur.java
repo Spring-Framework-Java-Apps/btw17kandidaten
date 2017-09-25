@@ -22,7 +22,14 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_agentur",columnNames = {"agentur"})
     },
     indexes = {
-        @Index(name = "idx_agentur_firma", columnList = "firma")
+        @Index(name = "idx_agentur_firma", columnList = "firma"),
+        //
+        @Index(name = "idx_agentur_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_agentur_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
+        @Index(name = "idx_agentur_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
+        //
     }
 )
 @NamedQueries({
@@ -119,7 +126,9 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null) {
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -127,7 +136,9 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     public Adresse getAdresse() {
@@ -135,7 +146,9 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     }
 
     public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+        if(adresse != null){
+            this.adresse = adresse;
+        }
     }
 
     public GeoPosition getGeoPosition() {
@@ -143,7 +156,9 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     }
 
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     @Override

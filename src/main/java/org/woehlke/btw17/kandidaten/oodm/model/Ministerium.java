@@ -18,7 +18,14 @@ import javax.validation.Valid;
     },
     indexes = {
         @Index(name = "idx_ministerium_ministerium_lang", columnList = "ministerium_lang"),
+        @Index(name = "idx_ministerium_bundesminister", columnList = "bundesminister"),
+        //
+        @Index(name = "idx_ministerium_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
         @Index(name = "idx_ministerium_webseite", columnList = "webseite"),
+        //
+        @Index(name = "idx_ministerium_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
         @Index(name = "idx_ministerium_twitter", columnList = "twitter"),
         @Index(name = "idx_ministerium_facebook", columnList = "facebook"),
         @Index(name = "idx_ministerium_youtube", columnList = "youtube"),
@@ -27,7 +34,6 @@ import javax.validation.Valid;
         @Index(name = "idx_ministerium_abgeordnetenwatch", columnList = "abgeordnetenwatch"),
         @Index(name = "idx_ministerium_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_ministerium_instagram_url", columnList = "instagram"),
-        @Index(name = "idx_ministerium_google_maps_url", columnList = "google_maps_url")
     }
 )
 @NamedQueries({
@@ -82,7 +88,7 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "ministerium_agentur"
             )
@@ -160,7 +166,9 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
 
     @Override
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     @Override
@@ -170,7 +178,9 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
 
     @Override
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     @Override
@@ -180,7 +190,9 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
 
     @Override
     public void setAdresse(Adresse adresse) {
-        this.adresse = adresse;
+        if(adresse != null){
+            this.adresse = adresse;
+        }
     }
 
     @Override
@@ -190,7 +202,9 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
 
     @Override
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override
@@ -200,7 +214,9 @@ public class Ministerium implements DomainObject,WebseiteEmbedded,AdresseEmbedde
 
     @Override
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite != null){
+            this.webseite = webseite;
+        }
     }
 
     @Override

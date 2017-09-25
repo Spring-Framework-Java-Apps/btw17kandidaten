@@ -5,7 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 
 /**
@@ -18,9 +17,20 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_bundesland",columnNames = {"bundesland"})
     },
     indexes = {
-        @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang")
+        @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang"),
+        //
+        @Index(name = "idx_bundesland_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_bundesland_webseite", columnList = "webseite"),
+        //
     }
 )
+@NamedNativeQueries({
+    @NamedNativeQuery(
+        name = "Bundesland.countBundeslandAgentur",
+        query = "SELECT count(*) AS z FROM bundesland_agentur"
+    )
+})
 @EntityListeners(BundeslandListener.class)
 public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 
@@ -36,22 +46,19 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "bundesland_agentur"
             )
@@ -104,7 +111,9 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -112,7 +121,9 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override
@@ -122,7 +133,7 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
 
     @Override
     public void setWebseite(Webseite webseite) {
-        if(webseite!=null){
+        if(webseite != null){
             this.webseite = webseite;
         }
     }

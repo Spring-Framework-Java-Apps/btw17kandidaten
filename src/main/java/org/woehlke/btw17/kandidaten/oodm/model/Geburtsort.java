@@ -17,6 +17,12 @@ import javax.validation.constraints.NotNull;
     name = "geburtsort",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
+    },
+    indexes = {
+        @Index(name = "idx_geburtsort_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_geburtsort_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
     }
 )
 @EntityListeners(GeburtsortListener.class)
@@ -32,17 +38,14 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     @Column(name = "geburtsort")
     private String geburtsort;
 
-    //@NotNull
     @Valid
     @Embedded
     private GeoPosition geoPosition = new GeoPosition();
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
@@ -79,7 +82,9 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     }
 
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     public OnlineStrategie getOnlineStrategie() {
@@ -87,7 +92,9 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public CommonFields getCommonFields() {
@@ -95,7 +102,9 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override

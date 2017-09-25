@@ -19,7 +19,11 @@ import javax.validation.Valid;
     },
     indexes = {
         @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name"),
-        @Index(name = "idx_wahlkreis_google_maps_url", columnList = "google_maps_url")
+        //
+        @Index(name = "idx_wahlkreis_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_wahlkreis_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
+        //
     }
 )
 @EntityListeners(WahlkreisListener.class)
@@ -90,7 +94,9 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     }
 
     public void setGeoPosition(GeoPosition geoPosition) {
-        this.geoPosition = geoPosition;
+        if(geoPosition != null){
+            this.geoPosition = geoPosition;
+        }
     }
 
     public Bundesland getBundesland() {
@@ -106,7 +112,9 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     @Override

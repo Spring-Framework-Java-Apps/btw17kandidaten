@@ -133,6 +133,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:                "+berufService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe:         "+berufsgruppeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland2Agentur:   "+bundeslandService.countBundeslandAgentur());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:           "+bundeslandService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:           "+geburtsortService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:          "+listeParteiService.count());

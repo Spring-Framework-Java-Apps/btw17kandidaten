@@ -6,7 +6,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 
 /**
@@ -20,6 +19,11 @@ import javax.validation.constraints.NotNull;
     },
     indexes = {
         @Index(name = "idx_fraktion_fraktion_lang", columnList = "fraktion_lang"),
+        //
+        @Index(name = "idx_fraktion_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
+        @Index(name = "idx_fraktion_webseite", columnList = "webseite"),
+        //
         @Index(name = "idx_fraktion_twitter", columnList = "twitter"),
         @Index(name = "idx_fraktion_facebook", columnList = "facebook"),
         @Index(name = "idx_fraktion_youtube", columnList = "youtube"),
@@ -55,22 +59,19 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     @Column(name="fraktion_lang")
     private String fraktionLang;
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@NotNull
     @Valid
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
-            name = "webseiteAgentur",
+            name = "agenturen",
             joinTable = @JoinTable(
                 name = "fraktion_agentur"
             )
@@ -120,7 +121,9 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        this.commonFields = commonFields;
+        if(commonFields != null){
+            this.commonFields = commonFields;
+        }
     }
 
     public OnlineStrategie getOnlineStrategie() {
@@ -128,7 +131,9 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        this.onlineStrategie = onlineStrategie;
+        if(onlineStrategie != null){
+            this.onlineStrategie = onlineStrategie;
+        }
     }
 
     public Webseite getWebseite() {
@@ -136,7 +141,9 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
     }
 
     public void setWebseite(Webseite webseite) {
-        this.webseite = webseite;
+        if(webseite != null){
+            this.webseite = webseite;
+        }
     }
 
     @Override

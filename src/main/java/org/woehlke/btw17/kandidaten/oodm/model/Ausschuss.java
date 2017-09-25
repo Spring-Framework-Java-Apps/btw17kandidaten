@@ -7,7 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.AusschussController
@@ -20,6 +19,10 @@ import javax.validation.constraints.NotNull;
     name = "ausschuss",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
+    },
+    indexes = {
+        @Index(name = "idx_ausschuss_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        //
     }
 )
 @NamedQueries({
@@ -45,12 +48,10 @@ public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrate
     @Column(name="ausschuss")
     private String ausschuss;
 
-    //@NotNull
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
 
-    //@NotNull
     @Valid
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();

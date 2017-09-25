@@ -15,19 +15,19 @@ import static javax.persistence.FetchType.EAGER;
 @Embeddable
 public class Adresse implements MySerializable {
 
-    @Column
+    @Column(name="strasse")
     private String strasse;
 
-    @Column
+    @Column(name="hausnummer")
     private String hausnummer;
 
-    @Column
+    @Column(name="plz")
     private String plz;
 
-    @Column
+    @Column(name="ort")
     private String ort;
 
-    @Column
+    @Column(name="nation")
     private String nation;
 
     @ManyToOne(optional=true,fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
