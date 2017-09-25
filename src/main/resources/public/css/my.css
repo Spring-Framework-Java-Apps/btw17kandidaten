@@ -252,8 +252,11 @@
         padding: 24px;
     }
 
+    div#tw-kandidaten-page-heading,
+    div#tw-kandidat-bundeslaender-page-heading,
     div#tw-kandidat-profil-heading,
     div#tw-kandidat-page-heading,
+    table.tw-kandidat-page tr th,
     table.tw-kandidat-page tr td,
     table.tw-kandidat-profil tr td {
         padding-left: 24px;

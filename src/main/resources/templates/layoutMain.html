@@ -428,33 +428,36 @@
         <div class="container tw-page-content tw-page-content-kandidaten">
             <div class="row">
                 <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
+                    <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
+                            <span>
+                                <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
                 </div>
             </div>
             <div class="row" th:fragment="tw-page-content-kandidaten-table">
                 <div class="col-md-12">
-                    <div class="well">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="tw-kandidaten-page-heading">
+                            <h3 class="panel-title">Kandidaten</h3>
+                        </div>
                         <table class="table table-striped table-hover tw-kandidaten-all tw-kandidat-page">
                             <thead th:fragment="tw-data-view-thead">
-                            <tr>
-                                <th class="tw-debug"></th>
-                                <th></th>
-                                <th>Name</th>
-                                <th></th>
-                                <th>Partei</th>
-                                <th>Wohnort</th>
-                                <th>Beruf</th>
-                            </tr>
+                                <tr>
+                                    <th class="tw-debug"></th>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th></th>
+                                    <th>Partei</th>
+                                    <th>Wohnort</th>
+                                    <th>Beruf</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="kandidat : ${kandidaten}">
-                                <td class="tw-debug">
+                                <tr th:each="kandidat : ${kandidaten}">
+                                    <td class="tw-debug">
                                     <span th:fragment="tw-data-view-id">
                                         <span class="tw-vector">
                                             <a href="" th:href="@{|/kandidat/${kandidat.id}/|}">
@@ -464,42 +467,42 @@
                                         </span>
                                     </span>
                                 </td>
-                                <td>
-                                    <img th:if="${kandidat.fotoUrl}"
-                                         th:src="${kandidat.fotoUrl}"
-                                         class="img-responsive img-circle"/>
-                                </td>
-                                <td>
-                                    <a th:href="@{|/kandidat/${kandidat.id}/|}">
-                                        <span class="tw-vector">
-                                            <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
-                                            <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}" class="tw-debug">namenszusatz</span>
-                                            <span th:text="${kandidat.vorname}">vorname</span>
-                                            <span th:text="${kandidat.nachname}">nachname</span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.mdb}" href="/mdb/all" th:href="@{/mdb/all}">
-                                        <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.partei}" th:href="@{|/partei/${kandidat.partei.id}/|}">
-                                        <abbr th:if="${kandidat.partei}" th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.wohnort}" th:href="@{|/wohnort/${kandidat.wohnort.id}/|}">
-                                        <span th:if="${kandidat.wohnort}" th:text="${kandidat.wohnort.wohnort}">wohnort</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a th:if="${kandidat.beruf}" th:href="@{|/beruf/${kandidat.beruf.id}/|}">
-                                        <span th:if="${kandidat.beruf}" th:text="${kandidat.beruf.beruf}">beruf</span>
-                                    </a>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <img th:if="${kandidat.fotoUrl}"
+                                             th:src="${kandidat.fotoUrl}"
+                                             class="img-responsive img-circle"/>
+                                    </td>
+                                    <td>
+                                        <a th:href="@{|/kandidat/${kandidat.id}/|}">
+                                            <span class="tw-vector">
+                                                <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
+                                                <span th:if="${kandidat.namenszusatz}" th:text="${kandidat.namenszusatz}" class="tw-debug">namenszusatz</span>
+                                                <span th:text="${kandidat.vorname}">vorname</span>
+                                                <span th:text="${kandidat.nachname}">nachname</span>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${kandidat.mdb}" href="/mdb/all" th:href="@{/mdb/all}">
+                                            <i th:if="${kandidat.mdb == '1'}" class="fa fa-university" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${kandidat.partei}" th:href="@{|/partei/${kandidat.partei.id}/|}">
+                                            <abbr th:if="${kandidat.partei}" th:attr="title=${kandidat.partei.parteiLang}" th:text="${kandidat.partei.partei}">partei</abbr>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${kandidat.wohnort}" th:href="@{|/wohnort/${kandidat.wohnort.id}/|}">
+                                            <span th:if="${kandidat.wohnort}" th:text="${kandidat.wohnort.wohnort}">wohnort</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:if="${kandidat.beruf}" th:href="@{|/beruf/${kandidat.beruf.id}/|}">
+                                            <span th:if="${kandidat.beruf}" th:text="${kandidat.beruf.beruf}">beruf</span>
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -507,13 +510,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
+                    <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
+                            <span>
+                                <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -527,7 +530,7 @@
                 <span  class="tw-pager-arrow tw-pager-up" th:if="${bundeslaender.hasPrevious()}">
                     <a href="" th:href="@{|${pageContent.pagerUrl}?page=${bundeslaender.previousPageable().pageNumber}|}">
                         <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                            <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
                         </span>
                     </a>
                 </span>
@@ -535,7 +538,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="tw-kandidat-bundeslaender-page-heading">
+                            <h3 class="panel-title">Bundesländer</h3>
+                        </div>
                         <table class="table table-striped table-hover tw-kandidat-page">
                             <thead th:fragment="tw-data-view-thead">
                                 <tr>
@@ -555,40 +561,40 @@
                             </thead>
                             <tbody>
                                 <tr th:each="bundesland : ${bundeslaender}">
-                                <td class="tw-debug">
-                                    <span th:fragment="tw-data-view-id">
-                                        <span class="tw-vector">
-                                            <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
-                                                <i class="fa fa-database" aria-hidden="true"></i>
-                                                <span th:text="${bundesland.id}">id</span>
-                                            </a>
+                                    <td class="tw-debug">
+                                        <span th:fragment="tw-data-view-id">
+                                            <span class="tw-vector">
+                                                <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
+                                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                                    <span th:text="${bundesland.id}">id</span>
+                                                </a>
+                                            </span>
                                         </span>
-                                    </span>
-                                </td>
-                                <td class="tw-debug">
-                                    <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
-                                        <span th:if="${bundesland.bundesland}" th:text="${bundesland.bundesland}">bundesland.bundesland</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
-                                        <span th:text="${bundesland.bundeslandLang}">bundesland.bundeslandLang</span>
-                                    </a>
-                                </td>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;
-                                </td>
-                                <td>
-                                    <span th:if="${bundesland.webseite}">
-                                        <a th:if="${bundesland.webseite.webseite}" th:href="${bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span th:if="${bundesland.onlineStrategie}">
-                                        <a th:if="${bundesland.onlineStrategie.wikipediaArticle}" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="tw-debug">
+                                        <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
+                                            <span th:if="${bundesland.bundesland}" th:text="${bundesland.bundesland}">bundesland.bundesland</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="" th:href="@{|/${bundeslandIdTarget}/${bundesland.id}/|}">
+                                            <span th:text="${bundesland.bundeslandLang}">bundesland.bundeslandLang</span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    <td>
+                                        <span th:if="${bundesland.webseite}">
+                                            <a th:if="${bundesland.webseite.webseite}" th:href="${bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span th:if="${bundesland.onlineStrategie}">
+                                            <a th:if="${bundesland.onlineStrategie.wikipediaArticle}" th:href="${bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

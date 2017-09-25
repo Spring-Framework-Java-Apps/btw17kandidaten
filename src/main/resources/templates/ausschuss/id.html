@@ -13,8 +13,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-
+                <div class="panel panel-primary">
+                    <div class="panel-heading" id="tw-kandidat-page-heading">
+                        <h3 class="panel-title">Ausschuss</h3>
+                    </div>
                     <span th:if="${ausschuss.onlineStrategie}">
                         <span th:if="${ausschuss.onlineStrategie.twitter != null}">
                             <a class="tw-social-media-link" th:href="${ausschuss.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

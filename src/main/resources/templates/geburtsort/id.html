@@ -12,8 +12,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="well">
-
+                <div class="panel panel-primary">
+                    <div class="panel-heading" id="tw-kandidat-page-heading">
+                        <h3 class="panel-title">Geburtsort</h3>
+                    </div>
                     <span th:if="${geburtsort.onlineStrategie}">
                         <span th:if="${geburtsort.onlineStrategie.twitter}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">

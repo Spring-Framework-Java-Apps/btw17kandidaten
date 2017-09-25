@@ -14,7 +14,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="well">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" id="tw-kandidat-page-heading">
+                            <h3 class="panel-title">Suche</h3>
+                        </div>
                         <form action="#" th:action="@{/suche/formular}" th:object="${suchformular}" method="post" class="form-horizontal">
                             <div class="form-group">
                                 <label for="vorname-input" class="col-sm-2 control-label">Vorname:</label>
@@ -110,26 +113,26 @@
         <div class="container tw-page-content tw-page-content-kandidaten">
             <div class="row">
                 <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
+                    <span  class="tw-pager-arrow tw-pager-up" th:if="${kandidaten.hasPrevious()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.previousPageable().pageNumber}|}">
+                            <span>
+                                <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
                 </div>
             </div>
             <div class="row" th:include="layoutMain :: tw-page-content-kandidaten-table">
             </div>
             <div class="row">
                 <div class="col-md-12">
-                <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
-                        <span>
-                        <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </span>
+                    <span class="tw-pager-arrow tw-pager-down" th:if="${kandidaten.hasNext()}">
+                        <a href="" th:href="@{|${pageContent.pagerUrl}?page=${kandidaten.nextPageable().pageNumber}|}" >
+                            <span>
+                                <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>
