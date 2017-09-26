@@ -66,30 +66,30 @@ Das Hosting bei Heroku ist in Europa, nicht in den USA.
 
 ### Fork, patch and contribute code
 
-Feel free to fork Twitterwall [Git repository at GitHub][twitterwall-github] for your own use and
+Feel free to fork btw17kandidaten [Git repository at GitHub][btw17kandidaten-github] for your own use and
 updates.
 
 Contribute your fixes and new features back to the main codebase using
 [GitHub pull requests][github-pull-req].
 
-[twitterwall-github]: https://github.com/phasenraum2010/btw17kandidaten/
+[btw17kandidaten-github]: https://github.com/phasenraum2010/btw17kandidaten/
 [github-pull-req]: http://help.github.com/articles/using-pull-requests
 
 ### Issues (bug and feature tracker)
 
 Please report any bugs found, feature requests or other issues on
-[Twitterwall GitHub tracker][twitterwall-issues].
+[btw17kandidaten GitHub tracker][btw17kandidaten-issues].
 
 When creating a new issue, try following [necolas's guidelines][issue-guidelines].
 
-[twitterwall-issues]: https://github.com/phasenraum2010/btw17kandidaten/issues
+[btw17kandidaten-issues]: https://github.com/phasenraum2010/btw17kandidaten/issues
 [issue-guidelines]: http://github.com/necolas/issue-guidelines/#readme
 
 ### Support
 
 Let me know if you are using App. I may get around to creating a showcase page listing user sites.
 
-[Contact me][av-site] if you have questions about Twitterwall, or just like to say something about it.
+[Contact me][av-site] if you have questions about btw17kandidaten, or just like to say something about it.
 If you _really really_ like it and want to support the author, I will be glad to
 [accept a small donation][donate].
 
@@ -99,7 +99,7 @@ If you _really really_ like it and want to support the author, I will be glad to
 ### Author  
 
 **Thomas Wöhlke**
-+ Twitter: [https://twitter.com/ThomasWoehlke](https://twitter.com/ThomasWoehlke)
++ Twitter: [https://twitter.com/ThomasWoehlke](https://twitter.com/port80guru)
 + Github: [https://github.com/phasenraum2010](https://github.com/phasenraum2010)
 + Blog: [https://thomas-woehlke.blogspot.de](https://thomas-woehlke.blogspot.de)
 

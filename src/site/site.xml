@@ -7,7 +7,7 @@
 <bannerLeft>
     <!-- Reflow Maven Skin, but with "Reflow" highlighted -->
     <name><![CDATA[
-      <span class="color-highlight">Twitterwall</span>  with
+      <span class="color-highlight">Direkt-Kandidaten fuer Bundestagswahl 2017</span>  with
                   <a href="https://projects.spring.io/spring-boot/" title="spring:boot" target="_blank">spring:boot</a>
                for <a href="https://heroku.com" title="heroku" target="_blank">heroku</a>
       ]]>
@@ -17,11 +17,11 @@
 
 <publishDate position="bottom" format="yyyy-MM-dd" />
 <version position="bottom" />
-<googleAnalyticsAccountId>UA-17174370-7</googleAnalyticsAccountId>
+<googleAnalyticsAccountId>UA-17174370-11</googleAnalyticsAccountId>
 <skin>
     <groupId>org.apache.maven.skins</groupId>
     <artifactId>maven-fluido-skin</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
 </skin>
 <!-- http://andriusvelykis.github.io/reflow-maven-skin/skin/ -->
 <body>
@@ -37,7 +37,7 @@
     </links>
 
     <breadcrumbs>
-        <item name="Twitterwall" href="/" />
+        <item name="Direkt-Kandidaten fuer Bundestagswahl 2017" href="/" />
     </breadcrumbs>
 
     <menu name="Main" inherit="top">
