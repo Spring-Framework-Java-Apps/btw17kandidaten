@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
-#export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
 export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
 export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
 export BTW17_LOGIN_USERNAME=blubb
@@ -19,8 +17,10 @@ export BTW17_TWITTER_CARD_CREATOR=port80guru
 
 ./mvnw clean release:prepare
 
-#./mvnw release:perform
+echo "./mvnw release:perform"
 
-#git commit -m "after release"
+echo "git commit -m 'after release'"
 
-#git push
+echo "git push"
+
+exit 0

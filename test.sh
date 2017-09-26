@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
-#export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
 export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
 export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
 export BTW17_LOGIN_USERNAME=blubb
@@ -15,6 +13,7 @@ export BTW17_FACEBOOK_APP_ID=1721279777913278
 export BTW17_TWITTER_CARD_SITE=port80guru
 export BTW17_TWITTER_CARD_CREATOR=port80guru
 
-#./mvnw clean install site -Ptesting
 
 ./mvnw clean install -Ptesting
+
+exit 0
