@@ -151,6 +151,8 @@ spring:
   profiles: testing
   datasource:
     url: ${DATABASE_URL_TEST}
+  jpa:
+    show-sql: false
 btw17:
   kandidaten:
     checkFotoUrl: false
