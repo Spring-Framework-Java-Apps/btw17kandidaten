@@ -81,6 +81,25 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
+        long databaseRows = kandidatFlatService.count();
+        databaseRows += berufService.count();
+        databaseRows += bundeslandService.countBundeslandAgentur();
+        databaseRows += bundeslandService.count();
+        databaseRows += geburtsortService.count();
+        databaseRows += listeParteiService.count();
+        databaseRows += parteiService.count();
+        databaseRows += wahlkreisService.count();
+        databaseRows += wohnortService.count();
+        databaseRows += landesListeService.count();
+        databaseRows += fraktionService.count();
+        databaseRows += ministeriumService.count();
+        databaseRows += ausschussService.count();
+        databaseRows += webseiteCmsService.count();
+        databaseRows += webseiteAgenturService.count();
+        databaseRows += kandidatService.countKandidatAgentur();
+        databaseRows += kandidatService.countKandidatAusschuss();
+        databaseRows += kandidatService.countKandidatMinisterium();
+        databaseRows += kandidatService.count();
         List<String> outputLines = new ArrayList<>();
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add("    ***  Bundestagswahl 2017 - Direkt Kandidaten  ***");
@@ -153,6 +172,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ausschuss:   "+kandidatService.countKandidatAusschuss());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ministerium: "+kandidatService.countKandidatMinisterium());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:             "+kandidatService.count());
+        outputLines.add("--------------------------------------------------------------------------------------------------------------");
+        outputLines.add(" Database Rows: "+databaseRows);
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
