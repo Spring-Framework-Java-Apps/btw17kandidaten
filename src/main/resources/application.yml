@@ -35,7 +35,6 @@ spring:
     platform: POSTGRESQL
     tomcat:
       max-active: 20
-    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
     url: ${DATABASE_URL}
     continue-on-error: true
     schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
@@ -51,8 +50,6 @@ spring:
     open-in-view: true
     generate-ddl: true
     hibernate:
-      #ddl-auto: create-drop
-      #ddl-auto: update
       ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
@@ -154,7 +151,6 @@ spring:
   profiles: testing
   datasource:
     url: ${DATABASE_URL_TEST}
-    #url: jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd
 btw17:
   kandidaten:
     checkFotoUrl: false
