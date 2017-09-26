@@ -132,6 +132,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" Kandidat without Soundcloud:        "+reportOverview.getCountKandidatWithoutSoundcloud());
         outputLines.add(" Kandidat without Youtube:           "+reportOverview.getCountKandidatWithoutYoutube());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat: "+kandidatFlatService.count());
+        outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:                "+berufService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe:         "+berufsgruppeService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland2Agentur:   "+bundeslandService.countBundeslandAgentur());
@@ -145,7 +147,6 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:             "+fraktionService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:          "+ministeriumService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:            "+ausschussService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat:         "+kandidatFlatService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:          "+webseiteCmsService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:      "+webseiteAgenturService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:     "+kandidatService.countKandidatAgentur());
