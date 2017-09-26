@@ -18,19 +18,21 @@
                         <div class="panel-heading" id="tw-kandidat-page-heading">
                             <h3 class="panel-title">Suche</h3>
                         </div>
-                        <form action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="search-term-input" class="col-sm-2 control-label">Suche nach:</label>
-                                <div class="col-sm-10">
-                                    <input th:field="*{searchTerm}" type="text" name="vorname" id="search-term-input" class="form-control" placeholder="Suche nach"/>
+                        <div class="panel-body">
+                            <form action="#" th:action="@{/suche/freitext/formular}" th:object="${suchformularFreitext}" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="search-term-input" class="col-sm-2 control-label">Suche nach:</label>
+                                    <div class="col-sm-10">
+                                        <input th:field="*{searchTerm}" type="text" name="vorname" id="search-term-input" class="form-control" placeholder="Suche nach"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button class="btn btn-primary form-control">Suche</button>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button class="btn btn-primary form-control">Suche</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -14,18 +14,18 @@
             <div>
                 <div class="row">
                     <div class="col-md-12">
-                <span  class="tw-pager-arrow tw-pager-up" th:if="${fraktionen.hasPrevious()}">
-                    <a href="" th:href="@{|${pageContent.pagerUrl}?page=${fraktionen.previousPageable().pageNumber}|}">
-                        <span>
-                        <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                        <span  class="tw-pager-arrow tw-pager-up" th:if="${fraktionen.hasPrevious()}">
+                            <a href="" th:href="@{|${pageContent.pagerUrl}?page=${fraktionen.previousPageable().pageNumber}|}">
+                                <span>
+                                    <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-primary" id="tw-kandidat-panel">
                             <div class="panel-heading" id="tw-kandidat-page-heading">
                                 <h3 class="panel-title">Fraktionen</h3>
                             </div>

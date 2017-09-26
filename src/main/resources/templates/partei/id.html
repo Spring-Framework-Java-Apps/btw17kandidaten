@@ -17,115 +17,117 @@
                     <div class="panel-heading" id="tw-kandidat-page-heading">
                         <h3 class="panel-title">Partei</h3>
                     </div>
+                    <div class="panel-body">
 
-                    <span th:if="${partei.webseite != null}">
-                        <span th:if="${partei.webseite.webseite != null}">
-                            <a class="tw-social-media-link" th:href="${partei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                            </a>
-                        </span>
-                    </span>
-
-                    <span th:if="${partei.onlineStrategie}">
-
-                        <span th:if="${partei.onlineStrategie.twitter != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                            </a>
+                        <span th:if="${partei.webseite != null}">
+                            <span th:if="${partei.webseite.webseite != null}">
+                                <a class="tw-social-media-link" th:href="${partei.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                </a>
+                            </span>
                         </span>
 
-                        <span th:if="${partei.onlineStrategie.facebook != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                            </a>
+                        <span th:if="${partei.onlineStrategie}">
+
+                            <span th:if="${partei.onlineStrategie.twitter != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.facebook != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.youtube != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.soundcloud != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                                    <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.wikipediaArticle != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                    <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.bundestagAbgeordnete != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                    <i class="fa fa-university" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.abgeordnetenwatch != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.lobbypediaUrl}" >
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.googlePlus != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                    <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.instagram != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.flickr != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
+                                    <i class="fa fa-flickr" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.vimeo != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                                    <i class="fa fa-vimeo-square" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.xing != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
+                                    <i class="fa fa-xing-square" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.linkedIn != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.stackoverflow != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                                    <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
+                            <span th:if="${partei.onlineStrategie.github != null}">
+                                <a class="tw-social-media-link" th:href="${partei.onlineStrategie.github}" alt="github" title="github" target="_blank">
+                                    <i class="fa fa-github" aria-hidden="true"></i>
+                                </a>
+                            </span>
+
                         </span>
 
-                        <span th:if="${partei.onlineStrategie.youtube != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                <i class="fa fa-youtube" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.soundcloud != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
-                                <i class="fa fa-soundcloud" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.wikipediaArticle != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.bundestagAbgeordnete != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                                <i class="fa fa-university" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.abgeordnetenwatch != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.lobbypediaUrl}" >
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
-                                <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.googlePlus != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
-                                <i class="fa fa-google-plus-official" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.instagram != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.flickr != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
-                                <i class="fa fa-flickr" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.vimeo != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
-                                <i class="fa fa-vimeo-square" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.xing != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
-                                <i class="fa fa-xing-square" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.linkedIn != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
-                                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.stackoverflow != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
-                                <i class="fa fa-stack-overflow" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                        <span th:if="${partei.onlineStrategie.github != null}">
-                            <a class="tw-social-media-link" th:href="${partei.onlineStrategie.github}" alt="github" title="github" target="_blank">
-                                <i class="fa fa-github" aria-hidden="true"></i>
-                            </a>
-                        </span>
-
-                    </span>
-
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="tw-kandidat-panel">
                         <div class="panel-heading" id="tw-kandidat-profil-heading">
                             <h3 class="panel-title">
                                 <span th:if="${kandidat.titel}" th:text="${kandidat.titel}">titel</span>
@@ -22,7 +22,7 @@
                                 <span th:text="${kandidat.nachname}">nachname</span>
                             </h3>
                         </div>
-                        <div class="row">
+                        <div class="row panel-body">
                             <div class="col-md-8">
                                 <table class="table table-striped table-hover tw-kandidat-profil">
                                     <tr class="tw-debug">
@@ -522,7 +522,7 @@
                                         </td>
                                     </tr>
                                     <tr th:if="${kandidat.webseite != null}">
-                                        <td>Webseite</td>
+                                        <td><span th:if="${kandidat.webseite.webseite}">Webseite</span></td>
                                         <td colspan="2">
                                             <span th:if="${kandidat.webseite.webseite}">
                                                 <a class="tw-social-media-link" th:href="${kandidat.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">

@@ -16,7 +16,8 @@
                     <div class="panel-heading" id="tw-kandidat-page-heading">
                         <h3 class="panel-title">Geburtsort</h3>
                     </div>
-                    <span th:if="${geburtsort.onlineStrategie}">
+                    <div class="panel-body">
+                        <span th:if="${geburtsort.onlineStrategie}">
                         <span th:if="${geburtsort.onlineStrategie.twitter}">
                             <a class="tw-social-media-link" th:href="${geburtsort.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
                                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
@@ -98,7 +99,7 @@
                             </a>
                         </span>
                     </span>
-
+                    </div>
                 </div>
             </div>
         </div>
