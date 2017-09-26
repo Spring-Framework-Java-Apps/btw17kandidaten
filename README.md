@@ -19,6 +19,12 @@ Das Hosting bei Heroku ist der kleinste, kostenlose, Tarif. Das kann je nach Anz
 Kostenpflichtige Upgrades mit extremer Skalierung sind durch Sponsoring zeitnah möglich.
 Das Hosting bei Heroku ist in Europa, nicht in den USA.
 
+## URLs
+
++ Demo on Heroku [https://btw17-kandidaten.herokuapp.com](https://btw17-kandidaten.herokuapp.com)
++ Github [https://github.com/phasenraum2010/btw17kandidaten](https://github.com/phasenraum2010/btw17kandidaten)
++ Maven Reports [http://woehlke.org/p/btw17-kandidaten/](http://woehlke.org/p/btw17-kandidaten/)
+
 ## Abstract
 
 + App the Browse Data for #btw17 with [spring:boot](https://projects.spring.io/spring-boot/) for [heroku](https://heroku.com)
