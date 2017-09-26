@@ -6,11 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.repositories.custom.KandidatFlatRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface KandidatFlatRepository  extends PagingAndSortingRepository<KandidatFlat,Long> {
+public interface KandidatFlatRepository extends PagingAndSortingRepository<KandidatFlat,Long>,KandidatFlatRepositoryCustom {
 
     @Query(name="KandidatFlat.getAllIdsWhereMdbIsNotNull")
     List<Long> getAllIdsWhereMdbIsNotNull();

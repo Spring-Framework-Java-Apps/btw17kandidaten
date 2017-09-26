@@ -11,7 +11,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories("org.woehlke.btw17.kandidaten.oodm.repositories")
+@EnableJpaRepositories({
+    "org.woehlke.btw17.kandidaten.oodm.repositories",
+    "org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.repositories"
+})
 public class DataSourceConfig {
 
     @Bean
