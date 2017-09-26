@@ -102,9 +102,9 @@ public class KandidatRedaktionControllerTest {
                         .andExpect(view().name("kandidat/edit"))
                         .andExpect(model().attributeExists("pageContent"))
                         .andExpect(model().attributeExists("kandidat"))
-                        .andExpect(model().attributeExists("ausschuesse"))
-                        .andExpect(model().attributeExists("fraktionen"))
-                        .andExpect(model().attributeExists("ministerien"))
+                        .andExpect(model().attributeExists("ausschuesseList"))
+                        .andExpect(model().attributeExists("fraktionenList"))
+                        .andExpect(model().attributeExists("ministerienList"))
                         .andExpect(model().attributeExists("suchformularFreitext"))
                         .andReturn();
 

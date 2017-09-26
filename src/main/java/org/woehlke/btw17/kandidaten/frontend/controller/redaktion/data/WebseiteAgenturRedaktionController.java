@@ -54,8 +54,8 @@ public class WebseiteAgenturRedaktionController extends AbstractController {
         String facebookAppId = kandidatenProperties.getFacebookAppId();
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
-        Page<WebseiteAgentur> allWebseiteCmsPage =  webseiteAgenturService.getAll(pageable);
-        model.addAttribute("allWebseiteCmsPage", allWebseiteCmsPage);
+        Page<WebseiteAgentur> allWebseiteAgenturPage =  webseiteAgenturService.getAll(pageable);
+        model.addAttribute("allWebseiteAgenturPage", allWebseiteAgenturPage);
         return "webseite/agentur/all";
     }
 
