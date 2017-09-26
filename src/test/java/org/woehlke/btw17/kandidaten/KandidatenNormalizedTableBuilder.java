@@ -16,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;

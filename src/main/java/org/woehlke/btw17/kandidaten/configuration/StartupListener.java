@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.woehlke.btw17.kandidaten.frontend.content.ReportOverview;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import java.util.ArrayList;
@@ -144,7 +145,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:             "+fraktionService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:          "+ministeriumService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:            "+ausschussService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat:         "+kandidatFlatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat:         "+kandidatFlatService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:          "+webseiteCmsService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:      "+webseiteAgenturService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:     "+kandidatService.countKandidatAgentur());

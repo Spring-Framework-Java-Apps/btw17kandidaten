@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 

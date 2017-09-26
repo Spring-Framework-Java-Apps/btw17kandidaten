@@ -6,7 +6,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 import javax.persistence.*;
 
-import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 /**

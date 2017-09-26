@@ -159,11 +159,11 @@ cat ./3nf/data/insert-data-ausschuss.sql  | sed "s/'',/NULL,/g" | sed "s/'')/NUL
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat'
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat'
 echo '-- Table: kandidat_flat'
 echo '-- etc/3nf/data/insert-data-kandidat_flat.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.KandidatFlat' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat' >> ../src/main/resources/data.sql
 echo '-- Table: kandidat_flat' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-kandidat_flat.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
