@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     },
     indexes = {
-        @Index(name = "idx_geburtsort_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_geburtsort_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_geburtsort_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
         //

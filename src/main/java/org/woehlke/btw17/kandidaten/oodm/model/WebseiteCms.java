@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_cms_product_info_page", columnList = "product_info_page"),
         @Index(name = "idx_cms_product_demo_page", columnList = "product_demo_page"),
         //
-        @Index(name = "idx_cms_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_cms_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_cms_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
         //

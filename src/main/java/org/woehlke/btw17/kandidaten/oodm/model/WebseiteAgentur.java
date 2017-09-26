@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
     indexes = {
         @Index(name = "idx_agentur_firma", columnList = "firma"),
         //
-        @Index(name = "idx_agentur_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_agentur_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_agentur_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
         //

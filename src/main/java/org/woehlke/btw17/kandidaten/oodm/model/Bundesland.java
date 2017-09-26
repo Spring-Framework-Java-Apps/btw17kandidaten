@@ -19,7 +19,7 @@ import javax.validation.Valid;
     indexes = {
         @Index(name = "idx_bundesland_bundesland_lang", columnList = "bundesland_lang"),
         //
-        @Index(name = "idx_bundesland_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_bundesland_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_bundesland_webseite", columnList = "webseite"),
         //

@@ -20,7 +20,7 @@ import javax.validation.Valid;
         @Index(name = "idx_ministerium_ministerium_lang", columnList = "ministerium_lang"),
         @Index(name = "idx_ministerium_bundesminister", columnList = "bundesminister"),
         //
-        @Index(name = "idx_ministerium_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_ministerium_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_ministerium_webseite", columnList = "webseite"),
         //

@@ -20,7 +20,7 @@ import javax.validation.Valid;
     indexes = {
         @Index(name = "idx_fraktion_fraktion_lang", columnList = "fraktion_lang"),
         //
-        @Index(name = "idx_fraktion_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_fraktion_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_fraktion_webseite", columnList = "webseite"),
         //

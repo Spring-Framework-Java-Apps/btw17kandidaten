@@ -21,7 +21,7 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_landesliste",columnNames = {"fk_bundesland","fk_listepartei"})
     },
     indexes = {
-        @Index(name = "idx_landesliste_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_landesliste_common_fields", columnList = "logo_url,symbol_bild"),
     }
 )
 @NamedQueries({

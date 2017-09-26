@@ -14,7 +14,7 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
     },
     indexes = {
-        @Index(name = "idx_wohnort_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_wohnort_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_wohnort_webseite", columnList = "webseite"),
         //

@@ -39,7 +39,7 @@ import static javax.persistence.FetchType.LAZY;
         @Index(name = "idx_kandidat_foto", columnList = "foto"),
         @Index(name = "idx_kandidat_funktion", columnList = "funktion"),
         //
-        @Index(name = "idx_kandidat_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_kandidat_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_kandidat_webseite", columnList = "webseite"),
         //

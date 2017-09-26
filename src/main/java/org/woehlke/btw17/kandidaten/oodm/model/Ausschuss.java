@@ -21,7 +21,7 @@ import javax.validation.Valid;
         @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
     },
     indexes = {
-        @Index(name = "idx_ausschuss_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_ausschuss_common_fields", columnList = "logo_url,symbol_bild"),
         //
     }
 )

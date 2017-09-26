@@ -20,7 +20,7 @@ import javax.validation.Valid;
     indexes = {
         @Index(name = "idx_wahlkreis_wahlkreis_name", columnList = "wahlkreis_name"),
         //
-        @Index(name = "idx_wahlkreis_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_wahlkreis_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_wahlkreis_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
         //

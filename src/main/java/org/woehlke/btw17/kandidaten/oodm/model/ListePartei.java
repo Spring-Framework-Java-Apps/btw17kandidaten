@@ -23,7 +23,7 @@ import javax.validation.Valid;
         @Index(name = "idx_listepartei_wahlprogramm", columnList = "wahlprogramm"),
         @Index(name = "idx_listepartei_parteiprogramm", columnList = "parteiprogramm"),
         //
-        @Index(name = "idx_listepartei_common_fields", columnList = "logo_url,symbol_bild,beschreibungs_text"),
+        @Index(name = "idx_listepartei_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_listepartei_webseite", columnList = "webseite"),
         //
