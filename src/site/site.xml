@@ -7,9 +7,9 @@
 <bannerLeft>
     <!-- Reflow Maven Skin, but with "Reflow" highlighted -->
     <name><![CDATA[
-      <span class="color-highlight">Direkt-Kandidaten fuer Bundestagswahl 2017</span>  with
+      <span class="color-highlight">Direkt-Kandidaten fuer Bundestagswahl 2017</span> mit
                   <a href="https://projects.spring.io/spring-boot/" title="spring:boot" target="_blank">spring:boot</a>
-               for <a href="https://heroku.com" title="heroku" target="_blank">heroku</a>
+               und <a href="https://heroku.com" title="heroku" target="_blank">heroku</a>.
       ]]>
     </name>
     <href>https://phasenraum2010.github.io/btw17kandidaten/</href>
