@@ -57,14 +57,14 @@
                                 <tbody>
                                 <tr th:each="fraktion : ${fraktionen}">
                                     <td class="tw-debug">
-                                <span th:fragment="tw-data-view-id">
-                                    <span class="tw-vector">
-                                        <a href="" th:href="@{|/fraktion/${fraktion.id}/|}">
-                                        <i class="fa fa-empire" aria-hidden="true"></i>
-                                        <span th:text="${fraktion.id}">id</span>
-                                        </a>
-                                    </span>
-                                </span>
+                                        <span th:fragment="tw-data-view-id">
+                                            <span class="tw-vector">
+                                                <a href="" th:href="@{|/fraktion/${fraktion.id}/|}">
+                                                <i class="fa fa-empire" aria-hidden="true"></i>
+                                                    <span th:text="${fraktion.id}">id</span>
+                                                </a>
+                                            </span>
+                                        </span>
                                     </td>
                                     <td>
                                         <a href="" th:href="@{|/fraktion/${fraktion.id}/|}">
