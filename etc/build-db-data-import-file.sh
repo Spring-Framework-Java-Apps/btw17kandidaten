@@ -12,7 +12,7 @@ echo '-- Empty Tables' >> ../src/main/resources/data.sql
 echo '-- etc/empty-tables.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-cat empty-tables-h2.sql >> ../src/main/resources/data.sql
+cat empty-tables-postgres.sql >> ../src/main/resources/data.sql
 
 
 echo ' '
