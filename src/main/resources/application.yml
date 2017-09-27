@@ -170,6 +170,23 @@ btw17:
   kandidaten:
     checkFotoUrl: false
 ---
+spring:
+  profiles: travis
+  datasource:
+    #url: 'jdbc:postgresql://localhost:5432/travis_ci_test?user=postgres'
+    url: ${DATABASE_URL_TEST}
+    continue-on-error: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+server:
+  compression:
+    enabled: false
+btw17:
+  kandidaten:
+    checkFotoUrl: false
+---
 logging:
   file: testing.log.txt
 spring:
@@ -179,6 +196,8 @@ spring:
     continue-on-error: false
   jpa:
     show-sql: false
+    hibernate:
+      ddl-auto: update
 server:
   compression:
     enabled: false
@@ -195,7 +214,7 @@ spring:
   h2:
     console:
       enabled: false
-  profiles: travis
+  profiles: travis-old
   datasource:
     driverClassName: org.h2.Driver
     platform: H2
