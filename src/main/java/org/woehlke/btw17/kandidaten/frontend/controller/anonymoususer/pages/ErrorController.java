@@ -78,13 +78,14 @@ public class ErrorController extends AbstractErrorController {
         return new ResponseEntity<Map<String, Object>>(body, status);
     }
 
+    @Autowired
     public ErrorController(ErrorAttributes errorAttributes, SessionHandler sessionHandler, OtherProperties otherProperties, KandidatenProperties kandidatenProperties) {
         this(errorAttributes,
                 Collections.<ErrorViewResolver>emptyList(),sessionHandler,otherProperties,kandidatenProperties);
     }
 
-    @Autowired
-    public ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, OtherProperties otherProperties,KandidatenProperties kandidatenProperties) {
+
+    private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, OtherProperties otherProperties,KandidatenProperties kandidatenProperties) {
         super(errorAttributes, errorViewResolvers);
         this.otherProperties = otherProperties;
         this.kandidatenProperties = kandidatenProperties;

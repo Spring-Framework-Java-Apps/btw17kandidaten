@@ -160,6 +160,22 @@ spring:
   profiles: testing
   datasource:
     url: ${DATABASE_URL_TEST}
+    continue-on-error: true
+  jpa:
+    show-sql: false
+server:
+  compression:
+    enabled: false
+btw17:
+  kandidaten:
+    checkFotoUrl: false
+---
+logging:
+  file: testing.log.txt
+spring:
+  profiles: development
+  datasource:
+    url: ${DATABASE_URL_TEST}
     continue-on-error: false
   jpa:
     show-sql: false
@@ -185,10 +201,10 @@ spring:
     platform: H2
     url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
     schema: classpath:org/springframework/session/jdbc/schema-h2.sql
-    continue-on-error: false
+    continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
        dialect: org.hibernate.dialect.H2Dialect
