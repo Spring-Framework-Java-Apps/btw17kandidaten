@@ -15,11 +15,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.AusschussController;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,13 +41,27 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-class AusschussServiceTest {
-
+public class AusschussServiceTest {
 
     private static final Logger log = LoggerFactory.getLogger(AusschussServiceTest.class);
 
     @Autowired
     private AusschussService ausschussService;
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private AusschussController controller;
+
+
+    @Commit
+    @Test
+    public void test000controllerIsPresentTest(){
+        log.info("controllerIsPresentTest");
+        assertThat(controller).isNotNull();
+        assertThat(mockMvc).isNotNull();
+    }
 
     @Commit
     @Test

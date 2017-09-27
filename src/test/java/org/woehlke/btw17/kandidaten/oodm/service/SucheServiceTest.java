@@ -7,18 +7,30 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
+import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
+import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
+import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes = { KandidatenApplication.class },
-    webEnvironment = SpringBootTest.WebEnvironment.NONE
+        classes = {
+                KandidatenApplication.class,
+                DataSourceConfig.class,
+                HttpSessionConfig.class,
+                WebMvcConfig.class,
+                WebSecurityConfig.class
+        },
+        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
 )
+@AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SucheServiceTest {
 
