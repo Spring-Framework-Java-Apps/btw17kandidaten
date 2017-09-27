@@ -204,7 +204,7 @@ spring:
     continue-on-error: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
        dialect: org.hibernate.dialect.H2Dialect
