@@ -3,23 +3,16 @@ package org.woehlke.btw17.kandidaten.frontend.errorhandling;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.SpelEvaluationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
-import org.thymeleaf.exceptions.TemplateProcessingException;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 
-import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {

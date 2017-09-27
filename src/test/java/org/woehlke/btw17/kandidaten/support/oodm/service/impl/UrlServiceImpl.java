@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.support.oodm.service.UrlService;
 
 import java.io.IOException;

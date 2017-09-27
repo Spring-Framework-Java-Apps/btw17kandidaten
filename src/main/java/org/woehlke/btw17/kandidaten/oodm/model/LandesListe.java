@@ -120,10 +120,6 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
         }
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

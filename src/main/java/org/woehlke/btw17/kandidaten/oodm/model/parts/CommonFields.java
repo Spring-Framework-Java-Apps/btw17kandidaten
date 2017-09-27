@@ -2,17 +2,18 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFieldsEmbedded
  */
 @Validated
 @Embeddable
-public class CommonFields implements MySerializable {
+public class CommonFields implements Serializable {
 
     @URL
     @Column(name="logo_url")
@@ -24,10 +25,6 @@ public class CommonFields implements MySerializable {
 
     @Column(name="beschreibungs_text",columnDefinition = "TEXT")
     private String beschreibungsText;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getLogoUrl() {
         return logoUrl;

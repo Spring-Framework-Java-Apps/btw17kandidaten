@@ -2,17 +2,18 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPositionEmbedded
  */
 @Validated
 @Embeddable
-public class GeoPosition implements MySerializable {
+public class GeoPosition implements Serializable {
 
     @URL
     @Column(name = "google_maps_url")

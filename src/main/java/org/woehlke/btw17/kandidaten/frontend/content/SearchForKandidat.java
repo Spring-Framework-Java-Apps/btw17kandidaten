@@ -2,12 +2,13 @@ package org.woehlke.btw17.kandidaten.frontend.content;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+
 
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
 @Validated
-public class SearchForKandidat implements MySerializable {
+public class SearchForKandidat implements Serializable {
 
     @SafeHtml
     private String nachname;

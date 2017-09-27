@@ -11,14 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.service.WebseiteCmsService;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;

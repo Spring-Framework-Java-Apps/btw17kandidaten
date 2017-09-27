@@ -161,12 +161,12 @@ btw17:
 spring:
   h2:
     console:
-      enabled: true
+      enabled: false
   profiles: travis
   datasource:
     driverClassName: org.h2.Driver
     platform: H2
-    url: jdbc:h2:mem:test
+    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
     schema: classpath:org/springframework/session/jdbc/schema-h2.sql
   jpa:
     hibernate:

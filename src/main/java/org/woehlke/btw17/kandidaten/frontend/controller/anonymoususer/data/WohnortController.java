@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
@@ -24,7 +24,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.WohnortService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;

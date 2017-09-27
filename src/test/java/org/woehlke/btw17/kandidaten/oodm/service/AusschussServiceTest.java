@@ -55,7 +55,7 @@ public class AusschussServiceTest {
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         int resultSize = ausschuesse.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("found Page<Ausschuss> ausschuesse: "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
             for (Ausschuss ausschuss : ausschuesse.getContent()) {

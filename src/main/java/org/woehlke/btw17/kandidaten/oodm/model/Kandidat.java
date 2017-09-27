@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
@@ -272,7 +272,7 @@ import static javax.persistence.FetchType.LAZY;
     )
 })
 @EntityListeners(KandidatListener.class)
-public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,OnlineStrategieEmbedded {
+public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -441,10 +441,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,MySerializable,On
     @Override
     public String getUniqueId() {
         return id + ":"+key+":"+this.getName();
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Long getId() {

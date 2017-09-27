@@ -17,7 +17,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.woehlke.btw17.kandidaten.configuration.JumbotronImage;
-import org.woehlke.btw17.kandidaten.configuration.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;

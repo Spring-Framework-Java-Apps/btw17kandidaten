@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.configuration;
+package org.woehlke.btw17.kandidaten.configuration.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

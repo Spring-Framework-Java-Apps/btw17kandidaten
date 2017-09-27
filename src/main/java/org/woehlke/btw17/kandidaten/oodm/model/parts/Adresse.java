@@ -1,10 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -13,7 +14,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Validated
 @Embeddable
-public class Adresse implements MySerializable {
+public class Adresse implements Serializable {
 
     @Column(name="strasse")
     private String strasse;

@@ -1,8 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
-public interface DomainObject extends MySerializable {
+import java.io.Serializable;
+
+public interface DomainObject extends Serializable {
 
     Long getId();
 

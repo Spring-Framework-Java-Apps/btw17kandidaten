@@ -1,13 +1,18 @@
-package org.woehlke.btw17.kandidaten.configuration;
+package org.woehlke.btw17.kandidaten.configuration.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 
 @Configuration
+@EnableJdbcHttpSession
+@EnableSpringDataWebSupport
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 

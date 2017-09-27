@@ -1,8 +1,9 @@
 package org.woehlke.btw17.kandidaten.frontend.content;
 
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
 
-public class ReportOverview implements MySerializable {
+import java.io.Serializable;
+
+public class ReportOverview implements Serializable {
 
     private Long countMdb;
 

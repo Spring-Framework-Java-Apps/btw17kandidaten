@@ -2,17 +2,18 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.MySerializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded
  */
 @Validated
 @Embeddable
-public class OnlineStrategie implements MySerializable {
+public class OnlineStrategie implements Serializable {
 
     @URL
     @Column(name="twitter")

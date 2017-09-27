@@ -57,8 +57,6 @@ import javax.validation.constraints.NotNull;
 @EntityListeners(WebseiteCmsListener.class)
 public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
@@ -110,10 +108,6 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
     @Override
     public String getUniqueId() {
         return id + ":"+this.getName();
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     @Override
