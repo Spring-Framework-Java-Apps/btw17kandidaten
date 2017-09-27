@@ -14,6 +14,12 @@ buildNumber.properties
 .idea
 *.iml
 
+testing.log.txt
+testing.log.txt*
+
+travis.log.txt
+travis.log.txt*
+
 test.log.txt
 test.log.txt*
 

@@ -11,7 +11,6 @@ import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHtt
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 
 @Configuration
-@EnableJdbcHttpSession
 @EnableSpringDataWebSupport
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

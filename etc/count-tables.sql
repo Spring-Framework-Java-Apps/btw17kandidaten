@@ -23,3 +23,5 @@ SELECT count(*) FROM partei_agentur;
 SELECT count(*) FROM listepartei_agentur;
 SELECT count(*) FROM bundesland_agentur;
 SELECT count(*) FROM kandidat_agentur;
+SELECT count(*) FROM spring_session_attributes;
+SELECT count(*) FROM spring_session;

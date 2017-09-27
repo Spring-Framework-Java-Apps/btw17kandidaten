@@ -18,6 +18,8 @@ import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -50,13 +52,13 @@ public class MinisteriumServiceTest {
     @Commit
     @Test
     public void test002findByMinisterium() throws Exception {
-        int page = 1;
-        int size = 20;
+        int page = FIRST_PAGE_NUMBER;
+        int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
         int resultSize = ministerien.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("Page<Ministerium> ministerien : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
             for (Ministerium ministerium : ministerien.getContent()) {

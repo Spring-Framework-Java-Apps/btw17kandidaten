@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.configuration.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -11,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
 
 @Configuration
-@EnableJdbcHttpSession
 @EnableSpringDataWebSupport
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
@@ -20,6 +18,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/").setViewName("redirect:/welcome");
         registry.addViewController("/adm").setViewName("redirect:/report/overview");
         registry.addViewController("/regierung/kanzleramt").setViewName("redirect:/ministerium/15");
+        //registry.addViewController("/error").setViewName("redirect:/fehler");
     }
 
     @Override

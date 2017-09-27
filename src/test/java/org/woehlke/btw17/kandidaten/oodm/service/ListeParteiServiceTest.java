@@ -18,6 +18,8 @@ import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -49,13 +51,13 @@ public class ListeParteiServiceTest {
     @Commit
     @Test
     public void test002findByListeParteiTest() throws Exception {
-        int page = 1;
-        int size = 20;
+        int page = FIRST_PAGE_NUMBER;
+        int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<ListePartei> listeParteien = listeParteiService.getAll(pageable);
         int resultSize = listeParteien.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("Page<ListePartei> listeParteien : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
             for (ListePartei listePartei : listeParteien.getContent()) {

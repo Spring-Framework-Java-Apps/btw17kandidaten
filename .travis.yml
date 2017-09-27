@@ -1,7 +1,9 @@
 language: java
-sudo: false
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-script:  ./mvnw clean install -Ptravis  -B -V
+jdk:
+  - oraclejdk8
+sudo: required
+cache:
+  directories:
+    - $HOME/.m2
+before_script: rm -rf $HOME/.m2/wrapper/* $HOME/.m2/repository/*
+script:  ./mvnw clean install site -Ptravis  -B -V

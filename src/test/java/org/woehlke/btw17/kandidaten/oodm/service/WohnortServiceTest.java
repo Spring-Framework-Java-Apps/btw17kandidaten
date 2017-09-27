@@ -19,6 +19,8 @@ import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -49,13 +51,13 @@ public class WohnortServiceTest {
     @Commit
     @Test
     public void test002findByWohnortTest() throws Exception {
-        int page = 1;
-        int size = 20;
+        int page = FIRST_PAGE_NUMBER;
+        int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
         int resultSize = wohnorte.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("Page<Wohnort> wohnorte : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
             for (Wohnort wohnort : wohnorte.getContent()) {

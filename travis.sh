@@ -12,6 +12,6 @@ export BTW17_TWITTER_CARD_SITE=port80guru
 export BTW17_TWITTER_CARD_CREATOR=port80guru
 
 
-./mvnw clean install -Ptravis  -B -V
+./mvnw clean install site -Ptravis  -B -V
 
 exit 0

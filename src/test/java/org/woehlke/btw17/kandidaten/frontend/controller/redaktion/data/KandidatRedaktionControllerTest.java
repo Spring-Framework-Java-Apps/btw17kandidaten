@@ -29,6 +29,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -90,8 +92,8 @@ public class KandidatRedaktionControllerTest {
     @Test
     public void test030editKandidatForIdGet() throws Exception {
         String msg ="editKandidatForIdGet: ";
-        int page=0;
-        int size=20;
+        int page=FIRST_PAGE_NUMBER;
+        int size=PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
         boolean goOn = true;

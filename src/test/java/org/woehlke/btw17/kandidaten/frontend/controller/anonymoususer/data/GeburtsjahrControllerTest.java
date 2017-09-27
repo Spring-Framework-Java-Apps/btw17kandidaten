@@ -29,6 +29,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -90,16 +92,8 @@ public class GeburtsjahrControllerTest {
     @Test
     public void test020getUserForId() throws Exception {
         String msg ="test020getUserForId: ";
-        int page=0;
-        int size=10;
-        Pageable pageable = new PageRequest(page,size);
         List<Integer> geburtsjahre = kandidatService.getAllGeburtsjahre();
-        int i = 0;
         for(Integer geburtsjahr:geburtsjahre){
-            i++;
-            if(i>=size){
-                break;
-            }
             log.debug(msg + "/geburtsjahr/"+geburtsjahr);
             MvcResult result = this.mockMvc.perform(get("/geburtsjahr/"+geburtsjahr))
                     .andExpect(status().isOk())

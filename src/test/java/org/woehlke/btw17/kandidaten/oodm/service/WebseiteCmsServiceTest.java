@@ -17,6 +17,8 @@ import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -46,23 +48,23 @@ public class WebseiteCmsServiceTest {
     @Commit
     @Test
     public void test002findByWohnortTest() throws Exception {
-        int page = 1;
-        int size = 20;
+        int page = FIRST_PAGE_NUMBER;
+        int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
-        Page<WebseiteCms> wohnorte = webseiteCmsService.getAll(pageable);
-        int resultSize = wohnorte.getNumber();
+        Page<WebseiteCms> webseitenCms = webseiteCmsService.getAll(pageable);
+        int resultSize = webseitenCms.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("Page<WebseiteCms> webseitenCms : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
-            for (WebseiteCms wohnort : wohnorte.getContent()) {
-                WebseiteCms found = webseiteCmsService.findByCms(wohnort.getCms());
-                Assert.assertEquals(wohnort.getId(), found.getId());
+            for (WebseiteCms webseiteCms : webseitenCms.getContent()) {
+                WebseiteCms found = webseiteCmsService.findByCms(webseiteCms.getCms());
+                Assert.assertEquals(webseiteCms.getId(), found.getId());
                 log.debug("found: " + found.toString());
             }
-            if (wohnorte.hasNext()) {
-                pageable = wohnorte.nextPageable();
-                wohnorte = webseiteCmsService.getAll(pageable);
+            if (webseitenCms.hasNext()) {
+                pageable = webseitenCms.nextPageable();
+                webseitenCms = webseiteCmsService.getAll(pageable);
             } else {
                 goOn = false;
             }

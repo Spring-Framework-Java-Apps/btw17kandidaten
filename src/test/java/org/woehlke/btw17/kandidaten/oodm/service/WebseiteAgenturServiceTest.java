@@ -20,6 +20,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -51,23 +53,23 @@ public class WebseiteAgenturServiceTest {
     @Commit
     @Test
     public void test002findByWohnortTest() throws Exception {
-        int page = 1;
-        int size = 20;
+        int page = FIRST_PAGE_NUMBER;
+        int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
-        Page<WebseiteAgentur> wohnorte = webseiteAgenturService.getAll(pageable);
-        int resultSize = wohnorte.getNumber();
+        Page<WebseiteAgentur> webseiteAgenturen = webseiteAgenturService.getAll(pageable);
+        int resultSize = webseiteAgenturen.getNumber();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue(resultSize>0);
+        Assert.assertTrue("Page<WebseiteAgentur> webseiteAgenturen : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
-            for (WebseiteAgentur wohnort : wohnorte.getContent()) {
-                WebseiteAgentur found = webseiteAgenturService.findByAgentur(wohnort.getAgentur());
-                Assert.assertEquals(wohnort.getId(), found.getId());
+            for (WebseiteAgentur webseiteAgentur : webseiteAgenturen.getContent()) {
+                WebseiteAgentur found = webseiteAgenturService.findByAgentur(webseiteAgentur.getAgentur());
+                Assert.assertEquals(webseiteAgentur.getId(), found.getId());
                 log.debug("found: " + found.toString());
             }
-            if (wohnorte.hasNext()) {
-                pageable = wohnorte.nextPageable();
-                wohnorte = webseiteAgenturService.getAll(pageable);
+            if (webseiteAgenturen.hasNext()) {
+                pageable = webseiteAgenturen.nextPageable();
+                webseiteAgenturen = webseiteAgenturService.getAll(pageable);
             } else {
                 goOn = false;
             }

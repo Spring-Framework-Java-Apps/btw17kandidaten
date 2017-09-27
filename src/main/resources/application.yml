@@ -9,6 +9,12 @@ endpoints:
   endpoints:
     shutdown:
       enabled: false
+server:
+  error:
+    path: /fehler
+  compression:
+    enabled: true
+    min-response-size: 2048
 hibernate:
   dialect: org.hibernate.dialect.PostgreSQL94Dialect
 info:
@@ -22,7 +28,7 @@ management:
   address: 127.0.0.1
   context-path: "/manage"
   security:
-    enabled: false
+    enabled: true
 spring:
   application:
     admin:
@@ -30,8 +36,8 @@ spring:
     name: @project.name@
   datasource:
     driverClassName: org.postgresql.Driver
-    max-total: 20
-    maxActive: 20
+    #max-total: 20
+    #maxActive: 20
     platform: POSTGRESQL
     tomcat:
       max-active: 20
@@ -110,6 +116,7 @@ btw17:
       - "/geburtsjahr/**"
       - "/imprint"
       - "/welcome"
+      - "/fehler"
       - "/datenschutz"
       - "/suche/formular"
       - "/suche/freitext/formular"
@@ -147,17 +154,27 @@ btw17:
       countKandidatFlat: 2559
       countKandidat: 2559
 ---
+logging:
+  file: testing.log.txt
 spring:
   profiles: testing
   datasource:
     url: ${DATABASE_URL_TEST}
+    continue-on-error: false
   jpa:
     show-sql: false
+server:
+  compression:
+    enabled: false
 btw17:
   kandidaten:
     checkFotoUrl: false
 ---
-
+logging:
+  file: travis.log.txt
+server:
+  compression:
+    enabled: false
 spring:
   h2:
     console:
@@ -168,6 +185,7 @@ spring:
     platform: H2
     url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
     schema: classpath:org/springframework/session/jdbc/schema-h2.sql
+    continue-on-error: false
   jpa:
     hibernate:
       ddl-auto: update

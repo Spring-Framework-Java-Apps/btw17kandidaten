@@ -222,18 +222,28 @@
         border-left: none;
     }
 
-    footer#page-footer.sticky-footer {
-        /* position: relative !important; */
-        /* position: absolute !important; */
-        /* bottom: 0px !important; */
-        /* width: 100% !important; */
-        /* height: auto !important; */
+    footer {
+        display: block;
     }
 
-    #page-footer.navbar {
-        margin-top: 50px;
+
+    footer.navbar {
         border-radius: 0 !important;
-        margin-bottom: 0 !important;
+        /* margin-bottom: 0 !important; */
+    }
+
+    #tw-footer {
+
+    }
+
+    .tw-footer {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-top: 100px;
+        margin-bottom: 0px;
+        color: #99979c;
+        text-align: center;
+        background-color: #2a2730;
     }
 
     .tw-facette-logo {

@@ -52,7 +52,8 @@ public enum PageSymbol {
     REPORT_OVERVIEW("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     REPORT_MDB("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
     REPORT_KANDIDAT("<i class=\"fa fa-play-circle\" aria-hidden=\"true\"></i>"),
-    REPORT_DATA("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>");
+    REPORT_DATA("<i class=\"fa fa-database\" aria-hidden=\"true\"></i>"),
+    ERROR("<i class=\"fa fa-exclamation-triangle\" aria-hidden=\"true\"></i>");
 
     private String symbolHtml;
 

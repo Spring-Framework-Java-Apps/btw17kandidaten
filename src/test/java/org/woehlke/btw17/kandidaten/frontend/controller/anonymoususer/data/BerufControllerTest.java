@@ -28,6 +28,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
@@ -88,8 +90,8 @@ public class BerufControllerTest {
     @Test
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
-        int page=0;
-        int size=20;
+        int page=FIRST_PAGE_NUMBER;
+        int size=PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
         boolean goOn = true;
