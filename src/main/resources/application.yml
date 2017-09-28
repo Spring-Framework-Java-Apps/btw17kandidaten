@@ -154,6 +154,9 @@ btw17:
       countKandidatFlat: 2559
       countKandidat: 2559
 ---
+spring:
+  profiles: default
+---
 logging:
   file: testing.log.txt
 spring:
