@@ -157,22 +157,6 @@ btw17:
 spring:
   profiles: default
 ---
-logging:
-  file: testing.log.txt
-spring:
-  profiles: testing
-  datasource:
-    url: ${DATABASE_URL_TEST}
-    continue-on-error: true
-  jpa:
-    show-sql: false
-server:
-  compression:
-    enabled: false
-btw17:
-  kandidaten:
-    checkFotoUrl: false
----
 spring:
   profiles: travis
   datasource:
@@ -185,53 +169,6 @@ spring:
 server:
   compression:
     enabled: false
-btw17:
-  kandidaten:
-    checkFotoUrl: false
----
-logging:
-  file: testing.log.txt
-spring:
-  profiles: development
-  datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
-    continue-on-error: false
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: update
-server:
-  compression:
-    enabled: false
-btw17:
-  kandidaten:
-    checkFotoUrl: false
----
-logging:
-  file: travis.log.txt
-server:
-  compression:
-    enabled: false
-spring:
-  h2:
-    console:
-      enabled: false
-  profiles: travis-old
-  datasource:
-    driverClassName: org.h2.Driver
-    platform: H2
-    url: jdbc:h2:mem:test;DB_CLOSE_ON_EXIT=FALSE
-    schema: classpath:org/springframework/session/jdbc/schema-h2.sql
-    continue-on-error: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-       dialect: org.hibernate.dialect.H2Dialect
-    show-sql: false
-hibernate:
-  dialect: org.hibernate.dialect.H2Dialect
 btw17:
   kandidaten:
     checkFotoUrl: false
