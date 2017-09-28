@@ -14,6 +14,10 @@ before_install:
   - sudo /etc/init.d/postgresql start 9.6
 before_script:
   - psql -U postgres < etc/prepare-db-for-travis.sql
+  - psql -c '\l' -U postgres
+  - psql -c '\dg' -U postgres
+  - psql -c '\dn' -U postgres
+  - psql -c 'select * from version();' -U postgres
   - psql -c 'select * from version();' -U kandidatentest
 sudo: false
 script:  ./mvnw clean site site:deploy -Ptravis  -B -V
