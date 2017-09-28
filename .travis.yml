@@ -11,4 +11,4 @@ services:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 sudo: false
-script:  ./mvnw clean install -Ptesting  -B -V
+script:  ./mvnw clean install -Ptravis  -B -V

@@ -58,7 +58,7 @@ public class SucheController extends AbstractController {
         String facebookAppId = kandidatenProperties.getFacebookAppId();
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
-        log.info(suchformular.toString());
+        log.debug(suchformular.toString());
         Page<Kandidat> kandidatPage = sucheService.suchePerFormular(suchformular, pageable);
         model.addAttribute("kandidaten", kandidatPage);
         model.addAttribute("suchformular",suchformular);
@@ -77,7 +77,7 @@ public class SucheController extends AbstractController {
             RedirectAttributes attr,
             HttpSession session
     ) {
-        log.info(suchformular.toString());
+        log.debug(suchformular.toString());
         if (binding.hasErrors()) {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
             attr.addFlashAttribute("suchformular", suchformular);
@@ -132,7 +132,7 @@ public class SucheController extends AbstractController {
             RedirectAttributes attr,
             HttpSession session
     ) {
-        log.info(suchformularFreitext.toString());
+        log.debug(suchformularFreitext.toString());
         if (binding.hasErrors()) {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.register", binding);
             attr.addFlashAttribute("suchformularFreitext", suchformularFreitext);
