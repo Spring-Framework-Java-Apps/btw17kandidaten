@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,7 +57,7 @@ public class AusschussServiceTest {
     private AusschussController controller;
 
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -65,7 +66,7 @@ public class AusschussServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -73,14 +74,14 @@ public class AusschussServiceTest {
         assertThat(ausschussService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByAusschuss() throws Exception {
@@ -89,7 +90,7 @@ public class AusschussServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
-        int resultSize = ausschuesse.getNumber();
+        long resultSize = ausschuesse.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("found Page<Ausschuss> ausschuesse : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -108,7 +109,7 @@ public class AusschussServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -57,7 +58,7 @@ public class FraktionServiceTest {
     @Autowired
     private FraktionController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -66,7 +67,7 @@ public class FraktionServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -74,14 +75,14 @@ public class FraktionServiceTest {
         assertThat(fraktionService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByFraktion() throws Exception {
@@ -90,7 +91,7 @@ public class FraktionServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
-        int resultSize = fraktionen.getNumber();
+        long resultSize = fraktionen.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Fraktion> fraktionen : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -109,7 +110,7 @@ public class FraktionServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

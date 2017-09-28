@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,7 +57,7 @@ public class BerufsgruppeServiceTest {
     @Autowired
     private BerufsgruppeController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -65,7 +66,7 @@ public class BerufsgruppeServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -73,14 +74,14 @@ public class BerufsgruppeServiceTest {
         assertThat(berufsgruppeService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByBerufsgruppeTest() throws Exception {
@@ -89,7 +90,7 @@ public class BerufsgruppeServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
-        int resultSize = berufsgruppen.getNumber();
+        long resultSize = berufsgruppen.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Berufsgruppe> berufsgruppen : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -108,7 +109,7 @@ public class BerufsgruppeServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

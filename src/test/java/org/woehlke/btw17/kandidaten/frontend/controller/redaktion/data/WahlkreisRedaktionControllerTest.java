@@ -61,6 +61,7 @@ public class WahlkreisRedaktionControllerTest {
     @Test
     public void test010getAll()throws Exception {
         String msg ="test010getAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/redaktion/wahlkreis/all"))
                 .andExpect(status().isOk())

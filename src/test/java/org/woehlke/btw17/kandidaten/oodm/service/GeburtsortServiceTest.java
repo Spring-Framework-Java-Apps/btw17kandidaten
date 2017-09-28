@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -22,7 +22,6 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.FraktionController;
 import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.GeburtsortController;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 
@@ -56,7 +55,7 @@ public class GeburtsortServiceTest {
     @Autowired
     private GeburtsortController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -65,7 +64,7 @@ public class GeburtsortServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -73,7 +72,7 @@ public class GeburtsortServiceTest {
         assertThat(geburtsortService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
@@ -81,7 +80,7 @@ public class GeburtsortServiceTest {
     }
 
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public  void  test002findByGeburtsortTest() throws Exception {
@@ -90,7 +89,7 @@ public class GeburtsortServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
-        int resultSize = geburtsorte.getNumber();
+        long resultSize = geburtsorte.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Geburtsort> geburtsorte : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -109,7 +108,7 @@ public class GeburtsortServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

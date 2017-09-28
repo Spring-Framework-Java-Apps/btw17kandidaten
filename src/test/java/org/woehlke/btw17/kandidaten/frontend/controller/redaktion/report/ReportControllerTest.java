@@ -61,6 +61,7 @@ public class ReportControllerTest {
     @Test
     public void test0010overview() throws Exception {
         String msg ="test0010overview: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/overview"))
                 .andExpect(status().isOk())
@@ -85,6 +86,7 @@ public class ReportControllerTest {
     @Test
     public void test0020getMdbWithoutAbgeordnetenwatch() throws Exception {
         String msg ="test0020getMdbWithoutAbgeordnetenwatch: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/abgeordnetenwatch"))
                 .andExpect(status().isOk())
@@ -109,6 +111,7 @@ public class ReportControllerTest {
     @Test
     public void test0030getMdbWithoutBundestagProfile() throws Exception {
         String msg ="test0030getMdbWithoutBundestagProfile: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/bundestag"))
                 .andExpect(status().isOk())
@@ -134,6 +137,7 @@ public class ReportControllerTest {
     @Test
     public void test0040getMdbWithoutFotoUrl() throws Exception {
         String msg ="test0040getMdbWithoutFotoUrl: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/foto"))
                 .andExpect(status().isOk())
@@ -159,6 +163,7 @@ public class ReportControllerTest {
     @Test
     public void test0050getMdbWithoutFacebook() throws Exception {
         String msg ="test0050getMdbWithoutFacebook: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/facebook"))
                 .andExpect(status().isOk())
@@ -184,6 +189,7 @@ public class ReportControllerTest {
     @Test
     public void test0060getMdbWithoutTwitter() throws Exception {
         String msg ="test0060getMdbWithoutTwitter: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/twitter"))
                 .andExpect(status().isOk())
@@ -209,6 +215,7 @@ public class ReportControllerTest {
     @Test
     public void test0070getMdbWithoutWebseite() throws Exception {
         String msg ="test0070getMdbWithoutWebseite: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/webseite"))
                 .andExpect(status().isOk())
@@ -234,6 +241,7 @@ public class ReportControllerTest {
     @Test
     public void test0080getMdbWithoutWikipediaArticle() throws Exception {
         String msg ="test0080getMdbWithoutWikipediaArticle: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/mdb/wikipedia"))
                 .andExpect(status().isOk())
@@ -259,6 +267,7 @@ public class ReportControllerTest {
     @Test
     public void test0090getKandidatWithoutAbgeordnetenwatch() throws Exception {
         String msg ="test0090getKandidatWithoutAbgeordnetenwatch: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/abgeordnetenwatch"))
                 .andExpect(status().isOk())
@@ -283,6 +292,7 @@ public class ReportControllerTest {
     @Test
     public void test0100getKandidatWithoutFacebook() throws Exception {
         String msg ="test0100getKandidatWithoutFacebook: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/facebook"))
                 .andExpect(status().isOk())
@@ -308,6 +318,7 @@ public class ReportControllerTest {
     @Test
     public void test0110getKandidatWithoutWebseite() throws Exception {
         String msg ="test0110getKandidatWithoutWebseite: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/webseite"))
                 .andExpect(status().isOk())
@@ -333,6 +344,7 @@ public class ReportControllerTest {
     @Test
     public void test0120getKandidatWithoutFotoUrl() throws Exception {
         String msg ="test0120getKandidatWithoutFotoUrl: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/foto"))
                 .andExpect(status().isOk())
@@ -358,6 +370,7 @@ public class ReportControllerTest {
     @Test
     public void test0130getKandidatWithoutLobbypediaUrl() throws Exception {
         String msg ="test0130getKandidatWithoutLobbypediaUrl: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/lobbypedia"))
                 .andExpect(status().isOk())
@@ -383,6 +396,7 @@ public class ReportControllerTest {
     @Test
     public void test0140getKandidatWithoutSoundcloud() throws Exception {
         String msg ="test0140getKandidatWithoutSoundcloud: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/soundcloud"))
                 .andExpect(status().isOk())
@@ -408,6 +422,7 @@ public class ReportControllerTest {
     @Test
     public void test0150getKandidatWithoutYoutube() throws Exception {
         String msg ="test0150getKandidatWithoutYoutube: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/youtube"))
                 .andExpect(status().isOk())
@@ -433,6 +448,7 @@ public class ReportControllerTest {
     @Test
     public void test0160getKandidatWithoutTwitter() throws Exception {
         String msg ="test0160getKandidatWithoutTwitter: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/report/kandidat/twitter"))
                 .andExpect(status().isOk())

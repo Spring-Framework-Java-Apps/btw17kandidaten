@@ -62,6 +62,7 @@ public class MinisteriumRedaktionControllerTest {
     @Test
     public void test010getAll() throws Exception {
         String msg ="test010getAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/redaktion/ministerium/all"))
                 .andExpect(status().isOk())

@@ -53,6 +53,7 @@ public class LandesListeControllerTest {
     @Test
     public void test010getLandesListeForBundeslandAll()throws Exception {
         String msg ="test010getLandesListeForBundeslandAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/landesliste/bundesland/all"))
                 .andExpect(status().isOk())
@@ -78,6 +79,7 @@ public class LandesListeControllerTest {
     @Test
     public void test011getLandesListeForListeParteiAll()throws Exception {
         String msg ="test011getLandesListeForListeParteiAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/landesliste/listepartei/all"))
                 .andExpect(status().isOk())

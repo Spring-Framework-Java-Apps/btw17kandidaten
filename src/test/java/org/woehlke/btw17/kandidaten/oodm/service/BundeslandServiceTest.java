@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,7 +57,7 @@ public class BundeslandServiceTest {
     @Autowired
     private BundeslandController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -65,7 +66,7 @@ public class BundeslandServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -73,7 +74,7 @@ public class BundeslandServiceTest {
         assertThat(bundeslandService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
@@ -81,7 +82,7 @@ public class BundeslandServiceTest {
     }
 
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByBundeslandTest() throws Exception {
@@ -90,7 +91,7 @@ public class BundeslandServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
-        int resultSize = bundeslaender.getNumber();
+        long resultSize = bundeslaender.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Bundesland> bundeslaender : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -109,7 +110,7 @@ public class BundeslandServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

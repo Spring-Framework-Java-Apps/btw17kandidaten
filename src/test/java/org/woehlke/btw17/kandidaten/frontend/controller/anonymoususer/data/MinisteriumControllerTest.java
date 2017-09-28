@@ -67,6 +67,7 @@ public class MinisteriumControllerTest {
     @Test
     public void test010getAll() throws Exception {
         String msg ="test010getAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/ministerium/all"))
                 .andExpect(status().isOk())
@@ -91,6 +92,7 @@ public class MinisteriumControllerTest {
     @Test
     public void test020getUserForId()  throws Exception {
         String msg ="test020getUserForId: ";
+        log.info(msg);
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

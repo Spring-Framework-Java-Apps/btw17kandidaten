@@ -53,8 +53,9 @@ public class LoginControllerTest {
     @WithAnonymousUser
     @Commit
     @Test
-    public void test010getAll()throws Exception {
-        String msg ="test010getAll: ";
+    public void test010login()throws Exception {
+        String msg ="test010login: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -59,7 +60,7 @@ public class WebseiteAgenturServiceTest {
     @Autowired
     private WebseiteAgenturController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -68,7 +69,7 @@ public class WebseiteAgenturServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -76,14 +77,14 @@ public class WebseiteAgenturServiceTest {
         assertThat(webseiteAgenturService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByAgenturTest() throws Exception {
@@ -92,9 +93,9 @@ public class WebseiteAgenturServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<WebseiteAgentur> webseiteAgenturen = webseiteAgenturService.getAll(pageable);
-        int resultSize = webseiteAgenturen.getNumber();
+        long resultSize = webseiteAgenturen.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<WebseiteAgentur> webseiteAgenturen : "+resultSize,resultSize>0);
+        Assert.assertTrue("Page<WebseiteAgentur> webseiteAgenturen : "+resultSize,resultSize==0);
         boolean goOn = true;
         while(goOn) {
             for (WebseiteAgentur webseiteAgentur : webseiteAgenturen.getContent()) {
@@ -111,7 +112,7 @@ public class WebseiteAgenturServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,7 +57,7 @@ public class ListeParteiServiceTest {
     @Autowired
     private ListeParteiController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -65,7 +66,7 @@ public class ListeParteiServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -73,14 +74,14 @@ public class ListeParteiServiceTest {
         assertThat(listeParteiService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByListeParteiTest() throws Exception {
@@ -89,7 +90,7 @@ public class ListeParteiServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<ListePartei> listeParteien = listeParteiService.getAll(pageable);
-        int resultSize = listeParteien.getNumber();
+        long resultSize = listeParteien.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<ListePartei> listeParteien : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -108,7 +109,7 @@ public class ListeParteiServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

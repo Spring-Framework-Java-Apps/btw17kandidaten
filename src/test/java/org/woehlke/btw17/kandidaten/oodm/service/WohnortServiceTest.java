@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -57,7 +58,7 @@ public class WohnortServiceTest {
     @Autowired
     private WohnortController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -66,7 +67,7 @@ public class WohnortServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -74,14 +75,14 @@ public class WohnortServiceTest {
         assertThat(wohnortService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByWohnortTest() throws Exception {
@@ -89,7 +90,7 @@ public class WohnortServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
-        int resultSize = wohnorte.getNumber();
+        long resultSize = wohnorte.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Wohnort> wohnorte : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -108,7 +109,7 @@ public class WohnortServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

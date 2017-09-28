@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -58,7 +59,7 @@ public class MinisteriumServiceTest {
     @Autowired
     private MinisteriumController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -67,7 +68,7 @@ public class MinisteriumServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -75,14 +76,14 @@ public class MinisteriumServiceTest {
         assertThat(ministeriumService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByMinisterium() throws Exception {
@@ -91,7 +92,7 @@ public class MinisteriumServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
-        int resultSize = ministerien.getNumber();
+        long resultSize = ministerien.getTotalElements();
         log.debug("found: # "+resultSize);
         Assert.assertTrue("Page<Ministerium> ministerien : "+resultSize,resultSize>0);
         boolean goOn = true;
@@ -110,7 +111,7 @@ public class MinisteriumServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

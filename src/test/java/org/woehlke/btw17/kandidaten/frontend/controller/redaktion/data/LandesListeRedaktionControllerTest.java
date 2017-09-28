@@ -53,6 +53,7 @@ public class LandesListeRedaktionControllerTest {
     @Test
     public void test010getLandesListeForBundeslandAll() throws Exception {
         String msg ="test010getLandesListeForBundeslandAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/redaktion/landesliste/bundesland/all"))
                 .andExpect(status().isOk())

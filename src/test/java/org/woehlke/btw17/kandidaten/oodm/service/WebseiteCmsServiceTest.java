@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.test.context.support.WithAnonymousUser;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -57,7 +58,7 @@ public class WebseiteCmsServiceTest {
     @Autowired
     private WebseiteCmsController controller;
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -66,7 +67,7 @@ public class WebseiteCmsServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -74,14 +75,14 @@ public class WebseiteCmsServiceTest {
         assertThat(webseiteCmsService).isNotNull();
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test002findByCmsTest() throws Exception {
@@ -90,9 +91,9 @@ public class WebseiteCmsServiceTest {
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
         Page<WebseiteCms> webseitenCms = webseiteCmsService.getAll(pageable);
-        int resultSize = webseitenCms.getNumber();
+        long resultSize = webseitenCms.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<WebseiteCms> webseitenCms : "+resultSize,resultSize>0);
+        Assert.assertTrue("Page<WebseiteCms> webseitenCms : "+resultSize,resultSize==0);
         boolean goOn = true;
         while(goOn) {
             for (WebseiteCms webseiteCms : webseitenCms.getContent()) {
@@ -109,7 +110,7 @@ public class WebseiteCmsServiceTest {
         }
     }
 
-    @WithAnonymousUser
+    @WithMockUser
     @Commit
     @Test
     public void test003count() throws Exception {

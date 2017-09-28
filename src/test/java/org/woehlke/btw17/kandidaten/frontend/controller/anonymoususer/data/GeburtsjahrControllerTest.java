@@ -68,6 +68,7 @@ public class GeburtsjahrControllerTest {
     @Test
     public void test010getAll()throws Exception {
         String msg ="test010getAll: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/geburtsjahr/all"))
                 .andExpect(status().isOk())
@@ -92,6 +93,7 @@ public class GeburtsjahrControllerTest {
     @Test
     public void test020getUserForId() throws Exception {
         String msg ="test020getUserForId: ";
+        log.info(msg);
         List<Integer> geburtsjahre = kandidatService.getAllGeburtsjahre();
         for(Integer geburtsjahr:geburtsjahre){
             log.debug(msg + "/geburtsjahr/"+geburtsjahr);

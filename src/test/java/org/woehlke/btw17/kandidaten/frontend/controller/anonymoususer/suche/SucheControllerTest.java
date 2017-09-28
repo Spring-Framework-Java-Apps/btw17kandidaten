@@ -75,6 +75,7 @@ public class SucheControllerTest {
     @Test
     public void test010suchFreitextFormularGet()throws Exception {
         String msg ="test010suchFreitextFormularGet: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/suche/freitext/formular"))
                 .andExpect(status().isOk())
@@ -103,6 +104,7 @@ public class SucheControllerTest {
     @Test
     public void test020suchFreitextFormularPost()throws Exception {
         String msg ="test020suchFreitextFormularPost: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/suche/freitext/formular"))
                 .andExpect(status().isOk())
@@ -132,6 +134,7 @@ public class SucheControllerTest {
     @Test
     public void test100suchFormularGet()throws Exception {
         String msg ="test100suchFormularGet: ";
+        log.info(msg);
 
         MvcResult result = this.mockMvc.perform(get("/suche/formular"))
                 .andExpect(status().isOk())
@@ -161,6 +164,7 @@ public class SucheControllerTest {
     @Test
     public void test110suchFreitextFormularPost()throws Exception {
         String msg ="test100suchFreitextFormularPost: ";
+        log.info(msg);
         FreitextSucheFormular suchformularFreitext = new FreitextSucheFormular();
         suchformularFreitext.setSearchTerm("Rauhut");
         BindingResult binding = new BeanPropertyBindingResult(
