@@ -138,12 +138,12 @@ public class SucheServiceImpl implements SucheService {
             countQuery = countQueryStart + criteria;
         }
 
-        log.info("query:      " + query);
-        log.info("countQuery: " + countQuery);
+        log.debug("query:      " + query);
+        log.debug("countQuery: " + countQuery);
 
         long counted = sucheRepository.countByJpaQueryStatement(countQuery);
 
-        log.info("counted:    " + counted);
+        log.debug("counted:    " + counted);
 
         return sucheRepository.findByJpaQueryStatement(query, counted, pageable);
     }
@@ -197,12 +197,12 @@ public class SucheServiceImpl implements SucheService {
         String query = queryStart + criteria;
         String countQuery = countQueryStart + criteria;
 
-        log.info("query:      "+query);
-        log.info("countQuery: "+countQuery);
+        log.debug("query:      "+query);
+        log.debug("countQuery: "+countQuery);
 
         long counted = sucheRepository.countByJpaQueryStatement(countQuery);
 
-        log.info("counted:    "+counted);
+        log.debug("counted:    "+counted);
 
         return sucheRepository.findByJpaQueryStatement(query,counted,pageable);
     }

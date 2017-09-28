@@ -7,17 +7,31 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Validated
 @ConfigurationProperties(prefix="spring")
 public class SpringProperties {
 
+    @NotNull
+    private String profiles;
+
     @Valid
     private Datasource datasource = new Datasource();
 
     @Valid
     private Jpa jpa = new Jpa();
+
+    @Valid
+    private Session session = new Session();
+
+    @Valid
+    private Template template = new Template();
+
+    @Valid
+    private Thymeleaf thymeleaf = new Thymeleaf();
 
     @Validated
     public static class Datasource {
@@ -33,6 +47,9 @@ public class SpringProperties {
 
         @NotNull
         private Boolean continueOnError;
+
+        @NotNull
+        private String schema;
 
         public String getDriverClassName() {
             return driverClassName;
@@ -65,6 +82,14 @@ public class SpringProperties {
         public void setContinueOnError(Boolean continueOnError) {
             this.continueOnError = continueOnError;
         }
+
+        public String getSchema() {
+            return schema;
+        }
+
+        public void setSchema(String schema) {
+            this.schema = schema;
+        }
     }
 
     @Validated
@@ -75,6 +100,9 @@ public class SpringProperties {
 
         @NotNull
         private Boolean showSql;
+
+        @NotNull
+        private Boolean openInView;
 
         @Valid
         private Hibernate hibernate = new Hibernate();
@@ -104,7 +132,7 @@ public class SpringProperties {
             private Hibernate hibernate = new Hibernate();
 
             @Validated
-            private static class Hibernate {
+            public static class Hibernate {
 
                 @NotNull
                 private String dialect;
@@ -125,6 +153,7 @@ public class SpringProperties {
             public void setHibernate(Hibernate hibernate) {
                 this.hibernate = hibernate;
             }
+
         }
 
         public Hibernate getHibernate() {
@@ -158,6 +187,101 @@ public class SpringProperties {
         public void setShowSql(Boolean showSql) {
             this.showSql = showSql;
         }
+
+        public Boolean getOpenInView() {
+            return openInView;
+        }
+
+        public void setOpenInView(Boolean openInView) {
+            this.openInView = openInView;
+        }
+
+    }
+
+    @Validated
+    public static class Session {
+
+        @NotNull
+        private String storeType;
+
+        @Valid
+        private Jdbc jdbc = new Jdbc();
+
+        @Validated
+        public static class Jdbc {
+
+            @Valid
+            private Initializer initializer = new Initializer();
+
+            @Validated
+            public static class Initializer {
+
+                @NotNull
+                private Boolean enabled;
+
+                public Boolean getEnabled() {
+                    return enabled;
+                }
+
+                public void setEnabled(Boolean enabled) {
+                    this.enabled = enabled;
+                }
+            }
+
+            public Initializer getInitializer() {
+                return initializer;
+            }
+
+            public void setInitializer(Initializer initializer) {
+                this.initializer = initializer;
+            }
+        }
+
+        public String getStoreType() {
+            return storeType;
+        }
+
+        public void setStoreType(String storeType) {
+            this.storeType = storeType;
+        }
+
+        public Jdbc getJdbc() {
+            return jdbc;
+        }
+
+        public void setJdbc(Jdbc jdbc) {
+            this.jdbc = jdbc;
+        }
+    }
+
+    @Validated
+    public static class Template {
+
+        @NotNull
+        private Boolean cache;
+
+        public Boolean getCache() {
+            return cache;
+        }
+
+        public void setCache(Boolean cache) {
+            this.cache = cache;
+        }
+    }
+
+    @Validated
+    public static class Thymeleaf {
+
+        @NotNull
+        private Boolean cache;
+
+        public Boolean getCache() {
+            return cache;
+        }
+
+        public void setCache(Boolean cache) {
+            this.cache = cache;
+        }
     }
 
     public Datasource getDatasource() {
@@ -174,5 +298,65 @@ public class SpringProperties {
 
     public void setJpa(Jpa jpa) {
         this.jpa = jpa;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(Template template) {
+        this.template = template;
+    }
+
+    public Thymeleaf getThymeleaf() {
+        return thymeleaf;
+    }
+
+    public void setThymeleaf(Thymeleaf thymeleaf) {
+        this.thymeleaf = thymeleaf;
+    }
+
+    public String getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(String profiles) {
+        this.profiles = profiles;
+    }
+
+    @Override
+    public String toString() {
+
+        List<String> outputLines = new ArrayList<>();
+        outputLines.add("spring.profiles =                         "+this.getProfiles());
+        outputLines.add("spring.datasource.driverClassName =       "+this.getDatasource().getDriverClassName());
+        outputLines.add("spring.datasource.platform =              "+this.getDatasource().getPlatform());
+        outputLines.add("spring.datasource.url =                   "+this.getDatasource().getUrl());
+        outputLines.add("spring.datasource.continue-on-error =     "+this.getDatasource().getContinueOnError());
+        outputLines.add("spring.datasource.schema =                "+this.getDatasource().getSchema());
+        outputLines.add("spring.session.store-type =               "+this.getSession().getStoreType());
+        outputLines.add("spring.session.jdbc.initializer.enabled = "+this.getSession().getJdbc().getInitializer().getEnabled());
+        outputLines.add("spring.jpa.open-in-view =                 "+this.getJpa().getOpenInView());
+        outputLines.add("spring.jpa.hibernate.ddl-auto =           "+this.getJpa().getHibernate().getDdlAuto());
+        outputLines.add("spring.jpa.properties.hibernate.dialect = "+this.getJpa().getProperties().getHibernate().getDialect());
+        outputLines.add("spring.jpa.show-sql =                     "+this.getJpa().getShowSql());
+        outputLines.add("spring.template.cache =                   "+this.getTemplate().getCache());
+        outputLines.add("spring.thymeleaf.cache =                  "+this.getThymeleaf().getCache());
+
+        StringBuffer sb = new StringBuffer();
+        for(String outputLine:outputLines){
+            sb.append(" ");
+            sb.append(outputLine);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

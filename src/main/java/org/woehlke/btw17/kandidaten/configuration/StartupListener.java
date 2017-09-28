@@ -132,6 +132,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" btw17.kandidaten.millisToWaitBetweenTwoApiCalls =     "+kandidatenProperties.getMillisToWaitBetweenTwoApiCalls());
         outputLines.add(" btw17.kandidaten.checkFotoUrl =                       "+kandidatenProperties.getCheckFotoUrl());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
+        outputLines.add(springProperties.toString());
+        outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" spring.datasource.url = "+springProperties.getDatasource().getUrl());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         ReportOverview reportOverview = kandidatReportService.getOverview();
