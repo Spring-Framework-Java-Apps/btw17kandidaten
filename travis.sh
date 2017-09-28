@@ -15,6 +15,7 @@ export BTW17_TWITTER_CARD_SITE=port80guru
 export BTW17_TWITTER_CARD_CREATOR=port80guru
 
 
+./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 ./mvnw clean install -Ptravis  -B -V
 
 exit 0

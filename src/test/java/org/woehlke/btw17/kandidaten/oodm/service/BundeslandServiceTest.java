@@ -85,6 +85,7 @@ public class BundeslandServiceTest {
     @Commit
     @Test
     public void test002findByBundeslandTest() throws Exception {
+        log.info("test002findByBundeslandTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

@@ -84,6 +84,7 @@ public class ListeParteiServiceTest {
     @Commit
     @Test
     public void test002findByListeParteiTest() throws Exception {
+        log.info("test002findByListeParteiTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

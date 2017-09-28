@@ -84,6 +84,7 @@ public class AusschussServiceTest {
     @Commit
     @Test
     public void test002findByAusschuss() throws Exception {
+        log.info("test002findByAusschuss");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

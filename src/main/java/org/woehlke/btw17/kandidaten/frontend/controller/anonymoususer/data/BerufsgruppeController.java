@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +43,8 @@ public class BerufsgruppeController extends AbstractController {
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "berufsgruppe"
+                    sort = "berufsgruppe",
+                    direction= Sort.Direction.ASC
             ) Pageable pageable,
             Model model
     ) {

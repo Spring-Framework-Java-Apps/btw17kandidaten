@@ -85,6 +85,7 @@ public class GeburtsortServiceTest {
     @Commit
     @Test
     public  void  test002findByGeburtsortTest() throws Exception {
+        log.info("test002findByGeburtsortTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

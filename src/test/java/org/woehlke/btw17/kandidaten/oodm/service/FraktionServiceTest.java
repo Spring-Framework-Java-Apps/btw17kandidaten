@@ -85,6 +85,7 @@ public class FraktionServiceTest {
     @Commit
     @Test
     public void test002findByFraktion() throws Exception {
+        log.info("controllerIsPresentTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

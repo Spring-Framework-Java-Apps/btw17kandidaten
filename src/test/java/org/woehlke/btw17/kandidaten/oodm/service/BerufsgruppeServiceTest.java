@@ -84,6 +84,7 @@ public class BerufsgruppeServiceTest {
     @Commit
     @Test
     public void test002findByBerufsgruppeTest() throws Exception {
+        log.info("test002findByBerufsgruppeTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

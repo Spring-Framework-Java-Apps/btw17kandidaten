@@ -84,6 +84,7 @@ public class WahlkreisServiceTest {
     @Commit
     @Test
     public void test002findByWahlkreisIdTest() throws Exception {
+        log.info("test002findByWahlkreisIdTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

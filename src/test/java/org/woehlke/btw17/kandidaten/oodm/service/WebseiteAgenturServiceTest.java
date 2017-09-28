@@ -86,7 +86,8 @@ public class WebseiteAgenturServiceTest {
     @WithAnonymousUser
     @Commit
     @Test
-    public void test002findByWohnortTest() throws Exception {
+    public void test002findByAgenturTest() throws Exception {
+        log.info("test002findByAgenturTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);

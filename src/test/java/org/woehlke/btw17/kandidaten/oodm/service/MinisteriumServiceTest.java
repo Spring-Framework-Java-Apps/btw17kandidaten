@@ -86,6 +86,7 @@ public class MinisteriumServiceTest {
     @Commit
     @Test
     public void test002findByMinisterium() throws Exception {
+        log.info("test002findByMinisterium");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
