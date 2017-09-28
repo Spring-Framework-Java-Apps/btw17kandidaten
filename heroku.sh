@@ -18,4 +18,4 @@ export BTW17_TWITTER_CARD_CREATOR=port80guru
 
 ./mvnw clean install
 
-java -Dserver.port=$PORT $JAVA_OPTS -jar target/kandidaten-0.0.17-SNAPSHOT.jar
+java -Dserver.port=$PORT $JAVA_OPTS -jar target/kandidaten-0.0.18-SNAPSHOT.jar
