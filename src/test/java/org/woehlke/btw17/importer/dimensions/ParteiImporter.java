@@ -1,5 +1,6 @@
 package org.woehlke.btw17.importer.dimensions;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
@@ -10,6 +11,7 @@ public class ParteiImporter {
     private final static String dateiNameOut = "etc/3nf/insert-data-partei.sql";
     private final static String sqlStart = "INSERT INTO partei (id,partei,partei_lang) VALUES (";
 
+    @Ignore
     @Test
     public void createSql() throws Exception {
         BufferedWriter bw = new BufferedWriter(new FileWriter(dateiNameOut));

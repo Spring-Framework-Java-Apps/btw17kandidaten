@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten;
+package org.woehlke.btw17.importer;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 @RunWith(SpringRunner.class)

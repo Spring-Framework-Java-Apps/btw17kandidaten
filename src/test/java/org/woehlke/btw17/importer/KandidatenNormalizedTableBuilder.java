@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten;
+package org.woehlke.btw17.importer;
 
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;

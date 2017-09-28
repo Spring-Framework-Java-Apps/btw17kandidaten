@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten;
+package org.woehlke.btw17.importer;
 
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
