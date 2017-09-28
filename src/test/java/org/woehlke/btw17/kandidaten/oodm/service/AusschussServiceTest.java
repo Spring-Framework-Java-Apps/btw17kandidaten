@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -55,6 +56,7 @@ public class AusschussServiceTest {
     private AusschussController controller;
 
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test000controllerIsPresentTest(){
@@ -63,6 +65,7 @@ public class AusschussServiceTest {
         assertThat(mockMvc).isNotNull();
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -70,12 +73,14 @@ public class AusschussServiceTest {
         assertThat(ausschussService).isNotNull();
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test002findByAusschuss() throws Exception {
@@ -102,6 +107,7 @@ public class AusschussServiceTest {
         }
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test003count() throws Exception {

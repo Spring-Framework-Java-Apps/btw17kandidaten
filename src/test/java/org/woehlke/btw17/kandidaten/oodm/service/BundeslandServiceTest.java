@@ -13,13 +13,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.BerufsgruppeController;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.BundeslandController;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +50,22 @@ public class BundeslandServiceTest {
     @Autowired
     private BundeslandService bundeslandService;
 
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private BundeslandController controller;
+
+    @WithAnonymousUser
+    @Commit
+    @Test
+    public void test000controllerIsPresentTest(){
+        log.info("controllerIsPresentTest");
+        assertThat(controller).isNotNull();
+        assertThat(mockMvc).isNotNull();
+    }
+
+    @WithAnonymousUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -53,6 +73,7 @@ public class BundeslandServiceTest {
         assertThat(bundeslandService).isNotNull();
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
@@ -60,6 +81,7 @@ public class BundeslandServiceTest {
     }
 
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test002findByBundeslandTest() throws Exception {
@@ -86,6 +108,7 @@ public class BundeslandServiceTest {
         }
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test003count() throws Exception {

@@ -9,13 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.GeburtsortController;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche.SucheController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,6 +43,22 @@ public class SucheServiceTest {
     @Autowired
     private SucheService sucheService;
 
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private SucheController controller;
+
+    @WithAnonymousUser
+    @Commit
+    @Test
+    public void test000controllerIsPresentTest(){
+        log.info("controllerIsPresentTest");
+        assertThat(controller).isNotNull();
+        assertThat(mockMvc).isNotNull();
+    }
+
+    @WithAnonymousUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -46,12 +66,14 @@ public class SucheServiceTest {
         assertThat(sucheService).isNotNull();
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
 
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test003count() throws Exception {

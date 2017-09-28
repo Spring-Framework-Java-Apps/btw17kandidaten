@@ -13,13 +13,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.FraktionController;
+import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.GeburtsortController;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +50,22 @@ public class GeburtsortServiceTest {
     @Autowired
     private GeburtsortService geburtsortService;
 
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private GeburtsortController controller;
+
+    @WithAnonymousUser
+    @Commit
+    @Test
+    public void test000controllerIsPresentTest(){
+        log.info("controllerIsPresentTest");
+        assertThat(controller).isNotNull();
+        assertThat(mockMvc).isNotNull();
+    }
+
+    @WithAnonymousUser
     @Commit
     @Test
     public void test000serviceIsPresentTest(){
@@ -53,6 +73,7 @@ public class GeburtsortServiceTest {
         assertThat(geburtsortService).isNotNull();
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test001getAll() throws Exception {
@@ -60,6 +81,7 @@ public class GeburtsortServiceTest {
     }
 
 
+    @WithAnonymousUser
     @Commit
     @Test
     public  void  test002findByGeburtsortTest() throws Exception {
@@ -86,6 +108,7 @@ public class GeburtsortServiceTest {
         }
     }
 
+    @WithAnonymousUser
     @Commit
     @Test
     public void test003count() throws Exception {

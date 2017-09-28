@@ -41,6 +41,8 @@ public class LoginControllerTest {
     @Autowired
     private LoginController controller;
 
+
+    @WithAnonymousUser
     @Commit
     @Test
     public void test001controllerIsPresentTest(){
