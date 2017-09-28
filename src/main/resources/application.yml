@@ -173,8 +173,7 @@ btw17:
 spring:
   profiles: travis
   datasource:
-    #url: 'jdbc:postgresql://localhost:5432/travis_ci_test?user=postgres'
-    url: ${DATABASE_URL_TEST}
+    url: 'jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -192,7 +191,7 @@ logging:
 spring:
   profiles: development
   datasource:
-    url: ${DATABASE_URL_TEST}
+    url: 'jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
     continue-on-error: false
   jpa:
     show-sql: false
