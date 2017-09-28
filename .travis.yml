@@ -2,13 +2,17 @@ language: java
 jdk:
   - oraclejdk8
 addons:
-  postgresql: "9.6"
   apt:
     packages:
       - oracle-java8-installer
 services:
   - postgresql
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install language-pack-de
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql start 9.6
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -U postgres < etc/prepare-db-for-travis.sql
 sudo: false
-script:  ./mvnw clean install -Ptravis  -B -V
+script:  ./mvnw clean site site:deploy -Ptravis  -B -V

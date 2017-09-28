@@ -16,9 +16,7 @@ export BTW17_TWITTER_CARD_CREATOR=port80guru
 psql -U kandidatentest < etc/drop-tables.sql
 psql -U postgres < etc/prepare-db-for-travis.sql
 
-exit 0
-
 ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-./mvnw clean install -Ptravis  -B -V
+./mvnw clean site site:deploy -Ptravis  -B -V
 
 exit 0
