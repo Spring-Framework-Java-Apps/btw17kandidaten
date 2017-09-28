@@ -13,7 +13,7 @@ before_install:
   - sudo /etc/init.d/postgresql stop
   - sudo /etc/init.d/postgresql start 9.6
 before_script:
-  - psql -U postgres < etc/prepare-db-for-travis.sql
+  - psql -U postgres < $TRAVIS_BUILD_DIR/etc/prepare-db-for-travis.sql
   - psql -c '\l' -U postgres
   - psql -c '\dg' -U postgres
   - psql -c '\dn' -U postgres
