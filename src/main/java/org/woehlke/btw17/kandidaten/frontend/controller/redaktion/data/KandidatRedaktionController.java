@@ -152,7 +152,7 @@ public class KandidatRedaktionController extends AbstractController {
             log.debug("############################");
             log.debug("############################");
             log.debug("############################");
-            logInfos(binding,kandidat);
+            logInfos("editGet",binding,kandidat);
             log.debug("############################");
             log.debug("############################");
             log.debug("############################");
@@ -176,7 +176,7 @@ public class KandidatRedaktionController extends AbstractController {
             log.debug("############################");
             log.debug("############################");
             log.debug("############################");
-            logInfos(binding,kandidat);
+            logInfos("editPost",binding,kandidat);
             log.debug("############################");
             log.debug("############################");
             log.debug("############################");
@@ -190,10 +190,10 @@ public class KandidatRedaktionController extends AbstractController {
         } else {
             log.debug("editPost - binding.hasErrors() == false");
             log.debug("try to save: "+kandidat.getUniqueId());
-            logInfos(binding,kandidat);
+            logInfos("editPost",binding,kandidat);
             kandidat = kandidatService.update(kandidat);
             log.debug("saved: "+kandidat.getUniqueId());
-            logInfos(binding,kandidat);
+            logInfos("editPost",binding,kandidat);
             session.setAttribute("kandidat", kandidat);
         }
         log.debug("OK - DONE");
@@ -226,8 +226,8 @@ public class KandidatRedaktionController extends AbstractController {
         this.kandidatenProperties = kandidatenProperties;
     }
 
-    private void logInfos(BindingResult binding,Kandidat kandidat){
-        log.debug("*****************************************");
+    private void logInfos(String msg, BindingResult binding, Kandidat kandidat){
+        log.debug(msg+"*****************************************");
         if(binding != null && binding.hasErrors()){
             log.debug("FieldErrors: ");
             for(FieldError fieldError :binding.getFieldErrors()){
@@ -240,60 +240,100 @@ public class KandidatRedaktionController extends AbstractController {
             }
             log.debug("-----------------------------------------");
         }
-        log.debug("Kandidat: ");
-        log.debug(kandidat.getName());
-        log.debug(kandidat.getUniqueId());
-        log.debug("-----------------------------------------");
-        log.debug("Berufsgruppe:");
-        log.debug(kandidat.getBerufsgruppe().getName());
-        log.debug("-----------------------------------------");
-        log.debug("Beruf:");
-        log.debug(kandidat.getBeruf().getName());
-        log.debug("-----------------------------------------");
-        log.debug("CommonFields:");
+        log.debug(msg+"Kandidat: ");
+        log.debug(msg+kandidat.getName());
+        log.debug(msg+kandidat.getUniqueId());
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Berufsgruppe:");
+        if(kandidat.getBerufsgruppe() != null){
+            log.debug(msg+kandidat.getBerufsgruppe().getName());
+        } else {
+            if(kandidat.getMdb() != null) {
+                log.warn(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
+            } else {
+                log.debug(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
+            }
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Beruf:");
+        if(kandidat.getBeruf() != null){
+            log.debug(msg+kandidat.getBeruf().getName());
+        } else {
+            log.warn(msg+"kandidat.getBeruf() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"CommonFields:");
         if(kandidat.getCommonFields() != null) {
-            log.debug(kandidat.getCommonFields().toString());
+            log.debug(msg+kandidat.getCommonFields().toString());
         } else {
-            log.debug("kandidat.getCommonFields() == null");
+            log.debug(msg+"kandidat.getCommonFields() == null "+kandidat.getUniqueId());
         }
-        log.debug("-----------------------------------------");
-        log.debug("Geburtsort:");
-        log.debug(kandidat.getGeburtsort().getName());
-        log.debug("-----------------------------------------");
-        log.debug("Wohnort:");
-        log.debug(kandidat.getWohnort().getName());
-        log.debug("-----------------------------------------");
-        log.debug("Wahlkreis:");
-        log.debug(kandidat.getWahlkreis().getName());
-        log.debug("-----------------------------------------");
-        log.debug("Fraktion:");
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Geburtsort:");
+        if(kandidat.getGeburtsort() != null){
+            log.debug(msg+kandidat.getGeburtsort().getName());
+        } else {
+            log.warn(msg+"kandidat.getGeburtsort() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Wohnort:");
+        if(kandidat.getWohnort() != null){
+            log.debug(msg+kandidat.getWohnort().getName());
+        } else {
+            log.warn(msg+"kandidat.getWohnort() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Wahlkreis:");
+        if(kandidat.getWahlkreis() != null){
+            log.debug(msg+kandidat.getWahlkreis().getName());
+        } else {
+            log.warn(msg+"kandidat.getWahlkreis() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Fraktion:");
         if(kandidat.getFraktion() != null){
-            log.debug(kandidat.getFraktion().getName());
+            log.debug(msg+kandidat.getFraktion().getName());
         } else {
-            log.debug("kandidat.getFraktion() == null");
+            if(kandidat.getMdb() != null){
+                log.warn(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
+            } else {
+                log.debug(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
+            }
         }
-        log.debug("-----------------------------------------");
-        log.debug("Webseite:");
-        log.debug(kandidat.getWebseite().getWebseite());
-        log.debug("-----------------------------------------");
-        log.debug("Adresse.Bundesland:");
-        log.debug(kandidat.getAdresse().getBundesland().getName());
-        log.debug("-----------------------------------------");
-        log.debug("Adresse:");
-        log.debug(kandidat.getAdresse().toString());
-        log.debug("-----------------------------------------");
-        log.debug("Ministerien:");
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Webseite:");
+        if(kandidat.getWebseite() != null){
+            log.debug(msg+kandidat.getWebseite().getWebseite());
+        } else {
+            log.debug(msg+"kandidat.getWebseite() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Adresse.Bundesland:");
+        if(kandidat.getAdresse() != null && kandidat.getAdresse().getBundesland() != null){
+            log.debug(msg+kandidat.getAdresse().getBundesland().getName());
+        } else {
+            log.warn(msg+"kandidat.getAdresse().getBundesland() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Adresse:");
+        if(kandidat.getAdresse() != null){
+            log.debug(msg+kandidat.getAdresse().toString());
+        } else {
+            log.warn(msg+"kandidat.getAdresse() == null "+kandidat.getUniqueId());
+        }
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Ministerien:");
         for(Ministerium ministerium:kandidat.getMinisterien()){
-            log.debug(ministerium.getName());
+            log.debug(msg+ministerium.getName());
         }
-        log.debug("-----------------------------------------");
-        log.debug("Ausschuesse:");
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"Ausschuesse:");
         for(Ausschuss ausschuss:kandidat.getAusschuesse()){
-            log.debug(ausschuss.getName());
+            log.debug(msg+ausschuss.getName());
         }
-        log.debug("-----------------------------------------");
-        log.debug("kandidat.toString():");
-        log.debug("*****************************************");
-        log.debug(kandidat.toString());
+        log.debug(msg+"-----------------------------------------");
+        log.debug(msg+"kandidat.toString():");
+        log.debug(msg+kandidat.toString());
+        log.debug(msg+"*****************************************");
     }
 }

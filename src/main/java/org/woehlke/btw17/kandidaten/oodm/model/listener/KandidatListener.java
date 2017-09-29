@@ -72,43 +72,79 @@ public class KandidatListener {
         if(kandidat.getBerufsgruppe() != null){
             log.debug(msg+kandidat.getBerufsgruppe().getName());
         } else {
-            log.debug(msg+"kandidat.getBerufsgruppe() == null");
+            if(kandidat.getMdb() != null) {
+                log.warn(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
+            } else {
+                log.debug(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
+            }
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Beruf:");
-        log.debug(msg+kandidat.getBeruf().getName());
+        if(kandidat.getBeruf() != null){
+            log.debug(msg+kandidat.getBeruf().getName());
+        } else {
+            log.warn(msg+"kandidat.getBeruf() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"CommonFields:");
         if(kandidat.getCommonFields() != null) {
             log.debug(msg+kandidat.getCommonFields().toString());
         } else {
-            log.debug(msg+"kandidat.getCommonFields() == null");
+            log.debug(msg+"kandidat.getCommonFields() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Geburtsort:");
-        log.debug(msg+kandidat.getGeburtsort().getName());
+        if(kandidat.getGeburtsort() != null){
+            log.debug(msg+kandidat.getGeburtsort().getName());
+        } else {
+            log.warn(msg+"kandidat.getGeburtsort() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Wohnort:");
-        log.debug(msg+kandidat.getWohnort().getName());
+        if(kandidat.getWohnort() != null){
+            log.debug(msg+kandidat.getWohnort().getName());
+        } else {
+            log.warn(msg+"kandidat.getWohnort() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Wahlkreis:");
-        log.debug(msg+kandidat.getWahlkreis().getName());
+        if(kandidat.getWahlkreis() != null){
+            log.debug(msg+kandidat.getWahlkreis().getName());
+        } else {
+            log.warn(msg+"kandidat.getWahlkreis() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Fraktion:");
         if(kandidat.getFraktion() != null){
             log.debug(msg+kandidat.getFraktion().getName());
         } else {
-            log.debug(msg+"kandidat.getFraktion() == null");
+            if(kandidat.getMdb() != null){
+                log.warn(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
+            } else {
+                log.debug(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
+            }
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Webseite:");
-        log.debug(msg+kandidat.getWebseite().getWebseite());
+        if(kandidat.getWebseite() != null){
+            log.debug(msg+kandidat.getWebseite().getWebseite());
+        } else {
+            log.debug(msg+"kandidat.getWebseite() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Adresse.Bundesland:");
-        log.debug(msg+kandidat.getAdresse().getBundesland().getName());
+        if(kandidat.getAdresse() != null && kandidat.getAdresse().getBundesland() != null){
+            log.debug(msg+kandidat.getAdresse().getBundesland().getName());
+        } else {
+            log.warn(msg+"kandidat.getAdresse().getBundesland() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Adresse:");
-        log.debug(msg+kandidat.getAdresse().toString());
+        if(kandidat.getAdresse() != null){
+            log.debug(msg+kandidat.getAdresse().toString());
+        } else {
+            log.warn(msg+"kandidat.getAdresse() == null "+kandidat.getUniqueId());
+        }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Ministerien:");
         for(Ministerium ministerium:kandidat.getMinisterien()){
