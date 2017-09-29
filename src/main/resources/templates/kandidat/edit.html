@@ -690,7 +690,6 @@
                             <input type="hidden" th:field="*{geburtsjahr}" />
                             <input type="hidden" th:field="*{alter}" />
                             <input type="hidden" th:field="*{listePlatz}" />
-                            <input type="hidden" th:field="*{landesListe}" />
                             <input type="hidden" th:field="*{mdb}" />
                             <input type="hidden" th:field="*{lat}" />
                             <input type="hidden" th:field="*{lng}" />
@@ -701,7 +700,6 @@
                             <input type="hidden" th:field="*{color}" />
                             <input type="hidden" th:field="*{googleMapsUrl}" />
                             <input type="hidden" th:field="*{wahlkreis}" />
-                            <input type="hidden" th:field="*{partei}" />
                             <input type="hidden" th:field="*{berufsgruppe}" />
                             <input type="hidden" th:field="*{beruf}" />
                             <input type="hidden" th:field="*{geburtsort}" />
@@ -1093,6 +1091,32 @@
                                     <h3 class="panel-title">Bundestag und Bundesregierung</h3>
                                 </div>
                                 <div class="panel-body">
+
+                                    <div class="form-group has-feedback">
+                                        <label for="partei-input" class="col-sm-2 control-label">Partei:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-handshake-o" aria-hidden="true"></i></span>
+                                                <select th:field="*{partei}" name="partei" id="partei-input" class="form-control" th:errorclass="has-error">
+                                                    <option value="0" >Parteilos</option>
+                                                    <option th:text="${p.name}" th:value="${p.id}" th:each="p : ${parteiList}">partei</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group has-feedback">
+                                        <label for="landesliste-input" class="col-sm-2 control-label">LandesListe:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-handshake-o" aria-hidden="true"></i></span>
+                                                <select th:field="*{landesListe}" name="fraktion" id="landesliste-input" class="form-control" th:errorclass="has-error">
+                                                    <option value="0" >Keine</option>
+                                                    <option th:text="${ll.name}" th:value="${ll.id}" th:each="ll : ${landesListeList}">landesListe</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group has-feedback">
                                         <label for="fraktion-input" class="col-sm-2 control-label">Fraktion:</label>

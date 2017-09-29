@@ -81,29 +81,43 @@ public class KandidatRedaktionController extends AbstractController {
     @ModelAttribute("ausschuesseList")
     public List<Ausschuss> addAusschuesse(Model model) {
         log.debug("addAusschuesse");
-        List<Ausschuss> ausschuesse = ausschussService.getAll();
-        return ausschuesse;
+        List<Ausschuss> ausschuesseList = ausschussService.getAll();
+        return ausschuesseList;
     }
 
     @ModelAttribute("fraktionenList")
     public List<Fraktion> addFraktionen(Model model) {
         log.debug("addFraktionen");
-        List<Fraktion> fraktionen = fraktionService.getAll();
-        return fraktionen;
+        List<Fraktion> fraktionenList = fraktionService.getAll();
+        return fraktionenList;
     }
 
     @ModelAttribute("ministerienList")
     public List<Ministerium> addMinisterien(Model model) {
         log.debug("addMinisterien");
-        List<Ministerium> ministerien = ministeriumService.getAll();
-        return ministerien;
+        List<Ministerium> ministerienList = ministeriumService.getAll();
+        return ministerienList;
     }
 
     @ModelAttribute("bundeslandList")
     public Iterable<Bundesland> addBundeslandList(Model model) {
         log.debug("addBbundeslandList");
-        Iterable<Bundesland> ministerien = bundeslandService.getAll();
-        return ministerien;
+        Iterable<Bundesland> bundeslandList = bundeslandService.getAll();
+        return bundeslandList;
+    }
+
+    @ModelAttribute("parteiList")
+    public List<Partei> addParteiList(Model model) {
+        log.debug("addParteiList");
+        List<Partei> parteiList = parteiService.getAll();
+        return parteiList;
+    }
+
+    @ModelAttribute("landesListeList")
+    public List<LandesListe> addLandesListeList(Model model) {
+        log.debug("addLandesListeList");
+        List<LandesListe> landesListeList = landesListeService.getAll();
+        return landesListeList;
     }
 
 
@@ -213,16 +227,22 @@ public class KandidatRedaktionController extends AbstractController {
 
     private final BundeslandService bundeslandService;
 
+    private final ParteiService parteiService;
+
+    private final LandesListeService landesListeService;
+
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public KandidatRedaktionController(SessionHandler sessionHandler, KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, BundeslandService bundeslandService, KandidatenProperties kandidatenProperties) {
+    public KandidatRedaktionController(SessionHandler sessionHandler, KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, BundeslandService bundeslandService, ParteiService parteiService, LandesListeService landesListeService, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);
         this.kandidatService = kandidatService;
         this.ausschussService = ausschussService;
         this.fraktionService = fraktionService;
         this.ministeriumService = ministeriumService;
         this.bundeslandService = bundeslandService;
+        this.parteiService = parteiService;
+        this.landesListeService = landesListeService;
         this.kandidatenProperties = kandidatenProperties;
     }
 
