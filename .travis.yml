@@ -22,4 +22,4 @@ before_script:
   - psql -c 'select * from version();' -U postgres
   - psql -c 'select * from version();' -U kandidatentest
 sudo: false
-script:  ./mvnw clean site site:deploy -Ptravis  -B -V
+script:  ./mvnw clean site site:deploy -Ptravis -Dtest=AlphaTopLevelSuiteIT -B -V

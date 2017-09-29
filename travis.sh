@@ -26,6 +26,6 @@ psql -c '\dg' -U postgres
 psql -c '\dn' -U postgres
 
 ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-./mvnw clean site site:deploy -Ptravis  -B -V
+./mvnw clean site site:deploy -Ptravis -Dtest=AlphaTopLevelSuiteIT  -B -V
 
 exit 0
