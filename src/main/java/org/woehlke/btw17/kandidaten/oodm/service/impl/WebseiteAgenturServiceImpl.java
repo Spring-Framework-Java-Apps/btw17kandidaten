@@ -23,6 +23,11 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
     }
 
     @Override
+    public Iterable<WebseiteAgentur> getAll() {
+        return webseiteAgenturRepository.findAll();
+    }
+
+    @Override
     public Page<WebseiteAgentur> getAll(Pageable pageable) {
         return webseiteAgenturRepository.findAll(pageable);
     }

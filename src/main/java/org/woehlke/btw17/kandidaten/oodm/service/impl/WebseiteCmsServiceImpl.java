@@ -22,6 +22,11 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
     }
 
     @Override
+    public Iterable<WebseiteCms> getAll() {
+        return webseiteCmsRepository.findAll();
+    }
+
+    @Override
     public Page<WebseiteCms> getAll(Pageable pageable) {
         return webseiteCmsRepository.findAll(pageable);
     }

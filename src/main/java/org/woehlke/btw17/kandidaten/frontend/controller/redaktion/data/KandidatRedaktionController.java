@@ -120,6 +120,20 @@ public class KandidatRedaktionController extends AbstractController {
         return landesListeList;
     }
 
+    @ModelAttribute("cmsList")
+    public Iterable<WebseiteCms> addWebseiteCmsList(Model model) {
+        log.debug("addWebseiteCmsList");
+        Iterable<WebseiteCms> addWebseiteCmsList = webseiteCmsService.getAll();
+        return addWebseiteCmsList;
+    }
+
+    @ModelAttribute("agenturenList")
+    public Iterable<WebseiteAgentur> addWebseiteAgenturList(Model model) {
+        log.debug("addWebseiteAgenturList");
+        Iterable<WebseiteAgentur> addWebseiteAgenturList = webseiteAgenturService.getAll();
+        return addWebseiteAgenturList;
+    }
+
 
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
     public String editGet(
@@ -231,10 +245,14 @@ public class KandidatRedaktionController extends AbstractController {
 
     private final LandesListeService landesListeService;
 
+    private final WebseiteCmsService webseiteCmsService;
+
+    private final WebseiteAgenturService webseiteAgenturService;
+
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public KandidatRedaktionController(SessionHandler sessionHandler, KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, BundeslandService bundeslandService, ParteiService parteiService, LandesListeService landesListeService, KandidatenProperties kandidatenProperties) {
+    public KandidatRedaktionController(SessionHandler sessionHandler, KandidatService kandidatService, AusschussService ausschussService, FraktionService fraktionService, MinisteriumService ministeriumService, BundeslandService bundeslandService, ParteiService parteiService, LandesListeService landesListeService, WebseiteCmsService webseiteCmsService, WebseiteAgenturService webseiteAgenturService, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);
         this.kandidatService = kandidatService;
         this.ausschussService = ausschussService;
@@ -243,6 +261,8 @@ public class KandidatRedaktionController extends AbstractController {
         this.bundeslandService = bundeslandService;
         this.parteiService = parteiService;
         this.landesListeService = landesListeService;
+        this.webseiteCmsService = webseiteCmsService;
+        this.webseiteAgenturService = webseiteAgenturService;
         this.kandidatenProperties = kandidatenProperties;
     }
 

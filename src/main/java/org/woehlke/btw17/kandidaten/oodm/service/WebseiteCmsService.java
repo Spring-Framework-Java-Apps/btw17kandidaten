@@ -4,7 +4,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 
+
 public interface WebseiteCmsService {
+
+    Iterable<WebseiteCms> getAll();
 
     Page<WebseiteCms> getAll(Pageable pageable);
 

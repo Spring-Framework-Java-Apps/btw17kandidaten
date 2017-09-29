@@ -800,6 +800,31 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group has-feedback">
+                                        <label for="cms-input" class="col-sm-2 control-label">CMS:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-handshake-o" aria-hidden="true"></i></span>
+                                                <select th:field="*{webseite.cms}" name="cms" id="cms-input" class="form-control" th:errorclass="has-error">
+                                                    <option value="0" >Keines</option>
+                                                    <option th:text="${c.name}" th:value="${c.id}" th:each="c : ${cmsList}">cms</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group has-feedback">
+                                        <label for="agenturen-input" class="col-sm-2 control-label">Agenturen:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                                <select th:field="*{webseite.agenturen}" name="agenturen" id="agenturen-input" class="form-control" multiple="multiple" size="10" th:errorclass="has-error">
+                                                    <option th:text="${ag.name}" th:value="${ag.id}" th:each="ag : ${agenturenList}">agenturen</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="panel panel-primary">
