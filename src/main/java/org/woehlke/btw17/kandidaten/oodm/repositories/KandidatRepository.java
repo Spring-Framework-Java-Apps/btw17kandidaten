@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.KandidatRepositoryCustom;
 
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
 import java.util.List;
 
 @Repository
@@ -19,8 +17,6 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable);
 
     Page<Kandidat> findByBerufsgruppe(Berufsgruppe berufsgruppe, Pageable pageable);
-
-    Page<Kandidat> findByBundesland(Bundesland bundesland, Pageable pageable);
 
     Page<Kandidat> findByGeburtsort(Geburtsort geburtsort, Pageable pageable);
 
@@ -31,6 +27,12 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
     Page<Kandidat> findByWohnort(Wohnort wohnort, Pageable pageable);
 
     Page<Kandidat> findByLandesListe(LandesListe landesListe, Pageable pageable);
+
+    @Query(
+        name = "Kandidat.findByBundesland",
+        countQuery = "Kandidat.countByBundesland"
+    )
+    Page<Kandidat> findByBundesland(@Param("bundesland") Bundesland bundesland, Pageable pageable);
 
     @Query(
         name = "Kandidat.findByMinisterium",

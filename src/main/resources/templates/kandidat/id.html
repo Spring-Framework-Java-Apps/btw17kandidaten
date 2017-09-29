@@ -49,107 +49,113 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr th:if="${kandidat.bundesland != null}">
+                                    <tr th:if="${kandidat.adresse != null}">
                                         <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Bundesland</td>
                                         <td>
-                                            <a th:href="@{|/bundesland/${kandidat.bundesland.id}/|}">
-                                                <span th:text="${kandidat.bundesland.bundeslandLang}">bundeslandLang</span>
+                                            <span th:if="${kandidat.adresse.bundesland != null}">
+                                            <a th:href="@{|/bundesland/${kandidat.adresse.bundesland.id}/|}">
+                                                <span th:text="${kandidat.adresse.bundesland.bundeslandLang}">bundeslandLang</span>
                                                 <span> (</span>
-                                                <span th:text="${kandidat.bundesland.bundesland}">bundesland</span>
+                                                <span th:text="${kandidat.adresse.bundesland.bundesland}">bundesland</span>
                                                 <span>)</span>
                                             </a>
+                                            </span>
                                         </td>
                                         <td class="text-right">
 
-                                            <span th:if="${kandidat.bundesland.webseite}">
-                                                <span th:if="${kandidat.bundesland.webseite.webseite}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                            </span>
+                                            <span th:if="${kandidat.adresse.bundesland != null}">
 
-                                            <span th:if="${kandidat.bundesland.onlineStrategie}">
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.twitter != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                                    </a>
+                                                <span th:if="${kandidat.adresse.bundesland.webseite}">
+                                                    <span th:if="${kandidat.adresse.bundesland.webseite.webseite}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
                                                 </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.facebook != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                                    </a>
+
+                                                <span th:if="${kandidat.adresse.bundesland.onlineStrategie}">
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.twitter != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.facebook != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.youtube != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.soundcloud != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                                                            <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.wikipediaArticle != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.bundestagAbgeordnete != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.abgeordnetenwatch != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.lobbypediaUrl}" >
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.googlePlus != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                                            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.instagram != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.flickr != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
+                                                            <i class="fa fa-flickr" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.vimeo != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                                                            <i class="fa fa-vimeo-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.xing != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
+                                                            <i class="fa fa-xing-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.linkedIn != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                                                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.stackoverflow != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                                                            <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.github != null}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.github}" alt="github" title="github" target="_blank">
+                                                            <i class="fa fa-github" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
                                                 </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.youtube != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.soundcloud != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
-                                                        <i class="fa fa-soundcloud" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                                                        <i class="fa fa-university" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.lobbypediaUrl}" >
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
-                                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.googlePlus != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
-                                                        <i class="fa fa-google-plus-official" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.instagram != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
-                                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.flickr != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
-                                                        <i class="fa fa-flickr" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.vimeo != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
-                                                        <i class="fa fa-vimeo-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.xing != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
-                                                        <i class="fa fa-xing-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.linkedIn != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
-                                                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.stackoverflow != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
-                                                        <i class="fa fa-stack-overflow" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.github != null}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.github}" alt="github" title="github" target="_blank">
-                                                        <i class="fa fa-github" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
+
                                             </span>
                                         </td>
                                     </tr>

@@ -6,6 +6,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Validated
 @Embeddable
-public class Webseite {
+public class Webseite implements Serializable {
 
     @URL
     @Column(name="webseite")

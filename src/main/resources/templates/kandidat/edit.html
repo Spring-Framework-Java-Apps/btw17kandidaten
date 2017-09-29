@@ -50,109 +50,114 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr th:if="${kandidat.bundesland != null}">
+                                    <tr th:if="${kandidat.adresse != null}">
                                         <td><i class="fa fa-puzzle-piece" aria-hidden="true"></i> Bundesland</td>
                                         <td>
-                                            <a th:href="@{|/bundesland/${kandidat.bundesland.id}/|}">
-                                                <span th:text="${kandidat.bundesland.bundeslandLang}">bundeslandLang</span>
+                                            <span th:if="${kandidat.adresse.bundesland != null}">
+                                            <a th:href="@{|/bundesland/${kandidat.adresse.bundesland.id}/|}">
+                                                <span th:text="${kandidat.adresse.bundesland.bundeslandLang}">bundeslandLang</span>
                                                 <span> (</span>
-                                                <span th:text="${kandidat.bundesland.bundesland}">bundesland</span>
+                                                <span th:text="${kandidat.adresse.bundesland.bundesland}">bundesland</span>
                                                 <span>)</span>
                                             </a>
+                                            </span>
                                         </td>
                                         <td class="text-right">
 
-                                            <span th:if="${kandidat.bundesland.webseite}">
-                                                <span th:if="${kandidat.bundesland.webseite.webseite}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
-                                                        <i class="fa fa-link" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                            </span>
+                                            <span th:if="${kandidat.adresse.bundesland != null}">
 
-                                            <span th:if="${kandidat.bundesland.onlineStrategie}">
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.twitter}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
-                                                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                                                    </a>
+                                                <span th:if="${kandidat.adresse.bundesland.webseite}">
+                                                    <span th:if="${kandidat.adresse.bundesland.webseite.webseite}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.webseite.webseite}" alt="Webseite" title="Webseite" target="_blank">
+                                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
                                                 </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.facebook}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
-                                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.youtube}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
-                                                        <i class="fa fa-youtube" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.soundcloud}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
-                                                        <i class="fa fa-soundcloud" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.wikipediaArticle}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
-                                                        <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
-                                                        <i class="fa fa-university" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.lobbypediaUrl}" >
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
-                                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.googlePlus}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
-                                                        <i class="fa fa-google-plus-official" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.instagram}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
-                                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.flickr}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
-                                                        <i class="fa fa-flickr" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.vimeo}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
-                                                        <i class="fa fa-vimeo-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.xing}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
-                                                        <i class="fa fa-xing-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.linkedIn}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
-                                                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.stackoverflow}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
-                                                        <i class="fa fa-stack-overflow" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                                <span th:if="${kandidat.bundesland.onlineStrategie.github}">
-                                                    <a class="tw-social-media-link" th:href="${kandidat.bundeslands.onlineStrategie.github}" alt="github" title="github" target="_blank">
-                                                        <i class="fa fa-github" aria-hidden="true"></i>
-                                                    </a>
-                                                </span>
-                                            </span>
 
+                                                <span th:if="${kandidat.adresse.bundesland.onlineStrategie}">
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.twitter}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.twitter}" alt="Twitter" title="Twitter" target="_blank">
+                                                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.facebook}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.facebook}" alt="Facebook" title="Facebook" target="_blank">
+                                                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.youtube}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.youtube}" alt="YouTube" title="YouTube" target="_blank">
+                                                            <i class="fa fa-youtube" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.soundcloud}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.soundcloud}" alt="Soundcloud" title="Soundcloud" target="_blank">
+                                                            <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.wikipediaArticle}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.wikipediaArticle}" alt="Wikipedia" title="Wikipedia" target="_blank">
+                                                            <i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.bundestagAbgeordnete}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.bundestagAbgeordnete}" alt="Bundestag" title="Bundestag" target="_blank">
+                                                            <i class="fa fa-university" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.abgeordnetenwatch}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.abgeordnetenwatch}" alt="Abgeordnetenwatch" title="Abgeordnetenwatch" target="_blank">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.lobbypediaUrl}" >
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.lobbypediaUrl}" alt="Lobbypedia" title="Lobbypedia" target="_blank">
+                                                            <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.googlePlus}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.googlePlus}" alt="GooglePlus" title="GooglePlus" target="_blank">
+                                                            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.instagram}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.instagram}" alt="Instagram" title="Instagram" target="_blank">
+                                                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.flickr}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.flickr}" alt="flickr" title="flickr" target="_blank">
+                                                            <i class="fa fa-flickr" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.vimeo}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.vimeo}" alt="vimeo" title="vimeo" target="_blank">
+                                                            <i class="fa fa-vimeo-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.xing}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.xing}" alt="xing" title="xing" target="_blank">
+                                                            <i class="fa fa-xing-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.linkedIn}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.linkedIn}" alt="linkedIn" title="linkedIn" target="_blank">
+                                                            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.stackoverflow}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundesland.onlineStrategie.stackoverflow}" alt="stackoverflow" title="stackoverflow" target="_blank">
+                                                            <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span th:if="${kandidat.adresse.bundesland.onlineStrategie.github}">
+                                                        <a class="tw-social-media-link" th:href="${kandidat.adresse.bundeslands.onlineStrategie.github}" alt="github" title="github" target="_blank">
+                                                            <i class="fa fa-github" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
+                                                </span>
+
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr th:if="${kandidat.geburtsort != null}">
@@ -672,7 +677,7 @@
             </div>
             <div class="row" sec:authorize="isAuthenticated()">
                 <div class="col-md-12">
-                        <form action="#" th:action="@{|/kandidat/edit/${kandidat.id}|}" th:object="${kandidat}" method="post" class="form-horizontal">
+                        <form action="#" th:action="@{|/redaktion/kandidat/edit/${kandidat.id}|}" th:object="${kandidat}" method="post" class="form-horizontal">
 
                             <input type="hidden" th:field="*{key}" />
                             <input type="hidden" th:field="*{remoteKey}" />
@@ -684,7 +689,6 @@
                             <input type="hidden" th:field="*{geschlecht}" />
                             <input type="hidden" th:field="*{geburtsjahr}" />
                             <input type="hidden" th:field="*{alter}" />
-                            <input type="hidden" th:field="*{commonFields}" />
                             <input type="hidden" th:field="*{listePlatz}" />
                             <input type="hidden" th:field="*{landesListe}" />
                             <input type="hidden" th:field="*{mdb}" />
@@ -698,12 +702,10 @@
                             <input type="hidden" th:field="*{googleMapsUrl}" />
                             <input type="hidden" th:field="*{wahlkreis}" />
                             <input type="hidden" th:field="*{partei}" />
-                            <input type="hidden" th:field="*{bundesland}" />
                             <input type="hidden" th:field="*{berufsgruppe}" />
                             <input type="hidden" th:field="*{beruf}" />
                             <input type="hidden" th:field="*{geburtsort}" />
                             <input type="hidden" th:field="*{wohnort}" />
-                            <input type="hidden" th:field="*{webseite}" />
 
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
@@ -997,6 +999,89 @@
                                             </div>
                                             <span th:if="${#fields.hasErrors('onlineStrategie.github')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                             <span th:if="${#fields.hasErrors('onlineStrategie.github')}" th:errors="*{onlineStrategie.github}" class="help-block has-error">onlineStrategie.github</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Adresse des Wahlkreisbüros</h3>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div th:class="${#fields.hasErrors('adresse.strasse')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="adresse-strasse-input" class="col-sm-2 control-label">Straße:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                <input th:field="*{adresse.strasse}" type="text" name="adresse.strasse" id="adresse-strasse-input" class="form-control" placeholder="Straße"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('adresse.strasse')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('adresse.strasse')}" th:errors="*{adresse.strasse}" class="help-block has-error">adresse.strasse</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('adresse.hausnummer')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="adresse-hausnummer-input" class="col-sm-2 control-label">Hausnummer:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                <input th:field="*{adresse.hausnummer}" type="text" name="adresse.hausnummer" id="adresse-hausnummer-input" class="form-control" placeholder="Hausnummer"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('adresse.hausnummer')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('adresse.hausnummer')}" th:errors="*{adresse.hausnummer}" class="help-block has-error">adresse.hausnummer</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('adresse.plz')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="adresse-plz-input" class="col-sm-2 control-label">PLZ:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                <input th:field="*{adresse.plz}" type="text" name="adresse.plz" id="adresse-plz-input" class="form-control" placeholder="PLZ"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('adresse.plz')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('adresse.plz')}" th:errors="*{adresse.plz}" class="help-block has-error">adresse.plz</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('adresse.ort')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="adresse-ort-input" class="col-sm-2 control-label">Ort:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                <input th:field="*{adresse.ort}" type="text" name="adresse.plz" id="adresse-ort-input" class="form-control" placeholder="Ort"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('adresse.ort')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('adresse.ort')}" th:errors="*{adresse.ort}" class="help-block has-error">adresse.ort</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('adresse.nation')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="adresse-nation-input" class="col-sm-2 control-label">Nation:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+                                                <input th:field="*{adresse.nation}" type="text" name="adresse.nation" id="adresse-nation-input" class="form-control" placeholder="Nation"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('adresse.nation')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('adresse.nation')}" th:errors="*{adresse.nation}" class="help-block has-error">adresse.nation</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group has-feedback">
+                                        <label for="bundesland-input" class="col-sm-2 control-label">Bundesland:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-handshake-o" aria-hidden="true"></i></span>
+                                                <select th:field="*{adresse.bundesland}" name="bundesland" id="bundesland-input" class="form-control" th:errorclass="has-error">
+                                                    <option value="0" >Keines</option>
+                                                    <option th:text="${bl.name}" th:value="${bl.id}" th:each="bl : ${bundeslandList}">bundesland</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 

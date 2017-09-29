@@ -255,7 +255,15 @@ import static javax.persistence.FetchType.LAZY;
     @NamedQuery(
         name = "Kandidat.contByWebseiteCms",
         query = "select count(o) from Kandidat as o join o.webseite.cms webseiteCms where webseiteCms=:webseiteCms"
-    )
+    ),
+        @NamedQuery(
+                name = "Kandidat.findByBundesland",
+                query = "select o from Kandidat as o where o.adresse.bundesland=:bundesland order by o.nachname"
+        ),
+        @NamedQuery(
+                name = "Kandidat.countByBundesland",
+                query = "select count(o) from Kandidat as o where o.adresse.bundesland=:bundesland"
+        )
 })
 @NamedNativeQueries({
     @NamedNativeQuery(
@@ -362,47 +370,43 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Geburtsort geburtsort;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
-    private Bundesland bundesland;
-
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = true)
     private LandesListe landesListe;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_fraktion", nullable = true, updatable = true)
     private Fraktion fraktion;
 
-    @ManyToMany(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ministerium")
     private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
-    @ManyToMany(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
@@ -426,8 +430,11 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @NotNull
-    @OneToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @Valid
+    @Embedded
+    private Adresse adresse = new Adresse();
+
+    @OneToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
     private KandidatFlat kandidatFlat;
 
@@ -569,14 +576,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
         this.berufsgruppe = berufsgruppe;
-    }
-
-    public Bundesland getBundesland() {
-        return bundesland;
-    }
-
-    public void setBundesland(Bundesland bundesland) {
-        this.bundesland = bundesland;
     }
 
     public Wahlkreis getWahlkreis() {
@@ -757,6 +756,16 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         }
     }
 
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        if(adresse != null){
+            this.adresse = adresse;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -796,7 +805,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (beruf != null ? !beruf.equals(kandidat.beruf) : kandidat.beruf != null) return false;
         if (berufsgruppe != null ? !berufsgruppe.equals(kandidat.berufsgruppe) : kandidat.berufsgruppe != null)
             return false;
-        if (bundesland != null ? !bundesland.equals(kandidat.bundesland) : kandidat.bundesland != null) return false;
         if (wahlkreis != null ? !wahlkreis.equals(kandidat.wahlkreis) : kandidat.wahlkreis != null) return false;
         if (partei != null ? !partei.equals(kandidat.partei) : kandidat.partei != null) return false;
         if (landesListe != null ? !landesListe.equals(kandidat.landesListe) : kandidat.landesListe != null)
@@ -811,6 +819,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
+        if (adresse != null ? !adresse.equals(kandidat.adresse) : kandidat.adresse != null) return false;
         return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
     }
 
@@ -843,7 +852,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
         result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
-        result = 31 * result + (bundesland != null ? bundesland.hashCode() : 0);
         result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
         result = 31 * result + (partei != null ? partei.hashCode() : 0);
         result = 31 * result + (landesListe != null ? landesListe.hashCode() : 0);
@@ -853,6 +861,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
         result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
         return result;
     }
@@ -887,7 +896,6 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", geburtsort=" + geburtsort +
                 ", beruf=" + beruf +
                 ", berufsgruppe=" + berufsgruppe +
-                ", bundesland=" + bundesland +
                 ", wahlkreis=" + wahlkreis +
                 ", partei=" + partei +
                 ", landesListe=" + landesListe +
@@ -897,6 +905,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", commonFields=" + commonFields +
                 ", webseite=" + webseite +
                 ", onlineStrategie=" + onlineStrategie +
+                ", adresse=" + adresse +
                 ", kandidatFlat=" + kandidatFlat +
                 '}';
     }

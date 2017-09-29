@@ -192,7 +192,7 @@ public class KandidatenNormalizedTableBuilder {
 
                 out.setBeruf(beruf);
                 out.setBerufsgruppe(berufsgruppe);
-                out.setBundesland(bundesland);
+                out.getAdresse().setBundesland(bundesland);
                 out.setGeburtsort(geburtsort);
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
