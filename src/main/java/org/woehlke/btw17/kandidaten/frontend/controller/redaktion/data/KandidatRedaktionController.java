@@ -231,12 +231,12 @@ public class KandidatRedaktionController extends AbstractController {
         if(binding != null && binding.hasErrors()){
             log.debug("FieldErrors: ");
             for(FieldError fieldError :binding.getFieldErrors()){
-                log.debug(fieldError.getField()+" : rejected: "+fieldError.getRejectedValue()+" : "+fieldError.getCode()+" : "+fieldError.getDefaultMessage());
+                log.info(fieldError.getField()+" : rejected: "+fieldError.getRejectedValue()+" : "+fieldError.getCode()+" : "+fieldError.getDefaultMessage());
             }
             log.debug("-----------------------------------------");
             log.debug("ObjectErrors: ");
             for(ObjectError objectError:binding.getAllErrors()){
-                log.debug(objectError.getObjectName()+" : "+objectError.getCode()+" : "+objectError.getDefaultMessage());
+                log.info(objectError.getObjectName()+" : "+objectError.getCode()+" : "+objectError.getDefaultMessage());
             }
             log.debug("-----------------------------------------");
         }
@@ -249,7 +249,7 @@ public class KandidatRedaktionController extends AbstractController {
             log.debug(msg+kandidat.getBerufsgruppe().getName());
         } else {
             if(kandidat.getMdb() != null) {
-                log.warn(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
+                log.info(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
             } else {
                 log.debug(msg + "kandidat.getBerufsgruppe() == null " + kandidat.getUniqueId());
             }
@@ -259,7 +259,7 @@ public class KandidatRedaktionController extends AbstractController {
         if(kandidat.getBeruf() != null){
             log.debug(msg+kandidat.getBeruf().getName());
         } else {
-            log.warn(msg+"kandidat.getBeruf() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getBeruf() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"CommonFields:");
@@ -273,21 +273,21 @@ public class KandidatRedaktionController extends AbstractController {
         if(kandidat.getGeburtsort() != null){
             log.debug(msg+kandidat.getGeburtsort().getName());
         } else {
-            log.warn(msg+"kandidat.getGeburtsort() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getGeburtsort() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Wohnort:");
         if(kandidat.getWohnort() != null){
             log.debug(msg+kandidat.getWohnort().getName());
         } else {
-            log.warn(msg+"kandidat.getWohnort() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getWohnort() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Wahlkreis:");
         if(kandidat.getWahlkreis() != null){
             log.debug(msg+kandidat.getWahlkreis().getName());
         } else {
-            log.warn(msg+"kandidat.getWahlkreis() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getWahlkreis() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Fraktion:");
@@ -295,7 +295,7 @@ public class KandidatRedaktionController extends AbstractController {
             log.debug(msg+kandidat.getFraktion().getName());
         } else {
             if(kandidat.getMdb() != null){
-                log.warn(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
+                log.info(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
             } else {
                 log.debug(msg+"kandidat.getFraktion() == null "+kandidat.getUniqueId());
             }
@@ -312,14 +312,14 @@ public class KandidatRedaktionController extends AbstractController {
         if(kandidat.getAdresse() != null && kandidat.getAdresse().getBundesland() != null){
             log.debug(msg+kandidat.getAdresse().getBundesland().getName());
         } else {
-            log.warn(msg+"kandidat.getAdresse().getBundesland() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getAdresse().getBundesland() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Adresse:");
         if(kandidat.getAdresse() != null){
             log.debug(msg+kandidat.getAdresse().toString());
         } else {
-            log.warn(msg+"kandidat.getAdresse() == null "+kandidat.getUniqueId());
+            log.info(msg+"kandidat.getAdresse() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
         log.debug(msg+"Ministerien:");
