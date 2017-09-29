@@ -30,6 +30,23 @@ public class PageContent implements Serializable {
 
     private String twitterCardCreator;
 
+    private String infoText;
+
+    public PageContent(String infoText, String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator,JumbotronImage imageCss,String msvalidateKey,String googleSiteVerification,String facebookAppId) {
+        this.pageTitle = pageTitle;
+        this.pageSubTitle = pageSubTitle;
+        this.pageSymbol = pageSymbol;
+        this.googleMapsApiKey = googleMapsApiKey;
+        this.googleAnalyticsKey = googleAnalyticsKey;
+        this.pagerUrl = pagerUrl;
+        this.twitterCardSite = twitterCardSite;
+        this.twitterCardCreator = twitterCardCreator;
+        this.jumbotronImage = imageCss.getCss();
+        this.msvalidateKey = msvalidateKey;
+        this.googleSiteVerification = googleSiteVerification;
+        this.facebookAppId = facebookAppId;
+        this.infoText = infoText;
+    }
 
     public PageContent(String pageTitle, String pageSubTitle, String pageSymbol, String googleMapsApiKey, String googleAnalyticsKey,String pagerUrl,String twitterCardSite,String twitterCardCreator,JumbotronImage imageCss,String msvalidateKey,String googleSiteVerification,String facebookAppId) {
         this.pageTitle = pageTitle;
@@ -44,6 +61,14 @@ public class PageContent implements Serializable {
         this.msvalidateKey = msvalidateKey;
         this.googleSiteVerification = googleSiteVerification;
         this.facebookAppId = facebookAppId;
+    }
+
+    public String getInfoText() {
+        return infoText;
+    }
+
+    public void setInfoText(String infoText) {
+        this.infoText = infoText;
     }
 
     public String getPageTitleWithSymbol(){

@@ -39,6 +39,28 @@ public class LoginController extends AbstractController {
         return "login/login";
     }
 
+    @RequestMapping("/logout_success")
+    public String logout(Model model) {
+        log.info("-----------------------------------------");
+        String pageTitle = "Logout";
+        String pageSubTitle = "Sie sind nun abgemeldet.";
+        String infoText = "Um sich neu anzumelden Geben Sie erneut Ihre Zugangsdaten ein:";
+        String pageSymbol = PageSymbol.LOGOUT.getSymbolHtml();
+        String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
+        String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
+        String pagerUrl = "/logout";
+        String twitterCardSite = kandidatenProperties.getTwitterCardSite();
+        String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
+        JumbotronImage imageCss =  JumbotronImage.REICHSTAG_INNEN_01;
+        String msvalidateKey = kandidatenProperties.getMsvalidateKey();
+        String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
+        String facebookAppId = kandidatenProperties.getFacebookAppId();
+        PageContent pageContent = new PageContent(infoText,pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+        model.addAttribute("pageContent",pageContent);
+        log.info("-----------------------------------------");
+        return "login/login";
+    }
+
     @Autowired
     public LoginController(SessionHandler sessionHandler, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);

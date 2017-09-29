@@ -7,13 +7,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 
 @Configuration
 @EnableSpringDataWebSupport
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -27,10 +28,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin()
             .loginPage("/login")
+            .failureForwardUrl("/login")
+            .defaultSuccessUrl("/adm")
             .permitAll()
             .and()
             .logout()
-            .logoutSuccessUrl("/")
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/logout_success")
             .permitAll();
     }
 
@@ -43,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .inMemoryAuthentication()
             .withUser(user).password(pwd).roles(role);
     }
+
 
     @Autowired
     public WebSecurityConfig(KandidatenProperties kandidatenProperties) {

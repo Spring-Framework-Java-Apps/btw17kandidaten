@@ -18,7 +18,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/").setViewName("redirect:/welcome");
         registry.addViewController("/adm").setViewName("redirect:/report/overview");
         registry.addViewController("/regierung/kanzleramt").setViewName("redirect:/ministerium/15");
-        //registry.addViewController("/error").setViewName("redirect:/fehler");
     }
 
     @Override

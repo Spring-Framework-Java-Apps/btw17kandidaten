@@ -32,6 +32,7 @@ public enum PageSymbol {
     BUNDESZENTRALE_POLITISCHE_BILDUNG("<i class=\"fa fa-clipboard\" aria-hidden=\"true\"></i>"),
     EXCEPTION("<i class=\"fa fa-bolt\" aria-hidden=\"true\"></i>"),
     LOGIN("<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>"),
+    LOGOUT("<i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i>"),
     FUNKTION("<i class=\"fa fa-superpowers\" aria-hidden=\"true\"></i>"),
     AUSSCHUSS("<i class=\"fa fa-users\" aria-hidden=\"true\"></i>"),
     MINISTERIUM("<i class=\"fa fa-home\" aria-hidden=\"true\"></i>"),
