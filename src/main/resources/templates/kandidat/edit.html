@@ -929,6 +929,42 @@
                                         </div>
                                     </div>
 
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.lobbycontrol')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="lobbycontrol-input" class="col-sm-2 control-label">Lobbycontrol:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-balance-scale" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.lobbycontrol}" type="url" name="lobbycontrol" id="lobbycontrol-input" class="form-control" placeholder="Lobbycontrol" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.lobbycontrol')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.lobbycontrol')}" th:errors="*{onlineStrategie.lobbycontrol}" class="help-block has-error">onlineStrategie.lobbycontrol</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.transparency')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="transparency-input" class="col-sm-2 control-label">Lobbycontrol:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-balance-scale" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.transparency}" type="url" name="transparency" id="transparency-input" class="form-control" placeholder="Transparency" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.transparency')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.transparency')}" th:errors="*{onlineStrategie.transparency}" class="help-block has-error">onlineStrategie.transparency</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.netzpolitikOrg')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="netzpolitik-org-input" class="col-sm-2 control-label">Netzpolitik.org:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-balance-scale" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.netzpolitikOrg}" type="url" name="netzpolitikOrg" id="netzpolitik-org-input" class="form-control" placeholder="Netzpolitik.org" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.netzpolitikOrg')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.netzpolitikOrg')}" th:errors="*{onlineStrategie.netzpolitikOrg}" class="help-block has-error">onlineStrategie.netzpolitikOrg</span>
+                                        </div>
+                                    </div>
+
                                     <div th:class="${#fields.hasErrors('onlineStrategie.googlePlus')}? 'has-error form-group has-feedback' : 'form-group'">
                                         <label for="google-plus-input" class="col-sm-2 control-label">Google+:</label>
                                         <div class="col-sm-10">
@@ -938,6 +974,30 @@
                                             </div>
                                             <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
                                             <span th:if="${#fields.hasErrors('onlineStrategie.googlePlus')}" th:errors="*{onlineStrategie.googlePlus}" class="help-block has-error">onlineStrategie.googlePlus</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.googleSuche')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="google-suche-input" class="col-sm-2 control-label">Google Suche:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-google-plus-official" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.googleSuche}" type="url" name="googleSuche" id="google-suche-input" class="form-control" placeholder="Google Suche" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.googleSuche')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.googleSuche')}" th:errors="*{onlineStrategie.googleSuche}" class="help-block has-error">onlineStrategie.googleSuche</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.bingSuche')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="bing-suche-input" class="col-sm-2 control-label">Bing Suche:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-google-plus-official" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.bingSuche}" type="url" name="bingSuche" id="bing-suche-input" class="form-control" placeholder="Bing Suche" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.bingSuche')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.bingSuche')}" th:errors="*{onlineStrategie.bingSuche}" class="help-block has-error">onlineStrategie.bingSuche</span>
                                         </div>
                                     </div>
 
@@ -1025,9 +1085,296 @@
                                         </div>
                                     </div>
 
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.whatsapp')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="whatsapp-input" class="col-sm-2 control-label">Whatsapp:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.whatsapp}" type="url" name="whatsapp" id="whatsapp-input" class="form-control" placeholder="Whatsapp" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.whatsapp')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.whatsapp')}" th:errors="*{onlineStrategie.whatsapp}" class="help-block has-error">onlineStrategie.whatsapp</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.wordpress')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="wordpress-input" class="col-sm-2 control-label">Wordpress:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.wordpress}" type="url" name="wordpress" id="wordpress-input" class="form-control" placeholder="Wordpress" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.wordpress')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.wordpress')}" th:errors="*{onlineStrategie.wordpress}" class="help-block has-error">onlineStrategie.wordpress</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.spotify')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="spotify-input" class="col-sm-2 control-label">Spotify:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.wordpress}" type="url" name="spotify" id="spotify-input" class="form-control" placeholder="Spotify" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.spotify')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.spotify')}" th:errors="*{onlineStrategie.spotify}" class="help-block has-error">onlineStrategie.spotify</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.snapchat')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="snapchat-input" class="col-sm-2 control-label">snapchat:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.snapchat}" type="url" name="snapchat" id="snapchat-input" class="form-control" placeholder="snapchat" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.snapchat')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.snapchat')}" th:errors="*{onlineStrategie.snapchat}" class="help-block has-error">onlineStrategie.snapchat</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.skype')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="skype-input" class="col-sm-2 control-label">skype:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.skype}" type="url" name="skype" id="skype-input" class="form-control" placeholder="snapchat" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.skype')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.skype')}" th:errors="*{onlineStrategie.skype}" class="help-block has-error">onlineStrategie.skype</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.slack')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="slack-input" class="col-sm-2 control-label">slack:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.slack}" type="url" name="slack" id="slack-input" class="form-control" placeholder="slack" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.slack')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.slack')}" th:errors="*{onlineStrategie.slack}" class="help-block has-error">onlineStrategie.slack</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.slideshare')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="slideshare-input" class="col-sm-2 control-label">slideshare:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.slideshare}" type="url" name="slideshare" id="slideshare-input" class="form-control" placeholder="slideshare" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.slideshare')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.slideshare')}" th:errors="*{onlineStrategie.slideshare}" class="help-block has-error">onlineStrategie.slideshare</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.pinterest')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="pinterest-input" class="col-sm-2 control-label">pinterest:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.pinterest}" type="url" name="pinterest" id="pinterest-input" class="form-control" placeholder="pinterest" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.pinterest')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.pinterest')}" th:errors="*{onlineStrategie.slideshare}" class="help-block has-error">onlineStrategie.pinterest</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.paypal')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="paypal-input" class="col-sm-2 control-label">paypal:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.paypal}" type="url" name="paypal" id="paypal-input" class="form-control" placeholder="paypal" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.paypal')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.paypal')}" th:errors="*{onlineStrategie.paypal}" class="help-block has-error">onlineStrategie.paypal</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.meetup')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="meetup-input" class="col-sm-2 control-label">meetup:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.meetup}" type="url" name="meetup" id="meetup-input" class="form-control" placeholder="meetup" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.meetup')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.meetup')}" th:errors="*{onlineStrategie.meetup}" class="help-block has-error">onlineStrategie.meetup</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.lastfm')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="lastfm-input" class="col-sm-2 control-label">lastfm:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.lastfm}" type="url" name="lastfm" id="lastfm-input" class="form-control" placeholder="lastfm" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.lastfm')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.lastfm')}" th:errors="*{onlineStrategie.lastfm}" class="help-block has-error">onlineStrategie.lastfm</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.imdb')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="imdb-input" class="col-sm-2 control-label">imdb:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.imdb}" type="url" name="imdb" id="imdb-input" class="form-control" placeholder="imdb" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.imdb')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.imdb')}" th:errors="*{onlineStrategie.imdb}" class="help-block has-error">onlineStrategie.imdb</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.foursquare')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="foursquare-input" class="col-sm-2 control-label">foursquare:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.foursquare}" type="url" name="foursquare" id="foursquare-input" class="form-control" placeholder="foursquare" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.foursquare')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.foursquare')}" th:errors="*{onlineStrategie.foursquare}" class="help-block has-error">onlineStrategie.foursquare</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.digg')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="digg-input" class="col-sm-2 control-label">digg:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.digg}" type="url" name="digg" id="digg-input" class="form-control" placeholder="digg" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.digg')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.digg')}" th:errors="*{onlineStrategie.digg}" class="help-block has-error">onlineStrategie.digg</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.delicious')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="delicious-input" class="col-sm-2 control-label">delicious:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.delicious}" type="url" name="delicious" id="delicious-input" class="form-control" placeholder="delicious" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.delicious')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.delicious')}" th:errors="*{onlineStrategie.delicious}" class="help-block has-error">onlineStrategie.delicious</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.url500px')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="url500px-input" class="col-sm-2 control-label">500px:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.url500px}" type="url" name="url500px" id="url500px-input" class="form-control" placeholder="500px" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.url500px')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.url500px')}" th:errors="*{onlineStrategie.url500px}" class="help-block has-error">onlineStrategie.url500px</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.amazon')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="amazon-input" class="col-sm-2 control-label">amazon:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.amazon}" type="url" name="amazon" id="amazon-input" class="form-control" placeholder="amazon" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.amazon')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.amazon')}" th:errors="*{onlineStrategie.amazon}" class="help-block has-error">onlineStrategie.amazon</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.hackerNews')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="hacker-news-input" class="col-sm-2 control-label">hackerNews:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.hackerNews}" type="url" name="hackerNews" id="hacker-news-input" class="form-control" placeholder="hackerNews" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.hackerNews')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.hackerNews')}" th:errors="*{onlineStrategie.hackerNews}" class="help-block has-error">onlineStrategie.hackerNews</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.scribd')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="scribd-input" class="col-sm-2 control-label">scribd:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.scribd}" type="url" name="scribd" id="scribd-input" class="form-control" placeholder="scribd" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.scribd')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.scribd')}" th:errors="*{onlineStrategie.scribd}" class="help-block has-error">onlineStrategie.scribd</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.tumblr')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="tumblr-input" class="col-sm-2 control-label">tumblr:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.tumblr}" type="url" name="tumblr" id="tumblr-input" class="form-control" placeholder="tumblr" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.tumblr')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.tumblr')}" th:errors="*{onlineStrategie.tumblr}" class="help-block has-error">onlineStrategie.tumblr</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.viadeo')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="viadeo-input" class="col-sm-2 control-label">viadeo:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.viadeo}" type="url" name="viadeo" id="viadeo-input" class="form-control" placeholder="viadeo" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.viadeo')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.viadeo')}" th:errors="*{onlineStrategie.viadeo}" class="help-block has-error">onlineStrategie.viadeo</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.yahoo')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="viadeo-input" class="col-sm-2 control-label">yahoo:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.yahoo}" type="url" name="yahoo" id="yahoo-input" class="form-control" placeholder="yahoo" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yahoo')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yahoo')}" th:errors="*{onlineStrategie.yahoo}" class="help-block has-error">onlineStrategie.yahoo</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.yoast')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="yoast-input" class="col-sm-2 control-label">yoast:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.yoast}" type="url" name="yoast" id="yoast-input" class="form-control" placeholder="yoast" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yoast')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yoast')}" th:errors="*{onlineStrategie.yoast}" class="help-block has-error">onlineStrategie.yoast</span>
+                                        </div>
+                                    </div>
+
+                                    <div th:class="${#fields.hasErrors('onlineStrategie.yelp')}? 'has-error form-group has-feedback' : 'form-group'">
+                                        <label for="yelp-input" class="col-sm-2 control-label">yelp:</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                                                <input th:field="*{onlineStrategie.yelp}" type="url" name="yoast" id="yelp-input" class="form-control" placeholder="yelp" th:errorclass="has-error"/>
+                                            </div>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yelp')}" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                                            <span th:if="${#fields.hasErrors('onlineStrategie.yelp')}" th:errors="*{onlineStrategie.yelp}" class="help-block has-error">onlineStrategie.yelp</span>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
 
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
