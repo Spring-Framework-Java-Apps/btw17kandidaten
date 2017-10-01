@@ -334,23 +334,21 @@ public class SpringProperties {
 
     @Override
     public String toString() {
-
         List<String> outputLines = new ArrayList<>();
-        outputLines.add("spring.profiles =                         "+this.getProfiles());
-        outputLines.add("spring.datasource.driverClassName =       "+this.getDatasource().getDriverClassName());
-        outputLines.add("spring.datasource.platform =              "+this.getDatasource().getPlatform());
-        outputLines.add("spring.datasource.url =                   "+this.getDatasource().getUrl());
-        outputLines.add("spring.datasource.continue-on-error =     "+this.getDatasource().getContinueOnError());
-        outputLines.add("spring.datasource.schema =                "+this.getDatasource().getSchema());
-        outputLines.add("spring.session.store-type =               "+this.getSession().getStoreType());
-        outputLines.add("spring.session.jdbc.initializer.enabled = "+this.getSession().getJdbc().getInitializer().getEnabled());
-        outputLines.add("spring.jpa.open-in-view =                 "+this.getJpa().getOpenInView());
-        outputLines.add("spring.jpa.hibernate.ddl-auto =           "+this.getJpa().getHibernate().getDdlAuto());
-        outputLines.add("spring.jpa.properties.hibernate.dialect = "+this.getJpa().getProperties().getHibernate().getDialect());
-        outputLines.add("spring.jpa.show-sql =                     "+this.getJpa().getShowSql());
-        outputLines.add("spring.template.cache =                   "+this.getTemplate().getCache());
-        outputLines.add("spring.thymeleaf.cache =                  "+this.getThymeleaf().getCache());
-
+        outputLines.add("spring.profiles =                                     "+this.getProfiles());
+        outputLines.add("spring.template.cache =                               "+this.getTemplate().getCache());
+        outputLines.add("spring.thymeleaf.cache =                              "+this.getThymeleaf().getCache());
+        outputLines.add("spring.jpa.open-in-view =                             "+this.getJpa().getOpenInView());
+        outputLines.add("spring.jpa.hibernate.ddl-auto =                       "+this.getJpa().getHibernate().getDdlAuto());
+        outputLines.add("spring.jpa.properties.hibernate.dialect =             "+this.getJpa().getProperties().getHibernate().getDialect());
+        outputLines.add("spring.jpa.show-sql =                                 "+this.getJpa().getShowSql());
+        outputLines.add("spring.session.store-type =                           "+this.getSession().getStoreType());
+        outputLines.add("spring.session.jdbc.initializer.enabled =             "+this.getSession().getJdbc().getInitializer().getEnabled());
+        outputLines.add("spring.datasource.driverClassName =                   "+this.getDatasource().getDriverClassName());
+        outputLines.add("spring.datasource.platform =                          "+this.getDatasource().getPlatform());
+        outputLines.add("spring.datasource.continue-on-error =                 "+this.getDatasource().getContinueOnError());
+        outputLines.add("spring.datasource.schema =                            "+this.getDatasource().getSchema());
+        outputLines.add("spring.datasource.url =                               "+this.getDatasource().getUrl());
         StringBuffer sb = new StringBuffer();
         for(String outputLine:outputLines){
             sb.append(" ");

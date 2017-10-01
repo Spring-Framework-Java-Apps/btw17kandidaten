@@ -168,7 +168,7 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
 
     @Override
     public String toString() {
-        return "Bundesland{" +
+        return "BundeslandEnum{" +
                 "id=" + id +
                 ", bundesland='" + bundesland + '\'' +
                 ", bundeslandLang='" + bundeslandLang + '\'' +

@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -332,5 +333,42 @@ public class KandidatenProperties {
             myArray[i] = webSecurityConfigPublicPaths.get(i);
         }
         return myArray;
+    }
+
+    @Override
+    public String toString() {
+        List<String> outputLines = new ArrayList<>();
+        int i = 0;
+        for(String path:this.getWebSecurityConfigPublicPaths()){
+            outputLines.add(" btw17.kandidaten.webSecurityConfigPublicPaths["+i+"] =   "+path);
+            i++;
+        }
+        i = 0;
+        for(String urlPrefix:this.getUrlPrefixForKandidatFoto()){
+            outputLines.add(" btw17.kandidaten.urlPrefixForKandidatFoto["+i+"] =        "+urlPrefix);
+            i++;
+        }
+        outputLines.add("--------------------------------------------------------------------------------------------------------------");
+        outputLines.add(" btw17.kandidaten.pageSize =                           "+this.getPageSize());
+        outputLines.add(" btw17.kandidaten.loginUsername =                      "+this.getLoginUsername());
+        outputLines.add(" btw17.kandidaten.loginPassword =                      "+this.getLoginPassword());
+        outputLines.add(" btw17.kandidaten.googleMapsApiKey =                   "+this.getGoogleMapsApiKey());
+        outputLines.add(" btw17.kandidaten.googleAnalyticsKey =                 "+this.getGoogleAnalyticsKey());
+        outputLines.add(" btw17.kandidaten.googleSiteVerification =             "+this.getGoogleSiteVerification());
+        outputLines.add(" btw17.kandidaten.msvalidateKey =                      "+this.getMsvalidateKey());
+        outputLines.add(" btw17.kandidaten.twitterCardCreator =                 "+this.getTwitterCardCreator());
+        outputLines.add(" btw17.kandidaten.twitterCardSite =                    "+this.getTwitterCardSite());
+        outputLines.add(" btw17.kandidaten.facebookAppId =                      "+this.getFacebookAppId());
+        outputLines.add(" btw17.kandidaten.pageSubTitle =                       "+this.getPageSubTitle());
+        outputLines.add(" btw17.kandidaten.connTimeToLive =                     "+this.getConnTimeToLive());
+        outputLines.add(" btw17.kandidaten.maxIdleTime =                        "+this.getMaxIdleTime());
+        outputLines.add(" btw17.kandidaten.millisToWaitBetweenTwoApiCalls =     "+this.getMillisToWaitBetweenTwoApiCalls());
+        outputLines.add(" btw17.kandidaten.checkFotoUrl =                       "+this.getCheckFotoUrl());
+        StringBuffer sb = new StringBuffer();
+        for(String outputLine:outputLines){
+            sb.append(outputLine);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

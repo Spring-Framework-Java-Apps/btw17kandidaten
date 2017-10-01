@@ -2,6 +2,8 @@ package org.woehlke.btw17.kandidaten.frontend.content;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReportOverview implements Serializable {
 
@@ -240,24 +242,29 @@ public class ReportOverview implements Serializable {
 
     @Override
     public String toString() {
-        return "ReportOverview{" +
-                "countMdb=" + countMdb +
-                ", countKandidat=" + countKandidat +
-                ", countMdbWithoutAbgeordnetenwatch=" + countMdbWithoutAbgeordnetenwatch +
-                ", countMdbWithoutBundestagProfile=" + countMdbWithoutBundestagProfile +
-                ", countMdbWithoutFotoUrl=" + countMdbWithoutFotoUrl +
-                ", countMdbWithoutFacebook=" + countMdbWithoutFacebook +
-                ", countMdbWithoutTwitter=" + countMdbWithoutTwitter +
-                ", countMdbWithoutWebseite=" + countMdbWithoutWebseite +
-                ", countMdbWithoutWikipediaArticle=" + countMdbWithoutWikipediaArticle +
-                ", countKandidatWithoutAbgeordnetenwatch=" + countKandidatWithoutAbgeordnetenwatch +
-                ", countKandidatWithoutFacebook=" + countKandidatWithoutFacebook +
-                ", countKandidatWithoutWebseite=" + countKandidatWithoutWebseite +
-                ", countKandidatWithoutFotoUrl=" + countKandidatWithoutFotoUrl +
-                ", countKandidatWithoutLobbypediaUrl=" + countKandidatWithoutLobbypediaUrl +
-                ", countKandidatWithoutSoundcloud=" + countKandidatWithoutSoundcloud +
-                ", countKandidatWithoutYoutube=" + countKandidatWithoutYoutube +
-                ", countKandidatWithoutTwitter=" + countKandidatWithoutTwitter +
-                '}';
+        List<String> outputLines = new ArrayList<>();
+        outputLines.add(" Mdb:                                                  "+this.getCountMdb());
+        outputLines.add("  Mdb without Abgeordnetenwatch:                       "+this.getCountMdbWithoutAbgeordnetenwatch());
+        outputLines.add("  Mdb without FotoUrl:                                 "+this.getCountMdbWithoutFotoUrl());
+        outputLines.add("  Mdb without BundestagProfile:                        "+this.getCountMdbWithoutBundestagProfile());
+        outputLines.add("  Mdb without WikipediaArticle:                        "+this.getCountMdbWithoutWikipediaArticle());
+        outputLines.add("  Mdb without Twitter:                                 "+this.getCountMdbWithoutTwitter());
+        outputLines.add("  Mdb without Facebook:                                "+this.getCountMdbWithoutFacebook());
+        outputLines.add("  Mdb without Webseite:                                "+this.getCountMdbWithoutWebseite());
+        outputLines.add(" Kandidat:                                             "+this.getCountKandidat());
+        outputLines.add("  Kandidat without Abgeordnetenwatch:                  "+this.getCountKandidatWithoutAbgeordnetenwatch());
+        outputLines.add("  Kandidat without FotoUrl:                            "+this.getCountKandidatWithoutFotoUrl());
+        outputLines.add("  Kandidat without Twitter:                            "+this.getCountKandidatWithoutTwitter());
+        outputLines.add("  Kandidat without Facebook:                           "+this.getCountKandidatWithoutFacebook());
+        outputLines.add("  Kandidat without Webseite:                           "+this.getCountKandidatWithoutWebseite());
+        outputLines.add("  Kandidat without LobbypediaUrl:                      "+this.getCountKandidatWithoutLobbypediaUrl());
+        outputLines.add("  Kandidat without Soundcloud:                         "+this.getCountKandidatWithoutSoundcloud());
+        outputLines.add("  Kandidat without Youtube:                            "+this.getCountKandidatWithoutYoutube());
+        StringBuffer sb = new StringBuffer();
+        for(String outputLine:outputLines){
+            sb.append(outputLine);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

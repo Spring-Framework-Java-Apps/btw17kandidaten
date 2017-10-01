@@ -6,6 +6,8 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Validated
@@ -20,6 +22,9 @@ public class OtherProperties {
 
         @Valid
         private Error error = new Error();
+
+        @Valid
+        private Compression compression = new Compression();
 
         @Validated
         public static class Error {
@@ -37,12 +42,46 @@ public class OtherProperties {
 
         }
 
+        @Validated
+        public static class Compression {
+
+            @NotNull
+            private Boolean enabled;
+
+            @NotNull
+            private Integer minResponseSize;
+
+            public Boolean getEnabled() {
+                return enabled;
+            }
+
+            public void setEnabled(Boolean enabled) {
+                this.enabled = enabled;
+            }
+
+            public Integer getMinResponseSize() {
+                return minResponseSize;
+            }
+
+            public void setMinResponseSize(Integer minResponseSize) {
+                this.minResponseSize = minResponseSize;
+            }
+        }
+
         public Error getError() {
             return error;
         }
 
         public void setError(Error error) {
             this.error = error;
+        }
+
+        public Compression getCompression() {
+            return compression;
+        }
+
+        public void setCompression(Compression compression) {
+            this.compression = compression;
         }
     }
 
@@ -54,4 +93,17 @@ public class OtherProperties {
         this.server = server;
     }
 
+    @Override
+    public String toString() {
+        List<String> outputLines = new ArrayList<>();
+        outputLines.add(" server.error.path =                                   "+this.getServer().getError().getPath());
+        outputLines.add(" server.compression.enabled =                          "+this.getServer().getCompression().getEnabled());
+        outputLines.add(" server.compression.min-response-size =                "+this.getServer().getCompression().getMinResponseSize());
+        StringBuffer sb = new StringBuffer();
+        for(String outputLine:outputLines){
+            sb.append(outputLine);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

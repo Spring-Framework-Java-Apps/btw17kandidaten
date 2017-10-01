@@ -93,7 +93,7 @@ public class BundeslandServiceTest {
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
         long resultSize = bundeslaender.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<Bundesland> bundeslaender : "+resultSize,resultSize>0);
+        Assert.assertTrue("Page<BundeslandEnum> bundeslaender : "+resultSize,resultSize>0);
         boolean goOn = true;
         while(goOn) {
             for (Bundesland bundesland : bundeslaender.getContent()) {

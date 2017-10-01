@@ -17,8 +17,8 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
@@ -81,7 +81,7 @@ public class KandidatenNormalizedTableBuilder {
     private GeburtsortService geburtsortService;
 
     @Autowired
-    private KandidatFlatService kandidatFlatService;
+    private Btw17KandidatFlatService btw17KandidatFlatService;
 
     @Autowired
     private KandidatService kandidatService;
@@ -116,11 +116,11 @@ public class KandidatenNormalizedTableBuilder {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
-        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
+        Page<Btw17KandidatFlat> allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         List<LandesListe> landesListen = new ArrayList<>();
         while(goOn) {
-            for (KandidatFlat in : allKandidatenPage.getContent()) {
+            for (Btw17KandidatFlat in : allKandidatenPage.getContent()) {
                 ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
                 Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
                 if((listePartei!=null)&&(listeBundeslandLand!=null)){
@@ -132,7 +132,7 @@ public class KandidatenNormalizedTableBuilder {
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
-                allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
+                allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
             } else {
                 goOn = false;
             }
@@ -146,10 +146,10 @@ public class KandidatenNormalizedTableBuilder {
         int page = 0;
         int size = 250;
         Pageable pageable = new PageRequest(page,size);
-        Page<KandidatFlat> allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
+        Page<Btw17KandidatFlat> allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         while(goOn){
-            for(KandidatFlat in :allKandidatenPage.getContent()){
+            for(Btw17KandidatFlat in :allKandidatenPage.getContent()){
                 log.info(in.toString());
                 Kandidat out = new Kandidat();
                 out.setAlter(in.getAlter());
@@ -197,7 +197,7 @@ public class KandidatenNormalizedTableBuilder {
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
-                out.setKandidatFlat(in);
+                out.setBtw17KandidatFlat(in);
 
                 out = kandidatService.create(out);
 
@@ -205,7 +205,7 @@ public class KandidatenNormalizedTableBuilder {
             }
             if(allKandidatenPage.hasNext()){
                 pageable = allKandidatenPage.nextPageable();
-                allKandidatenPage = kandidatFlatService.getAllOrderByNachname(pageable);
+                allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
             } else {
                 goOn = false;
             }
@@ -404,7 +404,7 @@ public class KandidatenNormalizedTableBuilder {
     @Commit
     @Test
     public void build200CheckResults() throws IOException {
-        long countKandidatenFlat = kandidatFlatService.count();
+        long countKandidatenFlat = btw17KandidatFlatService.count();
         long countKandidaten = kandidatService.count();
         Assert.assertEquals(countKandidatenFlat,countKandidaten);
     }
@@ -432,7 +432,7 @@ public class KandidatenNormalizedTableBuilder {
         long countWahlkreisIst = wahlkreisService.count();
         long countWohnortIst = wohnortService.count();
         long countLandesListeIst = landesListeService.count();
-        long countKandidatFlatIst = kandidatFlatService.count();
+        long countKandidatFlatIst = btw17KandidatFlatService.count();
         long countKandidatIst = kandidatService.count();
 
         Assert.assertEquals(countBerufSoll,countBerufIst);

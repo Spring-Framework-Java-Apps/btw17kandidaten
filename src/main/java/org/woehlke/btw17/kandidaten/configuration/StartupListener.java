@@ -7,9 +7,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.ReportOverview;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final KandidatenProperties kandidatenProperties;
 
+    private final OtherProperties otherProperties;
+
     private final BerufService berufService;
 
     private final BerufsgruppeService berufsgruppeService;
@@ -31,8 +34,6 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
     private final BundeslandService bundeslandService;
 
     private final GeburtsortService geburtsortService;
-
-    private final KandidatFlatService kandidatFlatService;
 
     private final KandidatService kandidatService;
 
@@ -58,15 +59,26 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final WebseiteCmsService webseiteCmsService;
 
+    private final Btw17ErgebnisService btw17ErgebnisService;
+
+    private final Btw17StrukturdatenService btw17StrukturdatenService;
+
+    private final Btw17WahlbewerberService btw17WahlbewerberService;
+
+    private final Btw17WahlkreisService btw17WahlkreisService;
+
+    private final Btw17KandidatFlatService btw17KandidatFlatService;
+
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, KandidatFlatService kandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
+        this.otherProperties = otherProperties;
         this.berufService = berufService;
         this.berufsgruppeService = berufsgruppeService;
         this.bundeslandService = bundeslandService;
         this.geburtsortService = geburtsortService;
-        this.kandidatFlatService = kandidatFlatService;
+        this.btw17KandidatFlatService = btw17KandidatFlatService;
         this.kandidatService = kandidatService;
         this.listeParteiService = listeParteiService;
         this.parteiService = parteiService;
@@ -79,11 +91,14 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.kandidatReportService = kandidatReportService;
         this.webseiteAgenturService = webseiteAgenturService;
         this.webseiteCmsService = webseiteCmsService;
+        this.btw17ErgebnisService = btw17ErgebnisService;
+        this.btw17StrukturdatenService = btw17StrukturdatenService;
+        this.btw17WahlbewerberService = btw17WahlbewerberService;
+        this.btw17WahlkreisService = btw17WahlkreisService;
     }
 
-    @Override
-    public void onApplicationEvent(final ContextRefreshedEvent event) {
-        long databaseRows = kandidatFlatService.count();
+    private long getDatabaseRows(){
+        long databaseRows = btw17KandidatFlatService.count();
         databaseRows += berufService.count();
         databaseRows += bundeslandService.countBundeslandAgentur();
         databaseRows += bundeslandService.count();
@@ -102,82 +117,58 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         databaseRows += kandidatService.countKandidatAusschuss();
         databaseRows += kandidatService.countKandidatMinisterium();
         databaseRows += kandidatService.count();
+        databaseRows += btw17ErgebnisService.count();
+        databaseRows += btw17StrukturdatenService.count();
+        databaseRows += btw17WahlbewerberService.count();
+        databaseRows += btw17WahlkreisService.count();
+        databaseRows += btw17KandidatFlatService.count();
+        return databaseRows;
+    }
+
+    @Override
+    public void onApplicationEvent(final ContextRefreshedEvent event) {
+        String regex="\\n\\n";
+        String replacement="\n";
         List<String> outputLines = new ArrayList<>();
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add("    ***  Bundestagswahl 2017 - Direkt Kandidaten  ***");
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        int i = 0;
-        for(String path:kandidatenProperties.getWebSecurityConfigPublicPaths()){
-            outputLines.add(" btw17.kandidaten.webSecurityConfigPublicPaths["+i+"] =   "+path);
-            i++;
-        }
-        i = 0;
-        for(String urlPrefix:kandidatenProperties.getUrlPrefixForKandidatFoto()){
-            outputLines.add(" btw17.kandidaten.urlPrefixForKandidatFoto["+i+"] =        "+urlPrefix);
-            i++;
-        }
-        outputLines.add(" btw17.kandidaten.pageSize =                           "+kandidatenProperties.getPageSize());
-        outputLines.add(" btw17.kandidaten.loginUsername =                      "+kandidatenProperties.getLoginUsername());
-        outputLines.add(" btw17.kandidaten.loginPassword =                      "+kandidatenProperties.getLoginPassword());
-        outputLines.add(" btw17.kandidaten.googleMapsApiKey =                   "+kandidatenProperties.getGoogleMapsApiKey());
-        outputLines.add(" btw17.kandidaten.googleAnalyticsKey =                 "+kandidatenProperties.getGoogleAnalyticsKey());
-        outputLines.add(" btw17.kandidaten.googleSiteVerification =             "+kandidatenProperties.getGoogleSiteVerification());
-        outputLines.add(" btw17.kandidaten.msvalidateKey =                      "+kandidatenProperties.getMsvalidateKey());
-        outputLines.add(" btw17.kandidaten.twitterCardCreator =                 "+kandidatenProperties.getTwitterCardCreator());
-        outputLines.add(" btw17.kandidaten.twitterCardSite =                    "+kandidatenProperties.getTwitterCardSite());
-        outputLines.add(" btw17.kandidaten.facebookAppId =                      "+kandidatenProperties.getFacebookAppId());
-        outputLines.add(" btw17.kandidaten.pageSubTitle =                       "+kandidatenProperties.getPageSubTitle());
-        outputLines.add(" btw17.kandidaten.connTimeToLive =                     "+kandidatenProperties.getConnTimeToLive());
-        outputLines.add(" btw17.kandidaten.maxIdleTime =                        "+kandidatenProperties.getMaxIdleTime());
-        outputLines.add(" btw17.kandidaten.millisToWaitBetweenTwoApiCalls =     "+kandidatenProperties.getMillisToWaitBetweenTwoApiCalls());
-        outputLines.add(" btw17.kandidaten.checkFotoUrl =                       "+kandidatenProperties.getCheckFotoUrl());
+        outputLines.add(kandidatenProperties.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(springProperties.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(" spring.datasource.url = "+springProperties.getDatasource().getUrl());
+        outputLines.add(otherProperties.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         ReportOverview reportOverview = kandidatReportService.getOverview();
-        outputLines.add("Mdb:                                 "+reportOverview.getCountMdb());
-        outputLines.add(" Mdb without Abgeordnetenwatch:      "+reportOverview.getCountMdbWithoutAbgeordnetenwatch());
-        outputLines.add(" Mdb without FotoUrl:                "+reportOverview.getCountMdbWithoutFotoUrl());
-        outputLines.add(" Mdb without BundestagProfile:       "+reportOverview.getCountMdbWithoutBundestagProfile());
-        outputLines.add(" Mdb without WikipediaArticle:       "+reportOverview.getCountMdbWithoutWikipediaArticle());
-        outputLines.add(" Mdb without Twitter:                "+reportOverview.getCountMdbWithoutTwitter());
-        outputLines.add(" Mdb without Facebook:               "+reportOverview.getCountMdbWithoutFacebook());
-        outputLines.add(" Mdb without Webseite:               "+reportOverview.getCountMdbWithoutWebseite());
-        outputLines.add("Kandidat:                            "+reportOverview.getCountKandidat());
-        outputLines.add(" Kandidat without Abgeordnetenwatch: "+reportOverview.getCountKandidatWithoutAbgeordnetenwatch());
-        outputLines.add(" Kandidat without FotoUrl:           "+reportOverview.getCountKandidatWithoutFotoUrl());
-        outputLines.add(" Kandidat without Twitter:           "+reportOverview.getCountKandidatWithoutTwitter());
-        outputLines.add(" Kandidat without Facebook:          "+reportOverview.getCountKandidatWithoutFacebook());
-        outputLines.add(" Kandidat without Webseite:          "+reportOverview.getCountKandidatWithoutWebseite());
-        outputLines.add(" Kandidat without LobbypediaUrl:     "+reportOverview.getCountKandidatWithoutLobbypediaUrl());
-        outputLines.add(" Kandidat without Soundcloud:        "+reportOverview.getCountKandidatWithoutSoundcloud());
-        outputLines.add(" Kandidat without Youtube:           "+reportOverview.getCountKandidatWithoutYoutube());
+        outputLines.add(reportOverview.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat: "+kandidatFlatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:                              "+berufService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe:                       "+berufsgruppeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland2Agentur:                 "+bundeslandService.countBundeslandAgentur());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:                         "+bundeslandService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:                         "+geburtsortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:                        "+listeParteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:                             "+parteiService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:                          "+wahlkreisService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:                            "+wohnortService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.LandesListe:                        "+landesListeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:                           "+fraktionService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:                        "+ministeriumService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:                          "+ausschussService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:                        "+webseiteCmsService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:                    "+webseiteAgenturService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:                   "+kandidatService.countKandidatAgentur());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ausschuss:                 "+kandidatService.countKandidatAusschuss());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ministerium:               "+kandidatService.countKandidatMinisterium());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:                           "+kandidatService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Beruf:                "+berufService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe:         "+berufsgruppeService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland2Agentur:   "+bundeslandService.countBundeslandAgentur());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Bundesland:           "+bundeslandService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Geburtsort:           "+geburtsortService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.ListePartei:          "+listeParteiService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Partei:               "+parteiService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis:            "+wahlkreisService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wohnort:              "+wohnortService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.LandesListe:          "+landesListeService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:             "+fraktionService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:          "+ministeriumService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:            "+ausschussService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:          "+webseiteCmsService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:      "+webseiteAgenturService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:     "+kandidatService.countKandidatAgentur());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ausschuss:   "+kandidatService.countKandidatAusschuss());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Ministerium: "+kandidatService.countKandidatMinisterium());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat:             "+kandidatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis      "+btw17ErgebnisService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Strukturdaten "+btw17StrukturdatenService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber  "+btw17WahlbewerberService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlkreis     "+btw17WahlkreisService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat  "+btw17KandidatFlatService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(" Database Rows: "+databaseRows);
+        outputLines.add(" Database Rows: "+getDatabaseRows());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         StringBuffer sb = new StringBuffer();
         sb.append("\n");
@@ -185,6 +176,6 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
             sb.append(outputLine);
             sb.append("\n");
         }
-        log.info(sb.toString());
+        log.info(sb.toString().replaceAll(regex,replacement));
     }
 }

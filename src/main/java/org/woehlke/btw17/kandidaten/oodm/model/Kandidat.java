@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -86,7 +86,7 @@ import static javax.persistence.FetchType.LAZY;
     ),
     @NamedQuery(
         name = "Kandidat.findByKandidatFlatId",
-        query = "select o from Kandidat as o where o.kandidatFlat.id=:kandidatFlatId order by o.nachname"
+        query = "select o from Kandidat as o where o.btw17KandidatFlat.id=:kandidatFlatId order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.getAll",
@@ -256,14 +256,14 @@ import static javax.persistence.FetchType.LAZY;
         name = "Kandidat.contByWebseiteCms",
         query = "select count(o) from Kandidat as o join o.webseite.cms webseiteCms where webseiteCms=:webseiteCms"
     ),
-        @NamedQuery(
-                name = "Kandidat.findByBundesland",
-                query = "select o from Kandidat as o where o.adresse.bundesland=:bundesland order by o.nachname"
-        ),
-        @NamedQuery(
-                name = "Kandidat.countByBundesland",
-                query = "select count(o) from Kandidat as o where o.adresse.bundesland=:bundesland"
-        )
+    @NamedQuery(
+            name = "Kandidat.findByBundesland",
+            query = "select o from Kandidat as o where o.adresse.bundesland=:bundesland order by o.nachname"
+    ),
+    @NamedQuery(
+            name = "Kandidat.countByBundesland",
+            query = "select count(o) from Kandidat as o where o.adresse.bundesland=:bundesland"
+    )
 })
 @NamedNativeQueries({
     @NamedNativeQuery(
@@ -436,7 +436,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     @OneToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
-    private KandidatFlat kandidatFlat;
+    private Btw17KandidatFlat btw17KandidatFlat;
 
     @Transient
     @Override
@@ -708,12 +708,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         this.googleMapsUrl = googleMapsUrl;
     }
 
-    public KandidatFlat getKandidatFlat() {
-        return kandidatFlat;
+    public Btw17KandidatFlat getBtw17KandidatFlat() {
+        return btw17KandidatFlat;
     }
 
-    public void setKandidatFlat(KandidatFlat kandidatFlat) {
-        this.kandidatFlat = kandidatFlat;
+    public void setBtw17KandidatFlat(Btw17KandidatFlat btw17KandidatFlat) {
+        this.btw17KandidatFlat = btw17KandidatFlat;
     }
 
     public Set<Ministerium> getMinisterien() {
@@ -820,7 +820,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
         if (adresse != null ? !adresse.equals(kandidat.adresse) : kandidat.adresse != null) return false;
-        return kandidatFlat != null ? kandidatFlat.equals(kandidat.kandidatFlat) : kandidat.kandidatFlat == null;
+        return btw17KandidatFlat != null ? btw17KandidatFlat.equals(kandidat.btw17KandidatFlat) : kandidat.btw17KandidatFlat == null;
     }
 
     @Override
@@ -862,7 +862,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
-        result = 31 * result + (kandidatFlat != null ? kandidatFlat.hashCode() : 0);
+        result = 31 * result + (btw17KandidatFlat != null ? btw17KandidatFlat.hashCode() : 0);
         return result;
     }
 
@@ -906,7 +906,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", webseite=" + webseite +
                 ", onlineStrategie=" + onlineStrategie +
                 ", adresse=" + adresse +
-                ", kandidatFlat=" + kandidatFlat +
+                ", btw17KandidatFlat=" + btw17KandidatFlat +
                 '}';
     }
 }

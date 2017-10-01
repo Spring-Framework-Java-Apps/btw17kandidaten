@@ -132,7 +132,7 @@ public class KandidatListener {
             log.debug(msg+"kandidat.getWebseite() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
-        log.debug(msg+"Adresse.Bundesland:");
+        log.debug(msg+"Adresse.BundeslandEnum:");
         if(kandidat.getAdresse() != null && kandidat.getAdresse().getBundesland() != null){
             log.debug(msg+kandidat.getAdresse().getBundesland().getName());
         } else {

@@ -3,11 +3,6 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.woehlke.btw17.importer.KandidatenFotoUrlUdpate;
-import org.woehlke.btw17.importer.KandidatenNormalizedTableBuilder;
-import org.woehlke.btw17.importer.UpdatePartei;
-import org.woehlke.btw17.importer.UpdateSearchEngines;
-import org.woehlke.btw17.importer.dimensions.*;
 import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.*;
 import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages.DatenschutzControllerTest;
 import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages.ImprintControllerTest;
@@ -16,6 +11,8 @@ import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche.Such
 import org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data.*;
 import org.woehlke.btw17.kandidaten.frontend.controller.redaktion.report.ReportControllerTest;
 import org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages.LoginControllerTest;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17KandidatFlatServiceTest;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlkreisServiceTest;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 @Suite.SuiteClasses({
@@ -72,8 +69,11 @@ import org.woehlke.btw17.kandidaten.oodm.service.*;
         WohnortServiceTest.class,
         WebseiteAgenturServiceTest.class,
         WebseiteCmsServiceTest.class,
-        KandidatFlatServiceTest.class,
-        KandidatServiceTest.class /*,
+        KandidatServiceTest.class,
+
+        Btw17KandidatFlatServiceTest.class,
+        Btw17WahlkreisServiceTest.class
+        /*,
 
         KandidatenNormalizedTableBuilder.class,
         KandidatenFotoUrlUdpate.class,

@@ -40,7 +40,7 @@ public class BundeslandRedaktionController extends AbstractController {
             ) Pageable pageable,
             Model model
     ) {
-        String pageTitle = "Bundesland";
+        String pageTitle = "BundeslandEnum";
         String pageSubTitle = kandidatenProperties.getPageSubTitle();
         String pageSymbol = PageSymbol.BUNDESLAND.getSymbolHtml();
         String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();

@@ -15,8 +15,8 @@ import org.woehlke.btw17.kandidaten.frontend.content.PageContent;
 import org.woehlke.btw17.kandidaten.configuration.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.KandidatFlatService;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17KandidatFlatService;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -53,29 +53,29 @@ public class KandidatFlatController extends AbstractController {
         String facebookAppId = kandidatenProperties.getFacebookAppId();
         PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
-        Page<KandidatFlat> allKandidatenPage =  kandidatFlatService.getAll(pageable);
+        Page<Btw17KandidatFlat> allKandidatenPage =  btw17KandidatFlatService.getAll(pageable);
         model.addAttribute("kandidaten", allKandidatenPage);
         return "kandidatflat/all";
     }
 
     @RequestMapping("/{id}")
     public String id(
-            @PathVariable("id") KandidatFlat kandidatFlat, Model model
+            @PathVariable("id") Btw17KandidatFlat btw17KandidatFlat, Model model
     ) {
-        if(kandidatFlat == null){
+        if(btw17KandidatFlat == null){
             throw new EntityNotFoundException();
         } else {
-            String pageTitle = kandidatFlat.getVorname()+" "+kandidatFlat.getNachname();
-            if(kandidatFlat.getListePartei() != null){
-                pageTitle += ", "+kandidatFlat.getListePartei();
-            } else if (kandidatFlat.getPartei() != null){
-                pageTitle += ", "+kandidatFlat.getPartei();
+            String pageTitle = btw17KandidatFlat.getVorname()+" "+ btw17KandidatFlat.getNachname();
+            if(btw17KandidatFlat.getListePartei() != null){
+                pageTitle += ", "+ btw17KandidatFlat.getListePartei();
+            } else if (btw17KandidatFlat.getPartei() != null){
+                pageTitle += ", "+ btw17KandidatFlat.getPartei();
             }
             String pageSubTitle = "Kandidaten der btw17";
             String pageSymbol = PageSymbol.KANDIDAT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
-            String pagerUrl = "/kandidatflat/"+kandidatFlat.getId();
+            String pagerUrl = "/kandidatflat/"+ btw17KandidatFlat.getId();
             String twitterCardSite = kandidatenProperties.getTwitterCardSite();
             String twitterCardCreator = kandidatenProperties.getTwitterCardCreator();
             JumbotronImage imageCss =  JumbotronImage.REICHSTAG_01;
@@ -84,19 +84,19 @@ public class KandidatFlatController extends AbstractController {
             String facebookAppId = kandidatenProperties.getFacebookAppId();
             PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
             model.addAttribute("pageContent",pageContent);
-            model.addAttribute("kandidat",kandidatFlat);
+            model.addAttribute("kandidat", btw17KandidatFlat);
             return "kandidatflat/id";
         }
     }
 
-    private final KandidatFlatService kandidatFlatService;
+    private final Btw17KandidatFlatService btw17KandidatFlatService;
 
     private final KandidatenProperties kandidatenProperties;
 
     @Autowired
-    public KandidatFlatController(SessionHandler sessionHandler, KandidatFlatService kandidatFlatService, KandidatenProperties kandidatenProperties) {
+    public KandidatFlatController(SessionHandler sessionHandler, Btw17KandidatFlatService btw17KandidatFlatService, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);
-        this.kandidatFlatService = kandidatFlatService;
+        this.btw17KandidatFlatService = btw17KandidatFlatService;
         this.kandidatenProperties = kandidatenProperties;
     }
 }
