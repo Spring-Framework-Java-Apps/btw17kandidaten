@@ -4,6 +4,11 @@ import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.listener.Btw17St
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(
@@ -15,6 +20,7 @@ import javax.persistence.*;
     indexes = {
         @Index(name = "idx_btw17_strukturdaten_anzahl_gemeinden", columnList = "anzahl_gemeinden"),
         @Index(name = "idx_btw17_strukturdaten_flaeche", columnList = "flaeche"),
+        @Index(name = "idx_btw17_strukturdaten_bevoelkerung_insgesamt", columnList = "bevoelkerung_insgesamt"),
         @Index(name = "idx_btw17_strukturdaten_bevoelkerung_deutsche", columnList = "bevoelkerung_deutsche"),
         @Index(name = "idx_btw17_strukturdaten_bevoelkerung_auslaender", columnList = "bevoelkerung_auslaender"),
         @Index(name = "idx_btw17_strukturdaten_bevoelkerung_dichte", columnList = "bevoelkerung_dichte"),
@@ -70,7 +76,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(
                 name = "Btw17Strukturdaten.getAllIds",
-                query = "select o.id from Btw17Ergebnis as o order by o.id"
+                query = "select o.id from Btw17Strukturdaten as o order by o.id"
         )
 })
 @EntityListeners(Btw17StrukturdatenListener.class)
@@ -83,307 +89,412 @@ public class Btw17Strukturdaten implements DomainObject {
     /**
      * Land
      */
+    @NotNull
     @Column(name = "bundesland_name", nullable=false)
     private String bundeslandName;
 
     /**
      * Wahlkreis-Nr.
      */
+    @NotNull
     @Column(name = "wahlkreis_nummer", nullable=false, unique = true)
     private Long wahlkreisNummer;
 
     /**
      * Wahlkreis-Name
      */
+    @NotNull
     @Column(name = "wahlkreis_name", nullable=false)
     private String wahlkreisName;
 
     /**
      * Gemeinden am 31.12.2015 (Anzahl)
      */
+    @NotNull
     @Column(name = "anzahl_gemeinden", nullable=false)
     private Long anzahlGemeinden;
 
     /**
      * Fläche am 31.12.2015 (km²)
      */
-    @Column(name = "flaeche", nullable=false)
-    private String flaeche;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "flaeche", nullable=false, precision=10, scale=1)
+    private BigDecimal flaeche;
+
 
     /**
      * Bevölkerung am 31.12.2015 - Insgesamt (in 1000)
      */
-    @Column(name = "bevoelkerung_deutsche", nullable=false)
-    private String bevoelkerungDeutsche;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungInsgesamt;
+
+    /**
+     * Bevölkerung am 31.12.2015 - Deutsche (in 1000)
+     */
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_deutsche", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungDeutsche;
 
     /**
      * Bevölkerung am 31.12.2015 - Ausländer (%)
      */
-    @Column(name = "bevoelkerung_auslaender", nullable=false)
-    private String bevoelkerungAuslaender;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_auslaender", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungAuslaender;
 
     /**
      * Bevölkerungsdichte am 31.12.2015 (Einwohner je km²)
      */
-    @Column(name = "bevoelkerung_dichte", nullable=false)
-    private String bevoelkerungsDichte;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_dichte", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungsDichte;
 
     /**
      * Zu- (+) bzw. Abnahme (-) der Bevölkerung 2015 - Geburtensaldo (je 1000 Einwohner)
      */
-    @Column(name = "bevoelkerung_geburtensaldo", nullable=false)
-    private String bevoelkerungsGeburtensaldo;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_geburtensaldo", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungsGeburtensaldo;
 
     /**
      * Zu- (+) bzw. Abnahme (-) der Bevölkerung 2015 - Wanderungssaldo (je 1000 Einwohner)
      */
-    @Column(name = "bevoelkerung_wanderungssaldo", nullable=false)
-    private String bevoelkerungWanderungssaldo;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "bevoelkerung_wanderungssaldo", nullable=false, precision=10, scale=1)
+    private BigDecimal bevoelkerungWanderungssaldo;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - unter 18 (%)
      */
-    @Column(name = "alter_unter18", nullable=false)
-    private String alterUnter18;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_unter18", nullable=false, precision=10, scale=1)
+    private BigDecimal alterUnter18;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - 18-24 (%)
      */
-    @Column(name = "alter_18bis24", nullable=false)
-    private String alter18bis24;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_18bis24", nullable=false, precision=10, scale=1)
+    private BigDecimal alter18bis24;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - 25-34 (%)
      */
-    @Column(name = "alter_25bis34", nullable=false)
-    private String alter25bis34;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_25bis34", nullable=false, precision=10, scale=1)
+    private BigDecimal alter25bis34;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - 35-59 (%)
      */
-    @Column(name = "alter_35bis59", nullable=false)
-    private String alter35bis59;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_35bis59", nullable=false, precision=10, scale=1)
+    private BigDecimal alter35bis59;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - 60-74 (%)
      */
-    @Column(name = "alter_60bis74", nullable=false)
-    private String alter60bis74;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_60bis74", nullable=false, precision=10, scale=1)
+    private BigDecimal alter60bis74;
 
     /**
      * Alter von ... bis ... Jahren am 31.12.2015 - 75 und mehr (%)
      */
-    @Column(name = "alter_75plus", nullable=false)
-    private String alter75plus;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "alter_75plus", nullable=false, precision=10, scale=1)
+    private BigDecimal alter75plus;
 
     /**
      * Zensus 2011, Bevölkerung nach Migrationshintergrund am 09.05.2011 - ohne Migrationshintergrund (%)
      */
-    @Column(name = "migrationshintergrund_ohne", nullable=false)
-    private String migrationshintergrundOhne;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "migrationshintergrund_ohne", nullable=false, precision=10, scale=1)
+    private BigDecimal migrationshintergrundOhne;
 
     /**
      * Zensus 2011, Bevölkerung nach Migrationshintergrund am 09.05.2011 - mit Migrationshintergrund (%)
      */
-    @Column(name = "migrationshintergrund_mit", nullable=false)
-    private String migrationshintergrundMit;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "migrationshintergrund_mit", nullable=false, precision=10, scale=1)
+    private BigDecimal migrationshintergrundMit;
 
 
     /**
      * Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Römisch-katholische Kirche (%)
      */
-    @Column(name = "religion_katholisch", nullable=false)
-    private String religionKatholischeKirche;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "religion_katholisch", nullable=false, precision=10, scale=1)
+    private BigDecimal religionKatholischeKirche;
 
     /**
      * Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Evangelische Kirche (%)
      */
-    @Column(name = "religion_evangelisch", nullable=false)
-    private String religionEvangelischeKirche;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "religion_evangelisch", nullable=false, precision=10, scale=1)
+    private BigDecimal religionEvangelischeKirche;
 
     /**
      * Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Sonstige, keine, ohne Angabe (%)
      */
-    @Column(name = "religion_sonstige", nullable=false)
-    private String religionSonstige;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "religion_sonstige", nullable=false, precision=10, scale=1)
+    private BigDecimal religionSonstige;
 
     /**
      * Zensus 2011, Wohnungen in Wohngebäuden am 09.05.2011 - Eigentümerquote
      */
-    @Column(name = "wohnungen_eigentuemerquote", nullable=false)
-    private String wohnungenEigentuemerquote;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "wohnungen_eigentuemerquote", nullable=false, precision=10, scale=1)
+    private BigDecimal wohnungenEigentuemerquote;
 
     /**
      * Bautätigkeit und Wohnungswesen - Fertiggestellte Wohnungen 2014 (je 1000 Einwohner)
      */
-    @Column(name = "wohnungen_fertiggestellte", nullable=false)
-    private String wohnungenFertiggestellte;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "wohnungen_fertiggestellte", nullable=false, precision=10, scale=1)
+    private BigDecimal wohnungenFertiggestellte;
 
     /**
      * Bautätigkeit und Wohnungswesen - Bestand an Wohnungen am 31.12.2015 (je 1000 Einwohner)
      */
-    @Column(name = "wohnungen_bestand", nullable=false)
-    private String wohnungenBestand;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "wohnungen_bestand", nullable=false, precision=10, scale=1)
+    private BigDecimal wohnungenBestand;
 
     /**
      * Verfügbares Einkommen der privaten Haushalte 2014 (€ je Einwohner)
      */
-    @Column(name = "einwohner_einkommen", nullable=false)
-    private String  einwohnerEinkommen;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "einwohner_einkommen", nullable=false, precision=10, scale=1)
+    private BigDecimal einwohnerEinkommen;
 
     /**
      * Bruttoinlandsprodukt 2014 (€ je Einwohner)
      */
+    @NotNull
     @Column(name = "einwohner_bruttoinlandsprodukt", nullable=false)
-    private String  einwohnerBruttoinlandsprodukt;
+    private Long einwohnerBruttoinlandsprodukt;
 
     /**
      * Kraftfahrzeugbestand am 01.01.2016 (je 1000 Einwohner)
      */
-    @Column(name = "einwohner_kraftfahrzeugbestand", nullable=false)
-    private String  einwohnerKraftfahrzeugbestand;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "einwohner_kraftfahrzeugbestand", nullable=false, precision=10, scale=1)
+    private BigDecimal einwohnerKraftfahrzeugbestand;
 
     /**
      * Absolventen/Abgänger beruflicher Schulen 2015;
      */
-    @Column(name = "absolventen_berufliche_schulen", nullable=false)
-    private String absolventenBeruflicheSchulen;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_berufliche_schulen", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenBeruflicheSchulen;
 
     /**
      * Absolventen/Abgänger allgemeinbildender Schulen 2015 - insgesamt ohne Externe (je 1000 Einwohner)
      */
-    @Column(name = "absolventen_allgemeinbildende_schulen_insgesamt", nullable=false)
-    private String absolventenAllgemeinbildendeSchulenInsgesamt;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_allgemeinbildende_schulen_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenAllgemeinbildendeSchulenInsgesamt;
 
     /**
      * Absolventen/Abgänger allgemeinbildender Schulen 2015 - ohne Hauptschulabschluss (%)
      */
-    @Column(name = "absolventen_hauptschulabschluss_ohne", nullable=false)
-    private String absolventenHauptschulabschlussOhne;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_hauptschulabschluss_ohne", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenHauptschulabschlussOhne;
 
     /**
      * Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit Hauptschulabschluss (%)
      */
-    @Column(name = "absolventen_hauptschulabschluss_mit", nullable=false)
-    private String absolventenHauptschulabschlussMit;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_hauptschulabschluss_mit", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenHauptschulabschlussMit;
 
     /**
      * Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit mittlerem Schulabschluss (%)
      */
-    @Column(name = "absolventen_realschule", nullable=false)
-    private String absolventenRealschule;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_realschule", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenRealschule;
 
     /**
      * Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit allgemeiner und Fachhochschulreife (%)
      */
-    @Column(name = "absolventen_abitur", nullable=false)
-    private String absolventenAbitur;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "absolventen_abitur", nullable=false, precision=10, scale=1)
+    private BigDecimal absolventenAbitur;
 
     /**
      * Kindertagesbetreuung: Betreute Kinder am 01.03.2016 (je 1000 Einwohner)
      */
-    @Column(name = "kitas_betreute_kinder", nullable=false)
-    private String kitasBetreuteKinder;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "kitas_betreute_kinder", nullable=false, precision=10, scale=1)
+    private BigDecimal kitasBetreuteKinder;
 
     /**
      * Unternehmensregister 2014 - Unternehmen insgesamt (je 1000 Einwohner)
      */
-    @Column(name = "unternehmen_insgesamt", nullable=false)
-    private String unternehmenInsgesamt;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "unternehmen_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal unternehmenInsgesamt;
 
     /**
      * Unternehmensregister 2014 - Handwerksunternehmen (je 1000 Einwohner)
      */
-    @Column(name = "unternehmen_handwerk", nullable=false)
-    private String unternehmenHandwerk;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "unternehmen_handwerk", nullable=false, precision=10, scale=1)
+    private BigDecimal unternehmenHandwerk;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - insgesamt (je 1000 Einwohner)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_insgesamt", nullable=false)
-    private String sozialversicherungBeschaeftigteInsgesamt;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteInsgesamt;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Land- und Forstwirtschaft, Fischerei (%)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_landwirtschaft", nullable=false)
-    private String sozialversicherungBeschaeftigteLandwirtschaft;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_landwirtschaft", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteLandwirtschaft;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Produzierendes Gewerbe (%)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_produzierendes_gewerbe", nullable=false)
-    private String sozialversicherungBeschaeftigteProduzierendesGewerbe;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_produzierendes_gewerbe", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteProduzierendesGewerbe;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Handel, Gastgewerbe, Verkehr (%)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_handel", nullable=false)
-    private String sozialversicherungBeschaeftigteHandel;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_handel", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteHandel;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Öffentliche und private Dienstleister (%)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_dienstleister", nullable=false)
-    private String sozialversicherungBeschaeftigteDienstleister;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_dienstleister", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteDienstleister;
 
     /**
      * Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Übrige Dienstleister und 'ohne Angabe' (%)
      */
-    @Column(name = "sozialversicherung_beschaeftigte_sonstige", nullable=false)
-    private String sozialversicherungBeschaeftigteSonstige;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sozialversicherung_beschaeftigte_sonstige", nullable=false, precision=10, scale=1)
+    private BigDecimal sozialversicherungBeschaeftigteSonstige;
 
     /**
      * Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 -  insgesamt (je 1000 Einwohner)
      */
-    @Column(name = "sgb2_insgesamt", nullable=false)
-    private String sgb2insgesamt;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sgb2_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal sgb2insgesamt;
 
     /**
      * Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 - nicht erwerbsfähige Hilfebedürftige (%)
      */
-    @Column(name = "sgb2_erwerbsunfaehige", nullable=false)
-    private String sgb2erwerbsunfaehige;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sgb2_erwerbsunfaehige", nullable=false, precision=10, scale=1)
+    private BigDecimal sgb2erwerbsunfaehige;
 
     /**
      * Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 - Ausländer (%)
      */
-    @Column(name = "sgb2_auslaender", nullable=false)
-    private String sgb2auslaender;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "sgb2_auslaender", nullable=false, precision=10, scale=1)
+    private BigDecimal sgb2auslaender;
 
     /**
      * Arbeitslosenquote März 2017 - insgesamt
      */
-    @Column(name = "arbeitslosenquote_insgesamt", nullable=false)
-    private String arbeitslosenquoteInsgesamt;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "arbeitslosenquote_insgesamt", nullable=false, precision=10, scale=1)
+    private BigDecimal arbeitslosenquoteInsgesamt;
 
     /**
      * Arbeitslosenquote März 2017 - Männer
      */
-    @Column(name = "arbeitslosenquote_maenner", nullable=false)
-    private String arbeitslosenquoteMaenner;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "arbeitslosenquote_maenner", nullable=false, precision=10, scale=1)
+    private BigDecimal arbeitslosenquoteMaenner;
 
     /**
      * Arbeitslosenquote März 2017 - Frauen
      */
-    @Column(name = "arbeitslosenquote_frauen", nullable=false)
-    private String arbeitslosenquoteFrauen;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "arbeitslosenquote_frauen", nullable=false, precision=10, scale=1)
+    private BigDecimal arbeitslosenquoteFrauen;
 
     /**
      * Arbeitslosenquote März 2017 - 15 bis unter 20 Jahre
      */
-    @Column(name = "arbeitslosenquote_12bis20", nullable=false)
-    private String arbeitslosenquote12bis20;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "arbeitslosenquote_12bis20", nullable=false, precision=10, scale=1)
+    private BigDecimal arbeitslosenquote12bis20;
 
     /**
      * Arbeitslosenquote März 2017 - 55 bis unter 65 Jahre
      */
-    @Column(name = "arbeitslosenquote_55bis65", nullable=false)
-    private String arbeitslosenquote55bis65;
+    @NotNull
+    @Digits(integer = 10 /*precision*/, fraction = 1 /*scale*/)
+    @Column(name = "arbeitslosenquote_55bis65", nullable=false, precision=10, scale=1)
+    private BigDecimal arbeitslosenquote55bis65;
 
     /**
      * Fußnoten
      */
+    @NotNull
     @Column(name = "fussnoten", nullable=false)
     private String fussnoten;
 
@@ -437,371 +548,371 @@ public class Btw17Strukturdaten implements DomainObject {
         this.anzahlGemeinden = anzahlGemeinden;
     }
 
-    public String getFlaeche() {
+    public BigDecimal getFlaeche() {
         return flaeche;
     }
 
-    public void setFlaeche(String flaeche) {
+    public void setFlaeche(BigDecimal flaeche) {
         this.flaeche = flaeche;
     }
 
-    public String getBevoelkerungDeutsche() {
+    public BigDecimal getBevoelkerungDeutsche() {
         return bevoelkerungDeutsche;
     }
 
-    public void setBevoelkerungDeutsche(String bevoelkerungDeutsche) {
+    public void setBevoelkerungDeutsche(BigDecimal bevoelkerungDeutsche) {
         this.bevoelkerungDeutsche = bevoelkerungDeutsche;
     }
 
-    public String getBevoelkerungAuslaender() {
+    public BigDecimal getBevoelkerungAuslaender() {
         return bevoelkerungAuslaender;
     }
 
-    public void setBevoelkerungAuslaender(String bevoelkerungAuslaender) {
+    public void setBevoelkerungAuslaender(BigDecimal bevoelkerungAuslaender) {
         this.bevoelkerungAuslaender = bevoelkerungAuslaender;
     }
 
-    public String getBevoelkerungsDichte() {
+    public BigDecimal getBevoelkerungsDichte() {
         return bevoelkerungsDichte;
     }
 
-    public void setBevoelkerungsDichte(String bevoelkerungsDichte) {
+    public void setBevoelkerungsDichte(BigDecimal bevoelkerungsDichte) {
         this.bevoelkerungsDichte = bevoelkerungsDichte;
     }
 
-    public String getBevoelkerungsGeburtensaldo() {
+    public BigDecimal getBevoelkerungsGeburtensaldo() {
         return bevoelkerungsGeburtensaldo;
     }
 
-    public void setBevoelkerungsGeburtensaldo(String bevoelkerungsGeburtensaldo) {
+    public void setBevoelkerungsGeburtensaldo(BigDecimal bevoelkerungsGeburtensaldo) {
         this.bevoelkerungsGeburtensaldo = bevoelkerungsGeburtensaldo;
     }
 
-    public String getBevoelkerungWanderungssaldo() {
+    public BigDecimal getBevoelkerungWanderungssaldo() {
         return bevoelkerungWanderungssaldo;
     }
 
-    public void setBevoelkerungWanderungssaldo(String bevoelkerungWanderungssaldo) {
+    public void setBevoelkerungWanderungssaldo(BigDecimal bevoelkerungWanderungssaldo) {
         this.bevoelkerungWanderungssaldo = bevoelkerungWanderungssaldo;
     }
 
-    public String getAlterUnter18() {
+    public BigDecimal getAlterUnter18() {
         return alterUnter18;
     }
 
-    public void setAlterUnter18(String alterUnter18) {
+    public void setAlterUnter18(BigDecimal alterUnter18) {
         this.alterUnter18 = alterUnter18;
     }
 
-    public String getAlter18bis24() {
+    public BigDecimal getAlter18bis24() {
         return alter18bis24;
     }
 
-    public void setAlter18bis24(String alter18bis24) {
+    public void setAlter18bis24(BigDecimal alter18bis24) {
         this.alter18bis24 = alter18bis24;
     }
 
-    public String getAlter25bis34() {
+    public BigDecimal getAlter25bis34() {
         return alter25bis34;
     }
 
-    public void setAlter25bis34(String alter25bis34) {
+    public void setAlter25bis34(BigDecimal alter25bis34) {
         this.alter25bis34 = alter25bis34;
     }
 
-    public String getAlter35bis59() {
+    public BigDecimal getAlter35bis59() {
         return alter35bis59;
     }
 
-    public void setAlter35bis59(String alter35bis59) {
+    public void setAlter35bis59(BigDecimal alter35bis59) {
         this.alter35bis59 = alter35bis59;
     }
 
-    public String getAlter60bis74() {
+    public BigDecimal getAlter60bis74() {
         return alter60bis74;
     }
 
-    public void setAlter60bis74(String alter60bis74) {
+    public void setAlter60bis74(BigDecimal alter60bis74) {
         this.alter60bis74 = alter60bis74;
     }
 
-    public String getAlter75plus() {
+    public BigDecimal getAlter75plus() {
         return alter75plus;
     }
 
-    public void setAlter75plus(String alter75plus) {
+    public void setAlter75plus(BigDecimal alter75plus) {
         this.alter75plus = alter75plus;
     }
 
-    public String getMigrationshintergrundOhne() {
+    public BigDecimal getMigrationshintergrundOhne() {
         return migrationshintergrundOhne;
     }
 
-    public void setMigrationshintergrundOhne(String migrationshintergrundOhne) {
+    public void setMigrationshintergrundOhne(BigDecimal migrationshintergrundOhne) {
         this.migrationshintergrundOhne = migrationshintergrundOhne;
     }
 
-    public String getMigrationshintergrundMit() {
+    public BigDecimal getMigrationshintergrundMit() {
         return migrationshintergrundMit;
     }
 
-    public void setMigrationshintergrundMit(String migrationshintergrundMit) {
+    public void setMigrationshintergrundMit(BigDecimal migrationshintergrundMit) {
         this.migrationshintergrundMit = migrationshintergrundMit;
     }
 
-    public String getReligionKatholischeKirche() {
+    public BigDecimal getReligionKatholischeKirche() {
         return religionKatholischeKirche;
     }
 
-    public void setReligionKatholischeKirche(String religionKatholischeKirche) {
+    public void setReligionKatholischeKirche(BigDecimal religionKatholischeKirche) {
         this.religionKatholischeKirche = religionKatholischeKirche;
     }
 
-    public String getReligionEvangelischeKirche() {
+    public BigDecimal getReligionEvangelischeKirche() {
         return religionEvangelischeKirche;
     }
 
-    public void setReligionEvangelischeKirche(String religionEvangelischeKirche) {
+    public void setReligionEvangelischeKirche(BigDecimal religionEvangelischeKirche) {
         this.religionEvangelischeKirche = religionEvangelischeKirche;
     }
 
-    public String getReligionSonstige() {
+    public BigDecimal getReligionSonstige() {
         return religionSonstige;
     }
 
-    public void setReligionSonstige(String religionSonstige) {
+    public void setReligionSonstige(BigDecimal religionSonstige) {
         this.religionSonstige = religionSonstige;
     }
 
-    public String getWohnungenEigentuemerquote() {
+    public BigDecimal getWohnungenEigentuemerquote() {
         return wohnungenEigentuemerquote;
     }
 
-    public void setWohnungenEigentuemerquote(String wohnungenEigentuemerquote) {
+    public void setWohnungenEigentuemerquote(BigDecimal wohnungenEigentuemerquote) {
         this.wohnungenEigentuemerquote = wohnungenEigentuemerquote;
     }
 
-    public String getWohnungenFertiggestellte() {
+    public BigDecimal getWohnungenFertiggestellte() {
         return wohnungenFertiggestellte;
     }
 
-    public void setWohnungenFertiggestellte(String wohnungenFertiggestellte) {
+    public void setWohnungenFertiggestellte(BigDecimal wohnungenFertiggestellte) {
         this.wohnungenFertiggestellte = wohnungenFertiggestellte;
     }
 
-    public String getWohnungenBestand() {
+    public BigDecimal getWohnungenBestand() {
         return wohnungenBestand;
     }
 
-    public void setWohnungenBestand(String wohnungenBestand) {
+    public void setWohnungenBestand(BigDecimal wohnungenBestand) {
         this.wohnungenBestand = wohnungenBestand;
     }
 
-    public String getEinwohnerEinkommen() {
+    public BigDecimal getEinwohnerEinkommen() {
         return einwohnerEinkommen;
     }
 
-    public void setEinwohnerEinkommen(String einwohnerEinkommen) {
+    public void setEinwohnerEinkommen(BigDecimal einwohnerEinkommen) {
         this.einwohnerEinkommen = einwohnerEinkommen;
     }
 
-    public String getEinwohnerBruttoinlandsprodukt() {
+    public Long getEinwohnerBruttoinlandsprodukt() {
         return einwohnerBruttoinlandsprodukt;
     }
 
-    public void setEinwohnerBruttoinlandsprodukt(String einwohnerBruttoinlandsprodukt) {
+    public void setEinwohnerBruttoinlandsprodukt(Long einwohnerBruttoinlandsprodukt) {
         this.einwohnerBruttoinlandsprodukt = einwohnerBruttoinlandsprodukt;
     }
 
-    public String getEinwohnerKraftfahrzeugbestand() {
+    public BigDecimal getEinwohnerKraftfahrzeugbestand() {
         return einwohnerKraftfahrzeugbestand;
     }
 
-    public void setEinwohnerKraftfahrzeugbestand(String einwohnerKraftfahrzeugbestand) {
+    public void setEinwohnerKraftfahrzeugbestand(BigDecimal einwohnerKraftfahrzeugbestand) {
         this.einwohnerKraftfahrzeugbestand = einwohnerKraftfahrzeugbestand;
     }
 
-    public String getAbsolventenBeruflicheSchulen() {
+    public BigDecimal getAbsolventenBeruflicheSchulen() {
         return absolventenBeruflicheSchulen;
     }
 
-    public void setAbsolventenBeruflicheSchulen(String absolventenBeruflicheSchulen) {
+    public void setAbsolventenBeruflicheSchulen(BigDecimal absolventenBeruflicheSchulen) {
         this.absolventenBeruflicheSchulen = absolventenBeruflicheSchulen;
     }
 
-    public String getAbsolventenAllgemeinbildendeSchulenInsgesamt() {
+    public BigDecimal getAbsolventenAllgemeinbildendeSchulenInsgesamt() {
         return absolventenAllgemeinbildendeSchulenInsgesamt;
     }
 
-    public void setAbsolventenAllgemeinbildendeSchulenInsgesamt(String absolventenAllgemeinbildendeSchulenInsgesamt) {
+    public void setAbsolventenAllgemeinbildendeSchulenInsgesamt(BigDecimal absolventenAllgemeinbildendeSchulenInsgesamt) {
         this.absolventenAllgemeinbildendeSchulenInsgesamt = absolventenAllgemeinbildendeSchulenInsgesamt;
     }
 
-    public String getAbsolventenHauptschulabschlussOhne() {
+    public BigDecimal getAbsolventenHauptschulabschlussOhne() {
         return absolventenHauptschulabschlussOhne;
     }
 
-    public void setAbsolventenHauptschulabschlussOhne(String absolventenHauptschulabschlussOhne) {
+    public void setAbsolventenHauptschulabschlussOhne(BigDecimal absolventenHauptschulabschlussOhne) {
         this.absolventenHauptschulabschlussOhne = absolventenHauptschulabschlussOhne;
     }
 
-    public String getAbsolventenHauptschulabschlussMit() {
+    public BigDecimal getAbsolventenHauptschulabschlussMit() {
         return absolventenHauptschulabschlussMit;
     }
 
-    public void setAbsolventenHauptschulabschlussMit(String absolventenHauptschulabschlussMit) {
+    public void setAbsolventenHauptschulabschlussMit(BigDecimal absolventenHauptschulabschlussMit) {
         this.absolventenHauptschulabschlussMit = absolventenHauptschulabschlussMit;
     }
 
-    public String getAbsolventenRealschule() {
+    public BigDecimal getAbsolventenRealschule() {
         return absolventenRealschule;
     }
 
-    public void setAbsolventenRealschule(String absolventenRealschule) {
+    public void setAbsolventenRealschule(BigDecimal absolventenRealschule) {
         this.absolventenRealschule = absolventenRealschule;
     }
 
-    public String getAbsolventenAbitur() {
+    public BigDecimal getAbsolventenAbitur() {
         return absolventenAbitur;
     }
 
-    public void setAbsolventenAbitur(String absolventenAbitur) {
+    public void setAbsolventenAbitur(BigDecimal absolventenAbitur) {
         this.absolventenAbitur = absolventenAbitur;
     }
 
-    public String getKitasBetreuteKinder() {
+    public BigDecimal getKitasBetreuteKinder() {
         return kitasBetreuteKinder;
     }
 
-    public void setKitasBetreuteKinder(String kitasBetreuteKinder) {
+    public void setKitasBetreuteKinder(BigDecimal kitasBetreuteKinder) {
         this.kitasBetreuteKinder = kitasBetreuteKinder;
     }
 
-    public String getUnternehmenInsgesamt() {
+    public BigDecimal getUnternehmenInsgesamt() {
         return unternehmenInsgesamt;
     }
 
-    public void setUnternehmenInsgesamt(String unternehmenInsgesamt) {
+    public void setUnternehmenInsgesamt(BigDecimal unternehmenInsgesamt) {
         this.unternehmenInsgesamt = unternehmenInsgesamt;
     }
 
-    public String getUnternehmenHandwerk() {
+    public BigDecimal getUnternehmenHandwerk() {
         return unternehmenHandwerk;
     }
 
-    public void setUnternehmenHandwerk(String unternehmenHandwerk) {
+    public void setUnternehmenHandwerk(BigDecimal unternehmenHandwerk) {
         this.unternehmenHandwerk = unternehmenHandwerk;
     }
 
-    public String getSozialversicherungBeschaeftigteInsgesamt() {
+    public BigDecimal getSozialversicherungBeschaeftigteInsgesamt() {
         return sozialversicherungBeschaeftigteInsgesamt;
     }
 
-    public void setSozialversicherungBeschaeftigteInsgesamt(String sozialversicherungBeschaeftigteInsgesamt) {
+    public void setSozialversicherungBeschaeftigteInsgesamt(BigDecimal sozialversicherungBeschaeftigteInsgesamt) {
         this.sozialversicherungBeschaeftigteInsgesamt = sozialversicherungBeschaeftigteInsgesamt;
     }
 
-    public String getSozialversicherungBeschaeftigteLandwirtschaft() {
+    public BigDecimal getSozialversicherungBeschaeftigteLandwirtschaft() {
         return sozialversicherungBeschaeftigteLandwirtschaft;
     }
 
-    public void setSozialversicherungBeschaeftigteLandwirtschaft(String sozialversicherungBeschaeftigteLandwirtschaft) {
+    public void setSozialversicherungBeschaeftigteLandwirtschaft(BigDecimal sozialversicherungBeschaeftigteLandwirtschaft) {
         this.sozialversicherungBeschaeftigteLandwirtschaft = sozialversicherungBeschaeftigteLandwirtschaft;
     }
 
-    public String getSozialversicherungBeschaeftigteProduzierendesGewerbe() {
+    public BigDecimal getSozialversicherungBeschaeftigteProduzierendesGewerbe() {
         return sozialversicherungBeschaeftigteProduzierendesGewerbe;
     }
 
-    public void setSozialversicherungBeschaeftigteProduzierendesGewerbe(String sozialversicherungBeschaeftigteProduzierendesGewerbe) {
+    public void setSozialversicherungBeschaeftigteProduzierendesGewerbe(BigDecimal sozialversicherungBeschaeftigteProduzierendesGewerbe) {
         this.sozialversicherungBeschaeftigteProduzierendesGewerbe = sozialversicherungBeschaeftigteProduzierendesGewerbe;
     }
 
-    public String getSozialversicherungBeschaeftigteHandel() {
+    public BigDecimal getSozialversicherungBeschaeftigteHandel() {
         return sozialversicherungBeschaeftigteHandel;
     }
 
-    public void setSozialversicherungBeschaeftigteHandel(String sozialversicherungBeschaeftigteHandel) {
+    public void setSozialversicherungBeschaeftigteHandel(BigDecimal sozialversicherungBeschaeftigteHandel) {
         this.sozialversicherungBeschaeftigteHandel = sozialversicherungBeschaeftigteHandel;
     }
 
-    public String getSozialversicherungBeschaeftigteDienstleister() {
+    public BigDecimal getSozialversicherungBeschaeftigteDienstleister() {
         return sozialversicherungBeschaeftigteDienstleister;
     }
 
-    public void setSozialversicherungBeschaeftigteDienstleister(String sozialversicherungBeschaeftigteDienstleister) {
+    public void setSozialversicherungBeschaeftigteDienstleister(BigDecimal sozialversicherungBeschaeftigteDienstleister) {
         this.sozialversicherungBeschaeftigteDienstleister = sozialversicherungBeschaeftigteDienstleister;
     }
 
-    public String getSozialversicherungBeschaeftigteSonstige() {
+    public BigDecimal getSozialversicherungBeschaeftigteSonstige() {
         return sozialversicherungBeschaeftigteSonstige;
     }
 
-    public void setSozialversicherungBeschaeftigteSonstige(String sozialversicherungBeschaeftigteSonstige) {
+    public void setSozialversicherungBeschaeftigteSonstige(BigDecimal sozialversicherungBeschaeftigteSonstige) {
         this.sozialversicherungBeschaeftigteSonstige = sozialversicherungBeschaeftigteSonstige;
     }
 
-    public String getSgb2insgesamt() {
+    public BigDecimal getSgb2insgesamt() {
         return sgb2insgesamt;
     }
 
-    public void setSgb2insgesamt(String sgb2insgesamt) {
+    public void setSgb2insgesamt(BigDecimal sgb2insgesamt) {
         this.sgb2insgesamt = sgb2insgesamt;
     }
 
-    public String getSgb2erwerbsunfaehige() {
+    public BigDecimal getSgb2erwerbsunfaehige() {
         return sgb2erwerbsunfaehige;
     }
 
-    public void setSgb2erwerbsunfaehige(String sgb2erwerbsunfaehige) {
+    public void setSgb2erwerbsunfaehige(BigDecimal sgb2erwerbsunfaehige) {
         this.sgb2erwerbsunfaehige = sgb2erwerbsunfaehige;
     }
 
-    public String getSgb2auslaender() {
+    public BigDecimal getSgb2auslaender() {
         return sgb2auslaender;
     }
 
-    public void setSgb2auslaender(String sgb2auslaender) {
+    public void setSgb2auslaender(BigDecimal sgb2auslaender) {
         this.sgb2auslaender = sgb2auslaender;
     }
 
-    public String getArbeitslosenquoteInsgesamt() {
+    public BigDecimal getArbeitslosenquoteInsgesamt() {
         return arbeitslosenquoteInsgesamt;
     }
 
-    public void setArbeitslosenquoteInsgesamt(String arbeitslosenquoteInsgesamt) {
+    public void setArbeitslosenquoteInsgesamt(BigDecimal arbeitslosenquoteInsgesamt) {
         this.arbeitslosenquoteInsgesamt = arbeitslosenquoteInsgesamt;
     }
 
-    public String getArbeitslosenquoteMaenner() {
+    public BigDecimal getArbeitslosenquoteMaenner() {
         return arbeitslosenquoteMaenner;
     }
 
-    public void setArbeitslosenquoteMaenner(String arbeitslosenquoteMaenner) {
+    public void setArbeitslosenquoteMaenner(BigDecimal arbeitslosenquoteMaenner) {
         this.arbeitslosenquoteMaenner = arbeitslosenquoteMaenner;
     }
 
-    public String getArbeitslosenquoteFrauen() {
+    public BigDecimal getArbeitslosenquoteFrauen() {
         return arbeitslosenquoteFrauen;
     }
 
-    public void setArbeitslosenquoteFrauen(String arbeitslosenquoteFrauen) {
+    public void setArbeitslosenquoteFrauen(BigDecimal arbeitslosenquoteFrauen) {
         this.arbeitslosenquoteFrauen = arbeitslosenquoteFrauen;
     }
 
-    public String getArbeitslosenquote12bis20() {
+    public BigDecimal getArbeitslosenquote12bis20() {
         return arbeitslosenquote12bis20;
     }
 
-    public void setArbeitslosenquote12bis20(String arbeitslosenquote12bis20) {
+    public void setArbeitslosenquote12bis20(BigDecimal arbeitslosenquote12bis20) {
         this.arbeitslosenquote12bis20 = arbeitslosenquote12bis20;
     }
 
-    public String getArbeitslosenquote55bis65() {
+    public BigDecimal getArbeitslosenquote55bis65() {
         return arbeitslosenquote55bis65;
     }
 
-    public void setArbeitslosenquote55bis65(String arbeitslosenquote55bis65) {
+    public void setArbeitslosenquote55bis65(BigDecimal arbeitslosenquote55bis65) {
         this.arbeitslosenquote55bis65 = arbeitslosenquote55bis65;
     }
 
@@ -811,6 +922,14 @@ public class Btw17Strukturdaten implements DomainObject {
 
     public void setFussnoten(String fussnoten) {
         this.fussnoten = fussnoten;
+    }
+
+    public BigDecimal getBevoelkerungInsgesamt() {
+        return bevoelkerungInsgesamt;
+    }
+
+    public void setBevoelkerungInsgesamt(BigDecimal bevoelkerungInsgesamt) {
+        this.bevoelkerungInsgesamt = bevoelkerungInsgesamt;
     }
 
     @Override
@@ -830,6 +949,8 @@ public class Btw17Strukturdaten implements DomainObject {
         if (anzahlGemeinden != null ? !anzahlGemeinden.equals(that.anzahlGemeinden) : that.anzahlGemeinden != null)
             return false;
         if (flaeche != null ? !flaeche.equals(that.flaeche) : that.flaeche != null) return false;
+        if (bevoelkerungInsgesamt != null ? !bevoelkerungInsgesamt.equals(that.bevoelkerungInsgesamt) : that.bevoelkerungInsgesamt != null)
+            return false;
         if (bevoelkerungDeutsche != null ? !bevoelkerungDeutsche.equals(that.bevoelkerungDeutsche) : that.bevoelkerungDeutsche != null)
             return false;
         if (bevoelkerungAuslaender != null ? !bevoelkerungAuslaender.equals(that.bevoelkerungAuslaender) : that.bevoelkerungAuslaender != null)
@@ -925,6 +1046,7 @@ public class Btw17Strukturdaten implements DomainObject {
         result = 31 * result + (wahlkreisName != null ? wahlkreisName.hashCode() : 0);
         result = 31 * result + (anzahlGemeinden != null ? anzahlGemeinden.hashCode() : 0);
         result = 31 * result + (flaeche != null ? flaeche.hashCode() : 0);
+        result = 31 * result + (bevoelkerungInsgesamt != null ? bevoelkerungInsgesamt.hashCode() : 0);
         result = 31 * result + (bevoelkerungDeutsche != null ? bevoelkerungDeutsche.hashCode() : 0);
         result = 31 * result + (bevoelkerungAuslaender != null ? bevoelkerungAuslaender.hashCode() : 0);
         result = 31 * result + (bevoelkerungsDichte != null ? bevoelkerungsDichte.hashCode() : 0);
@@ -982,53 +1104,231 @@ public class Btw17Strukturdaten implements DomainObject {
                 ", wahlkreisNummer=" + wahlkreisNummer +
                 ", wahlkreisName='" + wahlkreisName + '\'' +
                 ", anzahlGemeinden=" + anzahlGemeinden +
-                ", flaeche='" + flaeche + '\'' +
-                ", bevoelkerungDeutsche='" + bevoelkerungDeutsche + '\'' +
-                ", bevoelkerungAuslaender='" + bevoelkerungAuslaender + '\'' +
-                ", bevoelkerungsDichte='" + bevoelkerungsDichte + '\'' +
-                ", bevoelkerungsGeburtensaldo='" + bevoelkerungsGeburtensaldo + '\'' +
-                ", bevoelkerungWanderungssaldo='" + bevoelkerungWanderungssaldo + '\'' +
-                ", alterUnter18='" + alterUnter18 + '\'' +
-                ", alter18bis24='" + alter18bis24 + '\'' +
-                ", alter25bis34='" + alter25bis34 + '\'' +
-                ", alter35bis59='" + alter35bis59 + '\'' +
-                ", alter60bis74='" + alter60bis74 + '\'' +
-                ", alter75plus='" + alter75plus + '\'' +
-                ", migrationshintergrundOhne='" + migrationshintergrundOhne + '\'' +
-                ", migrationshintergrundMit='" + migrationshintergrundMit + '\'' +
-                ", religionKatholischeKirche='" + religionKatholischeKirche + '\'' +
-                ", religionEvangelischeKirche='" + religionEvangelischeKirche + '\'' +
-                ", religionSonstige='" + religionSonstige + '\'' +
-                ", wohnungenEigentuemerquote='" + wohnungenEigentuemerquote + '\'' +
-                ", wohnungenFertiggestellte='" + wohnungenFertiggestellte + '\'' +
-                ", wohnungenBestand='" + wohnungenBestand + '\'' +
-                ", einwohnerEinkommen='" + einwohnerEinkommen + '\'' +
-                ", einwohnerBruttoinlandsprodukt='" + einwohnerBruttoinlandsprodukt + '\'' +
-                ", einwohnerKraftfahrzeugbestand='" + einwohnerKraftfahrzeugbestand + '\'' +
-                ", absolventenBeruflicheSchulen='" + absolventenBeruflicheSchulen + '\'' +
-                ", absolventenAllgemeinbildendeSchulenInsgesamt='" + absolventenAllgemeinbildendeSchulenInsgesamt + '\'' +
-                ", absolventenHauptschulabschlussOhne='" + absolventenHauptschulabschlussOhne + '\'' +
-                ", absolventenHauptschulabschlussMit='" + absolventenHauptschulabschlussMit + '\'' +
-                ", absolventenRealschule='" + absolventenRealschule + '\'' +
-                ", absolventenAbitur='" + absolventenAbitur + '\'' +
-                ", kitasBetreuteKinder='" + kitasBetreuteKinder + '\'' +
-                ", unternehmenInsgesamt='" + unternehmenInsgesamt + '\'' +
-                ", unternehmenHandwerk='" + unternehmenHandwerk + '\'' +
-                ", sozialversicherungBeschaeftigteInsgesamt='" + sozialversicherungBeschaeftigteInsgesamt + '\'' +
-                ", sozialversicherungBeschaeftigteLandwirtschaft='" + sozialversicherungBeschaeftigteLandwirtschaft + '\'' +
-                ", sozialversicherungBeschaeftigteProduzierendesGewerbe='" + sozialversicherungBeschaeftigteProduzierendesGewerbe + '\'' +
-                ", sozialversicherungBeschaeftigteHandel='" + sozialversicherungBeschaeftigteHandel + '\'' +
-                ", sozialversicherungBeschaeftigteDienstleister='" + sozialversicherungBeschaeftigteDienstleister + '\'' +
-                ", sozialversicherungBeschaeftigteSonstige='" + sozialversicherungBeschaeftigteSonstige + '\'' +
-                ", sgb2insgesamt='" + sgb2insgesamt + '\'' +
-                ", sgb2erwerbsunfaehige='" + sgb2erwerbsunfaehige + '\'' +
-                ", sgb2auslaender='" + sgb2auslaender + '\'' +
-                ", arbeitslosenquoteInsgesamt='" + arbeitslosenquoteInsgesamt + '\'' +
-                ", arbeitslosenquoteMaenner='" + arbeitslosenquoteMaenner + '\'' +
-                ", arbeitslosenquoteFrauen='" + arbeitslosenquoteFrauen + '\'' +
-                ", arbeitslosenquote12bis20='" + arbeitslosenquote12bis20 + '\'' +
-                ", arbeitslosenquote55bis65='" + arbeitslosenquote55bis65 + '\'' +
+                ", flaeche=" + flaeche +
+                ", bevoelkerungInsgesamt=" + bevoelkerungInsgesamt +
+                ", bevoelkerungDeutsche=" + bevoelkerungDeutsche +
+                ", bevoelkerungAuslaender=" + bevoelkerungAuslaender +
+                ", bevoelkerungsDichte=" + bevoelkerungsDichte +
+                ", bevoelkerungsGeburtensaldo=" + bevoelkerungsGeburtensaldo +
+                ", bevoelkerungWanderungssaldo=" + bevoelkerungWanderungssaldo +
+                ", alterUnter18=" + alterUnter18 +
+                ", alter18bis24=" + alter18bis24 +
+                ", alter25bis34=" + alter25bis34 +
+                ", alter35bis59=" + alter35bis59 +
+                ", alter60bis74=" + alter60bis74 +
+                ", alter75plus=" + alter75plus +
+                ", migrationshintergrundOhne=" + migrationshintergrundOhne +
+                ", migrationshintergrundMit=" + migrationshintergrundMit +
+                ", religionKatholischeKirche=" + religionKatholischeKirche +
+                ", religionEvangelischeKirche=" + religionEvangelischeKirche +
+                ", religionSonstige=" + religionSonstige +
+                ", wohnungenEigentuemerquote=" + wohnungenEigentuemerquote +
+                ", wohnungenFertiggestellte=" + wohnungenFertiggestellte +
+                ", wohnungenBestand=" + wohnungenBestand +
+                ", einwohnerEinkommen=" + einwohnerEinkommen +
+                ", einwohnerBruttoinlandsprodukt=" + einwohnerBruttoinlandsprodukt +
+                ", einwohnerKraftfahrzeugbestand=" + einwohnerKraftfahrzeugbestand +
+                ", absolventenBeruflicheSchulen=" + absolventenBeruflicheSchulen +
+                ", absolventenAllgemeinbildendeSchulenInsgesamt=" + absolventenAllgemeinbildendeSchulenInsgesamt +
+                ", absolventenHauptschulabschlussOhne=" + absolventenHauptschulabschlussOhne +
+                ", absolventenHauptschulabschlussMit=" + absolventenHauptschulabschlussMit +
+                ", absolventenRealschule=" + absolventenRealschule +
+                ", absolventenAbitur=" + absolventenAbitur +
+                ", kitasBetreuteKinder=" + kitasBetreuteKinder +
+                ", unternehmenInsgesamt=" + unternehmenInsgesamt +
+                ", unternehmenHandwerk=" + unternehmenHandwerk +
+                ", sozialversicherungBeschaeftigteInsgesamt=" + sozialversicherungBeschaeftigteInsgesamt +
+                ", sozialversicherungBeschaeftigteLandwirtschaft=" + sozialversicherungBeschaeftigteLandwirtschaft +
+                ", sozialversicherungBeschaeftigteProduzierendesGewerbe=" + sozialversicherungBeschaeftigteProduzierendesGewerbe +
+                ", sozialversicherungBeschaeftigteHandel=" + sozialversicherungBeschaeftigteHandel +
+                ", sozialversicherungBeschaeftigteDienstleister=" + sozialversicherungBeschaeftigteDienstleister +
+                ", sozialversicherungBeschaeftigteSonstige=" + sozialversicherungBeschaeftigteSonstige +
+                ", sgb2insgesamt=" + sgb2insgesamt +
+                ", sgb2erwerbsunfaehige=" + sgb2erwerbsunfaehige +
+                ", sgb2auslaender=" + sgb2auslaender +
+                ", arbeitslosenquoteInsgesamt=" + arbeitslosenquoteInsgesamt +
+                ", arbeitslosenquoteMaenner=" + arbeitslosenquoteMaenner +
+                ", arbeitslosenquoteFrauen=" + arbeitslosenquoteFrauen +
+                ", arbeitslosenquote12bis20=" + arbeitslosenquote12bis20 +
+                ", arbeitslosenquote55bis65=" + arbeitslosenquote55bis65 +
                 ", fussnoten='" + fussnoten + '\'' +
                 '}';
+    }
+
+    public String[] getSpaltenName() {
+        return spaltenName;
+    }
+
+    @Transient
+    private final String spaltenName[] = {
+            "Land",
+            "Wahlkreis-Nr.",
+            "Wahlkreis-Name",
+            "Gemeinden am 31.12.2015 (Anzahl)",
+            "Fläche am 31.12.2015 (km²)",
+            "Bevölkerung am 31.12.2015 - Insgesamt (in 1000)",
+            "Bevölkerung am 31.12.2015 - Deutsche (in 1000)",
+            "Bevölkerung am 31.12.2015 - Ausländer (%)",
+            "Bevölkerungsdichte am 31.12.2015 (Einwohner je km²)",
+            "Zu- (+) bzw. Abnahme (-) der Bevölkerung 2015 - Geburtensaldo (je 1000 Einwohner)",
+            "Zu- (+) bzw. Abnahme (-) der Bevölkerung 2015 - Wanderungssaldo (je 1000 Einwohner)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - unter 18 (%)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - 18-24 (%)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - 25-34 (%)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - 35-59 (%)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - 60-74 (%)",
+            "Alter von ... bis ... Jahren am 31.12.2015 - 75 und mehr (%)",
+            "Zensus 2011, Bevölkerung nach Migrationshintergrund am 09.05.2011 - ohne Migrationshintergrund (%)",
+            "Zensus 2011, Bevölkerung nach Migrationshintergrund am 09.05.2011 - mit Migrationshintergrund (%)",
+            "Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Römisch-katholische Kirche (%)",
+            "Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Evangelische Kirche (%)",
+            "Zensus 2011, Bevölkerung nach Religionszugehörigkeit am 09.05.2011 - Sonstige, keine, ohne Angabe (%)",
+            "Zensus 2011, Wohnungen in Wohngebäuden am 09.05.2011 - Eigentümerquote",
+            "Bautätigkeit und Wohnungswesen - Fertiggestellte Wohnungen 2014 (je 1000 Einwohner)",
+            "Bautätigkeit und Wohnungswesen - Bestand an Wohnungen am 31.12.2015 (je 1000 Einwohner)",
+            "Verfügbares Einkommen der privaten Haushalte 2014 (€ je Einwohner)",
+            "Bruttoinlandsprodukt 2014 (€ je Einwohner)",
+            "Kraftfahrzeugbestand am 01.01.2016 (je 1000 Einwohner)",
+            "Absolventen/Abgänger beruflicher Schulen 2015",
+            "Absolventen/Abgänger allgemeinbildender Schulen 2015 - insgesamt ohne Externe (je 1000 Einwohner)",
+            "Absolventen/Abgänger allgemeinbildender Schulen 2015 - ohne Hauptschulabschluss (%)",
+            "Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit Hauptschulabschluss (%)",
+            "Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit mittlerem Schulabschluss (%)",
+            "Absolventen/Abgänger allgemeinbildender Schulen 2015 - mit allgemeiner und Fachhochschulreife (%)",
+            "Kindertagesbetreuung: Betreute Kinder am 01.03.2016 (je 1000 Einwohner)",
+            "Unternehmensregister 2014 - Unternehmen insgesamt (je 1000 Einwohner)",
+            "Unternehmensregister 2014 - Handwerksunternehmen (je 1000 Einwohner)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - insgesamt (je 1000 Einwohner)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Land- und Forstwirtschaft, Fischerei (%)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Produzierendes Gewerbe (%)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Handel, Gastgewerbe, Verkehr (%)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Öffentliche und private Dienstleister (%)",
+            "Sozialversicherungspflichtig Beschäftigte am 30.06.2016 - Übrige Dienstleister und 'ohne Angabe' (%)",
+            "Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 -  insgesamt (je 1000 Einwohner)",
+            "Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 - nicht erwerbsfähige Hilfebedürftige (%)",
+            "Empfänger(innen) von Leistungen nach SGB II am 31.12.2016 - Ausländer (%)",
+            "Arbeitslosenquote März 2017 - insgesamt;",
+            "Arbeitslosenquote März 2017 - Männer",
+            "Arbeitslosenquote März 2017 - Frauen",
+            "Arbeitslosenquote März 2017 - 15 bis unter 20 Jahre",
+            "Arbeitslosenquote März 2017 - 55 bis unter 65 Jahre",
+            "Fußnoten"
+    };
+
+    public List<String> logFieldsList(){
+        String fieldnames[] = {
+                "bundeslandName",
+                "wahlkreisNummer",
+                "wahlkreisName",
+                "anzahlGemeinden",
+                "flaeche",
+                "bevoelkerungInsgesamt",
+                "bevoelkerungDeutsche",
+                "bevoelkerungAuslaender",
+                "bevoelkerungsDichte",
+                "bevoelkerungsGeburtensaldo",
+                "bevoelkerungWanderungssaldo",
+                "alterUnter18",
+                "alter18bis24",
+                "alter25bis34",
+                "alter35bis59",
+                "alter60bis74",
+                "alter75plus",
+                "migrationshintergrundOhne",
+                "migrationshintergrundMit",
+                "religionKatholischeKirche",
+                "religionEvangelischeKirche",
+                "religionSonstige",
+                "wohnungenEigentuemerquote",
+                "wohnungenFertiggestellte",
+                "wohnungenBestand",
+                "einwohnerEinkommen",
+                "einwohnerBruttoinlandsprodukt",
+                "einwohnerKraftfahrzeugbestand",
+                "absolventenBeruflicheSchulen",
+                "absolventenAllgemeinbildendeSchulenInsgesamt",
+                "absolventenHauptschulabschlussOhne",
+                "absolventenHauptschulabschlussMit",
+                "absolventenRealschule",
+                "absolventenAbitur",
+                "kitasBetreuteKinder",
+                "unternehmenInsgesamt",
+                "unternehmenHandwerk",
+                "sozialversicherungBeschaeftigteInsgesamt",
+                "sozialversicherungBeschaeftigteLandwirtschaft",
+                "sozialversicherungBeschaeftigteProduzierendesGewerbe",
+                "sozialversicherungBeschaeftigteHandel",
+                "sozialversicherungBeschaeftigteDienstleister",
+                "sozialversicherungBeschaeftigteSonstige",
+                "sgb2insgesamt",
+                "sgb2erwerbsunfaehige",
+                "sgb2auslaender",
+                "arbeitslosenquoteInsgesamt",
+                "arbeitslosenquoteMaenner",
+                "arbeitslosenquoteFrauen",
+                "arbeitslosenquote12bis20",
+                "arbeitslosenquote55bis65",
+                "fussnoten"
+        };
+        Object fields[] = {
+                bundeslandName,
+                wahlkreisNummer,
+                wahlkreisName,
+                anzahlGemeinden,
+                flaeche,
+                bevoelkerungInsgesamt,
+                bevoelkerungDeutsche,
+                bevoelkerungAuslaender,
+                bevoelkerungsDichte,
+                bevoelkerungsGeburtensaldo,
+                bevoelkerungWanderungssaldo,
+                alterUnter18,
+                alter18bis24,
+                alter25bis34,
+                alter35bis59,
+                alter60bis74,
+                alter75plus,
+                migrationshintergrundOhne,
+                migrationshintergrundMit,
+                religionKatholischeKirche,
+                religionEvangelischeKirche,
+                religionSonstige,
+                wohnungenEigentuemerquote,
+                wohnungenFertiggestellte,
+                wohnungenBestand,
+                einwohnerEinkommen,
+                einwohnerBruttoinlandsprodukt,
+                einwohnerKraftfahrzeugbestand,
+                absolventenBeruflicheSchulen,
+                absolventenAllgemeinbildendeSchulenInsgesamt,
+                absolventenHauptschulabschlussOhne,
+                absolventenHauptschulabschlussMit,
+                absolventenRealschule,
+                absolventenAbitur,
+                kitasBetreuteKinder,
+                unternehmenInsgesamt,
+                unternehmenHandwerk,
+                sozialversicherungBeschaeftigteInsgesamt,
+                sozialversicherungBeschaeftigteLandwirtschaft,
+                sozialversicherungBeschaeftigteProduzierendesGewerbe,
+                sozialversicherungBeschaeftigteHandel,
+                sozialversicherungBeschaeftigteDienstleister,
+                sozialversicherungBeschaeftigteSonstige,
+                sgb2insgesamt,
+                sgb2erwerbsunfaehige,
+                sgb2auslaender,
+                arbeitslosenquoteInsgesamt,
+                arbeitslosenquoteMaenner,
+                arbeitslosenquoteFrauen,
+                arbeitslosenquote12bis20,
+                arbeitslosenquote55bis65,
+                fussnoten
+        };
+        List<String> outputLines = new ArrayList<>();
+        for(int i=0; i<spaltenName.length; i++){
+            String e = "[" + i + "] " + spaltenName[i] + " : " + fields[i] + "   (" + fieldnames[i] + "  "+ fields[i].getClass().getName() + ")";
+            outputLines.add(e);
+        }
+        return outputLines;
     }
 }

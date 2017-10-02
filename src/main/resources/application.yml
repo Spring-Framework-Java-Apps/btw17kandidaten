@@ -172,3 +172,32 @@ server:
 btw17:
   kandidaten:
     checkFotoUrl: false
+---
+spring:
+  profiles: devtest
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
+    continue-on-error: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+server:
+  compression:
+    enabled: false
+btw17:
+  kandidaten:
+    checkFotoUrl: false
+logging:
+  config: classpath:logback-devtest.xml
+  file: logging-devtest.log
+  level:
+    org:
+      woehlke:
+        btw17:
+          kandidaten:
+            oodm:
+              bundeswahlleiter:
+                file2db: DEBUG
+                model: DEBUG
+                service: DEBUG
