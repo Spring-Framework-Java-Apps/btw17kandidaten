@@ -6,6 +6,35 @@ export DATABASE='kandidaten'
 export ENCODING=UTF8
 
 export EXP_FACETTEN="1"
+export EXP_WAHLLEITER_DATA="1"
+
+
+if [ $EXP_WAHLLEITER_DATA == "1" ]
+then
+
+
+echo "EXP_WAHLLEITER_DATA"
+
+echo "sql dump table: btw17_ergebnis"
+
+pg_dump -U $DATABASE --table=btw17_ergebnis --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_ergebnis.sql
+
+echo "sql dump table: btw17_strukturdaten"
+
+pg_dump -U $DATABASE --table=btw17_strukturdaten --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_strukturdaten.sql
+
+echo "sql dump table: btw17_wahlbewerber"
+
+pg_dump -U $DATABASE --table=btw17_wahlbewerber --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_wahlbewerber.sql
+
+echo "sql dump table: btw17_wahlkreis"
+
+pg_dump -U $DATABASE --table=btw17_wahlkreis --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_wahlkreis.sql
+
+
+
+fi
+
 
 if [ $EXP_FACETTEN == "1" ]
 then

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export EXP_WAHLLEITER_DATA="1"
+
 rm ../src/main/resources/data.sql
 
 echo ' '
@@ -13,6 +15,105 @@ echo '-- etc/empty-tables.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
 cat empty-tables-postgres.sql >> ../src/main/resources/data.sql
+
+
+if [ $EXP_WAHLLEITER_DATA == "1" ]
+then
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat'
+echo '-- Table: btw17_kandidat_flat'
+echo '-- etc/3nf/data/insert-data-btw17_kandidat_flat.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_kandidat_flat' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_kandidat_flat.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_kandidat_flat.sql | grep "INSERT INTO btw17_kandidat_flat " >> ../src/main/resources/data.sql
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlkreis'
+echo '-- Table: btw17_wahlkreis'
+echo '-- etc/3nf/data/insert-data-btw17_wahlkreis.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlkreis' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_wahlkreis' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_wahlkreis.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_wahlkreis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_wahlkreis " >> ../src/main/resources/data.sql
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Strukturdaten'
+echo '-- Table: btw17_strukturdaten'
+echo '-- etc/3nf/data/insert-data-btw17_strukturdaten.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Strukturdaten' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_strukturdaten' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_strukturdaten.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_strukturdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_strukturdaten " >> ../src/main/resources/data.sql
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber'
+echo '-- Table: btw17_wahlbewerber'
+echo '-- etc/3nf/data/insert-data-btw17_wahlbewerber.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_wahlbewerber' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_wahlbewerber.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_wahlbewerber.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_wahlbewerber " >> ../src/main/resources/data.sql
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis'
+echo '-- Table: btw17_ergebnis'
+echo '-- etc/3nf/data/insert-data-btw17_ergebnis.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_ergebnis' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_ergebnis.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_ergebnis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_ergebnis " >> ../src/main/resources/data.sql
+
+
+
+fi
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms'
+echo '-- Table: cms'
+echo '-- etc/3nf/data/insert-data-cms.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms' >> ../src/main/resources/data.sql
+echo '-- Table: cms' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-cms.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-cms.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO cms " >> ../src/main/resources/data.sql
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur'
+echo '-- Table: agentur'
+echo '-- etc/3nf/data/insert-data-agentur.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur' >> ../src/main/resources/data.sql
+echo '-- Table: agentur' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-agentur.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-agentur.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO agentur " >> ../src/main/resources/data.sql
+
 
 
 echo ' '
@@ -156,19 +257,6 @@ echo '-- etc/3nf/data/insert-data-ausschuss.sql' >> ../src/main/resources/data.s
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-ausschuss.sql  | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO ausschuss " >> ../src/main/resources/data.sql
-
-
-echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat'
-echo '-- Table: kandidat_flat'
-echo '-- etc/3nf/data/insert-data-kandidat_flat.sql'
-echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.KandidatFlat' >> ../src/main/resources/data.sql
-echo '-- Table: kandidat_flat' >> ../src/main/resources/data.sql
-echo '-- etc/3nf/data/insert-data-kandidat_flat.sql' >> ../src/main/resources/data.sql
-echo '--' >> ../src/main/resources/data.sql
-
-cat ./3nf/data/insert-data-kandidat_flat.sql >> ../src/main/resources/data.sql
 
 
 echo ' '
