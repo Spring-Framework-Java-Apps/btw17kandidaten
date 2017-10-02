@@ -10,7 +10,7 @@ export EXP_WAHLLEITER_DATA="1"
 export EXP_MAIN="1"
 
 
-if [ $EXP_WAHLLEITER_DATA == "1" ]
+if [ "$EXP_WAHLLEITER_DATA" == "1" ]
 then
 
 
@@ -37,7 +37,7 @@ pg_dump -U $DATABASE --table=btw17_wahlkreis --data-only --blobs --no-owner --jo
 fi
 
 
-if [ $EXP_FACETTEN == "1" ]
+if [ "$EXP_FACETTEN" == "1" ]
 then
 
 echo "FACETTEN"
@@ -123,7 +123,7 @@ fi
 
 echo "MAIN"
 
-if [ $EXP_MAIN == "1" ]
+if [ "$EXP_MAIN" == "1" ]
 then
 
 echo "sql dump table: kandidat_agentur"

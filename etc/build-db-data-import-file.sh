@@ -17,7 +17,7 @@ echo '--' >> ../src/main/resources/data.sql
 cat empty-tables-postgres.sql >> ../src/main/resources/data.sql
 
 
-if [ $EXP_WAHLLEITER_DATA == "1" ]
+if [ "$EXP_WAHLLEITER_DATA" == "1" ]
 then
 
 
