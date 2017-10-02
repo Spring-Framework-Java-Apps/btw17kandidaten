@@ -26,7 +26,6 @@ public class CommonFields implements Serializable {
     @Column(name="beschreibungs_text",columnDefinition = "TEXT")
     private String beschreibungsText;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;

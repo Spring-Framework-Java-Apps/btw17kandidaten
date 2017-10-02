@@ -28,7 +28,6 @@ public class Berufsgruppe implements DomainObject {
     @Column(name = "berufsgruppe")
     private String berufsgruppe;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;

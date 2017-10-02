@@ -29,7 +29,6 @@ public class Beruf implements DomainObject {
     @Column(name = "beruf")
     private String beruf;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;
