@@ -5,7 +5,7 @@ export DATABASE='kandidaten'
 
 export ENCODING=UTF8
 
-export EXP_FACETTEN="2"
+export EXP_FACETTEN="1"
 export EXP_WAHLLEITER_DATA="1"
 export EXP_MAIN="1"
 

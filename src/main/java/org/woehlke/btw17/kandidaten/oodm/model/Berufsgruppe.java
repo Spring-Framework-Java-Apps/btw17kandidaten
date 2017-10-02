@@ -5,7 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufsgruppeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
@@ -29,6 +28,7 @@ public class Berufsgruppe implements DomainObject {
     @Column(name = "berufsgruppe")
     private String berufsgruppe;
 
+    @Embedded
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;

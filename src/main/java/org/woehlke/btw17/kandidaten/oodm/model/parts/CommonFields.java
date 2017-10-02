@@ -5,11 +5,7 @@ import org.springframework.validation.annotation.Validated;
 import org.woehlke.btw17.kandidaten.configuration.EditStatus;
 
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -30,6 +26,7 @@ public class CommonFields implements Serializable {
     @Column(name="beschreibungs_text",columnDefinition = "TEXT")
     private String beschreibungsText;
 
+    @Embedded
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;
