@@ -17,6 +17,7 @@
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.redaktion.reports" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.errorhandling" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="DEBUG" />
     <logger name="org.apache.http" level="WARN" />
     <logger name="org.apache.tomcat" level="WARN" />
     <logger name="javax.persistence" level="WARN" />

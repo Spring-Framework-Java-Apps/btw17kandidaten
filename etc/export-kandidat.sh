@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export DATABASE='kandidaten'
-#export DATABASE='kandidatencollectdata'
+#export DATABASE='kandidaten'
+export DATABASE='kandidatentest'
 
 export ENCODING=UTF8
 
