@@ -25,7 +25,7 @@ psql -c '\l' -U postgres
 psql -c '\dg' -U postgres
 psql -c '\dn' -U postgres
 
-./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-./mvnw clean site site:deploy -Ptravis -Dtest=Btw17WahlleiterDatenimport  -B -V
+./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+./mvnw clean test -Ptravis -Dtest=Btw17WahlleiterDatenimport -Dmaven.javadoc.skip=true -B -V
 
 exit 0
