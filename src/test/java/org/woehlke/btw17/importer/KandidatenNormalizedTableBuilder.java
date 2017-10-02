@@ -197,7 +197,7 @@ public class KandidatenNormalizedTableBuilder {
                 out.setPartei(partei);
                 out.setWahlkreis(wahlkreis);
                 out.setWohnort(wohnort);
-                out.setBtw17KandidatFlat(in);
+                out.setBtw17KandidatFlatId(in.getId());
 
                 out = kandidatService.create(out);
 
