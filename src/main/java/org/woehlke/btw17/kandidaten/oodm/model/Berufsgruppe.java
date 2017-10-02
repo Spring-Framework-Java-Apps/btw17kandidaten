@@ -1,9 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.configuration.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufsgruppeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
@@ -26,6 +28,10 @@ public class Berufsgruppe implements DomainObject {
 
     @Column(name = "berufsgruppe")
     private String berufsgruppe;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "edit_status")
+    private EditStatus editStatus = EditStatus.UNTOUCHED;
 
     @Transient
     public String getName() {
@@ -54,6 +60,14 @@ public class Berufsgruppe implements DomainObject {
         this.berufsgruppe = berufsgruppe;
     }
 
+    public EditStatus getEditStatus() {
+        return editStatus;
+    }
+
+    public void setEditStatus(EditStatus editStatus) {
+        this.editStatus = editStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,13 +76,15 @@ public class Berufsgruppe implements DomainObject {
         Berufsgruppe that = (Berufsgruppe) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        return berufsgruppe != null ? berufsgruppe.equals(that.berufsgruppe) : that.berufsgruppe == null;
+        if (berufsgruppe != null ? !berufsgruppe.equals(that.berufsgruppe) : that.berufsgruppe != null) return false;
+        return editStatus == that.editStatus;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (berufsgruppe != null ? berufsgruppe.hashCode() : 0);
+        result = 31 * result + (editStatus != null ? editStatus.hashCode() : 0);
         return result;
     }
 
@@ -77,6 +93,7 @@ public class Berufsgruppe implements DomainObject {
         return "Berufsgruppe{" +
                 "id=" + id +
                 ", berufsgruppe='" + berufsgruppe + '\'' +
+                ", editStatus=" + editStatus +
                 '}';
     }
 }

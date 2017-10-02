@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export EXP_WAHLLEITER_DATA="0"
+export EXP_WAHLLEITER_DATA="1"
 
 rm ../src/main/resources/data.sql
 

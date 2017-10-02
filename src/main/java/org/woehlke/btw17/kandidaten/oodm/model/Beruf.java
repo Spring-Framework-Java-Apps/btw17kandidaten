@@ -1,10 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.woehlke.btw17.kandidaten.configuration.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
@@ -27,6 +29,10 @@ public class Beruf implements DomainObject {
 
     @Column(name = "beruf")
     private String beruf;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "edit_status")
+    private EditStatus editStatus = EditStatus.UNTOUCHED;
 
     @Transient
     @Override
@@ -56,6 +62,14 @@ public class Beruf implements DomainObject {
         this.beruf = beruf;
     }
 
+    public EditStatus getEditStatus() {
+        return editStatus;
+    }
+
+    public void setEditStatus(EditStatus editStatus) {
+        this.editStatus = editStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -64,13 +78,15 @@ public class Beruf implements DomainObject {
         Beruf beruf1 = (Beruf) o;
 
         if (id != null ? !id.equals(beruf1.id) : beruf1.id != null) return false;
-        return beruf != null ? beruf.equals(beruf1.beruf) : beruf1.beruf == null;
+        if (beruf != null ? !beruf.equals(beruf1.beruf) : beruf1.beruf != null) return false;
+        return editStatus == beruf1.editStatus;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (beruf != null ? beruf.hashCode() : 0);
+        result = 31 * result + (editStatus != null ? editStatus.hashCode() : 0);
         return result;
     }
 
@@ -79,6 +95,7 @@ public class Beruf implements DomainObject {
         return "Beruf{" +
                 "id=" + id +
                 ", beruf='" + beruf + '\'' +
+                ", editStatus=" + editStatus +
                 '}';
     }
 }
