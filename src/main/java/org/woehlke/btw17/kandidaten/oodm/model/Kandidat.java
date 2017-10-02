@@ -338,7 +338,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     private String mdb;
 
     @Column(name = "mdb_neu")
-    private String mdbNeu;
+    private Boolean mdbNeu;
 
     @Column(name = "lat")
     private Double lat;
@@ -627,11 +627,11 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         this.mdb = mdb;
     }
 
-    public String getMdbNeu() {
+    public Boolean getMdbNeu() {
         return mdbNeu;
     }
 
-    public void setMdbNeu(String mdbNeu) {
+    public void setMdbNeu(Boolean mdbNeu) {
         this.mdbNeu = mdbNeu;
     }
 
