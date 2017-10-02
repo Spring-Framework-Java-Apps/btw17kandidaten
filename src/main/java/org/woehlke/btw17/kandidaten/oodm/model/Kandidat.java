@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -16,7 +15,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(
@@ -36,6 +34,7 @@ import static javax.persistence.FetchType.LAZY;
         @Index(name = "idx_kandidat_alter", columnList = "alter"),
         @Index(name = "idx_kandidat_liste_platz", columnList = "liste_platz"),
         @Index(name = "idx_kandidat_mdb", columnList = "mdb"),
+        @Index(name = "idx_kandidat_mdb_neu", columnList = "mdb_neu"),
         @Index(name = "idx_kandidat_id_eigen", columnList = "id_eigen"),
         @Index(name = "idx_kandidat_foto", columnList = "foto"),
         @Index(name = "idx_kandidat_funktion", columnList = "funktion"),
@@ -338,6 +337,9 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "mdb")
     private String mdb;
 
+    @Column(name = "mdb_neu")
+    private String mdbNeu;
+
     @Column(name = "lat")
     private Double lat;
 
@@ -625,6 +627,14 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         this.mdb = mdb;
     }
 
+    public String getMdbNeu() {
+        return mdbNeu;
+    }
+
+    public void setMdbNeu(String mdbNeu) {
+        this.mdbNeu = mdbNeu;
+    }
+
     public Double getLat() {
         return lat;
     }
@@ -788,6 +798,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (alter != null ? !alter.equals(kandidat.alter) : kandidat.alter != null) return false;
         if (funktion != null ? !funktion.equals(kandidat.funktion) : kandidat.funktion != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
+        if (mdbNeu != null ? !mdbNeu.equals(kandidat.mdbNeu) : kandidat.mdbNeu != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
         if (idEigen != null ? !idEigen.equals(kandidat.idEigen) : kandidat.idEigen != null) return false;
@@ -837,6 +848,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (alter != null ? alter.hashCode() : 0);
         result = 31 * result + (funktion != null ? funktion.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
+        result = 31 * result + (mdbNeu != null ? mdbNeu.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
         result = 31 * result + (idEigen != null ? idEigen.hashCode() : 0);
@@ -881,6 +893,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", alter=" + alter +
                 ", funktion='" + funktion + '\'' +
                 ", mdb='" + mdb + '\'' +
+                ", mdbNeu='" + mdbNeu + '\'' +
                 ", lat=" + lat +
                 ", lng=" + lng +
                 ", idEigen='" + idEigen + '\'' +
