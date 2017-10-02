@@ -86,7 +86,7 @@ import static javax.persistence.FetchType.LAZY;
     ),
     @NamedQuery(
         name = "Kandidat.findByKandidatFlatId",
-        query = "select o from Kandidat as o where o.btw17KandidatFlat.id=:kandidatFlatId order by o.nachname"
+        query = "select o from Kandidat as o where o.btw17KandidatFlatId=:kandidatFlatId order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.getAll",
