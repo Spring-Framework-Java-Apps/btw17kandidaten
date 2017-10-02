@@ -72,6 +72,9 @@ public class KandidatenProperties {
     public static class TableContent {
 
         @NotNull
+        private Long countAusschuss;
+
+        @NotNull
         private Long countBeruf;
 
         @NotNull
@@ -81,10 +84,19 @@ public class KandidatenProperties {
         private Long countBundesland;
 
         @NotNull
+        private Long countFraktion;
+
+        @NotNull
         private Long countGeburtsort;
 
         @NotNull
         private Long countPartei;
+
+        @NotNull
+        private Long countListePartei;
+
+        @NotNull
+        private Long countMinisterium;
 
         @NotNull
         private Long countWahlkreis;
@@ -100,6 +112,35 @@ public class KandidatenProperties {
 
         @NotNull
         private Long countKandidat;
+
+        @NotNull
+        private Long countWebseiteAgentur;
+
+        @NotNull
+        private Long countWebseiteCms;
+
+        @NotNull
+        private Long countBtw17Ergebnis;
+
+        @NotNull
+        private Long countBtw17KandidatFlat;
+
+        @NotNull
+        private Long countBtw17Strukturdaten;
+
+        @NotNull
+        private Long countBtw17Wahlbewerber;
+
+        @NotNull
+        private Long countBtw17Wahlkreis;
+
+        public Long getCountAusschuss() {
+            return countAusschuss;
+        }
+
+        public void setCountAusschuss(Long countAusschuss) {
+            this.countAusschuss = countAusschuss;
+        }
 
         public Long getCountBeruf() {
             return countBeruf;
@@ -125,6 +166,14 @@ public class KandidatenProperties {
             this.countBundesland = countBundesland;
         }
 
+        public Long getCountFraktion() {
+            return countFraktion;
+        }
+
+        public void setCountFraktion(Long countFraktion) {
+            this.countFraktion = countFraktion;
+        }
+
         public Long getCountGeburtsort() {
             return countGeburtsort;
         }
@@ -139,6 +188,22 @@ public class KandidatenProperties {
 
         public void setCountPartei(Long countPartei) {
             this.countPartei = countPartei;
+        }
+
+        public Long getCountListePartei() {
+            return countListePartei;
+        }
+
+        public void setCountListePartei(Long countListePartei) {
+            this.countListePartei = countListePartei;
+        }
+
+        public Long getCountMinisterium() {
+            return countMinisterium;
+        }
+
+        public void setCountMinisterium(Long countMinisterium) {
+            this.countMinisterium = countMinisterium;
         }
 
         public Long getCountWahlkreis() {
@@ -179,6 +244,62 @@ public class KandidatenProperties {
 
         public void setCountKandidat(Long countKandidat) {
             this.countKandidat = countKandidat;
+        }
+
+        public Long getCountWebseiteAgentur() {
+            return countWebseiteAgentur;
+        }
+
+        public void setCountWebseiteAgentur(Long countWebseiteAgentur) {
+            this.countWebseiteAgentur = countWebseiteAgentur;
+        }
+
+        public Long getCountWebseiteCms() {
+            return countWebseiteCms;
+        }
+
+        public void setCountWebseiteCms(Long countWebseiteCms) {
+            this.countWebseiteCms = countWebseiteCms;
+        }
+
+        public Long getCountBtw17Ergebnis() {
+            return countBtw17Ergebnis;
+        }
+
+        public void setCountBtw17Ergebnis(Long countBtw17Ergebnis) {
+            this.countBtw17Ergebnis = countBtw17Ergebnis;
+        }
+
+        public Long getCountBtw17KandidatFlat() {
+            return countBtw17KandidatFlat;
+        }
+
+        public void setCountBtw17KandidatFlat(Long countBtw17KandidatFlat) {
+            this.countBtw17KandidatFlat = countBtw17KandidatFlat;
+        }
+
+        public Long getCountBtw17Strukturdaten() {
+            return countBtw17Strukturdaten;
+        }
+
+        public void setCountBtw17Strukturdaten(Long countBtw17Strukturdaten) {
+            this.countBtw17Strukturdaten = countBtw17Strukturdaten;
+        }
+
+        public Long getCountBtw17Wahlbewerber() {
+            return countBtw17Wahlbewerber;
+        }
+
+        public void setCountBtw17Wahlbewerber(Long countBtw17Wahlbewerber) {
+            this.countBtw17Wahlbewerber = countBtw17Wahlbewerber;
+        }
+
+        public Long getCountBtw17Wahlkreis() {
+            return countBtw17Wahlkreis;
+        }
+
+        public void setCountBtw17Wahlkreis(Long countBtw17Wahlkreis) {
+            this.countBtw17Wahlkreis = countBtw17Wahlkreis;
         }
     }
 

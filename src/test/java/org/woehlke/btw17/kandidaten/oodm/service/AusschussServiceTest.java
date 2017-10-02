@@ -19,6 +19,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -56,6 +57,9 @@ public class AusschussServiceTest {
     @Autowired
     private AusschussController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
 
     @WithMockUser
     @Commit
@@ -72,6 +76,7 @@ public class AusschussServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(ausschussService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser
@@ -92,7 +97,8 @@ public class AusschussServiceTest {
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         long resultSize = ausschuesse.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("found Page<Ausschuss> ausschuesse : "+resultSize,resultSize>0);
+        long resultSizeExpected = kandidatenProperties.getTableContent().getCountAusschuss();
+        Assert.assertTrue("found Page<Ausschuss> ausschuesse : is "+resultSize+"  expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (Ausschuss ausschuss : ausschuesse.getContent()) {

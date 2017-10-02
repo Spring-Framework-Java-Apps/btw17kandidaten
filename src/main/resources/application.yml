@@ -143,16 +143,32 @@ btw17:
       - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/large/public/users/"
       - "https://www.abgeordnetenwatch.de/sites/abgeordnetenwatch.de/files/styles/media_thumbnail/public/users/"
     tableContent:
+      countAusschuss: 48
       countBeruf: 1211
       countBerufsgruppe: 55
       countBundesland: 16
+      countFraktion: 4
       countGeburtsort: 1081
       countPartei: 134
+      countListePartei: 27
+      countMinisterium: 15
       countWahlkreis: 299
       countWohnort: 1219
       countLandesListe: 118
       countKandidatFlat: 2559
       countKandidat: 2559
+      countWebseiteAgentur: 5
+      countWebseiteCms: 8
+      countBtw17Ergebnis: 0
+      countBtw17KandidatFlat: 0
+      countBtw17Strukturdaten: 0
+      countBtw17Wahlbewerber: 0
+      countBtw17Wahlkreis: 0
+      #countBtw17Ergebnis: 0
+      #countBtw17KandidatFlat: 0
+      #countBtw17Strukturdaten: 0
+      #countBtw17Wahlbewerber: 0
+      #countBtw17Wahlkreis: 0
 ---
 spring:
   profiles: default

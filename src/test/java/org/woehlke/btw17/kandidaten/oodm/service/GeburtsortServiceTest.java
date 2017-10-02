@@ -18,6 +18,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -55,6 +56,9 @@ public class GeburtsortServiceTest {
     @Autowired
     private GeburtsortController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
     @WithMockUser
     @Commit
     @Test
@@ -70,6 +74,7 @@ public class GeburtsortServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(geburtsortService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser
@@ -91,7 +96,8 @@ public class GeburtsortServiceTest {
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
         long resultSize = geburtsorte.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<Geburtsort> geburtsorte : "+resultSize,resultSize>0);
+        long resultSizeExpected = kandidatenProperties.getTableContent().getCountGeburtsort();
+        Assert.assertTrue("Page<Geburtsort> geburtsorte : is "+resultSize+"  expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (Geburtsort geburtsort : geburtsorte.getContent()) {

@@ -19,6 +19,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -58,6 +59,9 @@ public class FraktionServiceTest {
     @Autowired
     private FraktionController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
     @WithMockUser
     @Commit
     @Test
@@ -73,6 +77,7 @@ public class FraktionServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(fraktionService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser
@@ -93,7 +98,8 @@ public class FraktionServiceTest {
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         long resultSize = fraktionen.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<Fraktion> fraktionen : "+resultSize,resultSize>0);
+        long resultSizeExpected = kandidatenProperties.getTableContent().getCountFraktion();
+        Assert.assertTrue("Page<Fraktion> fraktionen : is "+resultSize+"  expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (Fraktion fraktion : fraktionen.getContent()) {

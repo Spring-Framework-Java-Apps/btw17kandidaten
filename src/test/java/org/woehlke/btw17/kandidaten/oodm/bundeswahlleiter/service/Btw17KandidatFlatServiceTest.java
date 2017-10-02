@@ -14,6 +14,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -48,6 +49,9 @@ public class Btw17KandidatFlatServiceTest {
     @Autowired
     private KandidatFlatController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
 
     @WithMockUser
     @Commit
@@ -64,6 +68,7 @@ public class Btw17KandidatFlatServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(btw17KandidatFlatService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser

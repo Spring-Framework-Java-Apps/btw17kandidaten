@@ -19,6 +19,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -57,6 +58,9 @@ public class BerufServiceTest {
     @Autowired
     private BerufController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
     @WithMockUser
     @Commit
     @Test
@@ -72,6 +76,7 @@ public class BerufServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(berufService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser
@@ -92,7 +97,8 @@ public class BerufServiceTest {
         Page<Beruf> berufe = berufService.getAll(pageable);
         long resultSize = berufe.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<Beruf> berufe : "+resultSize,resultSize>0);
+        long resultSizeExpected = kandidatenProperties.getTableContent().getCountBeruf();
+        Assert.assertTrue("Page<Beruf> berufe : is "+resultSize+"  expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (Beruf beruf : berufe.getContent()) {

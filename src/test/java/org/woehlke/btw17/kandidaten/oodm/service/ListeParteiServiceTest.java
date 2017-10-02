@@ -19,6 +19,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -57,6 +58,9 @@ public class ListeParteiServiceTest {
     @Autowired
     private ListeParteiController controller;
 
+    @Autowired
+    private KandidatenProperties kandidatenProperties;
+
     @WithMockUser
     @Commit
     @Test
@@ -72,6 +76,7 @@ public class ListeParteiServiceTest {
     public void test000serviceIsPresentTest(){
         log.info("serviceIsPresentTest");
         assertThat(listeParteiService).isNotNull();
+        assertThat(kandidatenProperties).isNotNull();
     }
 
     @WithMockUser
@@ -92,7 +97,8 @@ public class ListeParteiServiceTest {
         Page<ListePartei> listeParteien = listeParteiService.getAll(pageable);
         long resultSize = listeParteien.getTotalElements();
         log.debug("found: # "+resultSize);
-        Assert.assertTrue("Page<ListePartei> listeParteien : "+resultSize,resultSize>0);
+        long resultSizeExpected = kandidatenProperties.getTableContent().getCountListePartei();
+        Assert.assertTrue("Page<ListePartei> listeParteien : is "+resultSize+"  expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (ListePartei listePartei : listeParteien.getContent()) {
