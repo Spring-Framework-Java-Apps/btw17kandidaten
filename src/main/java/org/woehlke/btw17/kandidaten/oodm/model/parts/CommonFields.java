@@ -2,10 +2,14 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.configuration.EditStatus;
 
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -25,6 +29,11 @@ public class CommonFields implements Serializable {
 
     @Column(name="beschreibungs_text",columnDefinition = "TEXT")
     private String beschreibungsText;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "edit_status")
+    private EditStatus editStatus;
 
     public String getLogoUrl() {
         return logoUrl;
@@ -50,6 +59,14 @@ public class CommonFields implements Serializable {
         this.beschreibungsText = beschreibungsText;
     }
 
+    public EditStatus getEditStatus() {
+        return editStatus;
+    }
+
+    public void setEditStatus(EditStatus editStatus) {
+        this.editStatus = editStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,7 +76,9 @@ public class CommonFields implements Serializable {
 
         if (logoUrl != null ? !logoUrl.equals(that.logoUrl) : that.logoUrl != null) return false;
         if (symbolBild != null ? !symbolBild.equals(that.symbolBild) : that.symbolBild != null) return false;
-        return beschreibungsText != null ? beschreibungsText.equals(that.beschreibungsText) : that.beschreibungsText == null;
+        if (beschreibungsText != null ? !beschreibungsText.equals(that.beschreibungsText) : that.beschreibungsText != null)
+            return false;
+        return editStatus == that.editStatus;
     }
 
     @Override
@@ -67,15 +86,17 @@ public class CommonFields implements Serializable {
         int result = logoUrl != null ? logoUrl.hashCode() : 0;
         result = 31 * result + (symbolBild != null ? symbolBild.hashCode() : 0);
         result = 31 * result + (beschreibungsText != null ? beschreibungsText.hashCode() : 0);
+        result = 31 * result + (editStatus != null ? editStatus.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "DimensionFacetten{" +
+        return "CommonFields{" +
                 "logoUrl='" + logoUrl + '\'' +
                 ", symbolBild='" + symbolBild + '\'' +
                 ", beschreibungsText='" + beschreibungsText + '\'' +
+                ", editStatus=" + editStatus +
                 '}';
     }
 }
