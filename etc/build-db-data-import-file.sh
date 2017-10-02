@@ -84,8 +84,6 @@ echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-btw17_ergebnis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_ergebnis " >> ../src/main/resources/data.sql
 
-
-
 fi
 
 

@@ -434,9 +434,8 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Embedded
     private Adresse adresse = new Adresse();
 
-    @OneToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_kandidat_flat", nullable = false, updatable = false)
-    private Btw17KandidatFlat btw17KandidatFlat;
+    @Column(name = "btw17_kandidat_flat_id", nullable = false, updatable = false, unique = true)
+    private Long btw17KandidatFlatId;
 
     @Transient
     @Override
@@ -708,12 +707,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         this.googleMapsUrl = googleMapsUrl;
     }
 
-    public Btw17KandidatFlat getBtw17KandidatFlat() {
-        return btw17KandidatFlat;
+    public Long getBtw17KandidatFlatId() {
+        return btw17KandidatFlatId;
     }
 
-    public void setBtw17KandidatFlat(Btw17KandidatFlat btw17KandidatFlat) {
-        this.btw17KandidatFlat = btw17KandidatFlat;
+    public void setBtw17KandidatFlatId(Long btw17KandidatFlatId) {
+        this.btw17KandidatFlatId = btw17KandidatFlatId;
     }
 
     public Set<Ministerium> getMinisterien() {
@@ -820,7 +819,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
         if (adresse != null ? !adresse.equals(kandidat.adresse) : kandidat.adresse != null) return false;
-        return btw17KandidatFlat != null ? btw17KandidatFlat.equals(kandidat.btw17KandidatFlat) : kandidat.btw17KandidatFlat == null;
+        return btw17KandidatFlatId != null ? btw17KandidatFlatId.equals(kandidat.btw17KandidatFlatId) : kandidat.btw17KandidatFlatId == null;
     }
 
     @Override
@@ -862,7 +861,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
-        result = 31 * result + (btw17KandidatFlat != null ? btw17KandidatFlat.hashCode() : 0);
+        result = 31 * result + (btw17KandidatFlatId != null ? btw17KandidatFlatId.hashCode() : 0);
         return result;
     }
 
@@ -906,7 +905,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", webseite=" + webseite +
                 ", onlineStrategie=" + onlineStrategie +
                 ", adresse=" + adresse +
-                ", btw17KandidatFlat=" + btw17KandidatFlat +
+                ", btw17KandidatFlatId=" + btw17KandidatFlatId +
                 '}';
     }
 }
