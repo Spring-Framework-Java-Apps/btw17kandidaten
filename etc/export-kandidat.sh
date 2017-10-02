@@ -1,12 +1,13 @@
 #!/bin/sh
 
-#export DATABASE='kandidaten'
-export DATABASE='kandidatentest'
+export DATABASE='kandidaten'
+#export DATABASE='kandidatentest'
 
 export ENCODING=UTF8
 
-export EXP_FACETTEN="1"
+export EXP_FACETTEN="0"
 export EXP_WAHLLEITER_DATA="1"
+export EXP_MAIN="0"
 
 
 if [ $EXP_WAHLLEITER_DATA == "1" ]
@@ -122,6 +123,8 @@ fi
 
 echo "MAIN"
 
+if [ $EXP_MAIN == "1" ]
+then
 
 echo "sql dump table: kandidat_agentur"
 
@@ -138,6 +141,8 @@ pg_dump -U $DATABASE --table=kandidat_ministerium --data-only --blobs --no-owner
 echo "sql dump table: kandidat"
 
 pg_dump -U $DATABASE --table=kandidat --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-kandidat.sql
+
+fi
 
 echo "Start building new Version of: src/main/resources/data.sql"
 
