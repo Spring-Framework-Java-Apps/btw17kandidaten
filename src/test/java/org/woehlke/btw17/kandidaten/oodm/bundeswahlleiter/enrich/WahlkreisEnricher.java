@@ -37,8 +37,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.Strukturdaten;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;

@@ -90,6 +90,11 @@ public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService 
     }
 
     @Override
+    public List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender() {
+        return btw17StrukturdatenRepository.getStrukturdatenOfBundeslaender();
+    }
+
+    @Override
     public Page<Btw17Strukturdaten> getAll(Pageable pageRequest) {
         return btw17StrukturdatenRepository.findAll(pageRequest);
     }

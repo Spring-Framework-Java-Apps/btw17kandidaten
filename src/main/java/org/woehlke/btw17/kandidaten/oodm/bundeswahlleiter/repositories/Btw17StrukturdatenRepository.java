@@ -19,4 +19,8 @@ public interface Btw17StrukturdatenRepository extends PagingAndSortingRepository
 
     @Query(name="Btw17Strukturdaten.getAllIds")
     List<Long> getAllIds();
+
+    @Query(name="Btw17Strukturdaten.getStrukturdatenOfBundeslaender")
+    List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender();
+
 }

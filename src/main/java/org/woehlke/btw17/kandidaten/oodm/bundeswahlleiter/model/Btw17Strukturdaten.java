@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model;
 
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.listener.Btw17StrukturdatenListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
@@ -18,6 +19,7 @@ import java.util.List;
         @UniqueConstraint(name="uk_btw17_strukturdaten_wahlkreis_nummer",columnNames = {"wahlkreis_nummer"})
     },
     indexes = {
+        @Index(name = "idx_btw17_strukturdaten_bundesland_name", columnList = "bundesland_name"),
         @Index(name = "idx_btw17_strukturdaten_anzahl_gemeinden", columnList = "anzahl_gemeinden"),
         @Index(name = "idx_btw17_strukturdaten_flaeche", columnList = "flaeche"),
         @Index(name = "idx_btw17_strukturdaten_bevoelkerung_insgesamt", columnList = "bevoelkerung_insgesamt"),
@@ -77,6 +79,10 @@ import java.util.List;
         @NamedQuery(
                 name = "Btw17Strukturdaten.getAllIds",
                 query = "select o.id from Btw17Strukturdaten as o order by o.id"
+        ),
+        @NamedQuery(
+                name = "Btw17Strukturdaten.getStrukturdatenOfBundeslaender",
+                query = "select o from Btw17Strukturdaten as o where o.wahlkreisName='Land insgesamt'"
         )
 })
 @EntityListeners(Btw17StrukturdatenListener.class)
@@ -92,6 +98,19 @@ public class Btw17Strukturdaten implements DomainObject {
     @NotNull
     @Column(name = "bundesland_name", nullable=false)
     private String bundeslandName;
+
+    /**
+     * Land
+     */
+    @Column(name = "bundesland_id")
+    private Long bundeslandId;
+
+    /**
+     * Land
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bundesland_kurz")
+    private BundeslandEnum bundesland;
 
     /**
      * Wahlkreis-Nr.
@@ -509,7 +528,7 @@ public class Btw17Strukturdaten implements DomainObject {
 
     @Override
     public String getUniqueId() {
-        return id+":"+bundeslandName+":"+wahlkreisNummer+":"+wahlkreisName;
+        return id+":"+bundeslandName+":"+wahlkreisNummer+":"+wahlkreisName+"+bundeslandId";
     }
 
     public void setId(Long id) {
@@ -930,6 +949,22 @@ public class Btw17Strukturdaten implements DomainObject {
 
     public void setBevoelkerungInsgesamt(BigDecimal bevoelkerungInsgesamt) {
         this.bevoelkerungInsgesamt = bevoelkerungInsgesamt;
+    }
+
+    public Long getBundeslandId() {
+        return bundeslandId;
+    }
+
+    public void setBundeslandId(Long bundeslandId) {
+        this.bundeslandId = bundeslandId;
+    }
+
+    public BundeslandEnum getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(BundeslandEnum bundesland) {
+        this.bundesland = bundesland;
     }
 
     @Override
