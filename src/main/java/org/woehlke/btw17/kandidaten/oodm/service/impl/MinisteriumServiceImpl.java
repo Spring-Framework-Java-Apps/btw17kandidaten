@@ -30,7 +30,7 @@ public class MinisteriumServiceImpl implements MinisteriumService {
 
     @Override
     public Page<Ministerium> getAll(Pageable pageRequest) {
-        return ministeriumRepository.getAll(pageRequest);
+        return ministeriumRepository.findAll(pageRequest);
     }
 
     @Override

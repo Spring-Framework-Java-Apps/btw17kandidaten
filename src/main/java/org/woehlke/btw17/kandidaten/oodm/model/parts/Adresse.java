@@ -32,7 +32,7 @@ public class Adresse implements Serializable {
     @Column(name="nation")
     private String nation;
 
-    @ManyToOne(optional=true,fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional=true,fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland",nullable=true)
     private Bundesland bundesland;
 
