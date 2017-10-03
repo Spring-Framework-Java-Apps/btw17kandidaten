@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.repositories.Btw17ErgebnisRepository;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17ErgebnisService;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
 
 import java.util.List;
 
@@ -83,4 +84,13 @@ public class Btw17ErgebnisServiceImpl implements Btw17ErgebnisService {
         return btw17ErgebnisRepository.findOne(id);
     }
 
+    @Override
+    public List<Btw17Ergebnis> getErgebnisOfBundeslaender() {
+        return btw17ErgebnisRepository.getErgebnisOfBundeslaender();
+    }
+
+    @Override
+    public WahlergebnisseBtw17 getWahlergebnisseFromBtw17Ergebnis(Btw17Ergebnis btw17Ergebnis) {
+        return null;
+    }
 }

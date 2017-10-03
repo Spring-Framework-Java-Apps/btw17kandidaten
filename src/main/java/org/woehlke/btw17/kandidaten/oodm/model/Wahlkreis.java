@@ -27,7 +27,7 @@ import javax.validation.Valid;
     }
 )
 @EntityListeners(WahlkreisListener.class)
-public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded {
+public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +52,10 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     @Valid
     @Embedded
     private Strukturdaten strukturdaten = new Strukturdaten();
+
+    @Valid
+    @Embedded
+    private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
@@ -128,6 +132,16 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     public void setStrukturdaten(Strukturdaten strukturdaten) {
         if(strukturdaten != null){
             this.strukturdaten = strukturdaten;
+        }
+    }
+
+    public WahlergebnisseBtw17 getWahlergebnisseBtw17() {
+        return wahlergebnisseBtw17;
+    }
+
+    public void setWahlergebnisseBtw17(WahlergebnisseBtw17 wahlergebnisseBtw17) {
+        if(wahlergebnisseBtw17!=null){
+            this.wahlergebnisseBtw17 = wahlergebnisseBtw17;
         }
     }
 

@@ -34,7 +34,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(BundeslandListener.class)
-public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded {
+public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -73,6 +73,11 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     @Valid
     @Embedded
     private Strukturdaten strukturdaten = new Strukturdaten();
+
+
+    @Valid
+    @Embedded
+    private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
 
     @Transient
     public String getName(){
@@ -153,6 +158,16 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     public void setStrukturdaten(Strukturdaten strukturdaten) {
         if(strukturdaten != null){
             this.strukturdaten = strukturdaten;
+        }
+    }
+
+    public WahlergebnisseBtw17 getWahlergebnisseBtw17() {
+        return wahlergebnisseBtw17;
+    }
+
+    public void setWahlergebnisseBtw17(WahlergebnisseBtw17 wahlergebnisseBtw17) {
+        if(wahlergebnisseBtw17!=null){
+            this.wahlergebnisseBtw17 = wahlergebnisseBtw17;
         }
     }
 

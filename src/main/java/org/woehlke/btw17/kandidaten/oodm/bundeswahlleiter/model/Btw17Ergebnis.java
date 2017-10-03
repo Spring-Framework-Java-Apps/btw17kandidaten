@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model;
 
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.listener.Btw17ErgebnisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
@@ -34,6 +35,10 @@ import java.util.List;
         @NamedQuery(
                 name = "Btw17Ergebnis.getAllIds",
                 query = "select o.id from Btw17Ergebnis as o order by o.id"
+        ),
+        @NamedQuery(
+                name = "Btw17Ergebnis.getErgebnisOfBundeslaender",
+                query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
         )
 })
 @EntityListeners(Btw17ErgebnisListener.class)
@@ -60,6 +65,13 @@ public class Btw17Ergebnis implements DomainObject {
      */
     @Column(name = "bundesland_nummer", nullable=false)
     private Long bundeslandNummer;
+
+    /**
+     * Land
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bundesland_kurz")
+    private BundeslandEnum bundesland;
 
 
     // Wahlberechtigte
@@ -2897,6 +2909,14 @@ public class Btw17Ergebnis implements DomainObject {
 
     public void setUebrigeZweitstimmenVorperiode(Long uebrigeZweitstimmenVorperiode) {
         this.uebrigeZweitstimmenVorperiode = uebrigeZweitstimmenVorperiode;
+    }
+
+    public BundeslandEnum getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(BundeslandEnum bundesland) {
+        this.bundesland = bundesland;
     }
 
     @Override
