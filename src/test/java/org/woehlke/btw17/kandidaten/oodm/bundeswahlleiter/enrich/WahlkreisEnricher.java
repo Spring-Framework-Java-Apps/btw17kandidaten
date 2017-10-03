@@ -156,12 +156,13 @@ public class WahlkreisEnricher {
     public void test020updateWahlkreisByBtw17Strukturdaten() throws Exception {
         log.info("test020updateWahlkreisByBtw17Strukturdaten");
         for(Btw17Strukturdaten btw17Strukturdaten:btw17StrukturdatenService.getAll()){
+            log.info("btw17Strukturdaten: "+btw17Strukturdaten.getUniqueId());
             Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(btw17Strukturdaten.getWahlkreisNummer());
             if(wahlkreis!=null){
                 Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
                 wahlkreis.setStrukturdaten(strukturdaten);
                 wahlkreisService.update(wahlkreis);
-                log.debug("wahlkreis: "+wahlkreis.getUniqueId());
+                log.info("wahlkreis: "+wahlkreis.getUniqueId());
             }
         }
     }
@@ -172,12 +173,13 @@ public class WahlkreisEnricher {
     public void test040updateWahlkreisByBtw17Ergebnis() throws Exception {
         log.info("test040updateWahlkreisByBtw17Ergebnis");
         for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisService.getAll()){
+            log.info("btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
             Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(btw17Ergebnisse.getWahlkreisNummer());
             if(wahlkreis!=null){
                 WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
                 wahlkreis.setWahlergebnisseBtw17(wahlergebnisseBtw17);
                 wahlkreisService.update(wahlkreis);
-                log.debug("wahlkreis: "+wahlkreis.getUniqueId());
+                log.info("wahlkreis: "+wahlkreis.getUniqueId());
             }
         }
     }

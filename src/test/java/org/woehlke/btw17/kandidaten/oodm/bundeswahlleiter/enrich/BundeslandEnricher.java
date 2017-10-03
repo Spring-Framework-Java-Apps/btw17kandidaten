@@ -103,12 +103,12 @@ public class BundeslandEnricher {
         log.info("test010updateBundeslandByBtw17Strukturdaten");
         List<Btw17Strukturdaten> bundeslaenderBtw17Strukturdaten = btw17StrukturdatenService.getStrukturdatenOfBundeslaender();
         for(Btw17Strukturdaten btw17Strukturdaten:bundeslaenderBtw17Strukturdaten){
-            log.info(btw17Strukturdaten.getUniqueId());
+            log.info("btw17Strukturdaten: "+btw17Strukturdaten.getUniqueId());
             Bundesland bundesland = bundeslandService.findByBundesland(btw17Strukturdaten.getBundesland());
             Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
             bundesland.setStrukturdaten(strukturdaten);
             bundeslandService.update(bundesland);
-            log.debug("bundesland: "+bundesland.getUniqueId());
+            log.info("bundesland: "+bundesland.getUniqueId());
         }
     }
 
@@ -119,12 +119,13 @@ public class BundeslandEnricher {
         log.info("test040updateWahlkreisByBtw17Ergebnis");
         List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender =  btw17ErgebnisService.getErgebnisOfBundeslaender();
         for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
+            log.info("btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
             Bundesland bundesland = bundeslandService.findByBundesland(btw17Ergebnisse.getBundesland());
             if(bundesland!=null){
                 WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
                 bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
                 bundeslandService.update(bundesland);
-                log.debug("bundesland: "+bundesland.getUniqueId());
+                log.info("bundesland: "+bundesland.getUniqueId());
             }
         }
     }
