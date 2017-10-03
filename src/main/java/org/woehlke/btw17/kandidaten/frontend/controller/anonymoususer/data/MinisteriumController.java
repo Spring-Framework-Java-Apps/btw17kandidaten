@@ -46,8 +46,8 @@ public class MinisteriumController extends AbstractController {
             @PageableDefault(
                     value = FIRST_PAGE_NUMBER,
                     size = PAGE_SIZE,
-                    sort = "partei",
-                    direction= Sort.Direction.ASC
+                    sort = "ministeriumLang",
+                    direction = Sort.Direction.ASC
             ) Pageable pageable,
             Model model
     ) {
