@@ -20,11 +20,14 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Strukturdaten;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17ErgebnisService;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17StrukturdatenService;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlkreisService;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Strukturdaten;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
@@ -49,6 +52,9 @@ public class BundeslandEnricher {
 
 
     private static final Logger log = LoggerFactory.getLogger(BundeslandEnricher.class);
+
+    @Autowired
+    private Btw17ErgebnisService btw17ErgebnisService;
 
     @Autowired
     private Btw17WahlkreisService btw17WahlkreisService;
@@ -87,6 +93,7 @@ public class BundeslandEnricher {
         assertThat(btw17StrukturdatenService).isNotNull();
         assertThat(wahlkreisService).isNotNull();
         assertThat(bundeslandService).isNotNull();
+        assertThat(btw17ErgebnisService).isNotNull();
     }
 
     @WithMockUser
@@ -101,6 +108,24 @@ public class BundeslandEnricher {
             Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
             bundesland.setStrukturdaten(strukturdaten);
             bundeslandService.update(bundesland);
+            log.debug("bundesland: "+bundesland.getUniqueId());
+        }
+    }
+
+    @WithMockUser
+    @Commit
+    @Test
+    public void test040updateWahlkreisByBtw17Ergebnis() throws Exception {
+        log.info("test040updateWahlkreisByBtw17Ergebnis");
+        List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender =  btw17ErgebnisService.getErgebnisOfBundeslaender();
+        for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
+            Bundesland bundesland = bundeslandService.findByBundesland(btw17Ergebnisse.getBundesland());
+            if(bundesland!=null){
+                WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
+                bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
+                bundeslandService.update(bundesland);
+                log.debug("bundesland: "+bundesland.getUniqueId());
+            }
         }
     }
 }

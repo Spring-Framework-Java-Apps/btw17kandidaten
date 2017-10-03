@@ -2,6 +2,8 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.enrich.BundeslandEnricher;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.enrich.WahlkreisEnricher;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db.Btw17ErgebnisImporter;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db.Btw17StrukturdatenImporter;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db.Btw17WahlbewerberImporter;
@@ -12,6 +14,11 @@ import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17Wahlbewer
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlkreisServiceTest;
 
 @Suite.SuiteClasses({
+
+    BundeslandEnricher.class,
+    WahlkreisEnricher.class
+
+    /*
     Btw17KandidatFlatServiceTest.class,
     Btw17WahlkreisServiceTest.class,
     Btw17StrukturdatenServiceTest.class,
@@ -21,6 +28,7 @@ import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17Wahlkreis
     Btw17StrukturdatenImporter.class,
     Btw17WahlbewerberImporter.class,
     Btw17WahlkreisImporter.class
+    */
 })
 @RunWith(Suite.class)
 public class Btw17WahlleiterDatenimport {

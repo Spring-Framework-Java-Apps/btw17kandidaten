@@ -17,4 +17,5 @@ public interface Btw17ErgebnisService extends Btw17Service<Btw17Ergebnis> {
     WahlergebnisseBtw17 getWahlergebnisseFromBtw17Ergebnis(Btw17Ergebnis btw17Ergebnis);
 
     List<Btw17Ergebnis> getErgebnisOfBundeslaender();
+
 }

@@ -38,7 +38,7 @@ import java.util.List;
         ),
         @NamedQuery(
                 name = "Btw17Ergebnis.getErgebnisOfBundeslaender",
-                query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
+                query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=99"
         )
 })
 @EntityListeners(Btw17ErgebnisListener.class)
