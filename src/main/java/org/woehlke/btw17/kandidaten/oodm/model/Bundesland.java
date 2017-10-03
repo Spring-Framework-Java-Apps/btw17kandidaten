@@ -1,10 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BundeslandListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -32,7 +34,7 @@ import javax.validation.Valid;
     )
 })
 @EntityListeners(BundeslandListener.class)
-public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
+public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,8 +42,10 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    @Column(name="bundesland",nullable = false)
-    private String bundesland;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bundesland", nullable=false)
+    private BundeslandEnum bundesland;
 
     @Column(name="bundesland_lang",nullable = false)
     private String bundeslandLang;
@@ -65,6 +69,10 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
         )
     })
     private Webseite webseite = new Webseite();
+
+    @Valid
+    @Embedded
+    private Strukturdaten strukturdaten = new Strukturdaten();
 
     @Transient
     public String getName(){
@@ -90,11 +98,11 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
         this.id = id;
     }
 
-    public String getBundesland() {
+    public BundeslandEnum getBundesland() {
         return bundesland;
     }
 
-    public void setBundesland(String bundesland) {
+    public void setBundesland(BundeslandEnum bundesland) {
         this.bundesland = bundesland;
     }
 
@@ -135,6 +143,16 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
     public void setWebseite(Webseite webseite) {
         if(webseite != null){
             this.webseite = webseite;
+        }
+    }
+
+    public Strukturdaten getStrukturdaten() {
+        return strukturdaten;
+    }
+
+    public void setStrukturdaten(Strukturdaten strukturdaten) {
+        if(strukturdaten != null){
+            this.strukturdaten = strukturdaten;
         }
     }
 

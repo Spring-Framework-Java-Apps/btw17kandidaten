@@ -27,7 +27,7 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     }
 
     @Override
-    public Wahlkreis findByWahlkreisId(Integer wahlkreisId) {
+    public Wahlkreis findByWahlkreisId(long wahlkreisId) {
         return wahlkreisRepository.findByWahlkreisId(wahlkreisId);
     }
 

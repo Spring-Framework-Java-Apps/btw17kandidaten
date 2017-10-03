@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
 
@@ -11,7 +12,7 @@ public interface BundeslandService {
 
     Iterable<Bundesland> getAll();
 
-    Bundesland findByBundesland(String bundesland);
+    Bundesland findByBundesland(BundeslandEnum bundesland);
 
     long count();
 

@@ -1,10 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model;
 
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.listener.Btw17KandidatFlatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Locale;
 
 @Entity
@@ -98,8 +100,10 @@ public class Btw17KandidatFlat implements DomainObject {
     @Column
     private String berufsgruppe;
 
-    @Column
-    private String bundesland;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "bundesland", nullable=false)
+    private BundeslandEnum bundesland;
 
     @Column(name="wahlkreis_id")
     private Integer wahlkreisId;
@@ -311,11 +315,11 @@ public class Btw17KandidatFlat implements DomainObject {
         this.berufsgruppe = berufsgruppe;
     }
 
-    public String getBundesland() {
+    public BundeslandEnum getBundesland() {
         return bundesland;
     }
 
-    public void setBundesland(String bundesland) {
+    public void setBundesland(BundeslandEnum bundesland) {
         this.bundesland = bundesland;
     }
 

@@ -27,7 +27,7 @@ import javax.validation.Valid;
     }
 )
 @EntityListeners(WahlkreisListener.class)
-public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded {
+public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     protected Long id;
 
     @Column(name="wahlkreis_id",unique = true)
-    private Integer wahlkreisId;
+    private Long wahlkreisId;
 
     @Column(name="wahlkreis_name")
     private String wahlkreisName;
@@ -48,6 +48,10 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     @Valid
     @Embedded
     private CommonFields commonFields = new CommonFields();
+
+    @Valid
+    @Embedded
+    private Strukturdaten strukturdaten = new Strukturdaten();
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
@@ -73,11 +77,11 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
         this.id = id;
     }
 
-    public Integer getWahlkreisId() {
+    public Long getWahlkreisId() {
         return wahlkreisId;
     }
 
-    public void setWahlkreisId(Integer wahlkreisId) {
+    public void setWahlkreisId(Long wahlkreisId) {
         this.wahlkreisId = wahlkreisId;
     }
 
@@ -114,6 +118,16 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     public void setCommonFields(CommonFields commonFields) {
         if(commonFields != null){
             this.commonFields = commonFields;
+        }
+    }
+
+    public Strukturdaten getStrukturdaten() {
+        return strukturdaten;
+    }
+
+    public void setStrukturdaten(Strukturdaten strukturdaten) {
+        if(strukturdaten != null){
+            this.strukturdaten = strukturdaten;
         }
     }
 

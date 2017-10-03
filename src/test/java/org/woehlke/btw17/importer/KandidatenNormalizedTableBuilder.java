@@ -122,7 +122,7 @@ public class KandidatenNormalizedTableBuilder {
         while(goOn) {
             for (Btw17KandidatFlat in : allKandidatenPage.getContent()) {
                 ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
-                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
+                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getBundesland());
                 if((listePartei!=null)&&(listeBundeslandLand!=null)){
                     LandesListe landesListe = landesListeService.fetchOrCreateByBundeslandAndListePartei(listeBundeslandLand,listePartei);
                     if(!landesListen.contains(landesListe)){
@@ -183,7 +183,8 @@ public class KandidatenNormalizedTableBuilder {
                 Wohnort wohnort = wohnortService.findByWohnort(in.getWohnort());
 
                 ListePartei listePartei = listeParteiService.findByListePartei(in.getListePartei(),in.getListeParteiLang());
-                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getListeBundeslandLand());
+
+                Bundesland listeBundeslandLand = bundeslandService.findByBundesland(in.getBundesland());
 
                 if((listePartei!=null)&&(listeBundeslandLand!=null)){
                     LandesListe landesListe = landesListeService.findByBundeslandAndListePartei(listeBundeslandLand,listePartei);

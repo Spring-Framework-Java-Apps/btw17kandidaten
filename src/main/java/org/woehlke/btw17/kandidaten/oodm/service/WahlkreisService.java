@@ -9,7 +9,7 @@ public interface WahlkreisService {
 
     Page<Wahlkreis> getAll(Pageable pageRequest);
 
-    Wahlkreis findByWahlkreisId(Integer wahlkreisId);
+    Wahlkreis findByWahlkreisId(long wahlkreisId);
 
     long count();
 

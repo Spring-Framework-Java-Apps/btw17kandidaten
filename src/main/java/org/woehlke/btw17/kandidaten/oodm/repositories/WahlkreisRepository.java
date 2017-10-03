@@ -8,5 +8,5 @@ import org.woehlke.btw17.kandidaten.oodm.repositories.custom.WahlkreisRepository
 @Repository
 public interface WahlkreisRepository extends PagingAndSortingRepository<Wahlkreis,Long>,WahlkreisRepositoryCustom {
 
-    Wahlkreis findByWahlkreisId(Integer wahlkreisId);
+    Wahlkreis findByWahlkreisId(Long wahlkreisId);
 }
