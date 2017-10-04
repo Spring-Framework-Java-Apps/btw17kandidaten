@@ -124,8 +124,8 @@ public class MdbStammdatenImporter {
                 o.setReligion(biografischeangaben.getRELIGION());
                 o.setBeruf(biografischeangaben.getBERUF());
                 o.setParteikurz(biografischeangaben.getPARTEIKURZ());
-                o.setVitakurz(biografischeangaben.getVITAKURZ());
-                o.setVeroeffentlichungspflichtiges(biografischeangaben.getVEROEFFENTLICHUNGSPFLICHTIGES());
+                o.setVitakurz(biografischeangaben.getVITAKURZ().replaceAll("\n","<br/>"));
+                o.setVeroeffentlichungspflichtiges(biografischeangaben.getVEROEFFENTLICHUNGSPFLICHTIGES().replaceAll("\n","<br/>"));
                 List<Wahlperiode> wahlperioden = new ArrayList();
                 for(WAHLPERIODE wahlperiode :mdb.getWAHLPERIODEN().getWAHLPERIODE()){
                     Wahlperiode p = new Wahlperiode();
