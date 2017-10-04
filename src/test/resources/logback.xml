@@ -18,6 +18,14 @@
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.errorhandling" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.model" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.model.listener" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.repositories.custom" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.repositories.impl" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.model" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.xml" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.service.impl" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.service" level="DEBUG" />
     <logger name="org.apache.http" level="WARN" />
     <logger name="org.apache.tomcat" level="WARN" />
     <logger name="javax.persistence" level="WARN" />
@@ -28,7 +36,7 @@
     <logger name="ch.qos.logback" level="WARN" />
     <logger name="org.hibernate.SQL" level="WARN" />
     <logger name="ch.qos.logback" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten" level="DEBUG" />
     <root level="WARN"></root>
 </configuration>
 

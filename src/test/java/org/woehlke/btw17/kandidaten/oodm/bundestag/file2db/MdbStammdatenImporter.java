@@ -53,7 +53,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MdbStammdatenImporter {
 
 
-    private static final Logger log = LoggerFactory.getLogger(Btw17ErgebnisImporter.class);
+    private static final Logger log = LoggerFactory.getLogger(MdbStammdatenImporter.class);
 
     private final String dtdFile = "etc/etc/mdb-stammdaten-data/MDB_STAMMDATEN.DTD";
 
@@ -92,6 +92,7 @@ public class MdbStammdatenImporter {
     @Test
     public void test100file2db() throws Exception {
         log.info("test100file2db");
+        mdbService.deleteAll();
         Assert.assertTrue(true);
         try {
             File file = new File(xmlFile);
@@ -147,8 +148,10 @@ public class MdbStammdatenImporter {
                     }
                     wahlperiodeService.create(p);
                     wahlperioden.add(p);
+                    log.info(p.toString());
                 }
                 o.setWahlperioden(wahlperioden);
+                log.info(o.toString());
                 log.info("----------------------------------------------");
                 mdbService.create(o);
             }

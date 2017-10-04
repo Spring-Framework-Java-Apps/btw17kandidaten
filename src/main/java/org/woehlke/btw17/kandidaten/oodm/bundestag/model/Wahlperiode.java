@@ -67,7 +67,7 @@ public class Wahlperiode implements DomainObject {
 
     @Override
     public String getUniqueId() {
-        return wkrnummer;
+        return wp;
     }
 
     public void setId(Long id) {

@@ -70,22 +70,23 @@ public class Mdb implements DomainObject {
     protected String beruf;
     @Column
     protected String parteikurz;
-    @Column
+    @Column(name="vitakurz",columnDefinition = "TEXT")
     protected String vitakurz;
-    @Column
+    @Column(name="veroeffentlichungspflichtiges",columnDefinition = "TEXT")
     protected String veroeffentlichungspflichtiges;
 
-    @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
+    @JoinColumn(name="wahlperioden_mdb_id")
     List<Wahlperiode> wahlperioden = new ArrayList<>();
 
     @Override
     public String getName() {
-        return id.toString();
+        return vorname+ " "+nachname+" ("+parteikurz+")";
     }
 
     @Override
     public String getUniqueId() {
-        return id.toString();
+        return xmlId;
     }
 
     @Override
