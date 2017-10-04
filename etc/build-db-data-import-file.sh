@@ -59,6 +59,7 @@ echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-btw17_strukturdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_strukturdaten " >> ../src/main/resources/data.sql
 
+
 echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber'
 echo '-- Table: btw17_wahlbewerber'
@@ -109,7 +110,6 @@ echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql' >> ../src/main/resou
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-btw17_mdb_stammdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_stammdaten " >> ../src/main/resources/data.sql
-
 
 fi
 
