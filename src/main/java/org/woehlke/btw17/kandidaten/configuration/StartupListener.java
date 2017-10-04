@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenPropertie
 import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.frontend.content.ReportOverview;
+import org.woehlke.btw17.kandidaten.oodm.bundestag.service.MdbService;
+import org.woehlke.btw17.kandidaten.oodm.bundestag.service.WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
@@ -69,8 +71,12 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final Btw17KandidatFlatService btw17KandidatFlatService;
 
+    private final MdbService mdbService;
+
+    private final WahlperiodeService wahlperiodeService;
+
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService, MdbService mdbService, WahlperiodeService wahlperiodeService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.otherProperties = otherProperties;
@@ -95,6 +101,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.btw17StrukturdatenService = btw17StrukturdatenService;
         this.btw17WahlbewerberService = btw17WahlbewerberService;
         this.btw17WahlkreisService = btw17WahlkreisService;
+        this.mdbService = mdbService;
+        this.wahlperiodeService = wahlperiodeService;
     }
 
     private long getDatabaseRows(){
@@ -122,6 +130,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         databaseRows += btw17WahlbewerberService.count();
         databaseRows += btw17WahlkreisService.count();
         databaseRows += btw17KandidatFlatService.count();
+        databaseRows += mdbService.count();
+        databaseRows += wahlperiodeService.count();
         return databaseRows;
     }
 
@@ -167,6 +177,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber  "+btw17WahlbewerberService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlkreis     "+btw17WahlkreisService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17KandidatFlat  "+btw17KandidatFlatService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundestag.model.Mdb                       "+mdbService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.bundestag.model.Wahlperiode               "+wahlperiodeService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" Database Rows: "+getDatabaseRows());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
