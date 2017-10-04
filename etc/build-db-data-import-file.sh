@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export EXP_WAHLLEITER_DATA="0"
+export EXP_WAHLLEITER_DATA="1"
 
 rm ../src/main/resources/data.sql
 
@@ -85,39 +85,30 @@ echo '--' >> ../src/main/resources/data.sql
 cat ./3nf/data/insert-data-btw17_ergebnis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_ergebnis " >> ../src/main/resources/data.sql
 
 
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Wahlperiode'
+echo '-- Table: btw17_mdb_wahlperiode'
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Wahlperiode' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_mdb_wahlperiode' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_mdb_wahlperiode.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_wahlperiode " >> ../src/main/resources/data.sql
+
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis'
-echo '-- Table: btw17_ergebnis'
-echo '-- etc/3nf/data/insert-data-btw17_ergebnis.sql'
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Mdb'
+echo '-- Table: btw17_mdb_stammdaten'
+echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis' >> ../src/main/resources/data.sql
-echo '-- Table: btw17_ergebnis' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Mdb' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_mdb_stammdaten' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 
-cat ./3nf/data/insert-data-btw17_mdb_stammdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_ergebnis " >> ../src/main/resources/data.sql
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+cat ./3nf/data/insert-data-btw17_mdb_stammdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_stammdaten " >> ../src/main/resources/data.sql
 
 
 fi
