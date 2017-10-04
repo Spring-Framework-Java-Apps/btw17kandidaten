@@ -27,7 +27,7 @@ psql -U kandidatentest < etc/drop-tables.sql
 
 ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=Btw17WahlleiterDatenimport -Dmaven.javadoc.skip=true -B -V
-./mvnw clean test -Pdevtest -Dtest=MinisteriumRedaktionControllerTest -Dmaven.javadoc.skip=true -B -V
+./mvnw clean test -Pdevtest -Dtest=MdbStammdatenImporter -Dmaven.javadoc.skip=true -B -V
 
 
 
