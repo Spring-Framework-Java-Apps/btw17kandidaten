@@ -32,7 +32,13 @@ echo "sql dump table: btw17_wahlkreis"
 
 pg_dump -U $DATABASE --table=btw17_wahlkreis --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_wahlkreis.sql
 
+echo "sql dump table: btw17_mdb_wahlperiode"
 
+pg_dump -U $DATABASE --table=btw17_mdb_wahlperiode --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_mdb_wahlperiode.sql
+
+echo "sql dump table: btw17_mdb_stammdaten"
+
+pg_dump -U $DATABASE --table=btw17_mdb_stammdaten --data-only --blobs --no-owner --jobs=1 --column-inserts --encoding=$ENCODING $DATABASE | sort > 3nf/data/insert-data-btw17_mdb_stammdaten.sql
 
 fi
 
