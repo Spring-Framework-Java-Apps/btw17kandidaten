@@ -11,35 +11,35 @@ import java.util.List;
 
 @Entity
 @Table(
-        name = "btw17_ergebnis",
-        uniqueConstraints = {
-                @UniqueConstraint(name="uk_btw17_ergebnis", columnNames = {"wahlkreis_nummer","bundesland_nummer"})
-        },
-        indexes = {
-                @Index(name = "idx_btw17_ergebnis_wahlkreis_name", columnList = "wahlkreis_name")
-        }
+    name = "btw17_ergebnis",
+    uniqueConstraints = {
+        @UniqueConstraint(name="uk_btw17_ergebnis", columnNames = {"wahlkreis_nummer","bundesland_nummer"})
+    },
+    indexes = {
+        @Index(name = "idx_btw17_ergebnis_wahlkreis_name", columnList = "wahlkreis_name")
+    }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Btw17Ergebnis.findByWahlkreisNummer",
-                query = "select o from Btw17Ergebnis as o where o.wahlkreisNummer=:wahlkreisNummer"
-        ),
-        @NamedQuery(
-                name = "Btw17Ergebnis.findBybundeslandNummer",
-                query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
-        ),
-        @NamedQuery(
-                name = "Btw17Ergebnis.countBybundeslandNummer",
-                query = "select count(o) from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
-        ),
-        @NamedQuery(
-                name = "Btw17Ergebnis.getAllIds",
-                query = "select o.id from Btw17Ergebnis as o order by o.id"
-        ),
-        @NamedQuery(
-                name = "Btw17Ergebnis.getErgebnisOfBundeslaender",
-                query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=99"
-        )
+    @NamedQuery(
+        name = "Btw17Ergebnis.findByWahlkreisNummer",
+        query = "select o from Btw17Ergebnis as o where o.wahlkreisNummer=:wahlkreisNummer"
+    ),
+    @NamedQuery(
+        name = "Btw17Ergebnis.findBybundeslandNummer",
+        query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
+    ),
+    @NamedQuery(
+        name = "Btw17Ergebnis.countBybundeslandNummer",
+        query = "select count(o) from Btw17Ergebnis as o where o.bundeslandNummer=:bundeslandNummer"
+    ),
+    @NamedQuery(
+        name = "Btw17Ergebnis.getAllIds",
+        query = "select o.id from Btw17Ergebnis as o order by o.id"
+    ),
+    @NamedQuery(
+        name = "Btw17Ergebnis.getErgebnisOfBundeslaender",
+        query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=99"
+    )
 })
 @EntityListeners(Btw17ErgebnisListener.class)
 public class Btw17Ergebnis implements DomainObject {

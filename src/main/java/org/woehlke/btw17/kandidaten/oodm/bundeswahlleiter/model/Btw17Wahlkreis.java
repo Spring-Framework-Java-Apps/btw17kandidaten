@@ -22,10 +22,10 @@ import javax.validation.constraints.NotNull;
     }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Btw17Wahlkreis.getAllIds",
-                query = "select o.id from Btw17Wahlkreis as o order by o.id"
-        )
+    @NamedQuery(
+        name = "Btw17Wahlkreis.getAllIds",
+        query = "select o.id from Btw17Wahlkreis as o order by o.id"
+    )
 })
 @EntityListeners(Btw17WahlkreisListener.class)
 public class Btw17Wahlkreis implements DomainObject {

@@ -76,14 +76,14 @@ import java.util.List;
     }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Btw17Strukturdaten.getAllIds",
-                query = "select o.id from Btw17Strukturdaten as o order by o.id"
-        ),
-        @NamedQuery(
-                name = "Btw17Strukturdaten.getStrukturdatenOfBundeslaender",
-                query = "select o from Btw17Strukturdaten as o where o.wahlkreisName='Land insgesamt'"
-        )
+    @NamedQuery(
+        name = "Btw17Strukturdaten.getAllIds",
+        query = "select o.id from Btw17Strukturdaten as o order by o.id"
+    ),
+    @NamedQuery(
+        name = "Btw17Strukturdaten.getStrukturdatenOfBundeslaender",
+        query = "select o from Btw17Strukturdaten as o where o.wahlkreisName='Land insgesamt'"
+    )
 })
 @EntityListeners(Btw17StrukturdatenListener.class)
 public class Btw17Strukturdaten implements DomainObject {
