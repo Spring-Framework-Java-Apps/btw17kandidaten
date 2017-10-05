@@ -23,13 +23,11 @@ import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlbewerberService;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.StringTokenizer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

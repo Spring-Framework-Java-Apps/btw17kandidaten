@@ -16,56 +16,112 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
+import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17ErgebnisService;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17StrukturdatenService;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlkreisService;
-import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
-import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
+import org.woehlke.btw17.kandidaten.oodm.bundestag.enrich.AusschussEnricher;
+import org.woehlke.btw17.kandidaten.oodm.bundestag.service.MdbService;
+import org.woehlke.btw17.kandidaten.oodm.bundestag.service.WahlperiodeService;
+import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.*;
+import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-        classes = {
-                KandidatenApplication.class,
-                DataSourceConfig.class,
-                HttpSessionConfig.class,
-                WebMvcConfig.class,
-                WebSecurityConfig.class
-        },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+    classes = {
+        KandidatenApplication.class,
+        DataSourceConfig.class,
+        HttpSessionConfig.class,
+        WebMvcConfig.class,
+        WebSecurityConfig.class
+    },
+    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BerufEnricher {
 
 
-    private static final Logger log = LoggerFactory.getLogger(BundeslandEnricher.class);
-
-    @Autowired
-    private Btw17ErgebnisService btw17ErgebnisService;
-
-    @Autowired
-    private Btw17WahlkreisService btw17WahlkreisService;
-
-    @Autowired
-    private Btw17StrukturdatenService btw17StrukturdatenService;
-
-    @Autowired
-    private WahlkreisService wahlkreisService;
-
-    @Autowired
-    private BundeslandService bundeslandService;
+    private static final Logger log = LoggerFactory.getLogger(BerufEnricher.class);
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
+    private SpringProperties springProperties;
+
+    @Autowired
     private KandidatenProperties kandidatenProperties;
+
+    @Autowired
+    private OtherProperties otherProperties;
+
+    @Autowired
+    private BerufService berufService;
+
+    @Autowired
+    private BerufsgruppeService berufsgruppeService;
+
+    @Autowired
+    private BundeslandService bundeslandService;
+
+    @Autowired
+    private GeburtsortService geburtsortService;
+
+    @Autowired
+    private KandidatService kandidatService;
+
+    @Autowired
+    private ListeParteiService listeParteiService;
+
+    @Autowired
+    private ParteiService parteiService;
+
+    @Autowired
+    private LandesListeService landesListeService;
+
+    @Autowired
+    private WahlkreisService wahlkreisService;
+
+    @Autowired
+    private WohnortService wohnortService;
+
+    @Autowired
+    private MinisteriumService ministeriumService;
+
+    @Autowired
+    private FraktionService fraktionService;
+
+    @Autowired
+    private AusschussService ausschussService;
+
+    @Autowired
+    private KandidatReportService kandidatReportService;
+
+    @Autowired
+    private WebseiteAgenturService webseiteAgenturService;
+
+    @Autowired
+    private WebseiteCmsService webseiteCmsService;
+
+    @Autowired
+    private Btw17ErgebnisService btw17ErgebnisService;
+
+    @Autowired
+    private Btw17StrukturdatenService btw17StrukturdatenService;
+
+    @Autowired
+    private Btw17WahlbewerberService btw17WahlbewerberService;
+
+    @Autowired
+    private Btw17WahlkreisService btw17WahlkreisService;
+
+    @Autowired
+    private Btw17KandidatFlatService btw17KandidatFlatService;
 
 
     @WithMockUser

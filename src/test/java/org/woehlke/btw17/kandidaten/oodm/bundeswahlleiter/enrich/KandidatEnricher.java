@@ -22,35 +22,28 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Ergebnis;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Strukturdaten;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.*;
-import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.Strukturdaten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes = {
-        KandidatenApplication.class,
-        DataSourceConfig.class,
-        HttpSessionConfig.class,
-        WebMvcConfig.class,
-        WebSecurityConfig.class
-    },
-    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+        classes = {
+                KandidatenApplication.class,
+                DataSourceConfig.class,
+                HttpSessionConfig.class,
+                WebMvcConfig.class,
+                WebSecurityConfig.class
+        },
+        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class BundeslandEnricher {
+public class KandidatEnricher {
 
 
-    private static final Logger log = LoggerFactory.getLogger(BundeslandEnricher.class);
+    private static final Logger log = LoggerFactory.getLogger(KandidatEnricher.class);
 
     @Autowired
     private MockMvc mockMvc;
@@ -148,39 +141,5 @@ public class BundeslandEnricher {
         assertThat(wahlkreisService).isNotNull();
         assertThat(bundeslandService).isNotNull();
         assertThat(btw17ErgebnisService).isNotNull();
-    }
-
-    @WithMockUser
-    @Commit
-    @Test
-    public void test010updateBundeslandByBtw17Strukturdaten() throws Exception {
-        log.info("test010updateBundeslandByBtw17Strukturdaten");
-        List<Btw17Strukturdaten> bundeslaenderBtw17Strukturdaten = btw17StrukturdatenService.getStrukturdatenOfBundeslaender();
-        for(Btw17Strukturdaten btw17Strukturdaten:bundeslaenderBtw17Strukturdaten){
-            log.info("btw17Strukturdaten: "+btw17Strukturdaten.getUniqueId());
-            Bundesland bundesland = bundeslandService.findByBundesland(btw17Strukturdaten.getBundesland());
-            Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
-            bundesland.setStrukturdaten(strukturdaten);
-            bundeslandService.update(bundesland);
-            log.info("bundesland: "+bundesland.getUniqueId());
-        }
-    }
-
-    @WithMockUser
-    @Commit
-    @Test
-    public void test040updateWahlkreisByBtw17Ergebnis() throws Exception {
-        log.info("test040updateWahlkreisByBtw17Ergebnis");
-        List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender =  btw17ErgebnisService.getErgebnisOfBundeslaender();
-        for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
-            log.info("btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
-            Bundesland bundesland = bundeslandService.findByBundesland(btw17Ergebnisse.getBundesland());
-            if(bundesland!=null){
-                WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
-                bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
-                bundeslandService.update(bundesland);
-                log.info("bundesland: "+bundesland.getUniqueId());
-            }
-        }
     }
 }

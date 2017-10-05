@@ -35,14 +35,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-        classes = {
-                KandidatenApplication.class,
-                DataSourceConfig.class,
-                HttpSessionConfig.class,
-                WebMvcConfig.class,
-                WebSecurityConfig.class
-        },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+    classes = {
+        KandidatenApplication.class,
+        DataSourceConfig.class,
+        HttpSessionConfig.class,
+        WebMvcConfig.class,
+        WebSecurityConfig.class
+    },
+    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
