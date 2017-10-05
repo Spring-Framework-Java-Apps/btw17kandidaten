@@ -22,10 +22,6 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.bundestag.enrich.AusschussEnricher;
-import org.woehlke.btw17.kandidaten.oodm.bundestag.service.MdbService;
-import org.woehlke.btw17.kandidaten.oodm.bundestag.service.WahlperiodeService;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 import static org.assertj.core.api.Assertions.assertThat;

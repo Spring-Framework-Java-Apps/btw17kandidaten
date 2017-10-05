@@ -22,8 +22,8 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.model.Btw17Wahlbewerber;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlbewerberService;
+import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
+import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlbewerberService;
 
 import java.io.BufferedReader;
 import java.io.File;
