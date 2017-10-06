@@ -181,4 +181,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByWebseiteCms(webseiteCms,pageable);
     }
 
+    @Override
+    public Page<Kandidat> findByWahlperiode(Wahlperiode wahlperiode, Pageable pageable) {
+        return kandidatRepository.findByWahlperiode(wahlperiode,pageable);
+    }
+
 }

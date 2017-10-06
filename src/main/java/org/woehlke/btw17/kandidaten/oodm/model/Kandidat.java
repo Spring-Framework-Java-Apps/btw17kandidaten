@@ -11,7 +11,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.FetchType.EAGER;
@@ -257,12 +259,20 @@ import static javax.persistence.FetchType.LAZY;
         query = "select count(o) from Kandidat as o join o.webseite.cms webseiteCms where webseiteCms=:webseiteCms"
     ),
     @NamedQuery(
-            name = "Kandidat.findByBundesland",
-            query = "select o from Kandidat as o where o.adresse.bundesland=:bundesland order by o.nachname"
+        name = "Kandidat.findByBundesland",
+        query = "select o from Kandidat as o where o.adresse.bundesland=:bundesland order by o.nachname"
     ),
     @NamedQuery(
-            name = "Kandidat.countByBundesland",
-            query = "select count(o) from Kandidat as o where o.adresse.bundesland=:bundesland"
+        name = "Kandidat.countByBundesland",
+        query = "select count(o) from Kandidat as o where o.adresse.bundesland=:bundesland"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByWahlperiode",
+        query = "select count(o) from Kandidat as o join o.wahlperioden wahlperiode where wahlperiode=:wahlperiode order by o.nachname"
+    ),
+    @NamedQuery(
+        name = "Kandidat.countByWahlperiode",
+        query = "select count(o) from Kandidat as o join o.wahlperioden wahlperiode where wahlperiode=:wahlperiode"
     )
 })
 @NamedNativeQueries({
@@ -412,6 +422,10 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
+
+    @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
+    @JoinColumn(name="wahlperioden_id")
+    List<Wahlperiode> wahlperioden = new ArrayList<>();
 
     @Valid
     @Embedded
@@ -776,6 +790,14 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         }
     }
 
+    public List<Wahlperiode> getWahlperioden() {
+        return wahlperioden;
+    }
+
+    public void setWahlperioden(List<Wahlperiode> wahlperioden) {
+        this.wahlperioden = wahlperioden;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -825,6 +847,8 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
             return false;
         if (ausschuesse != null ? !ausschuesse.equals(kandidat.ausschuesse) : kandidat.ausschuesse != null)
             return false;
+        if (wahlperioden != null ? !wahlperioden.equals(kandidat.wahlperioden) : kandidat.wahlperioden != null)
+            return false;
         if (commonFields != null ? !commonFields.equals(kandidat.commonFields) : kandidat.commonFields != null)
             return false;
         if (webseite != null ? !webseite.equals(kandidat.webseite) : kandidat.webseite != null) return false;
@@ -870,6 +894,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (fraktion != null ? fraktion.hashCode() : 0);
         result = 31 * result + (ministerien != null ? ministerien.hashCode() : 0);
         result = 31 * result + (ausschuesse != null ? ausschuesse.hashCode() : 0);
+        result = 31 * result + (wahlperioden != null ? wahlperioden.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
         result = 31 * result + (webseite != null ? webseite.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
@@ -894,7 +919,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", alter=" + alter +
                 ", funktion='" + funktion + '\'' +
                 ", mdb='" + mdb + '\'' +
-                ", mdbNeu='" + mdbNeu + '\'' +
+                ", mdbNeu=" + mdbNeu +
                 ", lat=" + lat +
                 ", lng=" + lng +
                 ", idEigen='" + idEigen + '\'' +
@@ -915,6 +940,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", fraktion=" + fraktion +
                 ", ministerien=" + ministerien +
                 ", ausschuesse=" + ausschuesse +
+                ", wahlperioden=" + wahlperioden +
                 ", commonFields=" + commonFields +
                 ", webseite=" + webseite +
                 ", onlineStrategie=" + onlineStrategie +

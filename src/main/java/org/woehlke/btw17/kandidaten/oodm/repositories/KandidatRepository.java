@@ -250,4 +250,10 @@ public interface KandidatRepository extends PagingAndSortingRepository<Kandidat,
             countName = "Kandidat.contByWebseiteCms"
     )
     Page<Kandidat> findByWebseiteCms(@Param("webseiteCms") WebseiteCms webseiteCms, Pageable pageable);
+
+    @Query(
+            name = "Kandidat.findByWahlperiode",
+            countName = "Kandidat.countByWahlperiode"
+    )
+    Page<Kandidat> findByWahlperiode(@Param("wahlperiode") Wahlperiode wahlperiode, Pageable pageable);
 }
