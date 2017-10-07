@@ -243,14 +243,14 @@ public class ReportOverview implements Serializable {
     @Override
     public String toString() {
         List<String> outputLines = new ArrayList<>();
-        outputLines.add(" Btw17Mdb:                                                  "+this.getCountMdb());
-        outputLines.add("  Btw17Mdb without Abgeordnetenwatch:                       "+this.getCountMdbWithoutAbgeordnetenwatch());
-        outputLines.add("  Btw17Mdb without FotoUrl:                                 "+this.getCountMdbWithoutFotoUrl());
-        outputLines.add("  Btw17Mdb without BundestagProfile:                        "+this.getCountMdbWithoutBundestagProfile());
-        outputLines.add("  Btw17Mdb without WikipediaArticle:                        "+this.getCountMdbWithoutWikipediaArticle());
-        outputLines.add("  Btw17Mdb without Twitter:                                 "+this.getCountMdbWithoutTwitter());
-        outputLines.add("  Btw17Mdb without Facebook:                                "+this.getCountMdbWithoutFacebook());
-        outputLines.add("  Btw17Mdb without Webseite:                                "+this.getCountMdbWithoutWebseite());
+        outputLines.add(" Mdb:                                                  "+this.getCountMdb());
+        outputLines.add("  Mdb without Abgeordnetenwatch:                       "+this.getCountMdbWithoutAbgeordnetenwatch());
+        outputLines.add("  Mdb without FotoUrl:                                 "+this.getCountMdbWithoutFotoUrl());
+        outputLines.add("  Mdb without BundestagProfile:                        "+this.getCountMdbWithoutBundestagProfile());
+        outputLines.add("  Mdb without WikipediaArticle:                        "+this.getCountMdbWithoutWikipediaArticle());
+        outputLines.add("  Mdb without Twitter:                                 "+this.getCountMdbWithoutTwitter());
+        outputLines.add("  Mdb without Facebook:                                "+this.getCountMdbWithoutFacebook());
+        outputLines.add("  Mdb without Webseite:                                "+this.getCountMdbWithoutWebseite());
         outputLines.add(" Kandidat:                                             "+this.getCountKandidat());
         outputLines.add("  Kandidat without Abgeordnetenwatch:                  "+this.getCountKandidatWithoutAbgeordnetenwatch());
         outputLines.add("  Kandidat without FotoUrl:                            "+this.getCountKandidatWithoutFotoUrl());

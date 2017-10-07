@@ -38,14 +38,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-        classes = {
-                KandidatenApplication.class,
-                DataSourceConfig.class,
-                HttpSessionConfig.class,
-                WebMvcConfig.class,
-                WebSecurityConfig.class
-        },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+    classes = {
+        KandidatenApplication.class,
+        DataSourceConfig.class,
+        HttpSessionConfig.class,
+        WebMvcConfig.class,
+        WebSecurityConfig.class
+    },
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -125,7 +125,7 @@ public class Btw17MdbStammdatenImporter {
                 o.setParteikurz(biografischeangaben.getPARTEIKURZ());
                 o.setVitakurz(biografischeangaben.getVITAKURZ().replaceAll("\n","<br/>"));
                 o.setVeroeffentlichungspflichtiges(biografischeangaben.getVEROEFFENTLICHUNGSPFLICHTIGES().replaceAll("\n","<br/>"));
-                List<Btw17Wahlperiode> wahlperioden = new ArrayList();
+                List<Btw17Wahlperiode> wahlperioden = new ArrayList<Btw17Wahlperiode>();
                 for(WAHLPERIODE wahlperiode :mdb.getWAHLPERIODEN().getWAHLPERIODE()){
                     Btw17Wahlperiode p = new Btw17Wahlperiode();
                     p.setWp(wahlperiode.getWP());

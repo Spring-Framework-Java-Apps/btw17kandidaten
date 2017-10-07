@@ -22,6 +22,8 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
+import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
@@ -30,14 +32,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-        classes = {
-                KandidatenApplication.class,
-                DataSourceConfig.class,
-                HttpSessionConfig.class,
-                WebMvcConfig.class,
-                WebSecurityConfig.class
-        },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+    classes = {
+        KandidatenApplication.class,
+        DataSourceConfig.class,
+        HttpSessionConfig.class,
+        WebMvcConfig.class,
+        WebSecurityConfig.class
+    },
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -133,20 +135,37 @@ public class GeburtsortEnricher {
         @Commit
         @Test
         public void test000controllerIsPresentTest(){
-                log.info("test000controllerIsPresentTest");
-                assertThat(mockMvc).isNotNull();
-                assertThat(kandidatenProperties).isNotNull();
+            log.info("test000controllerIsPresentTest");
+            assertThat(mockMvc).isNotNull();
+            assertThat(kandidatenProperties).isNotNull();
         }
 
         @WithMockUser
         @Commit
         @Test
         public void test000serviceIsPresentTest(){
-                log.info("test000serviceIsPresentTest");
-                assertThat(btw17WahlkreisService).isNotNull();
-                assertThat(btw17StrukturdatenService).isNotNull();
-                assertThat(wahlkreisService).isNotNull();
-                assertThat(bundeslandService).isNotNull();
-                assertThat(btw17ErgebnisService).isNotNull();
+            log.info("test000serviceIsPresentTest");
+            assertThat(btw17WahlkreisService).isNotNull();
+            assertThat(btw17StrukturdatenService).isNotNull();
+            assertThat(wahlkreisService).isNotNull();
+            assertThat(bundeslandService).isNotNull();
+            assertThat(btw17ErgebnisService).isNotNull();
+        }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateGeburtsortByBtw17Wahlbewerber() throws Exception {
+            log.info("test010updateGeburtsortByBtw17Wahlbewerber");
+            for(Btw17Wahlbewerber btw17Wahlbewerber:btw17WahlbewerberService.getAll()){
+                String geburtsort = btw17Wahlbewerber.getGeburtsort();
+                Geburtsort geburtsortPers = geburtsortService.findByGeburtsort(geburtsort);
+                if(geburtsortPers == null){
+                    Geburtsort o = new Geburtsort();
+                    o.setGeburtsort(geburtsort);
+                    o = geburtsortService.create(o);
+                    log.info("added: "+o.getUniqueId());
+                }
+            }
         }
 }

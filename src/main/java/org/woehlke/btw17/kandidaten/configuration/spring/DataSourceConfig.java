@@ -13,9 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories({
-    "org.woehlke.btw17.kandidaten.oodm.repositories",
-    "org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.repositories",
-    "org.woehlke.btw17.kandidaten.oodm.bundestag.repositories"
+    "org.woehlke.btw17.kandidaten.oodm.repositories"
 })
 public class DataSourceConfig extends JdbcHttpSessionConfiguration {
 

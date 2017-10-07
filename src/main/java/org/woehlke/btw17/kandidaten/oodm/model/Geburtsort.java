@@ -32,7 +32,7 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    private Long id;
 
     @NotNull
     @Column(name = "geburtsort")
