@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.repositories.WahlkreisRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlkreisService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WahlkreisServiceImpl implements WahlkreisService {
@@ -24,6 +26,11 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     @Override
     public Page<Wahlkreis> getAll(Pageable pageRequest) {
         return wahlkreisRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<Wahlkreis> getAll() {
+        return wahlkreisRepository.findAll();
     }
 
     @Override
@@ -46,6 +53,21 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Wahlkreis update(Wahlkreis wahlkreis) {
         return wahlkreisRepository.save(wahlkreis);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return wahlkreisRepository.getAllIds();
+    }
+
+    @Override
+    public Wahlkreis findById(long id) {
+        return wahlkreisRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return wahlkreisRepository.getMaxId();
     }
 
     @Override

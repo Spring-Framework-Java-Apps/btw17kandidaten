@@ -32,4 +32,9 @@ public interface LandesListeRepository extends PagingAndSortingRepository<Landes
 
     @Query(name="LandesListe.getAllOrOrderById")
     List<LandesListe> getAll();
+
+    List<Long> getAllIds();
+
+    long getMaxId();
+
 }

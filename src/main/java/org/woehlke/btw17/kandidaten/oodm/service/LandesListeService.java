@@ -6,23 +6,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 
-import java.util.List;
-
-public interface LandesListeService {
-
-    Page<LandesListe> getAll(Pageable pageRequest);
-
-    List<LandesListe> getAll();
-
-    LandesListe create(LandesListe landesListe);
-
-    void deleteAll();
-
-    long count();
-
-    LandesListe update(LandesListe landesListe);
-
-    void delete(LandesListe landesListe);
+public interface LandesListeService extends Btw17Service<LandesListe> {
 
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
 

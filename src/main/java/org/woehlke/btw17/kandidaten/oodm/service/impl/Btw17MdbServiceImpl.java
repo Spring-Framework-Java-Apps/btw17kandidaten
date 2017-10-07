@@ -72,4 +72,9 @@ public class Btw17MdbServiceImpl implements Btw17MdbService {
     public Btw17Mdb findById(long id) {
         return btw17MdbRepository.findOne(id);
     }
+
+    @Override
+    public long getMaxId() {
+        return btw17MdbRepository.getMaxId();
+    }
 }

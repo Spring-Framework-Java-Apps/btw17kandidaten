@@ -35,4 +35,7 @@ public interface Btw17WahlbewerberRepository extends PagingAndSortingRepository<
     @Query(name="Btw17Wahlbewerber.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="Btw17Wahlbewerber.getMaxId",nativeQuery = true)
+    long getMaxId();
+
 }

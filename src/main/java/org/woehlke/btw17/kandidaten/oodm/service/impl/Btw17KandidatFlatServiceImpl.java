@@ -78,6 +78,11 @@ public class Btw17KandidatFlatServiceImpl implements Btw17KandidatFlatService {
     }
 
     @Override
+    public long getMaxId() {
+        return this.btw17KandidatFlatRepository.getMaxId();
+    }
+
+    @Override
     public List<Long> getAllIdsWhereMdbIsNotNull() {
         return btw17KandidatFlatRepository.getAllIdsWhereMdbIsNotNull();
     }

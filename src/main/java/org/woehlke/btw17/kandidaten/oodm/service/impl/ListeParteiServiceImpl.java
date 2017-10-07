@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.ListeParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class ListeParteiServiceImpl implements ListeParteiService {
@@ -24,6 +26,11 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     @Override
     public Page<ListePartei> getAll(Pageable pageRequest) {
         return listeParteiRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<ListePartei> getAll() {
+        return listeParteiRepository.findAll();
     }
 
     @Override
@@ -44,8 +51,23 @@ public class ListeParteiServiceImpl implements ListeParteiService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void update(ListePartei out) {
-        listeParteiRepository.save(out);
+    public ListePartei update(ListePartei out) {
+        return listeParteiRepository.save(out);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return listeParteiRepository.getAllIds();
+    }
+
+    @Override
+    public ListePartei findById(long id) {
+        return listeParteiRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return listeParteiRepository.getMaxId();
     }
 
     @Override

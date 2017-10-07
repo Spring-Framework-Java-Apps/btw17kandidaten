@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur;
 import org.woehlke.btw17.kandidaten.oodm.repositories.WebseiteAgenturRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.WebseiteAgenturService;
 
+import java.util.List;
+
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
@@ -51,6 +53,21 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public WebseiteAgentur update(WebseiteAgentur webseiteAgentur) {
         return webseiteAgenturRepository.save(webseiteAgentur);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return webseiteAgenturRepository.getAllIds();
+    }
+
+    @Override
+    public WebseiteAgentur findById(long id) {
+        return webseiteAgenturRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return webseiteAgenturRepository.getMaxId();
     }
 
     @Override

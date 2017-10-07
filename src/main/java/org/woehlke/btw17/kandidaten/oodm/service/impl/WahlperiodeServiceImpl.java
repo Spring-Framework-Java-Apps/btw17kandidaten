@@ -67,4 +67,9 @@ public class WahlperiodeServiceImpl implements WahlperiodeService {
     public Wahlperiode findById(long id) {
         return this.wahlperiodeRepository.findOne(id);
     }
+
+    @Override
+    public long getMaxId() {
+        return this.wahlperiodeRepository.getMaxId();
+    }
 }

@@ -56,6 +56,21 @@ public class MinisteriumServiceImpl implements MinisteriumService {
     }
 
     @Override
+    public List<Long> getAllIds() {
+        return ministeriumRepository.getAllIds();
+    }
+
+    @Override
+    public Ministerium findById(long id) {
+        return ministeriumRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return ministeriumRepository.getMaxId();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Ministerium create(Ministerium ministerium) {
         return ministeriumRepository.save(ministerium);

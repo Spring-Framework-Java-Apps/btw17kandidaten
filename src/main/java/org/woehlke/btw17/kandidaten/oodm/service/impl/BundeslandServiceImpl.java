@@ -11,6 +11,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.repositories.BundeslandRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BundeslandServiceImpl implements BundeslandService {
@@ -57,6 +59,21 @@ public class BundeslandServiceImpl implements BundeslandService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Bundesland update(Bundesland bundesland) {
         return bundeslandRepository.save(bundesland);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return bundeslandRepository.getAllIds();
+    }
+
+    @Override
+    public Bundesland findById(long id) {
+        return bundeslandRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return bundeslandRepository.getMaxId();
     }
 
     @Override

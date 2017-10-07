@@ -15,4 +15,11 @@ public interface WohnortRepository extends PagingAndSortingRepository<Wohnort,Lo
 
     @Query(name = "Wohnort.getAllOrderById")
     List<Wohnort> getAllOrderById();
+
+    @Query(name = "Wohnort.getAllIds")
+    List<Long> getAllIds();
+
+    @Query(name = "Wohnort.getMaxId",nativeQuery = true)
+    long getMaxId();
+
 }

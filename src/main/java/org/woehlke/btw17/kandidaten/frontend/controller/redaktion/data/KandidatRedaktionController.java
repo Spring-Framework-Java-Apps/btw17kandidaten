@@ -79,23 +79,23 @@ public class KandidatRedaktionController extends AbstractController {
     }
 
     @ModelAttribute("ausschuesseList")
-    public List<Ausschuss> addAusschuesse(Model model) {
+    public Iterable<Ausschuss> addAusschuesse(Model model) {
         log.debug("addAusschuesse");
-        List<Ausschuss> ausschuesseList = ausschussService.getAll();
+        Iterable<Ausschuss> ausschuesseList = ausschussService.getAll();
         return ausschuesseList;
     }
 
     @ModelAttribute("fraktionenList")
-    public List<Fraktion> addFraktionen(Model model) {
+    public Iterable<Fraktion> addFraktionen(Model model) {
         log.debug("addFraktionen");
-        List<Fraktion> fraktionenList = fraktionService.getAll();
+        Iterable<Fraktion> fraktionenList = fraktionService.getAll();
         return fraktionenList;
     }
 
     @ModelAttribute("ministerienList")
-    public List<Ministerium> addMinisterien(Model model) {
+    public Iterable<Ministerium> addMinisterien(Model model) {
         log.debug("addMinisterien");
-        List<Ministerium> ministerienList = ministeriumService.getAll();
+        Iterable<Ministerium> ministerienList = ministeriumService.getAll();
         return ministerienList;
     }
 
@@ -107,16 +107,16 @@ public class KandidatRedaktionController extends AbstractController {
     }
 
     @ModelAttribute("parteiList")
-    public List<Partei> addParteiList(Model model) {
+    public Iterable<Partei> addParteiList(Model model) {
         log.debug("addParteiList");
-        List<Partei> parteiList = parteiService.getAll();
+        Iterable<Partei> parteiList = parteiService.getAll();
         return parteiList;
     }
 
     @ModelAttribute("landesListeList")
-    public List<LandesListe> addLandesListeList(Model model) {
+    public Iterable<LandesListe> addLandesListeList(Model model) {
         log.debug("addLandesListeList");
-        List<LandesListe> landesListeList = landesListeService.getAll();
+        Iterable<LandesListe> landesListeList = landesListeService.getAll();
         return landesListeList;
     }
 

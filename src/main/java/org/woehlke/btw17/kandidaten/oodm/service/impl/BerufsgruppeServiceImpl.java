@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.repositories.BerufsgruppeRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufsgruppeService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BerufsgruppeServiceImpl implements BerufsgruppeService {
@@ -51,6 +53,21 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Berufsgruppe update(Berufsgruppe berufsgruppe) {
         return berufsgruppeRepository.save(berufsgruppe);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return berufsgruppeRepository.getAllIds();
+    }
+
+    @Override
+    public Berufsgruppe findById(long id) {
+        return berufsgruppeRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return berufsgruppeRepository.getMaxId();
     }
 
     @Override

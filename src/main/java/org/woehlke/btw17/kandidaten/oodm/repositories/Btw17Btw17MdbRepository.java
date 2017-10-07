@@ -13,4 +13,7 @@ public interface Btw17Btw17MdbRepository extends PagingAndSortingRepository<Btw1
 
     @Query(name = "Btw17Mdb.getAllIds")
     List<Long> getAllIds();
+
+    @Query(name = "Btw17Mdb.getMaxId", nativeQuery = true)
+    long getMaxId();
 }

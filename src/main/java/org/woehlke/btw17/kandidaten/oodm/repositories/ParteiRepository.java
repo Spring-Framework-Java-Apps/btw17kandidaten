@@ -16,4 +16,8 @@ public interface ParteiRepository extends PagingAndSortingRepository<Partei,Long
     @Query(name = "Partei.getAll")
     List<Partei> getAll();
 
+    long getMaxId();
+
+    List<Long> getAllIds();
+
 }

@@ -37,7 +37,7 @@ public class UpdatePartei {
     @Commit
     @Test
     public void updatePartei() throws Exception {
-        List<Partei> allKandidatenPage = parteiService.getAll();
+        Iterable<Partei> allKandidatenPage = parteiService.getAll();
         for (Partei in : allKandidatenPage) {
             log.info(in.toString());
             ListePartei out = listeParteiService.findByPartei(in.getPartei());

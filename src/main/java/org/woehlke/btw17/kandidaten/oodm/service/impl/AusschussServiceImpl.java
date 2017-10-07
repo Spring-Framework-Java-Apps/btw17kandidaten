@@ -24,13 +24,13 @@ public class AusschussServiceImpl implements AusschussService {
     }
 
     @Override
-    public List<Ausschuss> getAll() {
-        return ausschussRepository.getAll();
+    public Iterable<Ausschuss> getAll() {
+        return ausschussRepository.findAll();
     }
 
     @Override
     public Page<Ausschuss> getAll(Pageable pageRequest) {
-        return ausschussRepository.getAll(pageRequest);
+        return ausschussRepository.findAll(pageRequest);
     }
 
     @Override
@@ -53,6 +53,21 @@ public class AusschussServiceImpl implements AusschussService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Ausschuss update(Ausschuss ausschuss) {
         return ausschussRepository.save(ausschuss);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return ausschussRepository.getAllIds();
+    }
+
+    @Override
+    public Ausschuss findById(long id) {
+        return ausschussRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return ausschussRepository.getMaxId();
     }
 
     @Override

@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.repositories.GeburtsortRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.GeburtsortService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class GeburtsortServiceImpl implements GeburtsortService {
@@ -24,6 +26,11 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     @Override
     public Page<Geburtsort> getAll(Pageable pageRequest) {
         return geburtsortRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<Geburtsort> getAll() {
+        return geburtsortRepository.findAll();
     }
 
     @Override
@@ -44,8 +51,23 @@ public class GeburtsortServiceImpl implements GeburtsortService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void update(Geburtsort o) {
-        geburtsortRepository.save(o);
+    public Geburtsort update(Geburtsort o) {
+        return geburtsortRepository.save(o);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return geburtsortRepository.getAllIds();
+    }
+
+    @Override
+    public Geburtsort findById(long id) {
+        return geburtsortRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return geburtsortRepository.getMaxId();
     }
 
     @Override

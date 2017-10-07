@@ -23,4 +23,6 @@ public interface Btw17StrukturdatenRepository extends PagingAndSortingRepository
     @Query(name="Btw17Strukturdaten.getStrukturdatenOfBundeslaender")
     List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender();
 
+    @Query(name="Btw17Strukturdaten.getMaxId",nativeQuery = true)
+    long getMaxId();
 }

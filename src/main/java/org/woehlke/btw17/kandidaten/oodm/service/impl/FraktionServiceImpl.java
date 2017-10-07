@@ -56,6 +56,21 @@ public class FraktionServiceImpl implements FraktionService {
     }
 
     @Override
+    public List<Long> getAllIds() {
+        return fraktionRepository.getAllIds();
+    }
+
+    @Override
+    public Fraktion findById(long id) {
+        return fraktionRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return fraktionRepository.getMaxId();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Fraktion create(Fraktion fraktion) {
         return fraktionRepository.save(fraktion);

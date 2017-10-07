@@ -23,4 +23,9 @@ public interface FraktionRepository extends PagingAndSortingRepository<Fraktion,
     Page<Fraktion> getAll(Pageable pageRequest);
 
     Fraktion findByFraktion(String fraktion);
+
+    List<Long> getAllIds();
+
+    long getMaxId();
+
 }

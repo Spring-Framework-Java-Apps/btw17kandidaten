@@ -142,4 +142,9 @@ public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService 
     public Btw17Strukturdaten findById(long id) {
         return btw17StrukturdatenRepository.findOne(id);
     }
+
+    @Override
+    public long getMaxId() {
+        return btw17StrukturdatenRepository.getMaxId();
+    }
 }

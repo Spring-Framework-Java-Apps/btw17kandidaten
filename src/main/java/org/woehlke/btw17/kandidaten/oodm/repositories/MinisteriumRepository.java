@@ -16,4 +16,9 @@ public interface MinisteriumRepository extends PagingAndSortingRepository<Minist
     List<Ministerium> getAll();
 
     Ministerium findByMinisterium(String ministerium);
+
+    List<Long> getAllIds();
+
+    long getMaxId();
+
 }

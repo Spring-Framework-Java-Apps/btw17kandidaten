@@ -7,6 +7,8 @@ import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.BundeslandRepositoryCustom;
 
+import java.util.List;
+
 @Repository
 public interface BundeslandRepository extends PagingAndSortingRepository<Bundesland,Long>,BundeslandRepositoryCustom {
 
@@ -14,4 +16,9 @@ public interface BundeslandRepository extends PagingAndSortingRepository<Bundesl
 
     @Query(name="Bundesland.countBundeslandAgentur",nativeQuery=true)
     long countBundeslandAgentur();
+
+    List<Long> getAllIds();
+
+    long getMaxId();
+
 }

@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 import org.woehlke.btw17.kandidaten.oodm.repositories.WebseiteCmsRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.WebseiteCmsService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WebseiteCmsServiceImpl implements WebseiteCmsService {
@@ -50,6 +52,21 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public WebseiteCms update(WebseiteCms webseiteCms) {
         return webseiteCmsRepository.save(webseiteCms);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return webseiteCmsRepository.getAllIds();
+    }
+
+    @Override
+    public WebseiteCms findById(long id) {
+        return webseiteCmsRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return webseiteCmsRepository.getMaxId();
     }
 
     @Override

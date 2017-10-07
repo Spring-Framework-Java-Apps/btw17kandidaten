@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.ListeParteiRepositoryCustom;
 
+import java.util.List;
+
 @Repository
 public interface ListeParteiRepository extends PagingAndSortingRepository<ListePartei,Long>,ListeParteiRepositoryCustom {
 
@@ -15,4 +17,9 @@ public interface ListeParteiRepository extends PagingAndSortingRepository<ListeP
 
     @Query(name="ListePartei.findByListePartei")
     ListePartei findByListePartei(@Param("listePartei") String listePartei);
+
+    List<Long> getAllIds();
+
+    long getMaxId();
+
 }

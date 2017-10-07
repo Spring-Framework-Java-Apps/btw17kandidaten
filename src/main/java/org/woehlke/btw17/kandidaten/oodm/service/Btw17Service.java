@@ -25,4 +25,6 @@ public interface Btw17Service<T extends DomainObject> {
     List<Long> getAllIds();
 
     T findById(long id);
+
+    long getMaxId();
 }

@@ -13,4 +13,8 @@ public interface WahlperiodeRepository extends PagingAndSortingRepository<Wahlpe
 
     @Query(name = "Wahlperiode.getAllIds")
     List<Long> getAllIds();
+
+    @Query(name = "Wahlperiode.getMaxId",nativeQuery = false)
+    long getMaxId();
+
 }

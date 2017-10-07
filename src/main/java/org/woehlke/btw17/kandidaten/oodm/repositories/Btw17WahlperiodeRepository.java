@@ -13,4 +13,8 @@ public interface Btw17WahlperiodeRepository extends PagingAndSortingRepository<B
 
     @Query(name = "Btw17Wahlperiode.getAllIds")
     List<Long> getAllIds();
+
+    @Query(name = "Btw17Wahlperiode.getMaxId", nativeQuery = true)
+    long getMaxId();
+
 }

@@ -82,4 +82,9 @@ public class Btw17WahlkreisServiceImpl implements Btw17WahlkreisService {
     public Btw17Wahlkreis findById(long id) {
         return this.btw17WahlkreisRepository.findOne(id);
     }
+
+    @Override
+    public long getMaxId() {
+        return this.btw17WahlkreisRepository.getMaxId();
+    }
 }

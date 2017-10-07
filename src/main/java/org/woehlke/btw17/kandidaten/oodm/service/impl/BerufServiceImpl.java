@@ -10,6 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.repositories.BerufRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.BerufService;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BerufServiceImpl implements BerufService {
@@ -24,6 +26,11 @@ public class BerufServiceImpl implements BerufService {
     @Override
     public Page<Beruf> getAll(Pageable pageRequest) {
         return berufRepository.findAll(pageRequest);
+    }
+
+    @Override
+    public Iterable<Beruf> getAll() {
+        return berufRepository.findAll();
     }
 
     @Override
@@ -46,6 +53,21 @@ public class BerufServiceImpl implements BerufService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Beruf update(Beruf beruf) {
         return berufRepository.save(beruf);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return berufRepository.getAllIds();
+    }
+
+    @Override
+    public Beruf findById(long id) {
+        return berufRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return berufRepository.getMaxId();
     }
 
     @Override

@@ -59,6 +59,21 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
+    public List<Long> getAllIds() {
+        return landesListeRepository.getAllIds();
+    }
+
+    @Override
+    public LandesListe findById(long id) {
+        return  landesListeRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return landesListeRepository.getMaxId();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void delete(LandesListe landesListe) {
         landesListeRepository.delete(landesListe);

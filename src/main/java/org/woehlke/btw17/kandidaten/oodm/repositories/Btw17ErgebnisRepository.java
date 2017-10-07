@@ -21,4 +21,8 @@ public interface Btw17ErgebnisRepository extends PagingAndSortingRepository<Btw1
 
     @Query(name="Btw17Ergebnis.getErgebnisOfBundeslaender")
     List<Btw17Ergebnis> getErgebnisOfBundeslaender();
+
+    @Query(name="Btw17Ergebnis.getMaxId",nativeQuery=true)
+    long getMaxId();
+
 }

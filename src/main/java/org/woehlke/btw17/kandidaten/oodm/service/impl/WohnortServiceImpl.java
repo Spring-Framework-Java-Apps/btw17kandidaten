@@ -29,6 +29,11 @@ public class WohnortServiceImpl implements WohnortService {
     }
 
     @Override
+    public Iterable<Wohnort> getAll() {
+        return wohnortRepository.findAll();
+    }
+
+    @Override
     public Wohnort findByWohnort(String wohnort) {
         return wohnortRepository.findByWohnort(wohnort);
     }
@@ -51,8 +56,23 @@ public class WohnortServiceImpl implements WohnortService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void update(Wohnort wohnort) {
-        wohnortRepository.save(wohnort);
+    public Wohnort update(Wohnort wohnort) {
+        return wohnortRepository.save(wohnort);
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return wohnortRepository.getAllIds();
+    }
+
+    @Override
+    public Wohnort findById(long id) {
+        return wohnortRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return wohnortRepository.getMaxId();
     }
 
     @Override

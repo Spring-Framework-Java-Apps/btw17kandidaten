@@ -20,4 +20,7 @@ public interface Btw17WahlkreisRepository extends PagingAndSortingRepository<Btw
     @Query(name="Btw17Wahlkreis.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="Btw17Wahlkreis.getMaxId",nativeQuery = true)
+    long getMaxId();
+
 }

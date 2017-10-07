@@ -57,6 +57,21 @@ public class ParteiServiceImpl implements ParteiService {
     }
 
     @Override
+    public List<Long> getAllIds() {
+        return parteiRepository.getAllIds();
+    }
+
+    @Override
+    public Partei findById(long id) {
+        return parteiRepository.findOne(id);
+    }
+
+    @Override
+    public long getMaxId() {
+        return parteiRepository.getMaxId();
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Partei create(Partei partei) {
         return parteiRepository.save(partei);

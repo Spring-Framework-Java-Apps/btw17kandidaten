@@ -22,4 +22,6 @@ public interface Btw17KandidatFlatRepository extends PagingAndSortingRepository<
     @Query(name="Btw17KandidatFlat.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="Btw17KandidatFlat.getMaxId",nativeQuery = true)
+    long getMaxId();
 }

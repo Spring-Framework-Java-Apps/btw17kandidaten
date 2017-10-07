@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms;
 import org.woehlke.btw17.kandidaten.oodm.repositories.custom.WebseiteCmsRepositoryCustom;
 
+import java.util.List;
+
 @Repository
 public interface WebseiteCmsRepository extends PagingAndSortingRepository<WebseiteCms,Long>, WebseiteCmsRepositoryCustom {
 
@@ -15,4 +17,8 @@ public interface WebseiteCmsRepository extends PagingAndSortingRepository<Websei
         countName = "WebseiteCms.countByCms"
     )
     WebseiteCms findByCms(@Param("cms") String cms);
+
+    List<Long> getAllIds();
+
+    long getMaxId();
 }
