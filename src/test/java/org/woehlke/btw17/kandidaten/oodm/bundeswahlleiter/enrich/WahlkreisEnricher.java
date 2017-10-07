@@ -168,8 +168,8 @@ public class WahlkreisEnricher {
     @WithMockUser
     @Commit
     @Test
-    public void test010updateWahlkreis() throws Exception {
-        log.info("test001updateWahlkreisFields");
+    public void test010updateWahlkreisWithBundesland() throws Exception {
+        log.info("test010updateWahlkreisWithBundesland");
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
         Pageable pageable = new PageRequest(page,size);
@@ -181,11 +181,12 @@ public class WahlkreisEnricher {
                 BundeslandEnum bl = btw17Wahlkreis.getBundeslandEnumKurz();
                 Bundesland bundesland = bundeslandService.findByBundesland(bl);
                 Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(wahlkreisNummer);
-                log.debug("wahlkreisNummer: "+btw17Wahlkreis.getUniqueId());
-                log.debug("bundesland:      "+bundesland.getUniqueId());
+                log.debug("add wahlkreisNummer: "+btw17Wahlkreis.getUniqueId());
+                log.debug("add bundesland:      "+bundesland.getUniqueId());
                 if(wahlkreis != null){
                     wahlkreis.setBundesland(bundesland);
-                    wahlkreisService.update(wahlkreis);
+                    wahlkreis = wahlkreisService.update(wahlkreis);
+                    log.info("updated wahlkreis: "+wahlkreis.getUniqueId());
                 } else {
                     wahlkreis = new Wahlkreis();
                     wahlkreis.setBundesland(bundesland);
@@ -194,7 +195,8 @@ public class WahlkreisEnricher {
                     CommonFields cf = new CommonFields();
                     cf.setEditStatus(EditStatus.UNTOUCHED);
                     wahlkreis.setCommonFields(cf);
-                    wahlkreisService.create(wahlkreis);
+                    wahlkreis = wahlkreisService.create(wahlkreis);
+                    log.info("created wahlkreis: "+wahlkreis.getUniqueId());
                 }
             }
             Assert.assertTrue(true);
@@ -220,7 +222,7 @@ public class WahlkreisEnricher {
                 Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
                 wahlkreis.setStrukturdaten(strukturdaten);
                 wahlkreisService.update(wahlkreis);
-                log.info("wahlkreis: "+wahlkreis.getUniqueId());
+                log.info("updated wahlkreis: "+wahlkreis.getUniqueId());
             }
         }
     }
@@ -237,7 +239,7 @@ public class WahlkreisEnricher {
                 WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
                 wahlkreis.setWahlergebnisseBtw17(wahlergebnisseBtw17);
                 wahlkreisService.update(wahlkreis);
-                log.info("wahlkreis: "+wahlkreis.getUniqueId());
+                log.info("updated wahlkreis: "+wahlkreis.getUniqueId());
             }
         }
     }
