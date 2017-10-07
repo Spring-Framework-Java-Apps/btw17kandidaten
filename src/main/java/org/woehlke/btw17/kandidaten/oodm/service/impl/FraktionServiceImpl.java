@@ -24,13 +24,13 @@ public class FraktionServiceImpl implements FraktionService {
     }
 
     @Override
-    public List<Fraktion> getAll() {
-        return fraktionRepository.getAll();
+    public Iterable<Fraktion> getAll() {
+        return fraktionRepository.findAll();
     }
 
     @Override
     public Page<Fraktion> getAll(Pageable pageRequest) {
-        return fraktionRepository.getAll(pageRequest);
+        return fraktionRepository.findAll(pageRequest);
     }
 
     @Override

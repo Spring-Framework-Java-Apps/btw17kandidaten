@@ -1,25 +1,23 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.ListeParteiRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface ListeParteiRepository extends PagingAndSortingRepository<ListePartei,Long>,ListeParteiRepositoryCustom {
+public interface ListeParteiRepository extends JpaRepository<ListePartei,Long> {
 
     ListePartei findByListeParteiAndListeParteiLang(String listePartei, String listeParteiLang);
 
+    ListePartei findByListePartei(String listePartei);
 
-    @Query(name="ListePartei.findByListePartei")
-    ListePartei findByListePartei(@Param("listePartei") String listePartei);
-
+    @Query(name="ListePartei.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="ListePartei.getMaxId")
     long getMaxId();
 
 }

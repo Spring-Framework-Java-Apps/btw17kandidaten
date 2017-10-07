@@ -36,20 +36,12 @@ import javax.validation.Valid;
 )
 @NamedQueries({
     @NamedQuery(
-        name = "ListePartei.getAll",
-        query = "select o from ListePartei as o order by o.listePartei"
+        name = "ListePartei.getAllIds",
+        query = "select o.id from ListePartei as o order by o.listePartei"
     ),
     @NamedQuery(
-        name = "ListePartei.getAllCount",
-        query = "select count(o) from ListePartei as o"
-    ),
-    @NamedQuery(
-        name = "ListePartei.findByListePartei",
-        query = "select o from ListePartei as o where o.listePartei=:listePartei"
-    ),
-    @NamedQuery(
-        name = "ListePartei.findByListeParteiLang",
-        query = "select o from ListePartei as o where o.listeParteiLang=:listeParteiLang"
+        name = "ListePartei.getMaxId",
+        query = "select max(o.id) from ListePartei as o"
     )
 })
 @EntityListeners(ListeParteiListener.class)

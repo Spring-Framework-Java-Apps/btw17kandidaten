@@ -27,6 +27,16 @@ import javax.validation.constraints.NotNull;
         //
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Bundesland.getAllIds",
+        query = "select o.id from Bundesland as o order by o.bundeslandLang"
+    ),
+    @NamedQuery(
+        name = "Bundesland.getMaxId",
+        query = "select max(o.id) from Bundesland as o"
+    )
+})
 @NamedNativeQueries({
     @NamedNativeQuery(
         name = "Bundesland.countBundeslandAgentur",

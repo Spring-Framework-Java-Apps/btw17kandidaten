@@ -25,6 +25,16 @@ import javax.validation.constraints.NotNull;
         //
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Geburtsort.getAllIds",
+        query = "select o.id from Geburtsort as o order by o.geburtsort"
+    ),
+    @NamedQuery(
+        name = "Geburtsort.getMaxId",
+        query = "select max(o.id) from Geburtsort as o"
+    )
+})
 @EntityListeners(GeburtsortListener.class)
 public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded {
 

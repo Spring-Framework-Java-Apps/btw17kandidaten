@@ -1,21 +1,21 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.WahlkreisRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface WahlkreisRepository extends PagingAndSortingRepository<Wahlkreis,Long>,WahlkreisRepositoryCustom {
+public interface WahlkreisRepository extends JpaRepository<Wahlkreis,Long> {
 
     Wahlkreis findByWahlkreisId(Long wahlkreisId);
 
-
+    @Query(name="Wahlkreis.getAllIds")
     List<Long> getAllIds();
 
-
+    @Query(name="Wahlkreis.getMaxId")
     long getMaxId();
 
 }

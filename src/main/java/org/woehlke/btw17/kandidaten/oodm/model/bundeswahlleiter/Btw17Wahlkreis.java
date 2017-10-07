@@ -25,6 +25,10 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Btw17Wahlkreis.getAllIds",
         query = "select o.id from Btw17Wahlkreis as o order by o.id"
+    ),
+    @NamedQuery(
+        name = "Btw17Wahlkreis.getMaxId",
+        query = "select max(o.id) from Btw17Wahlkreis as o"
     )
 })
 @EntityListeners(Btw17WahlkreisListener.class)

@@ -21,6 +21,10 @@ import java.util.List;
     @NamedQuery(
         name = "Btw17Mdb.getAllIds",
         query = "select o.id from Btw17Mdb as o order by o.parteikurz,o.nachname"
+    ),
+    @NamedQuery(
+        name = "Btw17Mdb.getMaxId",
+        query = "select max(o.id) from Btw17Mdb as o"
     )
 })
 @EntityListeners(Btw17MdbListener.class)

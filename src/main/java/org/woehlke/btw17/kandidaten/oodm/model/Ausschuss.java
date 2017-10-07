@@ -25,6 +25,16 @@ import javax.validation.Valid;
         //
     }
 )
+@NamedQueries({
+        @NamedQuery(
+                name = "Ausschuss.getAllIds",
+                query = "select o.id from Ausschuss as o order by o.ausschuss"
+        ),
+        @NamedQuery(
+                name = "Ausschuss.getMaxId",
+                query = "select max(o.id) from Ausschuss as o"
+        )
+})
 @EntityListeners(AusschussListener.class)
 public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 

@@ -81,6 +81,10 @@ import java.util.List;
         query = "select o.id from Btw17Strukturdaten as o order by o.id"
     ),
     @NamedQuery(
+        name = "Btw17Strukturdaten.getMaxId",
+        query = "select max(o.id) from Btw17Strukturdaten as o"
+    ),
+    @NamedQuery(
         name = "Btw17Strukturdaten.getStrukturdatenOfBundeslaender",
         query = "select o from Btw17Strukturdaten as o where o.wahlkreisName='Land insgesamt'"
     )

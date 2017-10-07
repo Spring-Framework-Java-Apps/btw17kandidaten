@@ -36,12 +36,12 @@ import javax.validation.Valid;
 )
 @NamedQueries({
     @NamedQuery(
-        name = "Fraktion.getAll",
-        query = "select o from Fraktion as o order by fraktion"
+            name = "Fraktion.getAllIds",
+            query = "select o.id from Fraktion as o order by o.fraktion"
     ),
     @NamedQuery(
-        name = "Fraktion.getAllCount",
-        query = "select count(o) from Fraktion as o"
+            name = "Fraktion.getMaxId",
+            query = "select max(o.id) from Fraktion as o"
     )
 })
 @EntityListeners(FraktionListener.class)

@@ -9,12 +9,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-        name = "btw17_mdb_wahlperiode"
+    name = "btw17_mdb_wahlperiode"
 )
 @NamedQueries({
     @NamedQuery(
         name = "Btw17Wahlperiode.getAllIds",
         query = "select o.id from Btw17Wahlperiode as o order by o.wp"
+    ),
+    @NamedQuery(
+        name = "Btw17Wahlperiode.getMaxId",
+        query = "select max(o.id) from Btw17Wahlperiode as o"
     )
 })
 @EntityListeners(Btw17WahlperiodeListener.class)

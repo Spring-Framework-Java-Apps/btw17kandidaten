@@ -1,24 +1,25 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.BundeslandRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface BundeslandRepository extends PagingAndSortingRepository<Bundesland,Long>,BundeslandRepositoryCustom {
+public interface BundeslandRepository extends JpaRepository<Bundesland,Long> {
 
     Bundesland findByBundesland(BundeslandEnum bundesland);
 
-    @Query(name="Bundesland.countBundeslandAgentur",nativeQuery=true)
+    @Query(name="Bundesland.countBundeslandAgentur")
     long countBundeslandAgentur();
 
+    @Query(name="Bundesland.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="Bundesland.getMaxId")
     long getMaxId();
 
 }

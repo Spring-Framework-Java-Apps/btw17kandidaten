@@ -30,8 +30,8 @@ public class ParteiServiceImpl implements ParteiService {
     }
 
     @Override
-    public List<Partei> getAll() {
-        return this.parteiRepository.getAll();
+    public Iterable<Partei> getAll() {
+        return this.parteiRepository.findAll();
     }
 
     @Override

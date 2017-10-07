@@ -1,18 +1,20 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.AusschussRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface AusschussRepository extends PagingAndSortingRepository<Ausschuss,Long>,AusschussRepositoryCustom {
+public interface AusschussRepository extends JpaRepository<Ausschuss,Long> {
 
     Ausschuss findByAusschuss(String ausschuss);
 
+    @Query(name="Ausschuss.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="Ausschuss.getMaxId")
     long getMaxId();
 }

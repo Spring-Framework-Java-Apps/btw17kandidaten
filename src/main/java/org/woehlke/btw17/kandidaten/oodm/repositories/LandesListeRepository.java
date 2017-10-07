@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,7 +14,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 import java.util.List;
 
 @Repository
-public interface LandesListeRepository extends PagingAndSortingRepository<LandesListe,Long> {
+public interface LandesListeRepository extends JpaRepository<LandesListe,Long> {
 
 
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
@@ -33,8 +34,10 @@ public interface LandesListeRepository extends PagingAndSortingRepository<Landes
     @Query(name="LandesListe.getAllOrOrderById")
     List<LandesListe> getAll();
 
+    @Query(name="LandesListe.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="LandesListe.getMaxId")
     long getMaxId();
 
 }

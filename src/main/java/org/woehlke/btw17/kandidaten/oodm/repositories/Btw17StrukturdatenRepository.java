@@ -2,16 +2,15 @@ package org.woehlke.btw17.kandidaten.oodm.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Strukturdaten;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.Btw17StrukturdatenRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface Btw17StrukturdatenRepository extends PagingAndSortingRepository<Btw17Strukturdaten,Long>,Btw17StrukturdatenRepositoryCustom  {
+public interface Btw17StrukturdatenRepository extends JpaRepository<Btw17Strukturdaten,Long> {
 
     Page<Btw17Strukturdaten> findByWahlkreisNummer(Long wahlkreisNummer, Pageable pageRequest);
 
@@ -23,6 +22,6 @@ public interface Btw17StrukturdatenRepository extends PagingAndSortingRepository
     @Query(name="Btw17Strukturdaten.getStrukturdatenOfBundeslaender")
     List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender();
 
-    @Query(name="Btw17Strukturdaten.getMaxId",nativeQuery = true)
+    @Query(name="Btw17Strukturdaten.getMaxId")
     long getMaxId();
 }

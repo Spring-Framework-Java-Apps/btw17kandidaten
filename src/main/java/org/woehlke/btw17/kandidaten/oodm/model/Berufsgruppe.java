@@ -16,6 +16,16 @@ import javax.persistence.*;
         @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
     }
 )
+@NamedQueries({
+        @NamedQuery(
+                name = "Berufsgruppe.getAllIds",
+                query = "select o.id from Berufsgruppe as o order by o.berufsgruppe"
+        ),
+        @NamedQuery(
+                name = "Berufsgruppe.getMaxId",
+                query = "select max(o.id) from Berufsgruppe as o"
+        )
+})
 @EntityListeners(BerufsgruppeListener.class)
 public class Berufsgruppe implements DomainObject {
 

@@ -52,6 +52,10 @@ import java.util.Locale;
     @NamedQuery(
         name = "Btw17KandidatFlat.getAllIds",
         query = "select o.id from Btw17KandidatFlat as o order by o.id"
+    ),
+    @NamedQuery(
+        name = "Btw17KandidatFlat.getMaxId",
+        query = "select max(o.id) from Btw17KandidatFlat as o"
     )
 })
 @EntityListeners(Btw17KandidatFlatListener.class)

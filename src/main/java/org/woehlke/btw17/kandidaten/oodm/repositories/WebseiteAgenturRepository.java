@@ -1,25 +1,21 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur;
-import org.woehlke.btw17.kandidaten.oodm.repositories.custom.WebseiteAgenturRepositoryCustom;
 
 import java.util.List;
 
 @Repository
-public interface WebseiteAgenturRepository extends PagingAndSortingRepository<WebseiteAgentur,Long>, WebseiteAgenturRepositoryCustom {
+public interface WebseiteAgenturRepository extends JpaRepository<WebseiteAgentur,Long> {
 
-    @Query(
-        name = "WebseiteAgentur.findByAgentur",
-        countName = "WebseiteAgentur.countByAgentur"
-    )
-    WebseiteAgentur findByAgentur(@Param("agentur") String agentur);
+    WebseiteAgentur findByAgentur(String agentur);
 
+    @Query(name="WebseiteAgentur.getAllIds")
     List<Long> getAllIds();
 
+    @Query(name="WebseiteAgentur.getMaxId")
     long getMaxId();
 
 }

@@ -51,7 +51,7 @@ public class WohnortServiceImpl implements WohnortService {
 
     @Override
     public List<Wohnort> getAllOrderById() {
-        return wohnortRepository.getAllOrderById();
+        return wohnortRepository.findAll();
     }
 
     @Override

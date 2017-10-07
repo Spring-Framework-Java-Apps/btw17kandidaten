@@ -37,22 +37,14 @@ import javax.validation.constraints.NotNull;
     }
 )
 @NamedQueries({
-    @NamedQuery(
-        name = "WebseiteCms.getAll",
-        query = "select o from WebseiteCms as o order by o.cms"
-    ),
-    @NamedQuery(
-        name = "WebseiteCms.getAllCount",
-        query = "select count(o) from WebseiteCms as o"
-    ),
-    @NamedQuery(
-        name = "WebseiteCms.findByCms",
-        query = "select o from WebseiteCms as o where o.cms=:cms order by o.cms"
-    ),
-    @NamedQuery(
-        name = "WebseiteCms.countByCms",
-        query = "select count(o) from WebseiteCms as o where o.cms=:cms"
-    )
+        @NamedQuery(
+                name = "WebseiteCms.getAllIds",
+                query = "select o.id from WebseiteCms as o order by o.cms"
+        ),
+        @NamedQuery(
+                name = "WebseiteCms.getMaxId",
+                query = "select max(o.id) from WebseiteCms as o"
+        )
 })
 @EntityListeners(WebseiteCmsListener.class)
 public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {

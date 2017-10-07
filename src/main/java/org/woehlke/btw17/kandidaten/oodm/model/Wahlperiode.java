@@ -14,6 +14,10 @@ import javax.persistence.*;
     @NamedQuery(
         name = "Wahlperiode.getAllIds",
         query = "select o.id from Wahlperiode as o order by o.wp"
+    ),
+    @NamedQuery(
+        name = "Wahlperiode.getMaxId",
+        query = "select max(o.id) from Wahlperiode as o"
     )
 })
 @EntityListeners(WahlperiodeListener.class)

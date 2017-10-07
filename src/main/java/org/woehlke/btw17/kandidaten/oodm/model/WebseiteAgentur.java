@@ -33,22 +33,14 @@ import javax.validation.constraints.NotNull;
     }
 )
 @NamedQueries({
-    @NamedQuery(
-        name = "WebseiteAgentur.getAll",
-        query = "select o from WebseiteAgentur as o order by o.agentur"
-    ),
-    @NamedQuery(
-        name = "WebseiteAgentur.getAllCount",
-        query = "select count(o) from WebseiteAgentur as o"
-    ),
-    @NamedQuery(
-        name = "WebseiteAgentur.findByAgentur",
-        query = "select o from WebseiteAgentur as o where o.agentur=:agentur order by o.agentur"
-    ),
-    @NamedQuery(
-        name = "WebseiteAgentur.countByAgentur",
-        query = "select count(o) from WebseiteAgentur as o where o.agentur=:agentur"
-    )
+        @NamedQuery(
+                name = "WebseiteAgentur.getAllIds",
+                query = "select o.id from WebseiteAgentur as o order by o.agentur"
+        ),
+        @NamedQuery(
+                name = "WebseiteAgentur.getMaxId",
+                query = "select max(o.id) from WebseiteAgentur as o"
+        )
 })
 @EntityListeners(WebseiteAgenturListener.class)
 public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {

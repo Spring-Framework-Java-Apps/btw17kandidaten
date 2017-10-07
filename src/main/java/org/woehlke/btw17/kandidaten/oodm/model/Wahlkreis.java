@@ -26,6 +26,16 @@ import javax.validation.Valid;
         //
     }
 )
+@NamedQueries({
+    @NamedQuery(
+        name = "Wahlkreis.getAllIds",
+        query = "select o.id from Wahlkreis as o order by o.wahlkreisName"
+    ),
+    @NamedQuery(
+        name = "Wahlkreis.getMaxId",
+        query = "select max(o.id) from Wahlkreis as o"
+    )
+})
 @EntityListeners(WahlkreisListener.class)
 public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
 

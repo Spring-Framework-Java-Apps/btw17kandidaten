@@ -38,12 +38,12 @@ import javax.validation.Valid;
 )
 @NamedQueries({
     @NamedQuery(
-        name = "Ministerium.getAll",
-        query = "select o from Ministerium as o order by ministerium"
+        name = "Ministerium.getAllIds",
+        query = "select o.id from Ministerium as o order by o.ministerium"
     ),
     @NamedQuery(
-        name = "Ministerium.getAllCount",
-        query = "select count(o) from Ministerium as o"
+        name = "Ministerium.getMaxId",
+        query = "select max(o.id) from Ministerium as o"
     )
 })
 @EntityListeners(MinisteriumListener.class)

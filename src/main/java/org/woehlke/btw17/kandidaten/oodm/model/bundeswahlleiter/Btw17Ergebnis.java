@@ -37,6 +37,10 @@ import java.util.List;
         query = "select o.id from Btw17Ergebnis as o order by o.id"
     ),
     @NamedQuery(
+        name = "Btw17Ergebnis.getMaxId",
+        query = "select max(o.id) from Btw17Ergebnis as o"
+    ),
+    @NamedQuery(
         name = "Btw17Ergebnis.getErgebnisOfBundeslaender",
         query = "select o from Btw17Ergebnis as o where o.bundeslandNummer=99"
     )

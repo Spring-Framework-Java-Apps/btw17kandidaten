@@ -44,6 +44,14 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "LandesListe.getAllOrOrderById",
         query = "select o from LandesListe as o order by o.listePartei.listePartei"
+    ),
+    @NamedQuery(
+        name = "LandesListe.getAllIds",
+        query = "select o.id from LandesListe as o"
+    ),
+    @NamedQuery(
+        name = "LandesListe.getMaxId",
+        query = "select max(o.id) from LandesListe as o"
     )
 })
 @EntityListeners(LandesListeListener.class)

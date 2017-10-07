@@ -24,8 +24,8 @@ public class MinisteriumServiceImpl implements MinisteriumService {
     }
 
     @Override
-    public List<Ministerium> getAll() {
-        return ministeriumRepository.getAll();
+    public Iterable<Ministerium> getAll() {
+        return ministeriumRepository.findAll();
     }
 
     @Override
