@@ -37,6 +37,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Strukturdaten;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -135,6 +136,9 @@ public class WahlkreisEnricher {
 
     @Autowired
     private Btw17KandidatFlatService btw17KandidatFlatService;
+
+    @Autowired
+    private JdbcService jdbcService;
 
 
 

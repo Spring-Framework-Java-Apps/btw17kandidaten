@@ -25,6 +25,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -126,6 +127,9 @@ public class ParteiEnricher {
 
         @Autowired
         private Btw17WahlperiodeService btw17WahlperiodeService;
+
+        @Autowired
+        private JdbcService jdbcService;
 
 
 

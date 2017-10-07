@@ -22,9 +22,12 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
+import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -126,6 +129,9 @@ public class WohnortEnricher {
         @Autowired
         private Btw17WahlperiodeService btw17WahlperiodeService;
 
+        @Autowired
+        private JdbcService jdbcService;
+
 
 
         @WithMockUser
@@ -147,5 +153,27 @@ public class WohnortEnricher {
                 assertThat(wahlkreisService).isNotNull();
                 assertThat(bundeslandService).isNotNull();
                 assertThat(btw17ErgebnisService).isNotNull();
+        }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateWohnortByBtw17Wahlbewerber() throws Exception {
+                log.info("test010updateWohnortByBtw17Wahlbewerber");
+                long maxId = wohnortService.getMaxId();
+                log.info("maxId: "+maxId);
+                maxId++;
+                String sql ="ALTER SEQUENCE hibernate_sequence RESTART WITH "+maxId;
+                jdbcService.executeSqlStatemen(sql);
+                for(Btw17Wahlbewerber btw17Wahlbewerber:btw17WahlbewerberService.getAll()){
+                        String wohnort = btw17Wahlbewerber.getWohnort();
+                        Wohnort wohnortPers = wohnortService.findByWohnort(wohnort);
+                        if(wohnortPers == null){
+                                Wohnort o = new Wohnort();
+                                o.setWohnort(wohnort);
+                                o = wohnortService.create(o);
+                                log.info("added: "+o.getUniqueId());
+                        }
+                }
         }
 }
