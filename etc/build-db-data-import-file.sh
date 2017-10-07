@@ -357,4 +357,6 @@ cat ./3nf/data/insert-data-kandidat_ausschuss.sql | sed "s/'',/NULL,/g" | sed "s
 
 echo ' '
 
+echo "VACUUM;"
+
 exit 0
