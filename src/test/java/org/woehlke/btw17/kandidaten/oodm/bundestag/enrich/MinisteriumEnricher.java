@@ -44,7 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MinisteriumEnricher {
 
 
-        private static final Logger log = LoggerFactory.getLogger(AusschussEnricher.class);
+        private static final Logger log = LoggerFactory.getLogger(MinisteriumEnricher.class);
 
         @Autowired
         private MockMvc mockMvc;
