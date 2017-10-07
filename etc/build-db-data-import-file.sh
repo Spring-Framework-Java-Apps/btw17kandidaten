@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export EXP_WAHLLEITER_DATA="0"
+export EXP_WAHLLEITER_DATA="1"
 
 rm ../src/main/resources/data.sql
 
@@ -87,19 +87,6 @@ cat ./3nf/data/insert-data-btw17_ergebnis.sql | sed "s/'',/NULL,/g" | sed "s/'')
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Wahlperiode'
-echo '-- Table: btw17_mdb_wahlperiode'
-echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql'
-echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.bundestag.model.Wahlperiode' >> ../src/main/resources/data.sql
-echo '-- Table: btw17_mdb_wahlperiode' >> ../src/main/resources/data.sql
-echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql' >> ../src/main/resources/data.sql
-echo '--' >> ../src/main/resources/data.sql
-
-cat ./3nf/data/insert-data-btw17_mdb_wahlperiode.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_wahlperiode " >> ../src/main/resources/data.sql
-
-
-echo ' '
 echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb'
 echo '-- Table: btw17_mdb_stammdaten'
 echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql'
@@ -111,7 +98,36 @@ echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-btw17_mdb_stammdaten.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_stammdaten " >> ../src/main/resources/data.sql
 
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode'
+echo '-- Table: btw17_mdb_wahlperiode'
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode' >> ../src/main/resources/data.sql
+echo '-- Table: btw17_mdb_wahlperiode' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_mdb_wahlperiode.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO btw17_mdb_wahlperiode " >> ../src/main/resources/data.sql
+
+
 fi
+
+
+
+echo ' '
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode'
+echo '-- Table: wahlperiode'
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql'
+echo '--' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode' >> ../src/main/resources/data.sql
+echo '-- Table: wahlperiode' >> ../src/main/resources/data.sql
+echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql' >> ../src/main/resources/data.sql
+echo '--' >> ../src/main/resources/data.sql
+
+cat ./3nf/data/insert-data-btw17_mdb_wahlperiode.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | sed "s/INSERT INTO btw17_mdb_wahlperiode /INSERT INTO wahlperiode /g" | grep "INSERT INTO wahlperiode " | sed 's/wp, wahlperioden_mdb_id)/wp)/g' | sed 's/, [0-9]*);/);/g' >> ../src/main/resources/data.sql
+
 
 
 echo ' '

@@ -22,7 +22,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb;
-import org.woehlke.btw17.kandidaten.oodm.model.bundestag.BtwWahlperiode;
+import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.bundestag.xml.*;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
@@ -125,9 +125,9 @@ public class Btw17MdbStammdatenImporter {
                 o.setParteikurz(biografischeangaben.getPARTEIKURZ());
                 o.setVitakurz(biografischeangaben.getVITAKURZ().replaceAll("\n","<br/>"));
                 o.setVeroeffentlichungspflichtiges(biografischeangaben.getVEROEFFENTLICHUNGSPFLICHTIGES().replaceAll("\n","<br/>"));
-                List<BtwWahlperiode> wahlperioden = new ArrayList();
+                List<Btw17Wahlperiode> wahlperioden = new ArrayList();
                 for(WAHLPERIODE wahlperiode :mdb.getWAHLPERIODEN().getWAHLPERIODE()){
-                    BtwWahlperiode p = new BtwWahlperiode();
+                    Btw17Wahlperiode p = new Btw17Wahlperiode();
                     p.setWp(wahlperiode.getWP());
                     p.setMdbwpvon(wahlperiode.getMDBWPVON());
                     p.setMdbwpbis(wahlperiode.getMDBWPBIS());

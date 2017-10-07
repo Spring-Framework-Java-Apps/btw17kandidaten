@@ -13,12 +13,12 @@ import javax.persistence.*;
 )
 @NamedQueries({
     @NamedQuery(
-        name = "BtwWahlperiode.getAllIds",
-        query = "select o.id from BtwWahlperiode as o order by o.wp"
+        name = "Btw17Wahlperiode.getAllIds",
+        query = "select o.id from Btw17Wahlperiode as o order by o.wp"
     )
 })
 @EntityListeners(Btw17WahlperiodeListener.class)
-public class BtwWahlperiode implements DomainObject {
+public class Btw17Wahlperiode implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -197,9 +197,9 @@ public class BtwWahlperiode implements DomainObject {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BtwWahlperiode)) return false;
+        if (!(o instanceof Btw17Wahlperiode)) return false;
 
-        BtwWahlperiode that = (BtwWahlperiode) o;
+        Btw17Wahlperiode that = (Btw17Wahlperiode) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (wp != null ? !wp.equals(that.wp) : that.wp != null) return false;
@@ -242,7 +242,7 @@ public class BtwWahlperiode implements DomainObject {
 
     @Override
     public String toString() {
-        return "BtwWahlperiode{" +
+        return "Btw17Wahlperiode{" +
                 "id=" + id +
                 ", wp='" + wp + '\'' +
                 ", mdbwpvon='" + mdbwpvon + '\'' +

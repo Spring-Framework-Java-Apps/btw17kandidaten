@@ -268,7 +268,7 @@ import static javax.persistence.FetchType.LAZY;
     ),
     @NamedQuery(
         name = "Kandidat.findByWahlperiode",
-        query = "select count(o) from Kandidat as o join o.wahlperioden wahlperiode where wahlperiode=:wahlperiode order by o.nachname"
+        query = "select o from Kandidat as o join o.wahlperioden wahlperiode where wahlperiode=:wahlperiode order by o.nachname"
     ),
     @NamedQuery(
         name = "Kandidat.countByWahlperiode",
@@ -425,7 +425,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinColumn(name="wahlperioden_id")
-    List<Wahlperiode> wahlperioden = new ArrayList<>();
+    private List<Wahlperiode> wahlperioden = new ArrayList<>();
 
     @Valid
     @Embedded

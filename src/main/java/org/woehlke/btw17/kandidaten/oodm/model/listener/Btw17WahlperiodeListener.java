@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.woehlke.btw17.kandidaten.oodm.model.bundestag.BtwWahlperiode;
+import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
 
 import javax.persistence.*;
 
@@ -12,43 +12,43 @@ public class Btw17WahlperiodeListener {
 
 
     @PrePersist
-    public void onPrePersist(BtwWahlperiode domainObject) {
+    public void onPrePersist(Btw17Wahlperiode domainObject) {
         log.debug("try to Persist: "+domainObject.getUniqueId());
         log.trace("try to Persist: "+domainObject.toString());
     }
 
     @PreUpdate
-    public void onPreUpdate(BtwWahlperiode domainObject) {
+    public void onPreUpdate(Btw17Wahlperiode domainObject) {
         log.debug("try to Update: "+domainObject.getUniqueId());
         log.trace("try to Update: "+domainObject.toString());
     }
 
     @PreRemove
-    public void onPreRemove(BtwWahlperiode domainObject) {
+    public void onPreRemove(Btw17Wahlperiode domainObject) {
         log.debug("try to Remove: "+domainObject.getUniqueId());
         log.trace("try to Remove: "+domainObject.toString());
     }
 
     @PostPersist
-    public void onPostPersist(BtwWahlperiode domainObject) {
+    public void onPostPersist(Btw17Wahlperiode domainObject) {
         log.debug("Persisted: "+domainObject.getUniqueId());
         log.trace("Persisted: "+domainObject.toString());
     }
 
     @PostUpdate
-    public void onPostUpdate(BtwWahlperiode domainObject) {
+    public void onPostUpdate(Btw17Wahlperiode domainObject) {
         log.debug("Updated: "+domainObject.getUniqueId());
         log.trace("Updated: "+domainObject.toString());
     }
 
     @PostRemove
-    public void onPostRemove(BtwWahlperiode domainObject) {
+    public void onPostRemove(Btw17Wahlperiode domainObject) {
         log.debug("Removed: "+domainObject.getUniqueId());
         log.trace("Removed: "+domainObject.toString());
     }
 
     @PostLoad
-    public void onPostLoad(BtwWahlperiode domainObject) {
+    public void onPostLoad(Btw17Wahlperiode domainObject) {
         log.debug("loaded: "+domainObject.getUniqueId());
         log.trace("loaded: "+domainObject.toString());
     }

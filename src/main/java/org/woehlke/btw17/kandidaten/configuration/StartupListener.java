@@ -58,6 +58,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private final WebseiteAgenturService webseiteAgenturService;
 
+    private final WahlperiodeService wahlperiodeService;
+
     private final WebseiteCmsService webseiteCmsService;
 
     private final Btw17ErgebnisService btw17ErgebnisService;
@@ -75,7 +77,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
     private final Btw17WahlperiodeService btw17WahlperiodeService;
 
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService, Btw17MdbService btw17MdbService, Btw17WahlperiodeService btw17WahlperiodeService) {
+    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WahlperiodeService wahlperiodeService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService, Btw17MdbService btw17MdbService, Btw17WahlperiodeService btw17WahlperiodeService) {
         this.springProperties = springProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.otherProperties = otherProperties;
@@ -95,6 +97,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         this.ausschussService = ausschussService;
         this.kandidatReportService = kandidatReportService;
         this.webseiteAgenturService = webseiteAgenturService;
+        this.wahlperiodeService = wahlperiodeService;
         this.webseiteCmsService = webseiteCmsService;
         this.btw17ErgebnisService = btw17ErgebnisService;
         this.btw17StrukturdatenService = btw17StrukturdatenService;
@@ -164,6 +167,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Fraktion:                           "+fraktionService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ministerium:                        "+ministeriumService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Ausschuss:                          "+ausschussService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode                         "+wahlperiodeService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms:                        "+webseiteCmsService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.WebseiteAgentur:                    "+webseiteAgenturService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.Kandidat2Agentur:                   "+kandidatService.countKandidatAgentur());
@@ -176,8 +180,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber  "+btw17WahlbewerberService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlkreis     "+btw17WahlkreisService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat  "+btw17KandidatFlatService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb                       "+ btw17MdbService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.BtwWahlperiode               "+ btw17WahlperiodeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb                  "+btw17MdbService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode          "+btw17WahlperiodeService.count());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" Database Rows: "+getDatabaseRows());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");

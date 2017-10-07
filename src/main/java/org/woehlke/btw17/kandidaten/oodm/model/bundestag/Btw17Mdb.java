@@ -77,7 +77,7 @@ public class Btw17Mdb implements DomainObject {
 
     @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinColumn(name="wahlperioden_mdb_id")
-    List<BtwWahlperiode> wahlperioden = new ArrayList<>();
+    List<Btw17Wahlperiode> wahlperioden = new ArrayList<>();
 
     @Override
     public String getName() {
@@ -266,11 +266,11 @@ public class Btw17Mdb implements DomainObject {
         this.veroeffentlichungspflichtiges = veroeffentlichungspflichtiges;
     }
 
-    public List<BtwWahlperiode> getWahlperioden() {
+    public List<Btw17Wahlperiode> getWahlperioden() {
         return wahlperioden;
     }
 
-    public void setWahlperioden(List<BtwWahlperiode> wahlperioden) {
+    public void setWahlperioden(List<Btw17Wahlperiode> wahlperioden) {
         this.wahlperioden = wahlperioden;
     }
 
