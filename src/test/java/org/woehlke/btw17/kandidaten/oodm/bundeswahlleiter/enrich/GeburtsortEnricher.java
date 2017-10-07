@@ -27,6 +27,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerbe
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -129,7 +130,8 @@ public class GeburtsortEnricher {
         @Autowired
         private Btw17WahlperiodeService btw17WahlperiodeService;
 
-
+        @Autowired
+        private JdbcService jdbcService;
 
         @WithMockUser
         @Commit
@@ -157,6 +159,11 @@ public class GeburtsortEnricher {
         @Test
         public void test010updateGeburtsortByBtw17Wahlbewerber() throws Exception {
             log.info("test010updateGeburtsortByBtw17Wahlbewerber");
+            long maxId = geburtsortService.getMaxId();
+            log.info("maxId: "+maxId);
+            maxId++;
+            String sql ="ALTER SEQUENCE hibernate_sequence RESTART WITH "+maxId;
+            jdbcService.executeSqlStatemen(sql);
             for(Btw17Wahlbewerber btw17Wahlbewerber:btw17WahlbewerberService.getAll()){
                 String geburtsort = btw17Wahlbewerber.getGeburtsort();
                 Geburtsort geburtsortPers = geburtsortService.findByGeburtsort(geburtsort);
