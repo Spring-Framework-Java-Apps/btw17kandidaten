@@ -22,6 +22,9 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Partei;
+import org.woehlke.btw17.kandidaten.oodm.model.Wohnort;
+import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
@@ -152,5 +155,42 @@ public class ParteiEnricher {
                 assertThat(wahlkreisService).isNotNull();
                 assertThat(bundeslandService).isNotNull();
                 assertThat(btw17ErgebnisService).isNotNull();
+        }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateParteiByBtw17Wahlbewerber() throws Exception {
+                log.info("test010updateParteiByBtw17Wahlbewerber");
+                long maxId = parteiService.getMaxId();
+                log.info("maxId: "+maxId);
+                maxId++;
+                String sql ="ALTER SEQUENCE hibernate_sequence RESTART WITH "+maxId;
+                jdbcService.executeSqlStatemen(sql);
+                for(Btw17Wahlbewerber btw17Wahlbewerber:btw17WahlbewerberService.getAll()){
+                        String listeParteiBez = btw17Wahlbewerber.getListeParteiBez();
+                        String listeParteiKurzBez = btw17Wahlbewerber.getListeParteiKurzBez();
+                        Partei parteiPers = parteiService.findByPartei(listeParteiKurzBez,listeParteiBez);
+                        if(parteiPers == null){
+                            if((listeParteiKurzBez.compareTo("@")!=0)&&(listeParteiKurzBez.compareTo("@")!=0)) {
+                                Partei o = new Partei();
+                                o.setPartei(listeParteiKurzBez);
+                                o.setParteiLang(listeParteiBez);
+                                o = parteiService.create(o);
+                                log.info("added: " + o.getUniqueId());
+                            } else {
+                                log.info("found: "+listeParteiBez);
+                                log.info("found: "+listeParteiKurzBez);
+                                if(((listeParteiKurzBez.compareTo("@")!=0)&&(listeParteiKurzBez.compareTo("@")==0))||
+                                    ((listeParteiKurzBez.compareTo("@")==0)&&(listeParteiKurzBez.compareTo("@")!=0))) {
+                                    Partei o = new Partei();
+                                    o.setPartei(listeParteiKurzBez);
+                                    o.setParteiLang(listeParteiBez);
+                                    o = parteiService.create(o);
+                                    log.info("added: " + o.getUniqueId());
+                                }
+                            }
+                        }
+                }
         }
 }
