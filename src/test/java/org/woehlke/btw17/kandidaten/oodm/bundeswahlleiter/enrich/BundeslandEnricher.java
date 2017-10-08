@@ -172,8 +172,8 @@ public class BundeslandEnricher {
     @WithMockUser
     @Commit
     @Test
-    public void test040updateWahlkreisByBtw17Ergebnis() throws Exception {
-        log.info("test040updateWahlkreisByBtw17Ergebnis");
+    public void test040updateBundeslandByBtw17Ergebnis() throws Exception {
+        log.info("test040updateBundeslandByBtw17Ergebnis");
         List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender =  btw17ErgebnisService.getErgebnisOfBundeslaender();
         for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
             log.info("btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
