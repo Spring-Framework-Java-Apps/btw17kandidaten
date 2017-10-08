@@ -914,7 +914,13 @@ public class Btw17ErgebnisImporter {
         String spaltenName[] = o.getSpaltenName();
         log.info("spaltenName.length from o.getSpaltenName() "+spaltenName.length);
         for(int k=0; k<spaltenName.length; k++){
-            String line = "["+k+"] "+spaltenName[k]+" : "+ fieldnamesSetting[k].toString() +"   (" + fieldnamesSettingNames[k] + "  "+ fieldnamesSetting[k].getClass().getName() + ")";
+            String line = "["+k+"] ";
+            if(spaltenName[k] != null){
+                line += spaltenName[k]+" : ";
+            }
+            if(fieldnamesSetting[k] != null) {
+                line += fieldnamesSetting[k].toString() +"   (" + fieldnamesSettingNames[k] + "  "+ fieldnamesSetting[k].getClass().getName() + ")";
+            }
             log.info("line "+line);
             outputLinesSoll.add(line);
         }
