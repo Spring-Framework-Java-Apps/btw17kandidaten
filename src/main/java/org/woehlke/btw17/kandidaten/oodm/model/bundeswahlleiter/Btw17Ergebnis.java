@@ -3718,6 +3718,7 @@ public class Btw17Ergebnis implements DomainObject {
             "Nr;",
             "Gebiet;",
             "gehört zu;",
+            "Bundesland",
             "Wahlberechtigte;;;;Erststimmen;;;Vorläufig",
             "Wahlberechtigte;;;;Erststimmen;;;Vorperiode",
             "Wahlberechtigte;;;;Zweitstimmen;;;Vorläufig",
@@ -3913,6 +3914,7 @@ public class Btw17Ergebnis implements DomainObject {
                 "wahlkreisNummer",
                 "wahlkreisName",
                 "bundeslandNummer",
+                "bundesland",
                 "wahlberechtigteErststimmenVorlaeufig",
                 "wahlberechtigteErststimmenVorperiode",
                 "wahlberechtigteZweitstimmenVorlaeufig",
@@ -4106,6 +4108,7 @@ public class Btw17Ergebnis implements DomainObject {
                 wahlkreisNummer,
                 wahlkreisName,
                 bundeslandNummer,
+                bundesland,
                 wahlberechtigteErststimmenVorlaeufig,
                 wahlberechtigteErststimmenVorperiode,
                 wahlberechtigteZweitstimmenVorlaeufig,
@@ -4297,8 +4300,13 @@ public class Btw17Ergebnis implements DomainObject {
         };
         List<String> outputLines = new ArrayList<>();
         String spaltenName[] = this.getSpaltenName();
-        for(int i=0; i<fields.length; i++){
-            String e = "[" + i + "] " + spaltenName[i] + " : " + fields[i] + "   (" + fieldnames[i] + "  "+ fields[i].getClass().getName() + ")";
+        for(int i=0; i<fieldnames.length; i++){
+            String e;
+            if (fields[i] != null) {
+                e = "[" + i + "] " + spaltenName[i] + " : " + fields[i] + "   (" + fieldnames[i] + "  "+ fields[i].getClass().getName() + ")";
+            } else {
+                e = "[" + i + "] " + spaltenName[i] + " : " + fields[i] + "   (" + fieldnames[i] + "  "+ fields[i] + ")";
+            }
             outputLines.add(e);
         }
         return outputLines;

@@ -15,6 +15,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
@@ -22,6 +23,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17ErgebnisService;
+import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlkreisService;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,9 +52,9 @@ public class Btw17ErgebnisImporter {
 
     private final String srcFileNameErgebnisWahlkreise = "etc/ergebnisse/importing/btw17_kerg_wahlkreise.csv";
 
-    private final String srcFileNameErgebnisBundeslaender = "etc/ergebnisse/importing/btw17_kerg_bundeslaender.csv";
+    //private final String srcFileNameErgebnisBundeslaender = "etc/ergebnisse/importing/btw17_kerg_bundeslaender.csv";
 
-    private final String srcFileNameErgebnisDeutschland = "etc/ergebnisse/importing/btw17_kerg_deutschland.csv";
+    //private final String srcFileNameErgebnisDeutschland = "etc/ergebnisse/importing/btw17_kerg_deutschland.csv";
 
     @Autowired
     private Btw17ErgebnisService btw17ErgebnisService;
@@ -62,6 +64,9 @@ public class Btw17ErgebnisImporter {
 
     @Autowired
     private KandidatenProperties kandidatenProperties;
+
+    @Autowired
+    private Btw17WahlkreisService btw17WahlkreisService;
 
     @WithMockUser
     @Commit
@@ -129,6 +134,7 @@ public class Btw17ErgebnisImporter {
         Long wahlkreisNummer=Long.parseLong(cells[i]); i++;
         String wahlkreisName=cells[i]; i++;
         Long bundeslandNummer=Long.parseLong(cells[i]); i++;
+        BundeslandEnum bundesland = btw17WahlkreisService.findByBundeslandNummer(bundeslandNummer);
         Long wahlberechtigteErststimmenVorlaeufig=Long.parseLong(cells[i]); i++;
         Long wahlberechtigteErststimmenVorperiode=Long.parseLong(cells[i]); i++;
         Long wahlberechtigteZweitstimmenVorlaeufig=Long.parseLong(cells[i]); i++;
@@ -321,6 +327,7 @@ public class Btw17ErgebnisImporter {
                 "wahlkreisNummer",
                 "wahlkreisName",
                 "bundeslandNummer",
+                "bundesland",
                 "wahlberechtigteErststimmenVorlaeufig",
                 "wahlberechtigteErststimmenVorperiode",
                 "wahlberechtigteZweitstimmenVorlaeufig",
@@ -515,6 +522,7 @@ public class Btw17ErgebnisImporter {
                 wahlkreisNummer,
                 wahlkreisName,
                 bundeslandNummer,
+                bundesland,
                 wahlberechtigteErststimmenVorlaeufig,
                 wahlberechtigteErststimmenVorperiode,
                 wahlberechtigteZweitstimmenVorlaeufig,
@@ -708,6 +716,7 @@ public class Btw17ErgebnisImporter {
         o.setWahlkreisNummer(wahlkreisNummer);
         o.setWahlkreisName(wahlkreisName);
         o.setBundeslandNummer(bundeslandNummer);
+        o.setBundesland(bundesland);
         o.setWahlberechtigteErststimmenVorlaeufig(wahlberechtigteErststimmenVorlaeufig);
         o.setWahlberechtigteErststimmenVorperiode(wahlberechtigteErststimmenVorperiode);
         o.setWahlberechtigteZweitstimmenVorlaeufig(wahlberechtigteZweitstimmenVorlaeufig);
@@ -905,7 +914,7 @@ public class Btw17ErgebnisImporter {
         String spaltenName[] = o.getSpaltenName();
         log.info("spaltenName.length from o.getSpaltenName() "+spaltenName.length);
         for(int k=0; k<spaltenName.length; k++){
-            String line = "["+k+"] "+spaltenName[k]+" : "+cells[k]+"   (" + fieldnamesSettingNames[k] + "  "+ fieldnamesSetting[k].getClass().getName() + ")";
+            String line = "["+k+"] "+spaltenName[k]+" : "+ fieldnamesSetting[k].toString() +"   (" + fieldnamesSettingNames[k] + "  "+ fieldnamesSetting[k].getClass().getName() + ")";
             log.info("line "+line);
             outputLinesSoll.add(line);
         }

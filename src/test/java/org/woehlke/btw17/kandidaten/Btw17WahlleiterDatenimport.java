@@ -15,8 +15,8 @@ import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17Wahlkreis
 
 @Suite.SuiteClasses({
 
-    BundeslandEnricher.class,
-    WahlkreisEnricher.class
+    Btw17ErgebnisImporter.class,
+    BundeslandEnricher.class
 
     /*
     Btw17KandidatFlatServiceTest.class,

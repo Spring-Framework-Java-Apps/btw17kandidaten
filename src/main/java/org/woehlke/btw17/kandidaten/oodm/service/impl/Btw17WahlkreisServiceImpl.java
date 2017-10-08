@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.repositories.Btw17WahlkreisRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlkreisService;
@@ -25,13 +26,13 @@ public class Btw17WahlkreisServiceImpl implements Btw17WahlkreisService {
 
 
     @Override
-    public Page<Btw17Wahlkreis> findByWahlkreisNummer(long wahlkreisNummer, Pageable pageRequest) {
-        return this.btw17WahlkreisRepository.findByWahlkreisNummer(wahlkreisNummer,pageRequest);
+    public Btw17Wahlkreis findByWahlkreisNummer(long wahlkreisNummer) {
+        return this.btw17WahlkreisRepository.findByWahlkreisNummer(wahlkreisNummer);
     }
 
     @Override
-    public Page<Btw17Wahlkreis> findByBundeslandNummer(long bundeslandNummer, Pageable pageRequest) {
-        return this.btw17WahlkreisRepository.findByBundeslandNummer(bundeslandNummer, pageRequest);
+    public BundeslandEnum findByBundeslandNummer(long bundeslandNummer) {
+        return this.btw17WahlkreisRepository.findByBundeslandNummer(bundeslandNummer);
     }
 
     @Override

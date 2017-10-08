@@ -29,6 +29,10 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
         name = "Btw17Wahlkreis.getMaxId",
         query = "select max(o.id) from Btw17Wahlkreis as o"
+    ),
+    @NamedQuery(
+        name = "Btw17Wahlkreis.findByBundeslandNummer",
+        query = "select distinct o.bundeslandEnumKurz from Btw17Wahlkreis as o where o.bundeslandNummer=:bundeslandNummer group by o.bundeslandEnumKurz"
     )
 })
 @EntityListeners(Btw17WahlkreisListener.class)

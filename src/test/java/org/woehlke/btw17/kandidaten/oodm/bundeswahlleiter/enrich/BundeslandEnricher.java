@@ -15,6 +15,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
+import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
@@ -174,15 +175,17 @@ public class BundeslandEnricher {
     @Test
     public void test040updateBundeslandByBtw17Ergebnis() throws Exception {
         log.info("test040updateBundeslandByBtw17Ergebnis");
-        List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender =  btw17ErgebnisService.getErgebnisOfBundeslaender();
+        List<Btw17Ergebnis> btw17ErgebnisseOfBundeslaender = btw17ErgebnisService.getErgebnisOfBundeslaender();
         for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
-            log.info("btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
-            Bundesland bundesland = bundeslandService.findByBundesland(btw17Ergebnisse.getBundesland());
+            log.info("found btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
+            BundeslandEnum bundeslandEnum = btw17Ergebnisse.getBundesland();
+            log.info("bundeslandEnum: "+ bundeslandEnum.name() + " " + bundeslandEnum.getBundeslandName());
+            Bundesland bundesland = bundeslandService.findByBundesland(bundeslandEnum);
             if(bundesland!=null){
                 WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
                 bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
                 bundeslandService.update(bundesland);
-                log.info("bundesland: "+bundesland.getUniqueId());
+                log.info("updated bundesland: "+bundesland.getUniqueId());
             }
         }
     }
