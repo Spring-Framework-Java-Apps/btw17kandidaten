@@ -185,8 +185,8 @@ public class WahlkreisEnricher {
                 log.debug("add bundesland:      "+bundesland.getUniqueId());
                 if(wahlkreis != null){
                     wahlkreis.setBundesland(bundesland);
-                    wahlkreis = wahlkreisService.update(wahlkreis);
                     bundesland = bundeslandService.update(bundesland);
+                    wahlkreis = wahlkreisService.update(wahlkreis);
                     log.info("updated wahlkreis: "+wahlkreis.getUniqueId());
                     log.info("updated bundesland: "+bundesland.getUniqueId());
                 } else {

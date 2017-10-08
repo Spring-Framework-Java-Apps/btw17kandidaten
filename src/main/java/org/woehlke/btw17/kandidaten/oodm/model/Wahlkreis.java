@@ -68,7 +68,7 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
+    @JoinColumn(name = "fk_bundesland", nullable = true, updatable = true)
     private Bundesland bundesland;
 
     @Transient
