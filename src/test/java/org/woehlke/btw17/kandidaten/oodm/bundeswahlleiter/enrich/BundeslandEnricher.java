@@ -166,8 +166,9 @@ public class BundeslandEnricher {
             Strukturdaten strukturdaten = btw17StrukturdatenService.getStrukturdatenFromBtw17Strukturdaten(btw17Strukturdaten);
             bundesland.setStrukturdaten(strukturdaten);
             bundeslandService.update(bundesland);
-            log.info("bundesland: "+bundesland.getUniqueId());
+            log.info("updated bundesland: "+bundesland.getUniqueId());
         }
+        log.info("--------------------------------------------------");
     }
 
     @WithMockUser
@@ -179,14 +180,17 @@ public class BundeslandEnricher {
         for(Btw17Ergebnis btw17Ergebnisse:btw17ErgebnisseOfBundeslaender){
             log.info("found btw17Ergebnisse: "+btw17Ergebnisse.getUniqueId());
             BundeslandEnum bundeslandEnum = btw17Ergebnisse.getBundesland();
-            log.info("bundeslandEnum: "+ bundeslandEnum.name() + " " + bundeslandEnum.getBundeslandName());
-            Bundesland bundesland = bundeslandService.findByBundesland(bundeslandEnum);
-            if(bundesland!=null){
-                WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
-                bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
-                bundeslandService.update(bundesland);
-                log.info("updated bundesland: "+bundesland.getUniqueId());
+            if(bundeslandEnum != null){
+                log.info("found bundeslandEnum: "+ bundeslandEnum.name() + " " + bundeslandEnum.getBundeslandName());
+                Bundesland bundesland = bundeslandService.findByBundesland(bundeslandEnum);
+                if(bundesland!=null){
+                    WahlergebnisseBtw17 wahlergebnisseBtw17 = btw17ErgebnisService.getWahlergebnisseFromBtw17Ergebnis(btw17Ergebnisse);
+                    bundesland.setWahlergebnisseBtw17(wahlergebnisseBtw17);
+                    bundeslandService.update(bundesland);
+                    log.info("updated bundesland: "+bundesland.getUniqueId());
+                }
             }
         }
+        log.info("--------------------------------------------------");
     }
 }
