@@ -11,7 +11,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded;
 import javax.persistence.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(
