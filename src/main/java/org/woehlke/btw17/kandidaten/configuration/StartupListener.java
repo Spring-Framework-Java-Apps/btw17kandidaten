@@ -134,6 +134,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         databaseRows += btw17KandidatFlatService.count();
         databaseRows += btw17MdbService.count();
         databaseRows += btw17WahlperiodeService.count();
+        databaseRows += btw17MdbService.countBtw17Mdb2Wahlperiode();
         return databaseRows;
     }
 
@@ -182,6 +183,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat  "+btw17KandidatFlatService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb                  "+btw17MdbService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode          "+btw17WahlperiodeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb2Wahlperiode      "+btw17MdbService.countBtw17Mdb2Wahlperiode());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(" Database Rows: "+getDatabaseRows());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");

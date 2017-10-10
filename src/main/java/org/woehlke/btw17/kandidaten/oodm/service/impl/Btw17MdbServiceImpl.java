@@ -77,4 +77,9 @@ public class Btw17MdbServiceImpl implements Btw17MdbService {
     public long getMaxId() {
         return btw17MdbRepository.getMaxId();
     }
+
+    @Override
+    public long countBtw17Mdb2Wahlperiode() {
+        return btw17MdbRepository.countBtw17Mdb2Wahlperiode();
+    }
 }

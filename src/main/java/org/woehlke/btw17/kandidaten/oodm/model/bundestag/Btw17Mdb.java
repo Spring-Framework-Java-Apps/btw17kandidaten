@@ -30,6 +30,12 @@ import java.util.Set;
         query = "select max(o.id) from Btw17Mdb as o"
     )
 })
+@NamedNativeQueries({
+    @NamedNativeQuery(
+        name = "Btw17Mdb.countBtw17Mdb2Wahlperiode",
+        query = "select count(*) from btw17_mdb_stammdaten_wahlperiode LEFT JOIN btw17_mdb_wahlperiode on btw17_mdb_stammdaten_wahlperiode.wahlperioden_id = btw17_mdb_wahlperiode.id where btw17_mdb_wahlperiode.wp in ('17', '18')"
+    )
+})
 @EntityListeners(Btw17MdbListener.class)
 public class Btw17Mdb implements DomainObject {
 
