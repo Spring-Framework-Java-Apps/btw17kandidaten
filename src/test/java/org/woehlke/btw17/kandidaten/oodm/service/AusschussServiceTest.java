@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -40,7 +39,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
         WebMvcConfig.class,
         WebSecurityConfig.class
     },
-    webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

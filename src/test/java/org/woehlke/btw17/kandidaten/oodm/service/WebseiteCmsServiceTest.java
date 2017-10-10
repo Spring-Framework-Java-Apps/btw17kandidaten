@@ -42,7 +42,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
                 WebMvcConfig.class,
                 WebSecurityConfig.class
         },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
