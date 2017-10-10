@@ -37,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
                 WebMvcConfig.class,
                 WebSecurityConfig.class
         },
-        webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
