@@ -16,5 +16,5 @@ public interface AusschussRepository extends JpaRepository<Ausschuss,Long> {
     List<Long> getAllIds();
 
     @Query(name="Ausschuss.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 }

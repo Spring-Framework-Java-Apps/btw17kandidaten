@@ -22,5 +22,5 @@ public interface Btw17KandidatFlatRepository extends JpaRepository<Btw17Kandidat
     List<Long> getAllIds();
 
     @Query(name="Btw17KandidatFlat.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 }

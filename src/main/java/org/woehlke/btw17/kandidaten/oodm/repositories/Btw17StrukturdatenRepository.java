@@ -23,5 +23,5 @@ public interface Btw17StrukturdatenRepository extends JpaRepository<Btw17Struktu
     List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender();
 
     @Query(name="Btw17Strukturdaten.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 }

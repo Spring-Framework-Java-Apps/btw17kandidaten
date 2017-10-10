@@ -66,7 +66,7 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return berufsgruppeRepository.getMaxId();
     }
 

@@ -66,7 +66,7 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return webseiteAgenturRepository.getMaxId();
     }
 

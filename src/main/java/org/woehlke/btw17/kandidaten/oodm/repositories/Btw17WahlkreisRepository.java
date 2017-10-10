@@ -22,6 +22,6 @@ public interface Btw17WahlkreisRepository extends JpaRepository<Btw17Wahlkreis,L
     List<Long> getAllIds();
 
     @Query(name="Btw17Wahlkreis.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

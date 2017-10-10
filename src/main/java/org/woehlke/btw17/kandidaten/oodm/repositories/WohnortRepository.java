@@ -16,6 +16,6 @@ public interface WohnortRepository extends JpaRepository<Wohnort,Long> {
     List<Long> getAllIds();
 
     @Query(name = "Wohnort.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

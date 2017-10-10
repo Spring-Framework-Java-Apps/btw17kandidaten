@@ -66,7 +66,7 @@ public class FraktionServiceImpl implements FraktionService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return fraktionRepository.getMaxId();
     }
 

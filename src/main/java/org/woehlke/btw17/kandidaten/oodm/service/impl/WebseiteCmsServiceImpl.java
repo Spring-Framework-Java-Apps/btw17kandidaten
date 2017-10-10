@@ -65,7 +65,7 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return webseiteCmsRepository.getMaxId();
     }
 

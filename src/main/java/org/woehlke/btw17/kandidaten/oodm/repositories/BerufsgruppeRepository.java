@@ -16,6 +16,6 @@ public interface BerufsgruppeRepository extends JpaRepository<Berufsgruppe,Long>
     List<Long> getAllIds();
 
     @Query(name="Berufsgruppe.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

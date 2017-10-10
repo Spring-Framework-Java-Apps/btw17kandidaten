@@ -72,7 +72,7 @@ public class BundeslandServiceImpl implements BundeslandService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return bundeslandRepository.getMaxId();
     }
 

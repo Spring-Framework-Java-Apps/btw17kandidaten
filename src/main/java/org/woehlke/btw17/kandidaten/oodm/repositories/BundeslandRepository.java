@@ -20,6 +20,6 @@ public interface BundeslandRepository extends JpaRepository<Bundesland,Long> {
     List<Long> getAllIds();
 
     @Query(name="Bundesland.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

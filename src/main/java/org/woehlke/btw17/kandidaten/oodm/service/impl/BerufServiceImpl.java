@@ -66,7 +66,7 @@ public class BerufServiceImpl implements BerufService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return berufRepository.getMaxId();
     }
 

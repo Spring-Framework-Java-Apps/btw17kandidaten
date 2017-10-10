@@ -26,10 +26,7 @@ psql -U kandidatentest < etc/drop-tables.sql
 #psql -c '\dn' -U postgres
 
 ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-#./mvnw clean test -Pdevtest -Dtest=Btw17ErgebnisImporter -Dmaven.javadoc.skip=true -B -V
-#./mvnw clean test -Pdevtest -Dtest=BundeslandEnricher -Dmaven.javadoc.skip=true -B -V
-./mvnw clean test -Pdevtest -Dtest=Btw17MdbStammdatenImporter -Dmaven.javadoc.skip=true -B -V
-
+./mvnw clean test -Pdevtest -Dtest=WahlperiodeEnricher -Dmaven.javadoc.skip=true -B -V
 
 
 exit 0

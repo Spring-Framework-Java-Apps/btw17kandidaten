@@ -66,7 +66,7 @@ public class GeburtsortServiceImpl implements GeburtsortService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return geburtsortRepository.getMaxId();
     }
 

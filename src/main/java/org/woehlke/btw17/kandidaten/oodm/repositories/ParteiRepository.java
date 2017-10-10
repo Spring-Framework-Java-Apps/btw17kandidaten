@@ -13,7 +13,7 @@ public interface ParteiRepository extends JpaRepository<Partei,Long> {
     Partei findByParteiAndParteiLang(String partei, String parteiLang);
 
     @Query(name="Partei.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
     @Query(name="Partei.getAllIds")
     List<Long> getAllIds();

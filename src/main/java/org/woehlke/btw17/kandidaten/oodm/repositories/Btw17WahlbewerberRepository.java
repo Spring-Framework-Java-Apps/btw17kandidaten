@@ -35,6 +35,6 @@ public interface Btw17WahlbewerberRepository extends JpaRepository<Btw17Wahlbewe
     List<Long> getAllIds();
 
     @Query(name="Btw17Wahlbewerber.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

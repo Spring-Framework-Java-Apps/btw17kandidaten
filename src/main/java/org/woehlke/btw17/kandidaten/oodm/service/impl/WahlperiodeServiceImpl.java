@@ -39,21 +39,25 @@ public class WahlperiodeServiceImpl implements WahlperiodeService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void deleteAll() {
         this.wahlperiodeRepository.deleteAll();
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public void delete(Wahlperiode domainObject) {
         this.wahlperiodeRepository.delete(domainObject);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Wahlperiode create(Wahlperiode domainObject) {
         return this.wahlperiodeRepository.save(domainObject);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Wahlperiode update(Wahlperiode domainObject) {
         return this.wahlperiodeRepository.save(domainObject);
     }
@@ -69,7 +73,7 @@ public class WahlperiodeServiceImpl implements WahlperiodeService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return this.wahlperiodeRepository.getMaxId();
     }
 }

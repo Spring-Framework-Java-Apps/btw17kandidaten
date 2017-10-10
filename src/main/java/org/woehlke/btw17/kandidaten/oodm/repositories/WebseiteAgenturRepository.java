@@ -16,6 +16,6 @@ public interface WebseiteAgenturRepository extends JpaRepository<WebseiteAgentur
     List<Long> getAllIds();
 
     @Query(name="WebseiteAgentur.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

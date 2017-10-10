@@ -16,6 +16,6 @@ public interface FraktionRepository extends JpaRepository<Fraktion,Long> {
     List<Long> getAllIds();
 
     @Query(name="Fraktion.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

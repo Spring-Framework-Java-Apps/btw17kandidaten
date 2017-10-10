@@ -22,6 +22,6 @@ public interface Btw17ErgebnisRepository extends JpaRepository<Btw17Ergebnis,Lon
     List<Btw17Ergebnis> getErgebnisOfBundeslaender();
 
     @Query(name="Btw17Ergebnis.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

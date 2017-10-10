@@ -16,6 +16,6 @@ public interface WahlkreisRepository extends JpaRepository<Wahlkreis,Long> {
     List<Long> getAllIds();
 
     @Query(name="Wahlkreis.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

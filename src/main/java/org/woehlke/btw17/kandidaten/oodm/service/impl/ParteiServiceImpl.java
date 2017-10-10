@@ -67,7 +67,7 @@ public class ParteiServiceImpl implements ParteiService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return parteiRepository.getMaxId();
     }
 

@@ -16,5 +16,5 @@ public interface GeburtsortRepository extends JpaRepository<Geburtsort,Long> {
     List<Long> getAllIds();
 
     @Query(name="Geburtsort.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 }

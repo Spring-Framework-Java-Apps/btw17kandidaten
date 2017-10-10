@@ -26,8 +26,13 @@ import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -163,8 +168,11 @@ public class WahlperiodeEnricher {
     @Test
     public void test010updateWahlperiodeByBtw17Wahlperiode() throws Exception {
         log.info("test010updateWahlperiodeByBtw17Wahlperiode");
-        long maxId = wahlperiodeService.getMaxId();
+        Long maxId = wahlperiodeService.getMaxId();
         log.info("maxId: "+maxId);
+        if(maxId == null){
+            maxId = 0L;
+        }
         maxId++;
         String sql ="ALTER SEQUENCE hibernate_sequence RESTART WITH "+maxId;
         jdbcService.executeSqlStatemen(sql);
@@ -172,9 +180,15 @@ public class WahlperiodeEnricher {
             Wahlperiode o = new Wahlperiode();
             Long wahlperiode = Long.parseLong(btw17Wahlperiode.getWp());
             o.setWahlperiode(wahlperiode);
-            Long wkrnummer = Long.parseLong(btw17Wahlperiode.getWkrnummer());
-            Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(wkrnummer);
-            o.setWahlkreis(wahlkreis);
+
+            if(btw17Wahlperiode.getWkrnummer()!=null){
+                Long wkrnummer = Long.parseLong(btw17Wahlperiode.getWkrnummer());
+                Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(wkrnummer);
+                o.setWahlkreis(wahlkreis);
+            } else {
+                log.warn("wkrnummer == null");
+            }
+
             String liste = btw17Wahlperiode.getListe();
             if(liste != null){
                 switch (liste){
@@ -209,11 +223,85 @@ public class WahlperiodeEnricher {
                 default: break;
             }
 
-            String mdbWahlperiodeVon = btw17Wahlperiode.getMdbwpbis();
-            String mdbWahlperiodeBis = btw17Wahlperiode.getMdbwpbis();
+            Institution institution = o.getInstitution();
 
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+            String a = btw17Wahlperiode.getMdbwpvon();
+            if(a != null) {
+                log.info("mdbWahlperiodeVon: " + a);
+                LocalDate mdbWahlperiodeVon = LocalDate.parse(a, formatter);
+                o.setMdbWahlperiodeVon(mdbWahlperiodeVon);
+            }
+
+            String b = btw17Wahlperiode.getMdbwpbis();
+            if(b!=null) {
+                log.info("mdbWahlperiodeBis: " + b);
+                LocalDate mdbWahlperiodeBis = LocalDate.parse(b, formatter);
+                o.setMdbWahlperiodeBis(mdbWahlperiodeBis);
+            }
+
+            String institutionArtLang= btw17Wahlperiode.getInsartlang();
+            switch (institutionArtLang){
+                case "Ausschuss":
+                    institution.setInstitutionArtLang(InstitutionArt.AUSSCHUSS);
+                    break;
+                case "Deutscher Bundestag":
+                    institution.setInstitutionArtLang(InstitutionArt.DEUTSCHER_BUNDESTAG);
+                    break;
+                case "Arbeitsgruppe":
+                    institution.setInstitutionArtLang(InstitutionArt.ARBEITSGRUPPE);
+                    break;
+                case "Sonstiges Gremium":
+                    institution.setInstitutionArtLang(InstitutionArt.SONSTIGES_GREMIUM);
+                    break;
+                case "Ministerium":
+                    institution.setInstitutionArtLang(InstitutionArt.MINISTERIUM);
+                    break;
+                case "Unterausschuss":
+                    institution.setInstitutionArtLang(InstitutionArt.UNTERAUSSCHUSS);
+                    break;
+                case "Untersuchungsausschuss":
+                    institution.setInstitutionArtLang(InstitutionArt.UNTERSUCHUNGSAUSSCHUSS);
+                    break;
+                case "Fraktion/Gruppe":
+                    institution.setInstitutionArtLang(InstitutionArt.FRAKTION_GRUPPE);
+                    break;
+            }
+
+            String institutionLang = btw17Wahlperiode.getInslang();
+            String funktionLang = btw17Wahlperiode.getFktlang();
+
+            institution.setInstitutionLang(institutionLang);
+            institution.setFunktionLang(funktionLang);
+
+            String c = btw17Wahlperiode.getMdbinsvon();
+            if(c != null){
+                log.info("mdbInstitutionVon: " + a);
+                LocalDate mdbInstitutionVon = LocalDate.parse(c, formatter);
+                institution.setMdbInstitutionVon(mdbInstitutionVon);
+            }
+            String d = btw17Wahlperiode.getMdbinsbis();
+            if(d != null) {
+                log.info("mdbInstitutionBis: " + a);
+                LocalDate mdbInstitutionBis = LocalDate.parse(d, formatter);
+                institution.setMdbInstitutionBis(mdbInstitutionBis);
+            }
+            String e = btw17Wahlperiode.getFktinsvon();
+            if(e != null) {
+                log.info("funktionInstitutionVon: " + a);
+                LocalDate funktionInstitutionVon = LocalDate.parse(e, formatter);
+                institution.setFunktionInstitutionVon(funktionInstitutionVon);
+            }
+            String f = btw17Wahlperiode.getFktinsbis();
+            if(f != null) {
+                log.info("funktionInstitutionBis: " + a);
+                LocalDate funktionInstitutionBis = LocalDate.parse(f, formatter);
+                institution.setFunktionInstitutionBis(funktionInstitutionBis);
+            }
 
             o = wahlperiodeService.create(o);
+            log.info("added: "+o.toString());
             log.info("added: "+o.getUniqueId());
         }
     }

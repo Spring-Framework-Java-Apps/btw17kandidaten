@@ -144,7 +144,7 @@ public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService 
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return btw17StrukturdatenRepository.getMaxId();
     }
 }

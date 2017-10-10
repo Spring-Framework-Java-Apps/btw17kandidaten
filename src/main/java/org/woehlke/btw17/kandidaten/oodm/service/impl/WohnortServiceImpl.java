@@ -71,7 +71,7 @@ public class WohnortServiceImpl implements WohnortService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return wohnortRepository.getMaxId();
     }
 

@@ -74,7 +74,7 @@ public class Btw17MdbServiceImpl implements Btw17MdbService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return btw17MdbRepository.getMaxId();
     }
 

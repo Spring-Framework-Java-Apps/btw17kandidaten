@@ -16,5 +16,5 @@ public interface WebseiteCmsRepository extends JpaRepository<WebseiteCms,Long> {
     List<Long> getAllIds();
 
     @Query(name="WebseiteCms.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 }

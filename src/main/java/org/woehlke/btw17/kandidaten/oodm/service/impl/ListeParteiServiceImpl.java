@@ -66,7 +66,7 @@ public class ListeParteiServiceImpl implements ListeParteiService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return listeParteiRepository.getMaxId();
     }
 

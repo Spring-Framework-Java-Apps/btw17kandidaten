@@ -66,7 +66,7 @@ public class MinisteriumServiceImpl implements MinisteriumService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return ministeriumRepository.getMaxId();
     }
 

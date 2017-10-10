@@ -66,7 +66,7 @@ public class AusschussServiceImpl implements AusschussService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return ausschussRepository.getMaxId();
     }
 

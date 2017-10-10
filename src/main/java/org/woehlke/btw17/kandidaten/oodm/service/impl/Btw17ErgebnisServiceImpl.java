@@ -85,7 +85,7 @@ public class Btw17ErgebnisServiceImpl implements Btw17ErgebnisService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return btw17ErgebnisRepository.getMaxId();
     }
 

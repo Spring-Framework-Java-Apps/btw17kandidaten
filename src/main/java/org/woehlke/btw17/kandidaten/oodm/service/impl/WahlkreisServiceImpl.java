@@ -66,7 +66,7 @@ public class WahlkreisServiceImpl implements WahlkreisService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return wahlkreisRepository.getMaxId();
     }
 

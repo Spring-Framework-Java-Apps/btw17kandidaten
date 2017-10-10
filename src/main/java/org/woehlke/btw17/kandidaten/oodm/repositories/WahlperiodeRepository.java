@@ -14,6 +14,6 @@ public interface WahlperiodeRepository extends JpaRepository<Wahlperiode,Long> {
     List<Long> getAllIds();
 
     @Query(name = "Wahlperiode.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

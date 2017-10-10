@@ -17,6 +17,6 @@ public interface MinisteriumRepository extends JpaRepository<Ministerium,Long> {
     List<Long> getAllIds();
 
     @Query(name="Ministerium.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

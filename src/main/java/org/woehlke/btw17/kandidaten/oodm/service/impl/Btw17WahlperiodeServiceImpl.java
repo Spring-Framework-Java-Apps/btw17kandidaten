@@ -73,7 +73,7 @@ public class Btw17WahlperiodeServiceImpl implements Btw17WahlperiodeService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return btw17WahlperiodeRepository.getMaxId();
     }
 

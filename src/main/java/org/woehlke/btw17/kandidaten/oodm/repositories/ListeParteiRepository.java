@@ -18,6 +18,6 @@ public interface ListeParteiRepository extends JpaRepository<ListePartei,Long> {
     List<Long> getAllIds();
 
     @Query(name="ListePartei.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

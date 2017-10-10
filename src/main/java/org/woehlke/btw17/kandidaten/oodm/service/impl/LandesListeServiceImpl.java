@@ -69,7 +69,7 @@ public class LandesListeServiceImpl implements LandesListeService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return landesListeRepository.getMaxId();
     }
 

@@ -38,6 +38,6 @@ public interface LandesListeRepository extends JpaRepository<LandesListe,Long> {
     List<Long> getAllIds();
 
     @Query(name="LandesListe.getMaxId")
-    long getMaxId();
+    Long getMaxId();
 
 }

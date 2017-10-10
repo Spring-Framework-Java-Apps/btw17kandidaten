@@ -119,7 +119,7 @@ public class Btw17WahlbewerberServiceImpl implements Btw17WahlbewerberService {
     }
 
     @Override
-    public long getMaxId() {
+    public Long getMaxId() {
         return this.btw17WahlbewerberRepository.getMaxId();
     }
 
