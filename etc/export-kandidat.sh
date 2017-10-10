@@ -35,7 +35,7 @@ echo "FACETTEN"
 
 export TABLES="$TABLES cms agentur bundesland_agentur fraktion_agentur ministerium_agentur partei_agentur"
 export TABLES="$TABLES wohnort_agentur ausschuss beruf berufsgruppe bundesland fraktion geburtsort landesliste"
-export TABLES="$TABLES listepartei ministerium partei wahlkreis wohnort"
+export TABLES="$TABLES listepartei ministerium partei wahlkreis wohnort wahlperiode"
 
 fi
 

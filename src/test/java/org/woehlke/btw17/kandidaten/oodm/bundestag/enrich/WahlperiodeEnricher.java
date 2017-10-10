@@ -299,7 +299,7 @@ public class WahlperiodeEnricher {
                 LocalDate funktionInstitutionBis = LocalDate.parse(f, formatter);
                 institution.setFunktionInstitutionBis(funktionInstitutionBis);
             }
-
+            o.setInstitution(institution);
             o = wahlperiodeService.create(o);
             log.info("added: "+o.toString());
             log.info("added: "+o.getUniqueId());
