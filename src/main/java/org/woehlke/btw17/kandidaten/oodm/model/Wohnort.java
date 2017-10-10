@@ -41,6 +41,7 @@ public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmb
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @Column

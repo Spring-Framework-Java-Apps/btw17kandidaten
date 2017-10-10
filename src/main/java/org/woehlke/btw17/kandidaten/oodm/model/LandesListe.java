@@ -59,6 +59,7 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @NotNull

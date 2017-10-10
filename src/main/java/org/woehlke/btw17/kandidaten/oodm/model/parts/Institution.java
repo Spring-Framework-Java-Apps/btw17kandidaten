@@ -6,7 +6,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded
@@ -22,24 +22,20 @@ public class Institution implements Serializable {
     @Column(name = "inslang")
     private String institutionLang;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "mdbinsvon")
-    private Date mdbInstitutionVon;
+    private LocalDate mdbInstitutionVon;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "mdbinsbis")
-    private Date mdbInstitutionBis;
+    private LocalDate mdbInstitutionBis;
 
     @Column(name = "fktlang")
     private String funktionLang;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "fktinsvon")
-    private Date funktionInstitutionVon;
+    private LocalDate funktionInstitutionVon;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "fktinsbis")
-    private Date funktionInstitutionBis;
+    private LocalDate funktionInstitutionBis;
 
     public InstitutionArt getInstitutionArtLang() {
         return institutionArtLang;
@@ -57,19 +53,19 @@ public class Institution implements Serializable {
         this.institutionLang = institutionLang;
     }
 
-    public Date getMdbInstitutionVon() {
+    public LocalDate getMdbInstitutionVon() {
         return mdbInstitutionVon;
     }
 
-    public void setMdbInstitutionVon(Date mdbInstitutionVon) {
+    public void setMdbInstitutionVon(LocalDate mdbInstitutionVon) {
         this.mdbInstitutionVon = mdbInstitutionVon;
     }
 
-    public Date getMdbInstitutionBis() {
+    public LocalDate getMdbInstitutionBis() {
         return mdbInstitutionBis;
     }
 
-    public void setMdbInstitutionBis(Date mdbInstitutionBis) {
+    public void setMdbInstitutionBis(LocalDate mdbInstitutionBis) {
         this.mdbInstitutionBis = mdbInstitutionBis;
     }
 
@@ -81,19 +77,19 @@ public class Institution implements Serializable {
         this.funktionLang = funktionLang;
     }
 
-    public Date getFunktionInstitutionVon() {
+    public LocalDate getFunktionInstitutionVon() {
         return funktionInstitutionVon;
     }
 
-    public void setFunktionInstitutionVon(Date funktionInstitutionVon) {
+    public void setFunktionInstitutionVon(LocalDate funktionInstitutionVon) {
         this.funktionInstitutionVon = funktionInstitutionVon;
     }
 
-    public Date getFunktionInstitutionBis() {
+    public LocalDate getFunktionInstitutionBis() {
         return funktionInstitutionBis;
     }
 
-    public void setFunktionInstitutionBis(Date funktionInstitutionBis) {
+    public void setFunktionInstitutionBis(LocalDate funktionInstitutionBis) {
         this.funktionInstitutionBis = funktionInstitutionBis;
     }
 

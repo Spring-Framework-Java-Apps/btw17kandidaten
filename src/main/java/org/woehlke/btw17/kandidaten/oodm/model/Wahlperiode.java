@@ -10,6 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -31,18 +32,17 @@ public class Wahlperiode implements DomainObject,InstitutionEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "wp")
     private Long wahlperiode;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "mdbwpvon")
-    private Date mdbWahlperiodeVon;
+    private LocalDate mdbWahlperiodeVon;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "mdbwpbis")
-    private Date mdbWahlperiodeBis;
+    private LocalDate mdbWahlperiodeBis;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "liste")
@@ -87,19 +87,19 @@ public class Wahlperiode implements DomainObject,InstitutionEmbedded {
         this.wahlperiode = wahlperiode;
     }
 
-    public Date getMdbWahlperiodeVon() {
+    public LocalDate getMdbWahlperiodeVon() {
         return mdbWahlperiodeVon;
     }
 
-    public void setMdbWahlperiodeVon(Date mdbWahlperiodeVon) {
+    public void setMdbWahlperiodeVon(LocalDate mdbWahlperiodeVon) {
         this.mdbWahlperiodeVon = mdbWahlperiodeVon;
     }
 
-    public Date getMdbWahlperiodeBis() {
+    public LocalDate getMdbWahlperiodeBis() {
         return mdbWahlperiodeBis;
     }
 
-    public void setMdbWahlperiodeBis(Date mdbWahlperiodeBis) {
+    public void setMdbWahlperiodeBis(LocalDate mdbWahlperiodeBis) {
         this.mdbWahlperiodeBis = mdbWahlperiodeBis;
     }
 
@@ -127,10 +127,12 @@ public class Wahlperiode implements DomainObject,InstitutionEmbedded {
         this.wahlkreis = wahlkreis;
     }
 
+    @Override
     public Institution getInstitution() {
         return institution;
     }
 
+    @Override
     public void setInstitution(Institution institution) {
         this.institution = institution;
     }

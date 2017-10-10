@@ -49,6 +49,7 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @SafeHtml

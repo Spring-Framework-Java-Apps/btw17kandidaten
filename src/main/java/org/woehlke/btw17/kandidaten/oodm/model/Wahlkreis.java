@@ -43,6 +43,7 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @Column(name="wahlkreis_id",unique = true)

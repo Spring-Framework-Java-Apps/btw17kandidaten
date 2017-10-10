@@ -293,6 +293,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @NotNull

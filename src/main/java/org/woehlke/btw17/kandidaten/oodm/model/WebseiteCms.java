@@ -51,6 +51,7 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @SafeHtml

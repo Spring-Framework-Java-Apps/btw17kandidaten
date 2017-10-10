@@ -34,6 +34,7 @@ public class Beruf implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @Column(name = "beruf")

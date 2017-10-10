@@ -50,6 +50,7 @@ public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategie
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @NotNull

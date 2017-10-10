@@ -51,6 +51,7 @@ public class Fraktion implements DomainObject,WebseiteEmbedded,CommonFieldsEmbed
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
     @Column(name="fraktion")
