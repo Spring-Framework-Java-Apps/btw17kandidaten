@@ -27,6 +27,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
@@ -184,6 +185,9 @@ public class WahlperiodeEnricher {
             if(btw17Wahlperiode.getWkrnummer()!=null){
                 Long wkrnummer = Long.parseLong(btw17Wahlperiode.getWkrnummer());
                 Wahlkreis wahlkreis = wahlkreisService.findByWahlkreisId(wkrnummer);
+                if(wahlkreis == null){
+                    log.warn("wahlkreis == null");
+                }
                 o.setWahlkreis(wahlkreis);
             } else {
                 log.warn("wkrnummer == null");
@@ -217,9 +221,9 @@ public class WahlperiodeEnricher {
             }
             String mandatsArt = btw17Wahlperiode.getMandatsart();
             switch(mandatsArt){
-                case "Volkskammer": break;
-                case "Direktwahl": break;
-                case "Landesliste": break;
+                case "Volkskammer": o.setMandatsArt(Mandatsart.VOLKSKAMMER); break;
+                case "Direktwahl": o.setMandatsArt(Mandatsart.DIREKTWAHL); break;
+                case "Landesliste": o.setMandatsArt(Mandatsart.LANDESLISTE); break;
                 default: break;
             }
 
