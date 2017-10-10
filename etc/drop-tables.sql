@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS kandidat_wahlperiode CASCADE;
 DROP TABLE IF EXISTS kandidat_ministerium CASCADE;
 DROP TABLE IF EXISTS kandidat_ausschuss CASCADE;
 DROP TABLE IF EXISTS kandidat_agentur CASCADE;
@@ -30,6 +31,7 @@ DROP TABLE IF EXISTS btw17_kandidat_flat CASCADE;
 DROP TABLE IF EXISTS btw17_wahlbewerber CASCADE;
 DROP TABLE IF EXISTS btw17_mdb_stammdaten CASCADE;
 DROP TABLE IF EXISTS btw17_mdb_wahlperiode CASCADE;
+DROP TABLE IF EXISTS btw17_mdb_stammdaten_wahlperiode CASCADE;
 DROP TABLE IF EXISTS wahlperiode CASCADE;
 DROP TABLE IF EXISTS spring_session_attributes CASCADE;
 DROP TABLE IF EXISTS spring_session CASCADE;
