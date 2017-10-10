@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter;
 
-import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17ErgebnisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 

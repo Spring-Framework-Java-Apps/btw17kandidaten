@@ -2,44 +2,50 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 
 import org.springframework.validation.annotation.Validated;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
- * @see org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded
+ * @see org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded
  */
 @Validated
 @Embeddable
 public class Institution implements Serializable {
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "insartlang")
-    private String institutionArtLang;
+    private InstitutionArt institutionArtLang;
 
     @Column(name = "inslang")
     private String institutionLang;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "mdbinsvon")
-    private String mdbInstitutionVon;
+    private Date mdbInstitutionVon;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "mdbinsbis")
-    private String mdbInstitutionBis;
+    private Date mdbInstitutionBis;
 
     @Column(name = "fktlang")
     private String funktionLang;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "fktinsvon")
-    private String funktionInstitutionVon;
+    private Date funktionInstitutionVon;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "fktinsbis")
-    private String funktionInstitutionBis;
+    private Date funktionInstitutionBis;
 
-    public String getInstitutionArtLang() {
+    public InstitutionArt getInstitutionArtLang() {
         return institutionArtLang;
     }
 
-    public void setInstitutionArtLang(String institutionArtLang) {
+    public void setInstitutionArtLang(InstitutionArt institutionArtLang) {
         this.institutionArtLang = institutionArtLang;
     }
 
@@ -51,19 +57,19 @@ public class Institution implements Serializable {
         this.institutionLang = institutionLang;
     }
 
-    public String getMdbInstitutionVon() {
+    public Date getMdbInstitutionVon() {
         return mdbInstitutionVon;
     }
 
-    public void setMdbInstitutionVon(String mdbInstitutionVon) {
+    public void setMdbInstitutionVon(Date mdbInstitutionVon) {
         this.mdbInstitutionVon = mdbInstitutionVon;
     }
 
-    public String getMdbInstitutionBis() {
+    public Date getMdbInstitutionBis() {
         return mdbInstitutionBis;
     }
 
-    public void setMdbInstitutionBis(String mdbInstitutionBis) {
+    public void setMdbInstitutionBis(Date mdbInstitutionBis) {
         this.mdbInstitutionBis = mdbInstitutionBis;
     }
 
@@ -75,19 +81,19 @@ public class Institution implements Serializable {
         this.funktionLang = funktionLang;
     }
 
-    public String getFunktionInstitutionVon() {
+    public Date getFunktionInstitutionVon() {
         return funktionInstitutionVon;
     }
 
-    public void setFunktionInstitutionVon(String funktionInstitutionVon) {
+    public void setFunktionInstitutionVon(Date funktionInstitutionVon) {
         this.funktionInstitutionVon = funktionInstitutionVon;
     }
 
-    public String getFunktionInstitutionBis() {
+    public Date getFunktionInstitutionBis() {
         return funktionInstitutionBis;
     }
 
-    public void setFunktionInstitutionBis(String funktionInstitutionBis) {
+    public void setFunktionInstitutionBis(Date funktionInstitutionBis) {
         this.funktionInstitutionBis = funktionInstitutionBis;
     }
 
@@ -98,8 +104,7 @@ public class Institution implements Serializable {
 
         Institution that = (Institution) o;
 
-        if (institutionArtLang != null ? !institutionArtLang.equals(that.institutionArtLang) : that.institutionArtLang != null)
-            return false;
+        if (institutionArtLang != that.institutionArtLang) return false;
         if (institutionLang != null ? !institutionLang.equals(that.institutionLang) : that.institutionLang != null)
             return false;
         if (mdbInstitutionVon != null ? !mdbInstitutionVon.equals(that.mdbInstitutionVon) : that.mdbInstitutionVon != null)
@@ -127,13 +132,13 @@ public class Institution implements Serializable {
     @Override
     public String toString() {
         return "Institution{" +
-                "institutionArtLang='" + institutionArtLang + '\'' +
+                "institutionArtLang=" + institutionArtLang +
                 ", institutionLang='" + institutionLang + '\'' +
-                ", mdbInstitutionVon='" + mdbInstitutionVon + '\'' +
-                ", mdbInstitutionBis='" + mdbInstitutionBis + '\'' +
+                ", mdbInstitutionVon=" + mdbInstitutionVon +
+                ", mdbInstitutionBis=" + mdbInstitutionBis +
                 ", funktionLang='" + funktionLang + '\'' +
-                ", funktionInstitutionVon='" + funktionInstitutionVon + '\'' +
-                ", funktionInstitutionBis='" + funktionInstitutionBis + '\'' +
+                ", funktionInstitutionVon=" + funktionInstitutionVon +
+                ", funktionInstitutionBis=" + funktionInstitutionBis +
                 '}';
     }
 }

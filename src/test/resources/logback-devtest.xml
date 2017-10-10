@@ -12,14 +12,14 @@
     <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.data" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.pages" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.common" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.redaktion.reports" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.data" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.reports" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.errorhandling" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.errorhandling" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.enrich" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.file2db" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="DEBUG" />

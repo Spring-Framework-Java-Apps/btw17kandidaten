@@ -3,12 +3,12 @@ package org.woehlke.btw17.kandidaten;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.*;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages.DatenschutzControllerTest;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages.ImprintControllerTest;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages.WelcomeControllerTest;
+import org.woehlke.btw17.kandidaten.frontend.controller.open.data.*;
+import org.woehlke.btw17.kandidaten.frontend.controller.open.pages.DatenschutzControllerTest;
+import org.woehlke.btw17.kandidaten.frontend.controller.open.pages.ImprintControllerTest;
+import org.woehlke.btw17.kandidaten.frontend.controller.open.pages.WelcomeControllerTest;
 import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche.SucheControllerTest;
-import org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data.*;
+import org.woehlke.btw17.kandidaten.frontend.controller.closed.data.*;
 import org.woehlke.btw17.kandidaten.frontend.controller.redaktion.report.ReportControllerTest;
 import org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages.LoginControllerTest;
 import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17KandidatFlatServiceTest;

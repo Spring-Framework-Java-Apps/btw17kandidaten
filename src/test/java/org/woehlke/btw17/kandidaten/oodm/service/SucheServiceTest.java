@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,8 +19,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.GeburtsortController;
-import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche.SucheController;
+import org.woehlke.btw17.kandidaten.frontend.controller.open.suche.SucheController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

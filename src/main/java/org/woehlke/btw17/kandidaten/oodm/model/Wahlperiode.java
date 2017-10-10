@@ -1,12 +1,16 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlperiodeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import java.util.Date;
 
 @Entity
 @Table(
@@ -23,7 +27,7 @@ import javax.validation.Valid;
     )
 })
 @EntityListeners(WahlperiodeListener.class)
-public class Wahlperiode implements DomainObject {
+public class Wahlperiode implements DomainObject,InstitutionEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,31 +36,23 @@ public class Wahlperiode implements DomainObject {
     @Column(name = "wp")
     private Long wahlperiode;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "mdbwpvon")
-    private String mdbWahlperiodeVon;
+    private Date mdbWahlperiodeVon;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "mdbwpbis")
-    private String mdbWahlperiodeBis;
+    private Date mdbWahlperiodeBis;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "liste")
-    private String liste;
+    private BundeslandEnum bundeslandLandesListe;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "mandatsart")
-    private String mandatsArt;
+    private Mandatsart mandatsArt;
 
-    @Deprecated
-    @Column(name = "wkrnummer")
-    private String wkrummer;
-
-    @Deprecated
-    @Column(name = "wkrname")
-    private String wkrname;
-
-    @Deprecated
-    @Column(name = "wkrland")
-    private String wkrland;
-
-    @ManyToOne(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name="fk_wahlkreis")
     private Wahlkreis wahlkreis;
 
@@ -71,7 +67,7 @@ public class Wahlperiode implements DomainObject {
 
     @Override
     public String getName() {
-        return wkrname;
+        return wahlperiode.toString();
     }
 
     @Override
@@ -91,60 +87,36 @@ public class Wahlperiode implements DomainObject {
         this.wahlperiode = wahlperiode;
     }
 
-    public String getMdbWahlperiodeVon() {
+    public Date getMdbWahlperiodeVon() {
         return mdbWahlperiodeVon;
     }
 
-    public void setMdbWahlperiodeVon(String mdbWahlperiodeVon) {
+    public void setMdbWahlperiodeVon(Date mdbWahlperiodeVon) {
         this.mdbWahlperiodeVon = mdbWahlperiodeVon;
     }
 
-    public String getMdbWahlperiodeBis() {
+    public Date getMdbWahlperiodeBis() {
         return mdbWahlperiodeBis;
     }
 
-    public void setMdbWahlperiodeBis(String mdbWahlperiodeBis) {
+    public void setMdbWahlperiodeBis(Date mdbWahlperiodeBis) {
         this.mdbWahlperiodeBis = mdbWahlperiodeBis;
     }
 
-    public String getListe() {
-        return liste;
+    public BundeslandEnum getBundeslandLandesListe() {
+        return bundeslandLandesListe;
     }
 
-    public void setListe(String liste) {
-        this.liste = liste;
+    public void setBundeslandLandesListe(BundeslandEnum bundeslandLandesListe) {
+        this.bundeslandLandesListe = bundeslandLandesListe;
     }
 
-    public String getMandatsArt() {
+    public Mandatsart getMandatsArt() {
         return mandatsArt;
     }
 
-    public void setMandatsArt(String mandatsArt) {
+    public void setMandatsArt(Mandatsart mandatsArt) {
         this.mandatsArt = mandatsArt;
-    }
-
-    public String getWkrummer() {
-        return wkrummer;
-    }
-
-    public void setWkrummer(String wkrummer) {
-        this.wkrummer = wkrummer;
-    }
-
-    public String getWkrname() {
-        return wkrname;
-    }
-
-    public void setWkrname(String wkrname) {
-        this.wkrname = wkrname;
-    }
-
-    public String getWkrland() {
-        return wkrland;
-    }
-
-    public void setWkrland(String wkrland) {
-        this.wkrland = wkrland;
     }
 
     public Wahlkreis getWahlkreis() {
@@ -176,11 +148,8 @@ public class Wahlperiode implements DomainObject {
             return false;
         if (mdbWahlperiodeBis != null ? !mdbWahlperiodeBis.equals(that.mdbWahlperiodeBis) : that.mdbWahlperiodeBis != null)
             return false;
-        if (liste != null ? !liste.equals(that.liste) : that.liste != null) return false;
-        if (mandatsArt != null ? !mandatsArt.equals(that.mandatsArt) : that.mandatsArt != null) return false;
-        if (wkrummer != null ? !wkrummer.equals(that.wkrummer) : that.wkrummer != null) return false;
-        if (wkrname != null ? !wkrname.equals(that.wkrname) : that.wkrname != null) return false;
-        if (wkrland != null ? !wkrland.equals(that.wkrland) : that.wkrland != null) return false;
+        if (bundeslandLandesListe != that.bundeslandLandesListe) return false;
+        if (mandatsArt != that.mandatsArt) return false;
         if (wahlkreis != null ? !wahlkreis.equals(that.wahlkreis) : that.wahlkreis != null) return false;
         return institution != null ? institution.equals(that.institution) : that.institution == null;
     }
@@ -191,11 +160,8 @@ public class Wahlperiode implements DomainObject {
         result = 31 * result + (wahlperiode != null ? wahlperiode.hashCode() : 0);
         result = 31 * result + (mdbWahlperiodeVon != null ? mdbWahlperiodeVon.hashCode() : 0);
         result = 31 * result + (mdbWahlperiodeBis != null ? mdbWahlperiodeBis.hashCode() : 0);
-        result = 31 * result + (liste != null ? liste.hashCode() : 0);
+        result = 31 * result + (bundeslandLandesListe != null ? bundeslandLandesListe.hashCode() : 0);
         result = 31 * result + (mandatsArt != null ? mandatsArt.hashCode() : 0);
-        result = 31 * result + (wkrummer != null ? wkrummer.hashCode() : 0);
-        result = 31 * result + (wkrname != null ? wkrname.hashCode() : 0);
-        result = 31 * result + (wkrland != null ? wkrland.hashCode() : 0);
         result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
         result = 31 * result + (institution != null ? institution.hashCode() : 0);
         return result;
@@ -205,14 +171,11 @@ public class Wahlperiode implements DomainObject {
     public String toString() {
         return "Wahlperiode{" +
                 "id=" + id +
-                ", wahlperiode='" + wahlperiode + '\'' +
-                ", mdbWahlperiodeVon='" + mdbWahlperiodeVon + '\'' +
-                ", mdbWahlperiodeBis='" + mdbWahlperiodeBis + '\'' +
-                ", liste='" + liste + '\'' +
-                ", mandatsArt='" + mandatsArt + '\'' +
-                ", wkrummer='" + wkrummer + '\'' +
-                ", wkrname='" + wkrname + '\'' +
-                ", wkrland='" + wkrland + '\'' +
+                ", wahlperiode=" + wahlperiode +
+                ", mdbWahlperiodeVon=" + mdbWahlperiodeVon +
+                ", mdbWahlperiodeBis=" + mdbWahlperiodeBis +
+                ", bundeslandLandesListe=" + bundeslandLandesListe +
+                ", mandatsArt=" + mandatsArt +
                 ", wahlkreis=" + wahlkreis +
                 ", institution=" + institution +
                 '}';

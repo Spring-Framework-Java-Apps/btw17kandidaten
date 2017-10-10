@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
-import org.woehlke.btw17.kandidaten.configuration.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
 
 
 import javax.persistence.*;

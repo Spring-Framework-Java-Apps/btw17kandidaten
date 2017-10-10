@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.configuration.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.repositories.BundeslandRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.BundeslandService;

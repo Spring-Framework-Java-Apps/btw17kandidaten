@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.woehlke.btw17.kandidaten.frontend.content.FreitextSucheFormular;
-import org.woehlke.btw17.kandidaten.frontend.content.SearchForKandidat;
-import org.woehlke.btw17.kandidaten.frontend.content.SessionHandler;
+import org.woehlke.btw17.kandidaten.frontend.model.FreitextSucheFormular;
+import org.woehlke.btw17.kandidaten.frontend.model.SearchForKandidat;
+import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 
 import javax.servlet.http.HttpSession;
 

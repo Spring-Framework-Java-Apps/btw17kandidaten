@@ -12,14 +12,14 @@
     <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.pages" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.data" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.pages" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.common" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.redaktion.reports" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.data" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.reports" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.frontend.errorhandling" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.frontend.controller.errorhandling" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.model" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.model.listener" level="DEBUG" />

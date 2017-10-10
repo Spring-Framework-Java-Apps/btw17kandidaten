@@ -9,8 +9,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 
 /**
- * @see org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.data.AusschussController
- * @see org.woehlke.btw17.kandidaten.frontend.controller.redaktion.data.AusschussRedaktionController
+ * @see org.woehlke.btw17.kandidaten.frontend.controller.open.data.AusschussController
+ * @see org.woehlke.btw17.kandidaten.frontend.controller.closed.data.AusschussRedaktionController
  *
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
  */

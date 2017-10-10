@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.configuration.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufsgruppeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
