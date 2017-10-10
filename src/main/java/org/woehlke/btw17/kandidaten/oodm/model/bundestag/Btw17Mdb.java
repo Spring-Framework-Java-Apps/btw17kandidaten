@@ -1,11 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model.bundestag;
 
+import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17MdbListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -79,9 +82,9 @@ public class Btw17Mdb implements DomainObject {
     @Column(name="veroeffentlichungspflichtiges",columnDefinition = "TEXT")
     protected String veroeffentlichungspflichtiges;
 
-    @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
-    @JoinColumn(name="wahlperioden_mdb_id")
-    List<Btw17Wahlperiode> wahlperioden = new ArrayList<>();
+    @ManyToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @JoinTable(name="btw17_mdb_stammdaten_wahlperiode")
+    private Set<Btw17Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
     @Override
     public String getName() {
@@ -270,11 +273,17 @@ public class Btw17Mdb implements DomainObject {
         this.veroeffentlichungspflichtiges = veroeffentlichungspflichtiges;
     }
 
-    public List<Btw17Wahlperiode> getWahlperioden() {
+    public Set<Btw17Wahlperiode> getWahlperioden() {
         return wahlperioden;
     }
 
-    public void setWahlperioden(List<Btw17Wahlperiode> wahlperioden) {
+
+    public void addWahlperiode(Btw17Wahlperiode wahlperiode) {
+        if(wahlperiode != null)
+        this.wahlperioden.add(wahlperiode);
+    }
+
+    public void setWahlperioden(Set<Btw17Wahlperiode> wahlperioden) {
         this.wahlperioden = wahlperioden;
     }
 
@@ -283,32 +292,39 @@ public class Btw17Mdb implements DomainObject {
         if (this == o) return true;
         if (!(o instanceof Btw17Mdb)) return false;
 
-        Btw17Mdb mdb = (Btw17Mdb) o;
+        Btw17Mdb btw17Mdb = (Btw17Mdb) o;
 
-        if (id != null ? !id.equals(mdb.id) : mdb.id != null) return false;
-        if (xmlId != null ? !xmlId.equals(mdb.xmlId) : mdb.xmlId != null) return false;
-        if (nachname != null ? !nachname.equals(mdb.nachname) : mdb.nachname != null) return false;
-        if (vorname != null ? !vorname.equals(mdb.vorname) : mdb.vorname != null) return false;
-        if (ortszusatz != null ? !ortszusatz.equals(mdb.ortszusatz) : mdb.ortszusatz != null) return false;
-        if (adel != null ? !adel.equals(mdb.adel) : mdb.adel != null) return false;
-        if (praefix != null ? !praefix.equals(mdb.praefix) : mdb.praefix != null) return false;
-        if (anredetitel != null ? !anredetitel.equals(mdb.anredetitel) : mdb.anredetitel != null) return false;
-        if (akadtitel != null ? !akadtitel.equals(mdb.akadtitel) : mdb.akadtitel != null) return false;
-        if (historievon != null ? !historievon.equals(mdb.historievon) : mdb.historievon != null) return false;
-        if (historiebis != null ? !historiebis.equals(mdb.historiebis) : mdb.historiebis != null) return false;
-        if (geburtsdatum != null ? !geburtsdatum.equals(mdb.geburtsdatum) : mdb.geburtsdatum != null) return false;
-        if (geburtsort != null ? !geburtsort.equals(mdb.geburtsort) : mdb.geburtsort != null) return false;
-        if (geburtsland != null ? !geburtsland.equals(mdb.geburtsland) : mdb.geburtsland != null) return false;
-        if (sterbedatum != null ? !sterbedatum.equals(mdb.sterbedatum) : mdb.sterbedatum != null) return false;
-        if (geschlecht != null ? !geschlecht.equals(mdb.geschlecht) : mdb.geschlecht != null) return false;
-        if (familienstand != null ? !familienstand.equals(mdb.familienstand) : mdb.familienstand != null) return false;
-        if (religion != null ? !religion.equals(mdb.religion) : mdb.religion != null) return false;
-        if (beruf != null ? !beruf.equals(mdb.beruf) : mdb.beruf != null) return false;
-        if (parteikurz != null ? !parteikurz.equals(mdb.parteikurz) : mdb.parteikurz != null) return false;
-        if (vitakurz != null ? !vitakurz.equals(mdb.vitakurz) : mdb.vitakurz != null) return false;
-        if (veroeffentlichungspflichtiges != null ? !veroeffentlichungspflichtiges.equals(mdb.veroeffentlichungspflichtiges) : mdb.veroeffentlichungspflichtiges != null)
+        if (id != null ? !id.equals(btw17Mdb.id) : btw17Mdb.id != null) return false;
+        if (xmlId != null ? !xmlId.equals(btw17Mdb.xmlId) : btw17Mdb.xmlId != null) return false;
+        if (nachname != null ? !nachname.equals(btw17Mdb.nachname) : btw17Mdb.nachname != null) return false;
+        if (vorname != null ? !vorname.equals(btw17Mdb.vorname) : btw17Mdb.vorname != null) return false;
+        if (ortszusatz != null ? !ortszusatz.equals(btw17Mdb.ortszusatz) : btw17Mdb.ortszusatz != null) return false;
+        if (adel != null ? !adel.equals(btw17Mdb.adel) : btw17Mdb.adel != null) return false;
+        if (praefix != null ? !praefix.equals(btw17Mdb.praefix) : btw17Mdb.praefix != null) return false;
+        if (anredetitel != null ? !anredetitel.equals(btw17Mdb.anredetitel) : btw17Mdb.anredetitel != null)
             return false;
-        return wahlperioden != null ? wahlperioden.equals(mdb.wahlperioden) : mdb.wahlperioden == null;
+        if (akadtitel != null ? !akadtitel.equals(btw17Mdb.akadtitel) : btw17Mdb.akadtitel != null) return false;
+        if (historievon != null ? !historievon.equals(btw17Mdb.historievon) : btw17Mdb.historievon != null)
+            return false;
+        if (historiebis != null ? !historiebis.equals(btw17Mdb.historiebis) : btw17Mdb.historiebis != null)
+            return false;
+        if (geburtsdatum != null ? !geburtsdatum.equals(btw17Mdb.geburtsdatum) : btw17Mdb.geburtsdatum != null)
+            return false;
+        if (geburtsort != null ? !geburtsort.equals(btw17Mdb.geburtsort) : btw17Mdb.geburtsort != null) return false;
+        if (geburtsland != null ? !geburtsland.equals(btw17Mdb.geburtsland) : btw17Mdb.geburtsland != null)
+            return false;
+        if (sterbedatum != null ? !sterbedatum.equals(btw17Mdb.sterbedatum) : btw17Mdb.sterbedatum != null)
+            return false;
+        if (geschlecht != null ? !geschlecht.equals(btw17Mdb.geschlecht) : btw17Mdb.geschlecht != null) return false;
+        if (familienstand != null ? !familienstand.equals(btw17Mdb.familienstand) : btw17Mdb.familienstand != null)
+            return false;
+        if (religion != null ? !religion.equals(btw17Mdb.religion) : btw17Mdb.religion != null) return false;
+        if (beruf != null ? !beruf.equals(btw17Mdb.beruf) : btw17Mdb.beruf != null) return false;
+        if (parteikurz != null ? !parteikurz.equals(btw17Mdb.parteikurz) : btw17Mdb.parteikurz != null) return false;
+        if (vitakurz != null ? !vitakurz.equals(btw17Mdb.vitakurz) : btw17Mdb.vitakurz != null) return false;
+        if (veroeffentlichungspflichtiges != null ? !veroeffentlichungspflichtiges.equals(btw17Mdb.veroeffentlichungspflichtiges) : btw17Mdb.veroeffentlichungspflichtiges != null)
+            return false;
+        return wahlperioden != null ? wahlperioden.equals(btw17Mdb.wahlperioden) : btw17Mdb.wahlperioden == null;
     }
 
     @Override

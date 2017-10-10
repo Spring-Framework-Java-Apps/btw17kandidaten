@@ -26,13 +26,14 @@ import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.bundestag.xml.*;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
+import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -70,6 +71,9 @@ public class Btw17MdbStammdatenImporter {
     @Autowired
     private Btw17WahlperiodeService btw17WahlperiodeService;
 
+    @Autowired
+    private JdbcService jdbcService;
+
     @WithMockUser
     @Commit
     @Test
@@ -91,7 +95,10 @@ public class Btw17MdbStammdatenImporter {
     @Test
     public void test100file2db() throws Exception {
         log.info("test100file2db");
+        btw17WahlperiodeService.deleteAll();
         btw17MdbService.deleteAll();
+        String sql ="ALTER SEQUENCE hibernate_sequence RESTART WITH "+1;
+        jdbcService.executeSqlStatemen(sql);
         Assert.assertTrue(true);
         try {
             File file = new File(xmlFile);
@@ -125,27 +132,30 @@ public class Btw17MdbStammdatenImporter {
                 o.setParteikurz(biografischeangaben.getPARTEIKURZ());
                 o.setVitakurz(biografischeangaben.getVITAKURZ().replaceAll("\n","<br/>"));
                 o.setVeroeffentlichungspflichtiges(biografischeangaben.getVEROEFFENTLICHUNGSPFLICHTIGES().replaceAll("\n","<br/>"));
-                List<Btw17Wahlperiode> wahlperioden = new ArrayList<Btw17Wahlperiode>();
+                Set<Btw17Wahlperiode> wahlperioden = new LinkedHashSet<>();
                 for(WAHLPERIODE wahlperiode :mdb.getWAHLPERIODEN().getWAHLPERIODE()){
-                    Btw17Wahlperiode p = new Btw17Wahlperiode();
-                    p.setWp(wahlperiode.getWP());
-                    p.setMdbwpvon(wahlperiode.getMDBWPVON());
-                    p.setMdbwpbis(wahlperiode.getMDBWPBIS());
-                    p.setWkrnummer(wahlperiode.getWKRNUMMER());
-                    p.setWkrname(wahlperiode.getWKRNAME());
-                    p.setWkrland(wahlperiode.getWKRLAND());
-                    p.setListe(wahlperiode.getLISTE());
-                    p.setMandatsart(wahlperiode.getMANDATSART());
-                    for(INSTITUTION institution:wahlperiode.getINSTITUTIONEN().getINSTITUTION()){
-                        p.setInsartlang(institution.getINSARTLANG());
-                        p.setInslang(institution.getINSLANG());
-                        p.setMdbinsvon(institution.getMDBINSVON());
-                        p.setMdbinsbis(institution.getMDBINSBIS());
-                        p.setFktlang(institution.getFKTLANG());
-                        p.setFktinsvon(institution.getFKTINSVON());
-                        p.setFktinsbis(institution.getFKTINSBIS());
+                    Btw17Wahlperiode p = btw17WahlperiodeService.findbyWahlperiodeNrAndWkrnummer(wahlperiode.getWP(),wahlperiode.getWKRNUMMER());
+                    if(p == null){
+                        p = new Btw17Wahlperiode();
+                        p.setWp(wahlperiode.getWP());
+                        p.setMdbwpvon(wahlperiode.getMDBWPVON());
+                        p.setMdbwpbis(wahlperiode.getMDBWPBIS());
+                        p.setWkrnummer(wahlperiode.getWKRNUMMER());
+                        p.setWkrname(wahlperiode.getWKRNAME());
+                        p.setWkrland(wahlperiode.getWKRLAND());
+                        p.setListe(wahlperiode.getLISTE());
+                        p.setMandatsart(wahlperiode.getMANDATSART());
+                        for(INSTITUTION institution:wahlperiode.getINSTITUTIONEN().getINSTITUTION()){
+                            p.setInsartlang(institution.getINSARTLANG());
+                            p.setInslang(institution.getINSLANG());
+                            p.setMdbinsvon(institution.getMDBINSVON());
+                            p.setMdbinsbis(institution.getMDBINSBIS());
+                            p.setFktlang(institution.getFKTLANG());
+                            p.setFktinsvon(institution.getFKTINSVON());
+                            p.setFktinsbis(institution.getFKTINSBIS());
+                        }
+                        btw17WahlperiodeService.create(p);
                     }
-                    btw17WahlperiodeService.create(p);
                     wahlperioden.add(p);
                     log.info(p.toString());
                 }

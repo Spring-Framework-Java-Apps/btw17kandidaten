@@ -16,4 +16,5 @@ public interface Btw17WahlperiodeRepository extends JpaRepository<Btw17Wahlperio
     @Query(name = "Btw17Wahlperiode.getMaxId")
     long getMaxId();
 
+    Btw17Wahlperiode findByWpAndWkrnummer(String wp, String wkrnummer);
 }

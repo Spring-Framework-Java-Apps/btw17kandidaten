@@ -86,7 +86,7 @@ public class WahlperiodeController extends AbstractController {
             String msg = "url: "+ request.getRequestURL().toString() +" in WahlperiodeController.id";
             throw new EntityNotFoundException(msg);
         } else {
-            String pageTitle = wahlperiode.getFktinsvon() + ": " +  wahlperiode.getFktinsbis();
+            String pageTitle = wahlperiode.getMdbWahlperiodeBis() + ": " +  wahlperiode.getMdbWahlperiodeVon();
             String pageSubTitle = "Wahlkreise der Bundestagswahl 2017 Direktkandidaten";
             String pageSymbol = PageSymbol.WAHLKREIS.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();

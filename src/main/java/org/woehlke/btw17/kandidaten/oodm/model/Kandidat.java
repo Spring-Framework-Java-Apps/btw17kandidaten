@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -423,9 +422,9 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @JoinTable(name="kandidat_ausschuss")
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
-    @OneToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,CascadeType.REMOVE})
-    @JoinColumn(name="wahlperioden_id")
-    private List<Wahlperiode> wahlperioden = new ArrayList<>();
+    @ManyToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name="kandidat_wahlperiode")
+    private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
     @Valid
     @Embedded
@@ -790,11 +789,11 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         }
     }
 
-    public List<Wahlperiode> getWahlperioden() {
+    public Set<Wahlperiode> getWahlperioden() {
         return wahlperioden;
     }
 
-    public void setWahlperioden(List<Wahlperiode> wahlperioden) {
+    public void setWahlperioden(Set<Wahlperiode> wahlperioden) {
         this.wahlperioden = wahlperioden;
     }
 

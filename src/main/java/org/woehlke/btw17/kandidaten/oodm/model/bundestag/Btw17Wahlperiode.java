@@ -26,39 +26,39 @@ public class Btw17Wahlperiode implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    private Long id;
 
     @Column
-    protected String wp;
+    private String wp;
     @Column
-    protected String mdbwpvon;
+    private String mdbwpvon;
     @Column
-    protected String mdbwpbis;
+    private String mdbwpbis;
     @Column
-    protected String wkrnummer;
+    private String wkrnummer;
     @Column
-    protected String wkrname;
+    private String wkrname;
     @Column
-    protected String wkrland;
+    private String wkrland;
     @Column
-    protected String liste;
+    private String liste;
     @Column
-    protected String mandatsart;
+    private String mandatsart;
 
     @Column
-    protected String insartlang;
+    private String insartlang;
     @Column
-    protected String inslang;
+    private String inslang;
     @Column
-    protected String mdbinsvon;
+    private String mdbinsvon;
     @Column
-    protected String mdbinsbis;
+    private String mdbinsbis;
     @Column
-    protected String fktlang;
+    private String fktlang;
     @Column
-    protected String fktinsvon;
+    private String fktinsvon;
     @Column
-    protected String fktinsbis;
+    private String fktinsbis;
 
     public Long getId() {
         return id;

@@ -23,7 +23,7 @@ then
 
 echo "EXP_WAHLLEITER_DATA"
 
-export TABLES="$TABLES btw17_ergebnis btw17_strukturdaten btw17_wahlbewerber btw17_wahlkreis btw17_mdb_wahlperiode btw17_mdb_stammdaten"
+export TABLES="$TABLES btw17_ergebnis btw17_strukturdaten btw17_wahlbewerber btw17_wahlkreis btw17_mdb_wahlperiode btw17_mdb_stammdaten btw17_mdb_stammdaten_wahlperiode"
 
 fi
 

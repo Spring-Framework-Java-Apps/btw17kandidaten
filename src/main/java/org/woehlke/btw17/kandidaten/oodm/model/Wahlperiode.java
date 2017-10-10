@@ -3,8 +3,10 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlperiodeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Table(
@@ -13,7 +15,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(
         name = "Wahlperiode.getAllIds",
-        query = "select o.id from Wahlperiode as o order by o.wp"
+        query = "select o.id from Wahlperiode as o order by o.wahlperiode"
     ),
     @NamedQuery(
         name = "Wahlperiode.getMaxId",
@@ -25,39 +27,42 @@ public class Wahlperiode implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    private Long id;
 
-    @Column
-    protected String wp;
-    @Column
-    protected String mdbwpvon;
-    @Column
-    protected String mdbwpbis;
-    @Column
-    protected String wkrnummer;
-    @Column
-    protected String wkrname;
-    @Column
-    protected String wkrland;
-    @Column
-    protected String liste;
-    @Column
-    protected String mandatsart;
+    @Column(name = "wp")
+    private Long wahlperiode;
 
-    @Column
-    protected String insartlang;
-    @Column
-    protected String inslang;
-    @Column
-    protected String mdbinsvon;
-    @Column
-    protected String mdbinsbis;
-    @Column
-    protected String fktlang;
-    @Column
-    protected String fktinsvon;
-    @Column
-    protected String fktinsbis;
+    @Column(name = "mdbwpvon")
+    private String mdbWahlperiodeVon;
+
+    @Column(name = "mdbwpbis")
+    private String mdbWahlperiodeBis;
+
+    @Column(name = "liste")
+    private String liste;
+
+    @Column(name = "mandatsart")
+    private String mandatsArt;
+
+    @Deprecated
+    @Column(name = "wkrnummer")
+    private String wkrummer;
+
+    @Deprecated
+    @Column(name = "wkrname")
+    private String wkrname;
+
+    @Deprecated
+    @Column(name = "wkrland")
+    private String wkrland;
+
+    @ManyToOne(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name="fk_wahlkreis")
+    private Wahlkreis wahlkreis;
+
+    @Valid
+    @Embedded
+    private Institution institution = new Institution();
 
     @Override
     public Long getId() {
@@ -71,43 +76,59 @@ public class Wahlperiode implements DomainObject {
 
     @Override
     public String getUniqueId() {
-        return wp;
+        return wahlperiode.toString();
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getWp() {
-        return wp;
+    public Long getWahlperiode() {
+        return wahlperiode;
     }
 
-    public void setWp(String wp) {
-        this.wp = wp;
+    public void setWahlperiode(Long wahlperiode) {
+        this.wahlperiode = wahlperiode;
     }
 
-    public String getMdbwpvon() {
-        return mdbwpvon;
+    public String getMdbWahlperiodeVon() {
+        return mdbWahlperiodeVon;
     }
 
-    public void setMdbwpvon(String mdbwpvon) {
-        this.mdbwpvon = mdbwpvon;
+    public void setMdbWahlperiodeVon(String mdbWahlperiodeVon) {
+        this.mdbWahlperiodeVon = mdbWahlperiodeVon;
     }
 
-    public String getMdbwpbis() {
-        return mdbwpbis;
+    public String getMdbWahlperiodeBis() {
+        return mdbWahlperiodeBis;
     }
 
-    public void setMdbwpbis(String mdbwpbis) {
-        this.mdbwpbis = mdbwpbis;
+    public void setMdbWahlperiodeBis(String mdbWahlperiodeBis) {
+        this.mdbWahlperiodeBis = mdbWahlperiodeBis;
     }
 
-    public String getWkrnummer() {
-        return wkrnummer;
+    public String getListe() {
+        return liste;
     }
 
-    public void setWkrnummer(String wkrnummer) {
-        this.wkrnummer = wkrnummer;
+    public void setListe(String liste) {
+        this.liste = liste;
+    }
+
+    public String getMandatsArt() {
+        return mandatsArt;
+    }
+
+    public void setMandatsArt(String mandatsArt) {
+        this.mandatsArt = mandatsArt;
+    }
+
+    public String getWkrummer() {
+        return wkrummer;
+    }
+
+    public void setWkrummer(String wkrummer) {
+        this.wkrummer = wkrummer;
     }
 
     public String getWkrname() {
@@ -126,76 +147,20 @@ public class Wahlperiode implements DomainObject {
         this.wkrland = wkrland;
     }
 
-    public String getListe() {
-        return liste;
+    public Wahlkreis getWahlkreis() {
+        return wahlkreis;
     }
 
-    public void setListe(String liste) {
-        this.liste = liste;
+    public void setWahlkreis(Wahlkreis wahlkreis) {
+        this.wahlkreis = wahlkreis;
     }
 
-    public String getMandatsart() {
-        return mandatsart;
+    public Institution getInstitution() {
+        return institution;
     }
 
-    public void setMandatsart(String mandatsart) {
-        this.mandatsart = mandatsart;
-    }
-
-    public String getInsartlang() {
-        return insartlang;
-    }
-
-    public void setInsartlang(String insartlang) {
-        this.insartlang = insartlang;
-    }
-
-    public String getInslang() {
-        return inslang;
-    }
-
-    public void setInslang(String inslang) {
-        this.inslang = inslang;
-    }
-
-    public String getMdbinsvon() {
-        return mdbinsvon;
-    }
-
-    public void setMdbinsvon(String mdbinsvon) {
-        this.mdbinsvon = mdbinsvon;
-    }
-
-    public String getMdbinsbis() {
-        return mdbinsbis;
-    }
-
-    public void setMdbinsbis(String mdbinsbis) {
-        this.mdbinsbis = mdbinsbis;
-    }
-
-    public String getFktlang() {
-        return fktlang;
-    }
-
-    public void setFktlang(String fktlang) {
-        this.fktlang = fktlang;
-    }
-
-    public String getFktinsvon() {
-        return fktinsvon;
-    }
-
-    public void setFktinsvon(String fktinsvon) {
-        this.fktinsvon = fktinsvon;
-    }
-
-    public String getFktinsbis() {
-        return fktinsbis;
-    }
-
-    public void setFktinsbis(String fktinsbis) {
-        this.fktinsbis = fktinsbis;
+    public void setInstitution(Institution institution) {
+        this.institution = institution;
     }
 
     @Override
@@ -206,41 +171,33 @@ public class Wahlperiode implements DomainObject {
         Wahlperiode that = (Wahlperiode) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (wp != null ? !wp.equals(that.wp) : that.wp != null) return false;
-        if (mdbwpvon != null ? !mdbwpvon.equals(that.mdbwpvon) : that.mdbwpvon != null) return false;
-        if (mdbwpbis != null ? !mdbwpbis.equals(that.mdbwpbis) : that.mdbwpbis != null) return false;
-        if (wkrnummer != null ? !wkrnummer.equals(that.wkrnummer) : that.wkrnummer != null) return false;
+        if (wahlperiode != null ? !wahlperiode.equals(that.wahlperiode) : that.wahlperiode != null) return false;
+        if (mdbWahlperiodeVon != null ? !mdbWahlperiodeVon.equals(that.mdbWahlperiodeVon) : that.mdbWahlperiodeVon != null)
+            return false;
+        if (mdbWahlperiodeBis != null ? !mdbWahlperiodeBis.equals(that.mdbWahlperiodeBis) : that.mdbWahlperiodeBis != null)
+            return false;
+        if (liste != null ? !liste.equals(that.liste) : that.liste != null) return false;
+        if (mandatsArt != null ? !mandatsArt.equals(that.mandatsArt) : that.mandatsArt != null) return false;
+        if (wkrummer != null ? !wkrummer.equals(that.wkrummer) : that.wkrummer != null) return false;
         if (wkrname != null ? !wkrname.equals(that.wkrname) : that.wkrname != null) return false;
         if (wkrland != null ? !wkrland.equals(that.wkrland) : that.wkrland != null) return false;
-        if (liste != null ? !liste.equals(that.liste) : that.liste != null) return false;
-        if (mandatsart != null ? !mandatsart.equals(that.mandatsart) : that.mandatsart != null) return false;
-        if (insartlang != null ? !insartlang.equals(that.insartlang) : that.insartlang != null) return false;
-        if (inslang != null ? !inslang.equals(that.inslang) : that.inslang != null) return false;
-        if (mdbinsvon != null ? !mdbinsvon.equals(that.mdbinsvon) : that.mdbinsvon != null) return false;
-        if (mdbinsbis != null ? !mdbinsbis.equals(that.mdbinsbis) : that.mdbinsbis != null) return false;
-        if (fktlang != null ? !fktlang.equals(that.fktlang) : that.fktlang != null) return false;
-        if (fktinsvon != null ? !fktinsvon.equals(that.fktinsvon) : that.fktinsvon != null) return false;
-        return fktinsbis != null ? fktinsbis.equals(that.fktinsbis) : that.fktinsbis == null;
+        if (wahlkreis != null ? !wahlkreis.equals(that.wahlkreis) : that.wahlkreis != null) return false;
+        return institution != null ? institution.equals(that.institution) : that.institution == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (wp != null ? wp.hashCode() : 0);
-        result = 31 * result + (mdbwpvon != null ? mdbwpvon.hashCode() : 0);
-        result = 31 * result + (mdbwpbis != null ? mdbwpbis.hashCode() : 0);
-        result = 31 * result + (wkrnummer != null ? wkrnummer.hashCode() : 0);
+        result = 31 * result + (wahlperiode != null ? wahlperiode.hashCode() : 0);
+        result = 31 * result + (mdbWahlperiodeVon != null ? mdbWahlperiodeVon.hashCode() : 0);
+        result = 31 * result + (mdbWahlperiodeBis != null ? mdbWahlperiodeBis.hashCode() : 0);
+        result = 31 * result + (liste != null ? liste.hashCode() : 0);
+        result = 31 * result + (mandatsArt != null ? mandatsArt.hashCode() : 0);
+        result = 31 * result + (wkrummer != null ? wkrummer.hashCode() : 0);
         result = 31 * result + (wkrname != null ? wkrname.hashCode() : 0);
         result = 31 * result + (wkrland != null ? wkrland.hashCode() : 0);
-        result = 31 * result + (liste != null ? liste.hashCode() : 0);
-        result = 31 * result + (mandatsart != null ? mandatsart.hashCode() : 0);
-        result = 31 * result + (insartlang != null ? insartlang.hashCode() : 0);
-        result = 31 * result + (inslang != null ? inslang.hashCode() : 0);
-        result = 31 * result + (mdbinsvon != null ? mdbinsvon.hashCode() : 0);
-        result = 31 * result + (mdbinsbis != null ? mdbinsbis.hashCode() : 0);
-        result = 31 * result + (fktlang != null ? fktlang.hashCode() : 0);
-        result = 31 * result + (fktinsvon != null ? fktinsvon.hashCode() : 0);
-        result = 31 * result + (fktinsbis != null ? fktinsbis.hashCode() : 0);
+        result = 31 * result + (wahlkreis != null ? wahlkreis.hashCode() : 0);
+        result = 31 * result + (institution != null ? institution.hashCode() : 0);
         return result;
     }
 
@@ -248,21 +205,16 @@ public class Wahlperiode implements DomainObject {
     public String toString() {
         return "Wahlperiode{" +
                 "id=" + id +
-                ", wp='" + wp + '\'' +
-                ", mdbwpvon='" + mdbwpvon + '\'' +
-                ", mdbwpbis='" + mdbwpbis + '\'' +
-                ", wkrnummer='" + wkrnummer + '\'' +
+                ", wahlperiode='" + wahlperiode + '\'' +
+                ", mdbWahlperiodeVon='" + mdbWahlperiodeVon + '\'' +
+                ", mdbWahlperiodeBis='" + mdbWahlperiodeBis + '\'' +
+                ", liste='" + liste + '\'' +
+                ", mandatsArt='" + mandatsArt + '\'' +
+                ", wkrummer='" + wkrummer + '\'' +
                 ", wkrname='" + wkrname + '\'' +
                 ", wkrland='" + wkrland + '\'' +
-                ", liste='" + liste + '\'' +
-                ", mandatsart='" + mandatsart + '\'' +
-                ", insartlang='" + insartlang + '\'' +
-                ", inslang='" + inslang + '\'' +
-                ", mdbinsvon='" + mdbinsvon + '\'' +
-                ", mdbinsbis='" + mdbinsbis + '\'' +
-                ", fktlang='" + fktlang + '\'' +
-                ", fktinsvon='" + fktinsvon + '\'' +
-                ", fktinsbis='" + fktinsbis + '\'' +
+                ", wahlkreis=" + wahlkreis +
+                ", institution=" + institution +
                 '}';
     }
 }
