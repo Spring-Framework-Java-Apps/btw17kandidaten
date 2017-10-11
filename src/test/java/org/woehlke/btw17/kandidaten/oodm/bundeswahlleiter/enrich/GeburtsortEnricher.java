@@ -23,7 +23,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlbewerber;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;

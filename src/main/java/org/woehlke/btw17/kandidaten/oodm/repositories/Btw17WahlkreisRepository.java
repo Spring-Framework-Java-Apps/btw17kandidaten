@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlkreis;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlkreis;
 
 import java.util.List;
 

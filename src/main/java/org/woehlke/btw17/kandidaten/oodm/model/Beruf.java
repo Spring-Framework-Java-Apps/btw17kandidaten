@@ -6,6 +6,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
@@ -37,7 +38,8 @@ public class Beruf implements DomainObject {
     @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
-    @Column(name = "beruf")
+    @NotNull
+    @Column(name = "beruf", unique = true, nullable = false)
     private String beruf;
 
     @Enumerated(EnumType.STRING)

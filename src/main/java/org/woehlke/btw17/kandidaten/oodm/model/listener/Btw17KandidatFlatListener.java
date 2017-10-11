@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat;
 
 import javax.persistence.*;
 

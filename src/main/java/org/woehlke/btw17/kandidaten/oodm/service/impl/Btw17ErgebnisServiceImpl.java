@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis;
 import org.woehlke.btw17.kandidaten.oodm.repositories.Btw17ErgebnisRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17ErgebnisService;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;

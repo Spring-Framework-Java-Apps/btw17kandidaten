@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat;
 
 import java.util.List;
 

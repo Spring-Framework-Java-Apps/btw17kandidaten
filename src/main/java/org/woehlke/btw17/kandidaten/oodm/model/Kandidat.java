@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -446,19 +445,19 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Geburtsort geburtsort;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
@@ -466,27 +465,27 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = true)
     private LandesListe landesListe;
 
-    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_fraktion", nullable = true, updatable = true)
     private Fraktion fraktion;
 
-    @ManyToMany(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "kandidat_ministerium")
     private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
-    @ManyToMany(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "kandidat_ausschuss")
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "kandidat_wahlperiode")
     private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 

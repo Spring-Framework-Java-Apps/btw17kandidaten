@@ -1,11 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.springframework.context.annotation.Lazy;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlkreisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -46,7 +47,8 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
-    @Column(name="wahlkreis_id",unique = true)
+    @NotNull
+    @Column(name="wahlkreis_id",unique = true, nullable = false)
     private Long wahlkreisId;
 
     @Column(name="wahlkreis_name")
@@ -68,7 +70,7 @@ public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsE
     @Embedded
     private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = true, updatable = true)
     private Bundesland bundesland;
 

@@ -22,11 +22,11 @@ then
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat'
 echo '-- Table: btw17_kandidat_flat'
 echo '-- etc/3nf/data/insert-data-btw17_kandidat_flat.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_kandidat_flat' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_kandidat_flat.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -35,11 +35,11 @@ cat ./3nf/data/insert-data-btw17_kandidat_flat.sql | grep "INSERT INTO btw17_kan
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlkreis'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlkreis'
 echo '-- Table: btw17_wahlkreis'
 echo '-- etc/3nf/data/insert-data-btw17_wahlkreis.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlkreis' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlkreis' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_wahlkreis' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_wahlkreis.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -48,11 +48,11 @@ cat ./3nf/data/insert-data-btw17_wahlkreis.sql | sed "s/'',/NULL,/g" | sed "s/''
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Strukturdaten'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Strukturdaten'
 echo '-- Table: btw17_strukturdaten'
 echo '-- etc/3nf/data/insert-data-btw17_strukturdaten.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Strukturdaten' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Strukturdaten' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_strukturdaten' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_strukturdaten.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -61,11 +61,11 @@ cat ./3nf/data/insert-data-btw17_strukturdaten.sql | sed "s/'',/NULL,/g" | sed "
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlbewerber'
 echo '-- Table: btw17_wahlbewerber'
 echo '-- etc/3nf/data/insert-data-btw17_wahlbewerber.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlbewerber' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_wahlbewerber' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_wahlbewerber.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -74,11 +74,11 @@ cat ./3nf/data/insert-data-btw17_wahlbewerber.sql | sed "s/'',/NULL,/g" | sed "s
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis'
 echo '-- Table: btw17_ergebnis'
 echo '-- etc/3nf/data/insert-data-btw17_ergebnis.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_ergebnis' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_ergebnis.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -87,11 +87,11 @@ cat ./3nf/data/insert-data-btw17_ergebnis.sql | sed "s/'',/NULL,/g" | sed "s/'')
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Mdb'
 echo '-- Table: btw17_mdb_stammdaten'
 echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Mdb' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_mdb_stammdaten' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_mdb_stammdaten.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -100,11 +100,11 @@ cat ./3nf/data/insert-data-btw17_mdb_stammdaten.sql | sed "s/'',/NULL,/g" | sed 
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode'
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlperiode'
 echo '-- Table: btw17_mdb_wahlperiode'
 echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlperiode' >> ../src/main/resources/data.sql
 echo '-- Table: btw17_mdb_wahlperiode' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-btw17_mdb_wahlperiode.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql

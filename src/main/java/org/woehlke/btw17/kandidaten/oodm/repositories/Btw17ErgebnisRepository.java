@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis;
 
 import java.util.List;
 

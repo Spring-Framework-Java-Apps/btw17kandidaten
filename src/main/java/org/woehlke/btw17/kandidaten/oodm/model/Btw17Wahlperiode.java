@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.model.bundestag;
+package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 

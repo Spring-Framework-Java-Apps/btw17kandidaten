@@ -17,7 +17,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17KandidatFlatService;
 import org.woehlke.btw17.kandidaten.oodm.model.*;
 import org.woehlke.btw17.kandidaten.oodm.service.*;

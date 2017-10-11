@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Ergebnis;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
 
 import java.util.List;

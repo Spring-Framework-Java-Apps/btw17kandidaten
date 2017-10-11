@@ -63,12 +63,12 @@ public class LandesListe implements DomainObject,CommonFieldsEmbedded {
     protected Long id;
 
     @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
     private Bundesland bundesland;
 
     @NotNull
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_listepartei", nullable = false, updatable = false)
     private ListePartei listePartei;
 

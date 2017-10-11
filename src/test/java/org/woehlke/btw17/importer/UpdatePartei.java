@@ -18,7 +18,6 @@ import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
 import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
 
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)

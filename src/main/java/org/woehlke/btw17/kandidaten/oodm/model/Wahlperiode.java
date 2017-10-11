@@ -24,6 +24,16 @@ import java.time.LocalDate;
     @NamedQuery(
         name = "Wahlperiode.getMaxId",
         query = "select max(o.id) from Wahlperiode as o"
+    ),
+    @NamedQuery(
+        name = "Wahlperiode.findByBtw17Wahlperiode",
+        query = "select o from Wahlperiode as o where "
+            + "o.wahlperiode=:wahlperiode and "
+            + "o.bundeslandLandesListe=:bundeslandLandesListe and "
+            + "o.wahlkreis=:wahlkreis and o.mandatsArt=:mandatsArt and "
+            + "o.institution.institutionArtLang=:institutionArtLang and "
+            + "o.institution.institutionLang=:institutionLang and "
+            + "o.institution.funktionLang=:funktionLang"
     )
 })
 @EntityListeners(WahlperiodeListener.class)

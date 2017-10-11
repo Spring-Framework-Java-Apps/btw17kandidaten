@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17Wahlbewerber;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlbewerber;
 
 
 public interface Btw17WahlbewerberService extends Btw17Service<Btw17Wahlbewerber> {

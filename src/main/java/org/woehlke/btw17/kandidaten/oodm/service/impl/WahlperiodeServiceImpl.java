@@ -6,7 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
+import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.repositories.WahlperiodeRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.WahlperiodeService;
 
@@ -75,5 +79,10 @@ public class WahlperiodeServiceImpl implements WahlperiodeService {
     @Override
     public Long getMaxId() {
         return this.wahlperiodeRepository.getMaxId();
+    }
+
+    @Override
+    public Wahlperiode findByBtw17Wahlperiode(Long wahlperiodeId, Wahlkreis wahlkreis, BundeslandEnum bundeslandLandesListe, Mandatsart mandatsArt, InstitutionArt institutionArtLang, String inslang, String fktlang) {
+        return wahlperiodeRepository.findByBtw17Wahlperiode(wahlperiodeId,wahlkreis,bundeslandLandesListe,mandatsArt,institutionArtLang,inslang,fktlang);
     }
 }

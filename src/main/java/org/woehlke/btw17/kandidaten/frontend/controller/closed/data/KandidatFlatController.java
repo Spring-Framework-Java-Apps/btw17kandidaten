@@ -15,7 +15,7 @@ import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
-import org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17KandidatFlatService;
 
 import javax.persistence.EntityNotFoundException;

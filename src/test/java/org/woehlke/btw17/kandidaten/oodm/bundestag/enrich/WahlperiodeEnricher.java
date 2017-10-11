@@ -25,7 +25,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
-import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Wahlperiode;
+import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
