@@ -1,13 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model.bundestag;
 
-import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17MdbListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,52 +38,55 @@ public class Btw17Mdb implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
 
     @Column
     private String xmlId;
 
     @Column
-    protected String nachname;
+    private String nachname;
     @Column
-    protected String vorname;
+    private String vorname;
     @Column
-    protected String ortszusatz;
+    private String ortszusatz;
     @Column
-    protected String adel;
+    private String adel;
     @Column
-    protected String praefix;
+    private String praefix;
     @Column
-    protected String anredetitel;
+    private String anredetitel;
     @Column
-    protected String akadtitel;
+    private String akadtitel;
     @Column
-    protected String historievon;
+    private String historievon;
     @Column
-    protected String historiebis;
+    private String historiebis;
 
     @Column
-    protected String geburtsdatum;
+    private String geburtsdatum;
     @Column
-    protected String geburtsort;
+    private String geburtsort;
     @Column
-    protected String geburtsland;
+    private String geburtsland;
     @Column
-    protected String sterbedatum;
+    private String sterbedatum;
     @Column
-    protected String geschlecht;
+    private String geschlecht;
     @Column
-    protected String familienstand;
+    private String familienstand;
     @Column
-    protected String religion;
+    private String religion;
     @Column
-    protected String beruf;
+    private String beruf;
     @Column
-    protected String parteikurz;
+    private String parteikurz;
+
     @Column(name="vitakurz",columnDefinition = "TEXT")
-    protected String vitakurz;
+    private String vitakurz;
+
     @Column(name="veroeffentlichungspflichtiges",columnDefinition = "TEXT")
-    protected String veroeffentlichungspflichtiges;
+    private String veroeffentlichungspflichtiges;
 
     @ManyToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     @JoinTable(name="btw17_mdb_stammdaten_wahlperiode")

@@ -164,7 +164,7 @@ public class GeburtsortEnricher {
         @Test
         public void test010updateGeburtsortByBtw17Wahlperiode() throws Exception {
                 log.info("test010updateGeburtsortByBtw17Wahlperiode");
-                Long maxId = geburtsortService.getMaxId();
+                Long maxId = berufService.getMaxId();
                 log.info("maxId: " + maxId);
                 if (maxId == null) {
                         maxId = 0L;

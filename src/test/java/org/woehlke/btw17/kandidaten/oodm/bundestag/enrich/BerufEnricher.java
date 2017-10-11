@@ -22,6 +22,12 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Beruf;
+import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
+import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
@@ -152,5 +158,33 @@ public class BerufEnricher {
                 assertThat(wahlkreisService).isNotNull();
                 assertThat(bundeslandService).isNotNull();
                 assertThat(btw17ErgebnisService).isNotNull();
+        }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateGeburtsortByBtw17Wahlperiode() throws Exception {
+                log.info("test010updateGeburtsortByBtw17Wahlperiode");
+                Long maxId = berufService.getMaxId();
+                log.info("maxId: " + maxId);
+                if (maxId == null) {
+                        maxId = 0L;
+                }
+                maxId++;
+                String sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + maxId;
+                jdbcService.executeSqlStatemen(sql);
+                for (Btw17Mdb btw17Mdb : btw17MdbService.getAll()) {
+                        String berufStr = btw17Mdb.getBeruf();
+                        if(berufStr!=null) {
+                                Beruf beruf = berufService.findByBeruf(berufStr);
+                                if (beruf == null) {
+                                        log.info("no Beruf found: Will create a new Object for " + berufStr);
+                                        beruf = new Beruf();
+                                        beruf.setBeruf(berufStr);
+                                        beruf = berufService.create(beruf);
+                                        log.info("new Beruf created: " + beruf.getUniqueId());
+                                }
+                        }
+                }
         }
 }

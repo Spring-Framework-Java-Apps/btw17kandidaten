@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
+import org.woehlke.btw17.kandidaten.oodm.model.enums.Religion;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -10,9 +11,10 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.FetchType.EAGER;
@@ -306,11 +308,14 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     @NotNull
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
-    @Column(name = "kandidat_key",nullable = false, unique = true)
+    @Column(name = "kandidat_key", nullable = false, unique = true)
     private String key;
 
     @Column(name = "remote_kandidat_key")
     private String remoteKey;
+
+    @Column(name = "xml_id_bundestag")
+    private String xmlIdBundestag;
 
     @SafeHtml
     @Column(name = "titel")
@@ -335,19 +340,63 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     private String vorname;
 
     @NotNull
-    @Pattern(regexp="[MW]{1}")
+    @Pattern(regexp = "[MW]{1}")
     @Column(name = "geschlecht")
     private String geschlecht;
 
     @NotNull
-    @Digits(integer=4,fraction = 0)
+    @Digits(integer = 4, fraction = 0)
     @Column(name = "geburtsjahr")
     private Integer geburtsjahr;
 
+    @Column(name = "ortszusatz")
+    private String ortszusatz;
+
+    @Column(name = "adel")
+    private String adel;
+
+    @Column(name = "praefix")
+    private String praefix;
+
+    @Column(name = "anredetitel")
+    private String anredeTitel;
+
+    @Column(name = "akadtitel")
+    private String akademischeTitel;
+
+    @Column(name = "historievon")
+    private LocalDate historieVon;
+
+    @Column(name = "historiebis")
+    private LocalDate historieBis;
+
     @NotNull
-    @Digits(integer=2,fraction = 0)
+    @Digits(integer = 2, fraction = 0)
     @Column(name = "alter")
     private Integer alter;
+
+    @Past
+    @Column(name = "geburtsdatum")
+    private LocalDate geburtsdatum;
+
+    @Column(name = "sterbedatum")
+    private LocalDate sterbedatum;
+
+    @Column(name = "familienstand")
+    private String familienstand;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "religion")
+    private Religion religion;
+
+    @Column(name = "parteikurz")
+    private String parteikurz;
+
+    @Column(name = "vitakurz", columnDefinition = "TEXT")
+    private String vitakurz;
+
+    @Column(name = "veroeffentlichungspflichtiges", columnDefinition = "TEXT")
+    private String veroeffentlichungspflichtiges;
 
     @SafeHtml
     @Column(name = "funktion")
@@ -358,6 +407,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
 
     @Column(name = "mdb_neu")
     private Boolean mdbNeu;
+
+    @Column(name = "mdb17")
+    private Boolean mdb17;
+
+    @Column(name = "mdb18")
+    private Boolean mdb18;
 
     @Column(name = "lat")
     private Double lat;
@@ -391,48 +446,48 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "liste_platz")
     private Integer listePlatz;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Wohnort wohnort;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Geburtsort geburtsort;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     private Berufsgruppe berufsgruppe;
 
-    @ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     private Wahlkreis wahlkreis;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_partei", nullable = false, updatable = false)
     private Partei partei;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_landes_liste", nullable = true, updatable = true)
     private LandesListe landesListe;
 
-    @ManyToOne(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "fk_fraktion", nullable = true, updatable = true)
     private Fraktion fraktion;
 
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="kandidat_ministerium")
+    @ManyToMany(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "kandidat_ministerium")
     private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
-    @ManyToMany(fetch=EAGER,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="kandidat_ausschuss")
+    @ManyToMany(fetch = EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "kandidat_ausschuss")
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
-    @ManyToMany(fetch=FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(name="kandidat_wahlperiode")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "kandidat_wahlperiode")
     private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
     @Valid
@@ -442,12 +497,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Valid
     @Embedded
     @AssociationOverrides({
-        @AssociationOverride(
-            name = "agenturen",
-            joinTable = @JoinTable(
-                name = "kandidat_agentur"
+            @AssociationOverride(
+                    name = "agenturen",
+                    joinTable = @JoinTable(
+                            name = "kandidat_agentur"
+                    )
             )
-        )
     })
     private Webseite webseite = new Webseite();
 
@@ -462,16 +517,22 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "btw17_kandidat_flat_id", nullable = false, updatable = false, unique = true)
     private Long btw17KandidatFlatId;
 
+    @Column(name = "btw17_mdb_stammdaten_id", nullable = true, updatable = false, unique = true)
+    private Long btw17MdbId;
+
+    @Column(name = "btw17wahlbewerber_id", nullable = true, updatable = false, unique = true)
+    private Long btw17WahlbewerberId;
+
     @Transient
     @Override
     public String getName() {
-        return vorname+" "+nachname;
+        return vorname + " " + nachname;
     }
 
     @Transient
     @Override
     public String getUniqueId() {
-        return id + ":"+key+":"+this.getName();
+        return id + ":" + key + ":" + this.getName();
     }
 
     public Long getId() {
@@ -727,7 +788,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
-        if(onlineStrategie!=null){
+        if (onlineStrategie != null) {
             this.onlineStrategie = onlineStrategie;
         }
     }
@@ -753,7 +814,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setMinisterien(Set<Ministerium> ministerien) {
-        if(ministerien != null){
+        if (ministerien != null) {
             this.ministerien = ministerien;
         }
     }
@@ -763,7 +824,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setAusschuesse(Set<Ausschuss> ausschuesse) {
-        if(ausschuesse != null){
+        if (ausschuesse != null) {
             this.ausschuesse = ausschuesse;
         }
     }
@@ -773,7 +834,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setWebseite(Webseite webseite) {
-        if(webseite!=null){
+        if (webseite != null) {
             this.webseite = webseite;
         }
     }
@@ -783,7 +844,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setCommonFields(CommonFields commonFields) {
-        if(commonFields != null){
+        if (commonFields != null) {
             this.commonFields = commonFields;
         }
     }
@@ -793,7 +854,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     }
 
     public void setAdresse(Adresse adresse) {
-        if(adresse != null){
+        if (adresse != null) {
             this.adresse = adresse;
         }
     }
@@ -806,6 +867,158 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         this.wahlperioden = wahlperioden;
     }
 
+    public String getXmlIdBundestag() {
+        return xmlIdBundestag;
+    }
+
+    public void setXmlIdBundestag(String xmlIdBundestag) {
+        this.xmlIdBundestag = xmlIdBundestag;
+    }
+
+    public String getOrtszusatz() {
+        return ortszusatz;
+    }
+
+    public void setOrtszusatz(String ortszusatz) {
+        this.ortszusatz = ortszusatz;
+    }
+
+    public String getAdel() {
+        return adel;
+    }
+
+    public void setAdel(String adel) {
+        this.adel = adel;
+    }
+
+    public String getPraefix() {
+        return praefix;
+    }
+
+    public void setPraefix(String praefix) {
+        this.praefix = praefix;
+    }
+
+    public String getAnredeTitel() {
+        return anredeTitel;
+    }
+
+    public void setAnredeTitel(String anredeTitel) {
+        this.anredeTitel = anredeTitel;
+    }
+
+    public String getAkademischeTitel() {
+        return akademischeTitel;
+    }
+
+    public void setAkademischeTitel(String akademischeTitel) {
+        this.akademischeTitel = akademischeTitel;
+    }
+
+    public LocalDate getHistorieVon() {
+        return historieVon;
+    }
+
+    public void setHistorieVon(LocalDate historieVon) {
+        this.historieVon = historieVon;
+    }
+
+    public LocalDate getHistorieBis() {
+        return historieBis;
+    }
+
+    public void setHistorieBis(LocalDate historieBis) {
+        this.historieBis = historieBis;
+    }
+
+    public LocalDate getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(LocalDate geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public LocalDate getSterbedatum() {
+        return sterbedatum;
+    }
+
+    public void setSterbedatum(LocalDate sterbedatum) {
+        this.sterbedatum = sterbedatum;
+    }
+
+    public String getFamilienstand() {
+        return familienstand;
+    }
+
+    public void setFamilienstand(String familienstand) {
+        this.familienstand = familienstand;
+    }
+
+    public Religion getReligion() {
+        return religion;
+    }
+
+    public void setReligion(Religion religion) {
+        this.religion = religion;
+    }
+
+    public String getParteikurz() {
+        return parteikurz;
+    }
+
+    public void setParteikurz(String parteikurz) {
+        this.parteikurz = parteikurz;
+    }
+
+    public String getVitakurz() {
+        return vitakurz;
+    }
+
+    public void setVitakurz(String vitakurz) {
+        this.vitakurz = vitakurz;
+    }
+
+    public String getVeroeffentlichungspflichtiges() {
+        return veroeffentlichungspflichtiges;
+    }
+
+    public void setVeroeffentlichungspflichtiges(String veroeffentlichungspflichtiges) {
+        this.veroeffentlichungspflichtiges = veroeffentlichungspflichtiges;
+    }
+
+    public Boolean getMdb17() {
+        return mdb17;
+    }
+
+    public void setMdb17(Boolean mdb17) {
+        this.mdb17 = mdb17;
+    }
+
+    public Boolean getMdb18() {
+        return mdb18;
+    }
+
+    public void setMdb18(Boolean mdb18) {
+        this.mdb18 = mdb18;
+    }
+
+    public Long getBtw17MdbId() {
+        return btw17MdbId;
+    }
+
+    public void setBtw17MdbId(Long btw17MdbId) {
+        this.btw17MdbId = btw17MdbId;
+    }
+
+    public Long getBtw17WahlbewerberId() {
+        return btw17WahlbewerberId;
+    }
+
+    public void setBtw17WahlbewerberId(Long btw17WahlbewerberId) {
+        this.btw17WahlbewerberId = btw17WahlbewerberId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -816,6 +1029,8 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (id != null ? !id.equals(kandidat.id) : kandidat.id != null) return false;
         if (key != null ? !key.equals(kandidat.key) : kandidat.key != null) return false;
         if (remoteKey != null ? !remoteKey.equals(kandidat.remoteKey) : kandidat.remoteKey != null) return false;
+        if (xmlIdBundestag != null ? !xmlIdBundestag.equals(kandidat.xmlIdBundestag) : kandidat.xmlIdBundestag != null)
+            return false;
         if (titel != null ? !titel.equals(kandidat.titel) : kandidat.titel != null) return false;
         if (namenszusatz != null ? !namenszusatz.equals(kandidat.namenszusatz) : kandidat.namenszusatz != null)
             return false;
@@ -826,10 +1041,34 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (geschlecht != null ? !geschlecht.equals(kandidat.geschlecht) : kandidat.geschlecht != null) return false;
         if (geburtsjahr != null ? !geburtsjahr.equals(kandidat.geburtsjahr) : kandidat.geburtsjahr != null)
             return false;
+        if (ortszusatz != null ? !ortszusatz.equals(kandidat.ortszusatz) : kandidat.ortszusatz != null) return false;
+        if (adel != null ? !adel.equals(kandidat.adel) : kandidat.adel != null) return false;
+        if (praefix != null ? !praefix.equals(kandidat.praefix) : kandidat.praefix != null) return false;
+        if (anredeTitel != null ? !anredeTitel.equals(kandidat.anredeTitel) : kandidat.anredeTitel != null)
+            return false;
+        if (akademischeTitel != null ? !akademischeTitel.equals(kandidat.akademischeTitel) : kandidat.akademischeTitel != null)
+            return false;
+        if (historieVon != null ? !historieVon.equals(kandidat.historieVon) : kandidat.historieVon != null)
+            return false;
+        if (historieBis != null ? !historieBis.equals(kandidat.historieBis) : kandidat.historieBis != null)
+            return false;
         if (alter != null ? !alter.equals(kandidat.alter) : kandidat.alter != null) return false;
+        if (geburtsdatum != null ? !geburtsdatum.equals(kandidat.geburtsdatum) : kandidat.geburtsdatum != null)
+            return false;
+        if (sterbedatum != null ? !sterbedatum.equals(kandidat.sterbedatum) : kandidat.sterbedatum != null)
+            return false;
+        if (familienstand != null ? !familienstand.equals(kandidat.familienstand) : kandidat.familienstand != null)
+            return false;
+        if (religion != kandidat.religion) return false;
+        if (parteikurz != null ? !parteikurz.equals(kandidat.parteikurz) : kandidat.parteikurz != null) return false;
+        if (vitakurz != null ? !vitakurz.equals(kandidat.vitakurz) : kandidat.vitakurz != null) return false;
+        if (veroeffentlichungspflichtiges != null ? !veroeffentlichungspflichtiges.equals(kandidat.veroeffentlichungspflichtiges) : kandidat.veroeffentlichungspflichtiges != null)
+            return false;
         if (funktion != null ? !funktion.equals(kandidat.funktion) : kandidat.funktion != null) return false;
         if (mdb != null ? !mdb.equals(kandidat.mdb) : kandidat.mdb != null) return false;
         if (mdbNeu != null ? !mdbNeu.equals(kandidat.mdbNeu) : kandidat.mdbNeu != null) return false;
+        if (mdb17 != null ? !mdb17.equals(kandidat.mdb17) : kandidat.mdb17 != null) return false;
+        if (mdb18 != null ? !mdb18.equals(kandidat.mdb18) : kandidat.mdb18 != null) return false;
         if (lat != null ? !lat.equals(kandidat.lat) : kandidat.lat != null) return false;
         if (lng != null ? !lng.equals(kandidat.lng) : kandidat.lng != null) return false;
         if (idEigen != null ? !idEigen.equals(kandidat.idEigen) : kandidat.idEigen != null) return false;
@@ -863,7 +1102,10 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         if (onlineStrategie != null ? !onlineStrategie.equals(kandidat.onlineStrategie) : kandidat.onlineStrategie != null)
             return false;
         if (adresse != null ? !adresse.equals(kandidat.adresse) : kandidat.adresse != null) return false;
-        return btw17KandidatFlatId != null ? btw17KandidatFlatId.equals(kandidat.btw17KandidatFlatId) : kandidat.btw17KandidatFlatId == null;
+        if (btw17KandidatFlatId != null ? !btw17KandidatFlatId.equals(kandidat.btw17KandidatFlatId) : kandidat.btw17KandidatFlatId != null)
+            return false;
+        if (btw17MdbId != null ? !btw17MdbId.equals(kandidat.btw17MdbId) : kandidat.btw17MdbId != null) return false;
+        return btw17WahlbewerberId != null ? btw17WahlbewerberId.equals(kandidat.btw17WahlbewerberId) : kandidat.btw17WahlbewerberId == null;
     }
 
     @Override
@@ -871,6 +1113,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (key != null ? key.hashCode() : 0);
         result = 31 * result + (remoteKey != null ? remoteKey.hashCode() : 0);
+        result = 31 * result + (xmlIdBundestag != null ? xmlIdBundestag.hashCode() : 0);
         result = 31 * result + (titel != null ? titel.hashCode() : 0);
         result = 31 * result + (namenszusatz != null ? namenszusatz.hashCode() : 0);
         result = 31 * result + (nachnameOhne != null ? nachnameOhne.hashCode() : 0);
@@ -878,10 +1121,26 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (vorname != null ? vorname.hashCode() : 0);
         result = 31 * result + (geschlecht != null ? geschlecht.hashCode() : 0);
         result = 31 * result + (geburtsjahr != null ? geburtsjahr.hashCode() : 0);
+        result = 31 * result + (ortszusatz != null ? ortszusatz.hashCode() : 0);
+        result = 31 * result + (adel != null ? adel.hashCode() : 0);
+        result = 31 * result + (praefix != null ? praefix.hashCode() : 0);
+        result = 31 * result + (anredeTitel != null ? anredeTitel.hashCode() : 0);
+        result = 31 * result + (akademischeTitel != null ? akademischeTitel.hashCode() : 0);
+        result = 31 * result + (historieVon != null ? historieVon.hashCode() : 0);
+        result = 31 * result + (historieBis != null ? historieBis.hashCode() : 0);
         result = 31 * result + (alter != null ? alter.hashCode() : 0);
+        result = 31 * result + (geburtsdatum != null ? geburtsdatum.hashCode() : 0);
+        result = 31 * result + (sterbedatum != null ? sterbedatum.hashCode() : 0);
+        result = 31 * result + (familienstand != null ? familienstand.hashCode() : 0);
+        result = 31 * result + (religion != null ? religion.hashCode() : 0);
+        result = 31 * result + (parteikurz != null ? parteikurz.hashCode() : 0);
+        result = 31 * result + (vitakurz != null ? vitakurz.hashCode() : 0);
+        result = 31 * result + (veroeffentlichungspflichtiges != null ? veroeffentlichungspflichtiges.hashCode() : 0);
         result = 31 * result + (funktion != null ? funktion.hashCode() : 0);
         result = 31 * result + (mdb != null ? mdb.hashCode() : 0);
         result = 31 * result + (mdbNeu != null ? mdbNeu.hashCode() : 0);
+        result = 31 * result + (mdb17 != null ? mdb17.hashCode() : 0);
+        result = 31 * result + (mdb18 != null ? mdb18.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
         result = 31 * result + (idEigen != null ? idEigen.hashCode() : 0);
@@ -908,6 +1167,8 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
         result = 31 * result + (btw17KandidatFlatId != null ? btw17KandidatFlatId.hashCode() : 0);
+        result = 31 * result + (btw17MdbId != null ? btw17MdbId.hashCode() : 0);
+        result = 31 * result + (btw17WahlbewerberId != null ? btw17WahlbewerberId.hashCode() : 0);
         return result;
     }
 
@@ -917,6 +1178,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 "id=" + id +
                 ", key='" + key + '\'' +
                 ", remoteKey='" + remoteKey + '\'' +
+                ", xmlIdBundestag='" + xmlIdBundestag + '\'' +
                 ", titel='" + titel + '\'' +
                 ", namenszusatz='" + namenszusatz + '\'' +
                 ", nachnameOhne='" + nachnameOhne + '\'' +
@@ -924,10 +1186,26 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", vorname='" + vorname + '\'' +
                 ", geschlecht='" + geschlecht + '\'' +
                 ", geburtsjahr=" + geburtsjahr +
+                ", ortszusatz='" + ortszusatz + '\'' +
+                ", adel='" + adel + '\'' +
+                ", praefix='" + praefix + '\'' +
+                ", anredeTitel='" + anredeTitel + '\'' +
+                ", akademischeTitel='" + akademischeTitel + '\'' +
+                ", historieVon=" + historieVon +
+                ", historieBis=" + historieBis +
                 ", alter=" + alter +
+                ", geburtsdatum=" + geburtsdatum +
+                ", sterbedatum=" + sterbedatum +
+                ", familienstand='" + familienstand + '\'' +
+                ", religion=" + religion +
+                ", parteikurz='" + parteikurz + '\'' +
+                ", vitakurz='" + vitakurz + '\'' +
+                ", veroeffentlichungspflichtiges='" + veroeffentlichungspflichtiges + '\'' +
                 ", funktion='" + funktion + '\'' +
                 ", mdb='" + mdb + '\'' +
                 ", mdbNeu=" + mdbNeu +
+                ", mdb17=" + mdb17 +
+                ", mdb18=" + mdb18 +
                 ", lat=" + lat +
                 ", lng=" + lng +
                 ", idEigen='" + idEigen + '\'' +
@@ -954,6 +1232,8 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
                 ", onlineStrategie=" + onlineStrategie +
                 ", adresse=" + adresse +
                 ", btw17KandidatFlatId=" + btw17KandidatFlatId +
+                ", btw17MdbId=" + btw17MdbId +
+                ", btw17WahlbewerberId=" + btw17WahlbewerberId +
                 '}';
     }
 }
