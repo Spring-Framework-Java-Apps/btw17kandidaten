@@ -255,4 +255,8 @@ public interface KandidatRepository extends JpaRepository<Kandidat,Long> {
             countName = "Kandidat.countByWahlperiode"
     )
     Page<Kandidat> findByWahlperiode(@Param("wahlperiode") Wahlperiode wahlperiode, Pageable pageable);
+
+    @Query(name="Kandidat.getMaxId")
+    Long getMaxId();
+
 }

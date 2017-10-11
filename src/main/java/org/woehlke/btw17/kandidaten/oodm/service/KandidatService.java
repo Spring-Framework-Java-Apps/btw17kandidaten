@@ -73,4 +73,7 @@ public interface KandidatService {
     Page<Kandidat> findByWebseiteCms(WebseiteCms webseiteCms, Pageable pageable);
 
     Page<Kandidat> findByWahlperiode(Wahlperiode wahlperiode, Pageable pageable);
+
+    Long getMaxId();
+
 }

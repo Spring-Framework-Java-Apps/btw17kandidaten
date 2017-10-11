@@ -186,4 +186,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByWahlperiode(wahlperiode,pageable);
     }
 
+    @Override
+    public Long getMaxId() {
+        return kandidatRepository.getMaxId();
+    }
+
 }

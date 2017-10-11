@@ -272,6 +272,10 @@ import static javax.persistence.FetchType.LAZY;
     @NamedQuery(
         name = "Kandidat.countByWahlperiode",
         query = "select count(o) from Kandidat as o join o.wahlperioden wahlperiode where wahlperiode=:wahlperiode"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getMaxId",
+        query = "select max(o.id) from Kandidat as o"
     )
 })
 @NamedNativeQueries({

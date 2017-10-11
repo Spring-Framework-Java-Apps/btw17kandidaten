@@ -153,4 +153,19 @@ public class KandidatEnricher {
                 assertThat(bundeslandService).isNotNull();
                 assertThat(btw17ErgebnisService).isNotNull();
         }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateWahlperiodeByBtw17Wahlperiode() throws Exception {
+                log.info("test010updateWahlperiodeByBtw17Wahlperiode");
+                Long maxId = kandidatService.getMaxId();
+                log.info("maxId: " + maxId);
+                if (maxId == null) {
+                        maxId = 0L;
+                }
+                maxId++;
+                String sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + maxId;
+                jdbcService.executeSqlStatemen(sql);
+        }
 }
