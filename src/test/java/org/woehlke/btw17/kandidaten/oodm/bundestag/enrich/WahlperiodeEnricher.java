@@ -222,9 +222,12 @@ public class WahlperiodeEnricher {
             String mandatsArt = btw17Wahlperiode.getMandatsart();
             switch(mandatsArt){
                 case "Volkskammer": o.setMandatsArt(Mandatsart.VOLKSKAMMER); break;
-                case "Direktwahl": o.setMandatsArt(Mandatsart.DIREKTWAHL); break;
+                case "Direktwahl" : o.setMandatsArt(Mandatsart.DIREKTWAHL); break;
                 case "Landesliste": o.setMandatsArt(Mandatsart.LANDESLISTE); break;
-                default: break;
+                default:
+                    log.warn("mandatsArt == "+mandatsArt);
+                    log.warn(btw17Wahlperiode.toString());
+                    break;
             }
 
             Institution institution = o.getInstitution();
