@@ -276,6 +276,10 @@ import static javax.persistence.FetchType.LAZY;
     @NamedQuery(
         name = "Kandidat.getMaxId",
         query = "select max(o.id) from Kandidat as o"
+    ),
+    @NamedQuery(
+        name = "Kandidat.findByBtw17Mdb",
+        query = "select o from Kandidat as o where o.vorname=:vorname and o.nachname=:nachname and o.geburtsjahr=:geburtsjahr and o.geburtsort=:geburtsort and o.geschlecht=:geschlecht"
     )
 })
 @NamedNativeQueries({

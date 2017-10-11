@@ -76,4 +76,5 @@ public interface KandidatService {
 
     Long getMaxId();
 
+    Kandidat findByBtw17Mdb(String vorname, String nachname, Integer geburtsjahr, Geburtsort geburtsort, String geschlecht);
 }

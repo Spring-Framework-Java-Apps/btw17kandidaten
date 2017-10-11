@@ -19,6 +19,8 @@ import javax.validation.constraints.NotNull;
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     },
     indexes = {
+        @Index(name = "idx_geburtsort_geburtsland", columnList = "geburtsland"),
+        //
         @Index(name = "idx_geburtsort_common_fields", columnList = "logo_url,symbol_bild"),
         //
         @Index(name = "idx_geburtsort_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
@@ -46,8 +48,11 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     private Long id;
 
     @NotNull
-    @Column(name = "geburtsort")
+    @Column(name = "geburtsort", nullable = false, unique = true)
     private String geburtsort;
+
+    @Column(name = "geburtsland")
+    private String geburtsland;
 
     @Valid
     @Embedded
@@ -86,6 +91,14 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
 
     public void setGeburtsort(String geburtsort) {
         this.geburtsort = geburtsort;
+    }
+
+    public String getGeburtsland() {
+        return geburtsland;
+    }
+
+    public void setGeburtsland(String geburtsland) {
+        this.geburtsland = geburtsland;
     }
 
     public GeoPosition getGeoPosition() {
@@ -127,6 +140,7 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (geburtsort != null ? !geburtsort.equals(that.geburtsort) : that.geburtsort != null) return false;
+        if (geburtsland != null ? !geburtsland.equals(that.geburtsland) : that.geburtsland != null) return false;
         if (geoPosition != null ? !geoPosition.equals(that.geoPosition) : that.geoPosition != null) return false;
         if (onlineStrategie != null ? !onlineStrategie.equals(that.onlineStrategie) : that.onlineStrategie != null)
             return false;
@@ -137,6 +151,7 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (geburtsort != null ? geburtsort.hashCode() : 0);
+        result = 31 * result + (geburtsland != null ? geburtsland.hashCode() : 0);
         result = 31 * result + (geoPosition != null ? geoPosition.hashCode() : 0);
         result = 31 * result + (onlineStrategie != null ? onlineStrategie.hashCode() : 0);
         result = 31 * result + (commonFields != null ? commonFields.hashCode() : 0);
@@ -148,6 +163,7 @@ public class Geburtsort implements DomainObject,GeoPositionEmbedded,OnlineStrate
         return "Geburtsort{" +
                 "id=" + id +
                 ", geburtsort='" + geburtsort + '\'' +
+                ", geburtsland='" + geburtsland + '\'' +
                 ", geoPosition=" + geoPosition +
                 ", onlineStrategie=" + onlineStrategie +
                 ", commonFields=" + commonFields +

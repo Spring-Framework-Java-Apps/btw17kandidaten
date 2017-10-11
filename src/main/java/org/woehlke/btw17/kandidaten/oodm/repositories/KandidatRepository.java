@@ -259,4 +259,13 @@ public interface KandidatRepository extends JpaRepository<Kandidat,Long> {
     @Query(name="Kandidat.getMaxId")
     Long getMaxId();
 
+    @Query(name="Kandidat.findByBtw17Mdb")
+    Kandidat findByBtw17Mdb(
+            @Param("vorname") String vorname,
+            @Param("nachname") String nachname,
+            @Param("geburtsjahr") Integer geburtsjahr,
+            @Param("geburtsort") Geburtsort geburtsort,
+            @Param("geschlecht") String geschlecht
+    );
+
 }

@@ -22,6 +22,11 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
+import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
@@ -152,5 +157,45 @@ public class GeburtsortEnricher {
                 assertThat(wahlkreisService).isNotNull();
                 assertThat(bundeslandService).isNotNull();
                 assertThat(btw17ErgebnisService).isNotNull();
+        }
+
+        @WithMockUser
+        @Commit
+        @Test
+        public void test010updateGeburtsortByBtw17Wahlperiode() throws Exception {
+                log.info("test010updateGeburtsortByBtw17Wahlperiode");
+                Long maxId = geburtsortService.getMaxId();
+                log.info("maxId: " + maxId);
+                if (maxId == null) {
+                        maxId = 0L;
+                }
+                maxId++;
+                String sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + maxId;
+                jdbcService.executeSqlStatemen(sql);
+                for (Btw17Mdb btw17Mdb : btw17MdbService.getAll()) {
+                        String geburtsortStr = btw17Mdb.getGeburtsort();
+                        String geburtlandStr  = btw17Mdb.getGeburtsland();
+                        if(geburtsortStr!=null) {
+                            Geburtsort geburtsort = geburtsortService.findByGeburtsort(geburtsortStr);
+                            if (geburtsort == null) {
+                                log.info("no Geburtsort found: Will create a new Object for " + geburtsortStr);
+                                GeoPosition geoPosition = new GeoPosition();
+                                OnlineStrategie onlineStrategie = new OnlineStrategie();
+                                CommonFields commonFields = new CommonFields();
+                                geburtsort = new Geburtsort();
+                                geburtsort.setGeburtsort(geburtsortStr);
+                                geburtsort.setGeburtsland(geburtlandStr);
+                                geburtsort.setCommonFields(commonFields);
+                                geburtsort.setGeoPosition(geoPosition);
+                                geburtsort.setOnlineStrategie(onlineStrategie);
+                                geburtsort = geburtsortService.create(geburtsort);
+                                log.info("new Geburtsort created: " + geburtsort.getUniqueId());
+                            } else {
+                                geburtsort.setGeburtsland(geburtlandStr);
+                                geburtsort = geburtsortService.update(geburtsort);
+                                log.info("Geburtsort updated: " + geburtsort.getUniqueId());
+                            }
+                        }
+                }
         }
 }

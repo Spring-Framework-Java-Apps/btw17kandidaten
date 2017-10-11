@@ -22,6 +22,9 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
+import org.woehlke.btw17.kandidaten.oodm.model.Geburtsort;
+import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.model.bundestag.Btw17Mdb;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
@@ -131,8 +134,6 @@ public class KandidatEnricher {
         @Autowired
         private JdbcService jdbcService;
 
-
-
         @WithMockUser
         @Commit
         @Test
@@ -167,5 +168,50 @@ public class KandidatEnricher {
                 maxId++;
                 String sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + maxId;
                 jdbcService.executeSqlStatemen(sql);
+                for(Btw17Mdb btw17Mdb:btw17MdbService.getAll()){
+                    String geburtsortStr  = btw17Mdb.getGeburtsort();
+                    String geburtlandStr  = btw17Mdb.getGeburtsland();
+                    Geburtsort geburtsort = null;
+                    if(geburtsortStr!=null) {
+                        geburtsort = geburtsortService.findByGeburtsort(geburtsortStr);
+                        if (geburtsort == null) {
+                            log.info("no Geburtsort found: Will create a new Object for " + geburtsortStr);
+
+                            Long geburtsortMaxId = geburtsortService.getMaxId();
+                            geburtsortMaxId++;
+                            sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + geburtsortMaxId;
+                            jdbcService.executeSqlStatemen(sql);
+
+                            geburtsort = new Geburtsort();
+                            geburtsort.setGeburtsort(geburtsortStr);
+                            geburtsort.setGeburtsland(geburtlandStr);
+                            geburtsort = geburtsortService.create(geburtsort);
+                            log.info("new Geburtsort created: " + geburtsort.getUniqueId());
+
+                            maxId = kandidatService.getMaxId();
+                            maxId++;
+                            sql = "ALTER SEQUENCE hibernate_sequence RESTART WITH " + maxId;
+                            jdbcService.executeSqlStatemen(sql);
+                        }
+                    }
+                    String geschlechtStr =  btw17Mdb.getGeschlecht();
+                    String nachname = btw17Mdb.getNachname();
+                    String vorname = btw17Mdb.getVorname();
+                    String geburtsdatum = btw17Mdb.getGeburtsdatum();
+                    Integer geburtsjahr = Integer.parseInt(geburtsdatum.split("\\.")[2]);
+                    String geschlecht = "M";
+                    if(geschlechtStr=="männlich"){
+                        geschlecht = "M";
+                    }
+                    if(geschlechtStr=="weiblich"){
+                        geschlecht = "W";
+                    }
+                    Kandidat kandidat = kandidatService.findByBtw17Mdb(vorname,nachname,geburtsjahr,geburtsort,geschlecht);
+                    if(kandidat != null){
+                        log.info("found Kandidat kandidat = "+kandidat.getUniqueId());
+                    } else {
+                        log.info("not found Kandidat kandidat. Will create a new Object.");
+                    }
+                }
         }
 }
