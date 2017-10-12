@@ -312,6 +312,8 @@ echo '-- etc/3nf/data/insert-data-kandidat.sql' >> ../src/main/resources/data.sq
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-kandidat2.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
+cat ./3nf/data/insert-data-kandidat3.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
 
 
 echo ' '
