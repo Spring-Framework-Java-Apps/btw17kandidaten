@@ -358,8 +358,8 @@ echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat_ausschuss.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat_ausschuss "  >> ../src/main/resources/data.sql
 
-echo ' '
+echo ' ' >> ../src/main/resources/data.sql
 
-echo "VACUUM;"
+echo "VACUUM;" >> ../src/main/resources/data.sql
 
 exit 0
