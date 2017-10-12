@@ -22,11 +22,11 @@ public class UpdateKandidatSql {
                 "cms",
                 "fraktion",
                 "geburtsort",
-                //"kandidat",
+                "kandidat",
                 "listepartei",
                 "ministerium",
                 "partei",
-                //"wahlkreis",
+                "wahlkreis",
                 "wohnort"
         };
         for(String tabelle:tabellen) {
