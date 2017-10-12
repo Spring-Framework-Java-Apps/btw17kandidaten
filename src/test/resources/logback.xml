@@ -9,8 +9,8 @@
     <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.repositories" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.repositories.impl" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="DEBUG" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.data" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.pages" level="INFO" />
