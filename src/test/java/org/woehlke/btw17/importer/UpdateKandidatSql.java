@@ -42,8 +42,8 @@ public class UpdateKandidatSql {
                 line = line.replace(");", "");
                 line = line.replace("INSERT INTO "+tabelle+" (", "");
                 String data[] = line.split("\\) VALUES \\(");
-                String columns[] = data[0].split(", ");
-                String fields[] = data[1].split(", ");
+                String columns[] = data[0].split(",");
+                String fields[] = data[1].split(",");
                 String removeCols[] = {
                         "xing", "linked_in", "stackoverflow", "github", "whatsapp", "wordpress", "spotify", "snapchat", "skype", "slack", "slideshare",
                         "pinterest", "paypal", "meetup", "lastfm", "imdb", "foursquare", "digg", "delicious", "url500px", "amazon", "hacker_news", "scribd",
@@ -59,8 +59,8 @@ public class UpdateKandidatSql {
                     if (!colums2remove.contains(columns[i].trim())) {
                         cols.append(columns[i]);
                         datacells.append(fields[i]);
-                        cols.append(", ");
-                        datacells.append(", ");
+                        cols.append(",");
+                        datacells.append(",");
                     }
                 }
                 String x = cols.toString();
