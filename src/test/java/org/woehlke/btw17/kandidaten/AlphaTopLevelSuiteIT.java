@@ -11,8 +11,8 @@ import org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche.Such
 import org.woehlke.btw17.kandidaten.frontend.controller.closed.data.*;
 import org.woehlke.btw17.kandidaten.frontend.controller.redaktion.report.ReportControllerTest;
 import org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages.LoginControllerTest;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17KandidatFlatServiceTest;
-import org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service.Btw17WahlkreisServiceTest;
+import org.woehlke.btw17.kandidaten.oodm.importer.service.Btw17KandidatFlatServiceTest;
+import org.woehlke.btw17.kandidaten.oodm.importer.service.Btw17WahlkreisServiceTest;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
 @Suite.SuiteClasses({
