@@ -24,6 +24,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.KandidatService;
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
@@ -83,7 +84,7 @@ public class GeburtsjahrController extends AbstractController {
             throw new EntityNotFoundException(msg);
         } else {
             int mindestalter = 18;
-            int todayYear = (new Date()).getYear() + 1901 - mindestalter;
+            int todayYear = LocalDate.now().getYear() - mindestalter;
             if(geburtsjahr.intValue() < 1900 || geburtsjahr.intValue() > todayYear){
                 String msg = "/geburtsjahr" + geburtsjahr + " in GeburtsjahrController.geburtsjahr";
                 throw new EntityNotFoundException(msg);
