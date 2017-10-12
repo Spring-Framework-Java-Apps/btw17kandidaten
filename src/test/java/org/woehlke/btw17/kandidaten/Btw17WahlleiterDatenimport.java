@@ -7,12 +7,12 @@ import org.woehlke.btw17.kandidaten.oodm.importer.enrich.*;
 @Suite.SuiteClasses({
 
         BerufEnricher.class,
-        //BundeslandEnricher.class,
-        //GeburtsortEnricher.class,
-        //ParteiEnricher.class,
-        //WahlkreisEnricher.class,
-        //WahlperiodeEnricher.class,
-        //WohnortEnricher.class,
+        BundeslandEnricher.class,
+        GeburtsortEnricher.class,
+        ParteiEnricher.class,
+        WahlkreisEnricher.class,
+        WahlperiodeEnricher.class,
+        WohnortEnricher.class//,
         //KandidatEnricher.class
 
 })

@@ -20,13 +20,9 @@
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.reports" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.useraccess.pages" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.errorhandling" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.service.impl" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.service" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.enrich" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.file2db" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.enrich" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.file2db" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.service" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.enrich" level="DEBUG" />
     <logger name="org.woehlke.btw17.importer" level="DEBUG" />
     <logger name="org.apache.http" level="WARN" />
     <logger name="org.apache.tomcat" level="WARN" />
