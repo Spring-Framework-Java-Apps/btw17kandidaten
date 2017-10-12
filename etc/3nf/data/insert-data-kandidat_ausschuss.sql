@@ -17,7 +17,6 @@ INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00078, 30);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00078, 6);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00086, 19);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00086, 30);
-INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00087, 28);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00095, 1);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00095, 16);
 INSERT INTO kandidat_ausschuss (kandidat_id, ausschuesse_id) VALUES (00095, 2);

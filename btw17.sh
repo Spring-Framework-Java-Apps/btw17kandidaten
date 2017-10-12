@@ -27,13 +27,13 @@ psql -U kandidatentest < etc/drop-tables.sql
 
 ./mvnw clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=KandidatEnricher -Dmaven.javadoc.skip=true -B -V
-./mvnw clean test -Pdevtest -Dtest=UpdateKandidatSql -Dmaven.javadoc.skip=true -B -V
+#./mvnw clean test -Pdevtest -Dtest=UpdateKandidatSql -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=BerufEnricher -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=BundeslandEnricher -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=GeburtsortEnricher -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=ParteiEnricher -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=WahlkreisEnricher -Dmaven.javadoc.skip=true -B -V
 #./mvnw clean test -Pdevtest -Dtest=WahlperiodeEnricher -Dmaven.javadoc.skip=true -B -V
-#./mvnw clean test -Pdevtest -Dtest=WohnortEnricher -Dmaven.javadoc.skip=true -B -V
+./mvnw clean test -Pdevtest -Dtest=WohnortEnricher -Dmaven.javadoc.skip=true -B -V
 
 exit 0

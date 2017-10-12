@@ -1,5 +1,4 @@
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00024, 15);
-INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00087, 9);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00094, 11);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00180, 7);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00223, 8);
@@ -8,9 +7,7 @@ INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00283, 11
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00361, 11);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00553, 3);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00653, 10);
-INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (00772, 12);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (01330, 4);
-INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (01362, 9);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (01414, 15);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (01500, 14);
 INSERT INTO kandidat_ministerium (kandidat_id, ministerien_id) VALUES (01514, 6);
