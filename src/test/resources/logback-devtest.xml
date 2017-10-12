@@ -4,13 +4,13 @@
     <logger name="org.woehlke.btw17.kandidaten.oodm.model.listener" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.model.parts" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.model" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundestag" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundestag.xml" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundestag" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundestag.xml" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.model.bundeswahlleiter" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.repositories" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.repositories.impl" level="WARN" />
     <logger name="org.woehlke.btw17.kandidaten.oodm.service" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.service.impl" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.data" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.errors" level="INFO" />
@@ -20,26 +20,26 @@
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.common" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.data" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.closed.reports" level="INFO" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.enrich" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.file2db" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.enrich" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.file2db" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.service" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.enrich" level="DEBUG" />
-    <logger name="org.woehlke.btw17.importer" level="DEBUG" />
-    <logger name="org.apache.http" level="WARN" />
-    <logger name="org.apache.tomcat" level="WARN" />
-    <logger name="javax.persistence" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.enrich" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundestag.file2db" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.file2db" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.service" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.bundeswahlleiter.enrich" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.file2db" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.service" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.importer.enrich" level="WARN" />
+    <logger name="org.woehlke.btw17.importer" level="INFO" />
+    <logger name="org.apache.http" level="ERROR" />
+    <logger name="org.apache.tomcat" level="ERROR" />
+    <logger name="javax.persistence" level="ERROR" />
     <logger name="org.springframework.data.jpa.repository.query" level="ERROR" />
     <logger name="org.hibernate.orm.deprecation" level="ERROR" />
-    <logger name="org.springframework" level="WARN" />
-    <logger name="org.hibernate" level="WARN" />
-    <logger name="ch.qos.logback" level="WARN" />
-    <logger name="org.hibernate.SQL" level="WARN" />
-    <logger name="ch.qos.logback" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten" level="DEBUG" />
-    <root level="WARN"></root>
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.hibernate" level="ERROR" />
+    <logger name="ch.qos.logback" level="ERROR" />
+    <logger name="org.hibernate.SQL" level="ERROR" />
+    <logger name="ch.qos.logback" level="ERROR" />
+    <logger name="org.woehlke.btw17.kandidaten" level="INFO" />
+    <root level="INFO"></root>
 </configuration>
 

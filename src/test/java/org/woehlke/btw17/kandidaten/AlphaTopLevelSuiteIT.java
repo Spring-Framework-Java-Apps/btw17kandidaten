@@ -69,10 +69,10 @@ import org.woehlke.btw17.kandidaten.oodm.service.*;
         WohnortServiceTest.class,
         WebseiteAgenturServiceTest.class,
         WebseiteCmsServiceTest.class,
-        KandidatServiceTest.class,
+        KandidatServiceTest.class//,
 
-        Btw17KandidatFlatServiceTest.class,
-        Btw17WahlkreisServiceTest.class
+        //Btw17KandidatFlatServiceTest.class,
+        //Btw17WahlkreisServiceTest.class
         /*,
 
         KandidatenNormalizedTableBuilder.class,
