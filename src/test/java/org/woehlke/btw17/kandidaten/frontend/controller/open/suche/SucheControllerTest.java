@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.frontend.controller.anonymoususer.suche;
+package org.woehlke.btw17.kandidaten.frontend.controller.open.suche;
 
 
 import org.junit.Assert;
@@ -24,7 +24,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
-import org.woehlke.btw17.kandidaten.frontend.controller.open.suche.SucheController;
 import org.woehlke.btw17.kandidaten.frontend.model.FreitextSucheFormular;
 
 import static org.assertj.core.api.Assertions.assertThat;
