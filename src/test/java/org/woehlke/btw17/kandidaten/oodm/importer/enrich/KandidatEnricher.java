@@ -60,7 +60,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 public class KandidatEnricher {
 
 
-        private static final Logger log = LoggerFactory.getLogger(AusschussEnricher.class);
+        private static final Logger log = LoggerFactory.getLogger(KandidatEnricher.class);
 
         @Autowired
         private MockMvc mockMvc;
@@ -477,9 +477,9 @@ public class KandidatEnricher {
                                     break;
                             }
                         }
-                        //kandidat.setWahlperioden(wahlperioden);
+                        kandidat.setWahlperioden(wahlperioden);
                         if (update) {
-                            //kandidat = kandidatService.update(kandidat);
+                            kandidat = kandidatService.update(kandidat);
                             log.info("updated Kandidat " + kandidat.getUniqueId());
                         } else {
                             kandidat = kandidatService.create(kandidat);
