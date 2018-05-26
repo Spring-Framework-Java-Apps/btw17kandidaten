@@ -36,8 +36,6 @@ spring:
     name: @project.name@
   datasource:
     driverClassName: org.postgresql.Driver
-    #max-total: 20
-    #maxActive: 20
     platform: POSTGRESQL
     tomcat:
       max-active: 20
