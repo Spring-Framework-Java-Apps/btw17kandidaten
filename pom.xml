@@ -69,7 +69,7 @@
         <maven.version>3.3.9</maven.version>
         <maven.scm.version>1.9.5</maven.scm.version>
         <org.jsoup.version>1.10.3</org.jsoup.version>
-        <org.postgresql.version>42.1.1</org.postgresql.version>
+        <org.postgresql.version>42.2.2</org.postgresql.version>
         <org.webjars.bootstrap.version>3.3.7</org.webjars.bootstrap.version>
         <org.webjars.jquery.version>2.2.4</org.webjars.jquery.version>
         <org.webjars.font.awesome.version>4.7.0</org.webjars.font.awesome.version>
