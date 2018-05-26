@@ -178,7 +178,23 @@ spring:
 spring:
   profiles: travis
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
+    url: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public'
+    continue-on-error: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+server:
+  compression:
+    enabled: false
+btw17:
+  kandidaten:
+    checkFotoUrl: false
+---
+spring:
+  profiles: releasing
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/kandidatenreleasing?user=jdbc&password=jdbcpwd&schema=public'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -194,7 +210,7 @@ btw17:
 spring:
   profiles: devtest
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
+    url: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public'
     continue-on-error: true
   jpa:
     show-sql: false
