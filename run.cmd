@@ -1,6 +1,6 @@
 set JAVA_OPTIONS="-Xmx300m -Xss512k -Dfile.encoding=UTF-8"
 
-set DATABASE_URL="jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd&schmea=public"
+set DATABASE_URL="jdbc:postgresql://localhost:5432/kandidaten?user=jdbc&password=jdbcpwd&schmea=public"
 set BTW17_LOGIN_USERNAME=blubb
 set BTW17_LOGIN_PASSWORD=blablablablablablablablabla
 set BTW17_JPA_HIBERNATE_DDL_AUTO=update
