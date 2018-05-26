@@ -120,11 +120,6 @@
                 <version>${thymeleaf-spring-data-dialect.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-scm-plugin</artifactId>
-                <version>${maven.scm.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.maven.scm</groupId>
                 <artifactId>maven-scm</artifactId>
                 <version>${maven.scm.version}</version>
@@ -290,6 +285,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>${maven.scm.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
