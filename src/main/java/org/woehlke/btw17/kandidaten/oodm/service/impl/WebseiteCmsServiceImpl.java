@@ -61,7 +61,7 @@ public class WebseiteCmsServiceImpl implements WebseiteCmsService {
 
     @Override
     public WebseiteCms findById(long id) {
-        return webseiteCmsRepository.findOne(id);
+        return webseiteCmsRepository.getOne(id);
     }
 
     @Override

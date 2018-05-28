@@ -62,7 +62,7 @@ public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
 
     @Override
     public WebseiteAgentur findById(long id) {
-        return webseiteAgenturRepository.findOne(id);
+        return webseiteAgenturRepository.getOne(id);
     }
 
     @Override

@@ -70,7 +70,7 @@ public class Btw17MdbServiceImpl implements Btw17MdbService {
 
     @Override
     public Btw17Mdb findById(long id) {
-        return btw17MdbRepository.findOne(id);
+        return btw17MdbRepository.getOne(id);
     }
 
     @Override

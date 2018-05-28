@@ -16,7 +16,7 @@ server:
     enabled: true
     min-response-size: 2048
 hibernate:
-  dialect: org.hibernate.dialect.PostgreSQL94Dialect
+  dialect: org.hibernate.dialect.PostgreSQL95Dialect
 info:
   application:
     artifactId: @project.artifactId@
@@ -31,37 +31,65 @@ management:
     enabled: true
 spring:
   application:
-    admin:
-      enabled: false
-    name: @project.name@
+      admin:
+        enabled: true
+      name: @project.name@
+  data:
+    neo4j:
+      open-in-view: true
+      username: neo4j
+      password: secret
+      repositories:
+        enabled: true
+    jpa:
+      repositories:
+        enabled: true
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 200
+        page-parameter: page
+        size-parameter: size
+  dao:
+    exceptiontranslation:
+      enabled: true
   datasource:
-    driverClassName: org.postgresql.Driver
-    platform: POSTGRESQL
-    tomcat:
-      max-active: 20
     url: ${DATABASE_URL}
+    jdbcUrl: ${DATABASE_URL}
+    username: jdbc
+    password: jdbcpwd
+    driver-class-name: org.postgresql.Driver
+    platform: POSTGRESQL
     continue-on-error: true
     schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    tomcat:
+      max-active: 20
+  jpa:
+      database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+      open-in-view: true
+      generate-ddl: true
+      show-sql: true
+      hibernate:
+        ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQL95Dialect
+          globally_quoted_identifiers: true
+          temp:
+            use_jdbc_metadata_defaults: false
   session:
-    store-type: jdbc
-    jdbc:
-      initializer:
-        enabled: true
+    storeType: "jdbc"
+    #jdbc:
+    initializer:
+      enabled: true
   devtools:
     livereload:
-      enabled: false
-  jpa:
-    open-in-view: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
-    show-sql: true
+      enabled: true
   template:
     cache: false
   thymeleaf:
+    enabled: true
+    check-template-location: true
     cache: false
 btw17:
   kandidaten:
@@ -176,7 +204,8 @@ spring:
 spring:
   profiles: travis
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public'
+    url: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -192,7 +221,8 @@ btw17:
 spring:
   profiles: releasing
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public'
+    url: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -208,7 +238,8 @@ btw17:
 spring:
   profiles: devtest
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public'
+    url: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false

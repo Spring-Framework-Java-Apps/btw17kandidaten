@@ -115,7 +115,7 @@ public class Btw17WahlbewerberServiceImpl implements Btw17WahlbewerberService {
 
     @Override
     public Btw17Wahlbewerber findById(long id) {
-        return this.btw17WahlbewerberRepository.findOne(id);
+        return this.btw17WahlbewerberRepository.getOne(id);
     }
 
     @Override

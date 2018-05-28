@@ -62,7 +62,7 @@ public class GeburtsortServiceImpl implements GeburtsortService {
 
     @Override
     public Geburtsort findById(long id) {
-        return geburtsortRepository.findOne(id);
+        return geburtsortRepository.getOne(id);
     }
 
     @Override

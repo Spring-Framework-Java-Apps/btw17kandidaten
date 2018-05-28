@@ -74,7 +74,7 @@ public class Btw17KandidatFlatServiceImpl implements Btw17KandidatFlatService {
 
     @Override
     public Btw17KandidatFlat findById(long id) {
-        return this.btw17KandidatFlatRepository.findOne(id);
+        return this.btw17KandidatFlatRepository.getOne(id);
     }
 
     @Override

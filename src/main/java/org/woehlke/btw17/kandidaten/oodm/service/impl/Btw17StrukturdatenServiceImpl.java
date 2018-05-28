@@ -140,7 +140,7 @@ public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService 
 
     @Override
     public Btw17Strukturdaten findById(long id) {
-        return btw17StrukturdatenRepository.findOne(id);
+        return btw17StrukturdatenRepository.getOne(id);
     }
 
     @Override

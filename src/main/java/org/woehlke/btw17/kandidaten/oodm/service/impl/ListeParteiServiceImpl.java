@@ -62,7 +62,7 @@ public class ListeParteiServiceImpl implements ListeParteiService {
 
     @Override
     public ListePartei findById(long id) {
-        return listeParteiRepository.findOne(id);
+        return listeParteiRepository.getOne(id);
     }
 
     @Override

@@ -10,13 +10,17 @@ import java.util.Set;
 
 @Entity
 @Table(
-        name = "btw17_mdb_stammdaten"/*,
+        name = "btw17_mdb_stammdaten"//,
+        //schema = "public",
+        //catalog = "information_schema",
+    /*
         uniqueConstraints = {
                 @UniqueConstraint(name="uk_btw17_ergebnis", columnNames = {"wahlkreis_nummer","bundesland_nummer"})
         },
         indexes = {
                 @Index(name = "idx_btw17_ergebnis_wahlkreis_name", columnList = "wahlkreis_name")
-        }*/
+        }
+        */
 )
 @NamedQueries({
     @NamedQuery(

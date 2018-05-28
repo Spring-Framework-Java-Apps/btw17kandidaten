@@ -17,6 +17,8 @@ import javax.validation.Valid;
 @Entity
 @Table(
     name = "ausschuss",
+    //schema = "public",
+    //catalog = "information_schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
     },

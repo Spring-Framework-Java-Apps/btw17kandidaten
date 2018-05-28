@@ -16,6 +16,8 @@ import javax.validation.Valid;
 @Entity
 @Table(
     name = "partei",
+    //schema = "public",
+    //catalog = "information_schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_partei", columnNames = {"partei","partei_lang"})
     },

@@ -62,7 +62,7 @@ public class BerufsgruppeServiceImpl implements BerufsgruppeService {
 
     @Override
     public Berufsgruppe findById(long id) {
-        return berufsgruppeRepository.findOne(id);
+        return berufsgruppeRepository.getOne(id);
     }
 
     @Override

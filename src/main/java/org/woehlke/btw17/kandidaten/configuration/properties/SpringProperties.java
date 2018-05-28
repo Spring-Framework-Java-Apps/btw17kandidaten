@@ -205,36 +205,29 @@ public class SpringProperties {
         private String storeType;
 
         @Valid
-        private Jdbc jdbc = new Jdbc();
+        private Initializer initializer = new Initializer();
 
         @Validated
-        public static class Jdbc {
+        public static class Initializer {
 
-            @Valid
-            private Initializer initializer = new Initializer();
+            @NotNull
+            private Boolean enabled;
 
-            @Validated
-            public static class Initializer {
-
-                @NotNull
-                private Boolean enabled;
-
-                public Boolean getEnabled() {
-                    return enabled;
-                }
-
-                public void setEnabled(Boolean enabled) {
-                    this.enabled = enabled;
-                }
+            public Boolean getEnabled() {
+                return enabled;
             }
 
-            public Initializer getInitializer() {
-                return initializer;
+            public void setEnabled(Boolean enabled) {
+                this.enabled = enabled;
             }
+        }
 
-            public void setInitializer(Initializer initializer) {
-                this.initializer = initializer;
-            }
+        public Initializer getInitializer() {
+            return initializer;
+        }
+
+        public void setInitializer(Initializer initializer) {
+            this.initializer = initializer;
         }
 
         public String getStoreType() {
@@ -243,14 +236,6 @@ public class SpringProperties {
 
         public void setStoreType(String storeType) {
             this.storeType = storeType;
-        }
-
-        public Jdbc getJdbc() {
-            return jdbc;
-        }
-
-        public void setJdbc(Jdbc jdbc) {
-            this.jdbc = jdbc;
         }
     }
 
@@ -343,7 +328,7 @@ public class SpringProperties {
         outputLines.add("spring.jpa.properties.hibernate.dialect =             "+this.getJpa().getProperties().getHibernate().getDialect());
         outputLines.add("spring.jpa.show-sql =                                 "+this.getJpa().getShowSql());
         outputLines.add("spring.session.store-type =                           "+this.getSession().getStoreType());
-        outputLines.add("spring.session.jdbc.initializer.enabled =             "+this.getSession().getJdbc().getInitializer().getEnabled());
+        outputLines.add("spring.session.jdbc.initializer.enabled =             "+this.getSession().getInitializer().getEnabled());
         outputLines.add("spring.datasource.driverClassName =                   "+this.getDatasource().getDriverClassName());
         outputLines.add("spring.datasource.platform =                          "+this.getDatasource().getPlatform());
         outputLines.add("spring.datasource.continue-on-error =                 "+this.getDatasource().getContinueOnError());

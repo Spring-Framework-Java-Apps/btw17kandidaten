@@ -69,7 +69,7 @@ public class Btw17WahlperiodeServiceImpl implements Btw17WahlperiodeService {
 
     @Override
     public Btw17Wahlperiode findById(long id) {
-        return btw17WahlperiodeRepository.findOne(id);
+        return btw17WahlperiodeRepository.getOne(id);
     }
 
     @Override

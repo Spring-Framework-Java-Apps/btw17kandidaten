@@ -62,7 +62,7 @@ public class AusschussServiceImpl implements AusschussService {
 
     @Override
     public Ausschuss findById(long id) {
-        return ausschussRepository.findOne(id);
+        return ausschussRepository.getOne(id);
     }
 
     @Override

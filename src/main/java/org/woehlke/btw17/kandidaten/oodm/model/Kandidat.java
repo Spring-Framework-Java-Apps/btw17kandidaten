@@ -22,6 +22,8 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Table(
     name = "kandidat",
+    //schema = "public",
+    //catalog = "information_schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
     },

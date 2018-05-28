@@ -68,7 +68,7 @@ public class BundeslandServiceImpl implements BundeslandService {
 
     @Override
     public Bundesland findById(long id) {
-        return bundeslandRepository.findOne(id);
+        return bundeslandRepository.getOne(id);
     }
 
     @Override

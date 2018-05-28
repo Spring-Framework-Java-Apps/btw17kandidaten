@@ -4,9 +4,9 @@ package org.woehlke.btw17.kandidaten.frontend.controller.open.errors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.AbstractErrorController;
-import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
+import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -85,7 +85,7 @@ public class ErrorController extends AbstractErrorController {
     }
 
 
-    private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, OtherProperties otherProperties,KandidatenProperties kandidatenProperties) {
+    private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, OtherProperties otherProperties, KandidatenProperties kandidatenProperties) {
         super(errorAttributes, errorViewResolvers);
         this.otherProperties = otherProperties;
         this.kandidatenProperties = kandidatenProperties;
