@@ -7,7 +7,7 @@ export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidaten?user=jdbc&passw
 
 source conf.sh
 
-export BTW17_JPA_HIBERNATE_DDL_AUTO=create
+export BTW17_JPA_HIBERNATE_DDL_AUTO=create-drop
 
 ./mvnw clean spring-boot:run
 

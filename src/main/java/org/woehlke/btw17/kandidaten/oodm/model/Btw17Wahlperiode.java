@@ -9,8 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-    name = "btw17_mdb_wahlperiode"//,
-    //schema = "public"//,
+    name = "btw17_mdb_wahlperiode",
+    schema = "public"//,
     //catalog = "information_schema"
 )
 @NamedQueries({

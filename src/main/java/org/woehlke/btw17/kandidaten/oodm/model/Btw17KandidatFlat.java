@@ -11,7 +11,7 @@ import java.util.Locale;
 @Entity
 @Table(
     name = "btw17_kandidat_flat",
-    //schema = "public",
+    schema = "public",
     //catalog = "information_schema",
     indexes = {
         @Index(name = "idx_kandidat_flat_kandidat_key",columnList = "kandidat_key"),

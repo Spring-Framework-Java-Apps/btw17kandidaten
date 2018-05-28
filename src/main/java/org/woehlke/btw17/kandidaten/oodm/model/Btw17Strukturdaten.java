@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(
     name = "btw17_strukturdaten",
-    //schema = "public",
+    schema = "public",
     //catalog = "information_schema",
     uniqueConstraints = {
         @UniqueConstraint(name="uk_btw17_strukturdaten", columnNames = {"bundesland_name","wahlkreis_nummer","wahlkreis_name"}),

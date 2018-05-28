@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "btw17_wahlbewerber",
-    //schema = "public",
+    schema = "public",
     //catalog = "information_schema",
     indexes = {
         @Index(name = "idx_btw17_wahlbewerber_titel",columnList = "titel"),
