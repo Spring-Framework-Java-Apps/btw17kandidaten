@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatenrelease?user=kandidatentest&password=kandidatentestpwd'
-export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidatenrelease?user=kandidatentest&password=kandidatentestpwd'
 export BTW17_LOGIN_USERNAME=blubb
 export BTW17_LOGIN_PASSWORD=blablablablablablablablabla
 export BTW17_JPA_HIBERNATE_DDL_AUTO=update
