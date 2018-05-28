@@ -192,7 +192,7 @@ btw17:
 spring:
   profiles: releasing
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatenreleasing?user=jdbc&password=jdbcpwd&schema=public'
+    url: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public'
     continue-on-error: true
   jpa:
     show-sql: false
