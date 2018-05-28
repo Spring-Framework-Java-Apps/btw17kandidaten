@@ -45,7 +45,7 @@
         <url>https://github.com/phasenraum2010/btw17kandidaten.git</url>
         <connection>scm:git:https://github.com/phasenraum2010/btw17kandidaten.git</connection>
         <developerConnection>scm:git:https://github.com/phasenraum2010/btw17kandidaten.git</developerConnection>
-        <tag>master</tag>
+        <tag>springboot2</tag>
     </scm>
 
     <issueManagement>
