@@ -16,16 +16,15 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "landesliste"//,
+    name = "landesliste",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_landesliste",columnNames = {"fk_bundesland","fk_listepartei"})
     },
     indexes = {
         @Index(name = "idx_landesliste_common_fields", columnList = "logo_url,symbol_bild"),
-    }*/
+    }
 )
 @NamedQueries({
     @NamedQuery(

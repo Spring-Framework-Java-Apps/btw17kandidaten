@@ -11,15 +11,15 @@ import java.util.List;
 
 @Entity
 @Table(
-    name = "btw17_ergebnis"//,
+    name = "btw17_ergebnis",
     //schema = "public",
     //catalog = "information_//schema",
-    //uniqueConstraints = {
-    //    @UniqueConstraint(name="uk_btw17_ergebnis", columnNames = {"wahlkreis_nummer","bundesland_nummer"})
-    //},
-    //indexes = {
-    //    @Index(name = "idx_btw17_ergebnis_wahlkreis_name", columnList = "wahlkreis_name")
-    //}
+    uniqueConstraints = {
+        @UniqueConstraint(name="uk_btw17_ergebnis", columnNames = {"wahlkreis_nummer","bundesland_nummer"})
+    },
+    indexes = {
+        @Index(name = "idx_btw17_ergebnis_wahlkreis_name", columnList = "wahlkreis_name")
+    }
 )
 @NamedQueries({
     @NamedQuery(

@@ -14,10 +14,9 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "bundesland"//,
+    name = "bundesland",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_bundesland",columnNames = {"bundesland"})
     },
@@ -29,7 +28,6 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_bundesland_webseite", columnList = "webseite"),
         //
     }
-    */
 )
 @NamedQueries({
     @NamedQuery(

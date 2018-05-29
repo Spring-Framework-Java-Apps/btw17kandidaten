@@ -20,10 +20,9 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "cms"//,
+    name = "cms",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_cms",columnNames = {"cms"})
     },
@@ -38,7 +37,6 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_cms_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
         //
     }
-    */
 )
 @NamedQueries({
         @NamedQuery(

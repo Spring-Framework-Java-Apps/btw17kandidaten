@@ -13,10 +13,9 @@ import java.util.List;
 
 @Entity
 @Table(
-    name = "btw17_strukturdaten"//,
+    name = "btw17_strukturdaten",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="uk_btw17_strukturdaten", columnNames = {"bundesland_name","wahlkreis_nummer","wahlkreis_name"}),
         @UniqueConstraint(name="uk_btw17_strukturdaten_wahlkreis_nummer",columnNames = {"wahlkreis_nummer"})
@@ -77,7 +76,6 @@ import java.util.List;
         @Index(name = "idx_btw17_strukturdaten_arbeitslosenquote_55bis65", columnList = "arbeitslosenquote_55bis65"),
         @Index(name = "idx_btw17_strukturdaten_fussnoten", columnList = "fussnoten"),
     }
-    */
 )
 @NamedQueries({
     @NamedQuery(

@@ -14,10 +14,9 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "wahlkreis"//,
+    name = "wahlkreis",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_wahlkreis",columnNames = {"wahlkreis_id"})
     },
@@ -29,7 +28,6 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_wahlkreis_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
         //
     }
-    */
 )
 @NamedQueries({
     @NamedQuery(

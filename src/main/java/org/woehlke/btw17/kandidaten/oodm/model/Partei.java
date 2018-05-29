@@ -15,10 +15,9 @@ import javax.validation.Valid;
  */
 @Entity
 @Table(
-    name = "partei"//,
+    name = "partei",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_partei", columnNames = {"partei","partei_lang"})
     },
@@ -41,7 +40,7 @@ import javax.validation.Valid;
         @Index(name = "idx_partei_logo_url", columnList = "logo_url"),
         @Index(name = "idx_partei_lobbypedia_url", columnList = "lobbypedia_url"),
         @Index(name = "idx_partei_wikipedia_article", columnList = "wikipedia_article")
-    }*/
+    }
 )
 @NamedQueries({
     @NamedQuery(

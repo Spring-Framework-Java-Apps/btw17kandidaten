@@ -16,16 +16,16 @@ import javax.validation.Valid;
  */
 @Entity
 @Table(
-    name = "ausschuss"//,
+    name = "ausschuss",
     //schema = "public",
     //catalog = "information_//schema",
-    //uniqueConstraints = {
-    //    @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
-    //},
-    //indexes = {
-    //    @Index(name = "idx_ausschuss_common_fields", columnList = "logo_url,symbol_bild"),
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_ausschuss",columnNames = {"ausschuss"})
+    },
+    indexes = {
+        @Index(name = "idx_ausschuss_common_fields", columnList = "logo_url,symbol_bild"),
         //
-    //}
+    }
 )
 @NamedQueries({
         @NamedQuery(

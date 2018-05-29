@@ -12,12 +12,12 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "berufsgruppe"//,
+    name = "berufsgruppe",
     //schema = "public",
     //catalog = "information_//schema",
-    //uniqueConstraints = {
-    //    @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
-    //}
+    uniqueConstraints = {
+        @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
+    }
 )
 @NamedQueries({
         @NamedQuery(

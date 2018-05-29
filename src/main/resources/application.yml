@@ -72,7 +72,7 @@ spring:
     tomcat:
       max-active: 20
   jpa:
-      database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+      database-platform: org.hibernate.dialect.PostgreSQL95Dialect
       open-in-view: true
       generate-ddl: true
       show-sql: true

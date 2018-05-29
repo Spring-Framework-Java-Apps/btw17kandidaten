@@ -9,10 +9,9 @@ import javax.validation.Valid;
 
 @Entity
 @Table(
-    name = "wohnort"//,
+    name = "wohnort",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_wohnort",columnNames = {"wohnort"})
     },
@@ -26,7 +25,6 @@ import javax.validation.Valid;
         @Index(name = "idx_wohnort_facebook", columnList = "facebook"),
         @Index(name = "idx_wohnort_wikipedia_article", columnList = "wikipedia_article")
     }
-    */
 )
 @NamedQueries({
         @NamedQuery(

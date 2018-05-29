@@ -21,10 +21,9 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(
-    name = "kandidat"//,
+    name = "kandidat",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
     },
@@ -59,7 +58,6 @@ import static javax.persistence.FetchType.LAZY;
         @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_kandidat_instagram_url", columnList = "instagram"),
     }
-    */
 )
 @NamedQueries({
     @NamedQuery(

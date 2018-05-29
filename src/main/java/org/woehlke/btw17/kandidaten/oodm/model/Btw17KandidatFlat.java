@@ -10,10 +10,9 @@ import java.util.Locale;
 
 @Entity
 @Table(
-    name = "btw17_kandidat_flat"//,
+    name = "btw17_kandidat_flat",
     //schema = "public",
     //catalog = "information_//schema",
-    /*
     indexes = {
         @Index(name = "idx_kandidat_flat_kandidat_key",columnList = "kandidat_key"),
         @Index(name = "idx_kandidat_flat_titel", columnList = "titel"),
@@ -41,7 +40,6 @@ import java.util.Locale;
         @Index(name = "idx_kandidat_flat_wohnort", columnList = "wohnort"),
         @Index(name = "idx_kandidat_flat_alter", columnList = "alter")
     }
-    */
 )
 @NamedQueries({
     @NamedQuery(
