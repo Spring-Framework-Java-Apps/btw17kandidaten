@@ -9,9 +9,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(
-    name = "btw17_wahlbewerber",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "btw17_wahlbewerber"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     indexes = {
         @Index(name = "idx_btw17_wahlbewerber_titel",columnList = "titel"),
         @Index(name = "idx_btw17_wahlbewerber_namenszusatz", columnList = "namenszusatz"),
@@ -32,7 +33,7 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_btw17_wahlbewerber_liste_partei", columnList = "liste_partei"),
         @Index(name = "idx_btw17_wahlbewerber_liste_platz", columnList = "liste_platz"),
         @Index(name = "idx_btw17_wahlbewerber_liste_partei_lang", columnList = "wiederkandidatur")
-    }
+    }*/
 )
 @NamedQueries({
     @NamedQuery(

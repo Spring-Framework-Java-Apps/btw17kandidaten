@@ -16,7 +16,7 @@ server:
     enabled: true
     min-response-size: 2048
 hibernate:
-  dialect: org.hibernate.dialect.PostgreSQL95Dialect
+  dialect: org.hibernate.dialect.PostgreSQL94Dialect
 info:
   application:
     artifactId: @project.artifactId@
@@ -56,16 +56,18 @@ spring:
   datasource:
     url: ${DATABASE_URL}
     jdbcUrl: ${DATABASE_URL}
-    username: jdbc
-    password: jdbcpwd
+    #username: jdbc
+    #password: jdbcpwd
+    username: kandidaten
+    password: kandidatenpwd
     driver-class-name: org.postgresql.Driver
     platform: POSTGRESQL
     continue-on-error: true
-    schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
     tomcat:
       max-active: 20
   jpa:
-      database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+      database-platform: org.hibernate.dialect.PostgreSQL94Dialect
       open-in-view: true
       generate-ddl: true
       show-sql: true
@@ -73,13 +75,13 @@ spring:
         ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
       properties:
         hibernate:
-          dialect: org.hibernate.dialect.PostgreSQL95Dialect
+          dialect: org.hibernate.dialect.PostgreSQL94Dialect
           globally_quoted_identifiers: true
           temp:
             use_jdbc_metadata_defaults: false
   session:
-    storeType: "jdbc"
-    #jdbc:
+    storeType: redis
+    #redis:
     initializer:
       enabled: true
   devtools:

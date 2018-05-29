@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.FetchType.LAZY;
 
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.AdresseEmbedded

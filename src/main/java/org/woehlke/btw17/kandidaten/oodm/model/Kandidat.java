@@ -21,9 +21,10 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(
-    name = "kandidat",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "kandidat"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_kandidat",columnNames = {"kandidat_key"})
     },
@@ -58,6 +59,7 @@ import static javax.persistence.FetchType.LAZY;
         @Index(name = "idx_kandidat_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_kandidat_instagram_url", columnList = "instagram"),
     }
+    */
 )
 @NamedQueries({
     @NamedQuery(
@@ -393,10 +395,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "parteikurz")
     private String parteikurz;
 
-    @Column(name = "vitakurz", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "vitakurz")
     private String vitakurz;
 
-    @Column(name = "veroeffentlichungspflichtiges", columnDefinition = "TEXT")
+    @Lob
+    @Column(name = "veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
     @SafeHtml

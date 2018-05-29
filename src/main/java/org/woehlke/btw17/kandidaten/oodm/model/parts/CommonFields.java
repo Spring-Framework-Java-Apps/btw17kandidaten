@@ -23,7 +23,8 @@ public class CommonFields implements Serializable {
     @Column(name="symbol_bild")
     private String symbolBild;
 
-    @Column(name="beschreibungs_text",columnDefinition = "TEXT")
+    @Lob
+    @Column(name="beschreibungs_text")
     private String beschreibungsText;
 
     @Enumerated(EnumType.STRING)

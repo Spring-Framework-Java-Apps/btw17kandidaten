@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.session.jdbc.config.annotation.web.http.JdbcHttpSessionConfiguration;
 
 import javax.sql.DataSource;
 
@@ -16,7 +15,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories({
     "org.woehlke.btw17.kandidaten.oodm.repositories"
 })
-public class DataSourceConfig extends JdbcHttpSessionConfiguration {
+public class DataSourceConfig {
 
     @Bean
     @Primary

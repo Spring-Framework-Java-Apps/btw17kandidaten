@@ -13,9 +13,10 @@ import javax.validation.Valid;
  */
 @Entity
 @Table(
-    name = "fraktion",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "fraktion"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_fraktion",columnNames = {"fraktion"})
     },
@@ -35,6 +36,7 @@ import javax.validation.Valid;
         @Index(name = "idx_fraktion_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_fraktion_instagram_url", columnList = "instagram")
     }
+    */
 )
 @NamedQueries({
     @NamedQuery(

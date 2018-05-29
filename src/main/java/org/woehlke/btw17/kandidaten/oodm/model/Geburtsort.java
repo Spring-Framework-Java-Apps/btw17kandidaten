@@ -14,9 +14,10 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "geburtsort",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "geburtsort"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     },
@@ -27,7 +28,7 @@ import javax.validation.constraints.NotNull;
         //
         @Index(name = "idx_geburtsort_geo_position", columnList = "google_maps_url,geo_longitude,geo_lattitude,geo_lattitude,geo_zoom"),
         //
-    }
+    }*/
 )
 @NamedQueries({
     @NamedQuery(

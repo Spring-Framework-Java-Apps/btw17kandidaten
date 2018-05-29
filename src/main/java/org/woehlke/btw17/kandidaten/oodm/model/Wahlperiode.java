@@ -14,9 +14,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(
-    name = "wahlperiode",
-    schema = "public"//,
-    //catalog = "information_schema"
+    name = "wahlperiode"//,
+    //schema = "public"//,
+    //catalog = "information_//schema"
 )
 @NamedQueries({
     @NamedQuery(

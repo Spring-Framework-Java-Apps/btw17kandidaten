@@ -11,8 +11,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 
 @Configuration
-@EnableSpringDataWebSupport
 @EnableWebSecurity
+@EnableSpringDataWebSupport
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 

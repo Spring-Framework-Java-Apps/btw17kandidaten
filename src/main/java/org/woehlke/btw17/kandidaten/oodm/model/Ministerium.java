@@ -12,9 +12,10 @@ import javax.validation.Valid;
  */
 @Entity
 @Table(
-    name = "ministerium",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "ministerium"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_ministerium",columnNames = {"ministerium"})
     },
@@ -36,7 +37,7 @@ import javax.validation.Valid;
         @Index(name = "idx_ministerium_abgeordnetenwatch", columnList = "abgeordnetenwatch"),
         @Index(name = "idx_ministerium_google_plus_url", columnList = "google_plus"),
         @Index(name = "idx_ministerium_instagram_url", columnList = "instagram"),
-    }
+    }*/
 )
 @NamedQueries({
     @NamedQuery(

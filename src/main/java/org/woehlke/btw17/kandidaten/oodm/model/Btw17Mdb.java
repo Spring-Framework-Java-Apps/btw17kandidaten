@@ -10,10 +10,9 @@ import java.util.Set;
 
 @Entity
 @Table(
-        name = "btw17_mdb_stammdaten",
-        schema = "public"//,
-        //catalog = "information_schema"
-
+        name = "btw17_mdb_stammdaten"//,
+        //schema = "public"//,
+        //catalog = "information_//schema"
 )
 @NamedQueries({
     @NamedQuery(
@@ -80,10 +79,12 @@ public class Btw17Mdb implements DomainObject {
     @Column
     private String parteikurz;
 
-    @Column(name="vitakurz",columnDefinition = "TEXT")
+    @Lob
+    @Column(name="vitakurz")
     private String vitakurz;
 
-    @Column(name="veroeffentlichungspflichtiges",columnDefinition = "TEXT")
+    @Lob
+    @Column(name="veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
     @ManyToMany(fetch=FetchType.LAZY,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})

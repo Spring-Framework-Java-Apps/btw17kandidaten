@@ -17,9 +17,10 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(
-    name = "agentur",
-    schema = "public",
-    //catalog = "information_schema",
+    name = "agentur"//,
+    //schema = "public",
+    //catalog = "information_//schema",
+    /*
     uniqueConstraints = {
         @UniqueConstraint(name="unique_agentur",columnNames = {"agentur"})
     },
@@ -33,6 +34,7 @@ import javax.validation.constraints.NotNull;
         @Index(name = "idx_agentur_adresse", columnList = "strasse,hausnummer,plz,ort,nation"),
         //
     }
+    */
 )
 @NamedQueries({
         @NamedQuery(
