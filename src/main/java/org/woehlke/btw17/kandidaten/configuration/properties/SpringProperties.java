@@ -48,7 +48,7 @@ public class SpringProperties {
         @NotNull
         private Boolean continueOnError;
 
-        @NotNull
+       // @NotNull
         private String schema;
 
         public String getDriverClassName() {
@@ -210,7 +210,7 @@ public class SpringProperties {
         @Validated
         public static class Initializer {
 
-            @NotNull
+        //    @NotNull
             private Boolean enabled;
 
             public Boolean getEnabled() {

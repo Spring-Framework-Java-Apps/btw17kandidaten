@@ -41,6 +41,10 @@ spring:
       password: secret
       repositories:
         enabled: true
+    redis:
+      host: localhost
+      password:
+      port: 6379
     jpa:
       repositories:
         enabled: true
@@ -64,6 +68,7 @@ spring:
     platform: POSTGRESQL
     continue-on-error: true
     #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    #schema: data.sql
     tomcat:
       max-active: 20
   jpa:
@@ -80,10 +85,10 @@ spring:
           temp:
             use_jdbc_metadata_defaults: false
   session:
+    redis:
+      initializer:
+        enabled: true
     storeType: redis
-    #redis:
-    initializer:
-      enabled: true
   devtools:
     livereload:
       enabled: true
