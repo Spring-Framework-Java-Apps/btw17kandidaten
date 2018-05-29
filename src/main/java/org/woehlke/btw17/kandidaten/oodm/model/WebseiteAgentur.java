@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "agentur",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_agentur",columnNames = {"agentur"})
     },

@@ -11,8 +11,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "btw17_wahlkreis",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="uk_btw17_wahlkreis",columnNames = {"wahlkreis_nummer","wahlkreis_name"}),
         @UniqueConstraint(name="uk_btw17_wahlkreis_wahlkreis_nummer",columnNames = {"wahlkreis_nummer"})

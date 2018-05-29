@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "geburtsort",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_geburtsort",columnNames = {"geburtsort"})
     },

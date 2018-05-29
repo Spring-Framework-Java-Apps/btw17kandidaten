@@ -13,21 +13,19 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "berufsgruppe",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_berufsgruppe",columnNames = {"berufsgruppe"})
     }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Berufsgruppe.getAllIds",
-                query = "select o.id from Berufsgruppe as o order by o.berufsgruppe"
-        ),
-        @NamedQuery(
-                name = "Berufsgruppe.getMaxId",
-                query = "select max(o.id) from Berufsgruppe as o"
-        )
+    @NamedQuery(
+        name = "Berufsgruppe.getAllIds",
+        query = "select o.id from Berufsgruppe as o order by o.berufsgruppe"
+    ),
+    @NamedQuery(
+        name = "Berufsgruppe.getMaxId",
+        query = "select max(o.id) from Berufsgruppe as o"
+    )
 })
 @EntityListeners(BerufsgruppeListener.class)
 public class Berufsgruppe implements DomainObject {

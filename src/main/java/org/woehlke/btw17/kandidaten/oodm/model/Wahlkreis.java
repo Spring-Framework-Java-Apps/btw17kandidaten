@@ -1,6 +1,5 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.springframework.context.annotation.Lazy;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlkreisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -15,8 +14,6 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(
     name = "wahlkreis",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_wahlkreis",columnNames = {"wahlkreis_id"})
     },
