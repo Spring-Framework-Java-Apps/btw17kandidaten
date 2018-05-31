@@ -60,14 +60,11 @@ spring:
   datasource:
     url: ${DATABASE_URL}
     jdbcUrl: ${DATABASE_URL}
-    #username: jdbc
-    #password: jdbcpwd
     username: kandidaten
     password: kandidatenpwd
     driver-class-name: org.postgresql.Driver
-    platform: POSTGRESQL
+    platform: postgresql
     continue-on-error: true
-    #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
     #schema: classpath:data.sql
     tomcat:
       max-active: 20
@@ -85,9 +82,9 @@ spring:
           temp:
             use_jdbc_metadata_defaults: false
   session:
-    redis:
-      initializer:
-        enabled: true
+    #redis:
+    initializer:
+      enabled: true
     storeType: redis
   devtools:
     livereload:
@@ -98,6 +95,8 @@ spring:
     enabled: true
     check-template-location: true
     cache: false
+  batch:
+    initialize-schema: always
 btw17:
   kandidaten:
     pageSize: 20
