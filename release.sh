@@ -2,9 +2,15 @@
 
 source conf.sh
 
-export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd'
+export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatenrelease?user=kandidatenrelease&password=kandidatenreleasepwd'
 
 ./mvnw clean install
+
+./mvnw clean spring-boot:run
+
+./mvnw clean spring-boot:run
+
+./mvnw clean spring-boot:run
 
 ./mvnw clean release:prepare
 
