@@ -1,8 +1,8 @@
 #!/bin/sh
 
-export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd'
-
 source conf.sh
+
+export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd'
 
 ./mvnw clean install
 
