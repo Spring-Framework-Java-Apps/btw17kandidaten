@@ -231,13 +231,12 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
         </dependency>
-        <!--
+
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>popper.js</artifactId>
         </dependency>
--->
-        <!--- spring boot -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
@@ -384,7 +383,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -518,7 +516,6 @@
                         <id>src-dependencies</id>
                         <phase>package</phase>
                         <goals>
-                            <!-- use copy-dependencies instead if you don't want to explode the sources -->
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
