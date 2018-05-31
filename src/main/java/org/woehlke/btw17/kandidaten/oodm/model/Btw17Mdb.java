@@ -10,9 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(
-        name = "btw17_mdb_stammdaten"//,
-        //schema = "public"//,
-        //catalog = "information_//schema"
+    name = "btw17_mdb_stammdaten"
 )
 @NamedQueries({
     @NamedQuery(

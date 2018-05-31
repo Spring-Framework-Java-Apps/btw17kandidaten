@@ -68,7 +68,7 @@ spring:
     platform: POSTGRESQL
     continue-on-error: true
     #schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
-    #schema: data.sql
+    schema: classpath:data.sql
     tomcat:
       max-active: 20
   jpa:
