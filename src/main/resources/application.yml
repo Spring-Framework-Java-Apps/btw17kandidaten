@@ -16,7 +16,7 @@ server:
     enabled: true
     min-response-size: 2048
 hibernate:
-  dialect: org.hibernate.dialect.PostgreSQL94Dialect
+  dialect: org.hibernate.dialect.PostgreSQL95Dialect
 info:
   application:
     artifactId: @project.artifactId@
@@ -65,7 +65,6 @@ spring:
     driver-class-name: org.postgresql.Driver
     platform: postgresql
     continue-on-error: true
-    #schema: classpath:data.sql
     tomcat:
       max-active: 20
   jpa:
@@ -77,7 +76,7 @@ spring:
         ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
       properties:
         hibernate:
-          dialect: org.hibernate.dialect.PostgreSQL94Dialect
+          dialect: org.hibernate.dialect.PostgreSQL95Dialect
           globally_quoted_identifiers: true
           temp:
             use_jdbc_metadata_defaults: false
