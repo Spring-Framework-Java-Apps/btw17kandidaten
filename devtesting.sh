@@ -2,6 +2,8 @@
 
 source conf.sh
 
+export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
+
 psql -U kandidatentest < etc/drop-tables.sql
 
 #psql -c 'DROP DATABASE kandidatentest;' -U postgres

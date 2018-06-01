@@ -14,7 +14,7 @@ export BTW17_JPA_HIBERNATE_DDL_AUTO=update
 
 ./mvnw clean spring-boot:run
 
-./mvnw clean release:prepare
+echo "./mvnw clean release:prepare"
 
 echo "./mvnw release:perform"
 
