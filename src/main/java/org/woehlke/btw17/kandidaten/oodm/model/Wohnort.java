@@ -25,14 +25,14 @@ import javax.validation.Valid;
     }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Wohnort.getAllIds",
-                query = "select o.id from Wohnort as o order by o.wohnort"
-        ),
-        @NamedQuery(
-                name = "Wohnort.getMaxId",
-                query = "select max(o.id) from Wohnort as o"
-        )
+    @NamedQuery(
+        name = "Wohnort.getAllIds",
+        query = "select o.id from Wohnort as o order by o.wohnort"
+    ),
+    @NamedQuery(
+        name = "Wohnort.getMaxId",
+        query = "select max(o.id) from Wohnort as o"
+    )
 })
 @EntityListeners(WohnortListener.class)
 public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {

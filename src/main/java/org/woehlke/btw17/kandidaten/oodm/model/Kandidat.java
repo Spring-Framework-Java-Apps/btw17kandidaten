@@ -498,12 +498,12 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Valid
     @Embedded
     @AssociationOverrides({
-            @AssociationOverride(
-                    name = "agenturen",
-                    joinTable = @JoinTable(
-                            name = "kandidat_agentur"
-                    )
+        @AssociationOverride(
+            name = "agenturen",
+            joinTable = @JoinTable(
+                name = "kandidat_agentur"
             )
+        )
     })
     private Webseite webseite = new Webseite();
 
