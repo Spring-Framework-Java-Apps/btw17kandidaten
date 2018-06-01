@@ -19,14 +19,14 @@ import javax.validation.constraints.NotNull;
     }
 )
 @NamedQueries({
-        @NamedQuery(
-                name = "Beruf.getAllIds",
-                query = "select o.id from Beruf as o order by o.beruf"
-        ),
-        @NamedQuery(
-                name = "Beruf.getMaxId",
-                query = "select max(o.id) from Beruf as o"
-        )
+    @NamedQuery(
+        name = "Beruf.getAllIds",
+        query = "select o.id from Beruf as o order by o.beruf"
+    ),
+    @NamedQuery(
+        name = "Beruf.getMaxId",
+        query = "select max(o.id) from Beruf as o"
+    )
 })
 @EntityListeners(BerufListener.class)
 public class Beruf implements DomainObject {

@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(
-    name = "btw17_mdb_stammdaten"
+        name = "btw17_mdb_stammdaten"
 )
 @NamedQueries({
     @NamedQuery(

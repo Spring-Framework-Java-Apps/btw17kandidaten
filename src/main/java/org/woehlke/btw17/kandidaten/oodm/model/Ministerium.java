@@ -13,8 +13,6 @@ import javax.validation.Valid;
 @Entity
 @Table(
     name = "ministerium",
-    //schema = "public",
-    //catalog = "information_//schema",
     uniqueConstraints = {
         @UniqueConstraint(name="unique_ministerium",columnNames = {"ministerium"})
     },
