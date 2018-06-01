@@ -8,7 +8,7 @@ echo ' '
 echo '-- Empty Tables'
 echo '-- etc/empty-tables.sql'
 echo '--' > ../src/main/resources/data.sql
-echo '-- This data.sql File is build by etc/build-db-data-import-file.sh' >> ../src/main/resources/data.sql
+echo '-- This data-postgresql.sql File is build by etc/build-db-data-import-file.sh' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
 echo '-- Empty Tables' >> ../src/main/resources/data.sql
 echo '-- etc/empty-tables.sql' >> ../src/main/resources/data.sql
@@ -312,8 +312,8 @@ echo '-- etc/3nf/data/insert-data-kandidat.sql' >> ../src/main/resources/data.sq
 echo '--' >> ../src/main/resources/data.sql
 
 cat ./3nf/data/insert-data-kandidat.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
-#cat ./3nf/data/insert-data-kandidat2.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
-#cat ./3nf/data/insert-data-kandidat3.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data.sql
+#cat ./3nf/data/insert-data-kandidat2.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data-postgresql.sql
+#cat ./3nf/data/insert-data-kandidat3.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" | grep "INSERT INTO kandidat " >> ../src/main/resources/data-postgresql.sql
 
 
 echo ' '

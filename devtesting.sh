@@ -2,7 +2,9 @@
 
 source conf.sh
 
-export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
+export DATASOURCE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
+export DATASOURCE_USERNAME=kandidatentest
+export DATASOURCE_PASSWORD=kandidatentestpwd
 
 psql -U kandidatentest < etc/drop-tables.sql
 

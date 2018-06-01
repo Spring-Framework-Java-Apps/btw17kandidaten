@@ -55,7 +55,7 @@ do
     pg_dump -U $DATABASE --table=$i $PG_DUMP_COMMON_PARAMETER --encoding=$ENCODING $DATABASE | grep "INSERT INTO $i " | perl -pe  's/\(([0-9]{3}),/(00$1,/g' | perl -pe  's/\(([0-9]{2}),/(000$1,/g' | perl -pe  's/\(([0-9]{1}),/(0000$1,/g' | perl -pe  's/\(([0-9]{4}),/(0$1,/g' | perl -pe  's/\(([0-9]{5}),/($1,/g' | sort > 3nf/data/insert-data-$i.sql
 done
 
-echo "Start building new Version of: src/main/resources/data.sql"
+echo "Start building new Version of: src/main/resources/data-postgresql.sql"
 
 ./build-db-data-import-file.sh
 

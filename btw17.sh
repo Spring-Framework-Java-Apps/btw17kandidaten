@@ -4,6 +4,10 @@ source conf.sh
 
 psql -U kandidatentest < etc/drop-tables.sql
 
+export DATASOURCE_URL='jdbc:postgresql://localhost:5432/kandidatentest?user=kandidatentest&password=kandidatentestpwd'
+export DATASOURCE_USERNAME=kandidatentest
+export DATASOURCE_PASSWORD=kandidatentestpwd
+
 #psql -c 'DROP DATABASE kandidatentest;' -U postgres
 #psql -c 'DROP USER kandidatentest;' -U postgres
 #psql -c 'DROP ROLE kandidatentest;' -U postgres
