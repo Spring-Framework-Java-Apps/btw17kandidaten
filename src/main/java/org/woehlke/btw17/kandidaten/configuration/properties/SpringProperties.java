@@ -48,9 +48,6 @@ public class SpringProperties {
         @NotNull
         private Boolean continueOnError;
 
-       // @NotNull
-        private String schema;
-
         public String getDriverClassName() {
             return driverClassName;
         }
@@ -83,13 +80,6 @@ public class SpringProperties {
             this.continueOnError = continueOnError;
         }
 
-        public String getSchema() {
-            return schema;
-        }
-
-        public void setSchema(String schema) {
-            this.schema = schema;
-        }
     }
 
     @Validated
@@ -210,7 +200,7 @@ public class SpringProperties {
         @Validated
         public static class Initializer {
 
-        //    @NotNull
+            @NotNull
             private Boolean enabled;
 
             public Boolean getEnabled() {
@@ -332,7 +322,6 @@ public class SpringProperties {
         outputLines.add("spring.datasource.driverClassName =                   "+this.getDatasource().getDriverClassName());
         outputLines.add("spring.datasource.platform =                          "+this.getDatasource().getPlatform());
         outputLines.add("spring.datasource.continue-on-error =                 "+this.getDatasource().getContinueOnError());
-        outputLines.add("spring.datasource.schema =                            "+this.getDatasource().getSchema());
         outputLines.add("spring.datasource.url =                               "+this.getDatasource().getUrl());
         StringBuffer sb = new StringBuffer();
         for(String outputLine:outputLines){
