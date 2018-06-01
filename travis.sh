@@ -1,4 +1,5 @@
-#!/opt/local/bin/bash
+#!/usr/bin/env bash
+
 
 source conf.sh
 
