@@ -60,7 +60,10 @@ public class WohnortController extends AbstractController {
         String msvalidateKey = kandidatenProperties.getMsvalidateKey();
         String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
         String facebookAppId = kandidatenProperties.getFacebookAppId();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol,
+            googleMapsApiKey, googleAnalyticsKey, pagerUrl,
+            twitterCardSite,twitterCardCreator,imageCss,
+            msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         Page<Wohnort> allWohnortPage =  wohnortService.getAll(pageable);
         model.addAttribute("wohnorte", allWohnortPage);
@@ -94,7 +97,10 @@ public class WohnortController extends AbstractController {
             String msvalidateKey = kandidatenProperties.getMsvalidateKey();
             String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
             String facebookAppId = kandidatenProperties.getFacebookAppId();
-            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+            PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol,
+                googleMapsApiKey, googleAnalyticsKey, pagerUrl,
+                twitterCardSite,twitterCardCreator,imageCss,
+                msvalidateKey,googleSiteVerification,facebookAppId);
             model.addAttribute("pageContent",pageContent);
             model.addAttribute("wohnort",wohnort);
             Page<Kandidat> kandidatenPage  = kandidatService.findByWohnort(wohnort,pageable);

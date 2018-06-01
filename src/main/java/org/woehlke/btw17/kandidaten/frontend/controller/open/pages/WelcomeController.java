@@ -31,7 +31,10 @@ public class WelcomeController extends AbstractController {
         String msvalidateKey = kandidatenProperties.getMsvalidateKey();
         String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
         String facebookAppId = kandidatenProperties.getFacebookAppId();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle,
+            pageSymbol, googleMapsApiKey, googleAnalyticsKey,
+            pagerUrl,twitterCardSite,twitterCardCreator,imageCss,
+            msvalidateKey,googleSiteVerification,facebookAppId);
         model.addAttribute("pageContent",pageContent);
         return "welcome/welcome";
     }
