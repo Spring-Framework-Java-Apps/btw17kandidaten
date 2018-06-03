@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.LandesListeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFieldsEmbedded;
-import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.model.commons.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.Valid;

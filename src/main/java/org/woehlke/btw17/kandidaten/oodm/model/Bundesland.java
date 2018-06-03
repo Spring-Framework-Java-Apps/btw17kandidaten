@@ -1,6 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
-import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.model.commons.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BundeslandListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;

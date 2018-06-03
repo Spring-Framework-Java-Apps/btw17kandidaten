@@ -1,6 +1,5 @@
 package org.woehlke.btw17.kandidaten.oodm.service;
 
-import org.woehlke.btw17.kandidaten.common.Btw17Service;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;

@@ -1,9 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import org.woehlke.btw17.kandidaten.oodm.model.commons.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufListener;
-import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
