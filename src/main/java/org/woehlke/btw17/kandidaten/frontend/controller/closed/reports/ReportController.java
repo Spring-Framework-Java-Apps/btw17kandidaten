@@ -15,13 +15,13 @@ import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.ReportOverview;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
-import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.service.KandidatReportService;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.db.service.KandidatReportService;
 
 
-import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
-import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
-import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
+import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_DEFAULT_SORT;
+import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_SIZE;
 
 @Controller
 @RequestMapping("/report")

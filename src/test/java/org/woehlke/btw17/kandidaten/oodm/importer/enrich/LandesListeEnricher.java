@@ -22,9 +22,9 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
-import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
-import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17MdbService;
+import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17WahlperiodeService;
+import org.woehlke.btw17.kandidaten.oodm.db.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -20,7 +20,7 @@ import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
 import org.woehlke.btw17.kandidaten.frontend.controller.closed.data.KandidatFlatController;
-import org.woehlke.btw17.kandidaten.oodm.service.Btw17KandidatFlatService;
+import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17KandidatFlatService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

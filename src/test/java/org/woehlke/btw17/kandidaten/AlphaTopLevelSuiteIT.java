@@ -13,7 +13,7 @@ import org.woehlke.btw17.kandidaten.frontend.controller.closed.reports.ReportCon
 import org.woehlke.btw17.kandidaten.frontend.controller.open.login.LoginControllerTest;
 import org.woehlke.btw17.kandidaten.oodm.importer.service.Btw17KandidatFlatServiceTest;
 import org.woehlke.btw17.kandidaten.oodm.importer.service.Btw17WahlkreisServiceTest;
-import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.oodm.db.service.*;
 
 @Suite.SuiteClasses({
         WelcomeControllerTest.class,

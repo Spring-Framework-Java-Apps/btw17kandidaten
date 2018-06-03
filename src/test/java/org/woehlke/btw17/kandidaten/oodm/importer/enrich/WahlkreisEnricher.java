@@ -19,8 +19,8 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
-import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
-import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.db.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.db.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
@@ -28,21 +28,21 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.model.Btw17Ergebnis;
-import org.woehlke.btw17.kandidaten.oodm.model.Btw17Strukturdaten;
-import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlkreis;
-import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
-import org.woehlke.btw17.kandidaten.oodm.model.Wahlkreis;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.Strukturdaten;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.WahlergebnisseBtw17;
-import org.woehlke.btw17.kandidaten.oodm.service.*;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Btw17Ergebnis;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Btw17Strukturdaten;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Btw17Wahlkreis;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Bundesland;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Wahlkreis;
+import org.woehlke.btw17.kandidaten.oodm.db.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.db.model.parts.Strukturdaten;
+import org.woehlke.btw17.kandidaten.oodm.db.model.parts.WahlergebnisseBtw17;
+import org.woehlke.btw17.kandidaten.oodm.db.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
-import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
+import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(

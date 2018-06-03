@@ -12,11 +12,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
-import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
-import org.woehlke.btw17.kandidaten.oodm.model.Partei;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.service.ListeParteiService;
-import org.woehlke.btw17.kandidaten.oodm.service.ParteiService;
+import org.woehlke.btw17.kandidaten.oodm.db.model.ListePartei;
+import org.woehlke.btw17.kandidaten.oodm.db.model.Partei;
+import org.woehlke.btw17.kandidaten.oodm.db.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.db.service.ListeParteiService;
+import org.woehlke.btw17.kandidaten.oodm.db.service.ParteiService;
 
 
 @RunWith(SpringRunner.class)

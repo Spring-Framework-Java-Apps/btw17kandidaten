@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableJpaRepositories({
-    "org.woehlke.btw17.kandidaten.oodm.repositories"
+    "org.woehlke.btw17.kandidaten.oodm.db.repositories"
 })
 public class DataSourceConfig {
 
