@@ -58,10 +58,10 @@ spring:
     exceptiontranslation:
       enabled: true
   datasource:
-    url: ${DATABASE_URL}
-    jdbcUrl: ${DATABASE_URL}
-    username: kandidaten
-    password: kandidatenpwd
+    url: ${DATASOURCE_URL}
+    jdbcUrl: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     platform: postgresql
     continue-on-error: true
@@ -209,8 +209,8 @@ spring:
 spring:
   profiles: travis
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
-    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    url: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=kandidatentravis&password=kandidatentravispwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatentravis?user=kandidatentravis&password=kandidatentravispwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -226,8 +226,8 @@ btw17:
 spring:
   profiles: releasing
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
-    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    url: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=kandidatenrelease&password=kandidatenreleasepwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatenrelease?user=kandidatenrelease&password=kandidatenreleasepwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false
@@ -243,8 +243,8 @@ btw17:
 spring:
   profiles: devtest
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
-    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=jdbc&password=jdbcpwd&schema=public&catalog=information_schema'
+    url: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=kandidatendevtest&password=kandidatendevtestpwd&schema=public&catalog=information_schema'
+    jdbcUrl: 'jdbc:postgresql://localhost:5432/kandidatendevtest?user=kandidatendevtest&password=kandidatendevtestpwd&schema=public&catalog=information_schema'
     continue-on-error: true
   jpa:
     show-sql: false

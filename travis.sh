@@ -3,9 +3,14 @@
 
 source conf.sh
 
+export DATASOURCE_URL='jdbc:postgresql://localhost:5432/kandidatentravis?user=kandidatentravis&password=kandidatentravispwd'
+
+export DATASOURCE_USERNAME=kandidatentravis
+export DATASOURCE_PASSWORD=kandidatentravispwd
+
 export BTW17_JPA_HIBERNATE_DDL_AUTO=drop-create
 
-export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidatentravis?user=kandidatentravis&password=kandidatentravispwd'
+psql -U kandidatentravis < etc/drop-tables.sql
 
 function database_setup () {
     psql -U kandidatentravis < etc/drop-tables.sql
