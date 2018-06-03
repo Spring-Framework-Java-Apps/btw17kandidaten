@@ -3,6 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Religion;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
@@ -298,7 +299,7 @@ import static javax.persistence.FetchType.LAZY;
     )
 })
 @EntityListeners(KandidatListener.class)
-public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded {
+public class Kandidat implements JpaDomainObject,WebseiteEmbedded,OnlineStrategieEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.SafeHtml;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WebseiteAgenturListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -43,7 +44,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(WebseiteAgenturListener.class)
-public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
+public class WebseiteAgentur implements JpaDomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     private static final long serialVersionUID = 1L;
 

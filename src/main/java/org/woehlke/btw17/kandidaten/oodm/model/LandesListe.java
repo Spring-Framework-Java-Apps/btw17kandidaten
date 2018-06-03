@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.LandesListeListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.CommonFieldsEmbedded;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -55,7 +55,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(LandesListeListener.class)
-public class LandesListe implements DomainObject,CommonFieldsEmbedded {
+public class LandesListe implements JpaDomainObject,CommonFieldsEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

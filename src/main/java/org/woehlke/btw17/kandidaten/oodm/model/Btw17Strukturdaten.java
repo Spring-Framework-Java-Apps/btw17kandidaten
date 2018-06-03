@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17StrukturdatenListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -90,7 +90,7 @@ import java.util.List;
     )
 })
 @EntityListeners(Btw17StrukturdatenListener.class)
-public class Btw17Strukturdaten implements DomainObject {
+public class Btw17Strukturdaten implements JpaDomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

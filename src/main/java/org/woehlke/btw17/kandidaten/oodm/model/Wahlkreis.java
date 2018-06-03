@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlkreisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -37,7 +38,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(WahlkreisListener.class)
-public class Wahlkreis implements DomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
+public class Wahlkreis implements JpaDomainObject,GeoPositionEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WohnortListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -35,7 +36,7 @@ import javax.validation.Valid;
     )
 })
 @EntityListeners(WohnortListener.class)
-public class Wohnort implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {
+public class Wohnort implements JpaDomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,GeoPositionEmbedded {
 
     private static final long serialVersionUID = 1L;
 

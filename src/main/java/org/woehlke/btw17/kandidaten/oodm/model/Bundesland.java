@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BundeslandListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
@@ -44,7 +45,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(BundeslandListener.class)
-public class Bundesland implements DomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
+public class Bundesland implements JpaDomainObject,WebseiteEmbedded,OnlineStrategieEmbedded,CommonFieldsEmbedded,StrukturdatenEmbedded,WahlergebnisseBtw17Embedded {
 
     private static final long serialVersionUID = 1L;
 

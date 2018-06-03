@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17WahlperiodeListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 
@@ -22,7 +22,7 @@ import javax.persistence.*;
     )
 })
 @EntityListeners(Btw17WahlperiodeListener.class)
-public class Btw17Wahlperiode implements DomainObject {
+public class Btw17Wahlperiode implements JpaDomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 
 
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.AusschussListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -36,7 +37,7 @@ import javax.validation.Valid;
     )
 })
 @EntityListeners(AusschussListener.class)
-public class Ausschuss implements DomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
+public class Ausschuss implements JpaDomainObject,CommonFieldsEmbedded,OnlineStrategieEmbedded {
 
 
     private static final long serialVersionUID = 1L;

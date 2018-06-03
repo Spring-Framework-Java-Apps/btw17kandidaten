@@ -4,7 +4,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlperiodeListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.Institution;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded;
 
@@ -37,7 +37,7 @@ import java.time.LocalDate;
     )
 })
 @EntityListeners(WahlperiodeListener.class)
-public class Wahlperiode implements DomainObject,InstitutionEmbedded {
+public class Wahlperiode implements JpaDomainObject,InstitutionEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

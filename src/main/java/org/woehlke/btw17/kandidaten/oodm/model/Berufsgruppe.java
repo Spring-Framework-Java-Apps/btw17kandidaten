@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.BerufsgruppeListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,7 +28,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(BerufsgruppeListener.class)
-public class Berufsgruppe implements DomainObject {
+public class Berufsgruppe implements JpaDomainObject {
 
     private static final long serialVersionUID = 1L;
 

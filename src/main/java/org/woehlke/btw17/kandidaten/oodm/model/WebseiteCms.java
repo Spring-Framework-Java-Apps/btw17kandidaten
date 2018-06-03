@@ -2,6 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WebseiteCmsListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -47,7 +48,7 @@ import javax.validation.constraints.NotNull;
     )
 })
 @EntityListeners(WebseiteCmsListener.class)
-public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
+public class WebseiteCms implements JpaDomainObject,AdresseEmbedded,OnlineStrategieEmbedded,GeoPositionEmbedded,CommonFieldsEmbedded {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,7 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17MdbListener;
-import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
+import org.woehlke.btw17.kandidaten.common.JpaDomainObject;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -29,7 +29,7 @@ import java.util.Set;
     )
 })
 @EntityListeners(Btw17MdbListener.class)
-public class Btw17Mdb implements DomainObject {
+public class Btw17Mdb implements JpaDomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
