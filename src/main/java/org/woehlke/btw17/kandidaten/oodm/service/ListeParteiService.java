@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.service;
 
 
+import org.woehlke.btw17.kandidaten.common.Btw17Service;
 import org.woehlke.btw17.kandidaten.oodm.model.ListePartei;
 
 public interface ListeParteiService extends Btw17Service<ListePartei> {
