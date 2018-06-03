@@ -60,7 +60,10 @@ public class ErrorController extends AbstractErrorController {
         String msvalidateKey = kandidatenProperties.getMsvalidateKey();
         String googleSiteVerification = kandidatenProperties.getGoogleSiteVerification();
         String facebookAppId = kandidatenProperties.getFacebookAppId();
-        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol, googleMapsApiKey, googleAnalyticsKey, pagerUrl,twitterCardSite,twitterCardCreator,imageCss, msvalidateKey,googleSiteVerification,facebookAppId);
+        PageContent pageContent = new PageContent(pageTitle, pageSubTitle, pageSymbol,
+            googleMapsApiKey, googleAnalyticsKey, pagerUrl,
+            twitterCardSite,twitterCardCreator,imageCss,
+            msvalidateKey,googleSiteVerification,facebookAppId);
         model.put("pageContent",pageContent);
         model.put("ex",exception);
         ModelAndView modelAndView = resolveErrorView(request, response, status, Collections.unmodifiableMap(model));
