@@ -1,13 +1,13 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model;
 
+
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.woehlke.btw17.kandidaten.oodm.db.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.db.model.parts.CommonFields;
-import org.woehlke.btw17.kandidaten.oodm.db.model.parts.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.db.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.db.model.parts.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
@@ -15,55 +15,67 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import javax.persistence.*;
 import javax.validation.Valid;
 
-
 @Setter
 @Getter
 @NodeEntity
-public class Wohnort implements GraphDomainObject {
+public class ListePartei implements GraphDomainObject {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    //@Column
-    private String wohnort;
 
-    //@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
-    private Bundesland bundesland;
+
+    @Column(name="listepartei")
+    private String listePartei;
+
+    @Column(name="listepartei_lang")
+    private String listeParteiLang;
+
+    @URL
+    @Column(name="wahlprogramm")
+    private String wahlprogramm;
+
+    @URL
+    @Column(name="parteiprogramm")
+    private String parteiprogramm;
+
+    @URL
+    @Column(name="bundeszentrale_politische_bildung")
+    private String bundeszentralePolitischeBildung;
 
     @Valid
-    //@Embedded
+    @Embedded
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
     @Valid
-    //@Embedded
+    @Embedded
     private CommonFields commonFields = new CommonFields();
 
     @Valid
-    //@Embedded
-    private GeoPosition geoPosition = new GeoPosition();
-
-    @Valid
-    /*
     @Embedded
     @AssociationOverrides({
         @AssociationOverride(
             name = "agenturen",
             joinTable = @JoinTable(
-                name = "wohnort_agentur"
+                name = "listepartei_agentur"
             )
         )
-    })*/
+    })
     private Webseite webseite = new Webseite();
 
-    //@Transient
+
+    @Transient
     @Override
     public String getName() {
-        return wohnort;
+        StringBuilder sb = new StringBuilder();
+        sb.append(listePartei);
+        sb.append(" - ");
+        sb.append(listeParteiLang);
+        return sb.toString();
     }
 
-    //@Transient
+    @Transient
     @Override
     public String getUniqueId() {
         return id + ":"+this.getName();
@@ -73,6 +85,5 @@ public class Wohnort implements GraphDomainObject {
     public Long getId() {
         return id;
     }
-
 
 }

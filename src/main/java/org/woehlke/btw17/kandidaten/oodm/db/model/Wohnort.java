@@ -88,15 +88,16 @@ public class Wohnort implements JpaDomainObject,WebseiteEmbedded,OnlineStrategie
         return id + ":"+this.getName();
     }
 
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+
     public Wohnort() {
         onlineStrategie = new OnlineStrategie();
         commonFields = new CommonFields();
         geoPosition = new GeoPosition();
-    }
-
-    @Override
-    public Long getId() {
-        return id;
     }
 
     public void setId(Long id) {
