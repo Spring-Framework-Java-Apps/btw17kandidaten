@@ -25,14 +25,14 @@ import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.db.model.*;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.BundeslandEnum;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.InstitutionArt;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.Mandatsart;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.Religion;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17MdbService;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17WahlperiodeService;
-import org.woehlke.btw17.kandidaten.oodm.db.service.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.InstitutionArt;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Mandatsart;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Religion;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17MdbService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlperiodeService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
 import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import java.time.LocalDate;
@@ -41,8 +41,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.FIRST_PAGE_NUMBER;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_SIZE;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE_SIZE;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(

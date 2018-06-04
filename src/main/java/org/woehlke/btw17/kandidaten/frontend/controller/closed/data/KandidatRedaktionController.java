@@ -22,21 +22,21 @@ import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
-import org.woehlke.btw17.kandidaten.oodm.db.model.*;
-import org.woehlke.btw17.kandidaten.oodm.db.service.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.FIRST_PAGE_NUMBER;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_DEFAULT_SORT;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_SIZE;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE_DEFAULT_SORT;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE_SIZE;
 
 
 /**
- * @see org.woehlke.btw17.kandidaten.oodm.db.model.Kandidat
+ * @see org.woehlke.btw17.kandidaten.oodm.jpa.model.Kandidat
  *
  * @see org.woehlke.btw17.kandidaten.frontend.controller.open.data.GeburtsjahrController
  * @see org.woehlke.btw17.kandidaten.frontend.controller.open.data.MdBController

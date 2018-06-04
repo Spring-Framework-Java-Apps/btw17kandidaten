@@ -10,9 +10,9 @@ import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenPropertie
 import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.frontend.model.ReportOverview;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17MdbService;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17WahlperiodeService;
-import org.woehlke.btw17.kandidaten.oodm.db.service.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17MdbService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlperiodeService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
 
 import java.util.ArrayList;
 import java.util.List;

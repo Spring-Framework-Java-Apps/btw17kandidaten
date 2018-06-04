@@ -15,14 +15,14 @@ import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
-import org.woehlke.btw17.kandidaten.oodm.db.model.Btw17KandidatFlat;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17KandidatFlatService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17KandidatFlat;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17KandidatFlatService;
 
 import javax.persistence.EntityNotFoundException;
 
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.FIRST_PAGE_NUMBER;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_DEFAULT_SORT;
-import static org.woehlke.btw17.kandidaten.oodm.db.service.KandidatService.PAGE_SIZE;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.FIRST_PAGE_NUMBER;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE_DEFAULT_SORT;
+import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE_SIZE;
 
 @Controller
 @RequestMapping("/kandidatflat")

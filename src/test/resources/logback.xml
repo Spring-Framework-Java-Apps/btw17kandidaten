@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model.listener" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model.parts" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model.bundestag" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model.bundestag.xml" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.model.bundeswahlleiter" level="DEBUG" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.repositories" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.repositories.impl" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.service" level="WARN" />
-    <logger name="org.woehlke.btw17.kandidaten.oodm.db.service.impl" level="INFO" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model.listener" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model.parts" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model.bundestag" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model.bundestag.xml" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.model.bundeswahlleiter" level="DEBUG" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.repositories" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.repositories.impl" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.service" level="WARN" />
+    <logger name="org.woehlke.btw17.kandidaten.oodm.jpa.service.impl" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.content" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.data" level="INFO" />
     <logger name="org.woehlke.btw17.kandidaten.frontend.controller.open.errors" level="INFO" />

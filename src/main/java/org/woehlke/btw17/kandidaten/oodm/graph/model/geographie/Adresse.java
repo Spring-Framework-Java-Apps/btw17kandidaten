@@ -6,7 +6,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.woehlke.btw17.kandidaten.oodm.db.model.Bundesland;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 import javax.persistence.Column;

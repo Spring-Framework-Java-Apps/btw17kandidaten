@@ -3,11 +3,9 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.regierung;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.db.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.db.model.parts.*;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
-
-import javax.validation.Valid;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;

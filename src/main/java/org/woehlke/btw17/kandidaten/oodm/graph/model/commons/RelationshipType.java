@@ -30,4 +30,6 @@ public interface RelationshipType {
     String REDAKTION = "REDAKTION";
 
     String LOCATION = "LOCATION";
+
+    String SUB_ORGANISATION_GEOGRAPHISCH =  "Partei_Gliederung_nach_Bundesland";
 }

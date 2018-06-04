@@ -16,14 +16,14 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
-import org.woehlke.btw17.kandidaten.oodm.db.model.Btw17Wahlbewerber;
-import org.woehlke.btw17.kandidaten.oodm.db.service.Btw17WahlbewerberService;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlbewerber;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlbewerberService;
 
 import java.io.BufferedReader;
 import java.io.File;

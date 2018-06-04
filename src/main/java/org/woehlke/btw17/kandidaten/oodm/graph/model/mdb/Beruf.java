@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 import javax.validation.constraints.NotNull;

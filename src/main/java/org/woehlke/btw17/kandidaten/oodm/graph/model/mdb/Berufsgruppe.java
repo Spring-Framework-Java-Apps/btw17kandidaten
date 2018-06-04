@@ -6,7 +6,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
-import org.woehlke.btw17.kandidaten.oodm.db.model.enums.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 import javax.validation.constraints.NotNull;
