@@ -1,4 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.webseite;
 
-public interface TechnologieService {
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainService;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Technologie;
+
+public interface TechnologieService extends GraphDomainService<Technologie> {
 }

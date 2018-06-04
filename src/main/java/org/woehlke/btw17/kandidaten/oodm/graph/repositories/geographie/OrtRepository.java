@@ -1,4 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.repositories.geographie;
 
-public interface OrtRepository {
+import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainRepository;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Ort;
+
+@Repository
+public interface OrtRepository extends GraphDomainRepository<Ort> {
 }
