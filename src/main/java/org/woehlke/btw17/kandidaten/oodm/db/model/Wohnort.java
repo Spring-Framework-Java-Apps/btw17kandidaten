@@ -195,7 +195,7 @@ public class Wohnort implements JpaDomainObject,WebseiteEmbedded,OnlineStrategie
 
     @Override
     public String toString() {
-        return "Wohnort{" +
+        return "Ort{" +
                 "id=" + id +
                 ", wohnort='" + wohnort + '\'' +
                 ", bundesland=" + bundesland +

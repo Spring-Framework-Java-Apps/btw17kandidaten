@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.importer.enrich.*;
         ParteiEnricher.class,
         WahlkreisEnricher.class,
         WahlperiodeEnricher.class,
-        WohnortEnricher.class//,
+        OrtEnricher.class//,
         //KandidatEnricher.class
 
 })

@@ -1,22 +1,23 @@
-package org.woehlke.btw17.kandidaten.oodm.graph.model;
+package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Strukturdaten;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-//import javax.validation.Valid;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.WAHLKREIS_ORT;
+
 
 @Setter
 @Getter
 @NodeEntity
-public class Partei implements GraphDomainObject {
+public class Wahlkreis implements GraphDomainObject {
 
     @Id
     @GeneratedValue
@@ -29,30 +30,27 @@ public class Partei implements GraphDomainObject {
     @Property(name="wahlkreis_name")
     private String wahlkreisName;
 
-    //@Embedded
-    //@Valid
+    @Relationship(type = WAHLKREIS_ORT)
+    private Ort ort;
+
+    @Relationship(type = LOCATION)
+    private Bundesland bundesland = new Bundesland();
+
+    @Valid
     @Relationship
     private GeoPosition geoPosition = new GeoPosition();
 
-    //@Embedded
-    //@Valid
+    @Valid
     @Relationship
     private CommonFields commonFields = new CommonFields();
 
-    //@Embedded
-    //@Valid
+    @Valid
     @Relationship
     private Strukturdaten strukturdaten = new Strukturdaten();
 
-    //@Embedded
-    //@Valid
+    @Valid
     @Relationship
     private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
-
-    @Relationship(type="Partei_Gliederung_nach_Bundesland", direction=Relationship.OUTGOING)
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_bundesland", nullable = true, updatable = true)
-    private Bundesland bundesland;
 
     @Override
     public String getName() {
@@ -61,7 +59,7 @@ public class Partei implements GraphDomainObject {
 
     @Override
     public String getUniqueId() {
-        return id + ":"+this.getName();
+        return this.getName()+" "+id;
     }
 
     public Long getId() {

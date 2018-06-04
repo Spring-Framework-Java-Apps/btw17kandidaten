@@ -33,9 +33,9 @@ import org.woehlke.btw17.kandidaten.oodm.db.service.*;
         MinisteriumControllerTest.class,
         ParteiControllerTest.class,
         WahlkreisControllerTest.class,
-        WohnortControllerTest.class,
-        WebseiteAgenturControllerTest.class,
-        WebseiteCmsControllerTest.class,
+        OrtControllerTest.class,
+        AgenturControllerTest.class,
+        CmsControllerTest.class,
         KandidatControllerTest.class,
 
         LoginControllerTest.class,
@@ -51,9 +51,9 @@ import org.woehlke.btw17.kandidaten.oodm.db.service.*;
         MinisteriumRedaktionControllerTest.class,
         ParteiRedaktionControllerTest.class,
         WahlkreisRedaktionControllerTest.class,
-        WebseiteAgenturRedaktionControllerTest.class,
-        WebseiteCmsRedaktionControllerTest.class,
-        WohnortRedaktionControllerTest.class,
+        AgenturRedaktionControllerTest.class,
+        CmsRedaktionControllerTest.class,
+        OrtRedaktionControllerTest.class,
 
         SucheServiceTest.class,
         AusschussServiceTest.class,
@@ -66,9 +66,9 @@ import org.woehlke.btw17.kandidaten.oodm.db.service.*;
         MinisteriumServiceTest.class,
         ParteiServiceTest.class,
         WahlkreisServiceTest.class,
-        WohnortServiceTest.class,
-        WebseiteAgenturServiceTest.class,
-        WebseiteCmsServiceTest.class,
+        OrtServiceTest.class,
+        AgenturServiceTest.class,
+        CmsServiceTest.class,
         KandidatServiceTest.class,
 
         Btw17KandidatFlatServiceTest.class,
@@ -88,7 +88,7 @@ import org.woehlke.btw17.kandidaten.oodm.db.service.*;
         ListeParteiImporter.class,
         ParteiImporter.class,
         WahlkreisImporter.class,
-        WohnortImporter.class
+        OrtImporter.class
         */
 })
 @RunWith(Suite.class)

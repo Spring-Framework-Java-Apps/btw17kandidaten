@@ -100,7 +100,7 @@ public class KandidatListener {
             log.info(msg+"kandidat.getGeburtsort() == null "+kandidat.getUniqueId());
         }
         log.debug(msg+"-----------------------------------------");
-        log.debug(msg+"Wohnort:");
+        log.debug(msg+"Ort:");
         if(kandidat.getWohnort() != null){
             log.debug(msg+kandidat.getWohnort().getName());
         } else {

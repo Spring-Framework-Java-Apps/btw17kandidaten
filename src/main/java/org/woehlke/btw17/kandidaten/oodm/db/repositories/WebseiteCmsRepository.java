@@ -12,9 +12,9 @@ public interface WebseiteCmsRepository extends JpaRepository<WebseiteCms,Long> {
 
     WebseiteCms findByCms(String cms);
 
-    @Query(name="WebseiteCms.getAllIds")
+    @Query(name="Cms.getAllIds")
     List<Long> getAllIds();
 
-    @Query(name="WebseiteCms.getMaxId")
+    @Query(name="Cms.getMaxId")
     Long getMaxId();
 }

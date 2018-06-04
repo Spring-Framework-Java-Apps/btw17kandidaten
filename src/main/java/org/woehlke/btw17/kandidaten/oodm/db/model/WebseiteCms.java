@@ -241,7 +241,7 @@ public class WebseiteCms implements JpaDomainObject,AdresseEmbedded,OnlineStrate
 
     @Override
     public String toString() {
-        return "WebseiteCms{" +
+        return "Cms{" +
                 "id=" + id +
                 ", cms='" + cms + '\'' +
                 ", technologyStack='" + technologyStack + '\'' +

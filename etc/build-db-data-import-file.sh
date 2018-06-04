@@ -132,11 +132,11 @@ cat ./3nf/data/insert-data-wahlperiode.sql | sed "s/'',/NULL,/g" | sed "s/'')/NU
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.WebseiteCms'
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Cms'
 echo '-- Table: cms'
 echo '-- etc/3nf/data/insert-data-cms.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.WebseiteCms' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Cms' >> ../src/main/resources/data.sql
 echo '-- Table: cms' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-cms.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -145,11 +145,11 @@ cat ./3nf/data/insert-data-cms.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" |
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.WebseiteAgentur'
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Agentur'
 echo '-- Table: agentur'
 echo '-- etc/3nf/data/insert-data-agentur.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.WebseiteAgentur' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Agentur' >> ../src/main/resources/data.sql
 echo '-- Table: agentur' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-agentur.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
@@ -250,11 +250,11 @@ cat ./3nf/data/insert-data-wahlkreis.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Wohnort'
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Ort'
 echo '-- Table: wohnort'
 echo '-- etc/3nf/data/insert-data-wohnort.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Wohnort' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Ort' >> ../src/main/resources/data.sql
 echo '-- Table: wohnort' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-wohnort.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql
