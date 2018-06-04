@@ -5,18 +5,11 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
- //import javax.persistence.Column;
- //import javax.persistence.Embedded;
- //import javax.persistence.Transient;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 @Setter
 @Getter
@@ -28,18 +21,8 @@ public class Cms implements GraphDomainObject {
     private Long id;
 
     @SafeHtml
-    @NotNull
     @Property(name="cms")
     private String cms;
-
-    //TODO: Node und Relationship
-    @SafeHtml
-    @Property(name="technology_stack")
-    private String technologyStack;
-
-    @SafeHtml
-    @Property(name="hersteller")
-    private String hersteller;
 
     @URL
     @Property(name="product_info_page")
@@ -49,33 +32,24 @@ public class Cms implements GraphDomainObject {
     @Property(name="product_demo_page")
     private String productDemoPage;
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @SafeHtml
+    @Property(name="technology_stack")
+    private TechnologieStack technologyStack = new TechnologieStack();
+
+    @Relationship(type = MADE_BY)
+    private Hersteller hersteller;
+
+    @Relationship(type = PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-    @Valid
-    //@Embedded
-    @Relationship
-    private Adresse adresse = new Adresse();
-
-    @Valid
-    //@Embedded
-    @Relationship
-    private GeoPosition geoPosition = new GeoPosition();
-
-    //@Transient
     @Override
     public String getName() {
         return cms;
     }
 
-    //@Transient
     @Override
     public String getUniqueId() {
         return id + ":"+this.getName();

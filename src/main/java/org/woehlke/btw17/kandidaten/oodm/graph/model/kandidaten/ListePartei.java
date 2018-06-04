@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
+//import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
@@ -28,15 +28,15 @@ public class ListePartei implements GraphDomainObject {
     @Property(name="listepartei_lang")
     private String listeParteiLang;
 
-    @URL
+    //@URL
     @Property(name="wahlprogramm")
     private String wahlprogramm;
 
-    @URL
+    //@URL
     @Property(name="parteiprogramm")
     private String parteiprogramm;
 
-    @URL
+    //@URL
     @Property(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 

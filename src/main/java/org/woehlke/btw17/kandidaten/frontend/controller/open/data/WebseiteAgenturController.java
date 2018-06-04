@@ -88,7 +88,7 @@ public class WebseiteAgenturController extends AbstractController {
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = webseiteAgentur.getName();
-            String pageSubTitle = "Digital Agentur Web";
+            String pageSubTitle = "Digital Dienstleister Web";
             String pageSymbol = PageSymbol.WOHNORT.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();

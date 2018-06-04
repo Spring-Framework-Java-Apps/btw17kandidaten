@@ -1,30 +1,31 @@
-package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
+package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 
 import lombok.Getter;
 import lombok.Setter;
-//import org.hibernate.validator.constraints.SafeHtml;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-//import javax.validation.constraints.NotNull;
-
-
 @Setter
 @Getter
 @NodeEntity
-public class Technologie implements GraphDomainObject {
+public class Religion implements GraphDomainObject {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    //@SafeHtml
-    //@NotNull
-    @Property(name="technologie")
-    private String technologie;
+    @Property(name="religion")
+    private String religion;
+
+    @Property(name="bezeichnung")
+    private String bezeichnung;
+
+    @Property(name="beschreibung")
+    private String beschreibung;
+
 
     @Override
     public Long getId() {
@@ -33,11 +34,11 @@ public class Technologie implements GraphDomainObject {
 
     @Override
     public String getName() {
-        return technologie;
+        return religion;
     }
 
     @Override
     public String getUniqueId() {
-        return technologie+" "+id;
+        return religion+" "+id;
     }
 }

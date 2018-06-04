@@ -186,7 +186,7 @@ public class WebseiteAgentur implements JpaDomainObject,AdresseEmbedded,OnlineSt
 
     @Override
     public String toString() {
-        return "Agentur{" +
+        return "Dienstleister{" +
                 "id=" + id +
                 ", agentur='" + agentur + '\'' +
                 ", firma='" + firma + '\'' +

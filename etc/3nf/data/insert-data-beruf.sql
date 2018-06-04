@@ -3671,7 +3671,7 @@ INSERT INTO beruf (id, beruf, edit_status) VALUES (03670, 'Diplom-Sportlehrer', 
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03671, 'Diplom Verwaltungswirtin', 'UNTOUCHED');
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03672, 'Leitende Angestellte im Familienbetrieb', 'UNTOUCHED');
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03673, 'Diplom-Ökonomin', 'UNTOUCHED');
-INSERT INTO beruf (id, beruf, edit_status) VALUES (03674, 'Vorsitzende der Geschäftsführung der Agentur für Arbeit Stendal', 'UNTOUCHED');
+INSERT INTO beruf (id, beruf, edit_status) VALUES (03674, 'Vorsitzende der Geschäftsführung der Dienstleister für Arbeit Stendal', 'UNTOUCHED');
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03675, 'Personalberaterin', 'UNTOUCHED');
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03676, 'Angestellter im öffentlichen Dienst', 'UNTOUCHED');
 INSERT INTO beruf (id, beruf, edit_status) VALUES (03677, 'Politologe, Landesvorsitzender', 'UNTOUCHED');

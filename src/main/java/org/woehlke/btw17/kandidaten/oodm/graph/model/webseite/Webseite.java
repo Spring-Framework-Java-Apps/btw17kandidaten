@@ -2,12 +2,12 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.URL;
+//import org.hibernate.validator.constraints.SafeHtml;
+//import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -23,24 +23,23 @@ public class Webseite implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @URL
+    //@URL
     @Property(name="webseite_url")
     private String webseite;
 
-    @SafeHtml
-    @NotNull
+    //@SafeHtml
+    //@NotNull
     @Property(name="webseite_name")
     private String name;
 
+    @Property(name="domain_registry_info")
+    private String domainRegistryInfo;
 
-    //@ManyToOne(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_webseite_cms")
     @Relationship(type = MADE_WITH)
-    private Cms cms;
+    private Cms cms = new Cms();
 
-    //@ManyToMany(fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @Relationship(type = MADE_BY)
-    private Set<Agentur> agenturen = new LinkedHashSet<>();
+    private Set<Dienstleister> agenturen = new LinkedHashSet<>();
 
     @Override
     public Long getId() {

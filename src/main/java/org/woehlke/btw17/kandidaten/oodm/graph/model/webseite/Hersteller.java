@@ -2,14 +2,14 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.SafeHtml;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 
-import javax.validation.constraints.NotNull;
+
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.GEO_POSITION;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 
 
 @Setter
@@ -21,10 +21,17 @@ public class Hersteller implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @SafeHtml
-    @NotNull
     @Property(name="hersteller")
     private String hersteller;
+
+    @Property(name="hersteller")
+    private String firmierung;
+
+    @Relationship(type = LOCATION)
+    private Adresse adresse = new Adresse();
+
+    @Relationship(type = GEO_POSITION)
+    private GeoPosition geoPosition = new GeoPosition();
 
     @Override
     public Long getId() {

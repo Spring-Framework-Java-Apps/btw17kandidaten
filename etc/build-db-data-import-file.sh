@@ -145,11 +145,11 @@ cat ./3nf/data/insert-data-cms.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/g" |
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Agentur'
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Dienstleister'
 echo '-- Table: agentur'
 echo '-- etc/3nf/data/insert-data-agentur.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Agentur' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.Dienstleister' >> ../src/main/resources/data.sql
 echo '-- Table: agentur' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-agentur.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql

@@ -44,10 +44,10 @@ import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class AgenturServiceTest {
+public class DienstleisterServiceTest {
 
 
-    private static final Logger log = LoggerFactory.getLogger(AgenturServiceTest.class);
+    private static final Logger log = LoggerFactory.getLogger(DienstleisterServiceTest.class);
 
     @Autowired
     private WebseiteAgenturService webseiteAgenturService;
@@ -99,7 +99,7 @@ public class AgenturServiceTest {
         long resultSize = webseiteAgenturen.getTotalElements();
         log.debug("found: # "+resultSize);
         long resultSizeExpected = kandidatenProperties.getTableContent().getCountWebseiteAgentur();
-        Assert.assertTrue("Page<Agentur> webseiteAgenturen : is "+resultSize+" expected "+resultSizeExpected,resultSize==resultSizeExpected);
+        Assert.assertTrue("Page<Dienstleister> webseiteAgenturen : is "+resultSize+" expected "+resultSizeExpected,resultSize==resultSizeExpected);
         boolean goOn = true;
         while(goOn) {
             for (WebseiteAgentur webseiteAgentur : webseiteAgenturen.getContent()) {

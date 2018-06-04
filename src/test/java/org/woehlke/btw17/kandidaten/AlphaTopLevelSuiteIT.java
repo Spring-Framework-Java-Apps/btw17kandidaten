@@ -34,7 +34,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
         ParteiControllerTest.class,
         WahlkreisControllerTest.class,
         OrtControllerTest.class,
-        AgenturControllerTest.class,
+        DienstleisterControllerTest.class,
         CmsControllerTest.class,
         KandidatControllerTest.class,
 
@@ -51,7 +51,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
         MinisteriumRedaktionControllerTest.class,
         ParteiRedaktionControllerTest.class,
         WahlkreisRedaktionControllerTest.class,
-        AgenturRedaktionControllerTest.class,
+        DienstleisterRedaktionControllerTest.class,
         CmsRedaktionControllerTest.class,
         OrtRedaktionControllerTest.class,
 
@@ -67,7 +67,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.*;
         ParteiServiceTest.class,
         WahlkreisServiceTest.class,
         OrtServiceTest.class,
-        AgenturServiceTest.class,
+        DienstleisterServiceTest.class,
         CmsServiceTest.class,
         KandidatServiceTest.class,
 

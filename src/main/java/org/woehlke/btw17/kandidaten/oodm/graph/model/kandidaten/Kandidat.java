@@ -2,8 +2,6 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Partei;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ausschuss;
@@ -21,10 +19,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -41,7 +35,7 @@ public class Kandidat implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @NotNull
+    //@NotNull
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
     @Property(name = "kandidat_key")
     private String key;
@@ -52,35 +46,35 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "xml_id_bundestag")
     private String xmlIdBundestag;
 
-    @SafeHtml
+    //@SafeHtml
     @Property(name = "titel")
     private String titel;
 
-    @SafeHtml
+    //@SafeHtml
     @Property(name = "namenszusatz")
     private String namenszusatz;
 
-    @SafeHtml
+    //@SafeHtml
     @Property(name = "nachname_ohne")
     private String nachnameOhne;
 
-    @NotNull
-    @SafeHtml
+    //@NotNull
+    //@SafeHtml
     @Property(name = "nachname")
     private String nachname;
 
-    @NotNull
-    @SafeHtml
+    //@NotNull
+    //@SafeHtml
     @Property(name = "vorname")
     private String vorname;
 
-    @NotNull
-    @Pattern(regexp = "[MW]{1}")
+    //@NotNull
+    //@Pattern(regexp = "[MW]{1}")
     @Property(name = "geschlecht")
     private String geschlecht;
 
-    @NotNull
-    @Digits(integer = 4, fraction = 0)
+    //@NotNull
+    //@Digits(integer = 4, fraction = 0)
     @Property(name = "geburtsjahr")
     private Integer geburtsjahr;
 
@@ -105,12 +99,12 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "historiebis")
     private LocalDate historieBis;
 
-    @NotNull
-    @Digits(integer = 2, fraction = 0)
+    //@NotNull
+    //@Digits(integer = 2, fraction = 0)
     @Property(name = "alter")
     private Integer alter;
 
-    @Past
+    //@Past
     @Property(name = "geburtsdatum")
     private LocalDate geburtsdatum;
 
@@ -135,7 +129,7 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
-    @SafeHtml
+    //@SafeHtml
     @Property(name = "funktion")
     private String funktion;
 
@@ -163,7 +157,7 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "foto")
     private String foto;
 
-    @URL
+    //@URL
     @Property(name = "foto_url")
     private String fotoUrl;
 
@@ -176,7 +170,7 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "color")
     private String color;
 
-    @URL
+    //@URL
     @Property(name = "google_maps_url")
     private String googleMapsUrl;
 
@@ -184,28 +178,28 @@ public class Kandidat implements GraphDomainObject {
     private Integer listePlatz;
 
     @Relationship(type = WOHN_ORT)
-    private Ort wohnort;
+    private Ort wohnort = new Ort();
 
     @Relationship(type = GEBURTS_ORT)
-    private Ort geburtsort;
+    private Ort geburtsort = new Ort();
 
     @Relationship(type = JOB)
-    private Beruf beruf;
+    private Beruf beruf = new Beruf();
 
     @Relationship(type = JOB)
-    private Berufsgruppe berufsgruppe;
+    private Berufsgruppe berufsgruppe = new Berufsgruppe();
 
     @Relationship(type = JOB)
-    private Wahlkreis wahlkreis;
+    private Wahlkreis wahlkreis = new Wahlkreis();
 
     @Relationship(type = JOB)
-    private Partei partei;
+    private Partei partei = new Partei();
 
     @Relationship(type = JOB)
-    private ListeParteiBundesland listeParteiBundesland;
+    private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
 
     @Relationship(type = JOB)
-    private Fraktion fraktion;
+    private Fraktion fraktion = new Fraktion();
 
     @Relationship(type = JOB)
     private Set<Ministerium> ministerien = new LinkedHashSet<>();

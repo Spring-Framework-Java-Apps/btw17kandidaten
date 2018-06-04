@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CmsRedaktionControllerTest {
 
 
-    private static final Logger log = LoggerFactory.getLogger(AgenturRedaktionControllerTest.class);
+    private static final Logger log = LoggerFactory.getLogger(DienstleisterRedaktionControllerTest.class);
 
     @Autowired
     private MockMvc mockMvc;

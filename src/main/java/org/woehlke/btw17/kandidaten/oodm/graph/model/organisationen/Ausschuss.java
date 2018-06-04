@@ -3,12 +3,11 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.InstitutionArt;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 @Setter
 @Getter
@@ -22,11 +21,11 @@ public class Ausschuss implements GraphDomainObject {
     @Property(name="ausschuss")
     private String ausschuss;
 
-    @Valid
+    //@Valid
     @Relationship
     private CommonFields commonFields = new CommonFields();
 
-    @Valid
+    //@Valid
     @Relationship
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 

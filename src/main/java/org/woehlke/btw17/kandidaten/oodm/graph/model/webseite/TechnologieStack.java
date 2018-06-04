@@ -2,13 +2,15 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.SafeHtml;
+//import org.hibernate.validator.constraints.SafeHtml;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_WITH;
 
 @Setter
 @Getter
@@ -19,12 +21,12 @@ public class TechnologieStack implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @SafeHtml
-    @NotNull
-    @Property(name="name")
-    private String name;
+    //@SafeHtml
+    //@NotNull
+    @Property(name="technologie")
+    private String technologie;
 
-    @Relationship
+    @Relationship(type = MADE_WITH)
     private List<Technologie> technologien = new ArrayList<>();
 
     @Override
@@ -34,11 +36,11 @@ public class TechnologieStack implements GraphDomainObject {
 
     @Override
     public String getName() {
-        return name;
+        return technologie;
     }
 
     @Override
     public String getUniqueId() {
-        return name+" "+id;
+        return technologie+" "+id;
     }
 }

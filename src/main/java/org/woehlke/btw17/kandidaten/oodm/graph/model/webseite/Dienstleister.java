@@ -19,7 +19,7 @@ import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.Relationship
 @Setter
 @Getter
 @NodeEntity
-public class Agentur implements GraphDomainObject {
+public class Dienstleister implements GraphDomainObject {
 
     @Id
     @GeneratedValue
@@ -33,7 +33,7 @@ public class Agentur implements GraphDomainObject {
     @Property(name="name_registereintrag")
     private String firma;
 
-    @Relationship
+    @Relationship(type = LOCATION)
     private Adresse adresse = new Adresse();
 
     @Relationship(type = LOCATION)
