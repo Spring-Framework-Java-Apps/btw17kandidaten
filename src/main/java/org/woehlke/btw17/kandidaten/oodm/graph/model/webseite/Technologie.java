@@ -26,7 +26,6 @@ public class Technologie implements GraphDomainObject {
     @Property(name="technologie")
     private String technologie;
 
-
     @Override
     public Long getId() {
         return id;

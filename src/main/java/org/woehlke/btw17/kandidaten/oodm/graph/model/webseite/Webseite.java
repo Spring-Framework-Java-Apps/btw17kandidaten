@@ -7,15 +7,12 @@ import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-//import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_BY;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_WITH;
-
-//import static javax.persistence.FetchType.LAZY;
 
 @Setter
 @Getter
