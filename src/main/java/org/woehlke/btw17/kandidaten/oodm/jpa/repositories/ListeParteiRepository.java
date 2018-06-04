@@ -1,14 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.ListePartei;
 
 import java.util.List;
 
 @Repository
-public interface ListeParteiRepository extends JpaRepository<ListePartei,Long> {
+public interface ListeParteiRepository extends JpaDomainRepository<ListePartei> {
 
     ListePartei findByListeParteiAndListeParteiLang(String listePartei, String listeParteiLang);
 

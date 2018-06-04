@@ -1,9 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
@@ -13,7 +13,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Mandatsart;
 import java.util.List;
 
 @Repository
-public interface WahlperiodeRepository extends JpaRepository<Wahlperiode,Long> {
+public interface WahlperiodeRepository extends JpaDomainRepository<Wahlperiode> {
 
     @Query(name = "Wahlperiode.getAllIds")
     List<Long> getAllIds();

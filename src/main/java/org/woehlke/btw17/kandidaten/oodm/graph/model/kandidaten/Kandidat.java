@@ -17,7 +17,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;

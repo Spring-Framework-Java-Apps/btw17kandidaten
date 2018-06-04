@@ -6,7 +6,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 import javax.validation.constraints.Digits;
 import java.math.BigDecimal;

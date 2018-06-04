@@ -1,13 +1,12 @@
-package org.woehlke.btw17.kandidaten.oodm.jpa.service;
+package org.woehlke.btw17.kandidaten.oodm.all.model.commons;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
 
 import java.util.List;
 
 
-public interface Btw17Service<T extends JpaDomainObject> {
+public interface JpaDomainService<T extends JpaDomainObject> extends DomainService<T> {
 
     Page<T> getAll(Pageable pageRequest);
 

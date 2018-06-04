@@ -5,7 +5,7 @@ import lombok.Setter;
 //import org.hibernate.validator.constraints.SafeHtml;
 //import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 //import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;

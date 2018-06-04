@@ -4,7 +4,7 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.model;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.listener.WahlperiodeListener;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.Institution;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.InstitutionEmbedded;
 

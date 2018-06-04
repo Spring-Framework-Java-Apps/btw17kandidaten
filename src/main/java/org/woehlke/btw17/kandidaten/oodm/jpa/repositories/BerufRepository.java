@@ -1,14 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Beruf;
 
 import java.util.List;
 
 @Repository
-public interface BerufRepository extends JpaRepository<Beruf,Long> {
+public interface BerufRepository extends JpaDomainRepository<Beruf> {
 
     Beruf findByBeruf(String beruf);
 

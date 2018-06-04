@@ -2,16 +2,16 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.repositories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlbewerber;
 
 import java.util.List;
 
 @Repository
-public interface Btw17WahlbewerberRepository extends JpaRepository<Btw17Wahlbewerber,Long> {
+public interface Btw17WahlbewerberRepository extends JpaDomainRepository<Btw17Wahlbewerber> {
 
     Page<Btw17Wahlbewerber> findByWahlkreisNr(long wahlkreisNr, Pageable pageRequest);
 

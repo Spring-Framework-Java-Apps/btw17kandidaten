@@ -58,3 +58,4 @@ _site
 *.gem
 
 todo.txt
+logfile.txt

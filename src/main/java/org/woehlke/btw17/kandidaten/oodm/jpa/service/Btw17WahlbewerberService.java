@@ -2,11 +2,12 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainService;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlbewerber;
 
 
-public interface Btw17WahlbewerberService extends Btw17Service<Btw17Wahlbewerber> {
+public interface Btw17WahlbewerberService extends JpaDomainService<Btw17Wahlbewerber> {
 
     Page<Btw17Wahlbewerber> findByWahlkreisNr(long wahlkreisNr, Pageable pageRequest);
 

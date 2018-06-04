@@ -1,7 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.model;
 
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.listener.Btw17MdbListener;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainObject;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;

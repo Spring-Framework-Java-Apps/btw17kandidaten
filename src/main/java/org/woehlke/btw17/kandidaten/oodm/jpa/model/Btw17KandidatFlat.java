@@ -2,7 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.model;
 
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.listener.Btw17KandidatFlatListener;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
