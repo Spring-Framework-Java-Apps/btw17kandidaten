@@ -156,7 +156,7 @@ public class LandesListe implements JpaDomainObject,CommonFieldsEmbedded {
 
     @Override
     public String toString() {
-        return "LandesListe{" +
+        return "ListeParteiBundesland{" +
                 "id=" + id +
                 ", bundesland=" + bundesland +
                 ", listePartei=" + listePartei +

@@ -7,11 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.WAHLKREIS_ORT;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 
 @Setter
@@ -23,7 +19,6 @@ public class Wahlkreis implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @NotNull
     @Property(name="wahlkreis_id")
     private Long wahlkreisId;
 
@@ -36,20 +31,16 @@ public class Wahlkreis implements GraphDomainObject {
     @Relationship(type = LOCATION)
     private Bundesland bundesland = new Bundesland();
 
-    @Valid
-    @Relationship
+    @Relationship(type = GEO_POSITION)
     private GeoPosition geoPosition = new GeoPosition();
 
-    @Valid
-    @Relationship
+    @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-    @Valid
-    @Relationship
+    @Relationship(type = LOCATION)
     private Strukturdaten strukturdaten = new Strukturdaten();
 
-    @Valid
-    @Relationship
+    @Relationship(type = WAHL)
     private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
 
     @Override
@@ -62,6 +53,7 @@ public class Wahlkreis implements GraphDomainObject {
         return this.getName()+" "+id;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

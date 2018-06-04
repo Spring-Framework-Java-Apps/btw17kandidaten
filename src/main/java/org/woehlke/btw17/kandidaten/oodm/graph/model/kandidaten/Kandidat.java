@@ -5,9 +5,9 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.Partei;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.bundestag.Ausschuss;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.bundestag.Fraktion;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Partei;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ausschuss;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Fraktion;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.Religion;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Ort;
@@ -17,7 +17,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.mdb.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.mdb.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.regierung.Ministerium;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
@@ -43,7 +43,7 @@ public class Kandidat implements GraphDomainObject {
 
     @NotNull
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
-    @Property(name = "kandidat_key"/*, nullable = false, unique = true*/)
+    @Property(name = "kandidat_key")
     private String key;
 
     @Property(name = "remote_kandidat_key")
@@ -184,114 +184,65 @@ public class Kandidat implements GraphDomainObject {
     private Integer listePlatz;
 
     @Relationship(type = WOHN_ORT)
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_wohnort", nullable = false, updatable = false)
     private Ort wohnort;
 
     @Relationship(type = GEBURTS_ORT)
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_geburtsort", nullable = true, updatable = false)
     private Ort geburtsort;
 
     @Relationship(type = JOB)
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_beruf", nullable = false, updatable = false)
     private Beruf beruf;
 
-
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_berufsgruppe", nullable = true, updatable = false)
     @Relationship(type = JOB)
     private Berufsgruppe berufsgruppe;
 
-
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_wahlkreis", nullable = false, updatable = false)
     @Relationship(type = JOB)
     private Wahlkreis wahlkreis;
 
-
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_partei", nullable = false, updatable = false)^
     @Relationship(type = JOB)
     private Partei partei;
 
-
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_landes_liste", nullable = true, updatable = true)
     @Relationship(type = JOB)
-    private LandesListe landesListe;
+    private ListeParteiBundesland listeParteiBundesland;
 
-
-    //@ManyToOne(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_fraktion", nullable = true, updatable = true)
     @Relationship(type = JOB)
     private Fraktion fraktion;
 
-
-    //@ManyToMany(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinTable(name = "kandidat_ministerium")
     @Relationship(type = JOB)
     private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
-    //@ManyToMany(fetch = LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinTable(name = "kandidat_ausschuss")
     @Relationship(type = JOB)
     private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
-    //@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinTable(name = "kandidat_wahlperiode")
     @Relationship(type = ZEIT)
     private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
-    //@Embedded
-    //@Valid
     @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-
-    /*
-    @Embedded
-    @AssociationOverrides({
-        @AssociationOverride(
-            name = "agenturen",
-            joinTable = @JoinTable(
-                name = "kandidat_agentur"
-            )
-        )
-    })
-    */
-    //@Valid
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
-    //@Embedded
-    //@Valid
     @Relationship(type=PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@Embedded
-    //@Valid
     @Relationship(type=LOCATION)
     private Adresse adresse = new Adresse();
 
-    @Property(name = "btw17_kandidat_flat_id"/*, nullable = false, updatable = false, unique = true*/)
+    @Property(name = "btw17_kandidat_flat_id")
     private Long btw17KandidatFlatId;
 
-    @Property(name = "btw17_mdb_stammdaten_id"/*, nullable = true, updatable = false, unique = true*/)
+    @Property(name = "btw17_mdb_stammdaten_id")
     private Long btw17MdbId;
 
-    @Property(name = "btw17wahlbewerber_id"/*, nullable = true, updatable = false, unique = true*/)
+    @Property(name = "btw17wahlbewerber_id")
     private Long btw17WahlbewerberId;
 
-    //@Transient
-    //@Override
+    @Override
     public String getName() {
         return vorname + " " + nachname;
     }
 
-    //@Transient
-    //@Override
+    @Override
     public String getUniqueId() {
         return id + ":" + key + ":" + this.getName();
     }

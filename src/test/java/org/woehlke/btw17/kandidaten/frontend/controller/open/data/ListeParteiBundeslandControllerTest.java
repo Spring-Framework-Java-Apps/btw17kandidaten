@@ -31,9 +31,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LandesListeControllerTest {
+public class ListeParteiBundeslandControllerTest {
 
-    private static final Logger log = LoggerFactory.getLogger(LandesListeControllerTest.class);
+    private static final Logger log = LoggerFactory.getLogger(ListeParteiBundeslandControllerTest.class);
 
     @Autowired
     private MockMvc mockMvc;

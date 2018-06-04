@@ -164,7 +164,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Partei:               "+parteiService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Wahlkreis:            "+wahlkreisService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Ort:              "+wohnortService.count());
-        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.LandesListe:          "+landesListeService.count());
+        outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.ListeParteiBundesland:          "+landesListeService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Fraktion:             "+fraktionService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Ministerium:          "+ministeriumService.count());
         outputLines.add(" org.woehlke.btw17.kandidaten.oodm.db.model.Ausschuss:            "+ausschussService.count());

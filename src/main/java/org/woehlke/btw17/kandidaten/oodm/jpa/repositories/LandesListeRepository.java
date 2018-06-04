@@ -18,25 +18,25 @@ public interface LandesListeRepository extends JpaRepository<LandesListe,Long> {
 
     LandesListe findByBundeslandAndListePartei(Bundesland bundesland, ListePartei listePartei);
 
-    @Query(name="LandesListe.findByBundesland")
+    @Query(name="ListeParteiBundesland.findByBundesland")
     Page<LandesListe> findByBundesland(@Param("bundesland") Bundesland bundesland, Pageable pageable);
 
-    @Query(name="LandesListe.findByListePartei")
+    @Query(name="ListeParteiBundesland.findByListePartei")
     Page<LandesListe> findByListePartei(@Param("listePartei") ListePartei listePartei, Pageable pageable);
 
-    @Query(name="LandesListe.getAllBundesland")
+    @Query(name="ListeParteiBundesland.getAllBundesland")
     Page<Bundesland> getAllBundesland(Pageable pageable);
 
-    @Query(name="LandesListe.getAllListePartei")
+    @Query(name="ListeParteiBundesland.getAllListePartei")
     Page<ListePartei> getAllListePartei(Pageable pageable);
 
-    @Query(name="LandesListe.getAllOrOrderById")
+    @Query(name="ListeParteiBundesland.getAllOrOrderById")
     List<LandesListe> getAll();
 
-    @Query(name="LandesListe.getAllIds")
+    @Query(name="ListeParteiBundesland.getAllIds")
     List<Long> getAllIds();
 
-    @Query(name="LandesListe.getMaxId")
+    @Query(name="ListeParteiBundesland.getMaxId")
     Long getMaxId();
 
 }

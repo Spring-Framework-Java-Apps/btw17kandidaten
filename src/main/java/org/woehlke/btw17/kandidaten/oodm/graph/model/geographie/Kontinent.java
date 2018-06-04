@@ -3,25 +3,23 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.*;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
-
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 
 @Setter
 @Getter
 @NodeEntity
-public class Nation implements GraphDomainObject {
+public class Kontinent implements GraphDomainObject {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @Property(name="nation")
-    private String nation;
-
-    @Relationship(type=LOCATION)
-    private Kontinent kontinent = new Kontinent();
+    @Property(name="kontinent")
+    private String kontinent;
 
     @Override
     public Long getId() {
@@ -30,11 +28,11 @@ public class Nation implements GraphDomainObject {
 
     @Override
     public String getName() {
-        return nation;
+        return kontinent;
     }
 
     @Override
     public String getUniqueId() {
-        return nation+" "+id.toString();
+        return kontinent+" "+id.toString();
     }
 }

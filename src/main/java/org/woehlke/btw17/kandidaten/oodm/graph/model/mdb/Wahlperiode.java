@@ -3,14 +3,19 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.bundestag.Institution;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.Mandatsart;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListeParteiBundesland;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Institution;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Wahlkreis;
 
-import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.JOB;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.WAHL;
 
 
 @Setter
@@ -31,22 +36,17 @@ public class Wahlperiode implements GraphDomainObject {
     @Property(name = "mdbwpbis")
     private LocalDate mdbWahlperiodeBis;
 
-    //@Enumerated(EnumType.STRING)
-    @Property(name = "liste")
-    private BundeslandEnum bundeslandLandesListe;
+    @Relationship(type=WAHL)
+    private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
 
-    //@Enumerated(EnumType.STRING)
     @Property(name = "mandatsart")
-    private Mandatsart mandatsArt;
+    private Mandatsart mandatsart;
 
-    @Relationship(type="heimat_wahlkreis", direction=Relationship.OUTGOING)
-    //@ManyToOne(fetch=FetchType.LAZY,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name="fk_wahlkreis")
-    private Wahlkreis wahlkreis;
+    @Relationship(type=LOCATION)
+    private Wahlkreis wahlkreis= new Wahlkreis();
 
-    @Valid
-    //@Embedded
-    private Institution institution = new Institution();
+    @Relationship(type=JOB)
+    private List<Institution> institution = new ArrayList<Institution>();
 
     @Override
     public Long getId() {

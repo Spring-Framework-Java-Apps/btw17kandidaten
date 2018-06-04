@@ -1,15 +1,15 @@
-package org.woehlke.btw17.kandidaten.oodm.graph.model.bundestag;
+package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.CommonFields;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.Webseite;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
- //import javax.persistence.*;
-import javax.validation.Valid;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
 
 
 @Setter
@@ -27,44 +27,26 @@ public class Fraktion implements GraphDomainObject {
     @Property(name="fraktion_lang")
     private String fraktionLang;
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Valid
-    /*
-    @Embedded
-    @AssociationOverrides({
-        @AssociationOverride(
-            name = "agenturen",
-            joinTable = @JoinTable(
-                name = "fraktion_agentur"
-            )
-        )
-    })
-    */
-    @Relationship
+    @Relationship(type = PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
-    //@Transient
-    //@Override
+    @Override
     public String getName() {
         return fraktionLang;
     }
 
-    //@Transient
-    //@Override
+    @Override
     public String getUniqueId() {
         return id + ":"+this.getName();
     }
 
-    //@Override
+    @Override
     public Long getId() {
         return id;
     }

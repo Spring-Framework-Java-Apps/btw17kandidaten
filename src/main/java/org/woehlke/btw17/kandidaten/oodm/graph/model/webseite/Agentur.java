@@ -11,11 +11,10 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 
-//import javax.persistence.Column;
-//import javax.persistence.Embedded;
-//import javax.persistence.Transient;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
+
 
 @Setter
 @Getter
@@ -27,47 +26,36 @@ public class Agentur implements GraphDomainObject {
     private Long id;
 
     @SafeHtml
-    @NotNull
     @Property(name="name_marketing")
     private String agentur;
 
     @SafeHtml
-    @NotNull
     @Property(name="name_registereintrag")
     private String firma;
 
-    @Valid
-    //@Embedded
     @Relationship
     private Adresse adresse = new Adresse();
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = LOCATION)
     private GeoPosition geoPosition = new GeoPosition();
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Valid
-    //@Embedded
-    @Relationship
+    @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-    //@Transient
-    //@Override
+    @Override
     public String getName() {
         return agentur;
     }
 
-    //@Transient
-    //@Override
+    @Override
     public String getUniqueId() {
         return id + ":"+this.getName();
     }
 
+    @Override
     public Long getId() {
         return id;
     }

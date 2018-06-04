@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.graph.model.regierung;
+package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,44 +29,21 @@ public class Ministerium implements GraphDomainObject {
     @Property(name="bundesminister")
     private String bundesministerName;
 
-
-    //@OneToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.REMOVE})
-    //@JoinColumn(name="fk_bundesminister")
     @Relationship(type=LOCATION)
     private Kandidat bundesminister;
 
-    //@Valid
-    //@Embedded
     @Relationship(type=LOCATION)
     private CommonFields commonFields = new CommonFields();
 
-    //@Valid
-    //@Embedded
     @Relationship(type=LOCATION)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@Valid
-    //@Embedded
     @Relationship(type=LOCATION)
     private GeoPosition geoPosition = new GeoPosition();
 
-    //@Valid
-    //@Embedded
     @Relationship(type=LOCATION)
     private Adresse adresse = new Adresse();
 
-    //@Valid
-    /*
-    @Embedded
-    @AssociationOverrides({
-        @AssociationOverride(
-            name = "agenturen",
-            joinTable = @JoinTable(
-                name = "ministerium_agentur"
-            )
-        )
-    })
-    */
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
@@ -75,13 +52,11 @@ public class Ministerium implements GraphDomainObject {
         return id;
     }
 
-    //@Transient
     @Override
     public String getName() {
         return ministerium +"  "+ministeriumLang;
     }
 
-    //@Transient
     @Override
     public String getUniqueId() {
         return id + ":"+this.getName();

@@ -7,38 +7,27 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
 
 
 @Setter
 @Getter
 @RelationshipEntity(type="LANDESLISTE")
-public class LandesListe implements GraphDomainObject {
+public class ListeParteiBundesland implements GraphDomainObject {
 
     @Id
     @GeneratedValue
     private Long id;
 
-
-    @NotNull
     @StartNode
-    //@ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_bundesland", nullable = false, updatable = false)
-    private Bundesland bundesland;
+    private Bundesland bundesland = new Bundesland();
 
-    @NotNull
     @EndNode
-    //@ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_listepartei", nullable = false, updatable = false)
-    private ListePartei listePartei;
+    private ListePartei listePartei = new ListePartei();
 
-    //@Embedded
-    @Valid
-    @Relationship
+    @Relationship(type = REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
-    //@Transient
     @Override
     public String getName(){
         StringBuffer name = new StringBuffer();
@@ -51,7 +40,6 @@ public class LandesListe implements GraphDomainObject {
         return name.toString();
     }
 
-    //@Transient
     @Override
     public String getUniqueId() {
         return this.getName()+" "+id;

@@ -42,10 +42,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 )
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LandesListeEnricher {
+public class ListeParteiBundeslandEnricher {
 
 
-        private static final Logger log = LoggerFactory.getLogger(LandesListeEnricher.class);
+        private static final Logger log = LoggerFactory.getLogger(ListeParteiBundeslandEnricher.class);
 
         @Autowired
         private MockMvc mockMvc;

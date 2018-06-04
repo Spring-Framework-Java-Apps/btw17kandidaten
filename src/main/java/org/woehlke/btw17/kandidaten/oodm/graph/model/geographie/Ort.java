@@ -8,8 +8,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.Valid;
-
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 
@@ -25,40 +23,21 @@ public class Ort implements GraphDomainObject {
     @Property(name="ort")
     private String ort;
 
-    //@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_bundesland", nullable = true, updatable = false)
     @Relationship(type=LOCATION)
-    private Bundesland bundesland;
+    private Bundesland bundesland = new Bundesland();
 
     @Relationship(type=LOCATION)
-    private Nation nation;
+    private Nation nation = new Nation();
 
-    //@Embedded
-    //@Valid
     @Relationship(type=ONLINE_STRATEGIE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    //@Embedded
-    //@Valid
     @Relationship(type=COMMON_FIELDS)
     private CommonFields commonFields = new CommonFields();
 
-    //@Embedded
-    //@Valid
-    @Relationship(type=GEO_POSITION)
+    @Relationship(type=LOCATION)
     private GeoPosition geoPosition = new GeoPosition();
 
-    /*
-    @Embedded
-    @AssociationOverrides({
-        @AssociationOverride(
-            name = "agenturen",
-            joinTable = @JoinTable(
-                name = "wohnort_agentur"
-            )
-        )
-    })*/
-    //@Valid
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 

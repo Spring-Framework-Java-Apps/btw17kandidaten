@@ -1,4 +1,4 @@
-package org.woehlke.btw17.kandidaten.oodm.graph.model.bundestag;
+package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -3,10 +3,9 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.EditStatus;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import javax.validation.constraints.NotNull;
 
 @Setter
 @Getter
@@ -17,7 +16,6 @@ public class Beruf implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @NotNull
     @Property(name="beruf")
     private String beruf;
 

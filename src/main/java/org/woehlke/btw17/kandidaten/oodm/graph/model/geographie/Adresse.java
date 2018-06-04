@@ -34,13 +34,11 @@ public class Adresse implements GraphDomainObject {
     @Column(name="ort")
     private String ort;
 
-    //@ManyToOne(optional=true,fetch=LAZY,cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    //@JoinColumn(name = "fk_bundesland",nullable=true)
     @Relationship(type = LOCATION)
-    private Bundesland bundesland;
+    private Bundesland bundesland = new Bundesland();
 
     @Relationship(type = LOCATION)
-    private Nation nation;
+    private Nation nation = new Nation();
 
     @Override
     public Long getId() {

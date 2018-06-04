@@ -263,11 +263,11 @@ cat ./3nf/data/insert-data-wohnort.sql | sed "s/'',/NULL,/g" | sed "s/'')/NULL)/
 
 
 echo ' '
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.LandesListe'
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.ListeParteiBundesland'
 echo '-- Table: landesliste'
 echo '-- etc/3nf/data/insert-data-landesliste.sql'
 echo '--' >> ../src/main/resources/data.sql
-echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.LandesListe' >> ../src/main/resources/data.sql
+echo '-- org.woehlke.btw17.kandidaten.oodm.db.model.ListeParteiBundesland' >> ../src/main/resources/data.sql
 echo '-- Table: landesliste' >> ../src/main/resources/data.sql
 echo '-- etc/3nf/data/insert-data-landesliste.sql' >> ../src/main/resources/data.sql
 echo '--' >> ../src/main/resources/data.sql

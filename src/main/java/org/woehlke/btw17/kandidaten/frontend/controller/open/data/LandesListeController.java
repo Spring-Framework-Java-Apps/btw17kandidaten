@@ -56,7 +56,7 @@ public class LandesListeController extends AbstractController {
             throw new EntityNotFoundException(msg);
         } else {
             String pageTitle = landesListe.getName();
-            String pageSubTitle = "LandesListe der btw17 Kandidaten";
+            String pageSubTitle = "ListeParteiBundesland der btw17 Kandidaten";
             String pageSymbol = PageSymbol.LANDESLISTE.getSymbolHtml();
             String googleMapsApiKey = kandidatenProperties.getGoogleMapsApiKey();
             String googleAnalyticsKey = kandidatenProperties.getGoogleAnalyticsKey();
