@@ -7,134 +7,137 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.woehlke.btw17.kandidaten.frontend.model.ReportOverview;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.KandidatRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatReportService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class KandidatReportServiceImpl implements KandidatReportService {
-
-
-    private final KandidatRepository kandidatRepository;
+public class KandidatReportServiceImpl extends JpaDomainServiceImpl<Kandidat> implements KandidatReportService {
 
     @Autowired
     public KandidatReportServiceImpl(KandidatRepository kandidatRepository) {
-        this.kandidatRepository = kandidatRepository;
+        super(kandidatRepository);
+    }
+
+    @Override
+    protected KandidatRepository getRepository(){
+        return (KandidatRepository) super.getRepository();
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutBundestagProfile(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutBundestagProfile(pageable);
+        return getRepository().getMdbWithoutBundestagProfile(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutAbgeordnetenwatch(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutAbgeordnetenwatch(pageable);
+        return getRepository().getMdbWithoutAbgeordnetenwatch(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutWikipediaArticle(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutWikipediaArticle(pageable);
+        return getRepository().getMdbWithoutWikipediaArticle(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutWebseite(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutWebseite(pageable);
+        return getRepository().getMdbWithoutWebseite(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutFacebook(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutFacebook(pageable);
+        return getRepository().getMdbWithoutFacebook(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutTwitter(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutTwitter(pageable);
+        return getRepository().getMdbWithoutTwitter(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutWebseite(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutWebseite(pageable);
+        return getRepository().getKandidatWithoutWebseite(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutFacebook(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutFacebook(pageable);
+        return getRepository().getKandidatWithoutFacebook(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutTwitter(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutTwitter(pageable);
+        return getRepository().getKandidatWithoutTwitter(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutFotoUrl(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutFotoUrl(pageable);
+        return getRepository().getKandidatWithoutFotoUrl(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutLobbypediaUrl(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutLobbypediaUrl(pageable);
+        return getRepository().getKandidatWithoutLobbypediaUrl(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutSoundcloud(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutSoundcloud(pageable);
+        return getRepository().getKandidatWithoutSoundcloud(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutYoutube(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutYoutube(pageable);
+        return getRepository().getKandidatWithoutYoutube(pageable);
     }
 
     @Override
     public Page<Kandidat> getKandidatWithoutAbgeordnetenwatch(Pageable pageable) {
-        return kandidatRepository.getKandidatWithoutAbgeordnetenwatch(pageable);
+        return getRepository().getKandidatWithoutAbgeordnetenwatch(pageable);
     }
 
     @Override
     public Page<Kandidat> getMdbWithoutFotoUrl(Pageable pageable) {
-        return kandidatRepository.getMdbWithoutFotoUrl(pageable);
+        return getRepository().getMdbWithoutFotoUrl(pageable);
     }
 
     @Override
     public ReportOverview getOverview() {
         ReportOverview reportOverview = new ReportOverview();
 
-        Long countMdb = kandidatRepository.countMdb();
+        Long countMdb = getRepository().countMdb();
 
-        Long countKandidat = kandidatRepository.countKandidat();
+        Long countKandidat = getRepository().countKandidat();
 
-        Long countMdbWithoutAbgeordnetenwatch = kandidatRepository.countMdbWithoutAbgeordnetenwatch();
+        Long countMdbWithoutAbgeordnetenwatch = getRepository().countMdbWithoutAbgeordnetenwatch();
 
-        Long countMdbWithoutBundestagProfile = kandidatRepository.countMdbWithoutBundestagProfile();
+        Long countMdbWithoutBundestagProfile = getRepository().countMdbWithoutBundestagProfile();
 
-        Long countMdbWithoutFotoUrl = kandidatRepository.countMdbWithoutFotoUrl();
+        Long countMdbWithoutFotoUrl = getRepository().countMdbWithoutFotoUrl();
 
-        Long countMdbWithoutFacebook = kandidatRepository.countMdbWithoutFacebook();
+        Long countMdbWithoutFacebook = getRepository().countMdbWithoutFacebook();
 
-        Long countMdbWithoutTwitter = kandidatRepository.countMdbWithoutTwitter();
+        Long countMdbWithoutTwitter = getRepository().countMdbWithoutTwitter();
 
-        Long countMdbWithoutWebseite = kandidatRepository.countMdbWithoutWebseite();
+        Long countMdbWithoutWebseite = getRepository().countMdbWithoutWebseite();
 
-        Long countMdbWithoutWikipediaArticle = kandidatRepository.countMdbWithoutWikipediaArticle();
+        Long countMdbWithoutWikipediaArticle = getRepository().countMdbWithoutWikipediaArticle();
 
-        Long countKandidatWithoutAbgeordnetenwatch = kandidatRepository.countKandidatWithoutAbgeordnetenwatch();
+        Long countKandidatWithoutAbgeordnetenwatch = getRepository().countKandidatWithoutAbgeordnetenwatch();
 
-        Long countKandidatWithoutFacebook = kandidatRepository.countKandidatWithoutFacebook();
+        Long countKandidatWithoutFacebook = getRepository().countKandidatWithoutFacebook();
 
-        Long countKandidatWithoutWebseite = kandidatRepository.countKandidatWithoutWebseite();
+        Long countKandidatWithoutWebseite = getRepository().countKandidatWithoutWebseite();
 
-        Long countKandidatWithoutFotoUrl = kandidatRepository.countKandidatWithoutFotoUrl();
+        Long countKandidatWithoutFotoUrl = getRepository().countKandidatWithoutFotoUrl();
 
-        Long countKandidatWithoutLobbypediaUrl = kandidatRepository.countKandidatWithoutLobbypediaUrl();
+        Long countKandidatWithoutLobbypediaUrl = getRepository().countKandidatWithoutLobbypediaUrl();
 
-        Long countKandidatWithoutSoundcloud = kandidatRepository.countKandidatWithoutSoundcloud();
+        Long countKandidatWithoutSoundcloud = getRepository().countKandidatWithoutSoundcloud();
 
-        Long countKandidatWithoutYoutube = kandidatRepository.countKandidatWithoutYoutube();
+        Long countKandidatWithoutYoutube = getRepository().countKandidatWithoutYoutube();
 
-        Long countKandidatWithoutTwitter = kandidatRepository.countKandidatWithoutTwitter();
+        Long countKandidatWithoutTwitter = getRepository().countKandidatWithoutTwitter();
 
         reportOverview.setCountMdb(countMdb);
         reportOverview.setCountKandidat(countKandidat);

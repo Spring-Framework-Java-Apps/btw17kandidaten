@@ -1,11 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wohnort;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WohnortRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WohnortService;
@@ -14,76 +13,26 @@ import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class WohnortServiceImpl implements WohnortService {
-
-    private final WohnortRepository wohnortRepository;
+public class WohnortServiceImpl extends JpaDomainServiceImpl<Wohnort> implements WohnortService {
 
     @Autowired
     public WohnortServiceImpl(WohnortRepository wohnortRepository) {
-        this.wohnortRepository = wohnortRepository;
+        super(wohnortRepository);
     }
 
     @Override
-    public Page<Wohnort> getAll(Pageable pageRequest) {
-        return wohnortRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Wohnort> getAll() {
-        return wohnortRepository.findAll();
+    protected WohnortRepository getRepository(){
+        return (WohnortRepository) super.getRepository();
     }
 
     @Override
     public Wohnort findByWohnort(String wohnort) {
-        return wohnortRepository.findByWohnort(wohnort);
-    }
-
-    @Override
-    public long count() {
-        return wohnortRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        wohnortRepository.deleteAll();
+        return getRepository().findByWohnort(wohnort);
     }
 
     @Override
     public List<Wohnort> getAllOrderById() {
-        return wohnortRepository.findAll();
+        return getRepository().findAll();
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Wohnort update(Wohnort wohnort) {
-        return wohnortRepository.save(wohnort);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return wohnortRepository.getAllIds();
-    }
-
-    @Override
-    public Wohnort findById(long id) {
-        return wohnortRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return wohnortRepository.getMaxId();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Wohnort create(Wohnort wohnort) {
-        return wohnortRepository.save(wohnort);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(Wohnort wohnort) {
-        wohnortRepository.delete(wohnort);
-    }
 }

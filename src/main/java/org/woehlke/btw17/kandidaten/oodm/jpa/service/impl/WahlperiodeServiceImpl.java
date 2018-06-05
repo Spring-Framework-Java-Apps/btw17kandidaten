@@ -1,11 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
@@ -14,75 +13,23 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WahlperiodeRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WahlperiodeService;
 
-import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class WahlperiodeServiceImpl implements WahlperiodeService {
-
-    private final WahlperiodeRepository wahlperiodeRepository;
+public class WahlperiodeServiceImpl extends JpaDomainServiceImpl<Wahlperiode> implements WahlperiodeService {
 
     @Autowired
     public WahlperiodeServiceImpl(WahlperiodeRepository wahlperiodeRepository) {
-        this.wahlperiodeRepository = wahlperiodeRepository;
+        super(wahlperiodeRepository);
     }
 
     @Override
-    public Page<Wahlperiode> getAll(Pageable pageRequest) {
-        return this.wahlperiodeRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Wahlperiode> getAll() {
-        return this.wahlperiodeRepository.findAll();
-    }
-
-    @Override
-    public long count() {
-        return this.wahlperiodeRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        this.wahlperiodeRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(Wahlperiode domainObject) {
-        this.wahlperiodeRepository.delete(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Wahlperiode create(Wahlperiode domainObject) {
-        return this.wahlperiodeRepository.save(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Wahlperiode update(Wahlperiode domainObject) {
-        return this.wahlperiodeRepository.save(domainObject);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return this.wahlperiodeRepository.getAllIds();
-    }
-
-    @Override
-    public Wahlperiode findById(long id) {
-        return this.wahlperiodeRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return this.wahlperiodeRepository.getMaxId();
+    protected WahlperiodeRepository getRepository(){
+        return (WahlperiodeRepository) super.getRepository();
     }
 
     @Override
     public Wahlperiode findByBtw17Wahlperiode(Long wahlperiodeId, Wahlkreis wahlkreis, BundeslandEnum bundeslandLandesListe, Mandatsart mandatsArt, InstitutionArt institutionArtLang, String inslang, String fktlang) {
-        return wahlperiodeRepository.findByBtw17Wahlperiode(wahlperiodeId,wahlkreis,bundeslandLandesListe,mandatsArt,institutionArtLang,inslang,fktlang);
+        return getRepository().findByBtw17Wahlperiode(wahlperiodeId,wahlkreis,bundeslandLandesListe,mandatsArt,institutionArtLang,inslang,fktlang);
     }
 }

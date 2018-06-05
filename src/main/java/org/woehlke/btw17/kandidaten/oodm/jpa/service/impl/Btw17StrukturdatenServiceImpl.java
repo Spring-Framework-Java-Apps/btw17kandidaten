@@ -6,7 +6,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Mdb;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Strukturdaten;
+import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17Btw17MdbRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17StrukturdatenRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17StrukturdatenService;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.Strukturdaten;
@@ -15,23 +18,27 @@ import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService {
-
-    private final Btw17StrukturdatenRepository btw17StrukturdatenRepository;
+public class Btw17StrukturdatenServiceImpl extends JpaDomainServiceImpl<Btw17Strukturdaten> implements Btw17StrukturdatenService {
 
     @Autowired
     public Btw17StrukturdatenServiceImpl(Btw17StrukturdatenRepository btw17StrukturdatenRepository) {
-        this.btw17StrukturdatenRepository = btw17StrukturdatenRepository;
+        super(btw17StrukturdatenRepository);
     }
 
     @Override
+    protected Btw17StrukturdatenRepository getRepository(){
+        return (Btw17StrukturdatenRepository) super.getRepository();
+    }
+
+
+    @Override
     public Page<Btw17Strukturdaten> findByWahlkreisNummer(Long wahlkreisNummer, Pageable pageRequest) {
-        return btw17StrukturdatenRepository.findByWahlkreisNummer(wahlkreisNummer,pageRequest);
+        return getRepository().findByWahlkreisNummer(wahlkreisNummer,pageRequest);
     }
 
     @Override
     public Page<Btw17Strukturdaten> findByBundeslandName(String bundeslandName, Pageable pageRequest) {
-        return btw17StrukturdatenRepository.findByBundeslandName(bundeslandName, pageRequest);
+        return getRepository().findByBundeslandName(bundeslandName, pageRequest);
     }
 
     @Override
@@ -91,60 +98,6 @@ public class Btw17StrukturdatenServiceImpl implements Btw17StrukturdatenService 
 
     @Override
     public List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender() {
-        return btw17StrukturdatenRepository.getStrukturdatenOfBundeslaender();
-    }
-
-    @Override
-    public Page<Btw17Strukturdaten> getAll(Pageable pageRequest) {
-        return btw17StrukturdatenRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Btw17Strukturdaten> getAll() {
-        return btw17StrukturdatenRepository.findAll();
-    }
-
-    @Override
-    public long count() {
-        return btw17StrukturdatenRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        btw17StrukturdatenRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(Btw17Strukturdaten domainObject) {
-        btw17StrukturdatenRepository.delete(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Strukturdaten create(Btw17Strukturdaten domainObject) {
-        return btw17StrukturdatenRepository.save(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Strukturdaten update(Btw17Strukturdaten domainObject) {
-        return btw17StrukturdatenRepository.save(domainObject);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return btw17StrukturdatenRepository.getAllIds();
-    }
-
-    @Override
-    public Btw17Strukturdaten findById(long id) {
-        return btw17StrukturdatenRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return btw17StrukturdatenRepository.getMaxId();
+        return getRepository().getStrukturdatenOfBundeslaender();
     }
 }

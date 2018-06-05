@@ -1,91 +1,38 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17WahlkreisRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlkreisService;
 
-import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class Btw17WahlkreisServiceImpl implements Btw17WahlkreisService {
-
-    private final Btw17WahlkreisRepository btw17WahlkreisRepository;
+public class Btw17WahlkreisServiceImpl extends JpaDomainServiceImpl<Btw17Wahlkreis> implements Btw17WahlkreisService {
 
     @Autowired
     public Btw17WahlkreisServiceImpl(Btw17WahlkreisRepository btw17WahlkreisRepository) {
-        this.btw17WahlkreisRepository = btw17WahlkreisRepository;
+        super(btw17WahlkreisRepository);
+    }
+
+    @Override
+    protected Btw17WahlkreisRepository getRepository(){
+        return (Btw17WahlkreisRepository) super.getRepository();
     }
 
 
     @Override
     public Btw17Wahlkreis findByWahlkreisNummer(long wahlkreisNummer) {
-        return this.btw17WahlkreisRepository.findByWahlkreisNummer(wahlkreisNummer);
+        return this.getRepository().findByWahlkreisNummer(wahlkreisNummer);
     }
 
     @Override
     public BundeslandEnum findByBundeslandNummer(long bundeslandNummer) {
-        return this.btw17WahlkreisRepository.findByBundeslandNummer(bundeslandNummer);
-    }
-
-    @Override
-    public Page<Btw17Wahlkreis> getAll(Pageable pageRequest) {
-        return this.btw17WahlkreisRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Btw17Wahlkreis> getAll() {
-        return this.btw17WahlkreisRepository.findAll();
-    }
-
-    @Override
-    public long count() {
-        return this.btw17WahlkreisRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        this.btw17WahlkreisRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(Btw17Wahlkreis domainObject) {
-        this.btw17WahlkreisRepository.delete(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Wahlkreis create(Btw17Wahlkreis domainObject) {
-        return this.btw17WahlkreisRepository.save(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Wahlkreis update(Btw17Wahlkreis domainObject) {
-        return this.btw17WahlkreisRepository.save(domainObject);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return this.btw17WahlkreisRepository.getAllIds();
-    }
-
-    @Override
-    public Btw17Wahlkreis findById(long id) {
-        return this.btw17WahlkreisRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return this.btw17WahlkreisRepository.getMaxId();
+        return this.getRepository().findByBundeslandNummer(bundeslandNummer);
     }
 }

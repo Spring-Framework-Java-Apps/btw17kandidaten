@@ -19,7 +19,7 @@ public class KandidatServiceImpl implements KandidatService {
     private final KandidatRepository kandidatRepository;
 
     @Autowired
-    public KandidatServiceImpl(KandidatRepository kandidatRepository) {
+    public KandidatServiceImpl(final KandidatRepository kandidatRepository) {
         this.kandidatRepository = kandidatRepository;
     }
 
@@ -151,9 +151,8 @@ public class KandidatServiceImpl implements KandidatService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
     public Kandidat update(Kandidat kandidat) {
-        return kandidatRepository.save(kandidat);
+        return null;
     }
 
     @Override
@@ -184,11 +183,6 @@ public class KandidatServiceImpl implements KandidatService {
     @Override
     public Page<Kandidat> findByWahlperiode(Wahlperiode wahlperiode, Pageable pageable) {
         return kandidatRepository.findByWahlperiode(wahlperiode,pageable);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return kandidatRepository.getMaxId();
     }
 
     @Override

@@ -1,84 +1,31 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Partei;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.ParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.ParteiService;
 
-import java.util.List;
-
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class ParteiServiceImpl implements ParteiService {
-
-    private final ParteiRepository parteiRepository;
+public class ParteiServiceImpl extends JpaDomainServiceImpl<Partei> implements ParteiService {
 
     @Autowired
     public ParteiServiceImpl(ParteiRepository parteiRepository) {
-        this.parteiRepository = parteiRepository;
+        super(parteiRepository);
     }
 
     @Override
-    public Page<Partei> getAll(Pageable pageRequest) {
-        return parteiRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Partei> getAll() {
-        return this.parteiRepository.findAll();
+    protected ParteiRepository getRepository(){
+        return (ParteiRepository) super.getRepository();
     }
 
     @Override
     public Partei findByPartei(String partei, String parteiLang) {
-        return parteiRepository.findByParteiAndParteiLang(partei,parteiLang);
-    }
-
-    @Override
-    public long count() {
-        return parteiRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        parteiRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Partei update(Partei partei) {
-        return parteiRepository.save(partei);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return parteiRepository.getAllIds();
-    }
-
-    @Override
-    public Partei findById(long id) {
-        return parteiRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return parteiRepository.getMaxId();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Partei create(Partei partei) {
-        return parteiRepository.save(partei);
-    }
-
-    @Override
-    public void delete(Partei partei) {
-        parteiRepository.delete(partei);
+        return getRepository().findByParteiAndParteiLang(partei,parteiLang);
     }
 }

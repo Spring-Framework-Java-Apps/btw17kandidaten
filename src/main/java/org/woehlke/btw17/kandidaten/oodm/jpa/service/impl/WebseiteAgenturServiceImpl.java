@@ -1,84 +1,32 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteAgentur;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WebseiteAgenturRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WebseiteAgenturService;
 
-import java.util.List;
-
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class WebseiteAgenturServiceImpl implements WebseiteAgenturService {
-
-    private final WebseiteAgenturRepository webseiteAgenturRepository;
+public class WebseiteAgenturServiceImpl extends JpaDomainServiceImpl<WebseiteAgentur> implements WebseiteAgenturService {
 
     @Autowired
     public WebseiteAgenturServiceImpl(WebseiteAgenturRepository webseiteAgenturRepository) {
-        this.webseiteAgenturRepository = webseiteAgenturRepository;
+        super(webseiteAgenturRepository);
     }
 
     @Override
-    public Iterable<WebseiteAgentur> getAll() {
-        return webseiteAgenturRepository.findAll();
-    }
-
-    @Override
-    public Page<WebseiteAgentur> getAll(Pageable pageable) {
-        return webseiteAgenturRepository.findAll(pageable);
+    protected WebseiteAgenturRepository getRepository(){
+        return (WebseiteAgenturRepository) super.getRepository();
     }
 
     @Override
     public WebseiteAgentur findByAgentur(String agentur) {
-        return webseiteAgenturRepository.findByAgentur(agentur);
+        return getRepository().findByAgentur(agentur);
     }
 
-    @Override
-    public long count() {
-        return webseiteAgenturRepository.count();
-    }
-
-    @Override
-    public void deleteAll() {
-        webseiteAgenturRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public WebseiteAgentur update(WebseiteAgentur webseiteAgentur) {
-        return webseiteAgenturRepository.save(webseiteAgentur);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return webseiteAgenturRepository.getAllIds();
-    }
-
-    @Override
-    public WebseiteAgentur findById(long id) {
-        return webseiteAgenturRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return webseiteAgenturRepository.getMaxId();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public WebseiteAgentur create(WebseiteAgentur webseiteAgentur) {
-        return webseiteAgenturRepository.save(webseiteAgentur);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(WebseiteAgentur webseiteAgentur) {
-        webseiteAgenturRepository.delete(webseiteAgentur);
-    }
 }

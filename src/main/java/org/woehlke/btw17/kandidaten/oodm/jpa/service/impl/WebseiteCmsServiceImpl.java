@@ -1,83 +1,31 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteCms;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WebseiteCmsRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WebseiteCmsService;
 
-import java.util.List;
-
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class WebseiteCmsServiceImpl implements WebseiteCmsService {
-
-    private final WebseiteCmsRepository webseiteCmsRepository;
+public class WebseiteCmsServiceImpl extends JpaDomainServiceImpl<WebseiteCms> implements WebseiteCmsService {
 
     @Autowired
     public WebseiteCmsServiceImpl(WebseiteCmsRepository webseiteCmsRepository) {
-        this.webseiteCmsRepository = webseiteCmsRepository;
+        super(webseiteCmsRepository);
     }
 
     @Override
-    public Iterable<WebseiteCms> getAll() {
-        return webseiteCmsRepository.findAll();
-    }
-
-    @Override
-    public Page<WebseiteCms> getAll(Pageable pageable) {
-        return webseiteCmsRepository.findAll(pageable);
+    protected WebseiteCmsRepository getRepository(){
+        return (WebseiteCmsRepository) super.getRepository();
     }
 
     @Override
     public WebseiteCms findByCms(String cms) {
-        return webseiteCmsRepository.findByCms(cms);
+        return getRepository().findByCms(cms);
     }
 
-    @Override
-    public long count() {
-        return webseiteCmsRepository.count();
-    }
-
-    @Override
-    public void deleteAll() {
-        webseiteCmsRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public WebseiteCms update(WebseiteCms webseiteCms) {
-        return webseiteCmsRepository.save(webseiteCms);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return webseiteCmsRepository.getAllIds();
-    }
-
-    @Override
-    public WebseiteCms findById(long id) {
-        return webseiteCmsRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return webseiteCmsRepository.getMaxId();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public WebseiteCms create(WebseiteCms webseiteCms) {
-        return webseiteCmsRepository.save(webseiteCms);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(WebseiteCms webseiteCms) {
-        webseiteCmsRepository.delete(webseiteCms);
-    }
 }

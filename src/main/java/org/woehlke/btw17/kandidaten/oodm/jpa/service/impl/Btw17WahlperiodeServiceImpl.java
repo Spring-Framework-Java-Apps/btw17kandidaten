@@ -1,84 +1,30 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlperiode;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17WahlperiodeRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlperiodeService;
 
-import java.util.List;
-
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-public class Btw17WahlperiodeServiceImpl implements Btw17WahlperiodeService {
-
-    private final Btw17WahlperiodeRepository btw17WahlperiodeRepository;
+public class Btw17WahlperiodeServiceImpl extends JpaDomainServiceImpl<Btw17Wahlperiode> implements Btw17WahlperiodeService {
 
     @Autowired
     public Btw17WahlperiodeServiceImpl(Btw17WahlperiodeRepository btw17WahlperiodeRepository) {
-        this.btw17WahlperiodeRepository = btw17WahlperiodeRepository;
+        super(btw17WahlperiodeRepository);
     }
 
     @Override
-    public Page<Btw17Wahlperiode> getAll(Pageable pageRequest) {
-        return btw17WahlperiodeRepository.findAll(pageRequest);
-    }
-
-    @Override
-    public Iterable<Btw17Wahlperiode> getAll() {
-        return btw17WahlperiodeRepository.findAll();
-    }
-
-    @Override
-    public long count() {
-        return btw17WahlperiodeRepository.count();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void deleteAll() {
-        btw17WahlperiodeRepository.deleteAll();
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public void delete(Btw17Wahlperiode domainObject) {
-        btw17WahlperiodeRepository.delete(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Wahlperiode create(Btw17Wahlperiode domainObject) {
-        return btw17WahlperiodeRepository.save(domainObject);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Btw17Wahlperiode update(Btw17Wahlperiode domainObject) {
-        return btw17WahlperiodeRepository.save(domainObject);
-    }
-
-    @Override
-    public List<Long> getAllIds() {
-        return btw17WahlperiodeRepository.getAllIds();
-    }
-
-    @Override
-    public Btw17Wahlperiode findById(long id) {
-        return btw17WahlperiodeRepository.getOne(id);
-    }
-
-    @Override
-    public Long getMaxId() {
-        return btw17WahlperiodeRepository.getMaxId();
+    protected Btw17WahlperiodeRepository getRepository(){
+        return (Btw17WahlperiodeRepository) super.getRepository();
     }
 
     @Override
     public Btw17Wahlperiode findbyWahlperiodeNrAndWkrnummer(String wp, String wkrnummer) {
-        return btw17WahlperiodeRepository.findByWpAndWkrnummer(wp, wkrnummer);
+        return getRepository().findByWpAndWkrnummer(wp, wkrnummer);
     }
 }
