@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.ParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.ParteiService;
 
 
-@Service
+@Service("jpa.ParteiService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class ParteiServiceImpl extends JpaDomainServiceImpl<Partei> implements ParteiService {
 

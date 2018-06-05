@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService;
 
 import java.util.List;
 
-@Service
+@Service("jpa.KandidatService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class KandidatServiceImpl implements KandidatService {
 

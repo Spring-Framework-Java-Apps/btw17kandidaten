@@ -14,7 +14,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.WahlergebnisseBtw17;
 
 import java.util.List;
 
-@Service
+@Service("jpa.Btw17ErgebnisService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17ErgebnisServiceImpl extends JpaDomainServiceImpl<Btw17Ergebnis> implements Btw17ErgebnisService {
 

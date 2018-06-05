@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteCms;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WebseiteCmsRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WebseiteCmsService;
 
-@Service
+@Service("jpa.WebseiteCmsService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WebseiteCmsServiceImpl extends JpaDomainServiceImpl<WebseiteCms> implements WebseiteCmsService {
 

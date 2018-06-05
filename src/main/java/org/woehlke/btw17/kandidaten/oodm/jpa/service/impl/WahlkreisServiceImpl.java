@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WahlkreisRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WahlkreisService;
 
-@Service
+@Service("jpa.WahlkreisService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WahlkreisServiceImpl extends JpaDomainServiceImpl<Wahlkreis> implements WahlkreisService {
 

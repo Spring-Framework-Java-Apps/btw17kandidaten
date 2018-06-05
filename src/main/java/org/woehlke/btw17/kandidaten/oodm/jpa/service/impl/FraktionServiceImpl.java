@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.FraktionRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.FraktionService;
 
 
-@Service
+@Service("jpa.FraktionService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class FraktionServiceImpl extends JpaDomainServiceImpl<Fraktion> implements FraktionService {
 

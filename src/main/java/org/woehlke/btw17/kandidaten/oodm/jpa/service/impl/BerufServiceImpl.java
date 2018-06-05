@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.BerufRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.BerufService;
 
 
-@Service
+@Service("jpa.BerufService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BerufServiceImpl extends JpaDomainServiceImpl<Beruf> implements BerufService {
 

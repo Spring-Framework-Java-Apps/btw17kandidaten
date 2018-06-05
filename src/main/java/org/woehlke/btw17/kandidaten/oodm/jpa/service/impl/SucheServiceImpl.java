@@ -15,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.SucheRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.SucheService;
 
 
-@Service
+@Service("jpa.SucheService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class SucheServiceImpl implements SucheService {
 

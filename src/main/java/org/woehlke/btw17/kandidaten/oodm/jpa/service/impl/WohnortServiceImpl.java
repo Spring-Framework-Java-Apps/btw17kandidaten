@@ -11,7 +11,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.WohnortService;
 
 import java.util.List;
 
-@Service
+@Service("jpa.WohnortService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WohnortServiceImpl extends JpaDomainServiceImpl<Wohnort> implements WohnortService {
 

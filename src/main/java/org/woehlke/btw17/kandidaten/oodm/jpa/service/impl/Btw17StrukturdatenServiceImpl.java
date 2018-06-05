@@ -16,7 +16,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.Strukturdaten;
 
 import java.util.List;
 
-@Service
+@Service("jpa.Btw17StrukturdatenService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17StrukturdatenServiceImpl extends JpaDomainServiceImpl<Btw17Strukturdaten> implements Btw17StrukturdatenService {
 

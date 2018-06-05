@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.BerufsgruppeRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.BerufsgruppeService;
 
-@Service
+@Service("jpa.BerufsgruppeService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BerufsgruppeServiceImpl extends JpaDomainServiceImpl<Berufsgruppe> implements BerufsgruppeService {
 

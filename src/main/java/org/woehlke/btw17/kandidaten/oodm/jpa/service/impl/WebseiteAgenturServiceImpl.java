@@ -9,8 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteAgentur;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.WebseiteAgenturRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.WebseiteAgenturService;
 
-
-@Service
+@Service("jpa.WebseiteAgenturService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class WebseiteAgenturServiceImpl extends JpaDomainServiceImpl<WebseiteAgentur> implements WebseiteAgenturService {
 

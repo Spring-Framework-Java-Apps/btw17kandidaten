@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlbewerber;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17WahlbewerberRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlbewerberService;
 
-@Service
+@Service("jpa.Btw17WahlbewerberService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17WahlbewerberServiceImpl extends JpaDomainServiceImpl<Btw17Wahlbewerber> implements Btw17WahlbewerberService {
 

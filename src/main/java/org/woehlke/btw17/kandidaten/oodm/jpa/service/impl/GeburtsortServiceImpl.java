@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Geburtsort;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.GeburtsortRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.GeburtsortService;
 
-@Service
+@Service("jpa.GeburtsortService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class GeburtsortServiceImpl extends JpaDomainServiceImpl<Geburtsort> implements GeburtsortService {
 

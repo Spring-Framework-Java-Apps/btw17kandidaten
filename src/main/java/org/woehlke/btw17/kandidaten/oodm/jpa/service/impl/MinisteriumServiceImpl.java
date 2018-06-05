@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.MinisteriumRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.MinisteriumService;
 
-@Service
+@Service("jpa.MinisteriumService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class MinisteriumServiceImpl extends JpaDomainServiceImpl<Ministerium> implements MinisteriumService {
 

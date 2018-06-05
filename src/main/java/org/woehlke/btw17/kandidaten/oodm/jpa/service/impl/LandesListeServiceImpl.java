@@ -13,7 +13,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.LandesListeRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.LandesListeService;
 
-@Service
+@Service("jpa.LandesListeService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class LandesListeServiceImpl extends JpaDomainServiceImpl<LandesListe> implements LandesListeService {
 

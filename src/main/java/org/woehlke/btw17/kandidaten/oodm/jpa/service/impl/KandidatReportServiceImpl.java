@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.KandidatRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatReportService;
 
-@Service
+@Service("jpa.KandidatReportService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class KandidatReportServiceImpl extends JpaDomainServiceImpl<Kandidat> implements KandidatReportService {
 

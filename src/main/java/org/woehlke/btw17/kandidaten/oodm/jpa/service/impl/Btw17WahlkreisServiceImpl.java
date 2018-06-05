@@ -11,7 +11,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17WahlkreisReposito
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlkreisService;
 
 
-@Service
+@Service("jpa.Btw17WahlkreisService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17WahlkreisServiceImpl extends JpaDomainServiceImpl<Btw17Wahlkreis> implements Btw17WahlkreisService {
 

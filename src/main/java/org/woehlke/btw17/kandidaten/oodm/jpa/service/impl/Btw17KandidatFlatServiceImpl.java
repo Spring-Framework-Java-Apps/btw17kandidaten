@@ -13,7 +13,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17KandidatFlatService;
 
 import java.util.List;
 
-@Service
+@Service("jpa.Btw17KandidatFlatService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17KandidatFlatServiceImpl extends JpaDomainServiceImpl<Btw17KandidatFlat> implements Btw17KandidatFlatService {
 

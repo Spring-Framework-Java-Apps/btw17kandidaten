@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.ListeParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.ListeParteiService;
 
-@Service
+@Service("jpa.ListeParteiService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class ListeParteiServiceImpl extends JpaDomainServiceImpl<ListePartei> implements ListeParteiService {
 

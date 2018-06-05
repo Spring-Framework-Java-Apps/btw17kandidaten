@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.AusschussRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.AusschussService;
 
-@Service
+@Service("jpa.AusschussService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class AusschussServiceImpl extends JpaDomainServiceImpl<Ausschuss> implements AusschussService {
 

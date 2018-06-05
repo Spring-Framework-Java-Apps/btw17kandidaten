@@ -11,7 +11,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.BundeslandRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.BundeslandService;
 
 
-@Service
+@Service("jpa.BundeslandService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class BundeslandServiceImpl extends JpaDomainServiceImpl<Bundesland> implements BundeslandService {
 

@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17Btw17MdbRepositor
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17MdbService;
 
 
-@Service
+@Service("jpa.Btw17MdbService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class Btw17MdbServiceImpl extends JpaDomainServiceImpl<Btw17Mdb> implements Btw17MdbService {
 
