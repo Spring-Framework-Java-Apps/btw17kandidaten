@@ -75,4 +75,7 @@ public interface KandidatService {
     Page<Kandidat> findByWahlperiode(Wahlperiode wahlperiode, Pageable pageable);
 
     Kandidat findByBtw17Mdb(String vorname, String nachname, Integer geburtsjahr, Geburtsort geburtsort, String geschlecht);
+
+    Long getMaxId();
+
 }

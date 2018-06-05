@@ -190,4 +190,9 @@ public class KandidatServiceImpl implements KandidatService {
         return kandidatRepository.findByBtw17Mdb(vorname, nachname, geburtsjahr, geburtsort, geschlecht);
     }
 
+    @Override
+    public Long getMaxId() {
+        return kandidatRepository.getMaxId();
+    }
+
 }
