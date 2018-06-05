@@ -1,10 +1,23 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainServiceImpl;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Nation;
+import org.woehlke.btw17.kandidaten.oodm.graph.repositories.geographie.NationRespository;
 import org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.NationService;
 
 @Service
 @Transactional
-public class NationServiceImpl implements NationService {
+public class NationServiceImpl extends GraphDomainServiceImpl<Nation> implements NationService {
+
+    @Autowired
+    public NationServiceImpl(final NationRespository repository){
+        super(repository);
+    }
+
+    protected NationRespository getRepository(){
+        return (NationRespository) super.getRepository();
+    }
 }
