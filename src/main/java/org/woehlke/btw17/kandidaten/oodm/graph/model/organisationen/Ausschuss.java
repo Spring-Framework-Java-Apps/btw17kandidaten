@@ -18,6 +18,7 @@ public class Ausschuss implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name="ausschuss")
     private String ausschuss;
 

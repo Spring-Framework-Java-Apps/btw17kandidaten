@@ -2,10 +2,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 //import javax.persistence.Column;
@@ -23,6 +20,8 @@ public class Btw17Wahlperiode implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+
+    @Index(unique=true)
     @Property(name="wahlperiode")
     private String wp;
 
@@ -33,23 +32,29 @@ public class Btw17Wahlperiode implements GraphDomainObject {
     private String mdbwpbis;
 
     //TODO: is it a relationship to Wahlkreis?
+    @Index
     @Property(name="wahlkreis_nummer")
     private String wkrnummer;
 
     //TODO: is it a relationship to Wahlkreis?
+    @Index
     @Property(name="wahlkreis_name")
     private String wkrname;
 
     //TODO: is it a relationship to Bundesland?
+    @Index
     @Property(name="wahlkreis_land")
     private String wkrland;
 
+    @Index
     @Property(name="liste")
     private String liste;
 
+    @Index
     @Property(name="mandats_art")
     private String mandatsart;
 
+    @Index
     @Property(name="insartlang")
     private String insartlang;
 

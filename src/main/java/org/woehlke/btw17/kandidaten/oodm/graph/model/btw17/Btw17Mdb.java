@@ -21,6 +21,7 @@ public class Btw17Mdb implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique=true)
     @Property(name="xml_id")
     private String xmlId;
 

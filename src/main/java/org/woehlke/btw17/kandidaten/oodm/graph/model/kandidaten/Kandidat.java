@@ -35,6 +35,7 @@ public class Kandidat implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique=true)
     //@NotNull
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
     @Property(name = "kandidat_key")
@@ -43,6 +44,7 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "remote_kandidat_key")
     private String remoteKey;
 
+    @Index(unique=true)
     @Property(name = "xml_id_bundestag")
     private String xmlIdBundestag;
 

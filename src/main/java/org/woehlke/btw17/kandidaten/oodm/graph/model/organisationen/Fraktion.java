@@ -21,9 +21,11 @@ public class Fraktion implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name="fraktion")
     private String fraktion;
 
+    @Index(unique = true)
     @Property(name="fraktion_lang")
     private String fraktionLang;
 

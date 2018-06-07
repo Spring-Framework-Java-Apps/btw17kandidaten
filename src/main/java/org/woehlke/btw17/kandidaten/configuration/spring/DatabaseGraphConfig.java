@@ -2,6 +2,8 @@ package org.woehlke.btw17.kandidaten.configuration.spring;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.neo4j.ogm.config.AutoIndexMode;
+import org.neo4j.ogm.config.UsernamePasswordCredentials;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -26,7 +28,7 @@ public class DatabaseGraphConfig {
 
     @Bean(name = "getSessionFactory")
     public SessionFactory graphSessionFactory() {
-        return new SessionFactory(configuration(), 	"org.woehlke.btw17.kandidaten.oodm.graph");
+        return new SessionFactory(configuration(), 	"org.woehlke.btw17.kandidaten.oodm.graph.model.btw17","org.woehlke.btw17.kandidaten.oodm.graph.model.commons"," org.woehlke.btw17.kandidaten.oodm.graph.model.enums","org.woehlke.btw17.kandidaten.oodm.graph.model.geographie","org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten","org.woehlke.btw17.kandidaten.oodm.graph.model.mdb","org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen","org.woehlke.btw17.kandidaten.oodm.graph.model.parts","org.woehlke.btw17.kandidaten.oodm.graph.model.webseite","org.woehlke.btw17.kandidaten.oodm.all.model.commons","org.woehlke.btw17.kandidaten.oodm.graph.model.enums");
     }
 
     @Bean(name = "graphTransactionManager")
@@ -39,15 +41,23 @@ public class DatabaseGraphConfig {
     @Bean
     @ConfigurationProperties(prefix = "spring.data.neo4j")
     public org.neo4j.ogm.config.Configuration configuration() {
+        Integer connectionLivenessCheckTimeout = new Integer(1000);
+        Boolean verifyConnection = true;
+        String uri = "bolt://localhost:7687";
+        String user = "neo4j";
+        String password = "secret";
         org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder()
-            .verifyConnection(true)
-            .uri("bolt://localhost")
-            .credentials("neo4j", "secret")
+            .verifyConnection(verifyConnection)
+            .connectionLivenessCheckTimeout(connectionLivenessCheckTimeout)
+            .autoIndex(AutoIndexMode.UPDATE.getName())
+            .uri(uri)
+            .credentials(user, password)
             .build();
+        UsernamePasswordCredentials c = (UsernamePasswordCredentials) configuration.getCredentials();
         log.info("###############################################################################################");
         log.info("  configuration.getDriverClassName                "+configuration.getDriverClassName());
         log.info("  configuration.getURI                            "+configuration.getURI());
-        log.info("  configuration.getCredentials                    "+configuration.getCredentials().toString());
+        log.info("  configuration.getCredentials                    "+c.getUsername()+" "+c.getPassword());
         log.info("  configuration.getAutoIndex                      "+configuration.getAutoIndex().getName());
         log.info("  configuration.getVerifyConnection               "+configuration.getVerifyConnection());
         log.info("  configuration.getConnectionLivenessCheckTimeout "+configuration.getConnectionLivenessCheckTimeout());

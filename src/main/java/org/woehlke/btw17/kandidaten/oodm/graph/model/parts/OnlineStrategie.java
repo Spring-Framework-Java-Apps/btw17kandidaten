@@ -2,13 +2,10 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.parts;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
-import javax.persistence.Column;
+
 
 //TODO: Pro Online Profil ein Node
 @Setter
@@ -20,72 +17,72 @@ public class OnlineStrategie implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @URL
-    @Column(name="twitter")
+    @Index
+    @Property(name="twitter")
     private String twitter;
 
-    @URL
-    @Column(name="facebook")
+   @Index
+    @Property(name="facebook")
     private String facebook;
 
-    @URL
-    @Column(name="youtube")
+   @Index
+    @Property(name="youtube")
     private String youtube;
 
-    @URL
-    @Column(name="soundcloud")
+   @Index
+    @Property(name="soundcloud")
     private String soundcloud;
 
-    @URL
-    @Column(name="wikipedia_article")
+   @Index
+    @Property(name="wikipedia_article")
     private String wikipediaArticle;
 
-    @URL
-    @Column(name="bundestag")
+   @Index
+    @Property(name="bundestag")
     private String bundestagAbgeordnete;
 
-    @URL
-    @Column(name="abgeordnetenwatch")
+   @Index
+    @Property(name="abgeordnetenwatch")
     private String abgeordnetenwatch;
 
-    @URL
-    @Column(name="lobbypedia_url")
+   @Index
+    @Property(name="lobbypedia_url")
     private String lobbypediaUrl;
 
-    @URL
-    @Column(name="lobbycontrol")
+   @Index
+    @Property(name="lobbycontrol")
     private String lobbycontrol;
 
-    @URL
-    @Column(name="transparency")
+   @Index
+    @Property(name="transparency")
     private String transparency;
 
-    @URL
-    @Column(name="netzpolitik_org")
+   @Index
+    @Property(name="netzpolitik_org")
     private String netzpolitikOrg;
 
-    @URL
-    @Column(name = "google_plus")
+   @Index
+    @Property(name = "google_plus")
     private String googlePlus;
 
-    @URL
-    @Column(name = "google_suche")
+   @Index
+    @Property(name = "google_suche")
     private String googleSuche;
 
-    @URL
-    @Column(name = "bing_suche")
+   @Index
+    @Property(name = "bing_suche")
     private String bingSuche;
 
-    @URL
-    @Column(name = "instagram")
+   @Index
+    @Property(name = "instagram")
     private String instagram;
 
-    @URL
-    @Column(name = "flickr")
+   @Index
+    @Property(name = "flickr")
     private String flickr;
 
-    @URL
-    @Column(name = "vimeo")
+   @Index
+    @Property(name = "vimeo")
     private String vimeo;
 
     @Override
@@ -100,120 +97,120 @@ public class OnlineStrategie implements GraphDomainObject {
 
     @Override
     public String getUniqueId() {
-        return ""+id;
+        return getName()+" "+id;
     }
 
     /*
-    @URL
-    @Column(name = "xing")
+   @Index
+    @Property(name = "xing")
     private String xing;
 
-    @URL
-    @Column(name = "linked_in")
+   @Index
+    @Property(name = "linked_in")
     private String linkedIn;
 
-    @URL
-    @Column(name = "stackoverflow")
+   @Index
+    @Property(name = "stackoverflow")
     private String stackoverflow;
 
-    @URL
-    @Column(name = "github")
+   @Index
+    @Property(name = "github")
     private String github;
 
-    @URL
-    @Column(name = "whatsapp")
+   @Index
+    @Property(name = "whatsapp")
     private String whatsapp;
 
-    @URL
-    @Column(name = "wordpress")
+   @Index
+    @Property(name = "wordpress")
     private String wordpress;
 
-    @URL
-    @Column(name = "spotify")
+   @Index
+    @Property(name = "spotify")
     private String spotify;
 
-    @URL
-    @Column(name = "snapchat")
+   @Index
+    @Property(name = "snapchat")
     private String snapchat;
 
-    @URL
-    @Column(name = "skype")
+   @Index
+    @Property(name = "skype")
     private String skype;
 
-    @URL
-    @Column(name = "slack")
+   @Index
+    @Property(name = "slack")
     private String slack;
 
-    @URL
-    @Column(name = "slideshare")
+   @Index
+    @Property(name = "slideshare")
     private String slideshare;
 
-    @URL
-    @Column(name = "pinterest")
+   @Index
+    @Property(name = "pinterest")
     private String pinterest;
 
-    @URL
-    @Column(name = "paypal")
+   @Index
+    @Property(name = "paypal")
     private String paypal;
 
-    @URL
-    @Column(name = "meetup")
+   @Index
+    @Property(name = "meetup")
     private String meetup;
 
-    @URL
-    @Column(name = "lastfm")
+   @Index
+    @Property(name = "lastfm")
     private String lastfm;
 
-    @URL
-    @Column(name = "imdb")
+   @Index
+    @Property(name = "imdb")
     private String imdb;
 
-    @URL
-    @Column(name = "foursquare")
+   @Index
+    @Property(name = "foursquare")
     private String foursquare;
 
-    @URL
-    @Column(name = "digg")
+   @Index
+    @Property(name = "digg")
     private String digg;
 
-    @URL
-    @Column(name = "delicious")
+   @Index
+    @Property(name = "delicious")
     private String delicious;
 
-    @URL
-    @Column(name = "url500px")
+   @Index
+    @Property(name = "url500px")
     private String url500px;
 
-    @URL
-    @Column(name = "amazon")
+   @Index
+    @Property(name = "amazon")
     private String amazon;
 
-    @URL
-    @Column(name = "hacker_news")
+   @Index
+    @Property(name = "hacker_news")
     private String hackerNews;
 
-    @URL
-    @Column(name = "scribd")
+   @Index
+    @Property(name = "scribd")
     private String scribd;
 
-    @URL
-    @Column(name = "tumblr")
+   @Index
+    @Property(name = "tumblr")
     private String tumblr;
 
-    @URL
-    @Column(name = "viadeo")
+   @Index
+    @Property(name = "viadeo")
     private String viadeo;
 
-    @URL
-    @Column(name = "yahoo")
+   @Index
+    @Property(name = "yahoo")
     private String yahoo;
 
-    @URL
-    @Column(name = "yoast")
+   @Index
+    @Property(name = "yoast")
     private String yoast;
 
-    @URL
-    @Column(name = "yelp")
+   @Index
+    @Property(name = "yelp")
     private String yelp;
     */
 }

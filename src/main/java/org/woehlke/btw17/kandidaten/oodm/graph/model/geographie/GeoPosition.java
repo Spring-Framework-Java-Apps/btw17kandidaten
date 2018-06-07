@@ -2,13 +2,9 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
-import javax.persistence.Column;
 
 @Setter
 @Getter
@@ -19,17 +15,17 @@ public class GeoPosition implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @URL
-    @Column(name = "google_maps_url")
+    @Index(unique=true)
+    @Property(name = "google_maps_url")
     private String googleMapsUrl;
 
-    @Column(name = "geo_longitude")
+    @Property(name = "geo_longitude")
     private String geoLongitude;
 
-    @Column(name = "geo_lattitude")
+    @Property(name = "geo_lattitude")
     private String geoLattitude;
 
-    @Column(name = "geo_zoom")
+    @Property(name = "geo_zoom")
     private String geoZoom;
 
     @Override
@@ -44,6 +40,6 @@ public class GeoPosition implements GraphDomainObject {
 
     @Override
     public String getUniqueId() {
-        return ""+id;
+        return getName()+" "+id;
     }
 }

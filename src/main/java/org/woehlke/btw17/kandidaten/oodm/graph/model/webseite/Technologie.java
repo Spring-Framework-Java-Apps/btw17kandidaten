@@ -3,10 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 import lombok.Getter;
 import lombok.Setter;
 //import org.hibernate.validator.constraints.SafeHtml;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 //import javax.validation.constraints.NotNull;
@@ -23,6 +20,7 @@ public class Technologie implements GraphDomainObject {
 
     //@SafeHtml
     //@NotNull
+    @Index(unique = true)
     @Property(name="technologie")
     private String technologie;
 

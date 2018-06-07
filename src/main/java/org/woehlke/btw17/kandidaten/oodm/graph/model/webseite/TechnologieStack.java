@@ -23,8 +23,9 @@ public class TechnologieStack implements GraphDomainObject {
 
     //@SafeHtml
     //@NotNull
-    @Property(name="technologie")
-    private String technologie;
+    @Index(unique=true)
+    @Property(name="technologie_stack")
+    private String technologieStack;
 
     @Relationship(type = MADE_WITH)
     private List<Technologie> technologien = new ArrayList<>();
@@ -36,11 +37,11 @@ public class TechnologieStack implements GraphDomainObject {
 
     @Override
     public String getName() {
-        return technologie;
+        return technologieStack;
     }
 
     @Override
     public String getUniqueId() {
-        return technologie+" "+id;
+        return technologieStack+" "+id;
     }
 }

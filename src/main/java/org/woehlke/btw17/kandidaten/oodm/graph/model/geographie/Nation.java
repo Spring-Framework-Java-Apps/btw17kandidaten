@@ -17,6 +17,7 @@ public class Nation implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique=true)
     @Property(name="nation")
     private String nation;
 

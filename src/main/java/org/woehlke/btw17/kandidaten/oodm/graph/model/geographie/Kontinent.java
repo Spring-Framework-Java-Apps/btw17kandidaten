@@ -3,10 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
 @Setter
@@ -18,6 +15,7 @@ public class Kontinent implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique=true)
     @Property(name="kontinent")
     private String kontinent;
 

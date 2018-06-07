@@ -20,6 +20,7 @@ public class Ort implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name="ort")
     private String ort;
 

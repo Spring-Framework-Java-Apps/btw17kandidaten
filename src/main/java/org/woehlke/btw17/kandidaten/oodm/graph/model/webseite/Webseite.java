@@ -24,11 +24,13 @@ public class Webseite implements GraphDomainObject {
     private Long id;
 
     //@URL
+    @Index(unique = true)
     @Property(name="webseite_url")
     private String webseite;
 
     //@SafeHtml
     //@NotNull
+    @Index
     @Property(name="webseite_name")
     private String name;
 

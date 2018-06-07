@@ -21,9 +21,11 @@ public class Hersteller implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index
     @Property(name="hersteller")
     private String hersteller;
 
+    @Index
     @Property(name="hersteller")
     private String firmierung;
 

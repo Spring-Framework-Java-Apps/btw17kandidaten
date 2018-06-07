@@ -3,7 +3,6 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.SafeHtml;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
@@ -25,11 +24,11 @@ public class Dienstleister implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @SafeHtml
+    @Index
     @Property(name="name_marketing")
     private String agentur;
 
-    @SafeHtml
+    @Index(unique=true)
     @Property(name="name_registereintrag")
     private String firma;
 

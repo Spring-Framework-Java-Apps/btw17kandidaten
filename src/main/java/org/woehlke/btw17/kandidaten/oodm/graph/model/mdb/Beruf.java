@@ -16,6 +16,7 @@ public class Beruf implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name="beruf")
     private String beruf;
 

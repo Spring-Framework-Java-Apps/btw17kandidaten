@@ -8,7 +8,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
-import javax.validation.constraints.Digits;
+//import javax.validation.constraints.Digits;
 
 @Setter
 @Getter
@@ -24,30 +24,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Wahlberechtigte;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "wahlberechtigte_erststimmen_vorlaeufig")
-    private Long wahlberechtigteErststimmenVorlaeufig;
+    private String wahlberechtigteErststimmenVorlaeufig;
 
     /**
      * Wahlberechtigte;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "wahlberechtigte_erststimmen_vorperiode")
-    private Long wahlberechtigteErststimmenVorperiode;
+    private String wahlberechtigteErststimmenVorperiode;
 
     /**
      * Wahlberechtigte;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "wahlberechtigte_zweitstimmen_vorlaeufig")
-    private Long wahlberechtigteZweitstimmenVorlaeufig;
+    private String wahlberechtigteZweitstimmenVorlaeufig;
 
     /**
      * Wahlberechtigte;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "wahlberechtigte_zweitstimmen_vorperiode")
-    private Long wahlberechtigteZweitstimmenVorperiode;
+    private String wahlberechtigteZweitstimmenVorperiode;
 
 
     // Wähler
@@ -55,30 +55,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Wähler;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "waehler_erststimmen_vorlaeufig")
-    private Long waehlerErststimmenVorlaeufig;
+    private String waehlerErststimmenVorlaeufig;
 
     /**
      * Wähler;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "waehler_erststimmen_vorperiode")
-    private Long waehlerErststimmenVorperiode;
+    private String waehlerErststimmenVorperiode;
 
     /**
      * Wähler;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "waehler_zweitstimmen_vorlaeufig")
-    private Long waehlerZweitstimmenVorlaeufig;
+    private String waehlerZweitstimmenVorlaeufig;
 
     /**
      * Wähler;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "waehler_zweitstimmen_vorperiode")
-    private Long waehlerZweitstimmenVorperiode;
+    private String waehlerZweitstimmenVorperiode;
 
 
     // Ungültige
@@ -86,30 +86,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Ungültige;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "ungueltige_erststimmen_vorlaeufig")
-    private Long ungueltigeErststimmenVorlaeufig;
+    private String ungueltigeErststimmenVorlaeufig;
 
     /**
      * Ungültige;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "ungueltige_erststimmen_vorperiode")
-    private Long ungueltigeErststimmenVorperiode;
+    private String ungueltigeErststimmenVorperiode;
 
     /**
      * Ungültige;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "ungueltige_zweitstimmen_vorlaeufig")
-    private Long ungueltigeZweitstimmenVorlaeufig;
+    private String ungueltigeZweitstimmenVorlaeufig;
 
     /**
      * Ungültige;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "ungueltige_zweitstimmen_vorperiode")
-    private Long ungueltigeZweitstimmenVorperiode;
+    private String ungueltigeZweitstimmenVorperiode;
 
 
     // Gültige
@@ -117,30 +117,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Gültige;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gueltige_erststimmen_vorlaeufig")
-    private Long gueltigeErststimmenVorlaeufig;
+    private String gueltigeErststimmenVorlaeufig;
 
     /**
      * Gültige;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gueltige_erststimmen_vorperiode")
-    private Long gueltigeErststimmenVorperiode;
+    private String gueltigeErststimmenVorperiode;
 
     /**
      * Gültige;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gueltige_zweitstimmen_vorlaeufig")
-    private Long gueltigeZweitstimmenVorlaeufig;
+    private String gueltigeZweitstimmenVorlaeufig;
 
     /**
      * Gültige;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "ueltige_zweitstimmen_vorperiode")
-    private Long gueltigeZweitstimmenVorperiode;
+    private String gueltigeZweitstimmenVorperiode;
 
 
     // Christlich Demokratische Union Deutschlands
@@ -148,30 +148,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Christlich Demokratische Union Deutschlands;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "cdu_erststimmen_vorlaeufig")
-    private Long cduErststimmenVorlaeufig;
+    private String cduErststimmenVorlaeufig;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "cdu_erststimmen_vorperiode")
-    private Long cduErststimmenVorperiode;
+    private String cduErststimmenVorperiode;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "cdu_zweitstimmen_vorlaeufig")
-    private Long cduZweitstimmenVorlaeufig;
+    private String cduZweitstimmenVorlaeufig;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "cdu_zweitstimmen_vorperiode")
-    private Long cduZweitstimmenVorperiode;
+    private String cduZweitstimmenVorperiode;
 
 
     // Sozialdemokratische Partei Deutschlands
@@ -179,30 +179,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Sozialdemokratische Partei Deutschlands;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "spd_erststimmen_vorlaeufig")
-    private Long spdErststimmenVorlaeufig;
+    private String spdErststimmenVorlaeufig;
 
     /**
      * Sozialdemokratische Partei Deutschlands;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "spd_erststimmen_vorperiode")
-    private Long spdErststimmenVorperiode;
+    private String spdErststimmenVorperiode;
 
     /**
      * Sozialdemokratische Partei Deutschlands;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "spd_zweitstimmen_vorlaeufig")
-    private Long spdZweitstimmenVorlaeufig;
+    private String spdZweitstimmenVorlaeufig;
 
     /**
      * Sozialdemokratische Partei Deutschlands;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "spd_zweitstimmen_vorperiode")
-    private Long spdZweitstimmenVorperiode;
+    private String spdZweitstimmenVorperiode;
 
 
     // DIE LINKE
@@ -210,30 +210,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * DIE LINKE;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dielinke_erststimmen_vorlaeufig")
-    private Long dielinkeErststimmenVorlaeufig;
+    private String dielinkeErststimmenVorlaeufig;
 
     /**
      * DIE LINKE;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dielinke_erststimmen_vorperiode")
-    private Long dielinkeErststimmenVorperiode;
+    private String dielinkeErststimmenVorperiode;
 
     /**
      * DIE LINKE;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dielinke_zweitstimmen_vorlaeufig")
-    private Long dielinkeZweitstimmenVorlaeufig;
+    private String dielinkeZweitstimmenVorlaeufig;
 
     /**
      * DIE LINKE;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dielinke_zweitstimmen_vorperiode")
-    private Long dielinkeZweitstimmenVorperiode;
+    private String dielinkeZweitstimmenVorperiode;
 
 
     // BÜNDNIS 90/DIE GRÜNEN
@@ -241,30 +241,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * BÜNDNIS 90/DIE GRÜNEN;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegruenen_erststimmen_vorlaeufig")
-    private Long diegruenenErststimmenVorlaeufig;
+    private String diegruenenErststimmenVorlaeufig;
 
     /**
      * BÜNDNIS 90/DIE GRÜNEN;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegruenen_erststimmen_vorperiode")
-    private Long diegruenenErststimmenVorperiode;
+    private String diegruenenErststimmenVorperiode;
 
     /**
      * BÜNDNIS 90/DIE GRÜNEN;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegruenen_zweitstimmen_vorlaeufig")
-    private Long diegruenenZweitstimmenVorlaeufig;
+    private String diegruenenZweitstimmenVorlaeufig;
 
     /**
      * BÜNDNIS 90/DIE GRÜNEN;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegruenen_zweitstimmen_vorperiode")
-    private Long diegruenenZweitstimmenVorperiode;
+    private String diegruenenZweitstimmenVorperiode;
 
 
     // Christlich-Soziale Union in Bayern e.V.
@@ -272,30 +272,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Christlich-Soziale Union in Bayern e.V.;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "csu_erststimmen_vorlaeufig")
-    private Long csuErststimmenVorlaeufig;
+    private String csuErststimmenVorlaeufig;
 
     /**
      * Christlich-Soziale Union in Bayern e.V.;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "csu_erststimmen_vorperiode")
-    private Long csuErststimmenVorperiode;
+    private String csuErststimmenVorperiode;
 
     /**
      * Christlich-Soziale Union in Bayern e.V.;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "csu_zweitstimmen_vorlaeufig")
-    private Long csuZweitstimmenVorlaeufig;
+    private String csuZweitstimmenVorlaeufig;
 
     /**
      * Christlich-Soziale Union in Bayern e.V.;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "csu_zweitstimmen_vorperiode")
-    private Long csuZweitstimmenVorperiode;
+    private String csuZweitstimmenVorperiode;
 
 
     // Freie Demokratische Partei
@@ -303,30 +303,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Freie Demokratische Partei;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "fdp_erststimmen_vorlaeufig")
-    private Long fdpErststimmenVorlaeufig;
+    private String fdpErststimmenVorlaeufig;
 
     /**
      * Freie Demokratische Partei;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "fdp_erststimmen_vorperiode")
-    private Long fdpErststimmenVorperiode;
+    private String fdpErststimmenVorperiode;
 
     /**
      * Freie Demokratische Partei;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "fdp_zweitstimmen_vorlaeufig")
-    private Long fdpZweitstimmenVorlaeufig;
+    private String fdpZweitstimmenVorlaeufig;
 
     /**
      * Freie Demokratische Partei;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "fdp_zweitstimmen_vorperiode")
-    private Long fdpZweitstimmenVorperiode;
+    private String fdpZweitstimmenVorperiode;
 
 
     // Alternative für Deutschland
@@ -334,30 +334,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Alternative für Deutschland;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "afd_erststimmen_vorlaeufig")
-    private Long afdErststimmenVorlaeufig;
+    private String afdErststimmenVorlaeufig;
 
     /**
      * Alternative für Deutschland;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "afd_erststimmen_vorperiode")
-    private Long afdErststimmenVorperiode;
+    private String afdErststimmenVorperiode;
 
     /**
      * Alternative für Deutschland;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "afd_zweitstimmen_vorlaeufig")
-    private Long afdZweitstimmenVorlaeufig;
+    private String afdZweitstimmenVorlaeufig;
 
     /**
      * Alternative für Deutschland;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "afd_zweitstimmen_vorperiode")
-    private Long afdZweitstimmenVorperiode;
+    private String afdZweitstimmenVorperiode;
 
 
     // Piratenpartei Deutschland
@@ -365,30 +365,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Piratenpartei Deutschland;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "piratenpartei_erststimmen_vorlaeufig")
-    private Long piratenparteiErststimmenVorlaeufig;
+    private String piratenparteiErststimmenVorlaeufig;
 
     /**
      * Piratenpartei Deutschland;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "piratenpartei_erststimmen_vorperiode")
-    private Long piratenparteiErststimmenVorperiode;
+    private String piratenparteiErststimmenVorperiode;
 
     /**
      * Piratenpartei Deutschland;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "piratenpartei_zweitstimmen_vorlaeufig")
-    private Long piratenparteiZweitstimmenVorlaeufig;
+    private String piratenparteiZweitstimmenVorlaeufig;
 
     /**
      * Piratenpartei Deutschland;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "piratenpartei_zweitstimmen_vorperiode")
-    private Long piratenparteiZweitstimmenVorperiode;
+    private String piratenparteiZweitstimmenVorperiode;
 
 
     // Nationaldemokratische Partei Deutschlands
@@ -396,30 +396,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Nationaldemokratische Partei Deutschlands;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "npd_erststimmen_vorlaeufig")
-    private Long npdErststimmenVorlaeufig;
+    private String npdErststimmenVorlaeufig;
 
     /**
      * Nationaldemokratische Partei Deutschlands;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "npd_erststimmen_vorperiode")
-    private Long npdErststimmenVorperiode;
+    private String npdErststimmenVorperiode;
 
     /**
      * Nationaldemokratische Partei Deutschlands;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "npd_zweitstimmen_vorlaeufig")
-    private Long npdZweitstimmenVorlaeufig;
+    private String npdZweitstimmenVorlaeufig;
 
     /**
      * Nationaldemokratische Partei Deutschlands;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "npd_zweitstimmen_vorperiode")
-    private Long npdZweitstimmenVorperiode;
+    private String npdZweitstimmenVorperiode;
 
 
     // FREIE WÄHLER
@@ -427,30 +427,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * FREIE WÄHLER;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "freiewaehler_erststimmen_vorlaeufig")
-    private Long freieWaehlerErststimmenVorlaeufig;
+    private String freieWaehlerErststimmenVorlaeufig;
 
     /**
      * FREIE WÄHLER;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "freiewaehler_erststimmen_vorperiode")
-    private Long freieWaehlerErststimmenVorperiode;
+    private String freieWaehlerErststimmenVorperiode;
 
     /**
      * FREIE WÄHLER;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "freiewaehler_zweitstimmen_vorlaeufig")
-    private Long freieWaehlerZweitstimmenVorlaeufig;
+    private String freieWaehlerZweitstimmenVorlaeufig;
 
     /**
      * FREIE WÄHLER;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "freiewaehler_zweitstimmen_vorperiode")
-    private Long freieWaehlerZweitstimmenVorperiode;
+    private String freieWaehlerZweitstimmenVorperiode;
 
 
     // PARTEI MENSCH UMWELT TIERSCHUTZ
@@ -458,30 +458,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * PARTEI MENSCH UMWELT TIERSCHUTZ;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzpartei_erststimmen_vorlaeufig")
-    private Long tierschutzparteiErststimmenVorlaeufig;
+    private String tierschutzparteiErststimmenVorlaeufig;
 
     /**
      * PARTEI MENSCH UMWELT TIERSCHUTZ;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzpartei_erststimmen_vorperiode")
-    private Long tierschutzparteiErststimmenVorperiode;
+    private String tierschutzparteiErststimmenVorperiode;
 
     /**
      * PARTEI MENSCH UMWELT TIERSCHUTZ;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzpartei_zweitstimmen_vorlaeufig")
-    private Long tierschutzparteiZweitstimmenVorlaeufig;
+    private String tierschutzparteiZweitstimmenVorlaeufig;
 
     /**
      * PARTEI MENSCH UMWELT TIERSCHUTZ;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzpartei_zweitstimmen_vorperiode")
-    private Long tierschutzparteiZweitstimmenVorperiode;
+    private String tierschutzparteiZweitstimmenVorperiode;
 
 
 
@@ -490,30 +490,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Ökologisch-Demokratische Partei;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "oedp_erststimmen_vorlaeufig")
-    private Long oedpErststimmenVorlaeufig;
+    private String oedpErststimmenVorlaeufig;
 
     /**
      * Ökologisch-Demokratische Partei;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "oedp_erststimmen_vorperiode")
-    private Long oedpErststimmenVorperiode;
+    private String oedpErststimmenVorperiode;
 
     /**
      * Ökologisch-Demokratische Partei;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "oedp_zweitstimmen_vorlaeufig")
-    private Long oedpZweitstimmenVorlaeufig;
+    private String oedpZweitstimmenVorlaeufig;
 
     /**
      * Ökologisch-Demokratische Partei;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "oedp_zweitstimmen_vorperiode")
-    private Long oedpZweitstimmenVorperiode;
+    private String oedpZweitstimmenVorperiode;
 
 
 
@@ -522,30 +522,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diepartei_erststimmen_vorlaeufig")
-    private Long dieparteiErststimmenVorlaeufig;
+    private String dieparteiErststimmenVorlaeufig;
 
     /**
      * Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diepartei_erststimmen_vorperiode")
-    private Long dieparteiErststimmenVorperiode;
+    private String dieparteiErststimmenVorperiode;
 
     /**
      * Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diepartei_zweitstimmen_vorlaeufig")
-    private Long dieparteiZweitstimmenVorlaeufig;
+    private String dieparteiZweitstimmenVorlaeufig;
 
     /**
      * Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diepartei_zweitstimmen_vorperiode")
-    private Long dieparteiZweitstimmenVorperiode;
+    private String dieparteiZweitstimmenVorperiode;
 
 
 
@@ -554,30 +554,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Bayernpartei;;;;Erststimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bayernpartei_erststimmen_vorlaeufig")
-    private Long bayernparteiErststimmenVorlaeufig;
+    private String bayernparteiErststimmenVorlaeufig;
 
     /**
      * Bayernpartei;;;;Erststimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bayernpartei_erststimmen_vorperiode")
-    private Long bayernparteiErststimmenVorperiode;
+    private String bayernparteiErststimmenVorperiode;
 
     /**
      * Bayernpartei;;;;Zweitstimmen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bayernpartei_zweitstimmen_vorlaeufig")
-    private Long bayernparteiZweitstimmenVorlaeufig;
+    private String bayernparteiZweitstimmenVorlaeufig;
 
     /**
      * Bayernpartei;;;;Zweitstimmen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bayernpartei_zweitstimmen_vorperiode")
-    private Long bayernparteiZweitstimmenVorperiode;
+    private String bayernparteiZweitstimmenVorperiode;
 
 
 
@@ -586,30 +586,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Ab jetzt...Demokratie durch Volksabstimmung;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "volksabstimmung_erststimmen_vorlaeufig")
-    private Long volksabstimmungErststimmenVorlaeufig;
+    private String volksabstimmungErststimmenVorlaeufig;
 
     /**
      * Ab jetzt...Demokratie durch Volksabstimmung;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "volksabstimmung_erststimmen_vorperiode")
-    private Long volksabstimmungErststimmenVorperiode;
+    private String volksabstimmungErststimmenVorperiode;
 
     /**
      * Ab jetzt...Demokratie durch Volksabstimmung;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "volksabstimmung_zweitstimmen_vorlaeufig")
-    private Long volksabstimmungZweitstimmenVorlaeufig;
+    private String volksabstimmungZweitstimmenVorlaeufig;
 
     /**
      * Ab jetzt...Demokratie durch Volksabstimmung;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "volksabstimmung_zweitstimmen_vorperiode")
-    private Long volksabstimmungZweitstimmenVorperiode;
+    private String volksabstimmungZweitstimmenVorperiode;
 
 
     // Partei der Vernunft
@@ -617,30 +617,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Partei der Vernunft;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "pdv_erststimmen_vorlaeufig")
-    private Long pdvErststimmenVorlaeufig;
+    private String pdvErststimmenVorlaeufig;
 
     /**
      * Partei der Vernunft;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "pdv_erststimmen_vorperiode")
-    private Long pdvErststimmenVorperiode;
+    private String pdvErststimmenVorperiode;
 
     /**
      * Partei der Vernunft;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "pdv_zweitstimmen_vorlaeufig")
-    private Long pdvZweitstimmenVorlaeufig;
+    private String pdvZweitstimmenVorlaeufig;
 
     /**
      * Partei der Vernunft;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "pdv_zweitstimmen_vorperiode")
-    private Long pdvZweitstimmenVorperiode;
+    private String pdvZweitstimmenVorperiode;
 
 
     // Marxistisch-Leninistische Partei Deutschlands
@@ -648,30 +648,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Marxistisch-Leninistische Partei Deutschlands;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mlpd_erststimmen_vorlaeufig")
-    private Long mlpdErststimmenVorlaeufig;
+    private String mlpdErststimmenVorlaeufig;
 
     /**
      * Marxistisch-Leninistische Partei Deutschlands;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mlpd_erststimmen_vorperiode")
-    private Long mlpdErststimmenVorperiode;
+    private String mlpdErststimmenVorperiode;
 
     /**
      * Marxistisch-Leninistische Partei Deutschlands;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mlpd_zweitstimmen_vorlaeufig")
-    private Long mlpdZweitstimmenVorlaeufig;
+    private String mlpdZweitstimmenVorlaeufig;
 
     /**
      * Marxistisch-Leninistische Partei Deutschlands;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mlpd_zweitstimmen_vorperiode")
-    private Long mlpdZweitstimmenVorperiode;
+    private String mlpdZweitstimmenVorperiode;
 
 
     // Bürgerrechtsbewegung Solidarität
@@ -679,30 +679,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Bürgerrechtsbewegung Solidarität;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bueso_erststimmen_vorlaeufig")
-    private Long buesoErststimmenVorlaeufig;
+    private String buesoErststimmenVorlaeufig;
 
     /**
      * Bürgerrechtsbewegung Solidarität;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bueso_erststimmen_vorperiode")
-    private Long buesoErststimmenVorperiode;
+    private String buesoErststimmenVorperiode;
 
     /**
      * Bürgerrechtsbewegung Solidarität;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bueso_zweitstimmen_vorlaeufig")
-    private Long buesoZweitstimmenVorlaeufig;
+    private String buesoZweitstimmenVorlaeufig;
 
     /**
      * Bürgerrechtsbewegung Solidarität;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bueso_zweitstimmen_vorperiode")
-    private Long buesoZweitstimmenVorperiode;
+    private String buesoZweitstimmenVorperiode;
 
 
     // Sozialistische Gleichheitspartei, Vierte Internationale
@@ -710,30 +710,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Sozialistische Gleichheitspartei, Vierte Internationale;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "sgp_erststimmen_vorlaeufig")
-    private Long sgpErststimmenVorlaeufig;
+    private String sgpErststimmenVorlaeufig;
 
     /**
      * Sozialistische Gleichheitspartei, Vierte Internationale;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "sgp_erststimmen_vorperiode")
-    private Long sgpErststimmenVorperiode;
+    private String sgpErststimmenVorperiode;
 
     /**
      * Sozialistische Gleichheitspartei, Vierte Internationale;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "sgp_zweitstimmen_vorlaeufig")
-    private Long sgpZweitstimmenVorlaeufig;
+    private String sgpZweitstimmenVorlaeufig;
 
     /**
      * Sozialistische Gleichheitspartei, Vierte Internationale;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "sgp_zweitstimmen_vorperiode")
-    private Long sgpZweitstimmenVorperiode;
+    private String sgpZweitstimmenVorperiode;
 
 
     // DIE RECHTE
@@ -741,30 +741,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * DIE RECHTE;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dierechte_erststimmen_vorlaeufig")
-    private Long dierechteErststimmenVorlaeufig;
+    private String dierechteErststimmenVorlaeufig;
 
     /**
      * DIE RECHTE;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dierechte_erststimmen_vorperiode")
-    private Long dierechteErststimmenVorperiode;
+    private String dierechteErststimmenVorperiode;
 
     /**
      * DIE RECHTE;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dierechte_zweitstimmen_vorlaeufig")
-    private Long dierechteZweitstimmenVorlaeufig;
+    private String dierechteZweitstimmenVorlaeufig;
 
     /**
      * DIE RECHTE;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dierechte_zweitstimmen_vorperiode")
-    private Long dierechteZweitstimmenVorperiode;
+    private String dierechteZweitstimmenVorperiode;
 
 
     // Allianz Deutscher Demokraten
@@ -772,30 +772,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Allianz Deutscher Demokraten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "add_erststimmen_vorlaeufig")
-    private Long addErststimmenVorlaeufig;
+    private String addErststimmenVorlaeufig;
 
     /**
      * Allianz Deutscher Demokraten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "add_erststimmen_vorperiode")
-    private Long addErststimmenVorperiode;
+    private String addErststimmenVorperiode;
 
     /**
      * Allianz Deutscher Demokraten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "add_zweitstimmen_vorlaeufig")
-    private Long addZweitstimmenVorlaeufig;
+    private String addZweitstimmenVorlaeufig;
 
     /**
      * Allianz Deutscher Demokraten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "add_zweitstimmen_vorperiode")
-    private Long addZweitstimmenVorperiode;
+    private String addZweitstimmenVorperiode;
 
 
     // Allianz für Menschenrechte, Tier- und Naturschutz
@@ -803,30 +803,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Allianz für Menschenrechte, Tier- und Naturschutz;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzallianz_erststimmen_vorlaeufig")
-    private Long tierschutzallianzErststimmenVorlaeufig;
+    private String tierschutzallianzErststimmenVorlaeufig;
 
     /**
      * Allianz für Menschenrechte, Tier- und Naturschutz;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzallianz_erststimmen_vorperiode")
-    private Long tierschutzallianzErststimmenVorperiode;
+    private String tierschutzallianzErststimmenVorperiode;
 
     /**
      * Allianz für Menschenrechte, Tier- und Naturschutz;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzallianz_zweitstimmen_vorlaeufig")
-    private Long tierschutzallianzZweitstimmenVorlaeufig;
+    private String tierschutzallianzZweitstimmenVorlaeufig;
 
     /**
      * Allianz für Menschenrechte, Tier- und Naturschutz;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "tierschutzallianz_zweitstimmen_vorperiode")
-    private Long tierschutzallianzZweitstimmenVorperiode;
+    private String tierschutzallianzZweitstimmenVorperiode;
 
 
     // bergpartei, die überpartei
@@ -834,29 +834,29 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * bergpartei, die überpartei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bergpartei_erststimmen_vorlaeufig")
-    private Long bergparteiErststimmenVorlaeufig;
+    private String bergparteiErststimmenVorlaeufig;
 
     /**
      * bergpartei, die überpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bergpartei_erststimmen_vorperiode")
-    private Long bergparteiErststimmenVorperiode;
+    private String bergparteiErststimmenVorperiode;
 
     /**
      * bergpartei, die überpartei;;;Vorläufig
      */
     @Property(name = "bergpartei_zweitstimmen_vorlaeufig")
-    private Long bergparteiZweitstimmenVorlaeufig;
+    private String bergparteiZweitstimmenVorlaeufig;
 
     /**
      * bergpartei, die überpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bergpartei_zweitstimmen_vorperiode")
-    private Long bergparteiZweitstimmenVorperiode;
+    private String bergparteiZweitstimmenVorperiode;
 
 
     // Bündnis Grundeinkommen
@@ -864,29 +864,29 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Bündnis Grundeinkommen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bge_erststimmen_vorlaeufig")
-    private Long bgeErststimmenVorlaeufig;
+    private String bgeErststimmenVorlaeufig;
 
     /**
      * Bündnis Grundeinkommen;;;Vorperiode
      */
     @Property(name = "bge_erststimmen_vorperiode")
-    private Long bgeErststimmenVorperiode;
+    private String bgeErststimmenVorperiode;
 
     /**
      * Bündnis Grundeinkommen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bge_zweitstimmen_vorlaeufig")
-    private Long bgeZweitstimmenVorlaeufig;
+    private String bgeZweitstimmenVorlaeufig;
 
     /**
      * Bündnis Grundeinkommen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "bge_zweitstimmen_vorperiode")
-    private Long bgeZweitstimmenVorperiode;
+    private String bgeZweitstimmenVorperiode;
 
 
     // DEMOKRATIE IN BEWEGUNG
@@ -894,30 +894,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * DEMOKRATIE IN BEWEGUNG;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dib_erststimmen_vorlaeufig")
-    private Long dibErststimmenVorlaeufig;
+    private String dibErststimmenVorlaeufig;
 
     /**
      * DEMOKRATIE IN BEWEGUNG;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dib_erststimmen_vorperiode")
-    private Long dibErststimmenVorperiode;
+    private String dibErststimmenVorperiode;
 
     /**
      * DEMOKRATIE IN BEWEGUNG;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dib_zweitstimmen_vorlaeufig")
-    private Long dibZweitstimmenVorlaeufig;
+    private String dibZweitstimmenVorlaeufig;
 
     /**
      * DEMOKRATIE IN BEWEGUNG;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dib_zweitstimmen_vorperiode")
-    private Long dibZweitstimmenVorperiode;
+    private String dibZweitstimmenVorperiode;
 
 
     // Deutsche Kommunistische Partei
@@ -925,30 +925,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Deutsche Kommunistische Partei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dkp_erststimmen_vorlaeufig")
-    private Long dkpErststimmenVorlaeufig;
+    private String dkpErststimmenVorlaeufig;
 
     /**
      * Deutsche Kommunistische Partei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dkp_erststimmen_vorperiode")
-    private Long dkpErststimmenVorperiode;
+    private String dkpErststimmenVorperiode;
 
     /**
      * Deutsche Kommunistische Partei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dkp_zweitstimmen_vorlaeufig")
-    private Long dkpZweitstimmenVorlaeufig;
+    private String dkpZweitstimmenVorlaeufig;
 
     /**
      * Deutsche Kommunistische Partei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dkp_zweitstimmen_vorperiode")
-    private Long dkpZweitstimmenVorperiode;
+    private String dkpZweitstimmenVorperiode;
 
 
     // Deutsche Mitte
@@ -956,30 +956,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Deutsche Mitte;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dm_erststimmen_vorlaeufig")
-    private Long dmErststimmenVorlaeufig;
+    private String dmErststimmenVorlaeufig;
 
     /**
      * Deutsche Mitte;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dm_erststimmen_vorperiode")
-    private Long dmErststimmenVorperiode;
+    private String dmErststimmenVorperiode;
 
     /**
      * Deutsche Mitte;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dm_zweitstimmen_vorlaeufig")
-    private Long dmZweitstimmenVorlaeufig;
+    private String dmZweitstimmenVorlaeufig;
 
     /**
      * Deutsche Mitte;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dm_zweitstimmen_vorperiode")
-    private Long dmZweitstimmenVorperiode;
+    private String dmZweitstimmenVorperiode;
 
 
 
@@ -988,30 +988,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Die Grauen – Für alle Generationen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegrauen_erststimmen_vorlaeufig")
-    private Long diegrauenErststimmenVorlaeufig;
+    private String diegrauenErststimmenVorlaeufig;
 
     /**
      * Die Grauen – Für alle Generationen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegrauen_erststimmen_vorperiode")
-    private Long diegrauenErststimmenVorperiode;
+    private String diegrauenErststimmenVorperiode;
 
     /**
      * Die Grauen – Für alle Generationen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegrauen_zweitstimmen_vorlaeufig")
-    private Long diegrauenZweitstimmenVorlaeufig;
+    private String diegrauenZweitstimmenVorlaeufig;
 
     /**
      * Die Grauen – Für alle Generationen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diegrauen_zweitstimmen_vorperiode")
-    private Long  diegrauenZweitstimmenVorperiode;
+    private String  diegrauenZweitstimmenVorperiode;
 
 
 
@@ -1020,30 +1020,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Die Urbane. Eine HipHop Partei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "du_erststimmen_vorlaeufig")
-    private Long duErststimmenVorlaeufig;
+    private String duErststimmenVorlaeufig;
 
     /**
      * Die Urbane. Eine HipHop Partei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "du_erststimmen_vorperiode")
-    private Long duErststimmenVorperiode;
+    private String duErststimmenVorperiode;
 
     /**
      * Die Urbane. Eine HipHop Partei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "du_zweitstimmen_vorlaeufig")
-    private Long duZweitstimmenVorlaeufig;
+    private String duZweitstimmenVorlaeufig;
 
     /**
      * Die Urbane. Eine HipHop Partei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "du_zweitstimmen_vorperiode")
-    private Long duZweitstimmenVorperiode;
+    private String duZweitstimmenVorperiode;
 
 
 
@@ -1052,30 +1052,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Madgeburger Gartenpartei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mg_erststimmen_vorlaeufig")
-    private Long mgErststimmenVorlaeufig;
+    private String mgErststimmenVorlaeufig;
 
     /**
      * Madgeburger Gartenpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mg_erststimmen_vorperiode")
-    private Long mgErststimmenVorperiode;
+    private String mgErststimmenVorperiode;
 
     /**
      * Madgeburger Gartenpartei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mg_zweitstimmen_vorlaeufig")
-    private Long mgZweitstimmenVorlaeufig;
+    private String mgZweitstimmenVorlaeufig;
 
     /**
      * Madgeburger Gartenpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mg_zweitstimmen_vorperiode")
-    private Long mgZweitstimmenVorperiode;
+    private String mgZweitstimmenVorperiode;
 
 
 
@@ -1084,30 +1084,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Menschliche Welt;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "menschlichewelt_erststimmen_vorlaeufig")
-    private Long menschlicheweltErststimmenVorlaeufig;
+    private String menschlicheweltErststimmenVorlaeufig;
 
     /**
      * Menschliche Welt;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "menschlichewelt_erststimmen_vorperiode")
-    private Long menschlicheweltErststimmenVorperiode;
+    private String menschlicheweltErststimmenVorperiode;
 
     /**
      * Menschliche Welt;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "menschlichewelt_zweitstimmen_vorlaeufig")
-    private Long menschlicheweltZweitstimmenVorlaeufig;
+    private String menschlicheweltZweitstimmenVorlaeufig;
 
     /**
      * Menschliche Welt;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "menschlichewelt_zweitstimmen_vorperiode")
-    private Long menschlicheweltZweitstimmenVorperiode;
+    private String menschlicheweltZweitstimmenVorperiode;
 
 
 
@@ -1116,30 +1116,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Partei der Humanisten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diehumanisten_erststimmen_vorlaeufig")
-    private Long diehumanistenErststimmenVorlaeufig;
+    private String diehumanistenErststimmenVorlaeufig;
 
     /**
      * Partei der Humanisten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diehumanisten_erststimmen_vorperiode")
-    private Long diehumanistenErststimmenVorperiode;
+    private String diehumanistenErststimmenVorperiode;
 
     /**
      * Partei der Humanisten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diehumanisten_zweitstimmen_vorlaeufig")
-    private Long diehumanistenZweitstimmenVorlaeufig;
+    private String diehumanistenZweitstimmenVorlaeufig;
 
     /**
      * Partei der Humanisten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diehumanisten_zweitstimmen_vorperiode")
-    private Long diehumanistenZweitstimmenVorperiode;
+    private String diehumanistenZweitstimmenVorperiode;
 
 
 
@@ -1148,30 +1148,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Partei für Gesundheitsforschung;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gesundheitsforschung_erststimmen_vorlaeufig")
-    private Long gesundheitsforschungErststimmenVorlaeufig;
+    private String gesundheitsforschungErststimmenVorlaeufig;
 
     /**
      * Partei für Gesundheitsforschung;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gesundheitsforschung_erststimmen_vorperiode")
-    private Long gesundheitsforschungErststimmenVorperiode;
+    private String gesundheitsforschungErststimmenVorperiode;
 
     /**
      * Partei für Gesundheitsforschung;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gesundheitsforschung_zweitstimmen_vorlaeufig")
-    private Long gesundheitsforschungZweitstimmenVorlaeufig;
+    private String gesundheitsforschungZweitstimmenVorlaeufig;
 
     /**
      * Partei für Gesundheitsforschung;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "gesundheitsforschung_zweitstimmen_vorperiode")
-    private Long gesundheitsforschungZweitstimmenVorperiode;
+    private String gesundheitsforschungZweitstimmenVorperiode;
 
 
 
@@ -1180,30 +1180,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * V-Partei³ - Partei für Veränderung, Vegetarier und Veganer;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "vpartei_erststimmen_vorlaeufig")
-    private Long vparteiErststimmenVorlaeufig;
+    private String vparteiErststimmenVorlaeufig;
 
     /**
      * V-Partei³ - Partei für Veränderung, Vegetarier und Veganer;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "vpartei_erststimmen_vorperiode")
-    private Long vparteiErststimmenVorperiode;
+    private String vparteiErststimmenVorperiode;
 
     /**
      * V-Partei³ - Partei für Veränderung, Vegetarier und Veganer;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "vpartei_zweitstimmen_vorlaeufig")
-    private Long vparteiZweitstimmenVorlaeufig;
+    private String vparteiZweitstimmenVorlaeufig;
 
     /**
      * V-Partei³ - Partei für Veränderung, Vegetarier und Veganer;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "vpartei_zweitstimmen_vorperiode")
-    private Long vparteiZweitstimmenVorperiode;
+    private String vparteiZweitstimmenVorperiode;
 
 
 
@@ -1212,29 +1212,29 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Bündnis C - Christen für Deutschland;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "buendnisc_erststimmen_vorlaeufig")
-    private Long buendniscErststimmenVorlaeufig;
+    private String buendniscErststimmenVorlaeufig;
 
     /**
      * Bündnis C - Christen für Deutschland;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "buendnisc_erststimmen_vorperiode")
-    private Long buendniscErststimmenVorperiode;
+    private String buendniscErststimmenVorperiode;
 
     /**
      * Bündnis C - Christen für Deutschland;;;Vorläufig
      */
     @Property(name = "buendnisc_zweitstimmen_vorlaeufig")
-    private Long buendniscZweitstimmenVorlaeufig;
+    private String buendniscZweitstimmenVorlaeufig;
 
     /**
      * Bündnis C - Christen für Deutschland;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "buendnisc_zweitstimmen_vorperiode")
-    private Long buendniscZweitstimmenVorperiode;
+    private String buendniscZweitstimmenVorperiode;
 
 
 
@@ -1243,30 +1243,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * DIE EINHEIT;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dieeinheit_erststimmen_vorlaeufig")
-    private Long dieeinheitErststimmenVorlaeufig;
+    private String dieeinheitErststimmenVorlaeufig;
 
     /**
      * DIE EINHEIT;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dieeinheit_erststimmen_vorperiode")
-    private Long dieeinheitErststimmenVorperiode;
+    private String dieeinheitErststimmenVorperiode;
 
     /**
      * DIE EINHEIT;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dieeinheit_zweitstimmen_vorlaeufig")
-    private Long dieeinheitZweitstimmenVorlaeufig;
+    private String dieeinheitZweitstimmenVorlaeufig;
 
     /**
      * DIE EINHEIT;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dieeinheit_zweitstimmen_vorperiode")
-    private Long dieeinheitZweitstimmenVorperiode;
+    private String dieeinheitZweitstimmenVorperiode;
 
 
 
@@ -1275,30 +1275,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Die Violetten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dievioletten_erststimmen_vorlaeufig")
-    private Long dieviolettenErststimmenVorlaeufig;
+    private String dieviolettenErststimmenVorlaeufig;
 
     /**
      * Die Violetten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dievioletten_erststimmen_vorperiode")
-    private Long dieviolettenErststimmenVorperiode;
+    private String dieviolettenErststimmenVorperiode;
 
     /**
      * Die Violetten;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dievioletten_zweitstimmen_vorlaeufig")
-    private Long dieviolettenZweitstimmenVorlaeufig;
+    private String dieviolettenZweitstimmenVorlaeufig;
 
     /**
      * Die Violetten;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "dievioletten_zweitstimmen_vorperiode")
-    private Long dieviolettenZweitstimmenVorperiode;
+    private String dieviolettenZweitstimmenVorperiode;
 
 
 
@@ -1307,30 +1307,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Familien-Partei Deutschlands;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "familie_erststimmen_vorlaeufig")
-    private Long familieErststimmenVorlaeufig;
+    private String familieErststimmenVorlaeufig;
 
     /**
      * Familien-Partei Deutschlands;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "familie_erststimmen_vorperiode")
-    private Long familieErststimmenVorperiode;
+    private String familieErststimmenVorperiode;
 
     /**
      * Familien-Partei Deutschlands;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "familie_zweitstimmen_vorlaeufig")
-    private Long familieZweitstimmenVorlaeufig;
+    private String familieZweitstimmenVorlaeufig;
 
     /**
      * Familien-Partei Deutschlands;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "familie_zweitstimmen_vorperiode")
-    private Long familieZweitstimmenVorperiode;
+    private String familieZweitstimmenVorperiode;
 
 
 
@@ -1339,30 +1339,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Feministische Partei DIE FRAUEN;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diefrauen_erststimmen_vorlaeufig")
-    private Long diefrauenErststimmenVorlaeufig;
+    private String diefrauenErststimmenVorlaeufig;
 
     /**
      * Feministische Partei DIE FRAUEN;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diefrauen_erststimmen_vorperiode")
-    private Long diefrauenErststimmenVorperiode;
+    private String diefrauenErststimmenVorperiode;
 
     /**
      * Feministische Partei DIE FRAUEN;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diefrauen_zweitstimmen_vorlaeufig")
-    private Long diefrauenZweitstimmenVorlaeufig;
+    private String diefrauenZweitstimmenVorlaeufig;
 
     /**
      * Feministische Partei DIE FRAUEN;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "diefrauen_zweitstimmen_vorperiode")
-    private Long diefrauenZweitstimmenVorperiode;
+    private String diefrauenZweitstimmenVorperiode;
 
 
 
@@ -1371,30 +1371,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Mieterpartei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mieterpartei_erststimmen_vorlaeufig")
-    private Long mieterparteiErststimmenVorlaeufig;
+    private String mieterparteiErststimmenVorlaeufig;
 
     /**
      * Mieterpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mieterpartei_erststimmen_vorperiode")
-    private Long mieterparteiErststimmenVorperiode;
+    private String mieterparteiErststimmenVorperiode;
 
     /**
      * Mieterpartei;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mieterpartei_zweitstimmen_vorlaeufig")
-    private Long mieterparteiZweitstimmenVorlaeufig;
+    private String mieterparteiZweitstimmenVorlaeufig;
 
     /**
      * Mieterpartei;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "mieterpartei_zweitstimmen_vorperiode")
-    private Long mieterparteiZweitstimmenVorperiode;
+    private String mieterparteiZweitstimmenVorperiode;
 
 
 
@@ -1403,30 +1403,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Neue Liberale – Die Sozialliberalen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "neueliberale_erststimmen_vorlaeufig")
-    private Long neueliberaleErststimmenVorlaeufig;
+    private String neueliberaleErststimmenVorlaeufig;
 
     /**
      * Neue Liberale – Die Sozialliberalen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "neueliberale_erststimmen_vorperiode")
-    private Long neueliberaleErststimmenVorperiode;
+    private String neueliberaleErststimmenVorperiode;
 
     /**
      * Neue Liberale – Die Sozialliberalen;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "neueliberale_zweitstimmen_vorlaeufig")
-    private Long neueliberaleZweitstimmenVorlaeufig;
+    private String neueliberaleZweitstimmenVorlaeufig;
 
     /**
      * Neue Liberale – Die Sozialliberalen;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "neueliberale_zweitstimmen_vorperiode")
-    private Long neueliberaleZweitstimmenVorperiode;
+    private String neueliberaleZweitstimmenVorperiode;
 
 
 
@@ -1435,30 +1435,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * UNABHÄNGIGE für bürgernahe Demokratie;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "unabhaengige_erststimmen_vorlaeufig")
-    private Long unabhaengigeErststimmenVorlaeufig;
+    private String unabhaengigeErststimmenVorlaeufig;
 
     /**
      * UNABHÄNGIGE für bürgernahe Demokratie;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "unabhaengige_erststimmen_vorperiode")
-    private Long unabhaengigeErststimmenVorperiode;
+    private String unabhaengigeErststimmenVorperiode;
 
     /**
      * UNABHÄNGIGE für bürgernahe Demokratie;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "unabhaengige_zweitstimmen_vorlaeufig")
-    private Long unabhaengigeZweitstimmenVorlaeufig;
+    private String unabhaengigeZweitstimmenVorlaeufig;
 
     /**
      * UNABHÄNGIGE für bürgernahe Demokratie;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "unabhaengige_zweitstimmen_vorperiode")
-    private Long unabhaengigeZweitstimmenVorperiode;
+    private String unabhaengigeZweitstimmenVorperiode;
 
 
 
@@ -1467,30 +1467,30 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     /**
      * Übrige;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "uebrige_erststimmen_vorlaeufig")
-    private Long uebrigeErststimmenVorlaeufig;
+    private String uebrigeErststimmenVorlaeufig;
 
     /**
      * Übrige;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "uebrige_erststimmen_vorperiode")
-    private Long uebrigeErststimmenVorperiode;
+    private String uebrigeErststimmenVorperiode;
 
     /**
      * Übrige;;;Vorläufig
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "uebrige_zweitstimmen_vorlaeufig")
-    private Long uebrigeZweitstimmenVorlaeufig;
+    private String uebrigeZweitstimmenVorlaeufig;
 
     /**
      * Übrige;;;Vorperiode
      */
-    @Digits(integer=10, fraction=0)
+    //@Digits(integer=10, fraction=0)
     @Property(name = "uebrige_zweitstimmen_vorperiode")
-    private Long uebrigeZweitstimmenVorperiode;
+    private String uebrigeZweitstimmenVorperiode;
 
     @Override
     public Long getId() {

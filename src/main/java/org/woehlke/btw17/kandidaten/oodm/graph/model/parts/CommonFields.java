@@ -2,17 +2,11 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.parts;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.EditStatus;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Lob;
+
 
 @Setter
 @Getter
@@ -23,20 +17,19 @@ public class CommonFields implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @URL
-    @Column(name="logo_url")
+    @Index
+    @Property(name="logo_url")
     private String logoUrl;
 
-    @URL
-    @Column(name="symbol_bild")
+    @Index
+    @Property(name="symbol_bild")
     private String symbolBild;
 
-    @Lob
-    @Column(name="beschreibungs_text")
+    @Index
+    @Property(name="beschreibungs_text")
     private String beschreibungsText;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "edit_status")
+    @Property(name = "edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;
 
     @Override

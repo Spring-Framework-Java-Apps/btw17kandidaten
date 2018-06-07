@@ -22,21 +22,26 @@ public class ListePartei implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name="listepartei")
     private String listePartei;
 
+    @Index(unique = true)
     @Property(name="listepartei_lang")
     private String listeParteiLang;
 
     //@URL
+    @Index
     @Property(name="wahlprogramm")
     private String wahlprogramm;
 
     //@URL
+    @Index
     @Property(name="parteiprogramm")
     private String parteiprogramm;
 
     //@URL
+    @Index
     @Property(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 

@@ -20,9 +20,11 @@ public class Bundesland implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique=true)
     @Property(name="bundesland")
     private BundeslandEnum bundesland;
 
+    @Index(unique=true)
     @Property(name="bundesland_lang")
     private String bundeslandLang;
 

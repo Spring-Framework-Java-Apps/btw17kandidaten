@@ -19,9 +19,11 @@ public class Wahlkreis implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index
     @Property(name="wahlkreis_id")
     private Long wahlkreisId;
 
+    @Index
     @Property(name="wahlkreis_name")
     private String wahlkreisName;
 

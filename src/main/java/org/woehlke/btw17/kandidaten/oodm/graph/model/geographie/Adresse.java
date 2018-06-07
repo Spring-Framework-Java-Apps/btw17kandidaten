@@ -2,13 +2,9 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
-import javax.persistence.Column;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 
@@ -21,16 +17,20 @@ public class Adresse implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    @Column(name="strasse")
+    @Index
+    @Property(name="strasse")
     private String strasse;
 
-    @Column(name="hausnummer")
+    @Index
+    @Property(name="hausnummer")
     private String hausnummer;
 
-    @Column(name="plz")
+    @Index
+    @Property(name="plz")
     private String plz;
 
-    @Column(name="ort")
+    @Index
+    @Property(name="ort")
     private String ort;
 
     @Relationship(type = LOCATION)

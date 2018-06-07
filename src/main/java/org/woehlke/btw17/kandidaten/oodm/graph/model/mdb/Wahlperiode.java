@@ -27,6 +27,7 @@ public class Wahlperiode implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
+    @Index(unique = true)
     @Property(name = "wp")
     private Long wahlperiode;
 

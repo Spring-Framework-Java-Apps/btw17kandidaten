@@ -2,7 +2,6 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
 import lombok.Getter;
 import lombok.Setter;
-//import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
@@ -22,21 +21,26 @@ public class Partei implements GraphDomainObject {
     @GeneratedValue
     protected Long id;
 
+    @Index(unique=true)
     @Property(name="partei")
     private String partei;
 
+    @Index(unique=true)
     @Property(name="partei_lang")
     private String parteiLang;
 
     //@URL
+    @Index
     @Property(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
     //@URL
+    @Index
     @Property(name="wahlprogramm")
     private String wahlprogramm;
 
     //@URL
+    @Index
     @Property(name="parteiprogramm")
     private String parteiprogramm;
 
