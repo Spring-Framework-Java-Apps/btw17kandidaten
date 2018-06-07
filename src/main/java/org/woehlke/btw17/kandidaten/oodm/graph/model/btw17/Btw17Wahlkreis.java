@@ -17,24 +17,22 @@ public class Btw17Wahlkreis implements GraphDomainObject {
 
 
     @Index(unique=true)
-    @Property(name = "wahlkreis_nummer"/*, nullable=false, unique = true*/)
+    @Property(name = "wahlkreis_nummer")
     private Long wahlkreisNummer;
 
     @Index
-    @Property(name = "wahlkreis_name"/*, nullable=false*/)
+    @Property(name = "wahlkreis_name")
     private String wahlkreisName;
 
     @Index
-    @Property(name = "bundesland_nummer"/*, nullable=false*/)
+    @Property(name = "bundesland_nummer")
     private Long bundeslandNummer;
 
     @Index
-    @Property(name = "bundesland_name"/*, nullable=false*/)
+    @Property(name = "bundesland_name")
     private String bundeslandName;
 
-    //@NotNull
-    //@Enumerated(EnumType.STRING)
-    @Property(name = "bundesland_kurz"/*, nullable=false*/)
+    @Property(name = "bundesland_kurz")
     private BundeslandEnum bundeslandEnumKurz;
 
     @Override

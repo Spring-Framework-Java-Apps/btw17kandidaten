@@ -5,7 +5,6 @@ import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-//import javax.persistence.Column;
 
 //TODO: Node contains Information about Wahlperiode of: one MDB?
 /**

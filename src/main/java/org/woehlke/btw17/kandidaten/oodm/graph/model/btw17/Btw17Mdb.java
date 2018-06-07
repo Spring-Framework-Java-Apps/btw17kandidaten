@@ -81,20 +81,15 @@ public class Btw17Mdb implements GraphDomainObject {
     @Property(name="parteikurz")
     private String parteikurz;
 
-    //@Lob
     @Property(name="vitakurz")
     private String vitakurz;
 
-    //@Lob
     @Property(name="veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
     @Relationship(type = WAHLPERIODEN)
-    //@ManyToMany(fetch=FetchType.LAZY,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
-    //@JoinTable(name="btw17_mdb_stammdaten_wahlperiode")
     private Set<Btw17Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
-    //@Transient
     public String getTransientKey(){
         Locale locale = Locale.GERMANY;
         String titel = this.anredetitel;

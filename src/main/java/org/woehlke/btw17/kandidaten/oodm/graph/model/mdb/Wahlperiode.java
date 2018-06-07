@@ -10,8 +10,8 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Wahlkreis;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.JOB;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
@@ -47,7 +47,7 @@ public class Wahlperiode implements GraphDomainObject {
     private Wahlkreis wahlkreis= new Wahlkreis();
 
     @Relationship(type=JOB)
-    private List<Institution> institution = new ArrayList<Institution>();
+    private Set<Institution> institution = new HashSet<>();
 
     @Override
     public Long getId() {

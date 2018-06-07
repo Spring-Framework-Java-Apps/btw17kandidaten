@@ -22,21 +22,16 @@ public class Btw17Ergebnis implements GraphDomainObject {
     @GeneratedValue
     private Long id;
 
-    //TODO: Relationship to Wahlkreis
     /**
      *  Nr;
      */
-    //@NotNull
     @Index(unique=true)
     @Property(name="wahlkreis_nummer")
     private Long wahlkreisNummer;
 
-
-    //TODO: Relationship to Wahlkreis
     /**
      * Gebiet;
      */
-    //@NotNull
     @Index
     @Property(name="wahlkreis_name")
     private String wahlkreisName;
@@ -44,15 +39,12 @@ public class Btw17Ergebnis implements GraphDomainObject {
     @Relationship(type=LOCATION)
     private Btw17Wahlkreis btw17Wahlkreis;
 
-    //TODO: Relationship to Bundesland
     /**
      * gehört zu;
      */
-    //@NotNull
     @Property(name="bundesland_nummer")
     private Long bundeslandNummer;
 
-    //TODO: Relationship to Bundesland
     /**
      * Land
      */
@@ -68,28 +60,24 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Wahlberechtigte;;;;Erststimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="wahlberechtigte_erststimmen_vorlaeufig")
     private Long wahlberechtigteErststimmenVorlaeufig;
 
     /**
      * Wahlberechtigte;;;;Erststimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="wahlberechtigte_erststimmen_vorperiode")
     private Long wahlberechtigteErststimmenVorperiode;
 
     /**
      * Wahlberechtigte;;;;Zweitstimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="wahlberechtigte_zweitstimmen_vorlaeufig")
     private Long wahlberechtigteZweitstimmenVorlaeufig;
 
     /**
      * Wahlberechtigte;;;;Zweitstimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="wahlberechtigte_zweitstimmen_vorperiode")
     private Long wahlberechtigteZweitstimmenVorperiode;
 
@@ -99,28 +87,24 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Wähler;;;;Erststimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="waehler_erststimmen_vorlaeufig")
     private Long waehlerErststimmenVorlaeufig;
 
     /**
      * Wähler;;;;Erststimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="waehler_erststimmen_vorperiode")
     private Long waehlerErststimmenVorperiode;
 
     /**
      * Wähler;;;;Zweitstimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="waehler_zweitstimmen_vorlaeufig")
     private Long waehlerZweitstimmenVorlaeufig;
 
     /**
      * Wähler;;;;Zweitstimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="waehler_zweitstimmen_vorperiode")
     private Long waehlerZweitstimmenVorperiode;
 
@@ -130,28 +114,24 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Ungültige;;;;Erststimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="ungueltige_erststimmen_vorlaeufig")
     private Long ungueltigeErststimmenVorlaeufig;
 
     /**
      * Ungültige;;;;Erststimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="ungueltige_erststimmen_vorperiode")
     private Long ungueltigeErststimmenVorperiode;
 
     /**
      * Ungültige;;;;Zweitstimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="ungueltige_zweitstimmen_vorlaeufig")
     private Long ungueltigeZweitstimmenVorlaeufig;
 
     /**
      * Ungültige;;;;Zweitstimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="ungueltige_zweitstimmen_vorperiode")
     private Long ungueltigeZweitstimmenVorperiode;
 
@@ -161,28 +141,24 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Gültige;;;;Erststimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="gueltige_erststimmen_vorlaeufig")
     private Long gueltigeErststimmenVorlaeufig;
 
     /**
      * Gültige;;;;Erststimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="gueltige_erststimmen_vorperiode")
     private Long gueltigeErststimmenVorperiode;
 
     /**
      * Gültige;;;;Zweitstimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="gueltige_zweitstimmen_vorlaeufig")
     private Long gueltigeZweitstimmenVorlaeufig;
 
     /**
      * Gültige;;;;Zweitstimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="ueltige_zweitstimmen_vorperiode")
     private Long gueltigeZweitstimmenVorperiode;
 
@@ -192,28 +168,24 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Christlich Demokratische Union Deutschlands;;;;Erststimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="cdu_erststimmen_vorlaeufig")
     private Long cduErststimmenVorlaeufig;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Erststimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="cdu_erststimmen_vorperiode")
     private Long cduErststimmenVorperiode;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Zweitstimmen;;;Vorläufig
      */
-    //@NotNull
     @Property(name="cdu_zweitstimmen_vorlaeufig")
     private Long cduZweitstimmenVorlaeufig;
 
     /**
      * Christlich Demokratische Union Deutschlands;;;;Zweitstimmen;;;Vorperiode
      */
-    //@NotNull
     @Property(name="cdu_zweitstimmen_vorperiode")
     private Long cduZweitstimmenVorperiode;
 
@@ -1536,7 +1508,7 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Übrige;;;Vorperiode
      */
-        @Property(name = "uebrige_zweitstimmen_vorperiode")
+    @Property(name = "uebrige_zweitstimmen_vorperiode")
     private Long uebrigeZweitstimmenVorperiode;
 
 
