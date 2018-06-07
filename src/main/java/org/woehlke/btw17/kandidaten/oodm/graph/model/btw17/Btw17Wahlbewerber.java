@@ -2,12 +2,13 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Ort;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListeParteiBundesland;
+
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 //import javax.validation.constraints.NotNull;
 
@@ -47,11 +48,17 @@ public class Btw17Wahlbewerber implements GraphDomainObject {
 
     //@NotNull
     @Property(name = "wohnort"/*, nullable=false*/)
-    private String wohnort;
+    private String wohnortName;
+
+    @Relationship(type=WOHN_ORT)
+    private Ort wohnort;
 
     //@NotNull
     @Property(name = "geburtsort"/*, nullable=false*/)
-    private String geburtsort;
+    private String geburtsortName;
+
+    @Relationship(type=GEBURTS_ORT)
+    private Ort geburtsort;
 
     //@NotNull
     @Property(name = "beruf"/*, nullable=false*/)
@@ -78,9 +85,15 @@ public class Btw17Wahlbewerber implements GraphDomainObject {
     @Property(name = "wahlkreis_partei"/*, nullable=false*/)
     private String wahlkreisParteiBez;
 
+    @Relationship(type = LOCATION)
+    private Btw17Wahlkreis btw17Wahlkreis;
+
     //@NotNull
     @Property(name = "liste_land"/*, nullable=false*/)
     private String listeLand;
+
+    @Relationship(type = LANDESLISTE)
+    private ListeParteiBundesland listeParteiBundesland;
 
     //@NotNull
     @Property(name = "liste_partei_kurz"/*, nullable=false*/)

@@ -7,7 +7,8 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
-//import javax.validation.Valid;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.ONLINE_STRATEGIE;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
 
 @Setter
 @Getter
@@ -23,11 +24,11 @@ public class Ausschuss implements GraphDomainObject {
     private String ausschuss;
 
     //@Valid
-    @Relationship
+    @Relationship(type= REDAKTION)
     private CommonFields commonFields = new CommonFields();
 
     //@Valid
-    @Relationship
+    @Relationship(type= ONLINE_STRATEGIE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
     @Override

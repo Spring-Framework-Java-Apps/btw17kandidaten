@@ -9,6 +9,8 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.WAHLPERIODEN;
+
 /**
  * Information ueber einen MDB
  */
@@ -87,7 +89,7 @@ public class Btw17Mdb implements GraphDomainObject {
     @Property(name="veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
-    @Relationship
+    @Relationship(type = WAHLPERIODEN)
     //@ManyToMany(fetch=FetchType.LAZY,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     //@JoinTable(name="btw17_mdb_stammdaten_wahlperiode")
     private Set<Btw17Wahlperiode> wahlperioden = new LinkedHashSet<>();

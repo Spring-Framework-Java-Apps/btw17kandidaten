@@ -28,7 +28,19 @@ public class DatabaseGraphConfig {
 
     @Bean(name = "getSessionFactory")
     public SessionFactory graphSessionFactory() {
-        return new SessionFactory(configuration(), 	"org.woehlke.btw17.kandidaten.oodm.graph.model.btw17","org.woehlke.btw17.kandidaten.oodm.graph.model.commons"," org.woehlke.btw17.kandidaten.oodm.graph.model.enums","org.woehlke.btw17.kandidaten.oodm.graph.model.geographie","org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten","org.woehlke.btw17.kandidaten.oodm.graph.model.mdb","org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen","org.woehlke.btw17.kandidaten.oodm.graph.model.parts","org.woehlke.btw17.kandidaten.oodm.graph.model.webseite","org.woehlke.btw17.kandidaten.oodm.all.model.commons","org.woehlke.btw17.kandidaten.oodm.graph.model.enums");
+        org.neo4j.ogm.config.Configuration conf = configuration();
+        log.info(conf.getTrustStrategy());
+        return new SessionFactory(conf,
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.btw17",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.commons",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.enums",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.geographie",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.mdb",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.parts",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.webseite",
+            "org.woehlke.btw17.kandidaten.oodm.all.model.commons");
     }
 
     @Bean(name = "graphTransactionManager")
@@ -64,6 +76,16 @@ public class DatabaseGraphConfig {
         log.info("  configuration.getConnectionPoolSize             "+configuration.getConnectionPoolSize());
         log.info("  configuration.getDumpDir                        "+configuration.getDumpDir());
         log.info("  configuration.getDumpFilename                   "+configuration.getDumpFilename());
+        log.info("  configuration.getTrustStrategy                  "+configuration.getTrustStrategy());
+        log.info("  configuration.getEncryptionLevel                "+configuration.getEncryptionLevel());
+        log.info("  configuration.getAutoIndex                      "+configuration.getAutoIndex().getName());
+        log.info("  configuration.getNeo4jHaPropertiesFile          "+configuration.getNeo4jHaPropertiesFile());
+        log.info("  configuration.getTrustCertFile                  "+configuration.getTrustCertFile());
+        /*
+        for(String myUri: configuration.getURIS()){
+            log.info("  configuration.getURIS                           "+myUri);
+        }
+        */
         log.info("###############################################################################################");
         return configuration;
     }

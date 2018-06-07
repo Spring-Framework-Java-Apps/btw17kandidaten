@@ -7,17 +7,20 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LANDESLISTE;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
-
 
 @Setter
 @Getter
-@RelationshipEntity(type="LANDESLISTE")
+@RelationshipEntity(type=LANDESLISTE)
 public class ListeParteiBundesland implements GraphDomainObject {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    @Property(name="liste_partei_bundesland")
+    private String listeParteiBundesland;
 
     @StartNode
     private Bundesland bundesland = new Bundesland();
@@ -30,14 +33,7 @@ public class ListeParteiBundesland implements GraphDomainObject {
 
     @Override
     public String getName(){
-        StringBuffer name = new StringBuffer();
-        name.append(listePartei.getName());
-        name.append(" in ");
-        name.append(bundesland.getName());
-        name.append(" (");
-        name.append(bundesland.getName());
-        name.append(")");
-        return name.toString();
+        return listeParteiBundesland +": "+ listePartei.getName() + " in " + bundesland.getName();
     }
 
     @Override

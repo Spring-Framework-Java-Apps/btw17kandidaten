@@ -5,8 +5,10 @@ import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
 
-//import javax.validation.constraints.NotNull;
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
+
 
 /**
  * Wahlergebnis in einem Wahlkreis oder in einem Bundesland
@@ -39,6 +41,9 @@ public class Btw17Ergebnis implements GraphDomainObject {
     @Property(name="wahlkreis_name")
     private String wahlkreisName;
 
+    @Relationship(type=LOCATION)
+    private Btw17Wahlkreis btw17Wahlkreis;
+
     //TODO: Relationship to Bundesland
     /**
      * gehört zu;
@@ -51,8 +56,11 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Land
      */
-    @Relationship(type="LIEGT_IN")
-    private BundeslandEnum bundesland;
+    @Property(name="bundesland_kurz")
+    private BundeslandEnum bundeslandKurz;
+
+    @Relationship(type=LOCATION)
+    private Bundesland bundesland;
 
 
     // Wahlberechtigte
