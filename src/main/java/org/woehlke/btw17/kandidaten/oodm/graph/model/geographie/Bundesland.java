@@ -57,4 +57,7 @@ public class Bundesland implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Bundesland() {
+    }
 }

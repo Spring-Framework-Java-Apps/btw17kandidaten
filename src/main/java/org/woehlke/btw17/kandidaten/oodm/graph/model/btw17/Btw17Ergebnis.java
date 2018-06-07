@@ -1556,4 +1556,6 @@ public class Btw17Ergebnis implements GraphDomainObject {
         return id+":"+wahlkreisNummer+":"+bundeslandNummer+":"+wahlkreisName;
     }
 
+    public Btw17Ergebnis() {
+    }
 }

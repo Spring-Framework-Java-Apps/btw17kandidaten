@@ -35,4 +35,7 @@ public class Berufsgruppe implements GraphDomainObject {
     public String getUniqueId() {
         return id + ":"+this.getName();
     }
+
+    public Berufsgruppe() {
+    }
 }

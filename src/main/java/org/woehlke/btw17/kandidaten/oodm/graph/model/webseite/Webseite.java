@@ -57,4 +57,8 @@ public class Webseite implements GraphDomainObject {
     public String getUniqueId() {
         return name+" "+id;
     }
+
+
+    public Webseite() {
+    }
 }

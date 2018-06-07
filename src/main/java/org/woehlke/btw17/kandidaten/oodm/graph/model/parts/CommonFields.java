@@ -46,4 +46,7 @@ public class CommonFields implements GraphDomainObject {
     public String getUniqueId() {
         return id+" "+logoUrl;
     }
+
+    public CommonFields() {
+    }
 }

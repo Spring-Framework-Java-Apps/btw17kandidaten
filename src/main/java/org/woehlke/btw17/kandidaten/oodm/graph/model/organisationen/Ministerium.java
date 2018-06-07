@@ -66,4 +66,6 @@ public class Ministerium implements GraphDomainObject {
         return id + ":"+this.getName();
     }
 
+    public Ministerium() {
+    }
 }

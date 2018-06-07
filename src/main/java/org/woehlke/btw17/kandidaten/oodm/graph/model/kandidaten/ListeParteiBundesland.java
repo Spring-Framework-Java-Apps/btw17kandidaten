@@ -44,4 +44,7 @@ public class ListeParteiBundesland implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public ListeParteiBundesland() {
+    }
 }

@@ -376,4 +376,7 @@ public class Strukturdaten implements GraphDomainObject {
     public String getUniqueId() {
         return  "UniqueId"+id;
     }
+
+    public Strukturdaten() {
+    }
 }

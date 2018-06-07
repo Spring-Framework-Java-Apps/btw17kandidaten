@@ -454,4 +454,7 @@ public class Btw17Strukturdaten implements GraphDomainObject {
         return id+":"+bundeslandName+":"+wahlkreisNummer+":"+wahlkreisName+"+bundeslandId";
     }
 
+
+    public Btw17Strukturdaten() {
+    }
 }

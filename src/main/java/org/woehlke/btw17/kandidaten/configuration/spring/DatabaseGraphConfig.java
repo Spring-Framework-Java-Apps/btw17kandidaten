@@ -20,7 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableNeo4jRepositories(
     sessionFactoryRef = "getSessionFactory",
     transactionManagerRef = "graphTransactionManager",
-    basePackages = "com.company.project.repository.graph")
+    basePackages = "com.company.project.repository.graph"
+)
 public class DatabaseGraphConfig {
 
     private static final Log log = LogFactory.getLog(DatabaseGraphConfig.class);
@@ -31,8 +32,16 @@ public class DatabaseGraphConfig {
         org.neo4j.ogm.config.Configuration conf = configuration();
         log.info("getSessionFactory: configuration "+conf);
         return new SessionFactory(conf,
-            "org.woehlke.btw17.kandidaten.oodm.graph.model",
-            "org.woehlke.btw17.kandidaten.oodm.all.model.commons");
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.btw17",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.geographie",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.mdb",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.parts",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.webseite",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.enums",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model.commons"
+        );
     }
 
     @Bean(name = "graphTransactionManager")
@@ -50,13 +59,18 @@ public class DatabaseGraphConfig {
         String uri = "bolt://localhost";
         String user = "neo4j";
         String password = "secret";
+        String uris[] = {"bolt+routing://localhost"};
         org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder()
-            .verifyConnection(verifyConnection)
-            .connectionPoolSize(120)
-            .connectionLivenessCheckTimeout(connectionLivenessCheckTimeout)
-            .autoIndex(AutoIndexMode.UPDATE.getName())
+            //.verifyConnection(verifyConnection)
+            //.connectionPoolSize(120)
+            //.connectionLivenessCheckTimeout(connectionLivenessCheckTimeout)
+            .autoIndex(AutoIndexMode.NONE.getName())
             .uri(uri)
+            //.uris(uris)
             .credentials(user, password)
+            //.encryptionLevel(org.neo4j.driver.v1.Config.EncryptionLevel.NONE.name())
+            //.trustStrategy(org.neo4j.driver.v1.Config.TrustStrategy.Strategy.TRUST_ALL_CERTIFICATES.name())
+            //.neo4jHaPropertiesFile("neo4j_ha.properties")
             .build();
         UsernamePasswordCredentials c = (UsernamePasswordCredentials) configuration.getCredentials();
         log.info("###############################################################################################");

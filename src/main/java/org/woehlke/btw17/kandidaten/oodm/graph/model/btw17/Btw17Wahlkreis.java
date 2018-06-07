@@ -6,9 +6,6 @@ import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 
-//import javax.validation.constraints.NotNull;
-
-
 @Setter
 @Getter
 @NodeEntity
@@ -55,4 +52,6 @@ public class Btw17Wahlkreis implements GraphDomainObject {
         return this.wahlkreisNummer + ":"+wahlkreisName+":"+ bundeslandEnumKurz;
     }
 
+    public Btw17Wahlkreis() {
+    }
 }

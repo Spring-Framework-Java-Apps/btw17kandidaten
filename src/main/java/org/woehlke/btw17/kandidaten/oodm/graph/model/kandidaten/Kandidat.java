@@ -247,4 +247,6 @@ public class Kandidat implements GraphDomainObject {
         return id;
     }
 
+    public Kandidat() {
+    }
 }

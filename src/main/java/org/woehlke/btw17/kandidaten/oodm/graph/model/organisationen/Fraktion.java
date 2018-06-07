@@ -52,4 +52,7 @@ public class Fraktion implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Fraktion() {
+    }
 }

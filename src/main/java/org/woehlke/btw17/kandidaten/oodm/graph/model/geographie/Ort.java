@@ -57,4 +57,6 @@ public class Ort implements GraphDomainObject {
         return id;
     }
 
+    public Ort() {
+    }
 }

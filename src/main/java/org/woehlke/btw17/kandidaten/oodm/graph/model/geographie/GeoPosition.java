@@ -42,4 +42,7 @@ public class GeoPosition implements GraphDomainObject {
     public String getUniqueId() {
         return getName()+" "+id;
     }
+
+    public GeoPosition() {
+    }
 }

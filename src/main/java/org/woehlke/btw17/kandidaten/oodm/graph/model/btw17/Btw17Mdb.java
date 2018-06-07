@@ -148,4 +148,7 @@ public class Btw17Mdb implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Btw17Mdb() {
+    }
 }

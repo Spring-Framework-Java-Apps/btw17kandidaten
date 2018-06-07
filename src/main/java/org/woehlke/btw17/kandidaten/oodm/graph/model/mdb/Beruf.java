@@ -36,4 +36,6 @@ public class Beruf implements GraphDomainObject {
         return id + ":"+this.getName();
     }
 
+    public Beruf() {
+    }
 }

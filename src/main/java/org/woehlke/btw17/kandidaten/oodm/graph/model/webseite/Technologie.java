@@ -38,4 +38,7 @@ public class Technologie implements GraphDomainObject {
     public String getUniqueId() {
         return technologie+" "+id;
     }
+
+    public Technologie() {
+    }
 }

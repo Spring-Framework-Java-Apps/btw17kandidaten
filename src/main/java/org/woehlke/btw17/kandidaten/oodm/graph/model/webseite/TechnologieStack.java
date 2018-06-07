@@ -44,4 +44,7 @@ public class TechnologieStack implements GraphDomainObject {
     public String getUniqueId() {
         return technologieStack+" "+id;
     }
+
+    public TechnologieStack() {
+    }
 }

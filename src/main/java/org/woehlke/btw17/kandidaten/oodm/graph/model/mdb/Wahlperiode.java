@@ -63,4 +63,7 @@ public class Wahlperiode implements GraphDomainObject {
     public String getUniqueId() {
         return wahlperiode.toString();
     }
+
+    public Wahlperiode() {
+    }
 }

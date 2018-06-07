@@ -33,4 +33,7 @@ public class Kontinent implements GraphDomainObject {
     public String getUniqueId() {
         return kontinent+" "+id.toString();
     }
+
+    public Kontinent() {
+    }
 }

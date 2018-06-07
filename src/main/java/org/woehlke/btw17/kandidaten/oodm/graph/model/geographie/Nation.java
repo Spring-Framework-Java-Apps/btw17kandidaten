@@ -38,4 +38,7 @@ public class Nation implements GraphDomainObject {
     public String getUniqueId() {
         return nation+" "+id.toString();
     }
+
+    public Nation() {
+    }
 }

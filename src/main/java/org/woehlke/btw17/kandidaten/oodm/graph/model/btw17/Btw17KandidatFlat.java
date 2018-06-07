@@ -166,4 +166,7 @@ public class Btw17KandidatFlat implements GraphDomainObject {
         return id;
     }
 
+
+    public Btw17KandidatFlat() {
+    }
 }

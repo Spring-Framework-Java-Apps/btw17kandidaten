@@ -90,4 +90,6 @@ public class Btw17Wahlperiode implements GraphDomainObject {
         return wp;
     }
 
+    public Btw17Wahlperiode() {
+    }
 }

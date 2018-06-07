@@ -59,4 +59,7 @@ public class Wahlkreis implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Wahlkreis() {
+    }
 }

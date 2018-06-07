@@ -213,4 +213,7 @@ public class OnlineStrategie implements GraphDomainObject {
     @Property(name = "yelp")
     private String yelp;
     */
+
+    public OnlineStrategie() {
+    }
 }

@@ -56,4 +56,7 @@ public class Cms implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Cms() {
+    }
 }

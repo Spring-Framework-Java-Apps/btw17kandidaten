@@ -58,4 +58,7 @@ public class Dienstleister implements GraphDomainObject {
     public Long getId() {
         return id;
     }
+
+    public Dienstleister() {
+    }
 }

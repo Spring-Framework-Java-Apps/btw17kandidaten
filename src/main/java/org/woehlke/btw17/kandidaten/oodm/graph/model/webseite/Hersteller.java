@@ -49,4 +49,8 @@ public class Hersteller implements GraphDomainObject {
     public String getUniqueId() {
         return hersteller+" "+id;
     }
+
+
+    public Hersteller() {
+    }
 }

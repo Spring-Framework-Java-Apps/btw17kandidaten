@@ -53,4 +53,7 @@ public class Adresse implements GraphDomainObject {
     public String getUniqueId() {
         return plz+" "+ort+" "+id;
     }
+
+    public Adresse() {
+    }
 }

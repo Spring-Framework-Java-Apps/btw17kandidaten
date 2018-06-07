@@ -1506,4 +1506,7 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     public String getUniqueId() {
         return ""+id;
     }
+
+    public WahlergebnisseBtw17() {
+    }
 }

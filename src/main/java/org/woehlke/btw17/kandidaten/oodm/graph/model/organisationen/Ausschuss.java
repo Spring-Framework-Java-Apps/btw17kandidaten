@@ -46,4 +46,6 @@ public class Ausschuss implements GraphDomainObject {
         return ausschuss+" "+id;
     }
 
+    public Ausschuss() {
+    }
 }

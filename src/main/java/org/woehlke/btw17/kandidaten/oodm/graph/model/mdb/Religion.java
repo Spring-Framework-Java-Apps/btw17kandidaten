@@ -40,4 +40,7 @@ public class Religion implements GraphDomainObject {
     public String getUniqueId() {
         return religion+" "+id;
     }
+
+    public Religion() {
+    }
 }

@@ -70,4 +70,6 @@ public class ListePartei implements GraphDomainObject {
         return id;
     }
 
+    public ListePartei() {
+    }
 }
