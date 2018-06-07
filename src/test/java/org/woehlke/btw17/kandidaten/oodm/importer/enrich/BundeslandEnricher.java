@@ -19,7 +19,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
-import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
+import org.woehlke.btw17.kandidaten.configuration.spring.DatabaseJpaConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
@@ -39,7 +39,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(
     classes = {
         KandidatenApplication.class,
-        DataSourceConfig.class,
+        DatabaseJpaConfig.class,
         HttpSessionConfig.class,
         WebMvcConfig.class,
         WebSecurityConfig.class

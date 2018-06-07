@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
+import org.woehlke.btw17.kandidaten.configuration.spring.DatabaseJpaConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebSecurityConfig;
@@ -35,7 +35,7 @@ import static org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatService.PAGE
 @SpringBootTest(
         classes = {
                 KandidatenApplication.class,
-                DataSourceConfig.class,
+                DatabaseJpaConfig.class,
                 HttpSessionConfig.class,
                 WebMvcConfig.class,
                 WebSecurityConfig.class
