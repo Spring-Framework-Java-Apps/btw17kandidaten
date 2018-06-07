@@ -6,8 +6,8 @@ import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.EditStatus;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;

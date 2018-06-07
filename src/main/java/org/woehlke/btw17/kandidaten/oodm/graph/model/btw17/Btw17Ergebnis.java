@@ -3,8 +3,8 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 
 import javax.validation.constraints.NotNull;
 
@@ -49,7 +49,7 @@ public class Btw17Ergebnis implements GraphDomainObject {
     /**
      * Land
      */
-    @Relationship(type="LIEGT_IN", direction=Relationship.OUTGOING)
+    @Relationship(type="LIEGT_IN")
     private BundeslandEnum bundesland;
 
 

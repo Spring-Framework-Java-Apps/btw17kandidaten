@@ -6,12 +6,9 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 
- //import javax.persistence.Column;
- //import javax.persistence.EnumType;
- //import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 

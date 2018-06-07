@@ -113,7 +113,6 @@ public class AusschussController extends AbstractController {
 
     private final KandidatenProperties kandidatenProperties;
 
-
     @Autowired
     public AusschussController(SessionHandler sessionHandler, AusschussService ausschussService, KandidatService kandidatService, KandidatenProperties kandidatenProperties) {
         super(sessionHandler);

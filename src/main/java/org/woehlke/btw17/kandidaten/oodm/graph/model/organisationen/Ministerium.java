@@ -3,9 +3,13 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.*;
 import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.Kandidat;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
