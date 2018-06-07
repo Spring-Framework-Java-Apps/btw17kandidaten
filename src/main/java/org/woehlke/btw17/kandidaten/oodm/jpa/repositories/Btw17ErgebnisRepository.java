@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.repositories;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainRepository;
+import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.commons.JpaDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Ergebnis;
 
 import java.util.List;

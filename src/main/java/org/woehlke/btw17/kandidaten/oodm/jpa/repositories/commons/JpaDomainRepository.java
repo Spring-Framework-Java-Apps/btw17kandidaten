@@ -1,7 +1,9 @@
-package org.woehlke.btw17.kandidaten.oodm.all.model.commons;
+package org.woehlke.btw17.kandidaten.oodm.jpa.repositories.commons;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.woehlke.btw17.kandidaten.oodm.all.model.commons.DomainRepository;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
 
 import java.util.List;
 

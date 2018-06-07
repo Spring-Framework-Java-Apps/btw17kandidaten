@@ -1,77 +1,80 @@
-package org.woehlke.btw17.kandidaten.oodm.all.model.commons;
+package org.woehlke.btw17.kandidaten.oodm.jpa.service.commons;
+
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.commons.JpaDomainRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true)
-public abstract class GraphDomainServiceImpl<T extends GraphDomainObject> implements GraphDomainService<T> {
+public abstract class JpaDomainServiceImpl<T extends JpaDomainObject> implements JpaDomainService<T> {
 
-    private final GraphDomainRepository<T> graphDomainRepository;
+    private final JpaDomainRepository<T> jpaDomainRepository;
 
-    protected GraphDomainServiceImpl(final GraphDomainRepository<T> graphDomainRepository){
-        this.graphDomainRepository = graphDomainRepository;
+    protected JpaDomainServiceImpl(final JpaDomainRepository<T> jpaDomainRepository){
+        this.jpaDomainRepository = jpaDomainRepository;
     }
 
-    protected GraphDomainRepository<T> getRepository(){
-        return graphDomainRepository;
+    protected JpaDomainRepository<T> getRepository(){
+        return jpaDomainRepository;
     }
 
     @Override
     public Page<T> getAll(Pageable pageRequest) {
-        return graphDomainRepository.findAll(pageRequest);
+        return jpaDomainRepository.findAll(pageRequest);
     }
 
     @Override
     public Iterable<T> getAll() {
-        return graphDomainRepository.findAll();
+        return jpaDomainRepository.findAll();
     }
 
     @Override
     public long count() {
-        return graphDomainRepository.count();
+        return jpaDomainRepository.count();
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRES_NEW, readOnly=false)
     public void deleteAll() {
-        graphDomainRepository.deleteAll();
+        jpaDomainRepository.deleteAll();
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRES_NEW, readOnly=false)
     public void delete(T domainObject) {
-        graphDomainRepository.deleteAll();
+        jpaDomainRepository.deleteAll();
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRES_NEW, readOnly=false)
     public T create(T domainObject) {
-        return graphDomainRepository.save(domainObject);
+        return jpaDomainRepository.saveAndFlush(domainObject);
     }
 
     @Override
     @Transactional(propagation=Propagation.REQUIRES_NEW, readOnly=false)
     public T update(T domainObject) {
-        return graphDomainRepository.save(domainObject);
+        return jpaDomainRepository.saveAndFlush(domainObject);
     }
 
     @Override
     public List<Long> getAllIds() {
-        return graphDomainRepository.getAllIds();
+        return jpaDomainRepository.getAllIds();
     }
 
     @Override
     public Optional<T> findById(long id) {
-        return graphDomainRepository.findById(id);
+        return jpaDomainRepository.findById(id);
     }
 
     @Override
     public Long getMaxId() {
-        return graphDomainRepository.getMaxId();
+        return jpaDomainRepository.getMaxId();
     }
 }

@@ -6,7 +6,7 @@ import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListeParteiBundesland;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Institution;
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Wahlkreis;
 
 import java.time.LocalDate;

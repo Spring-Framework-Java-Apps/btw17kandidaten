@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainServiceImpl;
+import org.woehlke.btw17.kandidaten.oodm.graph.services.commons.GraphDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListePartei;
 import org.woehlke.btw17.kandidaten.oodm.graph.repositories.kandidaten.ListeParteiRepository;
 import org.woehlke.btw17.kandidaten.oodm.graph.services.kandidaten.ListeParteiService;

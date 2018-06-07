@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.parts;
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 
 

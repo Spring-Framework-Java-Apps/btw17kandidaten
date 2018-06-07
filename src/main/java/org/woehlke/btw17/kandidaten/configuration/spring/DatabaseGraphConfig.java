@@ -6,7 +6,7 @@ import org.neo4j.ogm.config.AutoIndexMode;
 import org.neo4j.ogm.config.UsernamePasswordCredentials;
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+//import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -29,17 +29,9 @@ public class DatabaseGraphConfig {
     @Bean(name = "getSessionFactory")
     public SessionFactory graphSessionFactory() {
         org.neo4j.ogm.config.Configuration conf = configuration();
-        log.info(conf.getTrustStrategy());
+        log.info("getSessionFactory: configuration "+conf);
         return new SessionFactory(conf,
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.btw17",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.commons",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.enums",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.geographie",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.mdb",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.parts",
-            "org.woehlke.btw17.kandidaten.oodm.graph.model.webseite",
+            "org.woehlke.btw17.kandidaten.oodm.graph.model",
             "org.woehlke.btw17.kandidaten.oodm.all.model.commons");
     }
 
@@ -51,15 +43,16 @@ public class DatabaseGraphConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.data.neo4j")
+    //@ConfigurationProperties(prefix = "spring.data.neo4j")
     public org.neo4j.ogm.config.Configuration configuration() {
         Integer connectionLivenessCheckTimeout = new Integer(1000);
         Boolean verifyConnection = true;
-        String uri = "bolt://localhost:7687";
+        String uri = "bolt://localhost";
         String user = "neo4j";
         String password = "secret";
         org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder()
             .verifyConnection(verifyConnection)
+            .connectionPoolSize(120)
             .connectionLivenessCheckTimeout(connectionLivenessCheckTimeout)
             .autoIndex(AutoIndexMode.UPDATE.getName())
             .uri(uri)

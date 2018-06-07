@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainServiceImpl;
+import org.woehlke.btw17.kandidaten.oodm.jpa.service.commons.JpaDomainServiceImpl;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17KandidatFlat;
 import org.woehlke.btw17.kandidaten.oodm.jpa.repositories.Btw17KandidatFlatRepository;
 import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17KandidatFlatService;

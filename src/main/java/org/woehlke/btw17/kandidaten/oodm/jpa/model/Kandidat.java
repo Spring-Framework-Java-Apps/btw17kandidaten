@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.jpa.model;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
-import org.woehlke.btw17.kandidaten.oodm.all.model.commons.JpaDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.jpa.model.commons.JpaDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Religion;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.jpa.model.parts.*;
