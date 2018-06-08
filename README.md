@@ -75,17 +75,17 @@ Das Hosting bei Heroku ist in Europa, nicht in den USA.
 
 * [http://localhost:8081/artifactory/webapp/#/admin/repositories/remote](http://localhost:8081/artifactory/webapp/#/admin/repositories/remote)
 
-key | Url
-----|----
-central | https://repo.spring.io/libs-release-local
-ga.maven.repository.redhat.com | https://maven.repository.redhat.com/ga/
-jcenter | https://jcenter.bintray.com/
-maven2.central.maven.org | http://central.maven.org/maven2/
-maven2.dist.wso2.org |  http://dist.wso2.org/maven2/
-plugins-release.repo.spring.io |  http://repo.spring.io/plugins-release/
-release.repo.spring.io |  http://repo.spring.io/release/
-releases.repository.apache.org |  https://repository.apache.org/content/repositories/releases/
-sonatype-nexus-snapshots |  https://oss.sonatype.org/content/repositories/snapshots/
+lfdNr | key | Url
+----|--------|----
+1 | central | https://repo.spring.io/libs-release-local
+3 | ga.maven.repository.redhat.com | https://maven.repository.redhat.com/ga/
+3 | jcenter | https://jcenter.bintray.com/
+4 | maven2.central.maven.org | http://central.maven.org/maven2/
+5 | maven2.dist.wso2.org |  http://dist.wso2.org/maven2/
+6 | plugins-release.repo.spring.io |  http://repo.spring.io/plugins-release/
+7 | release.repo.spring.io |  http://repo.spring.io/release/
+8 | releases.repository.apache.org |  https://repository.apache.org/content/repositories/releases/
+9 | sonatype-nexus-snapshots |  https://oss.sonatype.org/content/repositories/snapshots/
 
 ## Development 
 
