@@ -9,6 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
@@ -24,11 +25,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan("org.woehlke.btw17.kandidaten.oodm.jpa")
 @EnableTransactionManagement
 @EnableJpaRepositories(
     entityManagerFactoryRef = "entityManagerFactory",
     transactionManagerRef = "postgresqlTransactionManager",
-    basePackages = "org.woehlke.btw17.kandidaten.oodm.jpa.repositories")
+    basePackages = "org.woehlke.btw17.kandidaten.oodm.jpa.repositories"
+)
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 public class DatabaseJpaConfig {
 

@@ -8,6 +8,7 @@ import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -35,16 +36,10 @@ public class DatabaseGraphConfig {
 
     private static final Log log = LogFactory.getLog(DatabaseGraphConfig.class);
 
-    private final SpringProperties springProperties;
-
     @Autowired
-    public DatabaseGraphConfig(SpringProperties springProperties) {
-        this.springProperties = springProperties;
-    }
-
     @Bean
-    public SessionFactory graphSessionFactory() {
-        org.neo4j.ogm.config.Configuration conf = configuration();
+    public SessionFactory graphSessionFactory(SpringProperties springProperties) {
+        org.neo4j.ogm.config.Configuration conf = configuration(springProperties);
         log.info("getSessionFactory: configuration "+conf);
         return new SessionFactory(conf,
             "org.woehlke.btw17.kandidaten.oodm.graph.model.btw17",
@@ -66,9 +61,10 @@ public class DatabaseGraphConfig {
         return new Neo4jTransactionManager(sessionFactory);
     }
 
+    @Autowired
     @Bean
-    //@ConfigurationProperties(prefix = "spring.data.neo4j")
-    public org.neo4j.ogm.config.Configuration configuration() {
+    @ConfigurationProperties(prefix = "spring.data.neo4j")
+    public org.neo4j.ogm.config.Configuration configuration(SpringProperties springProperties) {
         //Integer connectionLivenessCheckTimeout = new Integer(1000);
         //Boolean verifyConnection = true;
         String uri = springProperties.getData().getNeo4j().getUri();
