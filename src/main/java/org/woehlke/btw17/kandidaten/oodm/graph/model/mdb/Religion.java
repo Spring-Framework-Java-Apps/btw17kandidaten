@@ -1,18 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-@Setter
-@Getter
 @NodeEntity
-public class Religion implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Religion extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique = true)
     @Property(name="religion")
@@ -25,22 +18,30 @@ public class Religion implements GraphDomainObject {
     @Property(name="beschreibung")
     private String beschreibung;
 
-
-    @Override
-    public Long getId() {
-        return id;
+    public Religion() {
     }
 
-    @Override
-    public String getName() {
+    public String getReligion() {
         return religion;
     }
 
-    @Override
-    public String getUniqueId() {
-        return religion+" "+id;
+    public void setReligion(String religion) {
+        this.religion = religion;
     }
 
-    public Religion() {
+    public String getBezeichnung() {
+        return bezeichnung;
+    }
+
+    public void setBezeichnung(String bezeichnung) {
+        this.bezeichnung = bezeichnung;
+    }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
     }
 }

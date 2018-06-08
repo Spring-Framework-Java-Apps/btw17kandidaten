@@ -1,44 +1,43 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 
-@Setter
-@Getter
 @NodeEntity
-public class Nation implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Nation extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name="nation")
     private String nation;
 
     @Relationship(type=LOCATION)
-    private Kontinent kontinent = new Kontinent();
-
-    @Override
-    public Long getId() {
-        return id;
-    }
+    private Kontinent kontinent;
 
     @Override
     public String getName() {
         return nation;
     }
 
-    @Override
-    public String getUniqueId() {
-        return nation+" "+id.toString();
+    public Nation() {
     }
 
-    public Nation() {
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public Kontinent getKontinent() {
+        return kontinent;
+    }
+
+    public void setKontinent(Kontinent kontinent) {
+        this.kontinent = kontinent;
     }
 }

@@ -1,43 +1,35 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
+import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.JOB;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Ministerium implements GraphDomainObject {
+public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObject {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
+    @Index(unique = true)
     @Property(name="ministerium")
     private String ministerium;
 
+    @Index(unique = true)
     @Property(name="ministerium_lang")
     private String ministeriumLang;
 
     @Property(name="bundesminister")
     private String bundesministerName;
 
-    @Relationship(type=LOCATION)
+    @Relationship(type=JOB)
     private Kandidat bundesminister;
-
-    @Relationship(type=LOCATION)
-    private CommonFields commonFields = new CommonFields();
 
     @Relationship(type=LOCATION)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
@@ -51,21 +43,71 @@ public class Ministerium implements GraphDomainObject {
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public String getName() {
-        return ministerium +"  "+ministeriumLang;
-    }
-
-    @Override
-    public String getUniqueId() {
-        return id + ":"+this.getName();
-    }
 
     public Ministerium() {
+    }
+
+    public String getMinisterium() {
+        return ministerium;
+    }
+
+    public void setMinisterium(String ministerium) {
+        this.ministerium = ministerium;
+    }
+
+    public String getMinisteriumLang() {
+        return ministeriumLang;
+    }
+
+    public void setMinisteriumLang(String ministeriumLang) {
+        this.ministeriumLang = ministeriumLang;
+    }
+
+    public String getBundesministerName() {
+        return bundesministerName;
+    }
+
+    public void setBundesministerName(String bundesministerName) {
+        this.bundesministerName = bundesministerName;
+    }
+
+    public Kandidat getBundesminister() {
+        return bundesminister;
+    }
+
+    public void setBundesminister(Kandidat bundesminister) {
+        this.bundesminister = bundesminister;
+    }
+
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
+    }
+
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 }

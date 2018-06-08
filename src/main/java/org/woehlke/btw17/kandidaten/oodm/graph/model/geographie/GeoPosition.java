@@ -1,19 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-
-@Setter
-@Getter
 @NodeEntity
-public class GeoPosition implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class GeoPosition extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name = "google_maps_url")
@@ -29,20 +21,42 @@ public class GeoPosition implements GraphDomainObject {
     private String geoZoom;
 
     @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
     public String getName() {
         return " name ";
     }
 
-    @Override
-    public String getUniqueId() {
-        return getName()+" "+id;
+    public GeoPosition() {
     }
 
-    public GeoPosition() {
+    public String getGoogleMapsUrl() {
+        return googleMapsUrl;
+    }
+
+    public void setGoogleMapsUrl(String googleMapsUrl) {
+        this.googleMapsUrl = googleMapsUrl;
+    }
+
+    public String getGeoLongitude() {
+        return geoLongitude;
+    }
+
+    public void setGeoLongitude(String geoLongitude) {
+        this.geoLongitude = geoLongitude;
+    }
+
+    public String getGeoLattitude() {
+        return geoLattitude;
+    }
+
+    public void setGeoLattitude(String geoLattitude) {
+        this.geoLattitude = geoLattitude;
+    }
+
+    public String getGeoZoom() {
+        return geoZoom;
+    }
+
+    public void setGeoZoom(String geoZoom) {
+        this.geoZoom = geoZoom;
     }
 }

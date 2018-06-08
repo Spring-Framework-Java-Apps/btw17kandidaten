@@ -1,21 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.parts;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
-
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
 
 //TODO: Pro Online Profil ein Node
-@Setter
-@Getter
 @NodeEntity
-public class OnlineStrategie implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class OnlineStrategie extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index
     @Property(name="twitter")
@@ -85,22 +78,7 @@ public class OnlineStrategie implements GraphDomainObject {
     @Property(name = "vimeo")
     private String vimeo;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
 
-    @Override
-    public String getName() {
-        return " name ";
-    }
-
-    @Override
-    public String getUniqueId() {
-        return getName()+" "+id;
-    }
-
-    /*
    @Index
     @Property(name = "xing")
     private String xing;
@@ -109,6 +87,7 @@ public class OnlineStrategie implements GraphDomainObject {
     @Property(name = "linked_in")
     private String linkedIn;
 
+       /*
    @Index
     @Property(name = "stackoverflow")
     private String stackoverflow;
@@ -215,5 +194,157 @@ public class OnlineStrategie implements GraphDomainObject {
     */
 
     public OnlineStrategie() {
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getSoundcloud() {
+        return soundcloud;
+    }
+
+    public void setSoundcloud(String soundcloud) {
+        this.soundcloud = soundcloud;
+    }
+
+    public String getWikipediaArticle() {
+        return wikipediaArticle;
+    }
+
+    public void setWikipediaArticle(String wikipediaArticle) {
+        this.wikipediaArticle = wikipediaArticle;
+    }
+
+    public String getBundestagAbgeordnete() {
+        return bundestagAbgeordnete;
+    }
+
+    public void setBundestagAbgeordnete(String bundestagAbgeordnete) {
+        this.bundestagAbgeordnete = bundestagAbgeordnete;
+    }
+
+    public String getAbgeordnetenwatch() {
+        return abgeordnetenwatch;
+    }
+
+    public void setAbgeordnetenwatch(String abgeordnetenwatch) {
+        this.abgeordnetenwatch = abgeordnetenwatch;
+    }
+
+    public String getLobbypediaUrl() {
+        return lobbypediaUrl;
+    }
+
+    public void setLobbypediaUrl(String lobbypediaUrl) {
+        this.lobbypediaUrl = lobbypediaUrl;
+    }
+
+    public String getLobbycontrol() {
+        return lobbycontrol;
+    }
+
+    public void setLobbycontrol(String lobbycontrol) {
+        this.lobbycontrol = lobbycontrol;
+    }
+
+    public String getTransparency() {
+        return transparency;
+    }
+
+    public void setTransparency(String transparency) {
+        this.transparency = transparency;
+    }
+
+    public String getNetzpolitikOrg() {
+        return netzpolitikOrg;
+    }
+
+    public void setNetzpolitikOrg(String netzpolitikOrg) {
+        this.netzpolitikOrg = netzpolitikOrg;
+    }
+
+    public String getGooglePlus() {
+        return googlePlus;
+    }
+
+    public void setGooglePlus(String googlePlus) {
+        this.googlePlus = googlePlus;
+    }
+
+    public String getGoogleSuche() {
+        return googleSuche;
+    }
+
+    public void setGoogleSuche(String googleSuche) {
+        this.googleSuche = googleSuche;
+    }
+
+    public String getBingSuche() {
+        return bingSuche;
+    }
+
+    public void setBingSuche(String bingSuche) {
+        this.bingSuche = bingSuche;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getFlickr() {
+        return flickr;
+    }
+
+    public void setFlickr(String flickr) {
+        this.flickr = flickr;
+    }
+
+    public String getVimeo() {
+        return vimeo;
+    }
+
+    public void setVimeo(String vimeo) {
+        this.vimeo = vimeo;
+    }
+
+    public String getXing() {
+        return xing;
+    }
+
+    public void setXing(String xing) {
+        this.xing = xing;
+    }
+
+    public String getLinkedIn() {
+        return linkedIn;
+    }
+
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
     }
 }

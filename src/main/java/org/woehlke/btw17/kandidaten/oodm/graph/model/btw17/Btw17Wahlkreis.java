@@ -1,19 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 
-@Setter
-@Getter
 @NodeEntity
-public class Btw17Wahlkreis implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Btw17Wahlkreis extends GraphDomainObjectImpl implements GraphDomainObject {
 
 
     @Index(unique=true)
@@ -36,20 +29,55 @@ public class Btw17Wahlkreis implements GraphDomainObject {
     private BundeslandEnum bundeslandEnumKurz;
 
     @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
     public String getName() {
         return wahlkreisName+" ( "+wahlkreisNummer+" ) in "+bundeslandName;
     }
 
     @Override
     public String getUniqueId() {
-        return this.wahlkreisNummer + ":"+wahlkreisName+":"+ bundeslandEnumKurz;
+        return this.getName() + ":"+ getId();
     }
 
     public Btw17Wahlkreis() {
+    }
+
+    public Long getWahlkreisNummer() {
+        return wahlkreisNummer;
+    }
+
+    public void setWahlkreisNummer(Long wahlkreisNummer) {
+        this.wahlkreisNummer = wahlkreisNummer;
+    }
+
+    public String getWahlkreisName() {
+        return wahlkreisName;
+    }
+
+    public void setWahlkreisName(String wahlkreisName) {
+        this.wahlkreisName = wahlkreisName;
+    }
+
+    public Long getBundeslandNummer() {
+        return bundeslandNummer;
+    }
+
+    public void setBundeslandNummer(Long bundeslandNummer) {
+        this.bundeslandNummer = bundeslandNummer;
+    }
+
+    public String getBundeslandName() {
+        return bundeslandName;
+    }
+
+    public void setBundeslandName(String bundeslandName) {
+        this.bundeslandName = bundeslandName;
+    }
+
+    public BundeslandEnum getBundeslandEnumKurz() {
+        return bundeslandEnumKurz;
+    }
+
+    public void setBundeslandEnumKurz(BundeslandEnum bundeslandEnumKurz) {
+        this.bundeslandEnumKurz = bundeslandEnumKurz;
     }
 }

@@ -1,41 +1,27 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 
-import lombok.Getter;
-import lombok.Setter;
+
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Berufsgruppe implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Berufsgruppe extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique = true)
     @Property(name="berufsgruppe")
     private String berufsgruppe;
 
-    @Property(name="edit_status")
-    private EditStatus editStatus = EditStatus.UNTOUCHED;
 
-    @Override
-    public Long getId() {
-        return id;
+    public Berufsgruppe() {
     }
 
-    public String getName() {
+    public String getBerufsgruppe() {
         return berufsgruppe;
     }
 
-    public String getUniqueId() {
-        return id + ":"+this.getName();
-    }
-
-    public Berufsgruppe() {
+    public void setBerufsgruppe(String berufsgruppe) {
+        this.berufsgruppe = berufsgruppe;
     }
 }

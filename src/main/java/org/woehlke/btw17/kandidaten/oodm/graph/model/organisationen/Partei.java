@@ -1,25 +1,18 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
-@Setter
-@Getter
-@NodeEntity
-public class Partei implements GraphDomainObject {
 
-    @Id
-    @GeneratedValue
-    protected Long id;
+@NodeEntity
+public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name="partei")
@@ -53,9 +46,6 @@ public class Partei implements GraphDomainObject {
     @Relationship(type=REDAKTION)
     private Adresse adresse = new Adresse();
 
-    @Relationship(type=REDAKTION)
-    private CommonFields commonFields = new CommonFields();
-
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
@@ -70,13 +60,11 @@ public class Partei implements GraphDomainObject {
         return sb.toString();
     }
 
-    @Override
-    public String getUniqueId() {
-        return id + ":"+this.getName();
+    public String getPartei() {
+        return partei;
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public void setPartei(String partei) {
+        this.partei = partei;
     }
 }

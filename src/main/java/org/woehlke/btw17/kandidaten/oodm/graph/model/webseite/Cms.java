@@ -1,24 +1,16 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
-@Setter
-@Getter
 @NodeEntity
-public class Cms implements GraphDomainObject {
+public class Cms extends GraphDomainObjectImpl implements GraphDomainObject {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Index
+    @Index(unique = true)
     @Property(name="cms")
     private String cms;
 
@@ -39,24 +31,54 @@ public class Cms implements GraphDomainObject {
     @Relationship(type = PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Relationship(type = REDAKTION)
-    private CommonFields commonFields = new CommonFields();
+    public Cms() {
+    }
 
-    @Override
-    public String getName() {
+    public String getCms() {
         return cms;
     }
 
-    @Override
-    public String getUniqueId() {
-        return id + ":"+this.getName();
+    public void setCms(String cms) {
+        this.cms = cms;
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public String getProductInfoPage() {
+        return productInfoPage;
     }
 
-    public Cms() {
+    public void setProductInfoPage(String productInfoPage) {
+        this.productInfoPage = productInfoPage;
+    }
+
+    public String getProductDemoPage() {
+        return productDemoPage;
+    }
+
+    public void setProductDemoPage(String productDemoPage) {
+        this.productDemoPage = productDemoPage;
+    }
+
+    public TechnologieStack getTechnologyStack() {
+        return technologyStack;
+    }
+
+    public void setTechnologyStack(TechnologieStack technologyStack) {
+        this.technologyStack = technologyStack;
+    }
+
+    public Hersteller getHersteller() {
+        return hersteller;
+    }
+
+    public void setHersteller(Hersteller hersteller) {
+        this.hersteller = hersteller;
+    }
+
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
     }
 }

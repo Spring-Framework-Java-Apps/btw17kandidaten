@@ -1,8 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
@@ -10,14 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Locale;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Btw17KandidatFlat implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Btw17KandidatFlat extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name="kandidat_key")
@@ -120,7 +113,7 @@ public class Btw17KandidatFlat implements GraphDomainObject {
     //@Transient
     @Override
     public String getUniqueId() {
-        return id + ":"+this.getTransientKey()+":"+this.vorname+" "+this.nachname;
+        return this.getTransientKey()+":"+this.vorname+" "+this.nachname+ ":"+getId();
     }
 
     //@Transient
@@ -162,11 +155,246 @@ public class Btw17KandidatFlat implements GraphDomainObject {
         return newKandidatKey;
     }
 
-    public Long getId() {
-        return id;
+    public Btw17KandidatFlat() {
     }
 
+    public String getKey() {
+        return key;
+    }
 
-    public Btw17KandidatFlat() {
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public String getNamenszusatz() {
+        return namenszusatz;
+    }
+
+    public void setNamenszusatz(String namenszusatz) {
+        this.namenszusatz = namenszusatz;
+    }
+
+    public String getNachnameOhne() {
+        return nachnameOhne;
+    }
+
+    public void setNachnameOhne(String nachnameOhne) {
+        this.nachnameOhne = nachnameOhne;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public Integer getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public void setGeburtsjahr(Integer geburtsjahr) {
+        this.geburtsjahr = geburtsjahr;
+    }
+
+    public Integer getAlter() {
+        return alter;
+    }
+
+    public void setAlter(Integer alter) {
+        this.alter = alter;
+    }
+
+    public String getWohnort() {
+        return wohnort;
+    }
+
+    public void setWohnort(String wohnort) {
+        this.wohnort = wohnort;
+    }
+
+    public String getGeburtsort() {
+        return geburtsort;
+    }
+
+    public void setGeburtsort(String geburtsort) {
+        this.geburtsort = geburtsort;
+    }
+
+    public String getBeruf() {
+        return beruf;
+    }
+
+    public void setBeruf(String beruf) {
+        this.beruf = beruf;
+    }
+
+    public String getBerufsgruppe() {
+        return berufsgruppe;
+    }
+
+    public void setBerufsgruppe(String berufsgruppe) {
+        this.berufsgruppe = berufsgruppe;
+    }
+
+    public BundeslandEnum getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(BundeslandEnum bundesland) {
+        this.bundesland = bundesland;
+    }
+
+    public Integer getWahlkreisId() {
+        return wahlkreisId;
+    }
+
+    public void setWahlkreisId(Integer wahlkreisId) {
+        this.wahlkreisId = wahlkreisId;
+    }
+
+    public String getWahlkreisName() {
+        return wahlkreisName;
+    }
+
+    public void setWahlkreisName(String wahlkreisName) {
+        this.wahlkreisName = wahlkreisName;
+    }
+
+    public String getPartei() {
+        return partei;
+    }
+
+    public void setPartei(String partei) {
+        this.partei = partei;
+    }
+
+    public String getParteiLang() {
+        return parteiLang;
+    }
+
+    public void setParteiLang(String parteiLang) {
+        this.parteiLang = parteiLang;
+    }
+
+    public String getListeBundeslandLand() {
+        return listeBundeslandLand;
+    }
+
+    public void setListeBundeslandLand(String listeBundeslandLand) {
+        this.listeBundeslandLand = listeBundeslandLand;
+    }
+
+    public String getListePartei() {
+        return listePartei;
+    }
+
+    public void setListePartei(String listePartei) {
+        this.listePartei = listePartei;
+    }
+
+    public String getListeParteiLang() {
+        return listeParteiLang;
+    }
+
+    public void setListeParteiLang(String listeParteiLang) {
+        this.listeParteiLang = listeParteiLang;
+    }
+
+    public Integer getListePlatz() {
+        return listePlatz;
+    }
+
+    public void setListePlatz(Integer listePlatz) {
+        this.listePlatz = listePlatz;
+    }
+
+    public String getMdb() {
+        return mdb;
+    }
+
+    public void setMdb(String mdb) {
+        this.mdb = mdb;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public String getIdEigen() {
+        return idEigen;
+    }
+
+    public void setIdEigen(String idEigen) {
+        this.idEigen = idEigen;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Double getScatterX() {
+        return scatterX;
+    }
+
+    public void setScatterX(Double scatterX) {
+        this.scatterX = scatterX;
+    }
+
+    public Double getScatterY() {
+        return scatterY;
+    }
+
+    public void setScatterY(Double scatterY) {
+        this.scatterY = scatterY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

@@ -1,22 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
-import lombok.Getter;
-import lombok.Setter;
-//import org.hibernate.validator.constraints.SafeHtml;
+
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-//import javax.validation.constraints.NotNull;
-
-
-@Setter
-@Getter
 @NodeEntity
-public class Technologie implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Technologie extends GraphDomainObjectImpl implements GraphDomainObject {
 
     //@SafeHtml
     //@NotNull
@@ -24,21 +14,14 @@ public class Technologie implements GraphDomainObject {
     @Property(name="technologie")
     private String technologie;
 
-    @Override
-    public Long getId() {
-        return id;
+    public Technologie() {
     }
 
-    @Override
-    public String getName() {
+    public String getTechnologie() {
         return technologie;
     }
 
-    @Override
-    public String getUniqueId() {
-        return technologie+" "+id;
-    }
-
-    public Technologie() {
+    public void setTechnologie(String technologie) {
+        this.technologie = technologie;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 
@@ -15,7 +16,7 @@ import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.Relationship
 @Setter
 @Getter
 @NodeEntity
-public class Hersteller implements GraphDomainObject {
+public class Hersteller extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Id
     @GeneratedValue

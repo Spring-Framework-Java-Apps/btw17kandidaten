@@ -1,26 +1,16 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten;
 
 
-import lombok.Getter;
-import lombok.Setter;
-//import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
 
-@Setter
-@Getter
 @NodeEntity
-public class ListePartei implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class ListePartei extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique = true)
     @Property(name="listepartei")
@@ -48,9 +38,6 @@ public class ListePartei implements GraphDomainObject {
     @Relationship(type = PUBLISH_ONLINE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Relationship(type = REDAKTION)
-    private CommonFields commonFields = new CommonFields();
-
     @Relationship(type = PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
@@ -58,16 +45,6 @@ public class ListePartei implements GraphDomainObject {
     @Override
     public String getName() {
         return listePartei + " - " + listeParteiLang;
-    }
-
-    @Override
-    public String getUniqueId() {
-        return id + ":"+this.getName();
-    }
-
-    @Override
-    public Long getId() {
-        return id;
     }
 
     public ListePartei() {

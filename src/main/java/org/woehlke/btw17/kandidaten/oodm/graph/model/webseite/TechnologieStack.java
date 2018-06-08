@@ -1,23 +1,16 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_WITH;
 
-@Setter
-@Getter
 @NodeEntity
-public class TechnologieStack implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class TechnologieStack extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name="technologie_stack")
@@ -26,21 +19,23 @@ public class TechnologieStack implements GraphDomainObject {
     @Relationship(type = MADE_WITH)
     private Set<Technologie> technologien = new HashSet<>();
 
-    @Override
-    public Long getId() {
-        return id;
+
+    public TechnologieStack() {
     }
 
-    @Override
-    public String getName() {
+    public String getTechnologieStack() {
         return technologieStack;
     }
 
-    @Override
-    public String getUniqueId() {
-        return technologieStack+" "+id;
+    public void setTechnologieStack(String technologieStack) {
+        this.technologieStack = technologieStack;
     }
 
-    public TechnologieStack() {
+    public Set<Technologie> getTechnologien() {
+        return technologien;
+    }
+
+    public void setTechnologien(Set<Technologie> technologien) {
+        this.technologien = technologien;
     }
 }

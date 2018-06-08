@@ -1,21 +1,15 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.InstitutionArt;
 
 import java.time.LocalDate;
 
-@Setter
-@Getter
 @NodeEntity
-public class Institution implements GraphDomainObject {
+public class Institution extends GraphDomainObjectImpl implements GraphDomainObject {
 
-    @Id
-    @GeneratedValue
-    private Long id;
 
     //@Enumerated(EnumType.STRING)
     @Property(name = "insartlang")
@@ -40,19 +34,62 @@ public class Institution implements GraphDomainObject {
     @Property(name = "fktinsbis")
     private LocalDate funktionInstitutionBis;
 
-
-    @Override
-    public Long getId() {
-        return id;
+    public Institution() {
     }
 
-    @Override
-    public String getName() {
-        return institutionArtLang.name();
+    public InstitutionArt getInstitutionArtLang() {
+        return institutionArtLang;
     }
 
-    @Override
-    public String getUniqueId() {
-        return institutionArtLang.name()+" "+id;
+    public void setInstitutionArtLang(InstitutionArt institutionArtLang) {
+        this.institutionArtLang = institutionArtLang;
+    }
+
+    public String getInstitutionLang() {
+        return institutionLang;
+    }
+
+    public void setInstitutionLang(String institutionLang) {
+        this.institutionLang = institutionLang;
+    }
+
+    public LocalDate getMdbInstitutionVon() {
+        return mdbInstitutionVon;
+    }
+
+    public void setMdbInstitutionVon(LocalDate mdbInstitutionVon) {
+        this.mdbInstitutionVon = mdbInstitutionVon;
+    }
+
+    public LocalDate getMdbInstitutionBis() {
+        return mdbInstitutionBis;
+    }
+
+    public void setMdbInstitutionBis(LocalDate mdbInstitutionBis) {
+        this.mdbInstitutionBis = mdbInstitutionBis;
+    }
+
+    public String getFunktionLang() {
+        return funktionLang;
+    }
+
+    public void setFunktionLang(String funktionLang) {
+        this.funktionLang = funktionLang;
+    }
+
+    public LocalDate getFunktionInstitutionVon() {
+        return funktionInstitutionVon;
+    }
+
+    public void setFunktionInstitutionVon(LocalDate funktionInstitutionVon) {
+        this.funktionInstitutionVon = funktionInstitutionVon;
+    }
+
+    public LocalDate getFunktionInstitutionBis() {
+        return funktionInstitutionBis;
+    }
+
+    public void setFunktionInstitutionBis(LocalDate funktionInstitutionBis) {
+        this.funktionInstitutionBis = funktionInstitutionBis;
     }
 }

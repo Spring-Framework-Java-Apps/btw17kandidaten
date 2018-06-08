@@ -1,8 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Partei;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ausschuss;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Fraktion;
@@ -13,7 +12,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Wahlkreis;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.mdb.Beruf;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.mdb.Berufsgruppe;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.mdb.Wahlperiode;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Ministerium;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
@@ -26,14 +24,8 @@ import java.util.Set;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Kandidat implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
@@ -200,9 +192,6 @@ public class Kandidat implements GraphDomainObject {
     @Relationship(type = ZEIT)
     private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
-    @Relationship(type = REDAKTION)
-    private CommonFields commonFields = new CommonFields();
-
     @Relationship(type=PUBLISH_ONLINE)
     private Webseite webseite = new Webseite();
 
@@ -226,15 +215,454 @@ public class Kandidat implements GraphDomainObject {
         return vorname + " " + nachname;
     }
 
-    @Override
-    public String getUniqueId() {
-        return id + ":" + key + ":" + this.getName();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public Kandidat() {
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getRemoteKey() {
+        return remoteKey;
+    }
+
+    public void setRemoteKey(String remoteKey) {
+        this.remoteKey = remoteKey;
+    }
+
+    public String getXmlIdBundestag() {
+        return xmlIdBundestag;
+    }
+
+    public void setXmlIdBundestag(String xmlIdBundestag) {
+        this.xmlIdBundestag = xmlIdBundestag;
+    }
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    public String getNamenszusatz() {
+        return namenszusatz;
+    }
+
+    public void setNamenszusatz(String namenszusatz) {
+        this.namenszusatz = namenszusatz;
+    }
+
+    public String getNachnameOhne() {
+        return nachnameOhne;
+    }
+
+    public void setNachnameOhne(String nachnameOhne) {
+        this.nachnameOhne = nachnameOhne;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public Integer getGeburtsjahr() {
+        return geburtsjahr;
+    }
+
+    public void setGeburtsjahr(Integer geburtsjahr) {
+        this.geburtsjahr = geburtsjahr;
+    }
+
+    public String getOrtszusatz() {
+        return ortszusatz;
+    }
+
+    public void setOrtszusatz(String ortszusatz) {
+        this.ortszusatz = ortszusatz;
+    }
+
+    public String getAdel() {
+        return adel;
+    }
+
+    public void setAdel(String adel) {
+        this.adel = adel;
+    }
+
+    public String getPraefix() {
+        return praefix;
+    }
+
+    public void setPraefix(String praefix) {
+        this.praefix = praefix;
+    }
+
+    public String getAnredeTitel() {
+        return anredeTitel;
+    }
+
+    public void setAnredeTitel(String anredeTitel) {
+        this.anredeTitel = anredeTitel;
+    }
+
+    public String getAkademischeTitel() {
+        return akademischeTitel;
+    }
+
+    public void setAkademischeTitel(String akademischeTitel) {
+        this.akademischeTitel = akademischeTitel;
+    }
+
+    public LocalDate getHistorieVon() {
+        return historieVon;
+    }
+
+    public void setHistorieVon(LocalDate historieVon) {
+        this.historieVon = historieVon;
+    }
+
+    public LocalDate getHistorieBis() {
+        return historieBis;
+    }
+
+    public void setHistorieBis(LocalDate historieBis) {
+        this.historieBis = historieBis;
+    }
+
+    public Integer getAlter() {
+        return alter;
+    }
+
+    public void setAlter(Integer alter) {
+        this.alter = alter;
+    }
+
+    public LocalDate getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(LocalDate geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public LocalDate getSterbedatum() {
+        return sterbedatum;
+    }
+
+    public void setSterbedatum(LocalDate sterbedatum) {
+        this.sterbedatum = sterbedatum;
+    }
+
+    public String getFamilienstand() {
+        return familienstand;
+    }
+
+    public void setFamilienstand(String familienstand) {
+        this.familienstand = familienstand;
+    }
+
+    public Religion getReligion() {
+        return religion;
+    }
+
+    public void setReligion(Religion religion) {
+        this.religion = religion;
+    }
+
+    public String getParteikurz() {
+        return parteikurz;
+    }
+
+    public void setParteikurz(String parteikurz) {
+        this.parteikurz = parteikurz;
+    }
+
+    public String getVitakurz() {
+        return vitakurz;
+    }
+
+    public void setVitakurz(String vitakurz) {
+        this.vitakurz = vitakurz;
+    }
+
+    public String getVeroeffentlichungspflichtiges() {
+        return veroeffentlichungspflichtiges;
+    }
+
+    public void setVeroeffentlichungspflichtiges(String veroeffentlichungspflichtiges) {
+        this.veroeffentlichungspflichtiges = veroeffentlichungspflichtiges;
+    }
+
+    public String getFunktion() {
+        return funktion;
+    }
+
+    public void setFunktion(String funktion) {
+        this.funktion = funktion;
+    }
+
+    public String getMdb() {
+        return mdb;
+    }
+
+    public void setMdb(String mdb) {
+        this.mdb = mdb;
+    }
+
+    public Boolean getMdbNeu() {
+        return mdbNeu;
+    }
+
+    public void setMdbNeu(Boolean mdbNeu) {
+        this.mdbNeu = mdbNeu;
+    }
+
+    public Boolean getMdb17() {
+        return mdb17;
+    }
+
+    public void setMdb17(Boolean mdb17) {
+        this.mdb17 = mdb17;
+    }
+
+    public Boolean getMdb18() {
+        return mdb18;
+    }
+
+    public void setMdb18(Boolean mdb18) {
+        this.mdb18 = mdb18;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
+
+    public String getIdEigen() {
+        return idEigen;
+    }
+
+    public void setIdEigen(String idEigen) {
+        this.idEigen = idEigen;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getFotoUrl() {
+        return fotoUrl;
+    }
+
+    public void setFotoUrl(String fotoUrl) {
+        this.fotoUrl = fotoUrl;
+    }
+
+    public Double getScatterX() {
+        return scatterX;
+    }
+
+    public void setScatterX(Double scatterX) {
+        this.scatterX = scatterX;
+    }
+
+    public Double getScatterY() {
+        return scatterY;
+    }
+
+    public void setScatterY(Double scatterY) {
+        this.scatterY = scatterY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getGoogleMapsUrl() {
+        return googleMapsUrl;
+    }
+
+    public void setGoogleMapsUrl(String googleMapsUrl) {
+        this.googleMapsUrl = googleMapsUrl;
+    }
+
+    public Integer getListePlatz() {
+        return listePlatz;
+    }
+
+    public void setListePlatz(Integer listePlatz) {
+        this.listePlatz = listePlatz;
+    }
+
+    public Ort getWohnort() {
+        return wohnort;
+    }
+
+    public void setWohnort(Ort wohnort) {
+        this.wohnort = wohnort;
+    }
+
+    public Ort getGeburtsort() {
+        return geburtsort;
+    }
+
+    public void setGeburtsort(Ort geburtsort) {
+        this.geburtsort = geburtsort;
+    }
+
+    public Beruf getBeruf() {
+        return beruf;
+    }
+
+    public void setBeruf(Beruf beruf) {
+        this.beruf = beruf;
+    }
+
+    public Berufsgruppe getBerufsgruppe() {
+        return berufsgruppe;
+    }
+
+    public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
+        this.berufsgruppe = berufsgruppe;
+    }
+
+    public Wahlkreis getWahlkreis() {
+        return wahlkreis;
+    }
+
+    public void setWahlkreis(Wahlkreis wahlkreis) {
+        this.wahlkreis = wahlkreis;
+    }
+
+    public Partei getPartei() {
+        return partei;
+    }
+
+    public void setPartei(Partei partei) {
+        this.partei = partei;
+    }
+
+    public Fraktion getFraktion() {
+        return fraktion;
+    }
+
+    public void setFraktion(Fraktion fraktion) {
+        this.fraktion = fraktion;
+    }
+
+    public Set<Ministerium> getMinisterien() {
+        return ministerien;
+    }
+
+    public void setMinisterien(Set<Ministerium> ministerien) {
+        this.ministerien = ministerien;
+    }
+
+    public Set<Ausschuss> getAusschuesse() {
+        return ausschuesse;
+    }
+
+    public void setAusschuesse(Set<Ausschuss> ausschuesse) {
+        this.ausschuesse = ausschuesse;
+    }
+
+    public Set<Wahlperiode> getWahlperioden() {
+        return wahlperioden;
+    }
+
+    public void setWahlperioden(Set<Wahlperiode> wahlperioden) {
+        this.wahlperioden = wahlperioden;
+    }
+
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
+    }
+
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Long getBtw17KandidatFlatId() {
+        return btw17KandidatFlatId;
+    }
+
+    public void setBtw17KandidatFlatId(Long btw17KandidatFlatId) {
+        this.btw17KandidatFlatId = btw17KandidatFlatId;
+    }
+
+    public Long getBtw17MdbId() {
+        return btw17MdbId;
+    }
+
+    public void setBtw17MdbId(Long btw17MdbId) {
+        this.btw17MdbId = btw17MdbId;
+    }
+
+    public Long getBtw17WahlbewerberId() {
+        return btw17WahlbewerberId;
+    }
+
+    public void setBtw17WahlbewerberId(Long btw17WahlbewerberId) {
+        this.btw17WahlbewerberId = btw17WahlbewerberId;
     }
 }

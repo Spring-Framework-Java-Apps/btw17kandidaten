@@ -1,20 +1,13 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.mdb;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Beruf implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Beruf extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique = true)
     @Property(name="beruf")
@@ -23,19 +16,24 @@ public class Beruf implements GraphDomainObject {
     @Property(name="edit_status")
     private EditStatus editStatus = EditStatus.UNTOUCHED;
 
-    @Override
-    public Long getId() {
-        return id;
+    public Beruf() {
     }
 
-    public String getName() {
+    public String getBeruf() {
         return beruf;
     }
 
-    public String getUniqueId() {
-        return id + ":"+this.getName();
+    public void setBeruf(String beruf) {
+        this.beruf = beruf;
     }
 
-    public Beruf() {
+    @Override
+    public EditStatus getEditStatus() {
+        return editStatus;
+    }
+
+    @Override
+    public void setEditStatus(EditStatus editStatus) {
+        this.editStatus = editStatus;
     }
 }

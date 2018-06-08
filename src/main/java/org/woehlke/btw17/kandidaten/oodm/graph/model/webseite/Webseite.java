@@ -1,27 +1,17 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.webseite;
 
-import lombok.Getter;
-import lombok.Setter;
-//import org.hibernate.validator.constraints.SafeHtml;
-//import org.hibernate.validator.constraints.URL;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-//import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_BY;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_WITH;
 
-@Setter
-@Getter
 @NodeEntity
-public class Webseite implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Webseite extends GraphDomainObjectImpl implements GraphDomainObject {
 
     //@URL
     @Index(unique = true)
@@ -43,9 +33,15 @@ public class Webseite implements GraphDomainObject {
     @Relationship(type = MADE_BY)
     private Set<Dienstleister> agenturen = new LinkedHashSet<>();
 
-    @Override
-    public Long getId() {
-        return id;
+    public Webseite() {
+    }
+
+    public String getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(String webseite) {
+        this.webseite = webseite;
     }
 
     @Override
@@ -54,11 +50,31 @@ public class Webseite implements GraphDomainObject {
     }
 
     @Override
-    public String getUniqueId() {
-        return name+" "+id;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getDomainRegistryInfo() {
+        return domainRegistryInfo;
+    }
 
-    public Webseite() {
+    public void setDomainRegistryInfo(String domainRegistryInfo) {
+        this.domainRegistryInfo = domainRegistryInfo;
+    }
+
+    public Cms getCms() {
+        return cms;
+    }
+
+    public void setCms(Cms cms) {
+        this.cms = cms;
+    }
+
+    public Set<Dienstleister> getAgenturen() {
+        return agenturen;
+    }
+
+    public void setAgenturen(Set<Dienstleister> agenturen) {
+        this.agenturen = agenturen;
     }
 }

@@ -1,20 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-
-
-@Setter
-@Getter
 @NodeEntity
-public class Adresse implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Adresse extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index
     @Property(name="strasse")
@@ -45,20 +36,58 @@ public class Adresse implements GraphDomainObject {
     //private Nation nation = new Nation();
 
     @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
     public String getName() {
         return plz+" "+ort;
     }
 
-    @Override
-    public String getUniqueId() {
-        return plz+" "+ort+" "+id;
+    public Adresse() {
     }
 
-    public Adresse() {
+    public String getStrasse() {
+        return strasse;
+    }
+
+    public void setStrasse(String strasse) {
+        this.strasse = strasse;
+    }
+
+    public String getHausnummer() {
+        return hausnummer;
+    }
+
+    public void setHausnummer(String hausnummer) {
+        this.hausnummer = hausnummer;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public void setPlz(String plz) {
+        this.plz = plz;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(String bundesland) {
+        this.bundesland = bundesland;
     }
 }

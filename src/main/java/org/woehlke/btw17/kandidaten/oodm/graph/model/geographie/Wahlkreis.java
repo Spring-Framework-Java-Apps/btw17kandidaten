@@ -1,23 +1,15 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.geographie;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 
-@Setter
-@Getter
 @NodeEntity
-public class Wahlkreis implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Wahlkreis extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index
     @Property(name="wahlkreis_id")
@@ -36,9 +28,6 @@ public class Wahlkreis implements GraphDomainObject {
     @Relationship(type = GEO_POSITION)
     private GeoPosition geoPosition = new GeoPosition();
 
-    @Relationship(type = REDAKTION)
-    private CommonFields commonFields = new CommonFields();
-
     @Relationship(type = LOCATION)
     private Strukturdaten strukturdaten = new Strukturdaten();
 
@@ -50,16 +39,62 @@ public class Wahlkreis implements GraphDomainObject {
         return wahlkreisName + " ( " +wahlkreisId+" )";
     }
 
-    @Override
-    public String getUniqueId() {
-        return this.getName()+" "+id;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
     public Wahlkreis() {
+    }
+
+    public Long getWahlkreisId() {
+        return wahlkreisId;
+    }
+
+    public void setWahlkreisId(Long wahlkreisId) {
+        this.wahlkreisId = wahlkreisId;
+    }
+
+    public String getWahlkreisName() {
+        return wahlkreisName;
+    }
+
+    public void setWahlkreisName(String wahlkreisName) {
+        this.wahlkreisName = wahlkreisName;
+    }
+
+    public Ort getOrt() {
+        return ort;
+    }
+
+    public void setOrt(Ort ort) {
+        this.ort = ort;
+    }
+
+    public Bundesland getBundesland() {
+        return bundesland;
+    }
+
+    public void setBundesland(Bundesland bundesland) {
+        this.bundesland = bundesland;
+    }
+
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
+    }
+
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
+    }
+
+    public Strukturdaten getStrukturdaten() {
+        return strukturdaten;
+    }
+
+    public void setStrukturdaten(Strukturdaten strukturdaten) {
+        this.strukturdaten = strukturdaten;
+    }
+
+    public WahlergebnisseBtw17 getWahlergebnisseBtw17() {
+        return wahlergebnisseBtw17;
+    }
+
+    public void setWahlergebnisseBtw17(WahlergebnisseBtw17 wahlergebnisseBtw17) {
+        this.wahlergebnisseBtw17 = wahlergebnisseBtw17;
     }
 }

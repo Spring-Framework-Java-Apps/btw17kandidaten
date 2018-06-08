@@ -1,9 +1,8 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.btw17;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
 import java.util.LinkedHashSet;
 import java.util.Locale;
@@ -14,14 +13,8 @@ import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.Relationship
 /**
  * Information ueber einen MDB
  */
-@Setter
-@Getter
 @NodeEntity
-public class Btw17Mdb implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Btw17Mdb extends GraphDomainObjectImpl implements GraphDomainObject {
 
     @Index(unique=true)
     @Property(name="xml_id")
@@ -139,11 +132,183 @@ public class Btw17Mdb implements GraphDomainObject {
         return xmlId;
     }
 
-    @Override
-    public Long getId() {
-        return id;
+    public Btw17Mdb() {
     }
 
-    public Btw17Mdb() {
+
+    public String getXmlId() {
+        return xmlId;
+    }
+
+    public void setXmlId(String xmlId) {
+        this.xmlId = xmlId;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getOrtszusatz() {
+        return ortszusatz;
+    }
+
+    public void setOrtszusatz(String ortszusatz) {
+        this.ortszusatz = ortszusatz;
+    }
+
+    public String getAdel() {
+        return adel;
+    }
+
+    public void setAdel(String adel) {
+        this.adel = adel;
+    }
+
+    public String getPraefix() {
+        return praefix;
+    }
+
+    public void setPraefix(String praefix) {
+        this.praefix = praefix;
+    }
+
+    public String getAnredetitel() {
+        return anredetitel;
+    }
+
+    public void setAnredetitel(String anredetitel) {
+        this.anredetitel = anredetitel;
+    }
+
+    public String getAkadtitel() {
+        return akadtitel;
+    }
+
+    public void setAkadtitel(String akadtitel) {
+        this.akadtitel = akadtitel;
+    }
+
+    public String getHistorievon() {
+        return historievon;
+    }
+
+    public void setHistorievon(String historievon) {
+        this.historievon = historievon;
+    }
+
+    public String getHistoriebis() {
+        return historiebis;
+    }
+
+    public void setHistoriebis(String historiebis) {
+        this.historiebis = historiebis;
+    }
+
+    public String getGeburtsdatum() {
+        return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(String geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public String getGeburtsort() {
+        return geburtsort;
+    }
+
+    public void setGeburtsort(String geburtsort) {
+        this.geburtsort = geburtsort;
+    }
+
+    public String getGeburtsland() {
+        return geburtsland;
+    }
+
+    public void setGeburtsland(String geburtsland) {
+        this.geburtsland = geburtsland;
+    }
+
+    public String getSterbedatum() {
+        return sterbedatum;
+    }
+
+    public void setSterbedatum(String sterbedatum) {
+        this.sterbedatum = sterbedatum;
+    }
+
+    public String getGeschlecht() {
+        return geschlecht;
+    }
+
+    public void setGeschlecht(String geschlecht) {
+        this.geschlecht = geschlecht;
+    }
+
+    public String getFamilienstand() {
+        return familienstand;
+    }
+
+    public void setFamilienstand(String familienstand) {
+        this.familienstand = familienstand;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public String getBeruf() {
+        return beruf;
+    }
+
+    public void setBeruf(String beruf) {
+        this.beruf = beruf;
+    }
+
+    public String getParteikurz() {
+        return parteikurz;
+    }
+
+    public void setParteikurz(String parteikurz) {
+        this.parteikurz = parteikurz;
+    }
+
+    public String getVitakurz() {
+        return vitakurz;
+    }
+
+    public void setVitakurz(String vitakurz) {
+        this.vitakurz = vitakurz;
+    }
+
+    public String getVeroeffentlichungspflichtiges() {
+        return veroeffentlichungspflichtiges;
+    }
+
+    public void setVeroeffentlichungspflichtiges(String veroeffentlichungspflichtiges) {
+        this.veroeffentlichungspflichtiges = veroeffentlichungspflichtiges;
+    }
+
+    public Set<Btw17Wahlperiode> getWahlperioden() {
+        return wahlperioden;
+    }
+
+    public void setWahlperioden(Set<Btw17Wahlperiode> wahlperioden) {
+        this.wahlperioden = wahlperioden;
     }
 }

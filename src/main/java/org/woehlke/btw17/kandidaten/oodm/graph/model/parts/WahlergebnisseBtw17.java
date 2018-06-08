@@ -1,22 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.parts;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
+import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 
-
-@Setter
-@Getter
 @NodeEntity
-public class WahlergebnisseBtw17 implements GraphDomainObject {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class WahlergebnisseBtw17 extends GraphDomainObjectImpl implements GraphDomainObject {
 
     // Wahlberechtigte
 
@@ -1491,21 +1481,1510 @@ public class WahlergebnisseBtw17 implements GraphDomainObject {
     @Property(name = "uebrige_zweitstimmen_vorperiode")
     private String uebrigeZweitstimmenVorperiode;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public String getName() {
-        return " name ";
-    }
-
-    @Override
-    public String getUniqueId() {
-        return getName()+" "+id;
-    }
-
     public WahlergebnisseBtw17() {
+    }
+
+    public String getWahlberechtigteErststimmenVorlaeufig() {
+        return wahlberechtigteErststimmenVorlaeufig;
+    }
+
+    public void setWahlberechtigteErststimmenVorlaeufig(String wahlberechtigteErststimmenVorlaeufig) {
+        this.wahlberechtigteErststimmenVorlaeufig = wahlberechtigteErststimmenVorlaeufig;
+    }
+
+    public String getWahlberechtigteErststimmenVorperiode() {
+        return wahlberechtigteErststimmenVorperiode;
+    }
+
+    public void setWahlberechtigteErststimmenVorperiode(String wahlberechtigteErststimmenVorperiode) {
+        this.wahlberechtigteErststimmenVorperiode = wahlberechtigteErststimmenVorperiode;
+    }
+
+    public String getWahlberechtigteZweitstimmenVorlaeufig() {
+        return wahlberechtigteZweitstimmenVorlaeufig;
+    }
+
+    public void setWahlberechtigteZweitstimmenVorlaeufig(String wahlberechtigteZweitstimmenVorlaeufig) {
+        this.wahlberechtigteZweitstimmenVorlaeufig = wahlberechtigteZweitstimmenVorlaeufig;
+    }
+
+    public String getWahlberechtigteZweitstimmenVorperiode() {
+        return wahlberechtigteZweitstimmenVorperiode;
+    }
+
+    public void setWahlberechtigteZweitstimmenVorperiode(String wahlberechtigteZweitstimmenVorperiode) {
+        this.wahlberechtigteZweitstimmenVorperiode = wahlberechtigteZweitstimmenVorperiode;
+    }
+
+    public String getWaehlerErststimmenVorlaeufig() {
+        return waehlerErststimmenVorlaeufig;
+    }
+
+    public void setWaehlerErststimmenVorlaeufig(String waehlerErststimmenVorlaeufig) {
+        this.waehlerErststimmenVorlaeufig = waehlerErststimmenVorlaeufig;
+    }
+
+    public String getWaehlerErststimmenVorperiode() {
+        return waehlerErststimmenVorperiode;
+    }
+
+    public void setWaehlerErststimmenVorperiode(String waehlerErststimmenVorperiode) {
+        this.waehlerErststimmenVorperiode = waehlerErststimmenVorperiode;
+    }
+
+    public String getWaehlerZweitstimmenVorlaeufig() {
+        return waehlerZweitstimmenVorlaeufig;
+    }
+
+    public void setWaehlerZweitstimmenVorlaeufig(String waehlerZweitstimmenVorlaeufig) {
+        this.waehlerZweitstimmenVorlaeufig = waehlerZweitstimmenVorlaeufig;
+    }
+
+    public String getWaehlerZweitstimmenVorperiode() {
+        return waehlerZweitstimmenVorperiode;
+    }
+
+    public void setWaehlerZweitstimmenVorperiode(String waehlerZweitstimmenVorperiode) {
+        this.waehlerZweitstimmenVorperiode = waehlerZweitstimmenVorperiode;
+    }
+
+    public String getUngueltigeErststimmenVorlaeufig() {
+        return ungueltigeErststimmenVorlaeufig;
+    }
+
+    public void setUngueltigeErststimmenVorlaeufig(String ungueltigeErststimmenVorlaeufig) {
+        this.ungueltigeErststimmenVorlaeufig = ungueltigeErststimmenVorlaeufig;
+    }
+
+    public String getUngueltigeErststimmenVorperiode() {
+        return ungueltigeErststimmenVorperiode;
+    }
+
+    public void setUngueltigeErststimmenVorperiode(String ungueltigeErststimmenVorperiode) {
+        this.ungueltigeErststimmenVorperiode = ungueltigeErststimmenVorperiode;
+    }
+
+    public String getUngueltigeZweitstimmenVorlaeufig() {
+        return ungueltigeZweitstimmenVorlaeufig;
+    }
+
+    public void setUngueltigeZweitstimmenVorlaeufig(String ungueltigeZweitstimmenVorlaeufig) {
+        this.ungueltigeZweitstimmenVorlaeufig = ungueltigeZweitstimmenVorlaeufig;
+    }
+
+    public String getUngueltigeZweitstimmenVorperiode() {
+        return ungueltigeZweitstimmenVorperiode;
+    }
+
+    public void setUngueltigeZweitstimmenVorperiode(String ungueltigeZweitstimmenVorperiode) {
+        this.ungueltigeZweitstimmenVorperiode = ungueltigeZweitstimmenVorperiode;
+    }
+
+    public String getGueltigeErststimmenVorlaeufig() {
+        return gueltigeErststimmenVorlaeufig;
+    }
+
+    public void setGueltigeErststimmenVorlaeufig(String gueltigeErststimmenVorlaeufig) {
+        this.gueltigeErststimmenVorlaeufig = gueltigeErststimmenVorlaeufig;
+    }
+
+    public String getGueltigeErststimmenVorperiode() {
+        return gueltigeErststimmenVorperiode;
+    }
+
+    public void setGueltigeErststimmenVorperiode(String gueltigeErststimmenVorperiode) {
+        this.gueltigeErststimmenVorperiode = gueltigeErststimmenVorperiode;
+    }
+
+    public String getGueltigeZweitstimmenVorlaeufig() {
+        return gueltigeZweitstimmenVorlaeufig;
+    }
+
+    public void setGueltigeZweitstimmenVorlaeufig(String gueltigeZweitstimmenVorlaeufig) {
+        this.gueltigeZweitstimmenVorlaeufig = gueltigeZweitstimmenVorlaeufig;
+    }
+
+    public String getGueltigeZweitstimmenVorperiode() {
+        return gueltigeZweitstimmenVorperiode;
+    }
+
+    public void setGueltigeZweitstimmenVorperiode(String gueltigeZweitstimmenVorperiode) {
+        this.gueltigeZweitstimmenVorperiode = gueltigeZweitstimmenVorperiode;
+    }
+
+    public String getCduErststimmenVorlaeufig() {
+        return cduErststimmenVorlaeufig;
+    }
+
+    public void setCduErststimmenVorlaeufig(String cduErststimmenVorlaeufig) {
+        this.cduErststimmenVorlaeufig = cduErststimmenVorlaeufig;
+    }
+
+    public String getCduErststimmenVorperiode() {
+        return cduErststimmenVorperiode;
+    }
+
+    public void setCduErststimmenVorperiode(String cduErststimmenVorperiode) {
+        this.cduErststimmenVorperiode = cduErststimmenVorperiode;
+    }
+
+    public String getCduZweitstimmenVorlaeufig() {
+        return cduZweitstimmenVorlaeufig;
+    }
+
+    public void setCduZweitstimmenVorlaeufig(String cduZweitstimmenVorlaeufig) {
+        this.cduZweitstimmenVorlaeufig = cduZweitstimmenVorlaeufig;
+    }
+
+    public String getCduZweitstimmenVorperiode() {
+        return cduZweitstimmenVorperiode;
+    }
+
+    public void setCduZweitstimmenVorperiode(String cduZweitstimmenVorperiode) {
+        this.cduZweitstimmenVorperiode = cduZweitstimmenVorperiode;
+    }
+
+    public String getSpdErststimmenVorlaeufig() {
+        return spdErststimmenVorlaeufig;
+    }
+
+    public void setSpdErststimmenVorlaeufig(String spdErststimmenVorlaeufig) {
+        this.spdErststimmenVorlaeufig = spdErststimmenVorlaeufig;
+    }
+
+    public String getSpdErststimmenVorperiode() {
+        return spdErststimmenVorperiode;
+    }
+
+    public void setSpdErststimmenVorperiode(String spdErststimmenVorperiode) {
+        this.spdErststimmenVorperiode = spdErststimmenVorperiode;
+    }
+
+    public String getSpdZweitstimmenVorlaeufig() {
+        return spdZweitstimmenVorlaeufig;
+    }
+
+    public void setSpdZweitstimmenVorlaeufig(String spdZweitstimmenVorlaeufig) {
+        this.spdZweitstimmenVorlaeufig = spdZweitstimmenVorlaeufig;
+    }
+
+    public String getSpdZweitstimmenVorperiode() {
+        return spdZweitstimmenVorperiode;
+    }
+
+    public void setSpdZweitstimmenVorperiode(String spdZweitstimmenVorperiode) {
+        this.spdZweitstimmenVorperiode = spdZweitstimmenVorperiode;
+    }
+
+    public String getDielinkeErststimmenVorlaeufig() {
+        return dielinkeErststimmenVorlaeufig;
+    }
+
+    public void setDielinkeErststimmenVorlaeufig(String dielinkeErststimmenVorlaeufig) {
+        this.dielinkeErststimmenVorlaeufig = dielinkeErststimmenVorlaeufig;
+    }
+
+    public String getDielinkeErststimmenVorperiode() {
+        return dielinkeErststimmenVorperiode;
+    }
+
+    public void setDielinkeErststimmenVorperiode(String dielinkeErststimmenVorperiode) {
+        this.dielinkeErststimmenVorperiode = dielinkeErststimmenVorperiode;
+    }
+
+    public String getDielinkeZweitstimmenVorlaeufig() {
+        return dielinkeZweitstimmenVorlaeufig;
+    }
+
+    public void setDielinkeZweitstimmenVorlaeufig(String dielinkeZweitstimmenVorlaeufig) {
+        this.dielinkeZweitstimmenVorlaeufig = dielinkeZweitstimmenVorlaeufig;
+    }
+
+    public String getDielinkeZweitstimmenVorperiode() {
+        return dielinkeZweitstimmenVorperiode;
+    }
+
+    public void setDielinkeZweitstimmenVorperiode(String dielinkeZweitstimmenVorperiode) {
+        this.dielinkeZweitstimmenVorperiode = dielinkeZweitstimmenVorperiode;
+    }
+
+    public String getDiegruenenErststimmenVorlaeufig() {
+        return diegruenenErststimmenVorlaeufig;
+    }
+
+    public void setDiegruenenErststimmenVorlaeufig(String diegruenenErststimmenVorlaeufig) {
+        this.diegruenenErststimmenVorlaeufig = diegruenenErststimmenVorlaeufig;
+    }
+
+    public String getDiegruenenErststimmenVorperiode() {
+        return diegruenenErststimmenVorperiode;
+    }
+
+    public void setDiegruenenErststimmenVorperiode(String diegruenenErststimmenVorperiode) {
+        this.diegruenenErststimmenVorperiode = diegruenenErststimmenVorperiode;
+    }
+
+    public String getDiegruenenZweitstimmenVorlaeufig() {
+        return diegruenenZweitstimmenVorlaeufig;
+    }
+
+    public void setDiegruenenZweitstimmenVorlaeufig(String diegruenenZweitstimmenVorlaeufig) {
+        this.diegruenenZweitstimmenVorlaeufig = diegruenenZweitstimmenVorlaeufig;
+    }
+
+    public String getDiegruenenZweitstimmenVorperiode() {
+        return diegruenenZweitstimmenVorperiode;
+    }
+
+    public void setDiegruenenZweitstimmenVorperiode(String diegruenenZweitstimmenVorperiode) {
+        this.diegruenenZweitstimmenVorperiode = diegruenenZweitstimmenVorperiode;
+    }
+
+    public String getCsuErststimmenVorlaeufig() {
+        return csuErststimmenVorlaeufig;
+    }
+
+    public void setCsuErststimmenVorlaeufig(String csuErststimmenVorlaeufig) {
+        this.csuErststimmenVorlaeufig = csuErststimmenVorlaeufig;
+    }
+
+    public String getCsuErststimmenVorperiode() {
+        return csuErststimmenVorperiode;
+    }
+
+    public void setCsuErststimmenVorperiode(String csuErststimmenVorperiode) {
+        this.csuErststimmenVorperiode = csuErststimmenVorperiode;
+    }
+
+    public String getCsuZweitstimmenVorlaeufig() {
+        return csuZweitstimmenVorlaeufig;
+    }
+
+    public void setCsuZweitstimmenVorlaeufig(String csuZweitstimmenVorlaeufig) {
+        this.csuZweitstimmenVorlaeufig = csuZweitstimmenVorlaeufig;
+    }
+
+    public String getCsuZweitstimmenVorperiode() {
+        return csuZweitstimmenVorperiode;
+    }
+
+    public void setCsuZweitstimmenVorperiode(String csuZweitstimmenVorperiode) {
+        this.csuZweitstimmenVorperiode = csuZweitstimmenVorperiode;
+    }
+
+    public String getFdpErststimmenVorlaeufig() {
+        return fdpErststimmenVorlaeufig;
+    }
+
+    public void setFdpErststimmenVorlaeufig(String fdpErststimmenVorlaeufig) {
+        this.fdpErststimmenVorlaeufig = fdpErststimmenVorlaeufig;
+    }
+
+    public String getFdpErststimmenVorperiode() {
+        return fdpErststimmenVorperiode;
+    }
+
+    public void setFdpErststimmenVorperiode(String fdpErststimmenVorperiode) {
+        this.fdpErststimmenVorperiode = fdpErststimmenVorperiode;
+    }
+
+    public String getFdpZweitstimmenVorlaeufig() {
+        return fdpZweitstimmenVorlaeufig;
+    }
+
+    public void setFdpZweitstimmenVorlaeufig(String fdpZweitstimmenVorlaeufig) {
+        this.fdpZweitstimmenVorlaeufig = fdpZweitstimmenVorlaeufig;
+    }
+
+    public String getFdpZweitstimmenVorperiode() {
+        return fdpZweitstimmenVorperiode;
+    }
+
+    public void setFdpZweitstimmenVorperiode(String fdpZweitstimmenVorperiode) {
+        this.fdpZweitstimmenVorperiode = fdpZweitstimmenVorperiode;
+    }
+
+    public String getAfdErststimmenVorlaeufig() {
+        return afdErststimmenVorlaeufig;
+    }
+
+    public void setAfdErststimmenVorlaeufig(String afdErststimmenVorlaeufig) {
+        this.afdErststimmenVorlaeufig = afdErststimmenVorlaeufig;
+    }
+
+    public String getAfdErststimmenVorperiode() {
+        return afdErststimmenVorperiode;
+    }
+
+    public void setAfdErststimmenVorperiode(String afdErststimmenVorperiode) {
+        this.afdErststimmenVorperiode = afdErststimmenVorperiode;
+    }
+
+    public String getAfdZweitstimmenVorlaeufig() {
+        return afdZweitstimmenVorlaeufig;
+    }
+
+    public void setAfdZweitstimmenVorlaeufig(String afdZweitstimmenVorlaeufig) {
+        this.afdZweitstimmenVorlaeufig = afdZweitstimmenVorlaeufig;
+    }
+
+    public String getAfdZweitstimmenVorperiode() {
+        return afdZweitstimmenVorperiode;
+    }
+
+    public void setAfdZweitstimmenVorperiode(String afdZweitstimmenVorperiode) {
+        this.afdZweitstimmenVorperiode = afdZweitstimmenVorperiode;
+    }
+
+    public String getPiratenparteiErststimmenVorlaeufig() {
+        return piratenparteiErststimmenVorlaeufig;
+    }
+
+    public void setPiratenparteiErststimmenVorlaeufig(String piratenparteiErststimmenVorlaeufig) {
+        this.piratenparteiErststimmenVorlaeufig = piratenparteiErststimmenVorlaeufig;
+    }
+
+    public String getPiratenparteiErststimmenVorperiode() {
+        return piratenparteiErststimmenVorperiode;
+    }
+
+    public void setPiratenparteiErststimmenVorperiode(String piratenparteiErststimmenVorperiode) {
+        this.piratenparteiErststimmenVorperiode = piratenparteiErststimmenVorperiode;
+    }
+
+    public String getPiratenparteiZweitstimmenVorlaeufig() {
+        return piratenparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setPiratenparteiZweitstimmenVorlaeufig(String piratenparteiZweitstimmenVorlaeufig) {
+        this.piratenparteiZweitstimmenVorlaeufig = piratenparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getPiratenparteiZweitstimmenVorperiode() {
+        return piratenparteiZweitstimmenVorperiode;
+    }
+
+    public void setPiratenparteiZweitstimmenVorperiode(String piratenparteiZweitstimmenVorperiode) {
+        this.piratenparteiZweitstimmenVorperiode = piratenparteiZweitstimmenVorperiode;
+    }
+
+    public String getNpdErststimmenVorlaeufig() {
+        return npdErststimmenVorlaeufig;
+    }
+
+    public void setNpdErststimmenVorlaeufig(String npdErststimmenVorlaeufig) {
+        this.npdErststimmenVorlaeufig = npdErststimmenVorlaeufig;
+    }
+
+    public String getNpdErststimmenVorperiode() {
+        return npdErststimmenVorperiode;
+    }
+
+    public void setNpdErststimmenVorperiode(String npdErststimmenVorperiode) {
+        this.npdErststimmenVorperiode = npdErststimmenVorperiode;
+    }
+
+    public String getNpdZweitstimmenVorlaeufig() {
+        return npdZweitstimmenVorlaeufig;
+    }
+
+    public void setNpdZweitstimmenVorlaeufig(String npdZweitstimmenVorlaeufig) {
+        this.npdZweitstimmenVorlaeufig = npdZweitstimmenVorlaeufig;
+    }
+
+    public String getNpdZweitstimmenVorperiode() {
+        return npdZweitstimmenVorperiode;
+    }
+
+    public void setNpdZweitstimmenVorperiode(String npdZweitstimmenVorperiode) {
+        this.npdZweitstimmenVorperiode = npdZweitstimmenVorperiode;
+    }
+
+    public String getFreieWaehlerErststimmenVorlaeufig() {
+        return freieWaehlerErststimmenVorlaeufig;
+    }
+
+    public void setFreieWaehlerErststimmenVorlaeufig(String freieWaehlerErststimmenVorlaeufig) {
+        this.freieWaehlerErststimmenVorlaeufig = freieWaehlerErststimmenVorlaeufig;
+    }
+
+    public String getFreieWaehlerErststimmenVorperiode() {
+        return freieWaehlerErststimmenVorperiode;
+    }
+
+    public void setFreieWaehlerErststimmenVorperiode(String freieWaehlerErststimmenVorperiode) {
+        this.freieWaehlerErststimmenVorperiode = freieWaehlerErststimmenVorperiode;
+    }
+
+    public String getFreieWaehlerZweitstimmenVorlaeufig() {
+        return freieWaehlerZweitstimmenVorlaeufig;
+    }
+
+    public void setFreieWaehlerZweitstimmenVorlaeufig(String freieWaehlerZweitstimmenVorlaeufig) {
+        this.freieWaehlerZweitstimmenVorlaeufig = freieWaehlerZweitstimmenVorlaeufig;
+    }
+
+    public String getFreieWaehlerZweitstimmenVorperiode() {
+        return freieWaehlerZweitstimmenVorperiode;
+    }
+
+    public void setFreieWaehlerZweitstimmenVorperiode(String freieWaehlerZweitstimmenVorperiode) {
+        this.freieWaehlerZweitstimmenVorperiode = freieWaehlerZweitstimmenVorperiode;
+    }
+
+    public String getTierschutzparteiErststimmenVorlaeufig() {
+        return tierschutzparteiErststimmenVorlaeufig;
+    }
+
+    public void setTierschutzparteiErststimmenVorlaeufig(String tierschutzparteiErststimmenVorlaeufig) {
+        this.tierschutzparteiErststimmenVorlaeufig = tierschutzparteiErststimmenVorlaeufig;
+    }
+
+    public String getTierschutzparteiErststimmenVorperiode() {
+        return tierschutzparteiErststimmenVorperiode;
+    }
+
+    public void setTierschutzparteiErststimmenVorperiode(String tierschutzparteiErststimmenVorperiode) {
+        this.tierschutzparteiErststimmenVorperiode = tierschutzparteiErststimmenVorperiode;
+    }
+
+    public String getTierschutzparteiZweitstimmenVorlaeufig() {
+        return tierschutzparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setTierschutzparteiZweitstimmenVorlaeufig(String tierschutzparteiZweitstimmenVorlaeufig) {
+        this.tierschutzparteiZweitstimmenVorlaeufig = tierschutzparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getTierschutzparteiZweitstimmenVorperiode() {
+        return tierschutzparteiZweitstimmenVorperiode;
+    }
+
+    public void setTierschutzparteiZweitstimmenVorperiode(String tierschutzparteiZweitstimmenVorperiode) {
+        this.tierschutzparteiZweitstimmenVorperiode = tierschutzparteiZweitstimmenVorperiode;
+    }
+
+    public String getOedpErststimmenVorlaeufig() {
+        return oedpErststimmenVorlaeufig;
+    }
+
+    public void setOedpErststimmenVorlaeufig(String oedpErststimmenVorlaeufig) {
+        this.oedpErststimmenVorlaeufig = oedpErststimmenVorlaeufig;
+    }
+
+    public String getOedpErststimmenVorperiode() {
+        return oedpErststimmenVorperiode;
+    }
+
+    public void setOedpErststimmenVorperiode(String oedpErststimmenVorperiode) {
+        this.oedpErststimmenVorperiode = oedpErststimmenVorperiode;
+    }
+
+    public String getOedpZweitstimmenVorlaeufig() {
+        return oedpZweitstimmenVorlaeufig;
+    }
+
+    public void setOedpZweitstimmenVorlaeufig(String oedpZweitstimmenVorlaeufig) {
+        this.oedpZweitstimmenVorlaeufig = oedpZweitstimmenVorlaeufig;
+    }
+
+    public String getOedpZweitstimmenVorperiode() {
+        return oedpZweitstimmenVorperiode;
+    }
+
+    public void setOedpZweitstimmenVorperiode(String oedpZweitstimmenVorperiode) {
+        this.oedpZweitstimmenVorperiode = oedpZweitstimmenVorperiode;
+    }
+
+    public String getDieparteiErststimmenVorlaeufig() {
+        return dieparteiErststimmenVorlaeufig;
+    }
+
+    public void setDieparteiErststimmenVorlaeufig(String dieparteiErststimmenVorlaeufig) {
+        this.dieparteiErststimmenVorlaeufig = dieparteiErststimmenVorlaeufig;
+    }
+
+    public String getDieparteiErststimmenVorperiode() {
+        return dieparteiErststimmenVorperiode;
+    }
+
+    public void setDieparteiErststimmenVorperiode(String dieparteiErststimmenVorperiode) {
+        this.dieparteiErststimmenVorperiode = dieparteiErststimmenVorperiode;
+    }
+
+    public String getDieparteiZweitstimmenVorlaeufig() {
+        return dieparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setDieparteiZweitstimmenVorlaeufig(String dieparteiZweitstimmenVorlaeufig) {
+        this.dieparteiZweitstimmenVorlaeufig = dieparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getDieparteiZweitstimmenVorperiode() {
+        return dieparteiZweitstimmenVorperiode;
+    }
+
+    public void setDieparteiZweitstimmenVorperiode(String dieparteiZweitstimmenVorperiode) {
+        this.dieparteiZweitstimmenVorperiode = dieparteiZweitstimmenVorperiode;
+    }
+
+    public String getBayernparteiErststimmenVorlaeufig() {
+        return bayernparteiErststimmenVorlaeufig;
+    }
+
+    public void setBayernparteiErststimmenVorlaeufig(String bayernparteiErststimmenVorlaeufig) {
+        this.bayernparteiErststimmenVorlaeufig = bayernparteiErststimmenVorlaeufig;
+    }
+
+    public String getBayernparteiErststimmenVorperiode() {
+        return bayernparteiErststimmenVorperiode;
+    }
+
+    public void setBayernparteiErststimmenVorperiode(String bayernparteiErststimmenVorperiode) {
+        this.bayernparteiErststimmenVorperiode = bayernparteiErststimmenVorperiode;
+    }
+
+    public String getBayernparteiZweitstimmenVorlaeufig() {
+        return bayernparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setBayernparteiZweitstimmenVorlaeufig(String bayernparteiZweitstimmenVorlaeufig) {
+        this.bayernparteiZweitstimmenVorlaeufig = bayernparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getBayernparteiZweitstimmenVorperiode() {
+        return bayernparteiZweitstimmenVorperiode;
+    }
+
+    public void setBayernparteiZweitstimmenVorperiode(String bayernparteiZweitstimmenVorperiode) {
+        this.bayernparteiZweitstimmenVorperiode = bayernparteiZweitstimmenVorperiode;
+    }
+
+    public String getVolksabstimmungErststimmenVorlaeufig() {
+        return volksabstimmungErststimmenVorlaeufig;
+    }
+
+    public void setVolksabstimmungErststimmenVorlaeufig(String volksabstimmungErststimmenVorlaeufig) {
+        this.volksabstimmungErststimmenVorlaeufig = volksabstimmungErststimmenVorlaeufig;
+    }
+
+    public String getVolksabstimmungErststimmenVorperiode() {
+        return volksabstimmungErststimmenVorperiode;
+    }
+
+    public void setVolksabstimmungErststimmenVorperiode(String volksabstimmungErststimmenVorperiode) {
+        this.volksabstimmungErststimmenVorperiode = volksabstimmungErststimmenVorperiode;
+    }
+
+    public String getVolksabstimmungZweitstimmenVorlaeufig() {
+        return volksabstimmungZweitstimmenVorlaeufig;
+    }
+
+    public void setVolksabstimmungZweitstimmenVorlaeufig(String volksabstimmungZweitstimmenVorlaeufig) {
+        this.volksabstimmungZweitstimmenVorlaeufig = volksabstimmungZweitstimmenVorlaeufig;
+    }
+
+    public String getVolksabstimmungZweitstimmenVorperiode() {
+        return volksabstimmungZweitstimmenVorperiode;
+    }
+
+    public void setVolksabstimmungZweitstimmenVorperiode(String volksabstimmungZweitstimmenVorperiode) {
+        this.volksabstimmungZweitstimmenVorperiode = volksabstimmungZweitstimmenVorperiode;
+    }
+
+    public String getPdvErststimmenVorlaeufig() {
+        return pdvErststimmenVorlaeufig;
+    }
+
+    public void setPdvErststimmenVorlaeufig(String pdvErststimmenVorlaeufig) {
+        this.pdvErststimmenVorlaeufig = pdvErststimmenVorlaeufig;
+    }
+
+    public String getPdvErststimmenVorperiode() {
+        return pdvErststimmenVorperiode;
+    }
+
+    public void setPdvErststimmenVorperiode(String pdvErststimmenVorperiode) {
+        this.pdvErststimmenVorperiode = pdvErststimmenVorperiode;
+    }
+
+    public String getPdvZweitstimmenVorlaeufig() {
+        return pdvZweitstimmenVorlaeufig;
+    }
+
+    public void setPdvZweitstimmenVorlaeufig(String pdvZweitstimmenVorlaeufig) {
+        this.pdvZweitstimmenVorlaeufig = pdvZweitstimmenVorlaeufig;
+    }
+
+    public String getPdvZweitstimmenVorperiode() {
+        return pdvZweitstimmenVorperiode;
+    }
+
+    public void setPdvZweitstimmenVorperiode(String pdvZweitstimmenVorperiode) {
+        this.pdvZweitstimmenVorperiode = pdvZweitstimmenVorperiode;
+    }
+
+    public String getMlpdErststimmenVorlaeufig() {
+        return mlpdErststimmenVorlaeufig;
+    }
+
+    public void setMlpdErststimmenVorlaeufig(String mlpdErststimmenVorlaeufig) {
+        this.mlpdErststimmenVorlaeufig = mlpdErststimmenVorlaeufig;
+    }
+
+    public String getMlpdErststimmenVorperiode() {
+        return mlpdErststimmenVorperiode;
+    }
+
+    public void setMlpdErststimmenVorperiode(String mlpdErststimmenVorperiode) {
+        this.mlpdErststimmenVorperiode = mlpdErststimmenVorperiode;
+    }
+
+    public String getMlpdZweitstimmenVorlaeufig() {
+        return mlpdZweitstimmenVorlaeufig;
+    }
+
+    public void setMlpdZweitstimmenVorlaeufig(String mlpdZweitstimmenVorlaeufig) {
+        this.mlpdZweitstimmenVorlaeufig = mlpdZweitstimmenVorlaeufig;
+    }
+
+    public String getMlpdZweitstimmenVorperiode() {
+        return mlpdZweitstimmenVorperiode;
+    }
+
+    public void setMlpdZweitstimmenVorperiode(String mlpdZweitstimmenVorperiode) {
+        this.mlpdZweitstimmenVorperiode = mlpdZweitstimmenVorperiode;
+    }
+
+    public String getBuesoErststimmenVorlaeufig() {
+        return buesoErststimmenVorlaeufig;
+    }
+
+    public void setBuesoErststimmenVorlaeufig(String buesoErststimmenVorlaeufig) {
+        this.buesoErststimmenVorlaeufig = buesoErststimmenVorlaeufig;
+    }
+
+    public String getBuesoErststimmenVorperiode() {
+        return buesoErststimmenVorperiode;
+    }
+
+    public void setBuesoErststimmenVorperiode(String buesoErststimmenVorperiode) {
+        this.buesoErststimmenVorperiode = buesoErststimmenVorperiode;
+    }
+
+    public String getBuesoZweitstimmenVorlaeufig() {
+        return buesoZweitstimmenVorlaeufig;
+    }
+
+    public void setBuesoZweitstimmenVorlaeufig(String buesoZweitstimmenVorlaeufig) {
+        this.buesoZweitstimmenVorlaeufig = buesoZweitstimmenVorlaeufig;
+    }
+
+    public String getBuesoZweitstimmenVorperiode() {
+        return buesoZweitstimmenVorperiode;
+    }
+
+    public void setBuesoZweitstimmenVorperiode(String buesoZweitstimmenVorperiode) {
+        this.buesoZweitstimmenVorperiode = buesoZweitstimmenVorperiode;
+    }
+
+    public String getSgpErststimmenVorlaeufig() {
+        return sgpErststimmenVorlaeufig;
+    }
+
+    public void setSgpErststimmenVorlaeufig(String sgpErststimmenVorlaeufig) {
+        this.sgpErststimmenVorlaeufig = sgpErststimmenVorlaeufig;
+    }
+
+    public String getSgpErststimmenVorperiode() {
+        return sgpErststimmenVorperiode;
+    }
+
+    public void setSgpErststimmenVorperiode(String sgpErststimmenVorperiode) {
+        this.sgpErststimmenVorperiode = sgpErststimmenVorperiode;
+    }
+
+    public String getSgpZweitstimmenVorlaeufig() {
+        return sgpZweitstimmenVorlaeufig;
+    }
+
+    public void setSgpZweitstimmenVorlaeufig(String sgpZweitstimmenVorlaeufig) {
+        this.sgpZweitstimmenVorlaeufig = sgpZweitstimmenVorlaeufig;
+    }
+
+    public String getSgpZweitstimmenVorperiode() {
+        return sgpZweitstimmenVorperiode;
+    }
+
+    public void setSgpZweitstimmenVorperiode(String sgpZweitstimmenVorperiode) {
+        this.sgpZweitstimmenVorperiode = sgpZweitstimmenVorperiode;
+    }
+
+    public String getDierechteErststimmenVorlaeufig() {
+        return dierechteErststimmenVorlaeufig;
+    }
+
+    public void setDierechteErststimmenVorlaeufig(String dierechteErststimmenVorlaeufig) {
+        this.dierechteErststimmenVorlaeufig = dierechteErststimmenVorlaeufig;
+    }
+
+    public String getDierechteErststimmenVorperiode() {
+        return dierechteErststimmenVorperiode;
+    }
+
+    public void setDierechteErststimmenVorperiode(String dierechteErststimmenVorperiode) {
+        this.dierechteErststimmenVorperiode = dierechteErststimmenVorperiode;
+    }
+
+    public String getDierechteZweitstimmenVorlaeufig() {
+        return dierechteZweitstimmenVorlaeufig;
+    }
+
+    public void setDierechteZweitstimmenVorlaeufig(String dierechteZweitstimmenVorlaeufig) {
+        this.dierechteZweitstimmenVorlaeufig = dierechteZweitstimmenVorlaeufig;
+    }
+
+    public String getDierechteZweitstimmenVorperiode() {
+        return dierechteZweitstimmenVorperiode;
+    }
+
+    public void setDierechteZweitstimmenVorperiode(String dierechteZweitstimmenVorperiode) {
+        this.dierechteZweitstimmenVorperiode = dierechteZweitstimmenVorperiode;
+    }
+
+    public String getAddErststimmenVorlaeufig() {
+        return addErststimmenVorlaeufig;
+    }
+
+    public void setAddErststimmenVorlaeufig(String addErststimmenVorlaeufig) {
+        this.addErststimmenVorlaeufig = addErststimmenVorlaeufig;
+    }
+
+    public String getAddErststimmenVorperiode() {
+        return addErststimmenVorperiode;
+    }
+
+    public void setAddErststimmenVorperiode(String addErststimmenVorperiode) {
+        this.addErststimmenVorperiode = addErststimmenVorperiode;
+    }
+
+    public String getAddZweitstimmenVorlaeufig() {
+        return addZweitstimmenVorlaeufig;
+    }
+
+    public void setAddZweitstimmenVorlaeufig(String addZweitstimmenVorlaeufig) {
+        this.addZweitstimmenVorlaeufig = addZweitstimmenVorlaeufig;
+    }
+
+    public String getAddZweitstimmenVorperiode() {
+        return addZweitstimmenVorperiode;
+    }
+
+    public void setAddZweitstimmenVorperiode(String addZweitstimmenVorperiode) {
+        this.addZweitstimmenVorperiode = addZweitstimmenVorperiode;
+    }
+
+    public String getTierschutzallianzErststimmenVorlaeufig() {
+        return tierschutzallianzErststimmenVorlaeufig;
+    }
+
+    public void setTierschutzallianzErststimmenVorlaeufig(String tierschutzallianzErststimmenVorlaeufig) {
+        this.tierschutzallianzErststimmenVorlaeufig = tierschutzallianzErststimmenVorlaeufig;
+    }
+
+    public String getTierschutzallianzErststimmenVorperiode() {
+        return tierschutzallianzErststimmenVorperiode;
+    }
+
+    public void setTierschutzallianzErststimmenVorperiode(String tierschutzallianzErststimmenVorperiode) {
+        this.tierschutzallianzErststimmenVorperiode = tierschutzallianzErststimmenVorperiode;
+    }
+
+    public String getTierschutzallianzZweitstimmenVorlaeufig() {
+        return tierschutzallianzZweitstimmenVorlaeufig;
+    }
+
+    public void setTierschutzallianzZweitstimmenVorlaeufig(String tierschutzallianzZweitstimmenVorlaeufig) {
+        this.tierschutzallianzZweitstimmenVorlaeufig = tierschutzallianzZweitstimmenVorlaeufig;
+    }
+
+    public String getTierschutzallianzZweitstimmenVorperiode() {
+        return tierschutzallianzZweitstimmenVorperiode;
+    }
+
+    public void setTierschutzallianzZweitstimmenVorperiode(String tierschutzallianzZweitstimmenVorperiode) {
+        this.tierschutzallianzZweitstimmenVorperiode = tierschutzallianzZweitstimmenVorperiode;
+    }
+
+    public String getBergparteiErststimmenVorlaeufig() {
+        return bergparteiErststimmenVorlaeufig;
+    }
+
+    public void setBergparteiErststimmenVorlaeufig(String bergparteiErststimmenVorlaeufig) {
+        this.bergparteiErststimmenVorlaeufig = bergparteiErststimmenVorlaeufig;
+    }
+
+    public String getBergparteiErststimmenVorperiode() {
+        return bergparteiErststimmenVorperiode;
+    }
+
+    public void setBergparteiErststimmenVorperiode(String bergparteiErststimmenVorperiode) {
+        this.bergparteiErststimmenVorperiode = bergparteiErststimmenVorperiode;
+    }
+
+    public String getBergparteiZweitstimmenVorlaeufig() {
+        return bergparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setBergparteiZweitstimmenVorlaeufig(String bergparteiZweitstimmenVorlaeufig) {
+        this.bergparteiZweitstimmenVorlaeufig = bergparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getBergparteiZweitstimmenVorperiode() {
+        return bergparteiZweitstimmenVorperiode;
+    }
+
+    public void setBergparteiZweitstimmenVorperiode(String bergparteiZweitstimmenVorperiode) {
+        this.bergparteiZweitstimmenVorperiode = bergparteiZweitstimmenVorperiode;
+    }
+
+    public String getBgeErststimmenVorlaeufig() {
+        return bgeErststimmenVorlaeufig;
+    }
+
+    public void setBgeErststimmenVorlaeufig(String bgeErststimmenVorlaeufig) {
+        this.bgeErststimmenVorlaeufig = bgeErststimmenVorlaeufig;
+    }
+
+    public String getBgeErststimmenVorperiode() {
+        return bgeErststimmenVorperiode;
+    }
+
+    public void setBgeErststimmenVorperiode(String bgeErststimmenVorperiode) {
+        this.bgeErststimmenVorperiode = bgeErststimmenVorperiode;
+    }
+
+    public String getBgeZweitstimmenVorlaeufig() {
+        return bgeZweitstimmenVorlaeufig;
+    }
+
+    public void setBgeZweitstimmenVorlaeufig(String bgeZweitstimmenVorlaeufig) {
+        this.bgeZweitstimmenVorlaeufig = bgeZweitstimmenVorlaeufig;
+    }
+
+    public String getBgeZweitstimmenVorperiode() {
+        return bgeZweitstimmenVorperiode;
+    }
+
+    public void setBgeZweitstimmenVorperiode(String bgeZweitstimmenVorperiode) {
+        this.bgeZweitstimmenVorperiode = bgeZweitstimmenVorperiode;
+    }
+
+    public String getDibErststimmenVorlaeufig() {
+        return dibErststimmenVorlaeufig;
+    }
+
+    public void setDibErststimmenVorlaeufig(String dibErststimmenVorlaeufig) {
+        this.dibErststimmenVorlaeufig = dibErststimmenVorlaeufig;
+    }
+
+    public String getDibErststimmenVorperiode() {
+        return dibErststimmenVorperiode;
+    }
+
+    public void setDibErststimmenVorperiode(String dibErststimmenVorperiode) {
+        this.dibErststimmenVorperiode = dibErststimmenVorperiode;
+    }
+
+    public String getDibZweitstimmenVorlaeufig() {
+        return dibZweitstimmenVorlaeufig;
+    }
+
+    public void setDibZweitstimmenVorlaeufig(String dibZweitstimmenVorlaeufig) {
+        this.dibZweitstimmenVorlaeufig = dibZweitstimmenVorlaeufig;
+    }
+
+    public String getDibZweitstimmenVorperiode() {
+        return dibZweitstimmenVorperiode;
+    }
+
+    public void setDibZweitstimmenVorperiode(String dibZweitstimmenVorperiode) {
+        this.dibZweitstimmenVorperiode = dibZweitstimmenVorperiode;
+    }
+
+    public String getDkpErststimmenVorlaeufig() {
+        return dkpErststimmenVorlaeufig;
+    }
+
+    public void setDkpErststimmenVorlaeufig(String dkpErststimmenVorlaeufig) {
+        this.dkpErststimmenVorlaeufig = dkpErststimmenVorlaeufig;
+    }
+
+    public String getDkpErststimmenVorperiode() {
+        return dkpErststimmenVorperiode;
+    }
+
+    public void setDkpErststimmenVorperiode(String dkpErststimmenVorperiode) {
+        this.dkpErststimmenVorperiode = dkpErststimmenVorperiode;
+    }
+
+    public String getDkpZweitstimmenVorlaeufig() {
+        return dkpZweitstimmenVorlaeufig;
+    }
+
+    public void setDkpZweitstimmenVorlaeufig(String dkpZweitstimmenVorlaeufig) {
+        this.dkpZweitstimmenVorlaeufig = dkpZweitstimmenVorlaeufig;
+    }
+
+    public String getDkpZweitstimmenVorperiode() {
+        return dkpZweitstimmenVorperiode;
+    }
+
+    public void setDkpZweitstimmenVorperiode(String dkpZweitstimmenVorperiode) {
+        this.dkpZweitstimmenVorperiode = dkpZweitstimmenVorperiode;
+    }
+
+    public String getDmErststimmenVorlaeufig() {
+        return dmErststimmenVorlaeufig;
+    }
+
+    public void setDmErststimmenVorlaeufig(String dmErststimmenVorlaeufig) {
+        this.dmErststimmenVorlaeufig = dmErststimmenVorlaeufig;
+    }
+
+    public String getDmErststimmenVorperiode() {
+        return dmErststimmenVorperiode;
+    }
+
+    public void setDmErststimmenVorperiode(String dmErststimmenVorperiode) {
+        this.dmErststimmenVorperiode = dmErststimmenVorperiode;
+    }
+
+    public String getDmZweitstimmenVorlaeufig() {
+        return dmZweitstimmenVorlaeufig;
+    }
+
+    public void setDmZweitstimmenVorlaeufig(String dmZweitstimmenVorlaeufig) {
+        this.dmZweitstimmenVorlaeufig = dmZweitstimmenVorlaeufig;
+    }
+
+    public String getDmZweitstimmenVorperiode() {
+        return dmZweitstimmenVorperiode;
+    }
+
+    public void setDmZweitstimmenVorperiode(String dmZweitstimmenVorperiode) {
+        this.dmZweitstimmenVorperiode = dmZweitstimmenVorperiode;
+    }
+
+    public String getDiegrauenErststimmenVorlaeufig() {
+        return diegrauenErststimmenVorlaeufig;
+    }
+
+    public void setDiegrauenErststimmenVorlaeufig(String diegrauenErststimmenVorlaeufig) {
+        this.diegrauenErststimmenVorlaeufig = diegrauenErststimmenVorlaeufig;
+    }
+
+    public String getDiegrauenErststimmenVorperiode() {
+        return diegrauenErststimmenVorperiode;
+    }
+
+    public void setDiegrauenErststimmenVorperiode(String diegrauenErststimmenVorperiode) {
+        this.diegrauenErststimmenVorperiode = diegrauenErststimmenVorperiode;
+    }
+
+    public String getDiegrauenZweitstimmenVorlaeufig() {
+        return diegrauenZweitstimmenVorlaeufig;
+    }
+
+    public void setDiegrauenZweitstimmenVorlaeufig(String diegrauenZweitstimmenVorlaeufig) {
+        this.diegrauenZweitstimmenVorlaeufig = diegrauenZweitstimmenVorlaeufig;
+    }
+
+    public String getDiegrauenZweitstimmenVorperiode() {
+        return diegrauenZweitstimmenVorperiode;
+    }
+
+    public void setDiegrauenZweitstimmenVorperiode(String diegrauenZweitstimmenVorperiode) {
+        this.diegrauenZweitstimmenVorperiode = diegrauenZweitstimmenVorperiode;
+    }
+
+    public String getDuErststimmenVorlaeufig() {
+        return duErststimmenVorlaeufig;
+    }
+
+    public void setDuErststimmenVorlaeufig(String duErststimmenVorlaeufig) {
+        this.duErststimmenVorlaeufig = duErststimmenVorlaeufig;
+    }
+
+    public String getDuErststimmenVorperiode() {
+        return duErststimmenVorperiode;
+    }
+
+    public void setDuErststimmenVorperiode(String duErststimmenVorperiode) {
+        this.duErststimmenVorperiode = duErststimmenVorperiode;
+    }
+
+    public String getDuZweitstimmenVorlaeufig() {
+        return duZweitstimmenVorlaeufig;
+    }
+
+    public void setDuZweitstimmenVorlaeufig(String duZweitstimmenVorlaeufig) {
+        this.duZweitstimmenVorlaeufig = duZweitstimmenVorlaeufig;
+    }
+
+    public String getDuZweitstimmenVorperiode() {
+        return duZweitstimmenVorperiode;
+    }
+
+    public void setDuZweitstimmenVorperiode(String duZweitstimmenVorperiode) {
+        this.duZweitstimmenVorperiode = duZweitstimmenVorperiode;
+    }
+
+    public String getMgErststimmenVorlaeufig() {
+        return mgErststimmenVorlaeufig;
+    }
+
+    public void setMgErststimmenVorlaeufig(String mgErststimmenVorlaeufig) {
+        this.mgErststimmenVorlaeufig = mgErststimmenVorlaeufig;
+    }
+
+    public String getMgErststimmenVorperiode() {
+        return mgErststimmenVorperiode;
+    }
+
+    public void setMgErststimmenVorperiode(String mgErststimmenVorperiode) {
+        this.mgErststimmenVorperiode = mgErststimmenVorperiode;
+    }
+
+    public String getMgZweitstimmenVorlaeufig() {
+        return mgZweitstimmenVorlaeufig;
+    }
+
+    public void setMgZweitstimmenVorlaeufig(String mgZweitstimmenVorlaeufig) {
+        this.mgZweitstimmenVorlaeufig = mgZweitstimmenVorlaeufig;
+    }
+
+    public String getMgZweitstimmenVorperiode() {
+        return mgZweitstimmenVorperiode;
+    }
+
+    public void setMgZweitstimmenVorperiode(String mgZweitstimmenVorperiode) {
+        this.mgZweitstimmenVorperiode = mgZweitstimmenVorperiode;
+    }
+
+    public String getMenschlicheweltErststimmenVorlaeufig() {
+        return menschlicheweltErststimmenVorlaeufig;
+    }
+
+    public void setMenschlicheweltErststimmenVorlaeufig(String menschlicheweltErststimmenVorlaeufig) {
+        this.menschlicheweltErststimmenVorlaeufig = menschlicheweltErststimmenVorlaeufig;
+    }
+
+    public String getMenschlicheweltErststimmenVorperiode() {
+        return menschlicheweltErststimmenVorperiode;
+    }
+
+    public void setMenschlicheweltErststimmenVorperiode(String menschlicheweltErststimmenVorperiode) {
+        this.menschlicheweltErststimmenVorperiode = menschlicheweltErststimmenVorperiode;
+    }
+
+    public String getMenschlicheweltZweitstimmenVorlaeufig() {
+        return menschlicheweltZweitstimmenVorlaeufig;
+    }
+
+    public void setMenschlicheweltZweitstimmenVorlaeufig(String menschlicheweltZweitstimmenVorlaeufig) {
+        this.menschlicheweltZweitstimmenVorlaeufig = menschlicheweltZweitstimmenVorlaeufig;
+    }
+
+    public String getMenschlicheweltZweitstimmenVorperiode() {
+        return menschlicheweltZweitstimmenVorperiode;
+    }
+
+    public void setMenschlicheweltZweitstimmenVorperiode(String menschlicheweltZweitstimmenVorperiode) {
+        this.menschlicheweltZweitstimmenVorperiode = menschlicheweltZweitstimmenVorperiode;
+    }
+
+    public String getDiehumanistenErststimmenVorlaeufig() {
+        return diehumanistenErststimmenVorlaeufig;
+    }
+
+    public void setDiehumanistenErststimmenVorlaeufig(String diehumanistenErststimmenVorlaeufig) {
+        this.diehumanistenErststimmenVorlaeufig = diehumanistenErststimmenVorlaeufig;
+    }
+
+    public String getDiehumanistenErststimmenVorperiode() {
+        return diehumanistenErststimmenVorperiode;
+    }
+
+    public void setDiehumanistenErststimmenVorperiode(String diehumanistenErststimmenVorperiode) {
+        this.diehumanistenErststimmenVorperiode = diehumanistenErststimmenVorperiode;
+    }
+
+    public String getDiehumanistenZweitstimmenVorlaeufig() {
+        return diehumanistenZweitstimmenVorlaeufig;
+    }
+
+    public void setDiehumanistenZweitstimmenVorlaeufig(String diehumanistenZweitstimmenVorlaeufig) {
+        this.diehumanistenZweitstimmenVorlaeufig = diehumanistenZweitstimmenVorlaeufig;
+    }
+
+    public String getDiehumanistenZweitstimmenVorperiode() {
+        return diehumanistenZweitstimmenVorperiode;
+    }
+
+    public void setDiehumanistenZweitstimmenVorperiode(String diehumanistenZweitstimmenVorperiode) {
+        this.diehumanistenZweitstimmenVorperiode = diehumanistenZweitstimmenVorperiode;
+    }
+
+    public String getGesundheitsforschungErststimmenVorlaeufig() {
+        return gesundheitsforschungErststimmenVorlaeufig;
+    }
+
+    public void setGesundheitsforschungErststimmenVorlaeufig(String gesundheitsforschungErststimmenVorlaeufig) {
+        this.gesundheitsforschungErststimmenVorlaeufig = gesundheitsforschungErststimmenVorlaeufig;
+    }
+
+    public String getGesundheitsforschungErststimmenVorperiode() {
+        return gesundheitsforschungErststimmenVorperiode;
+    }
+
+    public void setGesundheitsforschungErststimmenVorperiode(String gesundheitsforschungErststimmenVorperiode) {
+        this.gesundheitsforschungErststimmenVorperiode = gesundheitsforschungErststimmenVorperiode;
+    }
+
+    public String getGesundheitsforschungZweitstimmenVorlaeufig() {
+        return gesundheitsforschungZweitstimmenVorlaeufig;
+    }
+
+    public void setGesundheitsforschungZweitstimmenVorlaeufig(String gesundheitsforschungZweitstimmenVorlaeufig) {
+        this.gesundheitsforschungZweitstimmenVorlaeufig = gesundheitsforschungZweitstimmenVorlaeufig;
+    }
+
+    public String getGesundheitsforschungZweitstimmenVorperiode() {
+        return gesundheitsforschungZweitstimmenVorperiode;
+    }
+
+    public void setGesundheitsforschungZweitstimmenVorperiode(String gesundheitsforschungZweitstimmenVorperiode) {
+        this.gesundheitsforschungZweitstimmenVorperiode = gesundheitsforschungZweitstimmenVorperiode;
+    }
+
+    public String getVparteiErststimmenVorlaeufig() {
+        return vparteiErststimmenVorlaeufig;
+    }
+
+    public void setVparteiErststimmenVorlaeufig(String vparteiErststimmenVorlaeufig) {
+        this.vparteiErststimmenVorlaeufig = vparteiErststimmenVorlaeufig;
+    }
+
+    public String getVparteiErststimmenVorperiode() {
+        return vparteiErststimmenVorperiode;
+    }
+
+    public void setVparteiErststimmenVorperiode(String vparteiErststimmenVorperiode) {
+        this.vparteiErststimmenVorperiode = vparteiErststimmenVorperiode;
+    }
+
+    public String getVparteiZweitstimmenVorlaeufig() {
+        return vparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setVparteiZweitstimmenVorlaeufig(String vparteiZweitstimmenVorlaeufig) {
+        this.vparteiZweitstimmenVorlaeufig = vparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getVparteiZweitstimmenVorperiode() {
+        return vparteiZweitstimmenVorperiode;
+    }
+
+    public void setVparteiZweitstimmenVorperiode(String vparteiZweitstimmenVorperiode) {
+        this.vparteiZweitstimmenVorperiode = vparteiZweitstimmenVorperiode;
+    }
+
+    public String getBuendniscErststimmenVorlaeufig() {
+        return buendniscErststimmenVorlaeufig;
+    }
+
+    public void setBuendniscErststimmenVorlaeufig(String buendniscErststimmenVorlaeufig) {
+        this.buendniscErststimmenVorlaeufig = buendniscErststimmenVorlaeufig;
+    }
+
+    public String getBuendniscErststimmenVorperiode() {
+        return buendniscErststimmenVorperiode;
+    }
+
+    public void setBuendniscErststimmenVorperiode(String buendniscErststimmenVorperiode) {
+        this.buendniscErststimmenVorperiode = buendniscErststimmenVorperiode;
+    }
+
+    public String getBuendniscZweitstimmenVorlaeufig() {
+        return buendniscZweitstimmenVorlaeufig;
+    }
+
+    public void setBuendniscZweitstimmenVorlaeufig(String buendniscZweitstimmenVorlaeufig) {
+        this.buendniscZweitstimmenVorlaeufig = buendniscZweitstimmenVorlaeufig;
+    }
+
+    public String getBuendniscZweitstimmenVorperiode() {
+        return buendniscZweitstimmenVorperiode;
+    }
+
+    public void setBuendniscZweitstimmenVorperiode(String buendniscZweitstimmenVorperiode) {
+        this.buendniscZweitstimmenVorperiode = buendniscZweitstimmenVorperiode;
+    }
+
+    public String getDieeinheitErststimmenVorlaeufig() {
+        return dieeinheitErststimmenVorlaeufig;
+    }
+
+    public void setDieeinheitErststimmenVorlaeufig(String dieeinheitErststimmenVorlaeufig) {
+        this.dieeinheitErststimmenVorlaeufig = dieeinheitErststimmenVorlaeufig;
+    }
+
+    public String getDieeinheitErststimmenVorperiode() {
+        return dieeinheitErststimmenVorperiode;
+    }
+
+    public void setDieeinheitErststimmenVorperiode(String dieeinheitErststimmenVorperiode) {
+        this.dieeinheitErststimmenVorperiode = dieeinheitErststimmenVorperiode;
+    }
+
+    public String getDieeinheitZweitstimmenVorlaeufig() {
+        return dieeinheitZweitstimmenVorlaeufig;
+    }
+
+    public void setDieeinheitZweitstimmenVorlaeufig(String dieeinheitZweitstimmenVorlaeufig) {
+        this.dieeinheitZweitstimmenVorlaeufig = dieeinheitZweitstimmenVorlaeufig;
+    }
+
+    public String getDieeinheitZweitstimmenVorperiode() {
+        return dieeinheitZweitstimmenVorperiode;
+    }
+
+    public void setDieeinheitZweitstimmenVorperiode(String dieeinheitZweitstimmenVorperiode) {
+        this.dieeinheitZweitstimmenVorperiode = dieeinheitZweitstimmenVorperiode;
+    }
+
+    public String getDieviolettenErststimmenVorlaeufig() {
+        return dieviolettenErststimmenVorlaeufig;
+    }
+
+    public void setDieviolettenErststimmenVorlaeufig(String dieviolettenErststimmenVorlaeufig) {
+        this.dieviolettenErststimmenVorlaeufig = dieviolettenErststimmenVorlaeufig;
+    }
+
+    public String getDieviolettenErststimmenVorperiode() {
+        return dieviolettenErststimmenVorperiode;
+    }
+
+    public void setDieviolettenErststimmenVorperiode(String dieviolettenErststimmenVorperiode) {
+        this.dieviolettenErststimmenVorperiode = dieviolettenErststimmenVorperiode;
+    }
+
+    public String getDieviolettenZweitstimmenVorlaeufig() {
+        return dieviolettenZweitstimmenVorlaeufig;
+    }
+
+    public void setDieviolettenZweitstimmenVorlaeufig(String dieviolettenZweitstimmenVorlaeufig) {
+        this.dieviolettenZweitstimmenVorlaeufig = dieviolettenZweitstimmenVorlaeufig;
+    }
+
+    public String getDieviolettenZweitstimmenVorperiode() {
+        return dieviolettenZweitstimmenVorperiode;
+    }
+
+    public void setDieviolettenZweitstimmenVorperiode(String dieviolettenZweitstimmenVorperiode) {
+        this.dieviolettenZweitstimmenVorperiode = dieviolettenZweitstimmenVorperiode;
+    }
+
+    public String getFamilieErststimmenVorlaeufig() {
+        return familieErststimmenVorlaeufig;
+    }
+
+    public void setFamilieErststimmenVorlaeufig(String familieErststimmenVorlaeufig) {
+        this.familieErststimmenVorlaeufig = familieErststimmenVorlaeufig;
+    }
+
+    public String getFamilieErststimmenVorperiode() {
+        return familieErststimmenVorperiode;
+    }
+
+    public void setFamilieErststimmenVorperiode(String familieErststimmenVorperiode) {
+        this.familieErststimmenVorperiode = familieErststimmenVorperiode;
+    }
+
+    public String getFamilieZweitstimmenVorlaeufig() {
+        return familieZweitstimmenVorlaeufig;
+    }
+
+    public void setFamilieZweitstimmenVorlaeufig(String familieZweitstimmenVorlaeufig) {
+        this.familieZweitstimmenVorlaeufig = familieZweitstimmenVorlaeufig;
+    }
+
+    public String getFamilieZweitstimmenVorperiode() {
+        return familieZweitstimmenVorperiode;
+    }
+
+    public void setFamilieZweitstimmenVorperiode(String familieZweitstimmenVorperiode) {
+        this.familieZweitstimmenVorperiode = familieZweitstimmenVorperiode;
+    }
+
+    public String getDiefrauenErststimmenVorlaeufig() {
+        return diefrauenErststimmenVorlaeufig;
+    }
+
+    public void setDiefrauenErststimmenVorlaeufig(String diefrauenErststimmenVorlaeufig) {
+        this.diefrauenErststimmenVorlaeufig = diefrauenErststimmenVorlaeufig;
+    }
+
+    public String getDiefrauenErststimmenVorperiode() {
+        return diefrauenErststimmenVorperiode;
+    }
+
+    public void setDiefrauenErststimmenVorperiode(String diefrauenErststimmenVorperiode) {
+        this.diefrauenErststimmenVorperiode = diefrauenErststimmenVorperiode;
+    }
+
+    public String getDiefrauenZweitstimmenVorlaeufig() {
+        return diefrauenZweitstimmenVorlaeufig;
+    }
+
+    public void setDiefrauenZweitstimmenVorlaeufig(String diefrauenZweitstimmenVorlaeufig) {
+        this.diefrauenZweitstimmenVorlaeufig = diefrauenZweitstimmenVorlaeufig;
+    }
+
+    public String getDiefrauenZweitstimmenVorperiode() {
+        return diefrauenZweitstimmenVorperiode;
+    }
+
+    public void setDiefrauenZweitstimmenVorperiode(String diefrauenZweitstimmenVorperiode) {
+        this.diefrauenZweitstimmenVorperiode = diefrauenZweitstimmenVorperiode;
+    }
+
+    public String getMieterparteiErststimmenVorlaeufig() {
+        return mieterparteiErststimmenVorlaeufig;
+    }
+
+    public void setMieterparteiErststimmenVorlaeufig(String mieterparteiErststimmenVorlaeufig) {
+        this.mieterparteiErststimmenVorlaeufig = mieterparteiErststimmenVorlaeufig;
+    }
+
+    public String getMieterparteiErststimmenVorperiode() {
+        return mieterparteiErststimmenVorperiode;
+    }
+
+    public void setMieterparteiErststimmenVorperiode(String mieterparteiErststimmenVorperiode) {
+        this.mieterparteiErststimmenVorperiode = mieterparteiErststimmenVorperiode;
+    }
+
+    public String getMieterparteiZweitstimmenVorlaeufig() {
+        return mieterparteiZweitstimmenVorlaeufig;
+    }
+
+    public void setMieterparteiZweitstimmenVorlaeufig(String mieterparteiZweitstimmenVorlaeufig) {
+        this.mieterparteiZweitstimmenVorlaeufig = mieterparteiZweitstimmenVorlaeufig;
+    }
+
+    public String getMieterparteiZweitstimmenVorperiode() {
+        return mieterparteiZweitstimmenVorperiode;
+    }
+
+    public void setMieterparteiZweitstimmenVorperiode(String mieterparteiZweitstimmenVorperiode) {
+        this.mieterparteiZweitstimmenVorperiode = mieterparteiZweitstimmenVorperiode;
+    }
+
+    public String getNeueliberaleErststimmenVorlaeufig() {
+        return neueliberaleErststimmenVorlaeufig;
+    }
+
+    public void setNeueliberaleErststimmenVorlaeufig(String neueliberaleErststimmenVorlaeufig) {
+        this.neueliberaleErststimmenVorlaeufig = neueliberaleErststimmenVorlaeufig;
+    }
+
+    public String getNeueliberaleErststimmenVorperiode() {
+        return neueliberaleErststimmenVorperiode;
+    }
+
+    public void setNeueliberaleErststimmenVorperiode(String neueliberaleErststimmenVorperiode) {
+        this.neueliberaleErststimmenVorperiode = neueliberaleErststimmenVorperiode;
+    }
+
+    public String getNeueliberaleZweitstimmenVorlaeufig() {
+        return neueliberaleZweitstimmenVorlaeufig;
+    }
+
+    public void setNeueliberaleZweitstimmenVorlaeufig(String neueliberaleZweitstimmenVorlaeufig) {
+        this.neueliberaleZweitstimmenVorlaeufig = neueliberaleZweitstimmenVorlaeufig;
+    }
+
+    public String getNeueliberaleZweitstimmenVorperiode() {
+        return neueliberaleZweitstimmenVorperiode;
+    }
+
+    public void setNeueliberaleZweitstimmenVorperiode(String neueliberaleZweitstimmenVorperiode) {
+        this.neueliberaleZweitstimmenVorperiode = neueliberaleZweitstimmenVorperiode;
+    }
+
+    public String getUnabhaengigeErststimmenVorlaeufig() {
+        return unabhaengigeErststimmenVorlaeufig;
+    }
+
+    public void setUnabhaengigeErststimmenVorlaeufig(String unabhaengigeErststimmenVorlaeufig) {
+        this.unabhaengigeErststimmenVorlaeufig = unabhaengigeErststimmenVorlaeufig;
+    }
+
+    public String getUnabhaengigeErststimmenVorperiode() {
+        return unabhaengigeErststimmenVorperiode;
+    }
+
+    public void setUnabhaengigeErststimmenVorperiode(String unabhaengigeErststimmenVorperiode) {
+        this.unabhaengigeErststimmenVorperiode = unabhaengigeErststimmenVorperiode;
+    }
+
+    public String getUnabhaengigeZweitstimmenVorlaeufig() {
+        return unabhaengigeZweitstimmenVorlaeufig;
+    }
+
+    public void setUnabhaengigeZweitstimmenVorlaeufig(String unabhaengigeZweitstimmenVorlaeufig) {
+        this.unabhaengigeZweitstimmenVorlaeufig = unabhaengigeZweitstimmenVorlaeufig;
+    }
+
+    public String getUnabhaengigeZweitstimmenVorperiode() {
+        return unabhaengigeZweitstimmenVorperiode;
+    }
+
+    public void setUnabhaengigeZweitstimmenVorperiode(String unabhaengigeZweitstimmenVorperiode) {
+        this.unabhaengigeZweitstimmenVorperiode = unabhaengigeZweitstimmenVorperiode;
+    }
+
+    public String getUebrigeErststimmenVorlaeufig() {
+        return uebrigeErststimmenVorlaeufig;
+    }
+
+    public void setUebrigeErststimmenVorlaeufig(String uebrigeErststimmenVorlaeufig) {
+        this.uebrigeErststimmenVorlaeufig = uebrigeErststimmenVorlaeufig;
+    }
+
+    public String getUebrigeErststimmenVorperiode() {
+        return uebrigeErststimmenVorperiode;
+    }
+
+    public void setUebrigeErststimmenVorperiode(String uebrigeErststimmenVorperiode) {
+        this.uebrigeErststimmenVorperiode = uebrigeErststimmenVorperiode;
+    }
+
+    public String getUebrigeZweitstimmenVorlaeufig() {
+        return uebrigeZweitstimmenVorlaeufig;
+    }
+
+    public void setUebrigeZweitstimmenVorlaeufig(String uebrigeZweitstimmenVorlaeufig) {
+        this.uebrigeZweitstimmenVorlaeufig = uebrigeZweitstimmenVorlaeufig;
+    }
+
+    public String getUebrigeZweitstimmenVorperiode() {
+        return uebrigeZweitstimmenVorperiode;
+    }
+
+    public void setUebrigeZweitstimmenVorperiode(String uebrigeZweitstimmenVorperiode) {
+        this.uebrigeZweitstimmenVorperiode = uebrigeZweitstimmenVorperiode;
     }
 }
