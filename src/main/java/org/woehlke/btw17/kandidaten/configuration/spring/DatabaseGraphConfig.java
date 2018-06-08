@@ -59,7 +59,7 @@ public class DatabaseGraphConfig {
         String uri = "bolt://localhost";
         String user = "neo4j";
         String password = "secret";
-        String uris[] = {"bolt+routing://localhost"};
+        //String uris[] = {"bolt+routing://localhost"};
         org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder()
             //.verifyConnection(verifyConnection)
             //.connectionPoolSize(120)
