@@ -31,7 +31,7 @@ public class Wahlperiode extends GraphDomainObjectImpl implements GraphDomainObj
     private Mandatsart mandatsart;
 
     @Relationship(type=LOCATION)
-    private Wahlkreis wahlkreis= new Wahlkreis();
+    private Wahlkreis wahlkreis;// = new Wahlkreis();
 
     @Relationship(type=JOB)
     private Set<Institution> institution = new HashSet<>();

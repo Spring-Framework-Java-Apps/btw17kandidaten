@@ -15,7 +15,7 @@ public class ListePartei extends GraphDomainObjectImpl implements GraphDomainObj
     @Property(name="listepartei")
     private String listePartei;
 
-    @Index(unique = true)
+    @Index
     @Property(name="listepartei_lang")
     private String listeParteiLang;
 
@@ -47,5 +47,61 @@ public class ListePartei extends GraphDomainObjectImpl implements GraphDomainObj
     }
 
     public ListePartei() {
+    }
+
+    public String getListePartei() {
+        return listePartei;
+    }
+
+    public void setListePartei(String listePartei) {
+        this.listePartei = listePartei;
+    }
+
+    public String getListeParteiLang() {
+        return listeParteiLang;
+    }
+
+    public void setListeParteiLang(String listeParteiLang) {
+        this.listeParteiLang = listeParteiLang;
+    }
+
+    public String getWahlprogramm() {
+        return wahlprogramm;
+    }
+
+    public void setWahlprogramm(String wahlprogramm) {
+        this.wahlprogramm = wahlprogramm;
+    }
+
+    public String getParteiprogramm() {
+        return parteiprogramm;
+    }
+
+    public void setParteiprogramm(String parteiprogramm) {
+        this.parteiprogramm = parteiprogramm;
+    }
+
+    public String getBundeszentralePolitischeBildung() {
+        return bundeszentralePolitischeBildung;
+    }
+
+    public void setBundeszentralePolitischeBildung(String bundeszentralePolitischeBildung) {
+        this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
+    }
+
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 }

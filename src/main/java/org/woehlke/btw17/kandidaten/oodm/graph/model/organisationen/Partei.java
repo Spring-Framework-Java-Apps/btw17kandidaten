@@ -47,6 +47,9 @@ public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
     @Relationship(type=ONLINE_STRATEGIE)
     private Webseite webseite;// = new Webseite();
 
+    public Partei() {
+    }
+
     @Override
     public String getName() {
         StringBuilder sb = new StringBuilder();
@@ -64,5 +67,69 @@ public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
 
     public void setPartei(String partei) {
         this.partei = partei;
+    }
+
+    public String getParteiLang() {
+        return parteiLang;
+    }
+
+    public void setParteiLang(String parteiLang) {
+        this.parteiLang = parteiLang;
+    }
+
+    public String getBundeszentralePolitischeBildung() {
+        return bundeszentralePolitischeBildung;
+    }
+
+    public void setBundeszentralePolitischeBildung(String bundeszentralePolitischeBildung) {
+        this.bundeszentralePolitischeBildung = bundeszentralePolitischeBildung;
+    }
+
+    public String getWahlprogramm() {
+        return wahlprogramm;
+    }
+
+    public void setWahlprogramm(String wahlprogramm) {
+        this.wahlprogramm = wahlprogramm;
+    }
+
+    public String getParteiprogramm() {
+        return parteiprogramm;
+    }
+
+    public void setParteiprogramm(String parteiprogramm) {
+        this.parteiprogramm = parteiprogramm;
+    }
+
+    public OnlineStrategie getOnlineStrategie() {
+        return onlineStrategie;
+    }
+
+    public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
+        this.onlineStrategie = onlineStrategie;
+    }
+
+    public GeoPosition getGeoPosition() {
+        return geoPosition;
+    }
+
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Webseite getWebseite() {
+        return webseite;
+    }
+
+    public void setWebseite(Webseite webseite) {
+        this.webseite = webseite;
     }
 }

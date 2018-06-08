@@ -33,7 +33,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     @Property(name = "remote_kandidat_key")
     private String remoteKey;
 
-    @Index(unique=true)
+    @Index
     @Property(name = "xml_id_bundestag")
     private String xmlIdBundestag;
 
@@ -158,46 +158,46 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     private Integer listePlatz;
 
     //@Relationship(type = WOHN_ORT)
-    //private Ort wohnort = new Ort();
+    //private Ort wohnort;// = new Ort();
 
     //@Relationship(type = GEBURTS_ORT)
-    //private Ort geburtsort = new Ort();
+    //private Ort geburtsort;// = new Ort();
 
     @Relationship(type = JOB)
     private Beruf beruf;// = new Beruf();
 
-    @Relationship(type = JOB)
-    private Berufsgruppe berufsgruppe;// = new Berufsgruppe();
+    //@Relationship(type = JOB)
+    //private Berufsgruppe berufsgruppe;// = new Berufsgruppe();
 
     //@Relationship(type = JOB)
-    //private Wahlkreis wahlkreis = new Wahlkreis();
+    //private Wahlkreis wahlkreis;// = new Wahlkreis();
 
     //@Relationship(type = JOB)
-    //private Partei partei = new Partei();
+    //private Partei partei;// = new Partei();
 
     //@Relationship(type = JOB)
-    //private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
+    //private ListeParteiBundesland listeParteiBundesland;// = new ListeParteiBundesland();
 
     //@Relationship(type = JOB)
-    //private Fraktion fraktion = new Fraktion();
+    //private Fraktion fraktion;// = new Fraktion();
 
     //@Relationship(type = JOB)
-    //private Set<Ministerium> ministerien = new LinkedHashSet<>();
+    //private Set<Ministerium> ministerien;// = new LinkedHashSet<>();
 
     //@Relationship(type = JOB)
-    //private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
+    //private Set<Ausschuss> ausschuesse;// = new LinkedHashSet<>();
 
     //@Relationship(type = ZEIT)
-    //private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
+    //private Set<Wahlperiode> wahlperioden;// = new LinkedHashSet<>();
 
     //@Relationship(type=PUBLISH_ONLINE)
-    //private Webseite webseite = new Webseite();
+    //private Webseite webseite;// = new Webseite();
 
     //@Relationship(type=PUBLISH_ONLINE)
-    //private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    //private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     //@Relationship(type=LOCATION)
-    //private Adresse adresse = new Adresse();
+    //private Adresse adresse;// = new Adresse();
 
     @Property(name = "btw17_kandidat_flat_id")
     private Long btw17KandidatFlatId;
@@ -561,6 +561,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
         this.beruf = beruf;
     }
 
+    /*
     public Berufsgruppe getBerufsgruppe() {
         return berufsgruppe;
     }
@@ -568,6 +569,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
         this.berufsgruppe = berufsgruppe;
     }
+    */
 /*
     public Wahlkreis getWahlkreis() {
         return wahlkreis;
