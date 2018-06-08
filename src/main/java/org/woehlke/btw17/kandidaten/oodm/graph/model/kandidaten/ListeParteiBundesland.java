@@ -5,12 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.CommonFields;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
-
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LANDESLISTE;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
-
 */
 //@Setter
 //@Getter
@@ -29,9 +24,6 @@ public class ListeParteiBundesland /*implements GraphDomainObject*/ {
 
     @EndNode
     private ListePartei listePartei = new ListePartei();
-
-    @Relationship(type = REDAKTION)
-    private CommonFields commonFields = new CommonFields();
 
     @Override
     public String getName(){

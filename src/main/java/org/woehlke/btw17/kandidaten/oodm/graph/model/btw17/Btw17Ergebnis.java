@@ -6,8 +6,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Bundesland;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
-
 
 /**
  * Wahlergebnis in einem Wahlkreis oder in einem Bundesland

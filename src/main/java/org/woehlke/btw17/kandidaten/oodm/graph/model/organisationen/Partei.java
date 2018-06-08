@@ -8,8 +8,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
-
 
 @NodeEntity
 public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -37,17 +35,17 @@ public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
     @Property(name="parteiprogramm")
     private String parteiprogramm;
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Relationship(type=LOCATION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
     @Relationship(type=REDAKTION)
-    private Adresse adresse = new Adresse();
+    private Adresse adresse;// = new Adresse();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private Webseite webseite;// = new Webseite();
 
     @Override
     public String getName() {

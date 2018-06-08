@@ -5,8 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.WahlergebnisseBtw17;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
-
 
 @NodeEntity
 public class Wahlkreis extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -23,16 +21,16 @@ public class Wahlkreis extends GraphDomainObjectImpl implements GraphDomainObjec
     private Ort ort;
 
     @Relationship(type = LOCATION)
-    private Bundesland bundesland = new Bundesland();
+    private Bundesland bundesland;// = new Bundesland();
 
     @Relationship(type = GEO_POSITION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
     @Relationship(type = LOCATION)
-    private Strukturdaten strukturdaten = new Strukturdaten();
+    private Strukturdaten strukturdaten;// = new Strukturdaten();
 
     @Relationship(type = WAHL)
-    private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
+    private WahlergebnisseBtw17 wahlergebnisseBtw17;// = new WahlergebnisseBtw17();
 
     @Override
     public String getName() {

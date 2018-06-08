@@ -7,9 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_BY;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.MADE_WITH;
-
 @NodeEntity
 public class Webseite extends GraphDomainObjectImpl implements GraphDomainObject {
 

@@ -19,6 +19,9 @@ public class SpringProperties {
     private String profiles;
 
     @Valid
+    private Data data = new Data();
+
+    @Valid
     private Datasource datasource = new Datasource();
 
     @Valid
@@ -32,6 +35,258 @@ public class SpringProperties {
 
     @Valid
     private Thymeleaf thymeleaf = new Thymeleaf();
+
+    @Validated
+    public static class Data {
+
+        @Valid
+        private Neo4j neo4j = new Neo4j();
+
+        @Valid
+        private Redis redis = new Redis();
+
+        @Valid
+        private Jpa jpa = new Jpa();
+
+        @Valid
+        private Web web = new Web();
+
+        @Validated
+        public static class Neo4j {
+
+            @NotNull
+            private String uri;
+
+            @NotNull
+            private Boolean openInView;
+
+            @NotNull
+            private String username;
+
+            @NotNull
+            private String password;
+
+            @Valid
+            private Repositories repositories = new Repositories();
+
+            @Validated
+            public static class Repositories {
+
+                @NotNull
+                private Boolean enabled;
+
+                public Boolean getEnabled() {
+                    return enabled;
+                }
+
+                public void setEnabled(Boolean enabled) {
+                    this.enabled = enabled;
+                }
+            }
+
+            public String getUri() {
+                return uri;
+            }
+
+            public void setUri(String uri) {
+                this.uri = uri;
+            }
+
+            public Boolean getOpenInView() {
+                return openInView;
+            }
+
+            public void setOpenInView(Boolean openInView) {
+                this.openInView = openInView;
+            }
+
+            public String getUsername() {
+                return username;
+            }
+
+            public void setUsername(String username) {
+                this.username = username;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+
+            public Repositories getRepositories() {
+                return repositories;
+            }
+
+            public void setRepositories(Repositories repositories) {
+                this.repositories = repositories;
+            }
+        }
+
+        @Validated
+        public static class Redis {
+
+            @NotNull
+            private String host;
+
+            @NotNull
+            private String password;
+
+            @NotNull
+            private Long port;
+
+            public String getHost() {
+                return host;
+            }
+
+            public void setHost(String host) {
+                this.host = host;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+
+            public Long getPort() {
+                return port;
+            }
+
+            public void setPort(Long port) {
+                this.port = port;
+            }
+        }
+
+        @Validated
+        public static class Jpa {
+
+            @Valid
+            private Repositories repositories = new Repositories();
+
+            @Validated
+            public static class Repositories {
+
+                @NotNull
+                private Boolean enabled;
+
+                public Boolean getEnabled() {
+                    return enabled;
+                }
+
+                public void setEnabled(Boolean enabled) {
+                    this.enabled = enabled;
+                }
+            }
+
+            public Repositories getRepositories() {
+                return repositories;
+            }
+
+            public void setRepositories(Repositories repositories) {
+                this.repositories = repositories;
+            }
+        }
+
+        @Validated
+        public static class Web {
+
+            @Valid
+            private Pageable pageable = new Pageable();
+
+            @Validated
+            public static class Pageable {
+
+                @NotNull
+                private Integer defaultPageSize;
+
+                @NotNull
+                private Integer maxPageSize;
+
+                @NotNull
+                private String pageParameter;
+
+                @NotNull
+                private String sizeParameter;
+
+                public Integer getDefaultPageSize() {
+                    return defaultPageSize;
+                }
+
+                public void setDefaultPageSize(Integer defaultPageSize) {
+                    this.defaultPageSize = defaultPageSize;
+                }
+
+                public Integer getMaxPageSize() {
+                    return maxPageSize;
+                }
+
+                public void setMaxPageSize(Integer maxPageSize) {
+                    this.maxPageSize = maxPageSize;
+                }
+
+                public String getPageParameter() {
+                    return pageParameter;
+                }
+
+                public void setPageParameter(String pageParameter) {
+                    this.pageParameter = pageParameter;
+                }
+
+                public String getSizeParameter() {
+                    return sizeParameter;
+                }
+
+                public void setSizeParameter(String sizeParameter) {
+                    this.sizeParameter = sizeParameter;
+                }
+            }
+
+            public Pageable getPageable() {
+                return pageable;
+            }
+
+            public void setPageable(Pageable pageable) {
+                this.pageable = pageable;
+            }
+        }
+
+        public Neo4j getNeo4j() {
+            return neo4j;
+        }
+
+        public void setNeo4j(Neo4j neo4j) {
+            this.neo4j = neo4j;
+        }
+
+        public Redis getRedis() {
+            return redis;
+        }
+
+        public void setRedis(Redis redis) {
+            this.redis = redis;
+        }
+
+        public Jpa getJpa() {
+            return jpa;
+        }
+
+        public void setJpa(Jpa jpa) {
+            this.jpa = jpa;
+        }
+
+        public Web getWeb() {
+            return web;
+        }
+
+        public void setWeb(Web web) {
+            this.web = web;
+        }
+    }
 
     @Validated
     public static class Datasource {
@@ -257,6 +512,14 @@ public class SpringProperties {
         public void setCache(Boolean cache) {
             this.cache = cache;
         }
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
     }
 
     public Datasource getDatasource() {

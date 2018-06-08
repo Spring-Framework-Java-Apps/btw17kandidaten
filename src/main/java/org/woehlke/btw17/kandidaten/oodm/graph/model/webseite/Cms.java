@@ -5,7 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 @NodeEntity
 public class Cms extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -23,13 +22,13 @@ public class Cms extends GraphDomainObjectImpl implements GraphDomainObject {
     private String productDemoPage;
 
     @Property(name="technology_stack")
-    private TechnologieStack technologyStack = new TechnologieStack();
+    private TechnologieStack technologyStack;// = new TechnologieStack();
 
     @Relationship(type = MADE_BY)
     private Hersteller hersteller;
 
-    @Relationship(type = PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @Relationship(type = ONLINE_STRATEGIE)
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     public Cms() {
     }

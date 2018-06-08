@@ -5,9 +5,9 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Ort;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListeParteiBundesland;
+//import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.ListeParteiBundesland;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
+//import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 
 @NodeEntity
@@ -83,8 +83,8 @@ public class Btw17Wahlbewerber extends GraphDomainObjectImpl implements GraphDom
     @Property(name = "liste_land"/*, nullable=false*/)
     private String listeLand;
 
-    @Relationship(type = LANDESLISTE)
-    private ListeParteiBundesland listeParteiBundesland;
+    //@Relationship(type = LANDESLISTE)
+    //private ListeParteiBundesland listeParteiBundesland;
 
     //@NotNull
     @Property(name = "liste_partei_kurz"/*, nullable=false*/)
@@ -256,7 +256,7 @@ public class Btw17Wahlbewerber extends GraphDomainObjectImpl implements GraphDom
     public void setListeLand(String listeLand) {
         this.listeLand = listeLand;
     }
-
+/*
     public ListeParteiBundesland getListeParteiBundesland() {
         return listeParteiBundesland;
     }
@@ -264,7 +264,7 @@ public class Btw17Wahlbewerber extends GraphDomainObjectImpl implements GraphDom
     public void setListeParteiBundesland(ListeParteiBundesland listeParteiBundesland) {
         this.listeParteiBundesland = listeParteiBundesland;
     }
-
+*/
     public String getListeParteiKurzBez() {
         return listeParteiKurzBez;
     }

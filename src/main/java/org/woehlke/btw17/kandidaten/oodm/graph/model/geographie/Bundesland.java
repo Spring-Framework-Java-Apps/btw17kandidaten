@@ -7,9 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
-
-
 @NodeEntity
 public class Bundesland extends GraphDomainObjectImpl implements GraphDomainObject {
 
@@ -21,17 +18,17 @@ public class Bundesland extends GraphDomainObjectImpl implements GraphDomainObje
     @Property(name="bundesland_lang")
     private String bundeslandLang;
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private Webseite webseite;// = new Webseite();
 
     @Relationship(type=LOCATION)
-    private Strukturdaten strukturdaten = new Strukturdaten();
+    private Strukturdaten strukturdaten;// = new Strukturdaten();
 
     @Relationship(type=WAHL)
-    private WahlergebnisseBtw17 wahlergebnisseBtw17 = new WahlergebnisseBtw17();
+    private WahlergebnisseBtw17 wahlergebnisseBtw17;// = new WahlergebnisseBtw17();
 
     @Override
     public String getName(){

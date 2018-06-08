@@ -36,6 +36,7 @@ spring:
       name: @project.name@
   data:
     neo4j:
+      uri: bolt://127.0.0.1:7687
       open-in-view: true
       username: neo4j
       password: secret

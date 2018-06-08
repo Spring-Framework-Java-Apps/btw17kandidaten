@@ -11,9 +11,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.JOB;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
-
 @NodeEntity
 public class Wahlperiode extends GraphDomainObjectImpl implements GraphDomainObject {
 

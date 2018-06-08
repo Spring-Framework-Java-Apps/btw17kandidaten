@@ -6,7 +6,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
 
 @NodeEntity
 public class Ort extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -28,13 +27,13 @@ public class Ort extends GraphDomainObjectImpl implements GraphDomainObject {
     //private Nation nation = new Nation();
 
     @Relationship(type=ONLINE_STRATEGIE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Relationship(type=LOCATION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private Webseite webseite;// = new Webseite();
 
     @Override
     public String getName() {

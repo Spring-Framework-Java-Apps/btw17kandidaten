@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.neo4j.ogm.config.AutoIndexMode;
 import org.neo4j.ogm.config.UsernamePasswordCredentials;
 import org.neo4j.ogm.session.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,21 +14,35 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("org.woehlke.btw17.kandidaten.oodm.graph.repositories")
+@ComponentScan("org.woehlke.btw17.kandidaten.oodm.graph")
 @EnableNeo4jRepositories(
-    sessionFactoryRef = "getSessionFactory",
+    sessionFactoryRef = "graphSessionFactory",
     transactionManagerRef = "graphTransactionManager",
-    basePackages = "com.company.project.repository.graph"
+    basePackages = {
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.btw17",
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.geographie",
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.kandidaten",
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.mdb",
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.organisationen",
+        "org.woehlke.btw17.kandidaten.oodm.graph.repositories.webseite"
+    }
 )
 public class DatabaseGraphConfig {
 
     private static final Log log = LogFactory.getLog(DatabaseGraphConfig.class);
 
+    private final SpringProperties springProperties;
 
-    @Bean(name = "getSessionFactory")
+    @Autowired
+    public DatabaseGraphConfig(SpringProperties springProperties) {
+        this.springProperties = springProperties;
+    }
+
+    @Bean
     public SessionFactory graphSessionFactory() {
         org.neo4j.ogm.config.Configuration conf = configuration();
         log.info("getSessionFactory: configuration "+conf);
@@ -46,7 +61,7 @@ public class DatabaseGraphConfig {
 
     @Bean(name = "graphTransactionManager")
     public Neo4jTransactionManager graphTransactionManager(
-        @Qualifier("getSessionFactory")
+        @Qualifier("graphSessionFactory")
             SessionFactory sessionFactory) {
         return new Neo4jTransactionManager(sessionFactory);
     }
@@ -54,17 +69,17 @@ public class DatabaseGraphConfig {
     @Bean
     //@ConfigurationProperties(prefix = "spring.data.neo4j")
     public org.neo4j.ogm.config.Configuration configuration() {
-        Integer connectionLivenessCheckTimeout = new Integer(1000);
-        Boolean verifyConnection = true;
-        String uri = "bolt://127.0.0.1:7687";
-        String user = "neo4j";
-        String password = "secret";
+        //Integer connectionLivenessCheckTimeout = new Integer(1000);
+        //Boolean verifyConnection = true;
+        String uri = springProperties.getData().getNeo4j().getUri();
+        String user = springProperties.getData().getNeo4j().getUsername();
+        String password = springProperties.getData().getNeo4j().getPassword();
         //String uris[] = {"bolt+routing://localhost"};
         org.neo4j.ogm.config.Configuration configuration = new org.neo4j.ogm.config.Configuration.Builder()
             //.verifyConnection(verifyConnection)
             //.connectionPoolSize(120)
             //.connectionLivenessCheckTimeout(connectionLivenessCheckTimeout)
-            .autoIndex(AutoIndexMode.NONE.getName())
+            .autoIndex(AutoIndexMode.ASSERT.getName())
             .uri(uri)
             //.uris(uris)
             .credentials(user, password)

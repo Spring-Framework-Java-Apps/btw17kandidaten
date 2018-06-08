@@ -7,7 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
 
 @NodeEntity
 public class ListePartei extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -35,11 +34,11 @@ public class ListePartei extends GraphDomainObjectImpl implements GraphDomainObj
     @Property(name="bundeszentrale_politische_bildung")
     private String bundeszentralePolitischeBildung;
 
-    @Relationship(type = PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @Relationship(type = ONLINE_STRATEGIE)
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
-    @Relationship(type = PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    @Relationship(type = ONLINE_STRATEGIE)
+    private Webseite webseite;// = new Webseite();
 
 
     @Override

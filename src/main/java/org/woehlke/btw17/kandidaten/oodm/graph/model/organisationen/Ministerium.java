@@ -9,10 +9,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.JOB;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
-
 
 @NodeEntity
 public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -32,16 +28,16 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     private Kandidat bundesminister;
 
     @Relationship(type=LOCATION)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Relationship(type=LOCATION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
     @Relationship(type=LOCATION)
-    private Adresse adresse = new Adresse();
+    private Adresse adresse;// = new Adresse();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    @Relationship(type=ONLINE_STRATEGIE)
+    private Webseite webseite;// = new Webseite();
 
 
     public Ministerium() {

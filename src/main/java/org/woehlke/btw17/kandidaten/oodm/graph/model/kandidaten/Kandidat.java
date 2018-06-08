@@ -21,8 +21,6 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.*;
-
 
 @NodeEntity
 public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -159,47 +157,47 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     @Property(name = "liste_platz")
     private Integer listePlatz;
 
-    @Relationship(type = WOHN_ORT)
-    private Ort wohnort = new Ort();
+    //@Relationship(type = WOHN_ORT)
+    //private Ort wohnort = new Ort();
 
-    @Relationship(type = GEBURTS_ORT)
-    private Ort geburtsort = new Ort();
-
-    @Relationship(type = JOB)
-    private Beruf beruf = new Beruf();
+    //@Relationship(type = GEBURTS_ORT)
+    //private Ort geburtsort = new Ort();
 
     @Relationship(type = JOB)
-    private Berufsgruppe berufsgruppe = new Berufsgruppe();
+    private Beruf beruf;// = new Beruf();
 
     @Relationship(type = JOB)
-    private Wahlkreis wahlkreis = new Wahlkreis();
+    private Berufsgruppe berufsgruppe;// = new Berufsgruppe();
 
-    @Relationship(type = JOB)
-    private Partei partei = new Partei();
+    //@Relationship(type = JOB)
+    //private Wahlkreis wahlkreis = new Wahlkreis();
+
+    //@Relationship(type = JOB)
+    //private Partei partei = new Partei();
 
     //@Relationship(type = JOB)
     //private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
 
-    @Relationship(type = JOB)
-    private Fraktion fraktion = new Fraktion();
+    //@Relationship(type = JOB)
+    //private Fraktion fraktion = new Fraktion();
 
-    @Relationship(type = JOB)
-    private Set<Ministerium> ministerien = new LinkedHashSet<>();
+    //@Relationship(type = JOB)
+    //private Set<Ministerium> ministerien = new LinkedHashSet<>();
 
-    @Relationship(type = JOB)
-    private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
+    //@Relationship(type = JOB)
+    //private Set<Ausschuss> ausschuesse = new LinkedHashSet<>();
 
-    @Relationship(type = ZEIT)
-    private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
+    //@Relationship(type = ZEIT)
+    //private Set<Wahlperiode> wahlperioden = new LinkedHashSet<>();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private Webseite webseite = new Webseite();
+    //@Relationship(type=PUBLISH_ONLINE)
+    //private Webseite webseite = new Webseite();
 
-    @Relationship(type=PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    //@Relationship(type=PUBLISH_ONLINE)
+    //private OnlineStrategie onlineStrategie = new OnlineStrategie();
 
-    @Relationship(type=LOCATION)
-    private Adresse adresse = new Adresse();
+    //@Relationship(type=LOCATION)
+    //private Adresse adresse = new Adresse();
 
     @Property(name = "btw17_kandidat_flat_id")
     private Long btw17KandidatFlatId;
@@ -537,7 +535,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setListePlatz(Integer listePlatz) {
         this.listePlatz = listePlatz;
     }
-
+/*
     public Ort getWohnort() {
         return wohnort;
     }
@@ -545,7 +543,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setWohnort(Ort wohnort) {
         this.wohnort = wohnort;
     }
-
+*/
+/*
     public Ort getGeburtsort() {
         return geburtsort;
     }
@@ -553,7 +552,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setGeburtsort(Ort geburtsort) {
         this.geburtsort = geburtsort;
     }
-
+*/
     public Beruf getBeruf() {
         return beruf;
     }
@@ -569,7 +568,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setBerufsgruppe(Berufsgruppe berufsgruppe) {
         this.berufsgruppe = berufsgruppe;
     }
-
+/*
     public Wahlkreis getWahlkreis() {
         return wahlkreis;
     }
@@ -577,7 +576,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setWahlkreis(Wahlkreis wahlkreis) {
         this.wahlkreis = wahlkreis;
     }
-
+*/
+/*
     public Partei getPartei() {
         return partei;
     }
@@ -585,7 +585,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setPartei(Partei partei) {
         this.partei = partei;
     }
-
+*/
+/*
     public Fraktion getFraktion() {
         return fraktion;
     }
@@ -593,7 +594,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setFraktion(Fraktion fraktion) {
         this.fraktion = fraktion;
     }
-
+*/
+/*
     public Set<Ministerium> getMinisterien() {
         return ministerien;
     }
@@ -601,7 +603,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setMinisterien(Set<Ministerium> ministerien) {
         this.ministerien = ministerien;
     }
-
+*/
+/*
     public Set<Ausschuss> getAusschuesse() {
         return ausschuesse;
     }
@@ -609,7 +612,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setAusschuesse(Set<Ausschuss> ausschuesse) {
         this.ausschuesse = ausschuesse;
     }
-
+*/
+/*
     public Set<Wahlperiode> getWahlperioden() {
         return wahlperioden;
     }
@@ -617,7 +621,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setWahlperioden(Set<Wahlperiode> wahlperioden) {
         this.wahlperioden = wahlperioden;
     }
-
+*/
+/*
     public Webseite getWebseite() {
         return webseite;
     }
@@ -625,7 +630,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setWebseite(Webseite webseite) {
         this.webseite = webseite;
     }
-
+    */
+/*
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -633,7 +639,8 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
         this.onlineStrategie = onlineStrategie;
     }
-
+*/
+/*
     public Adresse getAdresse() {
         return adresse;
     }
@@ -641,7 +648,7 @@ public class Kandidat extends GraphDomainObjectImpl implements GraphDomainObject
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
-
+*/
     public Long getBtw17KandidatFlatId() {
         return btw17KandidatFlatId;
     }

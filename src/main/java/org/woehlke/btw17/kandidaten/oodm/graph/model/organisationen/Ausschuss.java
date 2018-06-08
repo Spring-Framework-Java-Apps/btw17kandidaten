@@ -5,8 +5,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectIm
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.ONLINE_STRATEGIE;
-
 @NodeEntity
 public class Ausschuss extends GraphDomainObjectImpl implements GraphDomainObject {
 
@@ -16,7 +14,7 @@ public class Ausschuss extends GraphDomainObjectImpl implements GraphDomainObjec
 
     //@Valid
     @Relationship(type= ONLINE_STRATEGIE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Override
     public String getName() {

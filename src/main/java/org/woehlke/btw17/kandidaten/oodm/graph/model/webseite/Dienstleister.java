@@ -7,9 +7,6 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LOCATION;
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.PUBLISH_ONLINE;
-
 
 @NodeEntity
 public class Dienstleister extends GraphDomainObjectImpl implements GraphDomainObject {
@@ -23,13 +20,13 @@ public class Dienstleister extends GraphDomainObjectImpl implements GraphDomainO
     private String firma;
 
     @Relationship(type = LOCATION)
-    private Adresse adresse = new Adresse();
+    private Adresse adresse;// = new Adresse();
 
     @Relationship(type = LOCATION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
-    @Relationship(type = PUBLISH_ONLINE)
-    private OnlineStrategie onlineStrategie = new OnlineStrategie();
+    @Relationship(type = ONLINE_STRATEGIE)
+    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     public Dienstleister() {
     }

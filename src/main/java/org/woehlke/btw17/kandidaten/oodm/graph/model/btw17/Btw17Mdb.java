@@ -8,8 +8,6 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.WAHLPERIODEN;
-
 /**
  * Information ueber einen MDB
  */
