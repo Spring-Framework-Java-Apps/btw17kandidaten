@@ -1,5 +1,5 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.kandidaten.impl;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -11,8 +11,9 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.kandidaten.ListeParteiBu
 
 @Service("graph.ListeParteiBundeslandService")
 @Transactional(propagation=Propagation.REQUIRED, readOnly=true)
-public class ListeParteiBundeslandServiceImpl extends GraphDomainServiceImpl<ListeParteiBundesland> implements ListeParteiBundeslandService {
-
+*/
+public class ListeParteiBundeslandServiceImpl /*extends GraphDomainServiceImpl<ListeParteiBundesland> implements ListeParteiBundeslandService */{
+/*
     @Autowired
     public ListeParteiBundeslandServiceImpl(final ListeParteiBundeslandRepository repository){
         super(repository);
@@ -21,5 +22,5 @@ public class ListeParteiBundeslandServiceImpl extends GraphDomainServiceImpl<Lis
     protected ListeParteiBundeslandRepository getRepository(){
         return (ListeParteiBundeslandRepository) super.getRepository();
     }
-
+*/
 }

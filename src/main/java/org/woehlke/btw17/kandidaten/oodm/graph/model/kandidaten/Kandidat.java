@@ -36,7 +36,6 @@ public class Kandidat implements GraphDomainObject {
     private Long id;
 
     @Index(unique=true)
-    //@NotNull
     //@Pattern(regexp="herr|frau-[a-z]*[-]?[a-z]+-[a-z]+-geboren-[0-9]{4}-in-[a-z]+")
     @Property(name = "kandidat_key")
     private String key;
@@ -48,11 +47,9 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "xml_id_bundestag")
     private String xmlIdBundestag;
 
-    //@SafeHtml
     @Property(name = "titel")
     private String titel;
 
-    //@SafeHtml
     @Property(name = "namenszusatz")
     private String namenszusatz;
 
@@ -75,8 +72,6 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "geschlecht")
     private String geschlecht;
 
-    //@NotNull
-    //@Digits(integer = 4, fraction = 0)
     @Property(name = "geburtsjahr")
     private Integer geburtsjahr;
 
@@ -101,12 +96,9 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "historiebis")
     private LocalDate historieBis;
 
-    //@NotNull
-    //@Digits(integer = 2, fraction = 0)
     @Property(name = "alter")
     private Integer alter;
 
-    //@Past
     @Property(name = "geburtsdatum")
     private LocalDate geburtsdatum;
 
@@ -116,22 +108,18 @@ public class Kandidat implements GraphDomainObject {
     @Property(name = "familienstand")
     private String familienstand;
 
-    //@Enumerated(EnumType.STRING)
     @Property(name = "religion")
     private Religion religion;
 
     @Property(name = "parteikurz")
     private String parteikurz;
 
-    //@Lob
     @Property(name = "vitakurz")
     private String vitakurz;
 
-    //@Lob
     @Property(name = "veroeffentlichungspflichtiges")
     private String veroeffentlichungspflichtiges;
 
-    //@SafeHtml
     @Property(name = "funktion")
     private String funktion;
 
@@ -197,8 +185,8 @@ public class Kandidat implements GraphDomainObject {
     @Relationship(type = JOB)
     private Partei partei = new Partei();
 
-    @Relationship(type = JOB)
-    private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
+    //@Relationship(type = JOB)
+    //private ListeParteiBundesland listeParteiBundesland = new ListeParteiBundesland();
 
     @Relationship(type = JOB)
     private Fraktion fraktion = new Fraktion();

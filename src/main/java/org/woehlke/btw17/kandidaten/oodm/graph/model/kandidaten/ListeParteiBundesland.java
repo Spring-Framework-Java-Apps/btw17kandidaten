@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten;
 
+/*
 import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
@@ -10,11 +11,12 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.LANDESLISTE;
 import static org.woehlke.btw17.kandidaten.oodm.graph.model.commons.RelationshipType.REDAKTION;
 
-@Setter
-@Getter
-@RelationshipEntity(type=LANDESLISTE)
-public class ListeParteiBundesland implements GraphDomainObject {
-
+*/
+//@Setter
+//@Getter
+//@RelationshipEntity(type=LANDESLISTE)
+public class ListeParteiBundesland /*implements GraphDomainObject*/ {
+/*
     @Id
     @GeneratedValue
     private Long id;
@@ -47,4 +49,5 @@ public class ListeParteiBundesland implements GraphDomainObject {
 
     public ListeParteiBundesland() {
     }
+    */
 }
