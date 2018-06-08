@@ -56,7 +56,7 @@ public class DatabaseGraphConfig {
     public org.neo4j.ogm.config.Configuration configuration() {
         Integer connectionLivenessCheckTimeout = new Integer(1000);
         Boolean verifyConnection = true;
-        String uri = "bolt://localhost";
+        String uri = "bolt://127.0.0.1:7687";
         String user = "neo4j";
         String password = "secret";
         //String uris[] = {"bolt+routing://localhost"};

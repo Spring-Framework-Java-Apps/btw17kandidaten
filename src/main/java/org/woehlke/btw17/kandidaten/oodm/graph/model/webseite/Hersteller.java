@@ -30,10 +30,10 @@ public class Hersteller implements GraphDomainObject {
     private String firmierung;
 
     @Relationship(type = LOCATION)
-    private Adresse adresse = new Adresse();
+    private Adresse adresse;// = new Adresse();
 
     @Relationship(type = GEO_POSITION)
-    private GeoPosition geoPosition = new GeoPosition();
+    private GeoPosition geoPosition;// = new GeoPosition();
 
     @Override
     public Long getId() {
