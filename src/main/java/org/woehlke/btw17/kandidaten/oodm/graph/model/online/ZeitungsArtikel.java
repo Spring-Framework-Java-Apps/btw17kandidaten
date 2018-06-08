@@ -1,4 +1,4 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.model.online;
 
-public class Facebook {
+public class ZeitungsArtikel {
 }

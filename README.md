@@ -47,6 +47,8 @@ Das Hosting bei Heroku ist in Europa, nicht in den USA.
 ### OGM & Graph Algorithms
 * https://neo4j.com/docs/ogm-manual/current/
 * https://neo4j.com/docs/graph-algorithms/current/
+* 
+* https://neo4j.com/docs/pdf/cypher-refcard-3.4.pdf
 
 ### resources
 * https://neo4j.com/developer/resources/

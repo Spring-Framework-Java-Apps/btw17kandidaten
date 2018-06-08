@@ -1,4 +1,4 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.repositories.online;
 
-public interface FacebookRepository {
+public interface WikipediaArticleRepository {
 }
