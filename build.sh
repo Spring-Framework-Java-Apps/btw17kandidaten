@@ -9,6 +9,6 @@ export DATASOURCE_PASSWORD=kandidatentestpwd
 
 export BTW17_JPA_HIBERNATE_DDL_AUTO=update
 
-./mvnw -v -e clean install dependency:tree site  -B -V
+./mvnw -e clean install dependency:tree site
 
 exit 0
