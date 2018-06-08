@@ -24,11 +24,17 @@ public class Ort implements GraphDomainObject {
     @Property(name="ort")
     private String ort;
 
-    @Relationship(type=LOCATION)
-    private Bundesland bundesland = new Bundesland();
+    @Property(name="bundesland")
+    private String bundesland;
 
-    @Relationship(type=LOCATION)
-    private Nation nation = new Nation();
+    @Property(name="nation")
+    private String nation;
+
+    //@Relationship(type=LOCATION)
+    //private Bundesland bundesland = new Bundesland();
+
+    //@Relationship(type=LOCATION)
+    //private Nation nation = new Nation();
 
     @Relationship(type=ONLINE_STRATEGIE)
     private OnlineStrategie onlineStrategie = new OnlineStrategie();
