@@ -16,7 +16,7 @@ public class Partei extends GraphDomainObjectImpl implements GraphDomainObject {
     @Property(name="partei")
     private String partei;
 
-    @Index(unique=true)
+    @Index
     @Property(name="partei_lang")
     private String parteiLang;
 

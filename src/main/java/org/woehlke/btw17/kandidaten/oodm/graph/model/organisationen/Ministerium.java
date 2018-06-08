@@ -5,9 +5,9 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Adresse;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.GeoPosition;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.Kandidat;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
+//import org.woehlke.btw17.kandidaten.oodm.graph.model.kandidaten.Kandidat;
+//import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
+//import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 
 
 @NodeEntity
@@ -17,18 +17,18 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     @Property(name="ministerium")
     private String ministerium;
 
-    @Index(unique = true)
+    @Index
     @Property(name="ministerium_lang")
     private String ministeriumLang;
 
     @Property(name="bundesminister")
     private String bundesministerName;
 
-    @Relationship(type=JOB)
-    private Kandidat bundesminister;
+    //@Relationship(type=JOB)
+    //private Kandidat bundesminister;
 
-    @Relationship(type=LOCATION)
-    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
+    //@Relationship(type=LOCATION)
+    //private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Relationship(type=LOCATION)
     private GeoPosition geoPosition;// = new GeoPosition();
@@ -36,8 +36,8 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     @Relationship(type=LOCATION)
     private Adresse adresse;// = new Adresse();
 
-    @Relationship(type=ONLINE_STRATEGIE)
-    private Webseite webseite;// = new Webseite();
+    //@Relationship(type=ONLINE_STRATEGIE)
+    //private Webseite webseite;// = new Webseite();
 
 
     public Ministerium() {
@@ -66,7 +66,7 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     public void setBundesministerName(String bundesministerName) {
         this.bundesministerName = bundesministerName;
     }
-
+/*
     public Kandidat getBundesminister() {
         return bundesminister;
     }
@@ -74,7 +74,8 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     public void setBundesminister(Kandidat bundesminister) {
         this.bundesminister = bundesminister;
     }
-
+    */
+/*
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -82,7 +83,7 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     public void setOnlineStrategie(OnlineStrategie onlineStrategie) {
         this.onlineStrategie = onlineStrategie;
     }
-
+*/
     public GeoPosition getGeoPosition() {
         return geoPosition;
     }
@@ -98,7 +99,7 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
-
+/*
     public Webseite getWebseite() {
         return webseite;
     }
@@ -106,4 +107,5 @@ public class Ministerium extends GraphDomainObjectImpl implements GraphDomainObj
     public void setWebseite(Webseite webseite) {
         this.webseite = webseite;
     }
+    */
 }

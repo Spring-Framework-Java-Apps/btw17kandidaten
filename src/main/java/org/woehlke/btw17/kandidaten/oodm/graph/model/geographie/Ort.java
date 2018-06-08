@@ -26,14 +26,14 @@ public class Ort extends GraphDomainObjectImpl implements GraphDomainObject {
     //@Relationship(type=LOCATION)
     //private Nation nation = new Nation();
 
-    @Relationship(type=ONLINE_STRATEGIE)
-    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
+    //@Relationship(type=ONLINE_STRATEGIE)
+    //private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
     @Relationship(type=LOCATION)
     private GeoPosition geoPosition;// = new GeoPosition();
 
-    @Relationship(type=ONLINE_STRATEGIE)
-    private Webseite webseite;// = new Webseite();
+    //@Relationship(type=ONLINE_STRATEGIE)
+    //private Webseite webseite;// = new Webseite();
 
     @Override
     public String getName() {
@@ -66,7 +66,7 @@ public class Ort extends GraphDomainObjectImpl implements GraphDomainObject {
     public void setNation(String nation) {
         this.nation = nation;
     }
-
+/*
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -90,4 +90,5 @@ public class Ort extends GraphDomainObjectImpl implements GraphDomainObject {
     public void setWebseite(Webseite webseite) {
         this.webseite = webseite;
     }
+    */
 }

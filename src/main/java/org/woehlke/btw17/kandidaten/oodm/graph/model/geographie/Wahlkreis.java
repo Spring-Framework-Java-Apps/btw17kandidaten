@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 @NodeEntity
 public class Wahlkreis extends GraphDomainObjectImpl implements GraphDomainObject {
 
-    @Index
+    @Index(unique = true)
     @Property(name="wahlkreis_id")
     private Long wahlkreisId;
 

@@ -3,7 +3,7 @@ package org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen;
 import org.neo4j.ogm.annotation.*;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObjectImpl;
 //import org.woehlke.btw17.kandidaten.oodm.graph.model.parts.OnlineStrategie;
-import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
+//import org.woehlke.btw17.kandidaten.oodm.graph.model.webseite.Webseite;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.commons.GraphDomainObject;
 
 @NodeEntity
@@ -20,8 +20,8 @@ public class Fraktion extends GraphDomainObjectImpl implements GraphDomainObject
     //@Relationship(type = ONLINE_STRATEGIE)
     //private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
-    @Relationship(type = ONLINE_STRATEGIE)
-    private Webseite webseite;// = new Webseite();
+    //@Relationship(type = ONLINE_STRATEGIE)
+    //private Webseite webseite;// = new Webseite();
 
     @Override
     public String getName() {
@@ -55,6 +55,7 @@ public class Fraktion extends GraphDomainObjectImpl implements GraphDomainObject
         this.onlineStrategie = onlineStrategie;
     }
 */
+/*
     public Webseite getWebseite() {
         return webseite;
     }
@@ -62,4 +63,5 @@ public class Fraktion extends GraphDomainObjectImpl implements GraphDomainObject
     public void setWebseite(Webseite webseite) {
         this.webseite = webseite;
     }
+    */
 }

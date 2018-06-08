@@ -18,17 +18,17 @@ public class Bundesland extends GraphDomainObjectImpl implements GraphDomainObje
     @Property(name="bundesland_lang")
     private String bundeslandLang;
 
-    @Relationship(type=ONLINE_STRATEGIE)
-    private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
+    //@Relationship(type=ONLINE_STRATEGIE)
+    //private OnlineStrategie onlineStrategie;// = new OnlineStrategie();
 
-    @Relationship(type=ONLINE_STRATEGIE)
-    private Webseite webseite;// = new Webseite();
+    //@Relationship(type=ONLINE_STRATEGIE)
+    //private Webseite webseite;// = new Webseite();
 
-    @Relationship(type=LOCATION)
-    private Strukturdaten strukturdaten;// = new Strukturdaten();
+    //@Relationship(type=LOCATION)
+    //private Strukturdaten strukturdaten;// = new Strukturdaten();
 
-    @Relationship(type=WAHL)
-    private WahlergebnisseBtw17 wahlergebnisseBtw17;// = new WahlergebnisseBtw17();
+    //@Relationship(type=WAHL)
+    //private WahlergebnisseBtw17 wahlergebnisseBtw17;// = new WahlergebnisseBtw17();
 
     @Override
     public String getName(){
@@ -53,7 +53,7 @@ public class Bundesland extends GraphDomainObjectImpl implements GraphDomainObje
     public void setBundeslandLang(String bundeslandLang) {
         this.bundeslandLang = bundeslandLang;
     }
-
+/*
     public OnlineStrategie getOnlineStrategie() {
         return onlineStrategie;
     }
@@ -85,4 +85,5 @@ public class Bundesland extends GraphDomainObjectImpl implements GraphDomainObje
     public void setWahlergebnisseBtw17(WahlergebnisseBtw17 wahlergebnisseBtw17) {
         this.wahlergebnisseBtw17 = wahlergebnisseBtw17;
     }
+    */
 }

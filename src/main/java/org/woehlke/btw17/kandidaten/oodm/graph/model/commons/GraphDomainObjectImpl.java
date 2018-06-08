@@ -25,7 +25,7 @@ public abstract class GraphDomainObjectImpl implements GraphDomainObject {
     private String beschreibungsText;
 
     @Property(name = "edit_status")
-    private EditStatus editStatus = EditStatus.UNTOUCHED;
+    private EditStatus editStatus;// = EditStatus.UNTOUCHED;
 
     protected GraphDomainObjectImpl() {
     }
