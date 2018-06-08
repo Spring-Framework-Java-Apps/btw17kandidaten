@@ -20,16 +20,54 @@ Kostenpflichtige Upgrades mit extremer Skalierung sind durch Sponsoring zeitnah 
 Das Hosting bei Heroku ist in Europa, nicht in den USA.
 
 ## URLs
-
 + Demo on Heroku [https://btw17-kandidaten.herokuapp.com](https://btw17-kandidaten.herokuapp.com)
 + Github [https://github.com/phasenraum2010/btw17kandidaten](https://github.com/phasenraum2010/btw17kandidaten)
 + Maven Reports [http://woehlke.org/p/btw17-kandidaten/](http://woehlke.org/p/btw17-kandidaten/)
 
 ## Abstract
-
 + App the Browse Data for #btw17 with [spring:boot](https://projects.spring.io/spring-boot/) for [heroku](https://heroku.com)
 + More Info: [https://phasenraum2010.github.io/btw17kandidaten/](https://phasenraum2010.github.io/btw17kandidaten/)
 + Moore Info and Source of Data: [interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017][interaktiv-morgenpost-de-kandidaten-bundestagswahl-2017]
+
+## Neo4J
+
+### Download
+* https://github.com/neo4j/neo4j/releases
+
+### Support
+* https://stackoverflow.com/questions/tagged/neo4j
+* https://github.com/neo4j/neo4j
+* https://groups.google.com/forum/#!forum/neo4j
+
+### Docu
+* https://neo4j.com/docs/
+* https://neo4j.com/docs/developer-manual/current/
+* https://neo4j.com/docs/operations-manual/current/
+
+### OGM & Graph Algorithms
+* https://neo4j.com/docs/ogm-manual/current/
+* https://neo4j.com/docs/graph-algorithms/current/
+
+### resources
+* https://neo4j.com/developer/resources/
+* http://neo4j-users-slack-invite.herokuapp.com/
+* https://twitter.com/neo4j
+* https://github.com/neo4j/neo4j
+* https://groups.google.com/forum/#!forum/neo4j
+* https://www.youtube.com/c/neo4j
+* https://www.meetup.com/de-DE/Neo4j-Online-Meetup/?chapter_analytics_code=UA-1192232-34
+* https://stackoverflow.com/questions/tagged/neo4j
+
+## Spring-Boot
+
+* https://spring.io/projects/spring-boot
+* https://docs.spring.io/spring-boot/docs/2.0.2.RELEASE/reference/htmlsingle
+* https://docs.spring.io/spring-boot/docs/2.0.2.RELEASE/api
+* https://projects.spring.io/spring-data-neo4j
+* https://spring.io/projects/spring-data-jpa
+
+### Resources
+* https://github.com/spring-projects/spring-boot
 
 ## Development 
 
