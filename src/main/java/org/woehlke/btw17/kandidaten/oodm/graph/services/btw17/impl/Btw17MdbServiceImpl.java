@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.Btw17MdbService;
 public class Btw17MdbServiceImpl extends GraphDomainServiceImpl<Btw17Mdb> implements Btw17MdbService {
 
     @Autowired
-    public Btw17MdbServiceImpl(final Btw17MdbRepository repository){
+    public Btw17MdbServiceImpl(@Qualifier("graph.Btw17MdbRepository") final Btw17MdbRepository repository){
         super(repository);
     }
 

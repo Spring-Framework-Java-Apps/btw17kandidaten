@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.graph.repositories.commons.GraphDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.geographie.Wahlkreis;
 
-@Repository
+@Repository("graph.WahlkreisRepository")
 public interface WahlkreisRepository extends GraphDomainRepository<Wahlkreis> {
 }

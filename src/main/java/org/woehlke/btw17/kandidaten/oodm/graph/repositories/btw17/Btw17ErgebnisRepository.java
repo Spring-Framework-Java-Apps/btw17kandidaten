@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.graph.repositories.commons.GraphDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.btw17.Btw17Ergebnis;
 
-@Repository
+@Repository("graph.Btw17ErgebnisRepository")
 public interface Btw17ErgebnisRepository extends GraphDomainRepository<Btw17Ergebnis> {
 }

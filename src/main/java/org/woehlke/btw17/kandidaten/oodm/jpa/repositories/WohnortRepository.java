@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Wohnort;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.WohnortRepository")
 public interface WohnortRepository extends JpaDomainRepository<Wohnort> {
 
     Wohnort findByWohnort(String wohnort);

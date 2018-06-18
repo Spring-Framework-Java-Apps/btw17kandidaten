@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteAgentur;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.WebseiteAgenturRepository")
 public interface WebseiteAgenturRepository extends JpaDomainRepository<WebseiteAgentur> {
 
     WebseiteAgentur findByAgentur(String agentur);

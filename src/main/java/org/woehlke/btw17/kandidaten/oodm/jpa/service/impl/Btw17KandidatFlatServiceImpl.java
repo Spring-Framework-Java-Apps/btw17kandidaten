@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.List;
 public class Btw17KandidatFlatServiceImpl extends JpaDomainServiceImpl<Btw17KandidatFlat> implements Btw17KandidatFlatService {
 
     @Autowired
-    public Btw17KandidatFlatServiceImpl(Btw17KandidatFlatRepository btw17KandidatFlatRepository) {
+    public Btw17KandidatFlatServiceImpl(@Qualifier("jpa.Btw17KandidatFlatRepository") Btw17KandidatFlatRepository btw17KandidatFlatRepository) {
         super(btw17KandidatFlatRepository);
     }
 

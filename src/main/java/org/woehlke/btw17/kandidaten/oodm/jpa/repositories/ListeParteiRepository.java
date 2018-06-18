@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.ListePartei;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.ListeParteiRepository")
 public interface ListeParteiRepository extends JpaDomainRepository<ListePartei> {
 
     ListePartei findByListeParteiAndListeParteiLang(String listePartei, String listeParteiLang);

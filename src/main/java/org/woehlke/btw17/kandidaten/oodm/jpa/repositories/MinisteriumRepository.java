@@ -8,7 +8,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Ministerium;
 import java.util.List;
 
 
-@Repository
+@Repository("jpa.MinisteriumRepository")
 public interface MinisteriumRepository extends JpaDomainRepository<Ministerium> {
 
     Ministerium findByMinisterium(String ministerium);

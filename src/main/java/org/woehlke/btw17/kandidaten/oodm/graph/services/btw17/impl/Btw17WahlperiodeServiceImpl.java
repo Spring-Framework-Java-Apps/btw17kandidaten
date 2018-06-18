@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.Btw17WahlperiodeSe
 public class Btw17WahlperiodeServiceImpl extends GraphDomainServiceImpl<Btw17Wahlperiode> implements Btw17WahlperiodeService {
 
     @Autowired
-    public Btw17WahlperiodeServiceImpl(final Btw17WahlperiodeRepository repository){
+    public Btw17WahlperiodeServiceImpl(@Qualifier("graph.Btw17WahlperiodeRepository") final Btw17WahlperiodeRepository repository){
         super(repository);
     }
 

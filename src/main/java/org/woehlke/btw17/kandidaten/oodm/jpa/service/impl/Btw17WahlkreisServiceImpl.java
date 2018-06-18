@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17WahlkreisService;
 public class Btw17WahlkreisServiceImpl extends JpaDomainServiceImpl<Btw17Wahlkreis> implements Btw17WahlkreisService {
 
     @Autowired
-    public Btw17WahlkreisServiceImpl(Btw17WahlkreisRepository btw17WahlkreisRepository) {
+    public Btw17WahlkreisServiceImpl(@Qualifier("jpa.Btw17WahlkreisRepository") final Btw17WahlkreisRepository btw17WahlkreisRepository) {
         super(btw17WahlkreisRepository);
     }
 

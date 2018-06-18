@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.webseite.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.webseite.CmsService;
 public class CmsServiceImpl extends GraphDomainServiceImpl<Cms> implements CmsService {
 
     @Autowired
-    public CmsServiceImpl(final CmsRepository repository){
+    public CmsServiceImpl(@Qualifier("graph.CmsRepository") final CmsRepository repository){
         super(repository);
     }
 

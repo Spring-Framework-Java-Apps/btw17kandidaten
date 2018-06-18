@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.KontinentServ
 public class KontinentServiceImpl extends GraphDomainServiceImpl<Kontinent> implements KontinentService {
 
     @Autowired
-    public KontinentServiceImpl(final KontinentRepository repository){
+    public KontinentServiceImpl(@Qualifier("graph.KontinentRepository") final KontinentRepository repository){
         super(repository);
     }
 

@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.WebseiteCms;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.WebseiteCmsRepository")
 public interface WebseiteCmsRepository extends JpaDomainRepository<WebseiteCms> {
 
     WebseiteCms findByCms(String cms);

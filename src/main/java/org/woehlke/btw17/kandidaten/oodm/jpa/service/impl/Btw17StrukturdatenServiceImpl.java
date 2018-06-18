@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Btw17StrukturdatenServiceImpl extends JpaDomainServiceImpl<Btw17Strukturdaten> implements Btw17StrukturdatenService {
 
     @Autowired
-    public Btw17StrukturdatenServiceImpl(Btw17StrukturdatenRepository btw17StrukturdatenRepository) {
+    public Btw17StrukturdatenServiceImpl(@Qualifier("jpa.Btw17StrukturdatenRepository") Btw17StrukturdatenRepository btw17StrukturdatenRepository) {
         super(btw17StrukturdatenRepository);
     }
 

@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Ausschuss;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.AusschussRepository")
 public interface AusschussRepository extends JpaDomainRepository<Ausschuss> {
 
     Ausschuss findByAusschuss(String ausschuss);

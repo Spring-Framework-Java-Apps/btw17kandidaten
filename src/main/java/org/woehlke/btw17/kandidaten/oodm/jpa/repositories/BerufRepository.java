@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Beruf;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.BerufRepository")
 public interface BerufRepository extends JpaDomainRepository<Beruf> {
 
     Beruf findByBeruf(String beruf);

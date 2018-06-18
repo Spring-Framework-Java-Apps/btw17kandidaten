@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.Btw17Strukturdaten
 public class Btw17StrukturdatenServiceImpl extends GraphDomainServiceImpl<Btw17Strukturdaten> implements Btw17StrukturdatenService {
 
     @Autowired
-    public Btw17StrukturdatenServiceImpl(final Btw17StrukturdatenRepository repository){
+    public Btw17StrukturdatenServiceImpl(@Qualifier("graph.Btw17StrukturdatenRepository") final Btw17StrukturdatenRepository repository){
         super(repository);
     }
 

@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Mdb;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.Btw17Btw17MdbRepository")
 public interface Btw17Btw17MdbRepository extends JpaDomainRepository<Btw17Mdb> {
 
     @Query(name="Btw17Mdb.countBtw17Mdb2Wahlperiode",nativeQuery=true)

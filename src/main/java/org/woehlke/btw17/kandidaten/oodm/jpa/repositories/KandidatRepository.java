@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.*;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.KandidatRepository")
 public interface KandidatRepository extends JpaDomainRepository<Kandidat> {
 
     Page<Kandidat> findByBeruf(Beruf beruf, Pageable pageable);

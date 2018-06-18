@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.WebseiteCmsService;
 public class WebseiteCmsServiceImpl extends JpaDomainServiceImpl<WebseiteCms> implements WebseiteCmsService {
 
     @Autowired
-    public WebseiteCmsServiceImpl(WebseiteCmsRepository webseiteCmsRepository) {
+    public WebseiteCmsServiceImpl(@Qualifier("jpa.WebseiteCmsRepository") WebseiteCmsRepository webseiteCmsRepository) {
         super(webseiteCmsRepository);
     }
 

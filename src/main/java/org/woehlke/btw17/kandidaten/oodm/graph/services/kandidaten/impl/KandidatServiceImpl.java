@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.kandidaten.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.kandidaten.KandidatServi
 public class KandidatServiceImpl extends GraphDomainServiceImpl<Kandidat> implements KandidatService {
 
     @Autowired
-    public KandidatServiceImpl(final KandidatRepository repository){
+    public KandidatServiceImpl(@Qualifier("graph.KandidatRepository") final KandidatRepository repository){
         super(repository);
     }
 

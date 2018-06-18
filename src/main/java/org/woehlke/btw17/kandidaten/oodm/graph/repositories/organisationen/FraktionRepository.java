@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 import org.woehlke.btw17.kandidaten.oodm.graph.repositories.commons.GraphDomainRepository;
 import org.woehlke.btw17.kandidaten.oodm.graph.model.organisationen.Fraktion;
 
-@Repository
+@Repository("graph.FraktionRepository")
 public interface FraktionRepository extends GraphDomainRepository<Fraktion> {
 }

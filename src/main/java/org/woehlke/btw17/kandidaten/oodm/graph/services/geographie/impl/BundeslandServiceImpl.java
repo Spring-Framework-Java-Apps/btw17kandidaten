@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.BundeslandSer
 public class BundeslandServiceImpl extends GraphDomainServiceImpl<Bundesland> implements BundeslandService {
 
     @Autowired
-    public BundeslandServiceImpl(final BundeslandRepository bundeslandRepository){
+    public BundeslandServiceImpl(@Qualifier("graph.BundeslandRepository") final BundeslandRepository bundeslandRepository){
         super(bundeslandRepository);
     }
 

@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Fraktion;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.FraktionRepository")
 public interface FraktionRepository extends JpaDomainRepository<Fraktion> {
 
     Fraktion findByFraktion(String fraktion);

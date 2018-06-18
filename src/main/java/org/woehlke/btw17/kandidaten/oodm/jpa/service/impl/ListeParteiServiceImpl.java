@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.ListeParteiService;
 public class ListeParteiServiceImpl extends JpaDomainServiceImpl<ListePartei> implements ListeParteiService {
 
     @Autowired
-    public ListeParteiServiceImpl(ListeParteiRepository listeParteiRepository) {
+    public ListeParteiServiceImpl(@Qualifier("jpa.ListeParteiRepository") ListeParteiRepository listeParteiRepository) {
         super(listeParteiRepository);
     }
 

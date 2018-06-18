@@ -14,7 +14,7 @@ public class OnlineStrategie extends GraphDomainObjectImpl implements GraphDomai
     @Property(name="twitter")
     private String twitter;
 
-   @Index
+    @Index
     @Property(name="facebook")
     private String facebook;
 

@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.LandesListeService;
 public class LandesListeServiceImpl extends JpaDomainServiceImpl<LandesListe> implements LandesListeService {
 
     @Autowired
-    public LandesListeServiceImpl(LandesListeRepository landesListeRepository) {
+    public LandesListeServiceImpl(@Qualifier("jpa.LandesListeRepository") LandesListeRepository landesListeRepository) {
         super(landesListeRepository);
     }
 

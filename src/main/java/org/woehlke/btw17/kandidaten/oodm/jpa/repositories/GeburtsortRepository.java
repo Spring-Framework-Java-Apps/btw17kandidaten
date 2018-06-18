@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Geburtsort;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.GeburtsortRepository")
 public interface GeburtsortRepository extends JpaDomainRepository<Geburtsort> {
 
     Geburtsort findByGeburtsort(String geburtsort);

@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.geographie.NationService
 public class NationServiceImpl extends GraphDomainServiceImpl<Nation> implements NationService {
 
     @Autowired
-    public NationServiceImpl(final NationRespository repository){
+    public NationServiceImpl(@Qualifier("graph.NationRespository") final NationRespository repository){
         super(repository);
     }
 

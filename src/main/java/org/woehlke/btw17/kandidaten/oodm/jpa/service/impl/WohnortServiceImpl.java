@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.List;
 public class WohnortServiceImpl extends JpaDomainServiceImpl<Wohnort> implements WohnortService {
 
     @Autowired
-    public WohnortServiceImpl(WohnortRepository wohnortRepository) {
+    public WohnortServiceImpl(@Qualifier("jpa.WohnortRepository") WohnortRepository wohnortRepository) {
         super(wohnortRepository);
     }
 

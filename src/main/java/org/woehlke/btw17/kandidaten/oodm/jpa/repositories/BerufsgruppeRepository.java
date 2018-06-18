@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Berufsgruppe;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.BerufsgruppeRepository")
 public interface BerufsgruppeRepository extends JpaDomainRepository<Berufsgruppe> {
 
     Berufsgruppe findByBerufsgruppe(String berufsgruppe);

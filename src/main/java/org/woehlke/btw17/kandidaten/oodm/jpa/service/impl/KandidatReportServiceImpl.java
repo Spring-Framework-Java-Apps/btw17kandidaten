@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.KandidatReportService;
 public class KandidatReportServiceImpl extends JpaDomainServiceImpl<Kandidat> implements KandidatReportService {
 
     @Autowired
-    public KandidatReportServiceImpl(KandidatRepository kandidatRepository) {
+    public KandidatReportServiceImpl(@Qualifier("jpa.KandidatRepository") KandidatRepository kandidatRepository) {
         super(kandidatRepository);
     }
 

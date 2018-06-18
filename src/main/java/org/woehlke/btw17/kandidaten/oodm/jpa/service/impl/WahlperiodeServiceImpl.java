@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.WahlperiodeService;
 public class WahlperiodeServiceImpl extends JpaDomainServiceImpl<Wahlperiode> implements WahlperiodeService {
 
     @Autowired
-    public WahlperiodeServiceImpl(WahlperiodeRepository wahlperiodeRepository) {
+    public WahlperiodeServiceImpl(@Qualifier("jpa.WahlperiodeRepository") WahlperiodeRepository wahlperiodeRepository) {
         super(wahlperiodeRepository);
     }
 

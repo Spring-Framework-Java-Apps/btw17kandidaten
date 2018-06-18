@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.organisationen.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.organisationen.Instituti
 public class InstitutionServiceImpl extends GraphDomainServiceImpl<Institution> implements InstitutionService {
 
     @Autowired
-    public InstitutionServiceImpl(final InstitutionRepository repository){
+    public InstitutionServiceImpl(@Qualifier("graph.InstitutionRepository") final InstitutionRepository repository){
         super(repository);
     }
 

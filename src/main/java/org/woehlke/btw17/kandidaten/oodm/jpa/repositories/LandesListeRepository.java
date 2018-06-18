@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.ListePartei;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.LandesListeRepository")
 public interface LandesListeRepository extends JpaDomainRepository<LandesListe> {
 
 

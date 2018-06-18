@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Ergebnis;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.Btw17ErgebnisRepository")
 public interface Btw17ErgebnisRepository extends JpaDomainRepository<Btw17Ergebnis> {
 
 

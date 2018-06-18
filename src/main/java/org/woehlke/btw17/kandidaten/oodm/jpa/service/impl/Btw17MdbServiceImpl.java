@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.service.Btw17MdbService;
 public class Btw17MdbServiceImpl extends JpaDomainServiceImpl<Btw17Mdb> implements Btw17MdbService {
 
     @Autowired
-    public Btw17MdbServiceImpl(Btw17Btw17MdbRepository btw17MdbRepository) {
+    public Btw17MdbServiceImpl(@Qualifier("jpa.Btw17Btw17MdbRepository") Btw17Btw17MdbRepository btw17MdbRepository) {
         super(btw17MdbRepository);
     }
 

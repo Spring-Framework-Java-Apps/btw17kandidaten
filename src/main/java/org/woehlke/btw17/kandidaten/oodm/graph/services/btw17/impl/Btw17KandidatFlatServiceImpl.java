@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.btw17.Btw17KandidatFlatS
 public class Btw17KandidatFlatServiceImpl extends GraphDomainServiceImpl<Btw17KandidatFlat> implements Btw17KandidatFlatService {
 
     @Autowired
-    public Btw17KandidatFlatServiceImpl(final Btw17KandidatFlatRepository repository){
+    public Btw17KandidatFlatServiceImpl(@Qualifier("graph.Btw17KandidatFlatRepository") final Btw17KandidatFlatRepository repository){
         super(repository);
     }
 

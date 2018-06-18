@@ -12,7 +12,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.enums.Mandatsart;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.WahlperiodeRepository")
 public interface WahlperiodeRepository extends JpaDomainRepository<Wahlperiode> {
 
     @Query(

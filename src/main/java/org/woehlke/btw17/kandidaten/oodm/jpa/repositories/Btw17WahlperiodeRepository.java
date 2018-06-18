@@ -7,7 +7,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlperiode;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.Btw17WahlperiodeRepository")
 public interface Btw17WahlperiodeRepository extends JpaDomainRepository<Btw17Wahlperiode> {
 
     Btw17Wahlperiode findByWpAndWkrnummer(String wp, String wkrnummer);

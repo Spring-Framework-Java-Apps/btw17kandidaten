@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.graph.services.organisationen.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.graph.services.organisationen.ParteiSer
 public class ParteiServiceImpl extends GraphDomainServiceImpl<Partei> implements ParteiService {
 
     @Autowired
-    public ParteiServiceImpl(final ParteiRepository repository){
+    public ParteiServiceImpl(@Qualifier("graph.ParteiRepository") final ParteiRepository repository){
         super(repository);
     }
 

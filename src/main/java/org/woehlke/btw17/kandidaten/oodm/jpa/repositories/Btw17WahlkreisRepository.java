@@ -10,7 +10,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17Wahlkreis;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.Btw17WahlkreisRepository")
 public interface Btw17WahlkreisRepository extends JpaDomainRepository<Btw17Wahlkreis> {
 
     Btw17Wahlkreis findByWahlkreisNummer(long wahlkreisNummer);

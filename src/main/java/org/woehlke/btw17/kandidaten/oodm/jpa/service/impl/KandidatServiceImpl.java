@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.jpa.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class KandidatServiceImpl implements KandidatService {
     private final KandidatRepository kandidatRepository;
 
     @Autowired
-    public KandidatServiceImpl(final KandidatRepository kandidatRepository) {
+    public KandidatServiceImpl(@Qualifier("jpa.KandidatRepository") final KandidatRepository kandidatRepository) {
         this.kandidatRepository = kandidatRepository;
     }
 

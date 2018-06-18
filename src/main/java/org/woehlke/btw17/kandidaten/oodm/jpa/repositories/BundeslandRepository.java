@@ -8,7 +8,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Bundesland;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.BundeslandRepository")
 public interface BundeslandRepository extends JpaDomainRepository<Bundesland> {
 
     Bundesland findByBundesland(BundeslandEnum bundesland);

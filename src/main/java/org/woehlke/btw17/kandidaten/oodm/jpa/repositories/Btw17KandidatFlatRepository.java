@@ -9,7 +9,7 @@ import org.woehlke.btw17.kandidaten.oodm.jpa.model.Btw17KandidatFlat;
 
 import java.util.List;
 
-@Repository
+@Repository("jpa.Btw17KandidatFlatRepository")
 public interface Btw17KandidatFlatRepository extends JpaDomainRepository<Btw17KandidatFlat> {
 
     @Query(name="Btw17KandidatFlat.getAllIdsWhereMdbIsNotNull")
