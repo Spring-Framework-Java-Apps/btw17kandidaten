@@ -12,10 +12,10 @@ public interface WebseiteAgenturRepository extends JpaDomainRepository<WebseiteA
 
     WebseiteAgentur findByAgentur(String agentur);
 
-    @Query(name="Dienstleister.getAllIds")
+    @Query(name="WebseiteAgentur.getAllIds")
     List<Long> getAllIds();
 
-    @Query(name="Dienstleister.getMaxId")
+    @Query(name="WebseiteAgentur.getMaxId")
     Long getMaxId();
 
 }
