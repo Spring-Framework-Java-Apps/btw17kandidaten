@@ -125,6 +125,6 @@ public class Neo4jConfiguration {
         return new JedisConnectionFactory();
     }
 
-    private static final Log log = LogFactory.getLog(DatabaseJpaConfig.class);
+    private static final Log log = LogFactory.getLog(Neo4jConfiguration.class);
 
 }

@@ -28,13 +28,6 @@ import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 )
 public class HttpSessionConfig extends RedisHttpSessionConfiguration {
 
-/*
-    @Bean
-    public HttpSessionIdResolver httpSessionIdResolver() {
-        return HeaderHttpSessionIdResolver.xAuthToken();
-    }
-*/
-
     @Bean
     public ErrorAttributes errorAttributes(){
         return new DefaultErrorAttributes();
