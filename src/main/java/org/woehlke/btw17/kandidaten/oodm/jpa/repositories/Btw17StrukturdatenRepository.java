@@ -16,11 +16,14 @@ public interface Btw17StrukturdatenRepository extends JpaDomainRepository<Btw17S
 
     Page<Btw17Strukturdaten> findByBundeslandName(String bundeslandName, Pageable pageRequest);
 
-    @Query(name="Btw17Strukturdaten.getAllIds")
-    List<Long> getAllIds();
-
     @Query(name="Btw17Strukturdaten.getStrukturdatenOfBundeslaender")
     List<Btw17Strukturdaten> getStrukturdatenOfBundeslaender();
+
+    @Query(
+        name="Btw17Strukturdaten.getAllIds",
+        countQuery="Btw17Strukturdaten.countAllIds"
+    )
+    List<Long> getAllIds();
 
     @Query(name="Btw17Strukturdaten.getMaxId")
     Long getMaxId();

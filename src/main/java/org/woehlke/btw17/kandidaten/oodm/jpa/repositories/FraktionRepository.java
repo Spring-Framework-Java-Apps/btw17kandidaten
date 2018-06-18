@@ -12,7 +12,10 @@ public interface FraktionRepository extends JpaDomainRepository<Fraktion> {
 
     Fraktion findByFraktion(String fraktion);
 
-    @Query(name="Fraktion.getAllIds")
+    @Query(
+        name="Fraktion.getAllIds",
+        countQuery="Fraktion.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Fraktion.getMaxId")

@@ -31,7 +31,10 @@ public interface Btw17WahlbewerberRepository extends JpaDomainRepository<Btw17Wa
 
     Page<Btw17Wahlbewerber> findByWahlkreisParteiKurzBez(String wahlkreisParteiKurzBez, Pageable pageRequest);
 
-    @Query(name="Btw17Wahlbewerber.getAllIds")
+    @Query(
+        name="Btw17Wahlbewerber.getAllIds",
+        countQuery="Btw17Wahlbewerber.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Btw17Wahlbewerber.getMaxId")

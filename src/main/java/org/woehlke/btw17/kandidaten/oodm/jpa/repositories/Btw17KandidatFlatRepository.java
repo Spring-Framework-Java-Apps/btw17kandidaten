@@ -18,7 +18,10 @@ public interface Btw17KandidatFlatRepository extends JpaDomainRepository<Btw17Ka
     @Query(name="Btw17KandidatFlat.getAllOrderByNachname")
     Page<Btw17KandidatFlat> getAllOrderByNachname(Pageable pageRequest);
 
-    @Query(name="Btw17KandidatFlat.getAllIds")
+    @Query(
+        name="Btw17KandidatFlat.getAllIds",
+        countQuery="Btw17KandidatFlat.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Btw17KandidatFlat.getMaxId")

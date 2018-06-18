@@ -10,13 +10,16 @@ import java.util.List;
 @Repository
 public interface Btw17Btw17MdbRepository extends JpaDomainRepository<Btw17Mdb> {
 
-    @Query(name = "Btw17Mdb.getAllIds")
+    @Query(name="Btw17Mdb.countBtw17Mdb2Wahlperiode",nativeQuery=true)
+    long countBtw17Mdb2Wahlperiode();
+
+    @Query(
+        name = "Btw17Mdb.getAllIds",
+        countQuery = "Btw17Mdb.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name = "Btw17Mdb.getMaxId")
     Long getMaxId();
-
-    @Query(name="Btw17Mdb.countBtw17Mdb2Wahlperiode",nativeQuery=true)
-    long countBtw17Mdb2Wahlperiode();
 
 }

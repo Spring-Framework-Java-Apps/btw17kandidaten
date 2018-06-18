@@ -12,7 +12,10 @@ public interface AusschussRepository extends JpaDomainRepository<Ausschuss> {
 
     Ausschuss findByAusschuss(String ausschuss);
 
-    @Query(name="Ausschuss.getAllIds")
+    @Query(
+        name="Ausschuss.getAllIds",
+        countQuery="Ausschuss.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Ausschuss.getMaxId")

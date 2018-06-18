@@ -10,11 +10,14 @@ import java.util.List;
 @Repository
 public interface Btw17WahlperiodeRepository extends JpaDomainRepository<Btw17Wahlperiode> {
 
-    @Query(name = "Btw17Wahlperiode.getAllIds")
+    Btw17Wahlperiode findByWpAndWkrnummer(String wp, String wkrnummer);
+
+    @Query(
+        name = "Btw17Wahlperiode.getAllIds",
+        countQuery="Btw17Wahlperiode.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name = "Btw17Wahlperiode.getMaxId")
     Long getMaxId();
-
-    Btw17Wahlperiode findByWpAndWkrnummer(String wp, String wkrnummer);
 }

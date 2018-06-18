@@ -12,10 +12,15 @@ public interface ParteiRepository extends JpaDomainRepository<Partei> {
 
     Partei findByParteiAndParteiLang(String partei, String parteiLang);
 
-    @Query(name="Partei.getMaxId")
-    Long getMaxId();
-
-    @Query(name="Partei.getAllIds")
+    @Query(
+        name="Partei.getAllIds",
+        countQuery="Partei.countAllIds"
+    )
     List<Long> getAllIds();
+
+    @Query(
+        name="Partei.getMaxId"
+    )
+    Long getMaxId();
 
 }

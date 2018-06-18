@@ -12,9 +12,14 @@ public interface WebseiteCmsRepository extends JpaDomainRepository<WebseiteCms> 
 
     WebseiteCms findByCms(String cms);
 
-    @Query(name="WebseiteCms.getAllIds")
+    @Override
+    @Query(
+        name="WebseiteCms.getAllIds",
+        countQuery="WebseiteCms.countAllIds"
+    )
     List<Long> getAllIds();
 
+    @Override
     @Query(name="WebseiteCms.getMaxId")
     Long getMaxId();
 }

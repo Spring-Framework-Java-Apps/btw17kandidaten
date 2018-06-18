@@ -18,7 +18,10 @@ public interface Btw17WahlkreisRepository extends JpaDomainRepository<Btw17Wahlk
     @Query(name="Btw17Wahlkreis.findByBundeslandNummer")
     BundeslandEnum findByBundeslandNummer(@Param("bundeslandNummer") long bundeslandNummer);
 
-    @Query(name="Btw17Wahlkreis.getAllIds")
+    @Query(
+        name="Btw17Wahlkreis.getAllIds",
+        countQuery="Btw17Wahlkreis.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Btw17Wahlkreis.getMaxId")

@@ -12,7 +12,10 @@ public interface BerufsgruppeRepository extends JpaDomainRepository<Berufsgruppe
 
     Berufsgruppe findByBerufsgruppe(String berufsgruppe);
 
-    @Query(name="Berufsgruppe.getAllIds")
+    @Query(
+        name="Berufsgruppe.getAllIds",
+        countQuery="Berufsgruppe.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Berufsgruppe.getMaxId")

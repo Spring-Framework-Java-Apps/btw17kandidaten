@@ -16,7 +16,10 @@ public interface BundeslandRepository extends JpaDomainRepository<Bundesland> {
     @Query(name="Bundesland.countBundeslandAgentur")
     long countBundeslandAgentur();
 
-    @Query(name="Bundesland.getAllIds")
+    @Query(
+        name="Bundesland.getAllIds",
+        countQuery="Bundesland.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Bundesland.getMaxId")

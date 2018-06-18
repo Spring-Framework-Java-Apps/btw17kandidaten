@@ -14,7 +14,10 @@ public interface ListeParteiRepository extends JpaDomainRepository<ListePartei> 
 
     ListePartei findByListePartei(String listePartei);
 
-    @Query(name="ListePartei.getAllIds")
+    @Query(
+        name="ListePartei.getAllIds",
+        countQuery="ListePartei.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="ListePartei.getMaxId")

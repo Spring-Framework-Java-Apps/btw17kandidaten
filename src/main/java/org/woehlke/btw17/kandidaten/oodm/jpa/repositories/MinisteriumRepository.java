@@ -13,7 +13,10 @@ public interface MinisteriumRepository extends JpaDomainRepository<Ministerium> 
 
     Ministerium findByMinisterium(String ministerium);
 
-    @Query(name="Ministerium.getAllIds")
+    @Query(
+        name="Ministerium.getAllIds",
+        countQuery="Ministerium.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Ministerium.getMaxId")

@@ -12,7 +12,10 @@ public interface BerufRepository extends JpaDomainRepository<Beruf> {
 
     Beruf findByBeruf(String beruf);
 
-    @Query(name="Beruf.getAllIds")
+    @Query(
+        name="Beruf.getAllIds",
+        countQuery="Beruf.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Beruf.getMaxId")

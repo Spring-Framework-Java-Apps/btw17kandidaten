@@ -15,7 +15,10 @@ import java.util.List;
 @Repository
 public interface WahlperiodeRepository extends JpaDomainRepository<Wahlperiode> {
 
-    @Query(name = "Wahlperiode.getAllIds")
+    @Query(
+        name = "Wahlperiode.getAllIds",
+        countQuery="Wahlperiode.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name = "Wahlperiode.getMaxId")

@@ -12,7 +12,10 @@ public interface WahlkreisRepository extends JpaDomainRepository<Wahlkreis> {
 
     Wahlkreis findByWahlkreisId(Long wahlkreisId);
 
-    @Query(name="Wahlkreis.getAllIds")
+    @Query(
+        name="Wahlkreis.getAllIds",
+        countQuery="Wahlkreis.getAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Wahlkreis.getMaxId")

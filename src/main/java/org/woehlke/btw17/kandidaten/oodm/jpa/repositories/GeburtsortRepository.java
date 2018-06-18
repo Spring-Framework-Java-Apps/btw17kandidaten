@@ -12,7 +12,10 @@ public interface GeburtsortRepository extends JpaDomainRepository<Geburtsort> {
 
     Geburtsort findByGeburtsort(String geburtsort);
 
-    @Query(name="Geburtsort.getAllIds")
+    @Query(
+        name="Geburtsort.getAllIds",
+        countQuery="Geburtsort.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Query(name="Geburtsort.getMaxId")

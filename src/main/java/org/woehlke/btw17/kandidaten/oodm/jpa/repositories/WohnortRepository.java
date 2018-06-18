@@ -12,9 +12,14 @@ public interface WohnortRepository extends JpaDomainRepository<Wohnort> {
 
     Wohnort findByWohnort(String wohnort);
 
-    @Query(name = "Wohnort.getAllIds")
+    @Override
+    @Query(
+        name = "Wohnort.getAllIds",
+        countQuery=""
+    )
     List<Long> getAllIds();
 
+    @Override
     @Query(name = "Wohnort.getMaxId")
     Long getMaxId();
 

@@ -34,7 +34,10 @@ public interface LandesListeRepository extends JpaDomainRepository<LandesListe> 
     List<LandesListe> getAll();
 
     @Override
-    @Query(name="LandesListe.getAllIds")
+    @Query(
+        name="LandesListe.getAllIds",
+        countQuery="LandesListe.countAllIds"
+    )
     List<Long> getAllIds();
 
     @Override
