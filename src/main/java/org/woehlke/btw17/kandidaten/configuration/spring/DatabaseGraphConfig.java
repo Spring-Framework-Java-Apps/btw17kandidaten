@@ -17,6 +17,7 @@ import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 
+/*
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("org.woehlke.btw17.kandidaten.oodm.graph")
@@ -32,8 +33,9 @@ import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
         "org.woehlke.btw17.kandidaten.oodm.graph.repositories.webseite"
     }
 )
+*/
 public class DatabaseGraphConfig {
-
+/*
     private static final Log log = LogFactory.getLog(DatabaseGraphConfig.class);
 
     @Autowired
@@ -99,12 +101,14 @@ public class DatabaseGraphConfig {
         log.info("  configuration.getAutoIndex                      "+configuration.getAutoIndex().getName());
         log.info("  configuration.getNeo4jHaPropertiesFile          "+configuration.getNeo4jHaPropertiesFile());
         log.info("  configuration.getTrustCertFile                  "+configuration.getTrustCertFile());
-        /*
+        / *
         for(String myUri: configuration.getURIS()){
             log.info("  configuration.getURIS                           "+myUri);
         }
-        */
+        * /
         log.info("###############################################################################################");
         return configuration;
     }
+
+    */
 }

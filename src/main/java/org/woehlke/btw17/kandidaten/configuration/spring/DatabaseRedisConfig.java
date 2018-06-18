@@ -12,26 +12,11 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 import org.springframework.session.data.redis.config.annotation.web.server.EnableRedisWebSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
+/*
 @Configuration
 @EnableTransactionManagement
-@EnableRedisRepositories
-@EnableRedisWebSession
-@EnableRedisHttpSession
+*/
 public class DatabaseRedisConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.data.redis")
-    public RedisConnectionFactory redisConnectionFactory() {
-        return new JedisConnectionFactory();
-    }
-
-    @Bean
-    public StringRedisTemplate redisTemplate() {
-        StringRedisTemplate template = new StringRedisTemplate(redisConnectionFactory());
-        // explicitly enable transaction support
-        template.setEnableTransactionSupport(true);
-        return template;
-    }
 
 }

@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
+/*
 @Configuration
 @ComponentScan("org.woehlke.btw17.kandidaten.oodm.jpa")
 @EnableTransactionManagement
@@ -33,8 +34,9 @@ import javax.sql.DataSource;
     basePackages = "org.woehlke.btw17.kandidaten.oodm.jpa.repositories"
 )
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
+*/
 public class DatabaseJpaConfig {
-
+/*
     private static final Log log = LogFactory.getLog(DatabaseJpaConfig.class);
 
     private final Environment env;
@@ -76,4 +78,5 @@ public class DatabaseJpaConfig {
         log.debug("Initializing platform transaction manager");
         return new ChainedTransactionManager(postgresqlTransactionManager, graphTransactionManager);
     }
+    */
 }
