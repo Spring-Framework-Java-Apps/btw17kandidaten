@@ -92,6 +92,12 @@ public interface KandidatRepository extends JpaDomainRepository<Kandidat> {
     )
     Page<Kandidat> getAll(Pageable pageRequest);
 
+    @Query(
+        name="Kandidat.getAllIds",
+        countName = "Kandidat.getAllIdsCount"
+    )
+    List<Long> getAllIds();
+
     @Query(name="Kandidat.countKandidatMinisterium",nativeQuery=true)
     long countKandidatMinisterium();
 

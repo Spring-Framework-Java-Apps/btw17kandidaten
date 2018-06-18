@@ -9,9 +9,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.data.redis.config.annotation.web.server.EnableRedisWebSession;
+import org.springframework.session.FindByIndexNameSessionRepository;
+import org.springframework.session.Session;
+import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.security.SpringSessionBackedSessionRegistry;
+import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -61,6 +65,11 @@ public class WebMvcConfig extends WebSecurityConfigurerAdapter implements WebMvc
         return new MethodValidationPostProcessor();
     }
 
+    @Bean
+    public SpringSessionBackedSessionRegistry sessionRegistry() {
+        return new SpringSessionBackedSessionRegistry<>(this.sessionRepository);
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -76,6 +85,9 @@ public class WebMvcConfig extends WebSecurityConfigurerAdapter implements WebMvc
             .failureForwardUrl("/login")
             .defaultSuccessUrl("/adm")
             .permitAll()
+            .and()
+            .rememberMe()
+            .rememberMeServices(rememberMeServices())
             .and()
             .logout()
             .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -93,12 +105,22 @@ public class WebMvcConfig extends WebSecurityConfigurerAdapter implements WebMvc
             .withUser(user).password(pwd).roles(role);
     }
 
+    @Bean
+    public RememberMeServices rememberMeServices() {
+        SpringSessionRememberMeServices rememberMeServices =
+            new SpringSessionRememberMeServices();
+        // optionally customize
+        rememberMeServices.setAlwaysRemember(true);
+        return rememberMeServices;
+    }
 
     @Autowired
-    public WebMvcConfig(KandidatenProperties kandidatenProperties) {
+    public WebMvcConfig(RedisOperationsSessionRepository sessionRepository, KandidatenProperties kandidatenProperties) {
+        this.sessionRepository = sessionRepository;
         this.kandidatenProperties = kandidatenProperties;
     }
 
+    private final RedisOperationsSessionRepository sessionRepository;
     private final KandidatenProperties kandidatenProperties;
 
 }

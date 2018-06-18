@@ -100,6 +100,14 @@ import static javax.persistence.FetchType.LAZY;
         query = "select count(o) from Kandidat as o"
     ),
     @NamedQuery(
+        name = "Kandidat.getAllIds",
+        query = "select o.id from Kandidat as o order by id"
+    ),
+    @NamedQuery(
+        name = "Kandidat.getAllIdsCount",
+        query = "select count(o) from Kandidat as o"
+    ),
+    @NamedQuery(
         name = "Kandidat.getMdbWithoutBundestagProfile",
         query = "select o from Kandidat as o where o.onlineStrategie.bundestagAbgeordnete is null and o.mdb is not null order by o.nachname"
     ),

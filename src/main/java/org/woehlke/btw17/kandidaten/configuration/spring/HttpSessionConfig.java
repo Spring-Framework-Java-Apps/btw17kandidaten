@@ -13,6 +13,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.lang.NonNull;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.session.Session;
+import org.springframework.session.SessionRepository;
 import org.springframework.session.data.redis.RedisOperationsSessionRepository;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
@@ -50,7 +53,11 @@ public class HttpSessionConfig extends RedisHttpSessionConfiguration {
         return new DefaultErrorAttributes();
     }
 
-    /*
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
+
     @Bean
     public RedisTemplate<Object, Object> redisTemplate() {
         RedisTemplate<Object, Object>  template = new RedisTemplate();
@@ -59,5 +66,4 @@ public class HttpSessionConfig extends RedisHttpSessionConfiguration {
         template.setEnableTransactionSupport(enableTransactionSupport);
         return template;
     }
-    */
 }
