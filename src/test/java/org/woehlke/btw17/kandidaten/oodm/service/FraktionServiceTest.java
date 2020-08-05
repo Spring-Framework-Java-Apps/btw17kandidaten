@@ -92,7 +92,7 @@ public class FraktionServiceTest {
         log.info("controllerIsPresentTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         long resultSize = fraktionen.getTotalElements();
         log.debug("found: # "+resultSize);

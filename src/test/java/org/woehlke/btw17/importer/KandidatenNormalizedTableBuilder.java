@@ -115,7 +115,7 @@ public class KandidatenNormalizedTableBuilder {
         landesListeService.deleteAll();
         int page = 0;
         int size = 250;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Btw17KandidatFlat> allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         List<LandesListe> landesListen = new ArrayList<>();
@@ -145,7 +145,7 @@ public class KandidatenNormalizedTableBuilder {
     public void build002Kandidat() throws Exception {
         int page = 0;
         int size = 250;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Btw17KandidatFlat> allKandidatenPage = btw17KandidatFlatService.getAllOrderByNachname(pageable);
         boolean goOn = true;
         while(goOn){

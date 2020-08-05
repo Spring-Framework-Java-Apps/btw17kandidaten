@@ -92,7 +92,7 @@ public class AusschussServiceTest {
         log.info("test002findByAusschuss");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Ausschuss> ausschuesse = ausschussService.getAll(pageable);
         long resultSize = ausschuesse.getTotalElements();
         log.debug("found: # "+resultSize);

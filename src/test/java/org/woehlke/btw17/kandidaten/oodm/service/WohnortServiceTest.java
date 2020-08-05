@@ -92,7 +92,7 @@ public class WohnortServiceTest {
     public void test002findByWohnortTest() throws Exception {
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
         long resultSize = wohnorte.getTotalElements();
         log.debug("found: # "+resultSize);

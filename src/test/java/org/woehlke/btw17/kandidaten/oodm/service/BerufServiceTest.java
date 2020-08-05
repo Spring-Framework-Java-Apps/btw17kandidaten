@@ -91,7 +91,7 @@ public class BerufServiceTest {
         log.info("test002findByBeruf");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Beruf> berufe = berufService.getAll(pageable);
         long resultSize = berufe.getTotalElements();
         log.debug("found: # "+resultSize);

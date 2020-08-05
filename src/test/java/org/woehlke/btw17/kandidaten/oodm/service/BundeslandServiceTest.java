@@ -92,7 +92,7 @@ public class BundeslandServiceTest {
         log.info("test002findByBundeslandTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Bundesland> bundeslaender = bundeslandService.getAll(pageable);
         long resultSize = bundeslaender.getTotalElements();
         log.debug("found: # "+resultSize);

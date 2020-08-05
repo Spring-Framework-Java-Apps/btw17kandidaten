@@ -65,7 +65,7 @@ public class LandesListeServiceImpl implements LandesListeService {
 
     @Override
     public LandesListe findById(long id) {
-        return  landesListeRepository.findOne(id);
+        return  landesListeRepository.getOne(id);
     }
 
     @Override

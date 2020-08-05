@@ -91,7 +91,7 @@ public class ParteiServiceTest {
     public void test002findByParteiTest() throws Exception {
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Partei> parteien = parteiService.getAll(pageable);
         long resultSize = parteien.getTotalElements();
         log.debug("found: # "+resultSize);

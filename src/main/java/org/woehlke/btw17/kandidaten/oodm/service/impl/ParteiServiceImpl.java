@@ -63,7 +63,7 @@ public class ParteiServiceImpl implements ParteiService {
 
     @Override
     public Partei findById(long id) {
-        return parteiRepository.findOne(id);
+        return parteiRepository.getOne(id);
     }
 
     @Override

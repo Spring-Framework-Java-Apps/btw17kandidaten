@@ -95,7 +95,7 @@ public class WohnortControllerTest {
         log.info(msg);
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Wohnort> wohnorte = wohnortService.getAll(pageable);
         boolean goOn = true;
         while (goOn) {

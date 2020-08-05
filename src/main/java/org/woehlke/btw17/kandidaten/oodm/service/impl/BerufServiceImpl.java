@@ -62,7 +62,7 @@ public class BerufServiceImpl implements BerufService {
 
     @Override
     public Beruf findById(long id) {
-        return berufRepository.findOne(id);
+        return berufRepository.getOne(id);
     }
 
     @Override

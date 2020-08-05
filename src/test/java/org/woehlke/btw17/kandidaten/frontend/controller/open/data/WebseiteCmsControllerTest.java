@@ -95,7 +95,7 @@ public class WebseiteCmsControllerTest {
         log.info(msg);
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<WebseiteCms> wohnorte = webseiteCmsService.getAll(pageable);
         boolean goOn = true;
         while (goOn) {

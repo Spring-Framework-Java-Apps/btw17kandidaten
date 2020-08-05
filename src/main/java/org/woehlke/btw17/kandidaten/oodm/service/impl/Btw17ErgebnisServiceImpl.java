@@ -81,7 +81,7 @@ public class Btw17ErgebnisServiceImpl implements Btw17ErgebnisService {
 
     @Override
     public Btw17Ergebnis findById(long id) {
-        return btw17ErgebnisRepository.findOne(id);
+        return btw17ErgebnisRepository.getOne(id);
     }
 
     @Override

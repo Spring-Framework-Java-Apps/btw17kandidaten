@@ -93,7 +93,7 @@ public class MinisteriumServiceTest {
         log.info("test002findByMinisterium");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Ministerium> ministerien = ministeriumService.getAll(pageable);
         long resultSize = ministerien.getTotalElements();
         log.debug("found: # "+resultSize);

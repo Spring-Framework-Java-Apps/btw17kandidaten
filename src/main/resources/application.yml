@@ -208,7 +208,6 @@ btw17:
     checkFotoUrl: false
 logging:
   config: classpath:logback-devtest.xml
-  file: logging-devtest.log
   level:
     org:
       woehlke:

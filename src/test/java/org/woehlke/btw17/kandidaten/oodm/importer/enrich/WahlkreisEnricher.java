@@ -22,8 +22,6 @@ import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.EditStatus;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -66,13 +64,7 @@ public class WahlkreisEnricher {
     private MockMvc mockMvc;
 
     @Autowired
-    private SpringProperties springProperties;
-
-    @Autowired
     private KandidatenProperties kandidatenProperties;
-
-    @Autowired
-    private OtherProperties otherProperties;
 
     @Autowired
     private BerufService berufService;
@@ -172,7 +164,7 @@ public class WahlkreisEnricher {
         log.info("test010updateWahlkreisWithBundesland");
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Btw17Wahlkreis> btw17WahlkreisPage = btw17WahlkreisService.getAll(pageable);
         boolean goOn = true;
         while(goOn) {

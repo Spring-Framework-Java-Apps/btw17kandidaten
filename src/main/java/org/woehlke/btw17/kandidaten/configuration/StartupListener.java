@@ -7,8 +7,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.frontend.model.ReportOverview;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17MdbService;
 import org.woehlke.btw17.kandidaten.oodm.service.Btw17WahlperiodeService;
@@ -22,11 +20,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 
     private static final Logger log = LoggerFactory.getLogger(StartupListener.class);
 
-    private final SpringProperties springProperties;
-
     private final KandidatenProperties kandidatenProperties;
-
-    private final OtherProperties otherProperties;
 
     private final BerufService berufService;
 
@@ -77,10 +71,8 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
     private final Btw17WahlperiodeService btw17WahlperiodeService;
 
     @Autowired
-    public StartupListener(SpringProperties springProperties, KandidatenProperties kandidatenProperties, OtherProperties otherProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WahlperiodeService wahlperiodeService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService, Btw17MdbService btw17MdbService, Btw17WahlperiodeService btw17WahlperiodeService) {
-        this.springProperties = springProperties;
+    public StartupListener(KandidatenProperties kandidatenProperties, BerufService berufService, BerufsgruppeService berufsgruppeService, BundeslandService bundeslandService, GeburtsortService geburtsortService, Btw17KandidatFlatService btw17KandidatFlatService, KandidatService kandidatService, ListeParteiService listeParteiService, ParteiService parteiService, LandesListeService landesListeService, WahlkreisService wahlkreisService, WohnortService wohnortService, MinisteriumService ministeriumService, FraktionService fraktionService, AusschussService ausschussService, KandidatReportService kandidatReportService, WebseiteAgenturService webseiteAgenturService, WahlperiodeService wahlperiodeService, WebseiteCmsService webseiteCmsService, Btw17ErgebnisService btw17ErgebnisService, Btw17StrukturdatenService btw17StrukturdatenService, Btw17WahlbewerberService btw17WahlbewerberService, Btw17WahlkreisService btw17WahlkreisService, Btw17MdbService btw17MdbService, Btw17WahlperiodeService btw17WahlperiodeService) {
         this.kandidatenProperties = kandidatenProperties;
-        this.otherProperties = otherProperties;
         this.berufService = berufService;
         this.berufsgruppeService = berufsgruppeService;
         this.bundeslandService = bundeslandService;
@@ -148,9 +140,6 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         outputLines.add(kandidatenProperties.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(springProperties.toString());
-        outputLines.add("--------------------------------------------------------------------------------------------------------------");
-        outputLines.add(otherProperties.toString());
         outputLines.add("--------------------------------------------------------------------------------------------------------------");
         ReportOverview reportOverview = kandidatReportService.getOverview();
         outputLines.add(reportOverview.toString());

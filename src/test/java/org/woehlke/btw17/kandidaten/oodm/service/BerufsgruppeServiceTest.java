@@ -91,7 +91,7 @@ public class BerufsgruppeServiceTest {
         log.info("test002findByBerufsgruppeTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Berufsgruppe> berufsgruppen = berufsgruppeService.getAll(pageable);
         long resultSize = berufsgruppen.getTotalElements();
         log.debug("found: # "+resultSize);

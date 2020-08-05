@@ -95,7 +95,7 @@ public class KandidatControllerTest {
         log.info(msg);
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Kandidat> kandidaten = kandidatService.getAll(pageable);
         boolean goOn = true;
         while(goOn) {

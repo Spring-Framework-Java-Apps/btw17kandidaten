@@ -94,7 +94,7 @@ public class WebseiteAgenturServiceTest {
         log.info("test002findByAgenturTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<WebseiteAgentur> webseiteAgenturen = webseiteAgenturService.getAll(pageable);
         long resultSize = webseiteAgenturen.getTotalElements();
         log.debug("found: # "+resultSize);

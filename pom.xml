@@ -214,8 +214,10 @@
             <scope>test</scope>
         </dependency>
 
-
-
+        <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-jgit</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -231,16 +233,13 @@
                     <artifactId>maven-scm-providers-standard</artifactId>
                     <version>${maven.scm.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.scm</groupId>
-                    <artifactId>maven-scm-provider-jgit</artifactId>
-                    <version>${maven.scm.version}</version>
-                </plugin>
+                <!--
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>3.0.5</version>
                 </plugin>
+                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
@@ -261,11 +260,13 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.1.1</version>
                 </plugin>
+                <!--
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>3.0.5</version>
                 </plugin>
+                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
@@ -345,7 +346,9 @@
                     <maxmemory>2048m</maxmemory>
                     <source>${java.version}</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <!--
                     <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+                    -->
                 </configuration>
                 <executions>
                     <execution>
@@ -361,7 +364,9 @@
                             <maxmemory>2048m</maxmemory>
                             <source>${java.version}</source>
                             <encoding>${project.build.sourceEncoding}</encoding>
+                            <!--
                             <javadocExecutable>${java.home}/../bin/javadoc</javadocExecutable>
+                            -->
                         </configuration>
                     </execution>
                 </executions>
@@ -369,10 +374,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-jgit</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -477,22 +478,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.scm</groupId>
-                <artifactId>maven-scm-provider-jgit</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <configuration>
-                    <onlyAnalyze>org.woehlke.*</onlyAnalyze>
-                    <omitVisitors>FindDeadLocalStores</omitVisitors>
-                    <findbugsXmlOutput>true</findbugsXmlOutput>
-                    <xmlOutputDirectory>target/site</xmlOutputDirectory>
-                    <effort>Max</effort>
-                    <threshold>Low</threshold>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

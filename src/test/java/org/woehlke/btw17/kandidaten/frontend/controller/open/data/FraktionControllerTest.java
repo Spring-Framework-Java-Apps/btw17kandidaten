@@ -94,7 +94,7 @@ public class FraktionControllerTest {
         log.info(msg);
         int page=FIRST_PAGE_NUMBER;
         int size=PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Fraktion> fraktionen = fraktionService.getAll(pageable);
         boolean goOn = true;
         while(goOn) {

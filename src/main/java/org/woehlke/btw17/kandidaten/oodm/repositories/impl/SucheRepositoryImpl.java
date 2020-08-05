@@ -31,7 +31,8 @@ public class SucheRepositoryImpl implements SucheRepository {
     @Override
     public Page<Kandidat> findByJpaQueryStatement(String query, long total, Pageable pageable) {
         TypedQuery<Kandidat> searchQuery = entityManager.createQuery(query,Kandidat.class);
-        searchQuery.setFirstResult(pageable.getOffset());
+        int offset = Long.valueOf(pageable.getOffset()).intValue();
+        searchQuery.setFirstResult(offset);
         searchQuery.setMaxResults(pageable.getPageSize());
         List<Kandidat> content = searchQuery.getResultList();
         Page<Kandidat> pageKandidat = new PageImpl<>(content, pageable, total);

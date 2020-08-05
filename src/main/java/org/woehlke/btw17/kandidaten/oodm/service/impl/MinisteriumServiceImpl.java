@@ -62,7 +62,7 @@ public class MinisteriumServiceImpl implements MinisteriumService {
 
     @Override
     public Ministerium findById(long id) {
-        return ministeriumRepository.findOne(id);
+        return ministeriumRepository.getOne(id);
     }
 
     @Override

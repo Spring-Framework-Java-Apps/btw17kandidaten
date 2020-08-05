@@ -93,7 +93,7 @@ public class WebseiteCmsServiceTest {
         log.info("test002findByCmsTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<WebseiteCms> webseitenCms = webseiteCmsService.getAll(pageable);
         long resultSize = webseitenCms.getTotalElements();
         log.debug("found: # "+resultSize);

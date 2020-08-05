@@ -19,8 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 import org.woehlke.btw17.kandidaten.configuration.spring.DataSourceConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.HttpSessionConfig;
 import org.woehlke.btw17.kandidaten.configuration.spring.WebMvcConfig;
@@ -66,13 +64,7 @@ public class KandidatEnricher {
         private MockMvc mockMvc;
 
         @Autowired
-        private SpringProperties springProperties;
-
-        @Autowired
         private KandidatenProperties kandidatenProperties;
-
-        @Autowired
-        private OtherProperties otherProperties;
 
         @Autowired
         private BerufService berufService;
@@ -186,7 +178,7 @@ public class KandidatEnricher {
 
             int page = FIRST_PAGE_NUMBER;
             int size = PAGE_SIZE;
-            Pageable pageable = new PageRequest(page, size);
+            Pageable pageable = PageRequest.of(page, size);
 
             Page<Btw17Mdb> btw17MdbPage = btw17MdbService.getAll(pageable);
             long resultSize = btw17MdbPage.getTotalElements();

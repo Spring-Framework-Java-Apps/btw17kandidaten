@@ -91,7 +91,7 @@ public class ListeParteiServiceTest {
         log.info("test002findByListeParteiTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<ListePartei> listeParteien = listeParteiService.getAll(pageable);
         long resultSize = listeParteien.getTotalElements();
         log.debug("found: # "+resultSize);

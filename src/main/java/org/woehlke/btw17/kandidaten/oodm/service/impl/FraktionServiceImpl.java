@@ -62,7 +62,7 @@ public class FraktionServiceImpl implements FraktionService {
 
     @Override
     public Fraktion findById(long id) {
-        return fraktionRepository.findOne(id);
+        return fraktionRepository.getOne(id);
     }
 
     @Override

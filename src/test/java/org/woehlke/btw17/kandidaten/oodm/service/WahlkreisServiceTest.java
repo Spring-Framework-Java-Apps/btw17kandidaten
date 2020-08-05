@@ -92,7 +92,7 @@ public class WahlkreisServiceTest {
         log.info("test002findByWahlkreisIdTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Wahlkreis> wahlkreise = wahlkreisService.getAll(pageable);
         long resultSize = wahlkreise.getTotalElements();
         log.debug("found: # "+resultSize);

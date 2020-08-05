@@ -4,9 +4,12 @@ package org.woehlke.btw17.kandidaten.frontend.controller.open.errors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.AbstractErrorController;
-import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
+//import org.springframework.boot.autoconfigure.web.AbstractErrorController;
+//import org.springframework.boot.autoconfigure.web.ErrorAttributes;
+//import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
+import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.JumbotronImage;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
+//import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.frontend.model.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.SearchForKandidat;
@@ -79,22 +82,21 @@ public class ErrorController extends AbstractErrorController {
     }
 
     @Autowired
-    public ErrorController(ErrorAttributes errorAttributes, SessionHandler sessionHandler, OtherProperties otherProperties, KandidatenProperties kandidatenProperties) {
+    public ErrorController(ErrorAttributes errorAttributes, SessionHandler sessionHandler, KandidatenProperties kandidatenProperties) {
         this(errorAttributes,
-                Collections.<ErrorViewResolver>emptyList(),sessionHandler,otherProperties,kandidatenProperties);
+                Collections.<ErrorViewResolver>emptyList(),sessionHandler,kandidatenProperties);
     }
 
 
-    private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, OtherProperties otherProperties,KandidatenProperties kandidatenProperties) {
+    private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, KandidatenProperties kandidatenProperties) {
         super(errorAttributes, errorViewResolvers);
-        this.otherProperties = otherProperties;
         this.kandidatenProperties = kandidatenProperties;
         this.sessionHandler = sessionHandler;
     }
 
     @Override
     public String getErrorPath() {
-        return otherProperties.getServer().getError().getPath();
+        return "/error"; //otherProperties.getServer().getError().getPath();
     }
 
     @ModelAttribute("suchformularFreitext")
@@ -114,8 +116,6 @@ public class ErrorController extends AbstractErrorController {
     private static final Logger log = LoggerFactory.getLogger(ErrorController.class);
 
     private final SessionHandler sessionHandler;
-
-    private final OtherProperties otherProperties;
 
     private final KandidatenProperties kandidatenProperties;
 }

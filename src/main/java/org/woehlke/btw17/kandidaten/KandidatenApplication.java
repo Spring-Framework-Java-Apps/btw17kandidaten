@@ -5,13 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
-import org.woehlke.btw17.kandidaten.configuration.properties.SpringProperties;
 
 
 @SpringBootApplication
 @EnableConfigurationProperties({
-	KandidatenProperties.class,OtherProperties.class,SpringProperties.class
+	KandidatenProperties.class
 })
 @EnableSpringDataWebSupport
 public class KandidatenApplication {

@@ -92,7 +92,7 @@ public class GeburtsortServiceTest {
         log.info("test002findByGeburtsortTest");
         int page = FIRST_PAGE_NUMBER;
         int size = PAGE_SIZE;
-        Pageable pageable = new PageRequest(page,size);
+        Pageable pageable = PageRequest.of(page,size);
         Page<Geburtsort> geburtsorte = geburtsortService.getAll(pageable);
         long resultSize = geburtsorte.getTotalElements();
         log.debug("found: # "+resultSize);

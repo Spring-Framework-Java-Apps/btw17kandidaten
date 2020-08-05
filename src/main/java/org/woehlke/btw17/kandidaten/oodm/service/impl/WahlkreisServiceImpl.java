@@ -62,7 +62,7 @@ public class WahlkreisServiceImpl implements WahlkreisService {
 
     @Override
     public Wahlkreis findById(long id) {
-        return wahlkreisRepository.findOne(id);
+        return wahlkreisRepository.getOne(id);
     }
 
     @Override

@@ -67,7 +67,7 @@ public class WohnortServiceImpl implements WohnortService {
 
     @Override
     public Wohnort findById(long id) {
-        return wohnortRepository.findOne(id);
+        return wohnortRepository.getOne(id);
     }
 
     @Override
