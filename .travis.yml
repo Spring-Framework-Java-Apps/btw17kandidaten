@@ -1,10 +1,7 @@
+os: linux
+dist: bionic
 language: java
-jdk:
-  - oraclejdk13
-addons:
-  apt:
-    packages:
-      - oracle-java13-installer
+jdk: openjdk13
 services:
   - postgresql
 before_install:
