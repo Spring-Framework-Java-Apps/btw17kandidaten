@@ -1,17 +1,17 @@
 language: java
 jdk:
-  - oraclejdk8
+  - oraclejdk13
 addons:
   apt:
     packages:
-      - oracle-java8-installer
+      - oracle-java13-installer
 services:
   - postgresql
 before_install:
   - sudo apt-get update
   - sudo apt-get install language-pack-de
   - sudo /etc/init.d/postgresql stop
-  - sudo /etc/init.d/postgresql start 9.6
+  - sudo /etc/init.d/postgresql start 12
 before_script:
   - psql -c "CREATE USER kandidatentest WITH PASSWORD 'kandidatentestpwd' LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION;" -U postgres
   - psql -c 'GRANT pg_signal_backend, postgres TO kandidatentest WITH ADMIN OPTION;' -U postgres
