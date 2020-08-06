@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-source etc/setenv.sh
+source ./etc/setenv.sh
 
 function run() {
     ./mvnw clean spring-boot:run

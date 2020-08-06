@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export JAVA_OPTIONS='-Xmx300m -Xss512k -Dfile.encoding=UTF-8'
 
