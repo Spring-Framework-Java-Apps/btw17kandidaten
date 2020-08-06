@@ -1,49 +1,27 @@
-endpoints:
-  env:
-    - keys-to-sanitize: "password"
-    - keys-to-sanitize: "secret"
-    - keys-to-sanitize: "key"
-    - keys-to-sanitize: "passwort"
-  health:
-    sensitive: false
-  endpoints:
-    shutdown:
-      enabled: false
 server:
   error:
     path: /fehler
   compression:
     enabled: true
     min-response-size: 2048
-hibernate:
-  dialect: org.hibernate.dialect.PostgreSQL94Dialect
-info:
-  application:
-    artifactId: @project.artifactId@
-    description: @project.description@
-    groupId: @project.groupId@
-    name: @project.name@
-    version: @project.version@
-management:
-  address: 127.0.0.1
-  context-path: "/manage"
-  security:
-    enabled: true
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     admin:
       enabled: false
     name: @project.name@
   datasource:
+    url: ${DATABASE_URL}
+    #jdbcUrl: ${DATABASE_URL}
     driverClassName: org.postgresql.Driver
     #max-total: 20
     #maxActive: 20
     platform: POSTGRESQL
-    tomcat:
-      max-active: 20
-    url: ${DATABASE_URL}
     continue-on-error: true
     schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
+    tomcat:
+      max-active: 20
   session:
     store-type: jdbc
     jdbc:
@@ -53,6 +31,7 @@ spring:
     livereload:
       enabled: false
   jpa:
+    jdbcUrl: ${DATABASE_URL}
     open-in-view: true
     generate-ddl: true
     hibernate:
@@ -61,8 +40,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
     show-sql: true
-  template:
-    cache: false
   thymeleaf:
     cache: false
 btw17:

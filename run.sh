@@ -11,8 +11,8 @@ function firstSetup() {
 }
 
 function main() {
-    firstSetup
-    #run
+    #firstSetup
+    run
 }
 
 main
