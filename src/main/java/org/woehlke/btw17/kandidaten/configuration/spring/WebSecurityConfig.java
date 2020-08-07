@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.configuration.spring;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -10,11 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
 
+
+@Slf4j
 @Configuration
 @EnableSpringDataWebSupport
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
