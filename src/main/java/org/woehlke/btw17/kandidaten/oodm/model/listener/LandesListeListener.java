@@ -1,15 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.woehlke.btw17.kandidaten.oodm.model.LandesListe;
 
 import javax.persistence.*;
 
+@Slf4j
 public class LandesListeListener {
-
-    private static final Logger log = LoggerFactory.getLogger(LandesListeListener.class);
-
 
     @PrePersist
     public void onPrePersist(LandesListe domainObject) {

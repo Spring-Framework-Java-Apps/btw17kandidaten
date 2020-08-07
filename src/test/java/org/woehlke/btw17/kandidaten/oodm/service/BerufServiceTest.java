@@ -1,12 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +28,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
+
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = {
@@ -42,8 +43,6 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BerufServiceTest {
-
-    private static final Logger log = LoggerFactory.getLogger(BerufServiceTest.class);
 
     @Autowired
     private BerufService berufService;

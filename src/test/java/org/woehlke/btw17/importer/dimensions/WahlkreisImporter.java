@@ -1,10 +1,13 @@
 package org.woehlke.btw17.importer.dimensions;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
 
+
+@Slf4j
 public class WahlkreisImporter {
 
     private final static String dateiName = "etc/3nf/SELECT_wahlkreis_id_wahlkreis_name_FROM_.csv";

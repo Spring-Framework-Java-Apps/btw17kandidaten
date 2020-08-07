@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.repositories.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -14,6 +15,7 @@ import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 import java.util.List;
 
+@Slf4j
 @Repository
 public class SucheRepositoryImpl implements SucheRepository {
 

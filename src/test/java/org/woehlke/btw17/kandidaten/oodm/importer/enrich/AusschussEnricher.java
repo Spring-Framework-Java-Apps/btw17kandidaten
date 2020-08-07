@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.oodm.importer.enrich;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,7 @@ import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = {
@@ -39,9 +41,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AusschussEnricher {
-
-
-        private static final Logger log = LoggerFactory.getLogger(AusschussEnricher.class);
 
         @Autowired
         private MockMvc mockMvc;

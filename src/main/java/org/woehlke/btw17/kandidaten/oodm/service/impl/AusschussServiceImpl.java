@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +13,7 @@ import org.woehlke.btw17.kandidaten.oodm.service.AusschussService;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class AusschussServiceImpl implements AusschussService {

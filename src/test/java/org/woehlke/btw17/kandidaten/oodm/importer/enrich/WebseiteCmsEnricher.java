@@ -1,12 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.importer.enrich;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +25,8 @@ import org.woehlke.btw17.kandidaten.support.oodm.service.JdbcService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = {
@@ -39,9 +40,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WebseiteCmsEnricher {
-
-
-        private static final Logger log = LoggerFactory.getLogger(WebseiteCmsEnricher.class);
 
         @Autowired
         private MockMvc mockMvc;

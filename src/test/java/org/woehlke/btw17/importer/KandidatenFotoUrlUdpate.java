@@ -1,6 +1,7 @@
 package org.woehlke.btw17.importer;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ import org.woehlke.btw17.kandidaten.support.oodm.service.UrlService;
 
 import java.net.URL;
 
+
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class KandidatenFotoUrlUdpate {

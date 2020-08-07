@@ -1,10 +1,13 @@
 package org.woehlke.btw17.importer.dimensions;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
 
+
+@Slf4j
 public class BerufsgruppeImporter {
 
     private final static String dateiName = "etc/3nf/SELECT_berufsgruppe_FROM_kandidat_GROUP_.csv";

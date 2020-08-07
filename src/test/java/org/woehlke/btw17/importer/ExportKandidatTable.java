@@ -1,21 +1,20 @@
 package org.woehlke.btw17.importer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Commit;
 
 import java.io.*;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
+
+@Slf4j
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ExportKandidatTable {
-
-    private static final Logger log = LoggerFactory.getLogger(ExportKandidatTable.class);
 
     @Ignore
     @Commit

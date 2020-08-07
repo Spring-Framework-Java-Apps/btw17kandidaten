@@ -1,8 +1,7 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.open.data;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +31,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
  */
+@Slf4j
 @Controller
 @RequestMapping("/kandidat")
 @SessionAttributes({"suchformular","suchformularFreitext"})
@@ -97,8 +97,6 @@ public class KandidatController extends AbstractController {
             return "kandidat/id";
         }
     }
-
-    private static final Logger log = LoggerFactory.getLogger(KandidatController.class);
 
     private final KandidatService kandidatService;
 

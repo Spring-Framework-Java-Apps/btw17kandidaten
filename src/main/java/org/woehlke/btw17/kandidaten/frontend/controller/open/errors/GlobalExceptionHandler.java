@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.open.errors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
 
@@ -122,5 +124,4 @@ public class GlobalExceptionHandler extends SimpleMappingExceptionResolver {
 
     private final KandidatenProperties kandidatenProperties;
 
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 }

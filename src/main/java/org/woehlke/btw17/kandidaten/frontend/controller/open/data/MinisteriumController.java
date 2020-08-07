@@ -1,7 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.open.data;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +34,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Ministerium
  */
+@Slf4j
 @Controller
 @RequestMapping("/ministerium")
 @SessionAttributes({"suchformular","suchformularFreitext"})
@@ -113,8 +113,6 @@ public class MinisteriumController extends AbstractController {
             return "ministerium/id";
         }
     }
-
-    private static final Logger log = LoggerFactory.getLogger(MinisteriumController.class);
 
     private final MinisteriumService ministeriumService;
 

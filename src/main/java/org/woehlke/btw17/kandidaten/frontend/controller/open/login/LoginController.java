@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.open.login;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
+@Slf4j
 @Controller
 @SessionAttributes({"suchformular","suchformularFreitext"})
 public class LoginController extends AbstractController {
@@ -68,7 +70,5 @@ public class LoginController extends AbstractController {
     }
 
     private final KandidatenProperties kandidatenProperties;
-
-    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
 }

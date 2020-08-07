@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.woehlke.btw17.kandidaten.oodm.model.Kandidat;
 import org.woehlke.btw17.kandidaten.oodm.repositories.SucheRepository;
 import org.woehlke.btw17.kandidaten.oodm.service.SucheService;
 
-
+@Slf4j
 @Service
 @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
 public class SucheServiceImpl implements SucheService {
@@ -213,7 +214,5 @@ public class SucheServiceImpl implements SucheService {
     public SucheServiceImpl(SucheRepository sucheRepository) {
         this.sucheRepository = sucheRepository;
     }
-
-    private static final Logger log = LoggerFactory.getLogger(SucheServiceImpl.class);
 
 }

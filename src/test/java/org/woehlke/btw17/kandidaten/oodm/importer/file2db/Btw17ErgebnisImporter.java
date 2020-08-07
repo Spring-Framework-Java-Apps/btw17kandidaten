@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.importer.file2db;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -32,6 +33,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
     classes = {
@@ -45,8 +48,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Btw17ErgebnisImporter {
-
-    private static final Logger log = LoggerFactory.getLogger(Btw17ErgebnisImporter.class);
 
     private final String srcFileNameErgebnisWahlkreise = "etc/ergebnisse/importing/btw17_kerg_wahlkreise.csv";
 

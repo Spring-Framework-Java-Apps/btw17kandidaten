@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.closed.data;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PA
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_DEFAULT_SORT;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
+@Slf4j
 @Controller
 @RequestMapping("/kandidatflat")
 @SessionAttributes({"suchformular","suchformularFreitext"})

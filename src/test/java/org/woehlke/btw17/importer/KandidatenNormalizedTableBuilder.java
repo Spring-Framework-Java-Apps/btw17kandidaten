@@ -1,13 +1,12 @@
 package org.woehlke.btw17.importer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -30,12 +29,11 @@ import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {KandidatenApplication.class},webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KandidatenNormalizedTableBuilder {
-
-    private static final Logger log = LoggerFactory.getLogger(KandidatenNormalizedTableBuilder.class);
 
     private final static String sqlFileLandeslisteData = "etc/3nf/data/insert-data-landesliste.sql";
 

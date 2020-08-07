@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -29,6 +30,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.FIRST_PAGE_NUMBER;
 import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZE;
 
+
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
     classes = {
@@ -42,8 +45,6 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AusschussServiceTest {
-
-    private static final Logger log = LoggerFactory.getLogger(AusschussServiceTest.class);
 
     @Autowired
     private AusschussService ausschussService;

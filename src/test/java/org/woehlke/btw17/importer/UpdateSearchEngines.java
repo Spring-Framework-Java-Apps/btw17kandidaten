@@ -1,13 +1,12 @@
 package org.woehlke.btw17.importer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
@@ -15,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.woehlke.btw17.kandidaten.KandidatenApplication;
 import org.woehlke.btw17.kandidaten.oodm.service.*;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
     classes = {KandidatenApplication.class},
@@ -22,8 +22,6 @@ import org.woehlke.btw17.kandidaten.oodm.service.*;
 )
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UpdateSearchEngines {
-
-    private static final Logger log = LoggerFactory.getLogger(UpdateSearchEngines.class);
 
     @Autowired
     private AusschussService ausschussService;

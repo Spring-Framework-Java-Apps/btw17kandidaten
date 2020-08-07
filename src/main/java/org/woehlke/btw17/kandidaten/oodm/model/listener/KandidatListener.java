@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.woehlke.btw17.kandidaten.oodm.model.Ausschuss;
@@ -8,10 +9,8 @@ import org.woehlke.btw17.kandidaten.oodm.model.Ministerium;
 
 import javax.persistence.*;
 
+@Slf4j
 public class KandidatListener {
-
-    private static final Logger log = LoggerFactory.getLogger(KandidatListener.class);
-
 
     @PrePersist
     public void onPrePersist(Kandidat domainObject) {

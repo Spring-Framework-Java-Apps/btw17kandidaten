@@ -1,13 +1,12 @@
 package org.woehlke.btw17.kandidaten.oodm.importer.file2db;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +32,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
         classes = {
@@ -46,8 +46,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureMockMvc
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Btw17StrukturdatenImporter {
-
-    private static final Logger log = LoggerFactory.getLogger(Btw17StrukturdatenImporter.class);
 
     private final String srcFileNameStrukturdatenWahlkreise = "etc/ergebnisse/importing/btw17_strukturdaten_wahlkreise.csv";
 

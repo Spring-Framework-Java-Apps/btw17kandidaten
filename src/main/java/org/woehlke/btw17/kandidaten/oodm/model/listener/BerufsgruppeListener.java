@@ -1,15 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.woehlke.btw17.kandidaten.oodm.model.Berufsgruppe;
 
 import javax.persistence.*;
 
+@Slf4j
 public class BerufsgruppeListener {
-
-    private static final Logger log = LoggerFactory.getLogger(BerufsgruppeListener.class);
-
 
     @PrePersist
     public void onPrePersist(Berufsgruppe domainObject) {

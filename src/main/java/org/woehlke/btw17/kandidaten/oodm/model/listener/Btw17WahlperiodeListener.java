@@ -1,15 +1,14 @@
 package org.woehlke.btw17.kandidaten.oodm.model.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.woehlke.btw17.kandidaten.oodm.model.Btw17Wahlperiode;
 
 import javax.persistence.*;
 
+@Slf4j
 public class Btw17WahlperiodeListener {
-
-    private static final Logger log = LoggerFactory.getLogger(Btw17WahlperiodeListener.class);
-
 
     @PrePersist
     public void onPrePersist(Btw17Wahlperiode domainObject) {

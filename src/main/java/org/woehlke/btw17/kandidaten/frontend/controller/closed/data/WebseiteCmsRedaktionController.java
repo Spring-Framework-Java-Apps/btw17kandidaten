@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.closed.data;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ import static org.woehlke.btw17.kandidaten.oodm.service.KandidatService.PAGE_SIZ
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.WebseiteCms
  */
+@Slf4j
 @Controller
 @RequestMapping("/redaktion/webseite/cms")
 @SessionAttributes({"suchformular","suchformularFreitext"})

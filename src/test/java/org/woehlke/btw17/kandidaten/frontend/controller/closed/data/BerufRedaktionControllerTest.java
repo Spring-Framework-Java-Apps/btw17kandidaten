@@ -1,6 +1,7 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.closed.data;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(
     classes={KandidatenApplication.class},

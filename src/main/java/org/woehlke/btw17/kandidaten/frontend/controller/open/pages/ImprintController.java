@@ -1,5 +1,6 @@
 package org.woehlke.btw17.kandidaten.frontend.controller.open.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.frontend.model.SessionHandler;
 import org.woehlke.btw17.kandidaten.frontend.controller.common.AbstractController;
 
+@Slf4j
 @Controller
 @RequestMapping("/imprint")
 @SessionAttributes({"suchformular","suchformularFreitext"})
