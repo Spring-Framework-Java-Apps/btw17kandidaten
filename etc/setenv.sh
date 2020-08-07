@@ -1,9 +1,10 @@
 #!/bin/bash
 
 export JAVA_OPTIONS='-Xmx300m -Xss512k -Dfile.encoding=UTF-8'
-
-export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
-export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidaten?user=kandidaten&password=kandidatenpwd'
+export DATABASE_URL='jdbc:postgresql://localhost:5432/kandidaten'
+export DATABASE_URL_TEST='jdbc:postgresql://localhost:5432/kandidaten'
+export BTW17_DS_USR='kandidaten'
+export BTW17_DS_PWD='kandidatenpwd'
 export BTW17_LOGIN_USERNAME=blubb
 export BTW17_LOGIN_PASSWORD=blablablablablablablablabla
 export BTW17_JPA_HIBERNATE_DDL_AUTO=update

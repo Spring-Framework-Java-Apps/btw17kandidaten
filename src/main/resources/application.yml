@@ -12,16 +12,33 @@ spring:
       enabled: false
     name: @project.name@
   datasource:
-    url: ${DATABASE_URL}
-    #jdbcUrl: ${DATABASE_URL}
-    driverClassName: org.postgresql.Driver
-    #max-total: 20
-    #maxActive: 20
+    url:  ${DATABASE_URL}
+    username:  ${BTW17_DS_USR}
+    password:  ${BTW17_DS_PWD}
+    driver-class-name:  org.postgresql.Driver
+    initialization-mode: always
     platform: POSTGRESQL
     continue-on-error: true
     schema: classpath:org/springframework/session/jdbc/schema-postgresql.sql
     tomcat:
       max-active: 20
+  jpa:
+    open-in-view: true
+    generate-ddl: true
+    show-sql: true
+    database-platform: POSTGRESQL
+    hibernate:
+      #ddl-auto: create-drop update
+      ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+        generate_statistics: true
   session:
     store-type: jdbc
     jdbc:
@@ -30,18 +47,18 @@ spring:
   devtools:
     livereload:
       enabled: false
-  jpa:
-    jdbcUrl: ${DATABASE_URL}
-    open-in-view: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: ${BTW17_JPA_HIBERNATE_DDL_AUTO}
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
-    show-sql: true
+  jta:
+    atomikos:
+      connectionfactory:
+        xa-connection-factory-class-name: org.postgresql.xa.PGXADataSource
   thymeleaf:
     cache: false
+  #activemq:
+    #broker-url:
+      #ALWAYS
+      #cleanup-cron: 0 * * * *simpleworklist *
+      ##schema: classpath:/org/springframework/session/jdbc/schema-h2.sql
+      ##table-name: SPRING_SESSION
 btw17:
   kandidaten:
     pageSize: 20
