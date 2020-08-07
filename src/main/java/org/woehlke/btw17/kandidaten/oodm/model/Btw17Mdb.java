@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17MdbListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
 
@@ -8,6 +12,11 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
         name = "btw17_mdb_stammdaten"/*,

@@ -1,12 +1,19 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WohnortListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 
-
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "wohnort",

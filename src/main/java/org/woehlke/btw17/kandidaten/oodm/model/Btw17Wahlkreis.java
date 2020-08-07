@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17WahlkreisListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
@@ -8,6 +12,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "btw17_wahlkreis",

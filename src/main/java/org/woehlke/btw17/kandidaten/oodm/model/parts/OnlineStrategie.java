@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.validation.annotation.Validated;
 
@@ -11,6 +15,10 @@ import java.io.Serializable;
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.OnlineStrategieEmbedded
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Validated
 @Embeddable
 public class OnlineStrategie implements Serializable {

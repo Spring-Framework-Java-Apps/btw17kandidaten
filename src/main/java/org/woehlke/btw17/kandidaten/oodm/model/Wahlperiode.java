@@ -1,6 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Mandatsart;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WahlperiodeListener;
@@ -12,6 +16,10 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "wahlperiode"

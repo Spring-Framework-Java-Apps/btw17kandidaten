@@ -1,6 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.validation.annotation.Validated;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.InstitutionArt;
 
@@ -11,6 +15,10 @@ import java.time.LocalDate;
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.InstitutionEmbedded
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Validated
 @Embeddable
 public class Institution implements Serializable {

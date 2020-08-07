@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.validation.annotation.Validated;
 import org.woehlke.btw17.kandidaten.oodm.model.Bundesland;
 
@@ -13,6 +17,10 @@ import static javax.persistence.FetchType.LAZY;
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.parts.AdresseEmbedded
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Validated
 @Embeddable
 public class Adresse implements Serializable {

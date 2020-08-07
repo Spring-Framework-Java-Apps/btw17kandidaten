@@ -1,6 +1,10 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Column;
@@ -9,6 +13,10 @@ import javax.validation.constraints.Digits;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Validated
 @Embeddable
 public class Strukturdaten implements Serializable {

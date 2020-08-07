@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.MinisteriumListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
 
@@ -10,6 +14,10 @@ import javax.validation.Valid;
 /**
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "ministerium",

@@ -1,9 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
-//import org.hibernate.validator.constraints.SafeHtml;
-//import org.hibernate.validator.constraints.URL;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Religion;
@@ -22,6 +24,10 @@ import java.util.Set;
 
 import static javax.persistence.FetchType.LAZY;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "kandidat",

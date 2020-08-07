@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.woehlke.btw17.kandidaten.oodm.model.enums.BundeslandEnum;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.Btw17StrukturdatenListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.DomainObject;
@@ -11,6 +15,11 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "btw17_strukturdaten",

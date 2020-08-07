@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model.parts;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Column;
@@ -7,6 +11,11 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.Digits;
 import java.io.Serializable;
 
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Validated
 @Embeddable
 public class WahlergebnisseBtw17 implements Serializable {

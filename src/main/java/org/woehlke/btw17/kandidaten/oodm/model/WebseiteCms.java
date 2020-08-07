@@ -1,5 +1,9 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.WebseiteCmsListener;
@@ -18,6 +22,10 @@ import javax.validation.constraints.NotNull;
  *
  * @see org.woehlke.btw17.kandidaten.oodm.model.Kandidat
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(
     name = "cms",
