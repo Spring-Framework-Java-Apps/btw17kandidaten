@@ -4,9 +4,6 @@ package org.woehlke.btw17.kandidaten.frontend.controller.open.errors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.autoconfigure.web.AbstractErrorController;
-//import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-//import org.springframework.boot.autoconfigure.web.ErrorViewResolver;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -22,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.JumbotronImage;
 import org.woehlke.btw17.kandidaten.frontend.model.enums.PageSymbol;
 import org.woehlke.btw17.kandidaten.configuration.properties.KandidatenProperties;
-//import org.woehlke.btw17.kandidaten.configuration.properties.OtherProperties;
 import org.woehlke.btw17.kandidaten.frontend.model.FreitextSucheFormular;
 import org.woehlke.btw17.kandidaten.frontend.model.PageContent;
 import org.woehlke.btw17.kandidaten.frontend.model.SearchForKandidat;
@@ -38,6 +34,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("${server.error.path:/error}")
 @SessionAttributes({"suchformular","suchformularFreitext"})
+@SuppressWarnings("deprecation")
 public class ErrorController extends AbstractErrorController {
 
     @RequestMapping(produces = "text/html")
@@ -86,7 +83,6 @@ public class ErrorController extends AbstractErrorController {
         this(errorAttributes,
                 Collections.<ErrorViewResolver>emptyList(),sessionHandler,kandidatenProperties);
     }
-
 
     private ErrorController(ErrorAttributes errorAttributes, List<ErrorViewResolver> errorViewResolvers, SessionHandler sessionHandler, KandidatenProperties kandidatenProperties) {
         super(errorAttributes, errorViewResolvers);

@@ -1,9 +1,11 @@
 package org.woehlke.btw17.kandidaten.oodm.model;
 
 
+//import org.hibernate.validator.constraints.SafeHtml;
+//import org.hibernate.validator.constraints.URL;
+
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
-
 import org.woehlke.btw17.kandidaten.oodm.model.enums.Religion;
 import org.woehlke.btw17.kandidaten.oodm.model.listener.KandidatListener;
 import org.woehlke.btw17.kandidaten.oodm.model.parts.*;
@@ -317,23 +319,28 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "xml_id_bundestag")
     private String xmlIdBundestag;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name = "titel")
     private String titel;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name = "namenszusatz")
     private String namenszusatz;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name = "nachname_ohne")
     private String nachnameOhne;
 
+    @SuppressWarnings("deprecation")
     @NotNull
     @SafeHtml
     @Column(name = "nachname")
     private String nachname;
 
+    @SuppressWarnings("deprecation")
     @NotNull
     @SafeHtml
     @Column(name = "vorname")
@@ -398,6 +405,7 @@ public class Kandidat implements DomainObject,WebseiteEmbedded,OnlineStrategieEm
     @Column(name = "veroeffentlichungspflichtiges", columnDefinition = "TEXT")
     private String veroeffentlichungspflichtiges;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name = "funktion")
     private String funktion;

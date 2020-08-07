@@ -52,11 +52,13 @@ public class WebseiteAgentur implements DomainObject,AdresseEmbedded,OnlineStrat
     @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @NotNull
     @Column
     private String agentur;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @NotNull
     @Column

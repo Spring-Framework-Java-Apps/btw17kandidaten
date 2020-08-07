@@ -54,15 +54,18 @@ public class WebseiteCms implements DomainObject,AdresseEmbedded,OnlineStrategie
     @Column(name = "id", updatable = false, nullable = false)
     protected Long id;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @NotNull
     @Column(name="cms")
     private String cms;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name="technology_stack")
     private String technologyStack;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     @Column(name="hersteller")
     private String hersteller;

@@ -10,12 +10,15 @@ import java.io.Serializable;
 @Validated
 public class SearchForKandidat implements Serializable {
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String nachname;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String vorname;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String geschlecht;
 
@@ -23,9 +26,11 @@ public class SearchForKandidat implements Serializable {
 
     private String geburtsjahrMax;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String wohnort;
 
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String geburtsort;
 

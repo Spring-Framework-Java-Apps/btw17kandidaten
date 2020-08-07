@@ -11,6 +11,7 @@ import org.thymeleaf.dialect.springdata.SpringDataDialect;
 
 @Configuration
 @EnableSpringDataWebSupport
+@SuppressWarnings("deprecation")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override

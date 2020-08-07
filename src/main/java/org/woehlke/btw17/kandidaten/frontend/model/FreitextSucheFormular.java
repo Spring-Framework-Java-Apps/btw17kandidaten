@@ -12,6 +12,7 @@ public class FreitextSucheFormular implements Serializable {
 
     @NotEmpty
     @NotNull
+    @SuppressWarnings("deprecation")
     @SafeHtml
     private String searchTerm;
 
